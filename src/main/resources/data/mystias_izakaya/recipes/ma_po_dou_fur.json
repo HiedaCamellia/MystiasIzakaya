@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:frying_pan_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:dou_fu"
+    },
+    {
+      "item": "mystias_izakaya:zhu_rou"
+    },
+    {
+      "item": "mystias_izakaya:la_jiao"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:ma_po_dou_fu",
+    "count": 1
+  }
+}

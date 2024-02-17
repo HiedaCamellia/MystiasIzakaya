@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:frying_pan_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:ba_mu_man"
+    },
+    {
+      "item": "mystias_izakaya:yang_cong"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:hong_shao_man_yu",
+    "count": 1
+  }
+}

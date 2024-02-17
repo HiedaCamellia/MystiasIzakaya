@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:axes"
+    },
+    {
+      "item": "minecraft:cod"
+    }
+  ],
+  "result": {
+    "item": "mystias_izakaya:zun_yu",
+    "count": 1
+  }
+}

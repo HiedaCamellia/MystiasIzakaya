@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:cutting_board_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:ji_shang_jin_qiang_yu"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:ying_luo_xue",
+    "count": 1
+  }
+}

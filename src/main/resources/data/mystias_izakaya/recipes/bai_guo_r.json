@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:spruce_leaves"
+    },
+    {
+      "tag": "forge:axes"
+    }
+  ],
+  "result": {
+    "item": "mystias_izakaya:bai_guo",
+    "count": 1
+  }
+}

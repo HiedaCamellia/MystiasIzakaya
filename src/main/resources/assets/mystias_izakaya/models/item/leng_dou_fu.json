@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "mystias_izakaya:item/leng_dou_fu_"
+  }
+}

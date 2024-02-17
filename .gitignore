@@ -1,0 +1,8 @@
+.gradle
+.vscode
+.settings
+.mcreator/workspaceBackups
+bin
+build
+elements
+run

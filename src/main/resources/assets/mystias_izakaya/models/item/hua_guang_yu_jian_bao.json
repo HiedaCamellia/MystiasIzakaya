@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "mystias_izakaya:item/hua_guang_yu_jian_bao_"
+  }
+}

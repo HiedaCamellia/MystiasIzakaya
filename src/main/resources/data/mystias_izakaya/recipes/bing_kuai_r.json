@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:axes"
+    },
+    {
+      "item": "minecraft:ice"
+    }
+  ],
+  "result": {
+    "item": "mystias_izakaya:bing_kuai",
+    "count": 3
+  }
+}

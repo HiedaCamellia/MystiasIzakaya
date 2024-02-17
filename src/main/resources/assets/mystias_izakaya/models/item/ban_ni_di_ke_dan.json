@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "mystias_izakaya:item/ban_ni_di_ke_dan_"
+  }
+}

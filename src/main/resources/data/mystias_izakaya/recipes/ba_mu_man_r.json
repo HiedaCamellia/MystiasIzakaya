@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:cod"
+    }
+  ],
+  "result": {
+    "item": "mystias_izakaya:ba_mu_man",
+    "count": 2
+  }
+}
