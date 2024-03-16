@@ -1,11 +1,18 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "ingredients": [
-    {
+  "pattern": [
+    "a",
+    "b"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:iron_nugget"
+    },
+    "b": {
       "item": "minecraft:smoker"
     }
-  ],
+  },
   "result": {
     "item": "mystias_izakaya:cooking_range",
     "count": 1

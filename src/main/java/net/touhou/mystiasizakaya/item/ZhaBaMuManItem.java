@@ -18,6 +18,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Entity;
+
+
 
 import java.util.List;
 
@@ -67,6 +74,14 @@ public class ZhaBaMuManItem extends Item {
 		}
 	}
 
+	@Override
+	public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
+		super.finishUsingItem(itemstack, world, entity);
+		entity.removeEffect(MobEffects.DARKNESS);
+		entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 2400, 0));
+		return itemstack;
+	}
+	
 	public static List<String> gettags() {
 		List<String> list = new ArrayList<>();
 		list.add("tag.mystias_izakaya.Aquatic");

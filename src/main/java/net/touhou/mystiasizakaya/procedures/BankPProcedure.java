@@ -37,6 +37,15 @@ public class BankPProcedure {
 					capability.syncPlayerVariables(entity);
 				});
 			}
+			if (i >= 10000) {
+				j = Math.floor(i / 10000);
+				i = i - j * 10;
+				if (entity instanceof Player _player) {
+					ItemStack _setstack = new ItemStack(MystiasIzakayaModItems.EN_10K.get());
+					_setstack.setCount((int) j);
+					ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+				}
+			}
 			j = Math.floor(i / 10);
 			i = i - j * 10;
 			if (entity instanceof Player _player) {

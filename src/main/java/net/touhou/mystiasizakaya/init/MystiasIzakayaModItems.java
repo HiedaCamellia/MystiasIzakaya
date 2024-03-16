@@ -149,6 +149,7 @@ import net.touhou.mystiasizakaya.item.FanTuanItem;
 import net.touhou.mystiasizakaya.item.ErTianLiuItem;
 import net.touhou.mystiasizakaya.item.En5Item;
 import net.touhou.mystiasizakaya.item.En1Item;
+import net.touhou.mystiasizakaya.item.En10kItem;
 import net.touhou.mystiasizakaya.item.En10Item;
 import net.touhou.mystiasizakaya.item.DouFuWeiChengItem;
 import net.touhou.mystiasizakaya.item.DouFuItem;
@@ -366,6 +367,7 @@ public class MystiasIzakayaModItems {
 	public static final RegistryObject<Item> EN_5 = REGISTRY.register("en_5", () -> new En5Item());
 	public static final RegistryObject<Item> EN_10 = REGISTRY.register("en_10", () -> new En10Item());
 	public static final RegistryObject<Item> ICON = REGISTRY.register("icon", () -> new IconItem());
+	public static final RegistryObject<Item> EN_10K = REGISTRY.register("en_10k", () -> new En10kItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

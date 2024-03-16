@@ -193,6 +193,7 @@ public class MystiasIzakayaModTabs {
 				tabData.accept(MystiasIzakayaModItems.EN_1.get());
 				tabData.accept(MystiasIzakayaModItems.EN_5.get());
 				tabData.accept(MystiasIzakayaModItems.EN_10.get());
+				tabData.accept(MystiasIzakayaModItems.EN_10K.get());
 			})
 
 					.build());

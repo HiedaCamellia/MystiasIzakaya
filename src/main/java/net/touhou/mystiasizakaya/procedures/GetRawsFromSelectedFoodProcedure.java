@@ -50,6 +50,7 @@ public class GetRawsFromSelectedFoodProcedure {
 						return _retval.get();
 					}
 				}.getItemStack(world, BlockPos.containing(x, y, z), (int) i));
+				raw = YHCProcedure.execute(raw);
 				if (raw.getItem() == MystiasIzakayaModItems.BA_MU_MAN.get() && !(s.getItem() == MystiasIzakayaModItems.KAO_BA_MU_MAN.get() || s.getItem() == MystiasIzakayaModItems.ZHA_BA_MU_MAN.get()
 						|| s.getItem() == MystiasIzakayaModItems.BAI_XUE.get() || s.getItem() == MystiasIzakayaModItems.HONG_SHAO_MAN_YU.get())) {
 					rawss.add(raw);

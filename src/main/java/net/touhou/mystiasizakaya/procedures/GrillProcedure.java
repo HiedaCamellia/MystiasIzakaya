@@ -33,15 +33,6 @@ public class GrillProcedure {
 					return _retval.get();
 				}
 			}.getItemStack(world, BlockPos.containing(x, y, z), (int) i)).getItem() == ItemStack.EMPTY.getItem())) {
-				raws.add((ForgeRegistries.ITEMS.getKey((new Object() {
-					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						BlockEntity _ent = world.getBlockEntity(pos);
-						if (_ent != null)
-							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-						return _retval.get();
-					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), (int) i)).getItem()).toString()));
 				raw = (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -51,6 +42,8 @@ public class GrillProcedure {
 						return _retval.get();
 					}
 				}.getItemStack(world, BlockPos.containing(x, y, z), (int) i));
+				raw = YHCProcedure.execute(raw);
+				raws.add((ForgeRegistries.ITEMS.getKey(raw.getItem()).toString()));
 			}
 			i = i + 1;
 		}

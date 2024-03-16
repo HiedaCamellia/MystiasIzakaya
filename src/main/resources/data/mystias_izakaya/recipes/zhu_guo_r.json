@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "b b",
+    " b "
+  ],
+  "key": {
+    "a": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "b": {
+      "item": "minecraft:brick"
+    }
+  },
+  "result": {
+    "item": "mystias_izakaya:zhu_guo",
+    "count": 1
+  }
+}

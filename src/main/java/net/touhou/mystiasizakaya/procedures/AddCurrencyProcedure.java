@@ -40,5 +40,15 @@ public class AddCurrencyProcedure {
 			}
 			itemstack.shrink(1);
 		}
+		if (itemstack.getItem() == MystiasIzakayaModItems.EN_10K.get()) {
+			{
+				double _setval = 10000 + (entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MystiasIzakayaModVariables.PlayerVariables())).balance;
+				entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+					capability.balance = _setval;
+					capability.syncPlayerVariables(entity);
+				});
+			}
+			itemstack.shrink(1);
+		}
 	}
 }

@@ -98,7 +98,13 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(new ResourceLocation("mystiasizakaya:ingredients")));
+				if (stack.is(ItemTags.create(new ResourceLocation("mystiasizakaya:ingredients")))){
+					return true;
+				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
+					return true;
+				}else{
+					return false;
+				}
 			}
 		}));
 		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 122, 26) {
@@ -106,32 +112,60 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(new ResourceLocation("mystiasizakaya:ingredients")));
+				if (stack.is(ItemTags.create(new ResourceLocation("mystiasizakaya:ingredients")))){
+					return true;
+				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
+					return true;
+				}else{
+					return false;
+				}
 			}
+
 		}));
 		this.customSlots.put(3, this.addSlot(new SlotItemHandler(internal, 3, 149, 26) {
 			private final int slot = 3;
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(new ResourceLocation("mystiasizakaya:ingredients")));
+				if (stack.is(ItemTags.create(new ResourceLocation("mystiasizakaya:ingredients")))){
+					return true;
+				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
+					return true;
+				}else{
+					return false;
+				}
 			}
+
 		}));
 		this.customSlots.put(4, this.addSlot(new SlotItemHandler(internal, 4, 176, 26) {
 			private final int slot = 4;
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(new ResourceLocation("mystiasizakaya:ingredients")));
+				if (stack.is(ItemTags.create(new ResourceLocation("mystiasizakaya:ingredients")))){
+					return true;
+				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
+					return true;
+				}else{
+					return false;
+				}
 			}
+
 		}));
 		this.customSlots.put(5, this.addSlot(new SlotItemHandler(internal, 5, 203, 26) {
 			private final int slot = 5;
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(new ResourceLocation("mystiasizakaya:ingredients")));
+				if (stack.is(ItemTags.create(new ResourceLocation("mystiasizakaya:ingredients")))){
+					return true;
+				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
+					return true;
+				}else{
+					return false;
+				}
 			}
+
 		}));
 		this.customSlots.put(6, this.addSlot(new SlotItemHandler(internal, 6, 239, 44) {
 			private final int slot = 6;
