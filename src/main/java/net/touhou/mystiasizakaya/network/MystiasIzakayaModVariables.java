@@ -28,9 +28,14 @@ import net.minecraft.core.Direction;
 import net.minecraft.client.Minecraft;
 
 import java.util.function.Supplier;
+import java.util.List;
+import java.util.ArrayList;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class MystiasIzakayaModVariables {
+	public static List<Object> orders = new ArrayList<>();
+	public static List<Object> ordersbeverages = new ArrayList<>();
+
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
 		MystiasIzakayaMod.addNetworkMessage(PlayerVariablesSyncMessage.class, PlayerVariablesSyncMessage::buffer, PlayerVariablesSyncMessage::new, PlayerVariablesSyncMessage::handler);

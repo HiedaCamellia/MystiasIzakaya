@@ -109,7 +109,7 @@ public class MystiasIzakayaModTrades {
 					new ItemStack(MystiasIzakayaModItems.PU_TAO.get()), 10, 5, 0.05f));
 			event.getTrades().get(1).add(new BasicItemListing(new ItemStack(MystiasIzakayaModItems.EN_10K.get(), 53),
 
-					new ItemStack(MystiasIzakayaModItems.LING_XIAN.get()), 10, 5, 0.05f));
+					new ItemStack(MystiasIzakayaModItems.REISEN.get()), 10, 5, 0.05f));
 		}
 		if (event.getType() == VillagerProfession.BUTCHER) {
 			event.getTrades().get(1).add(new BasicItemListing(new ItemStack(MystiasIzakayaModItems.EN_1.get(), 8),

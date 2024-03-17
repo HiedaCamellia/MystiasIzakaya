@@ -3109,11 +3109,11 @@
       "sortid": 172,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ling_xian",
+      "registry_name": "reisen",
       "metadata": {
         "files": [
           "src/main/java/net/touhou/mystiasizakaya/item/LingXianItem.java",
-          "src/main/resources/assets/mystias_izakaya/models/item/ling_xian.json"
+          "src/main/resources/assets/mystias_izakaya/models/item/reisen.json"
         ]
       },
       "path": "~/items"
@@ -5275,9 +5275,6 @@
       "registry_name": "show_balance",
       "metadata": {
         "return_type": "string",
-        "files": [
-          "src/main/java/net/touhou/mystiasizakaya/procedures/ShowBalanceProcedure.java"
-        ],
         "dependencies": [
           {
             "name": "entity",
@@ -6041,6 +6038,9 @@
       "locked_code": false,
       "registry_name": "test",
       "metadata": {
+        "files": [
+          "src/main/java/net/touhou/mystiasizakaya/procedures/TestProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -6104,6 +6104,269 @@
         ]
       },
       "path": "~/tags"
+    },
+    {
+      "name": "IronKnife",
+      "type": "item",
+      "sortid": 377,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "iron_knife",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/mystias_izakaya/models/item/iron_knife.json",
+          "src/main/java/net/touhou/mystiasizakaya/item/IronKnifeItem.java"
+        ]
+      },
+      "path": "~/items/utils"
+    },
+    {
+      "name": "IronKnifeR",
+      "type": "recipe",
+      "sortid": 378,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "iron_knife_r",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/mystias_izakaya/recipes/iron_knife_r.json"
+        ]
+      },
+      "path": "~/recipes/utils"
+    },
+    {
+      "name": "Orders",
+      "type": "overlay",
+      "sortid": 379,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "orders",
+      "metadata": {
+        "files": [
+          "src/main/java/net/touhou/mystiasizakaya/client/screens/OrdersOverlay.java"
+        ]
+      },
+      "path": "~/ui"
+    },
+    {
+      "name": "Addorders",
+      "type": "procedure",
+      "sortid": 380,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "addorders",
+      "metadata": {
+        "files": [
+          "src/main/java/net/touhou/mystiasizakaya/procedures/AddordersProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "beverages",
+            "type": "itemstack"
+          },
+          {
+            "name": "cuisines",
+            "type": "itemstack"
+          },
+          {
+            "name": "id",
+            "type": "number"
+          }
+        ]
+      },
+      "path": "~/logics/orders"
+    },
+    {
+      "name": "Deleteorders",
+      "type": "procedure",
+      "sortid": 381,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "deleteorders",
+      "metadata": {
+        "files": [
+          "src/main/java/net/touhou/mystiasizakaya/procedures/DeleteordersProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "id",
+            "type": "number"
+          }
+        ]
+      },
+      "path": "~/logics/orders"
+    },
+    {
+      "name": "GetCuisinesTexture",
+      "type": "procedure",
+      "sortid": 382,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "get_cuisines_texture",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/touhou/mystiasizakaya/procedures/GetCuisinesTextureProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "id",
+            "type": "number"
+          }
+        ]
+      },
+      "path": "~/logics/cook"
+    },
+    {
+      "name": "CommandTEST",
+      "type": "command",
+      "sortid": 383,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "command_test",
+      "metadata": {
+        "files": [
+          "src/main/java/net/touhou/mystiasizakaya/command/CommandTESTCommand.java"
+        ]
+      },
+      "path": "~/command"
+    },
+    {
+      "name": "Initorders",
+      "type": "procedure",
+      "sortid": 384,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "initorders",
+      "metadata": {
+        "files": [
+          "src/main/java/net/touhou/mystiasizakaya/procedures/InitordersProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/logics/utils"
+    },
+    {
+      "name": "CommandDebug1",
+      "type": "procedure",
+      "sortid": 385,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "command_debug_1",
+      "metadata": {
+        "files": [
+          "src/main/java/net/touhou/mystiasizakaya/procedures/CommandDebug1Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ]
+      },
+      "path": "~/command"
+    },
+    {
+      "name": "CommandDebug2",
+      "type": "procedure",
+      "sortid": 386,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "command_debug_2",
+      "metadata": {
+        "files": [
+          "src/main/java/net/touhou/mystiasizakaya/procedures/CommandDebug2Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ]
+      },
+      "path": "~/command"
+    },
+    {
+      "name": "CommandDebug3",
+      "type": "procedure",
+      "sortid": 387,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "command_debug_3",
+      "metadata": {
+        "files": [
+          "src/main/java/net/touhou/mystiasizakaya/procedures/CommandDebug3Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ]
+      },
+      "path": "~/command"
+    },
+    {
+      "name": "CommandDebug4",
+      "type": "procedure",
+      "sortid": 388,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "command_debug_4",
+      "metadata": {
+        "files": [
+          "src/main/java/net/touhou/mystiasizakaya/procedures/CommandDebug4Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ]
+      },
+      "path": "~/command"
+    },
+    {
+      "name": "GetBeveragesTexture",
+      "type": "procedure",
+      "sortid": 389,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "get_beverages_texture",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/touhou/mystiasizakaya/procedures/GetBeveragesTextureProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "id",
+            "type": "number"
+          }
+        ]
+      },
+      "path": "~/logics/cook"
+    },
+    {
+      "name": "GetTexture",
+      "type": "procedure",
+      "sortid": 390,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "get_texture",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/touhou/mystiasizakaya/procedures/GetTextureProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ]
+      },
+      "path": "~/logics/cook"
     }
   ],
   "variable_elements": [
@@ -6118,6 +6381,18 @@
       "type": "logic",
       "scope": "player_persistent",
       "value": "true"
+    },
+    {
+      "name": "orders",
+      "type": "arraylist",
+      "scope": "global",
+      "value": "new ArrayList\u003c\u003e()"
+    },
+    {
+      "name": "ordersbeverages",
+      "type": "arraylist",
+      "scope": "global",
+      "value": "new ArrayList\u003c\u003e()"
     }
   ],
   "sound_elements": [],
@@ -6126,7 +6401,6 @@
       "item.mystias_izakaya.huang_gua": "Cucumber",
       "tooltip.mystias_izakaya.neng_liang_chuan": "A skewer made of beef, onion, and pumpkin. The onion\u0027s tartness and pumpkin\u0027s sweetness mitigates the greasy beef, giving the skewer a refreshing taste.",
       "item.mystias_izakaya.ning_meng": "Lemon",
-      "item.mystias_izakaya.ling_xian": "Ling Xian",
       "item.mystias_izakaya.ying_luo_xue": "Falling Blossoms",
       "item.mystias_izakaya.nai_you": "Cream",
       "item.mystias_izakaya.yang_cong": "Onion",
@@ -6156,8 +6430,8 @@
       "tag.mystias_izakaya.beverages.liquor": "Liquor",
       "tag.mystias_izakaya.Sweet": "Sweet",
       "tooltip.mystias_izakaya.dou_fu_guo": "A cheap stew made of tofu. It\u0027s the most common stew in the izakaya thanks to the smooth and tender texture and its rich nutrients.",
-      "tooltip.mystias_izakaya.ma_shu": "The most simple type of mochi dumplings. A Japanese snack that everyone likes.",
       "tooltip.mystias_izakaya.xia": "Freshwater shrimp that inhabits Misty Lake and Genbu Ravine. Rather common.",
+      "tooltip.mystias_izakaya.ma_shu": "The most simple type of mochi dumplings. A Japanese snack that everyone likes.",
       "item.mystias_izakaya.zhu_sun": "Bamboo Shoot",
       "tooltip.mystias_izakaya.liang_cai_diao_hua": "Fresh fruits and vegetables carved into the shape of a rose. What makes this dish difficult is not the ingredients, but the requisite knife skills.",
       "tooltip.mystias_izakaya.yu_lu_cha": "Almost the best Japanese tea. It needs to be brewed at a lower water temperature, and offers a sweet and fragrant flavor with a distinct taste.",
@@ -6352,6 +6626,7 @@
       "item.mystias_izakaya.zhu_dou_fu": "Boiled Tofu",
       "item.mystias_izakaya.zhu_tong_zheng_dan": "Steamed Egg \u0026 Bamboo Shoots",
       "tooltip.mystias_izakaya.bai_guo_luo_bu_pai_gu_tang": "A soup that originates from Meiling\u0027s homeland. Not only is it the perfect blend of looks, smell, and taste, but it is also very nutritious.  How to Unlock",
+      "item.mystias_izakaya.reisen": "Ling Xian",
       "item.mystias_izakaya.zheng_guo": "Zheng Guo",
       "tooltip.mystias_izakaya.ji_dan": "Egg sold by the human village. Rather common.",
       "item.mystias_izakaya.guo_wei_sour": "Fruity Sour",
@@ -6445,6 +6720,7 @@
       "item.mystias_izakaya.ri_yue_xing": "Sangetsusei",
       "item.mystias_izakaya.zhu_qu_ji": "Kaguya-hime",
       "item.mystias_izakaya.liao_li_tai": "Liao Li Tai",
+      "item.mystias_izakaya.iron_knife": "Iron Knife",
       "item.mystias_izakaya.kao_ba_mu_man": "Grilled Lamprey",
       "tooltip.mystias_izakaya.niu_rou": "Beef from the cattle bred in the Human Village. Rather common.",
       "tooltip.mystias_izakaya.mo_gu_rou_pian": "A basic home-cooked dish: just mushrooms and sliced pork stir-fry in a pan.",
@@ -6514,7 +6790,7 @@
       "item.mystias_izakaya.shu_cai_zhuan_ji": "Vegetable Salad",
       "item.mystias_izakaya.leng_dou_fu": "Fresh Tofu",
       "tooltip.mystias_izakaya.bei_ji_tian_xia_mi_tao_se_la": "A high-class dish made from the freshest shrimp and peaches. Supposedly, they are only served at banquets in the Outside World.",
-      "item.mystias_izakaya.en_10k": "En 1 0 K",
+      "item.mystias_izakaya.en_10k": "En 1 0",
       "tooltip.mystias_izakaya.kao_ba_mu_man": "One of Mystia\u0027s signature dishes. I wanted to break the stereotype that \"restaurants with red lanterns all sell grilled birds.\" Did you know that lampreys can effective treat night blindness? They used to be a rare delicacy.",
       "item.mystias_izakaya.shui_jiao": "Dumplings",
       "item.mystias_izakaya.lu_cha": "Green Tea",
@@ -6542,6 +6818,7 @@
       "item.mystias_izakaya.yi_shi_hui_fan": "Italian Risotto",
       "tooltip.mystias_izakaya.feng_mi": "Wild honey from beehives that can be found on trees.",
       "tooltip.mystias_izakaya.yi_shi_hui_fan": "After frying the ingredients, uncooked rice is poured in, which soaks the aroma into the rice. Supposedly originated from a peninsula from the Outside World.",
+      "gui.mystias_izakaya.orders.label_1": "#1",
       "item.mystias_izakaya.hei_mao_zhu_rou": "Iberico Pork",
       "tag.mystias_izakaya.beverages.mid_alcohol": "Mid Alcohol",
       "item.mystias_izakaya.nuo_mi": "Sticky Rice",
@@ -6556,7 +6833,6 @@
       "item.mystias_izakaya.huang_gua": "黄瓜",
       "tooltip.mystias_izakaya.neng_liang_chuan": "牛肉搭配洋葱、南瓜烤成的串串。巧妙地利用了洋葱的刺激与南瓜的甜味去除肉质的油腻，食之更加清爽。",
       "item.mystias_izakaya.ning_meng": "柠檬",
-      "item.mystias_izakaya.ling_xian": "铃仙",
       "item.mystias_izakaya.ying_luo_xue": "樱落雪",
       "item.mystias_izakaya.nai_you": "奶油",
       "item.mystias_izakaya.yang_cong": "洋葱",
@@ -6586,8 +6862,8 @@
       "tag.mystias_izakaya.beverages.liquor": "利口酒",
       "tag.mystias_izakaya.Sweet": "甜",
       "tooltip.mystias_izakaya.dou_fu_guo": "由豆腐炖煮而成的烩锅，滑嫩的口感再加上其本身具有的较高营养价值，使这道平价料理成为居酒屋最常见的烩锅。",
-      "tooltip.mystias_izakaya.ma_shu": "最普通的糯米团子，大家都喜欢的和风甜食。",
       "tooltip.mystias_izakaya.xia": "分布在雾之湖和玄武泽的淡水虾，较为常见",
+      "tooltip.mystias_izakaya.ma_shu": "最普通的糯米团子，大家都喜欢的和风甜食。",
       "item.mystias_izakaya.zhu_sun": "竹笋",
       "tooltip.mystias_izakaya.liang_cai_diao_hua": "将鲜果蔬菜雕刻成鲜花的模样，虽然材料简单，但却非常考验刀工。",
       "tooltip.mystias_izakaya.yu_lu_cha": "几乎是日本茶中最高级的茶叶，需要用较低的水温来冲泡，甘醇飘香，口感独特。",
@@ -6783,6 +7059,7 @@
       "item.mystias_izakaya.zhu_tong_zheng_dan": "竹筒蒸蛋",
       "tooltip.mystias_izakaya.bai_guo_luo_bu_pai_gu_tang": "来自红美铃老家的㷛汤技巧，色香味俱全，益气补血。",
       "tag.mystias_izakaya.Small Portion": "小巧",
+      "item.mystias_izakaya.reisen": "Ling Xian",
       "item.mystias_izakaya.zheng_guo": "蒸锅",
       "tooltip.mystias_izakaya.ji_dan": "人里供应的鸡蛋，较为常见",
       "item.mystias_izakaya.guo_wei_sour": "果味SOUR",
@@ -6876,6 +7153,7 @@
       "item.mystias_izakaya.ri_yue_xing": "日月星",
       "item.mystias_izakaya.zhu_qu_ji": "竹取姬",
       "item.mystias_izakaya.liao_li_tai": "料理台",
+      "item.mystias_izakaya.iron_knife": "Iron Knife",
       "item.mystias_izakaya.kao_ba_mu_man": "烤八目鳗",
       "tooltip.mystias_izakaya.niu_rou": "人里圈养的肉牛肉，较为常见",
       "tooltip.mystias_izakaya.mo_gu_rou_pian": "将蘑菇和肉切片后，混入锅里一起炒，是非常基本的家庭料理",
@@ -6972,6 +7250,7 @@
       "item.mystias_izakaya.yi_shi_hui_fan": "意式烩饭",
       "tooltip.mystias_izakaya.feng_mi": "能从树上蜂巢采到的野生蜂蜜，较为常见",
       "tooltip.mystias_izakaya.yi_shi_hui_fan": "将食材炒熟之后倒入生米，充分混合米粒和食材香味的外界某个半岛的做法。",
+      "gui.mystias_izakaya.orders.label_1": "#1",
       "item.mystias_izakaya.hei_mao_zhu_rou": "黑毛猪肉",
       "tag.mystias_izakaya.beverages.mid_alcohol": "中酒精",
       "item.mystias_izakaya.nuo_mi": "糯米",
@@ -7045,6 +7324,14 @@
           {
             "name": "effects",
             "children": []
+          },
+          {
+            "name": "orders",
+            "children": []
+          },
+          {
+            "name": "utils",
+            "children": []
           }
         ]
       },
@@ -7057,6 +7344,10 @@
         "children": [
           {
             "name": "Currency",
+            "children": []
+          },
+          {
+            "name": "utils",
             "children": []
           }
         ]
@@ -7107,8 +7398,8 @@
   "workspaceSettings": {
     "modid": "mystias_izakaya",
     "modName": "Mystia\u0027s Izakaya",
-    "version": "0.0.6",
-    "description": "ver0.0.6",
+    "version": "0.0.6b",
+    "description": "ver0.0.6b",
     "author": "Fuyuka",
     "websiteURL": "https://www.curseforge.com/minecraft/mc-mods/mystias-izakaya",
     "license": "GNU General Public License version 3 (GPLv3)",

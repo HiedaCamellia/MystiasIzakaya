@@ -9,7 +9,7 @@
       "tag": "minecraft:logs"
     },
     {
-      "tag": "forge:axes"
+      "item": "mystias_izakaya:iron_knife"
     }
   ],
   "result": {

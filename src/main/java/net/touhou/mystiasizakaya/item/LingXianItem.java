@@ -37,7 +37,7 @@ public class LingXianItem extends Item {
 
 	@Override
 	public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
-		ItemStack retval = new ItemStack(MystiasIzakayaModItems.LING_XIAN.get());
+		ItemStack retval = new ItemStack(MystiasIzakayaModItems.REISEN.get());
 		super.finishUsingItem(itemstack, world, entity);
 		if (itemstack.isEmpty()) {
 			return retval;

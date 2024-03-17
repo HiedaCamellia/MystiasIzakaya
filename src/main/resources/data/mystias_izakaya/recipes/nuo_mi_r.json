@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:axes"
+      "item": "mystias_izakaya:iron_knife"
     },
     {
       "item": "minecraft:wheat_seeds"

@@ -117,6 +117,7 @@ import net.touhou.mystiasizakaya.item.JinQiangYuItem;
 import net.touhou.mystiasizakaya.item.JiaoFuItem;
 import net.touhou.mystiasizakaya.item.JiShangJinQiangYuItem;
 import net.touhou.mystiasizakaya.item.JiDanItem;
+import net.touhou.mystiasizakaya.item.IronKnifeItem;
 import net.touhou.mystiasizakaya.item.IconItem;
 import net.touhou.mystiasizakaya.item.HuoShuQiuItem;
 import net.touhou.mystiasizakaya.item.HuiLingDunNiuPaiItem;
@@ -362,12 +363,13 @@ public class MystiasIzakayaModItems {
 	public static final RegistryObject<Item> GU_MING_DI_BING_JI_LING = REGISTRY.register("gu_ming_di_bing_ji_ling", () -> new GuMingDiBingJiLingItem());
 	public static final RegistryObject<Item> YANG_ZHI_GAN_LU = REGISTRY.register("yang_zhi_gan_lu", () -> new YangZhiGanLuItem());
 	public static final RegistryObject<Item> QI_LIN = REGISTRY.register("qi_lin", () -> new QiLinItem());
-	public static final RegistryObject<Item> LING_XIAN = REGISTRY.register("ling_xian", () -> new LingXianItem());
+	public static final RegistryObject<Item> REISEN = REGISTRY.register("reisen", () -> new LingXianItem());
 	public static final RegistryObject<Item> EN_1 = REGISTRY.register("en_1", () -> new En1Item());
 	public static final RegistryObject<Item> EN_5 = REGISTRY.register("en_5", () -> new En5Item());
 	public static final RegistryObject<Item> EN_10 = REGISTRY.register("en_10", () -> new En10Item());
 	public static final RegistryObject<Item> ICON = REGISTRY.register("icon", () -> new IconItem());
 	public static final RegistryObject<Item> EN_10K = REGISTRY.register("en_10k", () -> new En10kItem());
+	public static final RegistryObject<Item> IRON_KNIFE = REGISTRY.register("iron_knife", () -> new IronKnifeItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

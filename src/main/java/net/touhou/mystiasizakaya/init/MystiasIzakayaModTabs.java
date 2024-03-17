@@ -189,11 +189,12 @@ public class MystiasIzakayaModTabs {
 				tabData.accept(MystiasIzakayaModItems.GU_MING_DI_BING_JI_LING.get());
 				tabData.accept(MystiasIzakayaModItems.YANG_ZHI_GAN_LU.get());
 				tabData.accept(MystiasIzakayaModItems.QI_LIN.get());
-				tabData.accept(MystiasIzakayaModItems.LING_XIAN.get());
+				tabData.accept(MystiasIzakayaModItems.REISEN.get());
 				tabData.accept(MystiasIzakayaModItems.EN_1.get());
 				tabData.accept(MystiasIzakayaModItems.EN_5.get());
 				tabData.accept(MystiasIzakayaModItems.EN_10.get());
 				tabData.accept(MystiasIzakayaModItems.EN_10K.get());
+				tabData.accept(MystiasIzakayaModItems.IRON_KNIFE.get());
 			})
 
 					.build());

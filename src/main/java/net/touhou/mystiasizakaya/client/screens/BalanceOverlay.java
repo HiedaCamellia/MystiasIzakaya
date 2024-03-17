@@ -37,7 +37,7 @@ public class BalanceOverlay {
 			if (ShowbalanceLProcedure.execute(entity))
 				event.getGuiGraphics().drawString(Minecraft.getInstance().font,
 
-						ShowBalanceProcedure.execute(entity), 0, h - 10, -1, false);
+						ShowBalanceProcedure.execute(entity), w - 58, h - 11, -1, false);
 		}
 	}
 }
