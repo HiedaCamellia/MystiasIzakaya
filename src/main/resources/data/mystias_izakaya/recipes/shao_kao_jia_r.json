@@ -6,7 +6,7 @@
   ],
   "key": {
     "a": {
-      "tag": "minecraft:stone"
+      "item": "minecraft:stone"
     },
     "b": {
       "item": "minecraft:iron_bars"
