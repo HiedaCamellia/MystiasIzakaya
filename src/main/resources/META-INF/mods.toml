@@ -9,7 +9,7 @@ displayName="Mystia's Izakaya"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/mystias-izakaya"
 credits="modding from 东方夜雀食堂"
 authors="Fuyuka"
-description="ver0.0.6c"
+description="ver0.0.6d"
 
 [[dependencies.mystias_izakaya]]
     modId="minecraft"
