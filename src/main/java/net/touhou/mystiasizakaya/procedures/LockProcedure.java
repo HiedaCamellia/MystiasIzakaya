@@ -13,7 +13,7 @@ public class LockProcedure {
 					return blockEntity.getPersistentData().getDouble(tag);
 				return -1;
 			}
-		}.getValue(world, BlockPos.containing(x, y, z), "timeleft"))) {
+		}.getValue(world, new BlockPos(x, y, z), "timeleft"))) {
 			return false;
 		}
 		return true;

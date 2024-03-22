@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 import java.util.Arrays;
 
 import net.minecraft.world.item.UseAnim;
@@ -26,7 +27,7 @@ import java.util.List;
 
 public class QueJiuItem extends Item {
 	public QueJiuItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)
+		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON)
 				.food((new FoodProperties.Builder()).nutrition(4).saturationMod(2.5f).alwaysEat().build()));
 	}
 

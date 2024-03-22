@@ -8,13 +8,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.Screen;
-
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 import java.util.Arrays;
 import java.util.List;
 
 public class IronKnifeItem extends Item {
 	public IronKnifeItem() {
-		super(new Item.Properties().durability(250).rarity(Rarity.COMMON));
+		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).durability(250).rarity(Rarity.COMMON));
 	}
 
 	@Override

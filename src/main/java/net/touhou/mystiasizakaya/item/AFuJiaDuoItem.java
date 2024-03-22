@@ -6,6 +6,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
 import java.util.Arrays;
 
@@ -27,7 +28,7 @@ import java.util.List;
 
 public class AFuJiaDuoItem extends Item {
 	public AFuJiaDuoItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)
+		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON).tab(MystiasIzakayaModTabs.MystiasIzakaya)
 				.food((new FoodProperties.Builder()).nutrition(4).saturationMod(1.8f).alwaysEat().build()));
 	}
 

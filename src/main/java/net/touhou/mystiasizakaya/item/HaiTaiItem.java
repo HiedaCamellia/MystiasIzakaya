@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 import java.util.Arrays;
 
 import net.minecraft.world.level.Level;
@@ -28,7 +29,7 @@ import java.util.List;
 
 public class HaiTaiItem extends Item {
 	public HaiTaiItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)
+		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON)
 				.food((new FoodProperties.Builder()).nutrition(1).saturationMod(0.6f).alwaysEat().build()));
 	}
 

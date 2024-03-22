@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 import java.util.Arrays;
 
 import net.minecraft.world.level.Level;
@@ -28,7 +29,7 @@ import java.util.List;
 
 public class HuiLingDunNiuPaiItem extends Item {
 	public HuiLingDunNiuPaiItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)
+		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.EPIC)
 				.food((new FoodProperties.Builder()).nutrition(16).saturationMod(13f).alwaysEat().build()));
 	}
 

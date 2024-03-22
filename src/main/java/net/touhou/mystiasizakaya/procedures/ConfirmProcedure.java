@@ -31,7 +31,7 @@ public class ConfirmProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 12)).getItem())) {
+		}.getItemStack(world, new BlockPos(x, y, z), 12)).getItem())) {
 			ArrayList<String> rawtags = (ArrayList) GetTagFromItemStacksProcedure.execute(world, x, y, z);
 			ArrayList<String> targettags = (ArrayList) GetTargetTagsProcedure.execute(world, x, y, z);
 			ArrayList<String> targetntags = (ArrayList) GetTargetNagetivetagsProcedure.execute(world, x, y, z);
@@ -43,7 +43,7 @@ public class ConfirmProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 12));
+			}.getItemStack(world, new BlockPos(x, y, z), 12));
 			Kitchenware = (new Object() {
 				public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -52,7 +52,7 @@ public class ConfirmProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 0));
+			}.getItemStack(world, new BlockPos(x, y, z), 0));
 			ArrayList<String> combinedList = new ArrayList<String>(rawtags);
 			combinedList.addAll(targettags);
 			Set<String> set = new LinkedHashSet<String>(combinedList);
@@ -65,7 +65,7 @@ public class ConfirmProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem())) {
+			}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem())) {
 				resultList.add("tag.mystias_izakaya.Large_Portion");
 				if (resultList.contains("tag.mystias_izakaya.Small_Portion")) {
 					resultList.remove("tag.mystias_izakaya.Small_Portion");
@@ -93,7 +93,7 @@ public class ConfirmProcedure {
 				}
 			}
 			if (!world.isClientSide()) {
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
@@ -103,7 +103,7 @@ public class ConfirmProcedure {
 			}
 			if (bool) {
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 12;
 						final ItemStack _setstack = new ItemStack(MystiasIzakayaModItems.HEI_AN_WU_ZHI.get());
@@ -117,7 +117,7 @@ public class ConfirmProcedure {
 			} else {
 				target.getOrCreateTag().putString("tags", resultString);
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 12;
 						final ItemStack _setstack = target;
@@ -130,7 +130,7 @@ public class ConfirmProcedure {
 				}
 			}
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 1;
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -140,7 +140,7 @@ public class ConfirmProcedure {
 				}
 			}
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 2;
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -150,7 +150,7 @@ public class ConfirmProcedure {
 				}
 			}
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 3;
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -160,7 +160,7 @@ public class ConfirmProcedure {
 				}
 			}
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 4;
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -170,7 +170,7 @@ public class ConfirmProcedure {
 				}
 			}
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 5;
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -180,7 +180,7 @@ public class ConfirmProcedure {
 				}
 			}
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 7;
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -190,7 +190,7 @@ public class ConfirmProcedure {
 				}
 			}
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 8;
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -200,7 +200,7 @@ public class ConfirmProcedure {
 				}
 			}
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 9;
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -210,7 +210,7 @@ public class ConfirmProcedure {
 				}
 			}
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 10;
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -220,7 +220,7 @@ public class ConfirmProcedure {
 				}
 			}
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 11;
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {

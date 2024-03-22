@@ -20,7 +20,7 @@ public class Text3Procedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 9)).getItem()) {
+		}.getItemStack(world, new BlockPos(x, y, z), 9)).getItem()) {
 			return "";
 		}
 		str = (new Object() {
@@ -31,7 +31,7 @@ public class Text3Procedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 9)).getDisplayName().getString();
+		}.getItemStack(world, new BlockPos(x, y, z), 9)).getDisplayName().getString();
 		str = str.replace("[", "").replace("]", "");
 		return str;
 	}

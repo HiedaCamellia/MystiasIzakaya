@@ -36,10 +36,10 @@ public class MainProcedure {
 					return blockEntity.getPersistentData().getDouble(tag);
 				return -1;
 			}
-		}.getValue(world, BlockPos.containing(x, y, z), "timeleft");
+		}.getValue(world, new BlockPos(x, y, z), "timeleft");
 		if (time > 1) {
 			if (!world.isClientSide()) {
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
@@ -49,7 +49,7 @@ public class MainProcedure {
 			}
 		} else if (time == 1) {
 			if (!world.isClientSide()) {
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
@@ -65,9 +65,9 @@ public class MainProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 12));
+			}.getItemStack(world, new BlockPos(x, y, z), 12));
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 6;
 					final ItemStack _setstack = target;
@@ -86,7 +86,7 @@ public class MainProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 6)).getOrCreateTag().putString("tags", ((new Object() {
+			}.getItemStack(world, new BlockPos(x, y, z), 6)).getOrCreateTag().putString("tags", ((new Object() {
 				public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 					BlockEntity _ent = world.getBlockEntity(pos);
@@ -94,9 +94,9 @@ public class MainProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 12)).getOrCreateTag().getString("tags")));
+			}.getItemStack(world, new BlockPos(x, y, z), 12)).getOrCreateTag().getString("tags")));
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 12;
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -113,7 +113,7 @@ public class MainProcedure {
 						return blockEntity.getPersistentData().getBoolean(tag);
 					return false;
 				}
-			}.getValue(world, BlockPos.containing(x, y, z), "breaking"))) {
+			}.getValue(world, new BlockPos(x, y, z), "breaking"))) {
 				if (ItemStack.EMPTY.getItem() == (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -122,7 +122,7 @@ public class MainProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 4)).getItem() && !(ItemStack.EMPTY.getItem() == (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() && !(ItemStack.EMPTY.getItem() == (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -130,9 +130,9 @@ public class MainProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 5)).getItem())) {
+				}.getItemStack(world, new BlockPos(x, y, z), 5)).getItem())) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 4;
 							final ItemStack _setstack = (new Object() {
@@ -143,7 +143,7 @@ public class MainProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 									return _retval.get();
 								}
-							}.getItemStack(world, BlockPos.containing(x, y, z), 5));
+							}.getItemStack(world, new BlockPos(x, y, z), 5));
 							_setstack.setCount(new Object() {
 								public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 									AtomicInteger _retval = new AtomicInteger(0);
@@ -152,7 +152,7 @@ public class MainProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 5));
+							}.getAmount(world, new BlockPos(x, y, z), 5));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -160,7 +160,7 @@ public class MainProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 5;
 							final ItemStack _setstack = ItemStack.EMPTY;
@@ -180,7 +180,7 @@ public class MainProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() && !(ItemStack.EMPTY.getItem() == (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() && !(ItemStack.EMPTY.getItem() == (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -188,9 +188,9 @@ public class MainProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 4)).getItem())) {
+				}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem())) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final ItemStack _setstack = (new Object() {
@@ -201,7 +201,7 @@ public class MainProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 									return _retval.get();
 								}
-							}.getItemStack(world, BlockPos.containing(x, y, z), 4));
+							}.getItemStack(world, new BlockPos(x, y, z), 4));
 							_setstack.setCount(new Object() {
 								public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 									AtomicInteger _retval = new AtomicInteger(0);
@@ -210,7 +210,7 @@ public class MainProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 4));
+							}.getAmount(world, new BlockPos(x, y, z), 4));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -218,7 +218,7 @@ public class MainProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 4;
 							final ItemStack _setstack = ItemStack.EMPTY;
@@ -238,7 +238,7 @@ public class MainProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() && !(ItemStack.EMPTY.getItem() == (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() && !(ItemStack.EMPTY.getItem() == (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -246,9 +246,9 @@ public class MainProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem())) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem())) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = (new Object() {
@@ -259,7 +259,7 @@ public class MainProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 									return _retval.get();
 								}
-							}.getItemStack(world, BlockPos.containing(x, y, z), 3));
+							}.getItemStack(world, new BlockPos(x, y, z), 3));
 							_setstack.setCount(new Object() {
 								public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 									AtomicInteger _retval = new AtomicInteger(0);
@@ -268,7 +268,7 @@ public class MainProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 3));
+							}.getAmount(world, new BlockPos(x, y, z), 3));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -276,7 +276,7 @@ public class MainProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final ItemStack _setstack = ItemStack.EMPTY;
@@ -296,7 +296,7 @@ public class MainProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 1)).getItem() && !(ItemStack.EMPTY.getItem() == (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() && !(ItemStack.EMPTY.getItem() == (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -304,9 +304,9 @@ public class MainProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem())) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem())) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 1;
 							final ItemStack _setstack = (new Object() {
@@ -317,7 +317,7 @@ public class MainProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 									return _retval.get();
 								}
-							}.getItemStack(world, BlockPos.containing(x, y, z), 2));
+							}.getItemStack(world, new BlockPos(x, y, z), 2));
 							_setstack.setCount(new Object() {
 								public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 									AtomicInteger _retval = new AtomicInteger(0);
@@ -326,7 +326,7 @@ public class MainProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 2));
+							}.getAmount(world, new BlockPos(x, y, z), 2));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -334,7 +334,7 @@ public class MainProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = ItemStack.EMPTY;
@@ -354,10 +354,10 @@ public class MainProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 0));
+				}.getItemStack(world, new BlockPos(x, y, z), 0));
 				if (util.getItem() == ItemStack.EMPTY.getItem()) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 12;
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -395,7 +395,7 @@ public class MainProcedure {
 				while (i <= 5) {
 					if (i <= targets.size()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = (int) (6 + i);
 								final ItemStack _setstack = new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(((targets.get((int) (i - 1)) instanceof String _s ? _s : "")).toLowerCase(java.util.Locale.ENGLISH))));
@@ -408,7 +408,7 @@ public class MainProcedure {
 						}
 					} else {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = (int) (6 + i);
 								final ItemStack _setstack = ItemStack.EMPTY;
@@ -424,7 +424,7 @@ public class MainProcedure {
 				}
 			} else {
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 7;
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -434,7 +434,7 @@ public class MainProcedure {
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 8;
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -444,7 +444,7 @@ public class MainProcedure {
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 9;
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -454,7 +454,7 @@ public class MainProcedure {
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 10;
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -464,7 +464,7 @@ public class MainProcedure {
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 11;
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -474,7 +474,7 @@ public class MainProcedure {
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 12;
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {

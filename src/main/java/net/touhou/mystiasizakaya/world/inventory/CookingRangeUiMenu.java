@@ -44,7 +44,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 	public CookingRangeUiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
 		super(MystiasIzakayaModMenus.COOKING_RANGE_UI.get(), id);
 		this.entity = inv.player;
-		this.world = inv.player.level();
+		this.world = inv.player.getLevel();
 		this.internal = new ItemStackHandler(12);
 		BlockPos pos = null;
 		if (extraData != null) {
@@ -349,11 +349,6 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 				Slot slot1 = this.slots.get(i);
 				ItemStack itemstack1 = slot1.getItem();
 				if (itemstack1.isEmpty() && slot1.mayPlace(p_38904_)) {
-					if (p_38904_.getCount() > slot1.getMaxStackSize()) {
-						slot1.setByPlayer(p_38904_.split(slot1.getMaxStackSize()));
-					} else {
-						slot1.setByPlayer(p_38904_.split(p_38904_.getCount()));
-					}
 					slot1.setChanged();
 					flag = true;
 					break;

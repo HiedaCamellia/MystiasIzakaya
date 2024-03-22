@@ -14,7 +14,7 @@ public class StatusProcedure {
 					return blockEntity.getPersistentData().getDouble(tag);
 				return -1;
 			}
-		}.getValue(world, BlockPos.containing(x, y, z), "timeleft") != 0) {
+		}.getValue(world, new BlockPos(x, y, z), "timeleft") != 0) {
 			return Component.translatable("status.mystias_izakaya.working").getString();
 		}
 		return Component.translatable("status.mystias_izakaya.free").getString();

@@ -10,7 +10,7 @@ public class InitialCookProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		double time = 0;
 		if (!world.isClientSide()) {
-			BlockPos _bp = BlockPos.containing(x, y, z);
+			BlockPos _bp = new BlockPos(x, y, z);
 			BlockEntity _blockEntity = world.getBlockEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
 			if (_blockEntity != null)
@@ -19,7 +19,7 @@ public class InitialCookProcedure {
 				_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 		}
 		if (!world.isClientSide()) {
-			BlockPos _bp = BlockPos.containing(x, y, z);
+			BlockPos _bp = new BlockPos(x, y, z);
 			BlockEntity _blockEntity = world.getBlockEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
 			if (_blockEntity != null)

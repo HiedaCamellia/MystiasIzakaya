@@ -13,7 +13,7 @@ public class LefttimeProcedure {
 					return blockEntity.getPersistentData().getDouble(tag);
 				return -1;
 			}
-		}.getValue(world, BlockPos.containing(x, y, z), "timeleft") != 0) {
+		}.getValue(world, new BlockPos(x, y, z), "timeleft") != 0) {
 			return new java.text.DecimalFormat("#.#").format((new Object() {
 				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 					BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -21,7 +21,7 @@ public class LefttimeProcedure {
 						return blockEntity.getPersistentData().getDouble(tag);
 					return -1;
 				}
-			}.getValue(world, BlockPos.containing(x, y, z), "timeleft")) / 20) + "s";
+			}.getValue(world, new BlockPos(x, y, z), "timeleft")) / 20) + "s";
 		}
 		return "";
 	}

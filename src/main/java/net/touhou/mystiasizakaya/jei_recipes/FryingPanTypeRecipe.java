@@ -48,7 +48,7 @@ public class FryingPanTypeRecipe implements Recipe<SimpleContainer> {
 	}
 
 	@Override
-	public ItemStack assemble(SimpleContainer pContainer, RegistryAccess access) {
+	public ItemStack assemble(SimpleContainer pContainer) {
 		return output;
 	}
 
@@ -58,7 +58,7 @@ public class FryingPanTypeRecipe implements Recipe<SimpleContainer> {
 	}
 
 	@Override
-	public ItemStack getResultItem(RegistryAccess access) {
+	public ItemStack getResultItem() {
 		return output.copy();
 	}
 
@@ -116,7 +116,8 @@ public class FryingPanTypeRecipe implements Recipe<SimpleContainer> {
 			for (Ingredient ing : recipe.getIngredients()) {
 				ing.toNetwork(buf);
 			}
-			buf.writeItemStack(recipe.getResultItem(null), false);
+			buf.writeItemStack(recipe.getResultItem(), false);
 		}
 	}
+
 }

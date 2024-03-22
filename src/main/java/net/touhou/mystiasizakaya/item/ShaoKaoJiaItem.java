@@ -1,6 +1,7 @@
 
 package net.touhou.mystiasizakaya.item;
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.TooltipFlag;
@@ -18,7 +19,7 @@ import java.util.Set;
 
 public class ShaoKaoJiaItem extends Item {
 	public ShaoKaoJiaItem() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(1).rarity(Rarity.COMMON));
 	}
 
 	@Override

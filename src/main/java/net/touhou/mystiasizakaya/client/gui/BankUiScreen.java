@@ -13,11 +13,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.GuiGraphics;
-
 import java.util.HashMap;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 
 public class BankUiScreen extends AbstractContainerScreen<BankUiMenu> {
 	private final static HashMap<String, Object> guistate = BankUiMenu.guistate;
@@ -41,19 +40,20 @@ public class BankUiScreen extends AbstractContainerScreen<BankUiMenu> {
 	private static final ResourceLocation texture = new ResourceLocation("mystias_izakaya:textures/screens/bank_ui.png");
 
 	@Override
-	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-		this.renderBackground(guiGraphics);
-		super.render(guiGraphics, mouseX, mouseY, partialTicks);
-		input.render(guiGraphics, mouseX, mouseY, partialTicks);
-		this.renderTooltip(guiGraphics, mouseX, mouseY);
+	public void render(PoseStack ms, int mouseX, int mouseY, float partialTicks) {
+		this.renderBackground(ms);
+		super.render(ms, mouseX, mouseY, partialTicks);
+		input.render(ms, mouseX, mouseY, partialTicks);
+		this.renderTooltip(ms, mouseX, mouseY);
 	}
 
 	@Override
-	protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int gx, int gy) {
+	protected void renderBg(PoseStack ms, float partialTicks, int gx, int gy) {
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
-		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+		RenderSystem.setShaderTexture(0, texture);
+		this.blit(ms, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 		RenderSystem.disableBlend();
 	}
 
@@ -75,10 +75,8 @@ public class BankUiScreen extends AbstractContainerScreen<BankUiMenu> {
 	}
 
 	@Override
-	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-		guiGraphics.drawString(this.font,
-
-				Text10Procedure.execute(), 66, 24, -12829636, false);
+	protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
+		this.font.draw(poseStack,Text10Procedure.execute(), 66, 24, -12829636);
 	}
 
 	@Override
@@ -112,12 +110,12 @@ public class BankUiScreen extends AbstractContainerScreen<BankUiMenu> {
 		input.setMaxLength(32767);
 		guistate.put("text:input", input);
 		this.addWidget(this.input);
-		button_take_out = Button.builder(Component.translatable("gui.mystias_izakaya.bank_ui.button_take_out"), e -> {
+		button_take_out = new Button(this.leftPos + 31, this.topPos + 100, 110, 20, Component.translatable("gui.mystias_izakaya.bank_ui.button_take_out"), e -> {
 			if (true) {
 				MystiasIzakayaMod.PACKET_HANDLER.sendToServer(new BankUiButtonMessage(0, x, y, z));
 				BankUiButtonMessage.handleButtonAction(entity, 0, x, y, z);
 			}
-		}).bounds(this.leftPos + 31, this.topPos + 100, 110, 20).build();
+		});
 		guistate.put("button:button_take_out", button_take_out);
 		this.addRenderableWidget(button_take_out);
 	}

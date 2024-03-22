@@ -23,7 +23,7 @@ public class GetTimeProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 12));
+		}.getItemStack(world, new BlockPos(x, y, z), 12));
 		if ((new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -32,7 +32,7 @@ public class GetTimeProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == MystiasIzakayaModItems.ZHU_GUO.get()) {
+		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == MystiasIzakayaModItems.ZHU_GUO.get()) {
 			if (MystiasIzakayaModItems.ZHU_DOU_FU.get() == target.getItem()) {
 				time = 84;
 			}
@@ -93,7 +93,7 @@ public class GetTimeProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == MystiasIzakayaModItems.ZHENG_GUO.get()) {
+		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == MystiasIzakayaModItems.ZHENG_GUO.get()) {
 			if (MystiasIzakayaModItems.HUAN_TAN_HUA_GAO.get() == target.getItem()) {
 				time = 84;
 			}
@@ -133,7 +133,7 @@ public class GetTimeProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == MystiasIzakayaModItems.YOU_GUO.get()) {
+		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == MystiasIzakayaModItems.YOU_GUO.get()) {
 			if (MystiasIzakayaModItems.BAN_NI_DI_KE_DAN.get() == target.getItem()) {
 				time = 84;
 			}
@@ -197,7 +197,7 @@ public class GetTimeProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == MystiasIzakayaModItems.LIAO_LI_TAI.get()) {
+		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == MystiasIzakayaModItems.LIAO_LI_TAI.get()) {
 			if (MystiasIzakayaModItems.BAI_TAO_SHENG_BA_QIAO.get() == target.getItem()) {
 				time = 60;
 			}
@@ -264,7 +264,7 @@ public class GetTimeProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == MystiasIzakayaModItems.SHAO_KAO_JIA.get()) {
+		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == MystiasIzakayaModItems.SHAO_KAO_JIA.get()) {
 			if (MystiasIzakayaModItems.BU_SI_NIAO.get() == target.getItem()) {
 				time = 144;
 			}

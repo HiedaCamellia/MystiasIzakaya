@@ -58,7 +58,7 @@ public class MystiasIzakayaMod {
 		MystiasIzakayaModBlockEntities.REGISTRY.register(bus);
 		MystiasIzakayaModItems.REGISTRY.register(bus);
 
-		MystiasIzakayaModTabs.REGISTRY.register(bus);
+		MystiasIzakayaModTabs.load();
 
 		MystiasIzakayaModVillagerProfessions.PROFESSIONS.register(bus);
 		MystiasIzakayaModMenus.REGISTRY.register(bus);

@@ -3,6 +3,7 @@ package net.touhou.mystiasizakaya.item;
 
 import net.touhou.mystiasizakaya.init.MystiasIzakayaModItems;
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
@@ -26,7 +27,7 @@ import java.util.Set;
 
 public class LingXianItem extends Item {
 	public LingXianItem() {
-		super(new Item.Properties().stacksTo(64).fireResistant().rarity(Rarity.EPIC).food((new FoodProperties.Builder()).nutrition(1).saturationMod(1f).build()));
+		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).fireResistant().rarity(Rarity.EPIC).food((new FoodProperties.Builder()).nutrition(1).saturationMod(1f).build()));
 	}
 
 	@Override

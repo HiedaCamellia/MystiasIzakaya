@@ -29,7 +29,7 @@ public class GetRawsFromSelectedFoodProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 12));
+		}.getItemStack(world, new BlockPos(x, y, z), 12));
 		i = 1;
 		while (i <= 5) {
 			if (!((new Object() {
@@ -40,7 +40,7 @@ public class GetRawsFromSelectedFoodProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), (int) i)).getItem() == ItemStack.EMPTY.getItem())) {
+			}.getItemStack(world, new BlockPos(x, y, z), (int) i)).getItem() == ItemStack.EMPTY.getItem())) {
 				raw = (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -49,7 +49,7 @@ public class GetRawsFromSelectedFoodProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), (int) i));
+				}.getItemStack(world, new BlockPos(x, y, z), (int) i));
 				raw = YHCProcedure.execute(raw);
 				if (raw.getItem() == MystiasIzakayaModItems.BA_MU_MAN.get() && !(s.getItem() == MystiasIzakayaModItems.KAO_BA_MU_MAN.get() || s.getItem() == MystiasIzakayaModItems.ZHA_BA_MU_MAN.get()
 						|| s.getItem() == MystiasIzakayaModItems.BAI_XUE.get() || s.getItem() == MystiasIzakayaModItems.HONG_SHAO_MAN_YU.get())) {

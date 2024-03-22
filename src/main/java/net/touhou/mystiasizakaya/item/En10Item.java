@@ -2,7 +2,7 @@
 package net.touhou.mystiasizakaya.item;
 
 import net.touhou.mystiasizakaya.procedures.AddCurrencyProcedure;
-
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.TooltipFlag;
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class En10Item extends Item {
 	public En10Item() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON));
+		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON));
 	}
 
 	@Override

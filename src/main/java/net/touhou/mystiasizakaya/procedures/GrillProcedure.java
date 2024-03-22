@@ -32,7 +32,7 @@ public class GrillProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), (int) i)).getItem() == ItemStack.EMPTY.getItem())) {
+			}.getItemStack(world, new BlockPos(x, y, z), (int) i)).getItem() == ItemStack.EMPTY.getItem())) {
 				raw = (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -41,7 +41,7 @@ public class GrillProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), (int) i));
+				}.getItemStack(world, new BlockPos(x, y, z), (int) i));
 				raw = YHCProcedure.execute(raw);
 				raws.add((ForgeRegistries.ITEMS.getKey(raw.getItem()).toString()));
 			}

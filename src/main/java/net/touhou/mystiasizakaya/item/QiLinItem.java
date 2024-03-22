@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 import java.util.Arrays;
 
 import net.minecraft.world.item.UseAnim;
@@ -26,7 +27,7 @@ import java.util.List;
 
 public class QiLinItem extends Item {
 	public QiLinItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)
+		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON)
 				.food((new FoodProperties.Builder()).nutrition(7).saturationMod(3.8f).alwaysEat().build()));
 	}
 

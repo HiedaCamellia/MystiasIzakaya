@@ -14,7 +14,7 @@ public class Select2Procedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		MainProcedure.execute(world, x, y, z);
 		{
-			BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+			BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 			if (_ent != null) {
 				final int _slotid = 12;
 				final ItemStack _setstack = (new Object() {
@@ -25,7 +25,7 @@ public class Select2Procedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 8));
+				}.getItemStack(world, new BlockPos(x, y, z), 8));
 				_setstack.setCount(1);
 				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 					if (capability instanceof IItemHandlerModifiable)

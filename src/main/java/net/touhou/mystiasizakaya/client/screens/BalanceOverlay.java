@@ -15,6 +15,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 
 @Mod.EventBusSubscriber({Dist.CLIENT})
 public class BalanceOverlay {
@@ -28,16 +29,13 @@ public class BalanceOverlay {
 		double z = 0;
 		Player entity = Minecraft.getInstance().player;
 		if (entity != null) {
-			world = entity.level();
+			world = entity.getLevel();
 			x = entity.getX();
 			y = entity.getY();
 			z = entity.getZ();
 		}
 		if (true) {
-			if (ShowbalanceLProcedure.execute(entity))
-				event.getGuiGraphics().drawString(Minecraft.getInstance().font,
-
-						ShowBalanceProcedure.execute(entity), w - 58, h - 11, -1, false);
+			Minecraft.getInstance().font.draw(event.getPoseStack(), ShowBalanceProcedure.execute(entity),  w - 58, h - 11, -1);
 		}
 	}
 }

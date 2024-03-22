@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 import java.util.Arrays;
 
 import net.minecraft.world.item.UseAnim;
@@ -26,7 +27,7 @@ import java.util.List;
 
 public class DongNiangItem extends Item {
 	public DongNiangItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(4).saturationMod(1.8f).alwaysEat().build()));
+		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(4).saturationMod(1.8f).alwaysEat().build()));
 	}
 
 	@Override
