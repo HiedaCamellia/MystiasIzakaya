@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:streamer_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:huan_tan_hua"
+    },
+    {
+      "item": "mystias_izakaya:lu_shui"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:huan_tan_hua_gao",
+    "count": 1
+  }
+}

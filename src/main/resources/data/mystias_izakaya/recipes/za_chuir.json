@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:boiling_pot_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:hai_tai"
+    },
+    {
+      "item": "mystias_izakaya:dou_fu"
+    },
+    {
+      "item": "mystias_izakaya:zun_yu"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:za_chui",
+    "count": 1
+  }
+}

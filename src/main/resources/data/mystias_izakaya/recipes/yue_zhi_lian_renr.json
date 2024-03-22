@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:cutting_board_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:huang_you"
+    },
+    {
+      "item": "mystias_izakaya:mian_fen"
+    },
+    {
+      "item": "mystias_izakaya:ji_dan"
+    },
+    {
+      "item": "mystias_izakaya:yue_guang_cao"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:yue_zhi_lian_ren",
+    "count": 1
+  }
+}

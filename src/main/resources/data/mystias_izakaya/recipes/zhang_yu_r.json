@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "b",
+    "c"
+  ],
+  "key": {
+    "a": {
+      "tag": "minecraft:fishes"
+    },
+    "b": {
+      "item": "minecraft:water_bucket"
+    },
+    "c": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "result": {
+    "item": "mystias_izakaya:zhang_yu",
+    "count": 1
+  }
+}

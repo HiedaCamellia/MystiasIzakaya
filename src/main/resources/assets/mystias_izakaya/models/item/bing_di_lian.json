@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "mystias_izakaya:item/bing_di_lian_"
+  }
+}
