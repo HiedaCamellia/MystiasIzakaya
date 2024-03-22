@@ -1,8 +1,25 @@
-.gradle
-.vscode
-.settings
-.mcreator/workspaceBackups
+# eclipse
 bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
 build
-elements
+.gradle
+
+# other
+eclipse
 run
+
+# Files from Forge MDK
+forge*changelog.txt
