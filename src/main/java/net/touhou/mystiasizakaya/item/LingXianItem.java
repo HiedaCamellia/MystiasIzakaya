@@ -2,6 +2,7 @@
 package net.touhou.mystiasizakaya.item;
 
 import net.touhou.mystiasizakaya.init.MystiasIzakayaModItems;
+import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
 
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
@@ -15,8 +16,13 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.network.chat.Component;
+import net.minecraft.client.gui.screens.Screen;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public class LingXianItem extends Item {
 	public LingXianItem() {
@@ -32,7 +38,31 @@ public class LingXianItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("+ 530,000"));
+		if (!Screen.hasShiftDown()) {
+			List<String> tags = gettags();
+			for (String tag : tags) {
+				list.add(Component.literal("§6+ " + Component.translatable(tag).getString() + "§r"));
+			}
+			List<String> tagsfnbt = RenderTagsFromNbtProcedure.execute(itemstack);
+			for (String tag : tagsfnbt) {
+				list.add(Component.literal("§6+ " + Component.translatable(tag).getString() + "§r"));
+			}
+			Set<Component> set = new LinkedHashSet<>(list);
+			list.clear();
+			list.addAll(set);
+			List<String> negativetags = getnegativetags();
+			for (String tag : negativetags) {
+				list.add(Component.literal("§4- " + Component.translatable(tag).getString() + "§r"));
+			}
+			list.add(Component.literal(
+					"§7§o" + Component.translatable("tooltip.mystias_izakaya.press_shift").getString() + "§r"));
+		} else {
+			List<String> description = Arrays
+					.asList(Component.translatable("tooltip.mystias_izakaya.ling_xian").getString().split("§n"));
+			for (String line : description) {
+				list.add(Component.literal(line));
+			}
+		}
 	}
 
 	@Override
@@ -48,5 +78,19 @@ public class LingXianItem extends Item {
 			}
 			return itemstack;
 		}
+	}
+
+	public static List<String> gettags() {
+		List<String> list = new ArrayList<>();
+		list.add("tag.mystias_izakaya.Photogenic");
+		list.add("tag.mystias_izakaya.Signature");
+		list.add("tag.mystias_izakaya.Specialty");
+		list.add("tag.mystias_izakaya.Wonderful");
+		return list;
+	}
+
+	public static List<String> getnegativetags() {
+		List<String> list = new ArrayList<>();
+		return list;
 	}
 }

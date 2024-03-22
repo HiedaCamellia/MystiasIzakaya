@@ -20,8 +20,9 @@ import java.util.ArrayList;
 
 public class ConfirmProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		ItemStack target = ItemStack.EMPTY;
 		boolean bool = false;
+		ItemStack target = ItemStack.EMPTY;
+		ItemStack Kitchenware = ItemStack.EMPTY;
 		if (!(ItemStack.EMPTY.getItem() == (new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -43,10 +44,46 @@ public class ConfirmProcedure {
 					return _retval.get();
 				}
 			}.getItemStack(world, BlockPos.containing(x, y, z), 12));
+			Kitchenware = (new Object() {
+				public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
+					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+					BlockEntity _ent = world.getBlockEntity(pos);
+					if (_ent != null)
+						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					return _retval.get();
+				}
+			}.getItemStack(world, BlockPos.containing(x, y, z), 0));
 			ArrayList<String> combinedList = new ArrayList<String>(rawtags);
 			combinedList.addAll(targettags);
 			Set<String> set = new LinkedHashSet<String>(combinedList);
 			ArrayList<String> resultList = new ArrayList<String>(set);
+			if (!(ItemStack.EMPTY.getItem() == (new Object() {
+				public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
+					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+					BlockEntity _ent = world.getBlockEntity(pos);
+					if (_ent != null)
+						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					return _retval.get();
+				}
+			}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem())) {
+				resultList.add("tag.mystias_izakaya.Large_Portion");
+				if (resultList.contains("tag.mystias_izakaya.Small_Portion")) {
+					resultList.remove("tag.mystias_izakaya.Small_Portion");
+				}
+			}
+			if (resultList.contains("tag.mystias_izakaya.Meat") && resultList.contains("tag.mystias_izakaya.Vegetarian")) {
+				resultList.remove("tag.mystias_izakaya.Vegetarian");
+			}
+			if (resultList.contains("tag.mystias_izakaya.Filling") && resultList.contains("tag.mystias_izakaya.Good_with_Alcohol")) {
+				resultList.remove("tag.mystias_izakaya.Good_with_Alcohol");
+			}
+			if (resultList.contains("tag.mystias_izakaya.Greasy") && resultList.contains("tag.mystias_izakaya.Mild")) {
+				resultList.remove("tag.mystias_izakaya.Mild");
+			}
+			if (resultList.contains("tag.mystias_izakaya.Hot") && resultList.contains("tag.mystias_izakaya.Refreshing")) {
+				resultList.remove("tag.mystias_izakaya.Refreshing");
+			}
+			resultList.add(GetKitchenwareTagProcedure.execute(Kitchenware));
 			String resultString = String.join(",", resultList);
 			Set<String> seti = new HashSet<>(resultList);
 			for (String str : targetntags) {

@@ -30,8 +30,10 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
+import net.minecraft.client.gui.screens.Screen;
 
 import java.util.List;
+import java.util.Arrays;
 import java.util.Collections;
 
 import io.netty.buffer.Unpooled;
@@ -44,6 +46,16 @@ public class BankBlock extends Block implements EntityBlock {
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
+		if (!Screen.hasShiftDown()) {
+			list.add(Component.literal(
+					"§7§o" + Component.translatable("tooltip.mystias_izakaya.press_shift").getString() + "§r"));
+		} else {
+			List<String> description = Arrays
+					.asList(Component.translatable("tooltip.mystias_izakaya.bank_block").getString().split("§n"));
+			for (String line : description) {
+				list.add(Component.literal(line));
+			}
+		}
 	}
 
 	@Override
