@@ -3,6 +3,8 @@ package net.touhou.mystiasizakaya.procedures;
 import net.touhou.mystiasizakaya.network.MystiasIzakayaModVariables;
 
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.resources.ResourceLocation;
 
 public class GetCuisinesTextureProcedure {
 	public static String execute(double id) {
@@ -11,6 +13,9 @@ public class GetCuisinesTextureProcedure {
 		String fm = "";
 		InitordersProcedure.execute();
 		target = (MystiasIzakayaModVariables.orders.get((int) id) instanceof ItemStack _bs ? _bs : ItemStack.EMPTY);
+		if (!target.is(ItemTags.create(new ResourceLocation("mystiasizakaya:cuisines")))) {
+			return "";
+		}
 		return GetTextureProcedure.execute(target);
 	}
 }

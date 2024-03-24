@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:emerald"
+    }
+  ],
+  "result": {
+    "item": "mystias_izakaya:en_10",
+    "count": 16
+  }
+}

@@ -12,43 +12,39 @@ public class AddCurrencyProcedure {
 			return;
 		if (itemstack.getItem() == MystiasIzakayaModItems.EN_1.get()) {
 			{
-				double _setval = 1 + (entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MystiasIzakayaModVariables.PlayerVariables())).balance;
+				double _setval = itemstack.getCount() + (entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MystiasIzakayaModVariables.PlayerVariables())).balance;
 				entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 					capability.balance = _setval;
 					capability.syncPlayerVariables(entity);
 				});
 			}
-			itemstack.shrink(1);
 		}
 		if (itemstack.getItem() == MystiasIzakayaModItems.EN_5.get()) {
 			{
-				double _setval = 5 + (entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MystiasIzakayaModVariables.PlayerVariables())).balance;
+				double _setval = 5*itemstack.getCount() + (entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MystiasIzakayaModVariables.PlayerVariables())).balance;
 				entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 					capability.balance = _setval;
 					capability.syncPlayerVariables(entity);
 				});
 			}
-			itemstack.shrink(1);
 		}
 		if (itemstack.getItem() == MystiasIzakayaModItems.EN_10.get()) {
 			{
-				double _setval = 10 + (entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MystiasIzakayaModVariables.PlayerVariables())).balance;
+				double _setval = 10*itemstack.getCount() + (entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MystiasIzakayaModVariables.PlayerVariables())).balance;
 				entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 					capability.balance = _setval;
 					capability.syncPlayerVariables(entity);
 				});
 			}
-			itemstack.shrink(1);
 		}
 		if (itemstack.getItem() == MystiasIzakayaModItems.EN_10K.get()) {
 			{
-				double _setval = 10000 + (entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MystiasIzakayaModVariables.PlayerVariables())).balance;
+				double _setval = 10000 *itemstack.getCount()+ (entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MystiasIzakayaModVariables.PlayerVariables())).balance;
 				entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 					capability.balance = _setval;
 					capability.syncPlayerVariables(entity);
 				});
 			}
-			itemstack.shrink(1);
 		}
 	}
 }

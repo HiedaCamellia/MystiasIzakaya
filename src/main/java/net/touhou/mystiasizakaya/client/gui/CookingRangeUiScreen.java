@@ -106,10 +106,10 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 				Text5Procedure.execute(world, x, y, z), 44, 137, -1);
 		this.font.draw(poseStack,
 
-				StatusProcedure.execute(world, x, y, z), 233, 26, -12829636);
+				StatusProcedure.execute(world, x, y, z), 233, 26, -1);
 		this.font.draw(poseStack,
 
-				LefttimeProcedure.execute(world, x, y, z), 238, 65, -12829636);
+				LefttimeProcedure.execute(world, x, y, z), 238, 65, -1);
 	}
 
 	@Override
