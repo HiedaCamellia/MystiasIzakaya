@@ -103,10 +103,10 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 				Text5Procedure.execute(world, x, y, z), 44, 137, -1, false);
 		guiGraphics.drawString(this.font,
 
-				StatusProcedure.execute(world, x, y, z), 233, 26, -12829636, false);
+				StatusProcedure.execute(world, x, y, z), 233, 26, -1, false);
 		guiGraphics.drawString(this.font,
 
-				LefttimeProcedure.execute(world, x, y, z), 238, 65, -12829636, false);
+				LefttimeProcedure.execute(world, x, y, z), 238, 65, -1, false);
 	}
 
 	@Override
