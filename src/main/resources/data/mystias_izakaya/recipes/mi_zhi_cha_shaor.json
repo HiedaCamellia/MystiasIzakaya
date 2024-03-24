@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:grill_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:zhu_rou"
+    },
+    {
+      "item": "mystias_izakaya:feng_mi"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:mi_zhi_cha_shao",
+    "count": 1
+  }
+}

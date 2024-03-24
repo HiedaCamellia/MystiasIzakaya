@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "mystias_izakaya:block/bankmain",
+    "up": "mystias_izakaya:block/bankmain",
+    "north": "mystias_izakaya:block/bankside",
+    "east": "mystias_izakaya:block/bankside",
+    "south": "mystias_izakaya:block/bankside",
+    "west": "mystias_izakaya:block/bankside",
+    "particle": "mystias_izakaya:block/bankmain"
+  },
+  "render_type": "solid"
+}

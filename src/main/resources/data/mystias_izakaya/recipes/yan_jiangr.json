@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:boiling_pot_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:he_niu"
+    },
+    {
+      "item": "mystias_izakaya:he_tun"
+    },
+    {
+      "item": "mystias_izakaya:song_lu"
+    },
+    {
+      "item": "mystias_izakaya:niu_rou"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:yan_jiang",
+    "count": 1
+  }
+}

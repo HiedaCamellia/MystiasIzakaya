@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="GNU General Public License version 3 (GPLv3)"
+
+[[mods]]
+modId="mystias_izakaya"
+version="0.0.6"
+displayName="Mystia's Izakaya"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/mystias-izakaya"
+credits="modding from 东方夜雀食堂"
+authors="Fuyuka"
+description="ver0.0.6g"
+
+[[dependencies.mystias_izakaya]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1]"
+    ordering="NONE"
+    side="BOTH"
+
+
+
+[[dependencies.mystias_izakaya]]
+    modId="jei"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+

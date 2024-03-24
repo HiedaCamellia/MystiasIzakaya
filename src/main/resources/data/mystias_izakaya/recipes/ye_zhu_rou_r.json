@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:zhu_rou"
+    },
+    {
+      "item": "mystias_izakaya:zhu_rou"
+    }
+  ],
+  "result": {
+    "item": "mystias_izakaya:ye_zhu_rou",
+    "count": 1
+  }
+}

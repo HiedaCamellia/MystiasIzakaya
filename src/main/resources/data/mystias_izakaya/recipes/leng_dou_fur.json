@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:cutting_board_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:luo_bu"
+    },
+    {
+      "item": "mystias_izakaya:dou_fu"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:leng_dou_fu",
+    "count": 1
+  }
+}

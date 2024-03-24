@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a b",
+    " c ",
+    "b a"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:quartz"
+    },
+    "b": {
+      "item": "minecraft:gold_nugget"
+    },
+    "c": {
+      "item": "mystias_izakaya:niu_rou"
+    }
+  },
+  "result": {
+    "item": "mystias_izakaya:he_niu",
+    "count": 1
+  }
+}

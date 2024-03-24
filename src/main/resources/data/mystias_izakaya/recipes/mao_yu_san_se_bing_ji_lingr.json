@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:cutting_board_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:lu_shui"
+    },
+    {
+      "item": "mystias_izakaya:feng_mi"
+    },
+    {
+      "item": "mystias_izakaya:dou_fu"
+    },
+    {
+      "item": "mystias_izakaya:ji_dan"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:mao_yu_san_se_bing_ji_ling",
+    "count": 1
+  }
+}
