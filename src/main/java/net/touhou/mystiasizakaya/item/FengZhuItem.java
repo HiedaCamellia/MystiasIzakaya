@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Set;
 
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromTagsProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromIngredientsProcedure;
 import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 import java.util.Arrays;
 
@@ -72,7 +74,16 @@ public class FengZhuItem extends Item {
 
 	}
 
-	public static List<String> gettags() {
+	@Override
+public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
+super.finishUsingItem(itemstack, world, entity);
+GiveEffectFromTagsProcedure.execute(itemstack, entity);
+GiveEffectFromIngredientsProcedure.execute(itemstack, entity);
+return itemstack;
+}
+
+
+public static List<String> gettags() {
 		List<String> list = new ArrayList<>();
 		list.add("tag.mystias_izakaya.beverages.mid_alcohol");
 		list.add("tag.mystias_izakaya.beverages.chillable");

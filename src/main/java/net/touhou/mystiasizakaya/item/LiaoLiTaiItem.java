@@ -1,6 +1,8 @@
 
 package net.touhou.mystiasizakaya.item;
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromTagsProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromIngredientsProcedure;
 import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 
 import net.minecraft.world.level.Level;
@@ -52,7 +54,7 @@ public class LiaoLiTaiItem extends Item {
 		}
 	}
 
-	public static List<String> gettags() {
+public static List<String> gettags() {
 		List<String> list = new ArrayList<>();
 		list.add("tag.mystias_izakaya.cutting_board");
 		return list;

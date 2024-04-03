@@ -3,6 +3,8 @@ package net.touhou.mystiasizakaya.item;
 
 import net.touhou.mystiasizakaya.init.MystiasIzakayaModItems;
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromTagsProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromIngredientsProcedure;
 import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -81,7 +83,9 @@ public class LingXianItem extends Item {
 		}
 	}
 
-	public static List<String> gettags() {
+
+
+public static List<String> gettags() {
 		List<String> list = new ArrayList<>();
 		list.add("tag.mystias_izakaya.Photogenic");
 		list.add("tag.mystias_izakaya.Signature");
