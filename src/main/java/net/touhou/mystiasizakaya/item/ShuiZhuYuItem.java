@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Set;
 
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromTagsProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromIngredientsProcedure;
 import java.util.Arrays;
 
 import net.minecraft.world.level.Level;
@@ -70,6 +72,15 @@ public class ShuiZhuYuItem extends Item {
 				list.add(Component.literal(line));
 			}
 		}
+	}
+
+	@Override
+	public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
+		super.finishUsingItem(itemstack, world, entity);
+		GiveEffectFromTagsProcedure.execute(itemstack, entity);
+		GiveEffectFromIngredientsProcedure.execute(itemstack, entity);
+		entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 2400, 0));
+		return itemstack;
 	}
 
 	public static List<String> gettags() {

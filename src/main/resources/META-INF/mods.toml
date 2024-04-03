@@ -4,12 +4,12 @@ license="GNU General Public License version 3 (GPLv3)"
 
 [[mods]]
 modId="mystias_izakaya"
-version="0.0.6"
+version="0.0.7"
 displayName="Mystia's Izakaya"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/mystias-izakaya"
 credits="modding from 东方夜雀食堂"
 authors="Fuyuka"
-description="ver0.0.6g"
+description="ver0.0.7"
 
 [[dependencies.mystias_izakaya]]
     modId="minecraft"

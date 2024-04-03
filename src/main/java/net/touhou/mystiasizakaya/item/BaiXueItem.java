@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Set;
 
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromTagsProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromIngredientsProcedure;
 import java.util.Arrays;
 
 import net.minecraft.world.level.Level;
@@ -71,6 +73,14 @@ public class BaiXueItem extends Item {
 			}
 		}
 
+	}
+
+	@Override
+	public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
+		super.finishUsingItem(itemstack, world, entity);
+		GiveEffectFromTagsProcedure.execute(itemstack, entity);
+		GiveEffectFromIngredientsProcedure.execute(itemstack, entity);
+		return itemstack;
 	}
 
 	public static List<String> gettags() {

@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Set;
 
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromTagsProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromIngredientsProcedure;
 import java.util.Arrays;
 
 import net.minecraft.world.level.Level;
@@ -23,6 +25,11 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.core.registries.Registries;
 
 import java.util.List;
 
@@ -70,6 +77,16 @@ public class XiangZhaChanShuiItem extends Item {
 				list.add(Component.literal(line));
 			}
 		}
+	}
+
+	@Override
+	public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
+		super.finishUsingItem(itemstack, world, entity);
+		GiveEffectFromTagsProcedure.execute(itemstack, entity);
+		GiveEffectFromIngredientsProcedure.execute(itemstack, entity);
+		entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("mystias_izakaya:chili")))), 2);
+		entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 2400, 0));
+		return itemstack;
 	}
 
 	public static List<String> gettags() {

@@ -10,7 +10,7 @@ import net.minecraft.core.BlockPos;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class Text1Procedure {
-	public static String execute(LevelAccessor world, double x, double y, double z) {
+	public static String execute(LevelAccessor world, double x, double y, double z, double i) {
 		String str = "";
 		if (ItemStack.EMPTY.getItem() == (new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
@@ -20,7 +20,7 @@ public class Text1Procedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 7)).getItem()) {
+		}.getItemStack(world, BlockPos.containing(x, y, z), (int) (7 + i))).getItem()) {
 			return "";
 		}
 		str = (new Object() {
@@ -31,7 +31,7 @@ public class Text1Procedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 7)).getDisplayName().getString();
+		}.getItemStack(world, BlockPos.containing(x, y, z), (int) (7 + i))).getDisplayName().getString();
 		str = str.replace("[", "").replace("]", "");
 		return str;
 	}

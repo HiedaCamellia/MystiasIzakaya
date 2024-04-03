@@ -3,6 +3,8 @@ package net.touhou.mystiasizakaya.item;
 
 import net.touhou.mystiasizakaya.init.MystiasIzakayaModItems;
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromTagsProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromIngredientsProcedure;
 
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
@@ -26,7 +28,8 @@ import java.util.Set;
 
 public class LingXianItem extends Item {
 	public LingXianItem() {
-		super(new Item.Properties().stacksTo(64).fireResistant().rarity(Rarity.EPIC).food((new FoodProperties.Builder()).nutrition(1).saturationMod(1f).build()));
+		super(new Item.Properties().stacksTo(64).fireResistant().rarity(Rarity.EPIC)
+				.food((new FoodProperties.Builder()).nutrition(1).saturationMod(1f).build()));
 	}
 
 	@Override
@@ -69,6 +72,8 @@ public class LingXianItem extends Item {
 	public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
 		ItemStack retval = new ItemStack(MystiasIzakayaModItems.REISEN.get());
 		super.finishUsingItem(itemstack, world, entity);
+		GiveEffectFromTagsProcedure.execute(itemstack, entity);
+		GiveEffectFromIngredientsProcedure.execute(itemstack, entity);
 		if (itemstack.isEmpty()) {
 			return retval;
 		} else {
