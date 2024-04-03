@@ -1,6 +1,8 @@
 
 package net.touhou.mystiasizakaya.item;
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromTagsProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromIngredientsProcedure;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.TooltipFlag;
@@ -51,7 +53,7 @@ public class ShaoKaoJiaItem extends Item {
 		}
 	}
 
-	public static List<String> gettags() {
+public static List<String> gettags() {
 		List<String> list = new ArrayList<>();
 		list.add("tag.mystias_izakaya.grill");
 		return list;
