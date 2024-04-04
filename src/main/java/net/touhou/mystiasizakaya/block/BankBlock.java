@@ -1,4 +1,3 @@
-
 package net.touhou.mystiasizakaya.block;
 
 import net.touhou.mystiasizakaya.world.inventory.BankUiMenu;
