@@ -84,6 +84,9 @@ public class GetTimeProcedure {
 			if (MystiasIzakayaModItems.ZHU_ROU_GAI_JIAO_FAN.get() == target.getItem()) {
 				time = 84;
 			}
+			if (MystiasIzakayaModItems.TANG_YUAN.get() == target.getItem()) {
+				time = 60;
+			}
 		}
 		if ((new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {

@@ -1997,27 +1997,6 @@
       "path": "~/items/foods"
     },
     {
-      "name": "Show1",
-      "type": "procedure",
-      "sortid": 179,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "show_1",
-      "metadata": {
-        "return_type": "logic",
-        "files": [
-          "src/main/java/net/touhou/mystiasizakaya/procedures/Show1Procedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/logics/ui"
-    },
-    {
       "name": "Main",
       "type": "procedure",
       "sortid": 180,
@@ -2081,90 +2060,6 @@
         ]
       },
       "path": "~/logics/cook"
-    },
-    {
-      "name": "Show2",
-      "type": "procedure",
-      "sortid": 182,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "show_2",
-      "metadata": {
-        "return_type": "logic",
-        "files": [
-          "src/main/java/net/touhou/mystiasizakaya/procedures/Show2Procedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/logics/ui"
-    },
-    {
-      "name": "Show3",
-      "type": "procedure",
-      "sortid": 183,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "show_3",
-      "metadata": {
-        "return_type": "logic",
-        "files": [
-          "src/main/java/net/touhou/mystiasizakaya/procedures/Show3Procedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/logics/ui"
-    },
-    {
-      "name": "Show4",
-      "type": "procedure",
-      "sortid": 184,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "show_4",
-      "metadata": {
-        "return_type": "logic",
-        "files": [
-          "src/main/java/net/touhou/mystiasizakaya/procedures/Show4Procedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/logics/ui"
-    },
-    {
-      "name": "Show5",
-      "type": "procedure",
-      "sortid": 185,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "show_5",
-      "metadata": {
-        "return_type": "logic",
-        "files": [
-          "src/main/java/net/touhou/mystiasizakaya/procedures/Show5Procedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/logics/ui"
     },
     {
       "name": "CuttingBoard",
@@ -2297,43 +2192,6 @@
         ]
       },
       "path": "~/logics/cook"
-    },
-    {
-      "name": "Text1",
-      "type": "procedure",
-      "sortid": 190,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "text_1",
-      "metadata": {
-        "return_type": "string",
-        "files": [
-          "src/main/java/net/touhou/mystiasizakaya/procedures/Text1Procedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "i",
-            "type": "number"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/logics/ui"
     },
     {
       "name": "Select1",
@@ -2526,138 +2384,6 @@
         ]
       },
       "path": "~/logics/cook"
-    },
-    {
-      "name": "Text2",
-      "type": "procedure",
-      "sortid": 197,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "text_2",
-      "metadata": {
-        "return_type": "string",
-        "files": [
-          "src/main/java/net/touhou/mystiasizakaya/procedures/Text2Procedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/logics/ui"
-    },
-    {
-      "name": "Text3",
-      "type": "procedure",
-      "sortid": 198,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "text_3",
-      "metadata": {
-        "return_type": "string",
-        "files": [
-          "src/main/java/net/touhou/mystiasizakaya/procedures/Text3Procedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/logics/ui"
-    },
-    {
-      "name": "Text4",
-      "type": "procedure",
-      "sortid": 199,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "text_4",
-      "metadata": {
-        "return_type": "string",
-        "files": [
-          "src/main/java/net/touhou/mystiasizakaya/procedures/Text4Procedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/logics/ui"
-    },
-    {
-      "name": "Text5",
-      "type": "procedure",
-      "sortid": 200,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "text_5",
-      "metadata": {
-        "return_type": "string",
-        "files": [
-          "src/main/java/net/touhou/mystiasizakaya/procedures/Text5Procedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/logics/ui"
     },
     {
       "name": "GetTime",
@@ -6643,6 +6369,7 @@
       "tooltip.mystias_izakaya.shao_kao_jia": "A common grill. Its meshed surface conducts heat to food quickly when lighted. Now you can enjoy the taste of the wild! Supposedly can put a smile on every dad\u0027s face.",
       "tooltip.mystias_izakaya.dou_fu": "Tofu sold in the Human Village. Rather common.",
       "item.mystias_izakaya.yue_zhi_lian_ren": "Lunar Lover Biscuits",
+      "status.mystias_izakaya.outputblocked": "Output Blocked",
       "item.mystias_izakaya.peng_lai_yu_zhi": "Hourai Branch",
       "item.mystias_izakaya.yao_jing_yu_lu": "Fairy Dew",
       "jei.mystias_izakaya.Cutting_Board": "Cutting Board",
@@ -6653,7 +6380,7 @@
       "item.mystias_izakaya.you_guo": "Frying Pan",
       "tag.mystias_izakaya.beverages.stimulating": "Stimulating",
       "item.mystias_izakaya.zhi_shi": "Cheese",
-      "death.attack.chili.item": "%1$s 被 %2$s 用 %3$s 辣死了",
+      "death.attack.chili.item": "%1$s was killed by %2$s using %3$s ",
       "gui.mystias_izakaya.cooking_range_ui.button_select3": " ",
       "gui.mystias_izakaya.cooking_range_ui.button_select2": " ",
       "gui.mystias_izakaya.cooking_range_ui.button_select4": " ",
@@ -6715,7 +6442,7 @@
       "item.mystias_izakaya.hai_dan": "Sea Urchin",
       "item.mystias_izakaya.zhu_rou": "Pork",
       "item.mystias_izakaya.you_dou_fu": "Deep Fried Tofu",
-      "death.attack.chili": "%1$s 被辣死了",
+      "death.attack.chili": "%1$s Killed by the spiciness",
       "tooltip.mystias_izakaya.mo_gu": "A fine mushroom collected from the Forest of Magic. Unable to be cultivated artificially, which makes it very precious.",
       "item.mystias_izakaya.bing_shan_mao_yu_dong_ning": "Iceberg Kedama Lemonade",
       "tag.mystias_izakaya.Legendary": "Legendary",
@@ -6729,7 +6456,7 @@
       "item.mystias_izakaya.ni_ge_luo_ni": "Negroni",
       "item.mystias_izakaya.zhu_rou_zun_yu_xun": "Pork \u0026 Trout Kebab",
       "tooltip.mystias_izakaya.di_gua": "The world\u0027s most reliable ingredient! Sweet, soft and effectively getting rid of hunger, it even warms your hands during winter.",
-      "death.attack.chili.player": "%1$s 在试图逃离 %2$s 时辣死了",
+      "death.attack.chili.player": "%1$s was extremely spicy while trying to escape %2$s ",
       "tag.mystias_izakaya.Japanese": "Japanese",
       "tooltip.mystias_izakaya.cooking_range": "Mod Cooking System Function Block",
       "item.mystias_izakaya.zhu_dou_fu": "Boiled Tofu",
@@ -7092,6 +6819,7 @@
       "tooltip.mystias_izakaya.shao_kao_jia": "一种常见的烤架。它的网状表面在点燃时迅速将热量传给食物。现在你可以享受野生的味道了！据说可以让每个爸爸脸上都露出笑容。",
       "tooltip.mystias_izakaya.dou_fu": "人里有卖的豆腐，较为常见",
       "item.mystias_izakaya.yue_zhi_lian_ren": "月之恋人",
+      "status.mystias_izakaya.outputblocked": "输出受阻",
       "item.mystias_izakaya.peng_lai_yu_zhi": "蓬莱玉枝",
       "item.mystias_izakaya.yao_jing_yu_lu": "妖精雨露",
       "jei.mystias_izakaya.Cutting_Board": "料理台",
@@ -7538,8 +7266,8 @@
   "workspaceSettings": {
     "modid": "mystias_izakaya",
     "modName": "Mystia\u0027s Izakaya",
-    "version": "0.0.7",
-    "description": "ver0.0.7",
+    "version": "0.0.7a",
+    "description": "ver0.0.7a",
     "author": "Fuyuka",
     "websiteURL": "https://www.curseforge.com/minecraft/mc-mods/mystias-izakaya",
     "license": "GNU General Public License version 3 (GPLv3)",

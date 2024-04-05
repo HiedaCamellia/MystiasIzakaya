@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 public class GiveEffectFromTagsProcedure {
-	public static void execute(ItemStack itemstack, LivingEntity entity) {
+	public static void execute(LevelAccessor world, ItemStack itemstack, LivingEntity entity) {
 		String s = "";
 		s = itemstack.getOrCreateTag().getString("tags");
 		if (s.isEmpty()) {

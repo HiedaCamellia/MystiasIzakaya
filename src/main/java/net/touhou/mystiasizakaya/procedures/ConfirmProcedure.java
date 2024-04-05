@@ -25,7 +25,15 @@ public class ConfirmProcedure {
 		ItemStack target = ItemStack.EMPTY;
 		ItemStack Kitchenware = ItemStack.EMPTY;
 		String raws = "";
-		if (!(ItemStack.EMPTY.getItem() == (new Object() {
+		if (ItemStack.EMPTY.getItem() == (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
+				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+				BlockEntity _ent = world.getBlockEntity(pos);
+				if (_ent != null)
+					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+				return _retval.get();
+			}
+		}.getItemStack(world, BlockPos.containing(x, y, z), 6)).getItem() && !(ItemStack.EMPTY.getItem() == (new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);

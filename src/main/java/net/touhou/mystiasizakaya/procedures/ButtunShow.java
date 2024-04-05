@@ -8,11 +8,11 @@ import net.minecraft.world.entity.Entity;
 import java.util.function.Supplier;
 import java.util.Map;
 
-public class Show3Procedure {
-	public static boolean execute(Entity entity) {
+public class ButtunShow {
+	public static boolean get(Entity entity,int _slotID) {
 		if (entity == null)
 			return false;
-		if (ItemStack.EMPTY.getItem() == (entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(9)).getItem() : ItemStack.EMPTY).getItem()) {
+		if (ItemStack.EMPTY.getItem() == (entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(_slotID)).getItem() : ItemStack.EMPTY).getItem()) {
 			return false;
 		}
 		return true;

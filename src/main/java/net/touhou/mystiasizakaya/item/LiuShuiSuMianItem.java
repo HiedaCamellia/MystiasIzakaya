@@ -9,6 +9,7 @@ import java.util.Set;
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromTagsProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromIngredientsProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromCuisines;
 import java.util.Arrays;
 
 import net.minecraft.world.level.Level;
@@ -75,15 +76,15 @@ public class LiuShuiSuMianItem extends Item {
 	}
 
 	@Override
-public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
-super.finishUsingItem(itemstack, world, entity);
-GiveEffectFromTagsProcedure.execute(itemstack, entity);
-GiveEffectFromIngredientsProcedure.execute(itemstack, entity);
-return itemstack;
-}
+	public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
+		super.finishUsingItem(itemstack, world, entity);
+		GiveEffectFromTagsProcedure.execute(world, itemstack, entity);
+		GiveEffectFromIngredientsProcedure.execute(world, itemstack, entity);
+		GiveEffectFromCuisines.execute(world, itemstack, entity);
+		return itemstack;
+	}
 
-
-public static List<String> gettags() {
+	public static List<String> gettags() {
 		List<String> list = new ArrayList<>();
 		list.add("tag.mystias_izakaya.Vegetarian");
 		list.add("tag.mystias_izakaya.Mild");
