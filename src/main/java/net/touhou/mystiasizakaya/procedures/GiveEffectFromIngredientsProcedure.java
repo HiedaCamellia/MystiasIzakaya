@@ -19,165 +19,170 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.ArrayList;
 
 public class GiveEffectFromIngredientsProcedure {
-	public static void execute(ItemStack itemstack, LivingEntity entity) {
+	public static void execute(LevelAccessor world, ItemStack itemstack, LivingEntity entity) {
 		String s = "";
 		s = itemstack.getOrCreateTag().getString("ingredients");
 		if (s.isEmpty()) {
-			s=ForgeRegistries.ITEMS.getKey(itemstack.getItem()).toString();
+			s = ForgeRegistries.ITEMS.getKey(itemstack.getItem()).toString();
 		}
 		String[] tags = s.split(",");
 		for (int i = 0; i < tags.length; i++) {
 			String t = tags[i];
 			switch (t) {
-				case "tag.mystias_izakaya.ba_mu_man":
+				case "mystias_izakaya:ba_mu_man":
 					entity.removeEffect(MobEffects.DARKNESS);
 					entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 1200, 0));
 					break;
-				case "tag.mystias_izakaya.bai_guo":
+				case "mystias_izakaya:bai_guo":
 					//
 					break;
-				case "tag.mystias_izakaya.ban_li":
+				case "mystias_izakaya:ban_li":
 					//
 					break;
-				case "tag.mystias_izakaya.bing_kuai":
+				case "mystias_izakaya:bing_kuai":
 					entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1200, 0));
 					break;
-				case "tag.mystias_izakaya.bing_di_lian":
+				case "mystias_izakaya:bing_di_lian":
 					//
 					break;
-				case "tag.mystias_izakaya.chan_shui":
+				case "mystias_izakaya:chan_shui":
 					//
 					break;
-				case "tag.mystias_izakaya.di_gua":
+				case "mystias_izakaya:di_gua":
 					//
 					break;
-				case "tag.mystias_izakaya.dou_fu":
+				case "mystias_izakaya:dou_fu":
 					entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 600, 0));
 					break;
-				case "tag.mystias_izakaya.feng_mi":
+				case "mystias_izakaya:feng_mi":
 					entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 0));
 					break;
-				case "tag.mystias_izakaya.hai_dan":
+				case "mystias_izakaya:hai_dan":
 					//
 					break;
-				case "tag.mystias_izakaya.hai_tai":
+				case "mystias_izakaya:hai_tai":
 					//
 					break;
-				case "tag.mystias_izakaya.he_niu":
+				case "mystias_izakaya:he_niu":
 					//
 					break;
-				case "tag.mystias_izakaya.he_tun":
+				case "mystias_izakaya:he_tun":
 					//
 					break;
-				case "tag.mystias_izakaya.hei_mao_zhu_rou":
+				case "mystias_izakaya:hei_mao_zhu_rou":
 					//
 					break;
-				case "tag.mystias_izakaya.hei_yan":
+				case "mystias_izakaya:hei_yan":
 					//
 					break;
-				case "tag.mystias_izakaya.huan_tan_hua":
+				case "mystias_izakaya:huan_tan_hua":
 					//
 					break;
-				case "tag.mystias_izakaya.huang_gua":
+				case "mystias_izakaya:huang_gua":
 					//
 					break;
-				case "tag.mystias_izakaya.huang_you":
+				case "mystias_izakaya:huang_you":
 					//
 					break;
-				case "tag.mystias_izakaya.ji_dan":
+				case "mystias_izakaya:ji_dan":
 					//
 					break;
-				case "tag.mystias_izakaya.ji_shang_jin_qiang_yu":
+				case "mystias_izakaya:ji_shang_jin_qiang_yu":
 					//
 					break;
-				case "tag.mystias_izakaya.jin_qiang_yu":
+				case "mystias_izakaya:jin_qiang_yu":
 					//
 					break;
-				case "tag.mystias_izakaya.la_jiao":
+				case "mystias_izakaya:la_jiao":
+					entity.hurt(new DamageSource(
+							world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey
+									.create(Registries.DAMAGE_TYPE, new ResourceLocation("mystias_izakaya:chili")))),
+							2);
+
 					entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 600, 0));
 					break;
-				case "tag.mystias_izakaya.lian_zi":
+				case "mystias_izakaya:lian_zi":
 					//
 					break;
-				case "tag.mystias_izakaya.lu_rou":
+				case "mystias_izakaya:lu_rou":
 					//
 					break;
-				case "tag.mystias_izakaya.lu_shui":
+				case "mystias_izakaya:lu_shui":
 					entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 600, 0));
 					break;
-				case "tag.mystias_izakaya.luo_bu":
+				case "mystias_izakaya:luo_bu":
 					entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 600, 0));
 					break;
-				case "tag.mystias_izakaya.mian_fen":
+				case "mystias_izakaya:mian_fen":
 					//
 					break;
-				case "tag.mystias_izakaya.mo_gu":
+				case "mystias_izakaya:mo_gu":
 					//
 					break;
-				case "tag.mystias_izakaya.nai_you":
+				case "mystias_izakaya:nai_you":
 					//
 					break;
-				case "tag.mystias_izakaya.nan_gua":
+				case "mystias_izakaya:nan_gua":
 					//
 					break;
-				case "tag.mystias_izakaya.ning_meng":
+				case "mystias_izakaya:ning_meng":
 					//
 					break;
-				case "tag.mystias_izakaya.niu_rou":
+				case "mystias_izakaya:niu_rou":
 					//
 					break;
-				case "tag.mystias_izakaya.nuo_mi":
+				case "mystias_izakaya:nuo_mi":
 					//
 					break;
-				case "tag.mystias_izakaya.pang_xie":
+				case "mystias_izakaya:pang_xie":
 					//
 					break;
-				case "tag.mystias_izakaya.pu_tao":
+				case "mystias_izakaya:pu_tao":
 					//
 					break;
-				case "tag.mystias_izakaya.san_wen_yu":
+				case "mystias_izakaya:san_wen_yu":
 					//
 					break;
-				case "tag.mystias_izakaya.song_lu":
+				case "mystias_izakaya:song_lu":
 					//
 					break;
-				case "tag.mystias_izakaya.song_zi":
+				case "mystias_izakaya:song_zi":
 					//
 					break;
-				case "tag.mystias_izakaya.tao_zi":
+				case "mystias_izakaya:tao_zi":
 					//
 					break;
-				case "tag.mystias_izakaya.tu_dou":
+				case "mystias_izakaya:tu_dou":
 					//
 					break;
-				case "tag.mystias_izakaya.xia":
+				case "mystias_izakaya:xia":
 					//
 					break;
-				case "tag.mystias_izakaya.yang_cong":
+				case "mystias_izakaya:yang_cong":
 					//
 					break;
-				case "tag.mystias_izakaya.ye_zhu_rou":
+				case "mystias_izakaya:ye_zhu_rou":
 					//
 					break;
-				case "tag.mystias_izakaya.yue_guang_cao":
+				case "mystias_izakaya:yue_guang_cao":
 					//
 					break;
-				case "tag.mystias_izakaya.zhang_yu":
+				case "mystias_izakaya:zhang_yu":
 					//
 					break;
-				case "tag.mystias_izakaya.zhi_shi":
+				case "mystias_izakaya:zhi_shi":
 					//
 					break;
-				case "tag.mystias_izakaya.zhu_rou":
+				case "mystias_izakaya:zhu_rou":
 					//
 					break;
-				case "tag.mystias_izakaya.zhu_sun":
+				case "mystias_izakaya:zhu_sun":
 					//
 					break;
-				case "tag.mystias_izakaya.zhu_zi":
+				case "mystias_izakaya:zhu_zi":
 					//
 					break;
-				case "tag.mystias_izakaya.zun_yu":
+				case "mystias_izakaya:zun_yu":
 					//
 					break;
 				default:

@@ -1,13 +1,9 @@
 package net.touhou.mystiasizakaya.client.gui;
 
 import net.touhou.mystiasizakaya.world.inventory.CookingRangeUiMenu;
-import net.touhou.mystiasizakaya.procedures.Text1Procedure;
+import net.touhou.mystiasizakaya.procedures.TargetsText;
+import net.touhou.mystiasizakaya.procedures.ButtunShow;
 import net.touhou.mystiasizakaya.procedures.StatusProcedure;
-import net.touhou.mystiasizakaya.procedures.Show5Procedure;
-import net.touhou.mystiasizakaya.procedures.Show4Procedure;
-import net.touhou.mystiasizakaya.procedures.Show3Procedure;
-import net.touhou.mystiasizakaya.procedures.Show2Procedure;
-import net.touhou.mystiasizakaya.procedures.Show1Procedure;
 import net.touhou.mystiasizakaya.procedures.LefttimeProcedure;
 import net.touhou.mystiasizakaya.network.CookingRangeUiButtonMessage;
 import net.touhou.mystiasizakaya.MystiasIzakayaMod;
@@ -48,7 +44,8 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 		this.imageHeight = 166;
 	}
 
-	private static final ResourceLocation texture = new ResourceLocation("mystias_izakaya:textures/screens/cooking_range_ui.png");
+	private static final ResourceLocation texture = new ResourceLocation(
+			"mystias_izakaya:textures/screens/cooking_range_ui.png");
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
@@ -62,7 +59,8 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
-		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth,
+				this.imageHeight);
 		RenderSystem.disableBlend();
 	}
 
@@ -82,27 +80,13 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 
 	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-		//guiGraphics.drawString(this.font,
-
-		//		Text1Procedure.execute(world, x, y, z,0), 44, 29, -1, false);
-		//guiGraphics.drawString(this.font,
-
-		//		Text1Procedure.execute(world, x, y, z,1), 44, 56, -1, false);
-		//guiGraphics.drawString(this.font,
-
-		//		Text1Procedure.execute(world, x, y, z,2), 44, 83, -1, false);
-		//guiGraphics.drawString(this.font,
-
-		//		Text1Procedure.execute(world, x, y, z,3), 44, 110, -1, false);
-		//guiGraphics.drawString(this.font,
-
-		//		Text1Procedure.execute(world, x, y, z,4), 44, 137, -1, false);
-		guiGraphics.drawString(this.font,
-
-				StatusProcedure.execute(world, x, y, z), 233, 26, -1, false);
-		guiGraphics.drawString(this.font,
-
-				LefttimeProcedure.execute(world, x, y, z), 238, 65, -1, false);
+		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 0), 44, 29, -1, false);
+		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 1), 44, 56, -1, false);
+		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 2), 44, 83, -1, false);
+		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 3), 44, 110, -1, false);
+		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 4), 44, 137, -1, false);
+		guiGraphics.drawString(this.font, StatusProcedure.execute(world, x, y, z), 233, 26, -1, false);
+		guiGraphics.drawString(this.font, LefttimeProcedure.execute(world, x, y, z), 238, 65, -1, false);
 	}
 
 	@Override
@@ -113,79 +97,80 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 	@Override
 	public void init() {
 		super.init();
-		button_confirm = Button.builder(Component.translatable("gui.mystias_izakaya.cooking_range_ui.button_confirm"), e -> {
-			if (true) {
-				MystiasIzakayaMod.PACKET_HANDLER.sendToServer(new CookingRangeUiButtonMessage(0, x, y, z));
-				CookingRangeUiButtonMessage.handleButtonAction(entity, 0, x, y, z);
-			}
-		}).bounds(this.leftPos + 94, this.topPos + 60, 90, 20).build();
+		button_confirm = Button
+				.builder(Component.translatable("gui.mystias_izakaya.cooking_range_ui.button_confirm"), e -> {
+					if (true) {
+						MystiasIzakayaMod.PACKET_HANDLER.sendToServer(new CookingRangeUiButtonMessage(0, x, y, z));
+						CookingRangeUiButtonMessage.handleButtonAction(entity, 0, x, y, z);
+					}
+				}).bounds(this.leftPos + 94, this.topPos + 60, 90, 20).build();
 		guistate.put("button:button_confirm", button_confirm);
 		this.addRenderableWidget(button_confirm);
-		button_select = Button.builder(Component.literal(Text1Procedure.execute(world, x, y, z,0)), e -> {
-			if (Show1Procedure.execute(entity)) {
+		button_select = Button.builder(Component.literal(""), e -> {
+			if (ButtunShow.get(entity, 7)) {
 				MystiasIzakayaMod.PACKET_HANDLER.sendToServer(new CookingRangeUiButtonMessage(1, x, y, z));
 				CookingRangeUiButtonMessage.handleButtonAction(entity, 1, x, y, z);
 			}
 		}).bounds(this.leftPos + 40, this.topPos + 24, 45, 20).build(builder -> new Button(builder) {
 			@Override
 			public void render(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
-				if (Show1Procedure.execute(entity))
+				if (ButtunShow.get(entity, 7))
 					super.render(guiGraphics, gx, gy, ticks);
 			}
 		});
 		guistate.put("button:button_select", button_select);
 		this.addRenderableWidget(button_select);
-		button_select1 = Button.builder(Component.literal(Text1Procedure.execute(world, x, y, z,1)), e -> {
-			if (Show2Procedure.execute(entity)) {
+		button_select1 = Button.builder(Component.literal(""), e -> {
+			if (ButtunShow.get(entity, 8)) {
 				MystiasIzakayaMod.PACKET_HANDLER.sendToServer(new CookingRangeUiButtonMessage(2, x, y, z));
 				CookingRangeUiButtonMessage.handleButtonAction(entity, 2, x, y, z);
 			}
 		}).bounds(this.leftPos + 40, this.topPos + 51, 45, 20).build(builder -> new Button(builder) {
 			@Override
 			public void render(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
-				if (Show2Procedure.execute(entity))
+				if (ButtunShow.get(entity, 8))
 					super.render(guiGraphics, gx, gy, ticks);
 			}
 		});
 		guistate.put("button:button_select1", button_select1);
 		this.addRenderableWidget(button_select1);
-		button_select2 = Button.builder(Component.literal(Text1Procedure.execute(world, x, y, z,2)), e -> {
-			if (Show3Procedure.execute(entity)) {
+		button_select2 = Button.builder(Component.literal(""), e -> {
+			if (ButtunShow.get(entity, 9)) {
 				MystiasIzakayaMod.PACKET_HANDLER.sendToServer(new CookingRangeUiButtonMessage(3, x, y, z));
 				CookingRangeUiButtonMessage.handleButtonAction(entity, 3, x, y, z);
 			}
 		}).bounds(this.leftPos + 40, this.topPos + 78, 45, 20).build(builder -> new Button(builder) {
 			@Override
 			public void render(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
-				if (Show3Procedure.execute(entity))
+				if (ButtunShow.get(entity, 9))
 					super.render(guiGraphics, gx, gy, ticks);
 			}
 		});
 		guistate.put("button:button_select2", button_select2);
 		this.addRenderableWidget(button_select2);
-		button_select3 = Button.builder(Component.literal(Text1Procedure.execute(world, x, y, z,3)), e -> {
-			if (Show4Procedure.execute(entity)) {
+		button_select3 = Button.builder(Component.literal(""), e -> {
+			if (ButtunShow.get(entity, 10)) {
 				MystiasIzakayaMod.PACKET_HANDLER.sendToServer(new CookingRangeUiButtonMessage(4, x, y, z));
 				CookingRangeUiButtonMessage.handleButtonAction(entity, 4, x, y, z);
 			}
 		}).bounds(this.leftPos + 40, this.topPos + 105, 45, 20).build(builder -> new Button(builder) {
 			@Override
 			public void render(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
-				if (Show4Procedure.execute(entity))
+				if (ButtunShow.get(entity, 10))
 					super.render(guiGraphics, gx, gy, ticks);
 			}
 		});
 		guistate.put("button:button_select3", button_select3);
 		this.addRenderableWidget(button_select3);
-		button_select4 = Button.builder(Component.literal(Text1Procedure.execute(world, x, y, z,4)), e -> {
-			if (Show5Procedure.execute(entity)) {
+		button_select4 = Button.builder(Component.literal(""), e -> {
+			if (ButtunShow.get(entity, 11)) {
 				MystiasIzakayaMod.PACKET_HANDLER.sendToServer(new CookingRangeUiButtonMessage(5, x, y, z));
 				CookingRangeUiButtonMessage.handleButtonAction(entity, 5, x, y, z);
 			}
 		}).bounds(this.leftPos + 40, this.topPos + 132, 45, 20).build(builder -> new Button(builder) {
 			@Override
 			public void render(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
-				if (Show5Procedure.execute(entity))
+				if (ButtunShow.get(entity, 11))
 					super.render(guiGraphics, gx, gy, ticks);
 			}
 		});

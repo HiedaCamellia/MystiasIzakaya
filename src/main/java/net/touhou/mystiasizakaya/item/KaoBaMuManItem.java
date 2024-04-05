@@ -9,6 +9,7 @@ import java.util.Set;
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromTagsProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromIngredientsProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromCuisines;
 import java.util.Arrays;
 
 import net.minecraft.world.level.Level;
@@ -25,8 +26,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
-
-
 
 import java.util.List;
 
@@ -79,12 +78,11 @@ public class KaoBaMuManItem extends Item {
 	@Override
 	public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
 		super.finishUsingItem(itemstack, world, entity);
-		GiveEffectFromTagsProcedure.execute(itemstack, entity);
-		GiveEffectFromIngredientsProcedure.execute(itemstack, entity);
-		entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 2400, 0));
+		GiveEffectFromTagsProcedure.execute(world, itemstack, entity);
+		GiveEffectFromIngredientsProcedure.execute(world, itemstack, entity);
+		GiveEffectFromCuisines.execute(world, itemstack, entity);
 		return itemstack;
 	}
-
 
 	public static List<String> gettags() {
 		List<String> list = new ArrayList<>();
