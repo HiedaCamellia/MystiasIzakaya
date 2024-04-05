@@ -12,12 +12,11 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
-
 import java.util.Arrays;
 import java.util.ArrayList;
 
 public class GiveEffectFromTagsProcedure {
-	public static void execute(ItemStack itemstack, LivingEntity entity) {
+	public static void execute(LevelAccessor world, ItemStack itemstack, LivingEntity entity) {
 		String s = "";
 		s = itemstack.getOrCreateTag().getString("tags");
 		if (s.isEmpty()) {

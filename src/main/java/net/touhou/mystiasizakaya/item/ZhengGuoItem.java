@@ -4,6 +4,7 @@ package net.touhou.mystiasizakaya.item;
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromTagsProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromIngredientsProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromCuisines;
 import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 
 import net.minecraft.world.level.Level;

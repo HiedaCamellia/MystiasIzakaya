@@ -2,6 +2,7 @@ package net.touhou.mystiasizakaya.procedures;
 
 import net.touhou.mystiasizakaya.init.MystiasIzakayaModItems;
 
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
@@ -23,7 +24,16 @@ public class ConfirmProcedure {
 		boolean bool = false;
 		ItemStack target = ItemStack.EMPTY;
 		ItemStack Kitchenware = ItemStack.EMPTY;
-		if (!(ItemStack.EMPTY.getItem() == (new Object() {
+		String raws = "";
+		if (ItemStack.EMPTY.getItem() == (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
+				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+				BlockEntity _ent = world.getBlockEntity(pos);
+				if (_ent != null)
+					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+				return _retval.get();
+			}
+		}.getItemStack(world, new BlockPos(x, y, z), 6)).getItem() && !(ItemStack.EMPTY.getItem() == (new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -92,6 +102,27 @@ public class ConfirmProcedure {
 					break;
 				}
 			}
+			ArrayList<String> rawslist = new ArrayList<>();
+			for (int i = 1; i < 6; i++) {
+				rawslist.add(ForgeRegistries.ITEMS.getKey((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
+						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+						BlockEntity _ent = world.getBlockEntity(pos);
+						if (_ent != null)
+							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+						return _retval.get();
+					}
+				}.getItemStack(world, new BlockPos(x, y, z), i)).getItem()).toString());
+			}
+			// 使用StringBuilder来构建字符串
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < rawslist.size(); i++) {
+				sb.append(rawslist.get(i));
+				if (i < rawslist.size() - 1) {
+					sb.append(","); // 在最后一个元素之后不添加逗号
+				}
+			}
+			raws = sb.toString();
 			if (!world.isClientSide()) {
 				BlockPos _bp = new BlockPos(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -116,6 +147,7 @@ public class ConfirmProcedure {
 				}
 			} else {
 				target.getOrCreateTag().putString("tags", resultString);
+				target.getOrCreateTag().putString("ingredients", raws);
 				{
 					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {

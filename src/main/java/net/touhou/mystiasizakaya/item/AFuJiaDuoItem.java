@@ -10,6 +10,7 @@ import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromTagsProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromIngredientsProcedure;
+import net.touhou.mystiasizakaya.procedures.GiveEffectFromCuisines;
 import java.util.Arrays;
 
 import net.minecraft.world.item.UseAnim;
@@ -78,8 +79,9 @@ public class AFuJiaDuoItem extends Item {
 	@Override
 public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
 super.finishUsingItem(itemstack, world, entity);
-GiveEffectFromTagsProcedure.execute(itemstack, entity);
-GiveEffectFromIngredientsProcedure.execute(itemstack, entity);
+GiveEffectFromTagsProcedure.execute(world, itemstack, entity);
+GiveEffectFromIngredientsProcedure.execute(world, itemstack, entity);
+GiveEffectFromCuisines.execute(world, itemstack, entity);
 return itemstack;
 }
 
