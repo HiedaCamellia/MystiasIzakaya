@@ -75,7 +75,7 @@ public class ConfirmProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem())) {
+			}.getItemStack(world, BlockPos.containing(x, y, z), 5)).getItem())) {
 				resultList.add("tag.mystias_izakaya.Large_Portion");
 				if (resultList.contains("tag.mystias_izakaya.Small_Portion")) {
 					resultList.remove("tag.mystias_izakaya.Small_Portion");
