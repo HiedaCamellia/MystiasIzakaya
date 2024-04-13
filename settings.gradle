@@ -15,6 +15,10 @@ pluginManagement {
             name = "ModMaven"
             url = "https://modmaven.dev"
         }
+        maven { 
+            name = "Shedaniel"
+            url =  "https://maven.shedaniel.me" 
+        }
     }
 }
 

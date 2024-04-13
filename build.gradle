@@ -80,16 +80,17 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
-    maven { url "https://maven.shedaniel.me" }
+    maven {
+        name = "Shedaniel" 
+        url = "https://maven.shedaniel.me" }
 }
 
 dependencies {
 
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
+    //implementation fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:${rei_version}")
 
-    //compileOnly "me.shedaniel:RoughlyEnoughItems-api-forge:${rei_version}"
-    //runtimeOnly "me.shedaniel:RoughlyEnoughItems-forge:${rei_version}"
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
     runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))

@@ -40,7 +40,7 @@ public class ConfirmProcedure {
 			combinedList.addAll(targettags);
 			Set<String> set = new LinkedHashSet<String>(combinedList);
 			ArrayList<String> resultList = new ArrayList<String>(set);
-			if (!(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0)
+			if (!(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 5)
 					.getItem())) {
 				resultList.add("tag.mystias_izakaya.Large_Portion");
 				if (resultList.contains("tag.mystias_izakaya.Small_Portion")) {
