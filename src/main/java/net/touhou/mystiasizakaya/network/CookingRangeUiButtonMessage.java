@@ -2,12 +2,8 @@
 package net.touhou.mystiasizakaya.network;
 
 import net.touhou.mystiasizakaya.world.inventory.CookingRangeUiMenu;
-import net.touhou.mystiasizakaya.procedures.Select5Procedure;
-import net.touhou.mystiasizakaya.procedures.Select4Procedure;
-import net.touhou.mystiasizakaya.procedures.Select3Procedure;
-import net.touhou.mystiasizakaya.procedures.Select2Procedure;
-import net.touhou.mystiasizakaya.procedures.Select1Procedure;
 import net.touhou.mystiasizakaya.procedures.ConfirmProcedure;
+import net.touhou.mystiasizakaya.procedures.SelectTarget;
 import net.touhou.mystiasizakaya.MystiasIzakayaMod;
 
 import net.minecraftforge.network.NetworkEvent;
@@ -72,29 +68,29 @@ public class CookingRangeUiButtonMessage {
 			ConfirmProcedure.execute(world, x, y, z);
 		}
 		if (buttonID == 1) {
-
-			Select1Procedure.execute(world, x, y, z);
+			SelectTarget.set(world, x, y, z, 7);
 		}
 		if (buttonID == 2) {
 
-			Select2Procedure.execute(world, x, y, z);
+			SelectTarget.set(world, x, y, z, 8);
 		}
 		if (buttonID == 3) {
 
-			Select3Procedure.execute(world, x, y, z);
+			SelectTarget.set(world, x, y, z, 9);
 		}
 		if (buttonID == 4) {
 
-			Select4Procedure.execute(world, x, y, z);
+			SelectTarget.set(world, x, y, z, 10);
 		}
 		if (buttonID == 5) {
 
-			Select5Procedure.execute(world, x, y, z);
+			SelectTarget.set(world, x, y, z, 11);
 		}
 	}
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		MystiasIzakayaMod.addNetworkMessage(CookingRangeUiButtonMessage.class, CookingRangeUiButtonMessage::buffer, CookingRangeUiButtonMessage::new, CookingRangeUiButtonMessage::handler);
+		MystiasIzakayaMod.addNetworkMessage(CookingRangeUiButtonMessage.class, CookingRangeUiButtonMessage::buffer,
+				CookingRangeUiButtonMessage::new, CookingRangeUiButtonMessage::handler);
 	}
 }

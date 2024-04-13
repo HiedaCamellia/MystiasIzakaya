@@ -55,6 +55,9 @@ import net.touhou.mystiasizakaya.init.MystiasIzakayaModItems;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
+import net.touhou.mystiasizakaya.procedures.GetItemStack;
+import net.touhou.mystiasizakaya.procedures.SetSlotItem;
+
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.ItemStack;
@@ -76,24 +79,8 @@ public class GetTagFromRawsProcedure {
 		List<String> negativetags = new ArrayList<>();
 		i = 1;
 		while (i <= 5) {
-			if (!((new Object() {
-				public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-					BlockEntity _ent = world.getBlockEntity(pos);
-					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-					return _retval.get();
-				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), (int) i)).getItem() == ItemStack.EMPTY.getItem())) {
-				raw = (new Object() {
-					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						BlockEntity _ent = world.getBlockEntity(pos);
-						if (_ent != null)
-							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-						return _retval.get();
-					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), (int) i));
+			if (!(GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), (int) i).getItem() == ItemStack.EMPTY.getItem())) {
+				raw = GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), (int) i);
 				raw = YHCProcedure.execute(raw);
 				raws.add((ForgeRegistries.ITEMS.getKey(raw.getItem()).toString()));
 			}

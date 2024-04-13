@@ -9,30 +9,17 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.BlockPos;
 
+import net.touhou.mystiasizakaya.procedures.GetItemStack;
+import net.touhou.mystiasizakaya.procedures.SetSlotItem;
+
 import java.util.concurrent.atomic.AtomicReference;
 
 public class GetTimeProcedure {
 	public static double execute(LevelAccessor world, double x, double y, double z) {
 		ItemStack target = ItemStack.EMPTY;
 		double time = 0;
-		target = (new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 12));
-		if ((new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == MystiasIzakayaModItems.ZHU_GUO.get()) {
+		target = GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 12);
+		if (GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0).getItem() == MystiasIzakayaModItems.ZHU_GUO.get()) {
 			if (MystiasIzakayaModItems.ZHU_DOU_FU.get() == target.getItem()) {
 				time = 84;
 			}
@@ -88,15 +75,7 @@ public class GetTimeProcedure {
 				time = 60;
 			}
 		}
-		if ((new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == MystiasIzakayaModItems.ZHENG_GUO.get()) {
+		if (GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0).getItem() == MystiasIzakayaModItems.ZHENG_GUO.get()) {
 			if (MystiasIzakayaModItems.HUAN_TAN_HUA_GAO.get() == target.getItem()) {
 				time = 84;
 			}
@@ -128,15 +107,7 @@ public class GetTimeProcedure {
 				time = 72;
 			}
 		}
-		if ((new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == MystiasIzakayaModItems.YOU_GUO.get()) {
+		if (GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0).getItem() == MystiasIzakayaModItems.YOU_GUO.get()) {
 			if (MystiasIzakayaModItems.BAN_NI_DI_KE_DAN.get() == target.getItem()) {
 				time = 84;
 			}
@@ -192,15 +163,7 @@ public class GetTimeProcedure {
 				time = 120;
 			}
 		}
-		if ((new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == MystiasIzakayaModItems.LIAO_LI_TAI.get()) {
+		if (GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0).getItem() == MystiasIzakayaModItems.LIAO_LI_TAI.get()) {
 			if (MystiasIzakayaModItems.BAI_TAO_SHENG_BA_QIAO.get() == target.getItem()) {
 				time = 60;
 			}
@@ -259,15 +222,7 @@ public class GetTimeProcedure {
 				time = 72;
 			}
 		}
-		if ((new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == MystiasIzakayaModItems.SHAO_KAO_JIA.get()) {
+		if (GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0).getItem() == MystiasIzakayaModItems.SHAO_KAO_JIA.get()) {
 			if (MystiasIzakayaModItems.BU_SI_NIAO.get() == target.getItem()) {
 				time = 144;
 			}
