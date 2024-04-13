@@ -98,6 +98,9 @@ public class BoilingPotProcedure {
 		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.ZHU_ROU.get()).toString()))) {
 			str = str + "$start%" + ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.ZHU_ROU_GAI_JIAO_FAN.get()).toString() + "$end%";
 		}
+		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.NIU_ROU.get()).toString()))) {
+			str = str + "$start%" + ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.NIU_ROU_GAI_JIAO_FAN.get()).toString() + "$end%";
+		}
 		return str;
 	}
 }
