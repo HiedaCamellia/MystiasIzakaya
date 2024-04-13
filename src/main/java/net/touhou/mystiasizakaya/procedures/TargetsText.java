@@ -7,31 +7,16 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.BlockPos;
 
+import net.touhou.mystiasizakaya.procedures.GetItemStack;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class TargetsText {
 	public static String get(LevelAccessor world, int x, int y, int z, double i) {
 		String str = "";
-		if (ItemStack.EMPTY.getItem() == (new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, new BlockPos(x, y, z), (int) (7 + i))).getItem()) {
+		if (ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, new BlockPos(x, y, z), (int) (7 + i)).getItem()) {
 			return "";
 		}
-		str = (new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, new BlockPos(x, y, z), (int) (7 + i))).getDisplayName().getString();
+		str = GetItemStack.getItemStack(world, new BlockPos(x, y, z), (int) (7 + i)).getDisplayName().getString();
 		str = str.replace("[", "").replace("]", "");
 		return str;
 	}

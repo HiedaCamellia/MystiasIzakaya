@@ -10,6 +10,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.BlockPos;
 
+import net.touhou.mystiasizakaya.procedures.GetItemStack;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.List;
 import java.util.ArrayList;
@@ -24,24 +25,8 @@ public class FryingPanProcedure {
 		List<String> negativetags = new ArrayList<>();
 		i = 1;
 		while (i <= 5) {
-			if (!((new Object() {
-				public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-					BlockEntity _ent = world.getBlockEntity(pos);
-					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-					return _retval.get();
-				}
-			}.getItemStack(world, new BlockPos(x, y, z), (int) i)).getItem() == ItemStack.EMPTY.getItem())) {
-				raw = (new Object() {
-					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						BlockEntity _ent = world.getBlockEntity(pos);
-						if (_ent != null)
-							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-						return _retval.get();
-					}
-				}.getItemStack(world, new BlockPos(x, y, z), (int) i));
+			if (!(GetItemStack.getItemStack(world, new BlockPos(x, y, z), (int) i).getItem() == ItemStack.EMPTY.getItem())) {
+				raw = GetItemStack.getItemStack(world, new BlockPos(x, y, z), (int) i);
 				raw = YHCProcedure.execute(raw);
 				raws.add((ForgeRegistries.ITEMS.getKey(raw.getItem()).toString()));
 			}

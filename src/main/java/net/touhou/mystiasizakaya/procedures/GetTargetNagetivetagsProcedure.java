@@ -81,6 +81,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.BlockPos;
 
+import net.touhou.mystiasizakaya.procedures.GetItemStack;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.Set;
 import java.util.List;
@@ -92,24 +93,8 @@ public class GetTargetNagetivetagsProcedure {
 		ItemStack target = ItemStack.EMPTY;
 		double time = 0;
 		List<String> list = new ArrayList<>();
-		target = (new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, new BlockPos(x, y, z), 12));
-		if ((new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == MystiasIzakayaModItems.ZHU_GUO.get()) {
+		target = GetItemStack.getItemStack(world, new BlockPos(x, y, z), 12);
+		if (GetItemStack.getItemStack(world, new BlockPos(x, y, z), 0).getItem() == MystiasIzakayaModItems.ZHU_GUO.get()) {
 			if (MystiasIzakayaModItems.ZHU_DOU_FU.get() == target.getItem()) {
 				list.addAll(ZhuDouFuItem.getnegativetags());
 			}
@@ -162,15 +147,7 @@ public class GetTargetNagetivetagsProcedure {
 				list.addAll(ZhuRouGaiJiaoFanItem.getnegativetags());
 			}
 		}
-		if ((new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == MystiasIzakayaModItems.ZHENG_GUO.get()) {
+		if (GetItemStack.getItemStack(world, new BlockPos(x, y, z), 0).getItem() == MystiasIzakayaModItems.ZHENG_GUO.get()) {
 			if (MystiasIzakayaModItems.HUAN_TAN_HUA_GAO.get() == target.getItem()) {
 				list.addAll(HuanTanHuaGaoItem.getnegativetags());
 			}
@@ -202,15 +179,7 @@ public class GetTargetNagetivetagsProcedure {
 				list.addAll(ZhuTongZhengDanItem.getnegativetags());
 			}
 		}
-		if ((new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == MystiasIzakayaModItems.YOU_GUO.get()) {
+		if (GetItemStack.getItemStack(world, new BlockPos(x, y, z), 0).getItem() == MystiasIzakayaModItems.YOU_GUO.get()) {
 			if (MystiasIzakayaModItems.BAN_NI_DI_KE_DAN.get() == target.getItem()) {
 				list.addAll(BanNiDiKeDanItem.getnegativetags());
 			}
@@ -266,15 +235,7 @@ public class GetTargetNagetivetagsProcedure {
 				list.addAll(ZhuSunChaoRouItem.getnegativetags());
 			}
 		}
-		if ((new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == MystiasIzakayaModItems.LIAO_LI_TAI.get()) {
+		if (GetItemStack.getItemStack(world, new BlockPos(x, y, z), 0).getItem() == MystiasIzakayaModItems.LIAO_LI_TAI.get()) {
 			if (MystiasIzakayaModItems.BAI_TAO_SHENG_BA_QIAO.get() == target.getItem()) {
 				list.addAll(BaiTaoShengBaQiaoItem.getnegativetags());
 			}
@@ -333,15 +294,7 @@ public class GetTargetNagetivetagsProcedure {
 				list.addAll(ZhiZhuRouFanTuanItem.getnegativetags());
 			}
 		}
-		if ((new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == MystiasIzakayaModItems.SHAO_KAO_JIA.get()) {
+		if (GetItemStack.getItemStack(world, new BlockPos(x, y, z), 0).getItem() == MystiasIzakayaModItems.SHAO_KAO_JIA.get()) {
 			if (MystiasIzakayaModItems.BU_SI_NIAO.get() == target.getItem()) {
 				list.addAll(BuSiNiaoItem.getnegativetags());
 			}
