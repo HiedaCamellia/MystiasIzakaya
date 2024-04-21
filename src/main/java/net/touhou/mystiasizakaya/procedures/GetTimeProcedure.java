@@ -72,6 +72,9 @@ public class GetTimeProcedure {
 			if (MystiasIzakayaModItems.TANG_YUAN.get() == target.getItem()) {
 				time = 60;
 			}
+			if (MystiasIzakayaModItems.SHUI_ZHU_YU.get() == target.getItem()) {
+				time = 96;
+			}
 		}
 		if (GetItemStack.getItemStack(world, new BlockPos(x, y, z), 0).getItem() == MystiasIzakayaModItems.ZHENG_GUO.get()) {
 			if (MystiasIzakayaModItems.HUAN_TAN_HUA_GAO.get() == target.getItem()) {
