@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:crop/seeds"
+      "tag": "forge:seeds"
     },
     {
       "item": "minecraft:glowstone_dust"
