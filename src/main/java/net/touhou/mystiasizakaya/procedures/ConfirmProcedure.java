@@ -25,12 +25,14 @@ import java.util.ArrayList;
 public class ConfirmProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		boolean bool = false;
+		double time = 0;
+		time = GetValue.getDouble(world, BlockPos.containing(x, y, z), "timeleft");
 		ItemStack target = ItemStack.EMPTY;
 		ItemStack Kitchenware = ItemStack.EMPTY;
 		String raws = "";
 		if ((ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 6).getItem())
 				&& !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 12)
-						.getItem())) {
+				.getItem()) && time == 0) {
 			ArrayList<String> rawtags = (ArrayList) GetTagFromItemStacksProcedure.execute(world, x, y, z);
 			ArrayList<String> targettags = (ArrayList) GetTargetTagsProcedure.execute(world, x, y, z);
 			ArrayList<String> targetntags = (ArrayList) GetTargetNagetivetagsProcedure.execute(world, x, y, z);
