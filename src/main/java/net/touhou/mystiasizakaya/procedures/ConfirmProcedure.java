@@ -27,10 +27,12 @@ public class ConfirmProcedure {
 		boolean bool = false;
 		ItemStack target = ItemStack.EMPTY;
 		ItemStack Kitchenware = ItemStack.EMPTY;
+		double time = 0;
+		time = GetValue.getDouble(world, new BlockPos(x, y, z), "timeleft");
 		String raws = "";
 		if (ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, new BlockPos(x, y, z), 6).getItem()
 				&& !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, new BlockPos(x, y, z), 12)
-						.getItem())) {
+						.getItem())&& time==0) {
 			ArrayList<String> rawtags = (ArrayList) GetTagFromItemStacksProcedure.execute(world, x, y, z);
 			ArrayList<String> targettags = (ArrayList) GetTargetTagsProcedure.execute(world, x, y, z);
 			ArrayList<String> targetntags = (ArrayList) GetTargetNagetivetagsProcedure.execute(world, x, y, z);
