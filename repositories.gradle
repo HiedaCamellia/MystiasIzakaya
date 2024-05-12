@@ -1,0 +1,70 @@
+dependencies {
+    //jei
+    compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}"))
+    compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}"))
+    runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
+    //玉
+    //implementation fg.deobf("maven.modrinth:jade:${jade_version}")
+    //苹果皮
+    //runtimeOnly fg.deobf("squeek.appleskin:appleskin-forge:${appleskin_version}")
+    //compileOnly fg.deobf("squeek.appleskin:appleskin-forge:${appleskin_version}:api")
+    //机械动力
+    //implementation fg.deobf("com.simibubi.create:create-${create_minecraft_version}:${create_version}:slim") { transitive = false }
+    //implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version}")
+    //implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
+    //动画库
+    //implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:1.0.2-rc1+1.20")
+    //帕秋莉手册
+    //compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
+    //runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
+    //curios
+    //runtimeOnly fg.deobf("top.theillusivec4.curios:${curios_version}")
+    //compileOnly fg.deobf("top.theillusivec4.curios:${curios_version}:api")
+}
+
+repositories {
+    maven {
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
+    maven {
+        url = "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    maven {
+        url = "https://maven.jaackson.me"
+    }
+    maven {
+        name "KosmX's maven"
+        url 'https://maven.kosmx.dev/'
+    }
+    maven {
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        name = 'tterrag maven'
+        url = 'https://maven.tterrag.com/'
+    }
+    maven {
+        url "https://api.modrinth.com/maven"
+    }
+    maven {
+        url "https://maven.ryanliptak.com/"
+    }
+    maven {
+        url 'https://maven.blamejared.com'
+    }
+    maven {
+        url = "https://maven.theillusivec4.top/"
+    }
+    flatDir {
+        dir 'lib'
+    }
+}
