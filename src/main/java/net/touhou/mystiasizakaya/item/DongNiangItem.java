@@ -30,7 +30,7 @@ import java.util.List;
 
 public class DongNiangItem extends Item {
 	public DongNiangItem() {
-		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(4).saturationMod(1.8f).alwaysEat().build()));
+		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

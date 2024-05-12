@@ -33,7 +33,7 @@ import java.util.List;
 public class YeWeiJiaNongItem extends Item {
 	public YeWeiJiaNongItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.EPIC)
-				.food((new FoodProperties.Builder()).nutrition(9).saturationMod(8f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(9).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

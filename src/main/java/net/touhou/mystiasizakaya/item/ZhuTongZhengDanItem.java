@@ -34,7 +34,7 @@ import java.util.List;
 public class ZhuTongZhengDanItem extends Item {
 	public ZhuTongZhengDanItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.UNCOMMON)
-				.food((new FoodProperties.Builder()).nutrition(7).saturationMod(4f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

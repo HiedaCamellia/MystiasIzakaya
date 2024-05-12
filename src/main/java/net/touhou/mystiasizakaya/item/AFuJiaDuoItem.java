@@ -32,7 +32,7 @@ import java.util.List;
 public class AFuJiaDuoItem extends Item {
 	public AFuJiaDuoItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON).tab(MystiasIzakayaModTabs.MystiasIzakaya)
-				.food((new FoodProperties.Builder()).nutrition(4).saturationMod(1.8f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

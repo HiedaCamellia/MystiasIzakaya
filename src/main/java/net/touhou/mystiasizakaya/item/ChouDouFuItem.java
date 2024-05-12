@@ -33,7 +33,7 @@ import java.util.List;
 public class ChouDouFuItem extends Item {
 	public ChouDouFuItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.UNCOMMON)
-				.food((new FoodProperties.Builder()).nutrition(6).saturationMod(6f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

@@ -33,7 +33,7 @@ import java.util.List;
 public class MaShuItem extends Item {
 	public MaShuItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.UNCOMMON)
-				.food((new FoodProperties.Builder()).nutrition(8).saturationMod(4.6f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(8).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

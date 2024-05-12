@@ -31,7 +31,7 @@ import java.util.List;
 public class GuiShaItem extends Item {
 	public GuiShaItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).nutrition(8).saturationMod(4.5f).build()));
+				.food((new FoodProperties.Builder()).nutrition(8).saturationMod(0.8f).build()));
 	}
 
 	@Override

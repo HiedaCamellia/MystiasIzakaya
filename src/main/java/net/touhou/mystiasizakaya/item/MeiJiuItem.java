@@ -31,7 +31,7 @@ import java.util.List;
 public class MeiJiuItem extends Item {
 	public MeiJiuItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).nutrition(4).saturationMod(1.8f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

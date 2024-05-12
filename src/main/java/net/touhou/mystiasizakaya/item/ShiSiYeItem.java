@@ -31,7 +31,7 @@ import java.util.List;
 public class ShiSiYeItem extends Item {
 	public ShiSiYeItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).nutrition(8).saturationMod(6.2f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(8).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

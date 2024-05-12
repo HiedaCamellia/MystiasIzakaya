@@ -31,7 +31,7 @@ import java.util.List;
 public class DaBingGunErItem extends Item {
 	public DaBingGunErItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).nutrition(4).saturationMod(1.7f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

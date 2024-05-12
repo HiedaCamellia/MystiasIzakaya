@@ -31,7 +31,7 @@ import java.util.List;
 public class NiGeLuoNiItem extends Item {
 	public NiGeLuoNiItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).nutrition(6).saturationMod(3.5f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

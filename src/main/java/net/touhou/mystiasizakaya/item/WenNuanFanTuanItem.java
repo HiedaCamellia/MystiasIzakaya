@@ -33,7 +33,7 @@ import java.util.List;
 public class WenNuanFanTuanItem extends Item {
 	public WenNuanFanTuanItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.UNCOMMON)
-				.food((new FoodProperties.Builder()).nutrition(9).saturationMod(5.2f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(9).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

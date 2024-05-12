@@ -33,7 +33,7 @@ import java.util.List;
 public class ShiLiYinXingItem extends Item {
 	public ShiLiYinXingItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.RARE)
-				.food((new FoodProperties.Builder()).nutrition(9).saturationMod(4f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(9).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

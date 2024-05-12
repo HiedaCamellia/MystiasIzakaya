@@ -31,7 +31,7 @@ import java.util.List;
 public class GuMingDiBingJiLingItem extends Item {
 	public GuMingDiBingJiLingItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).nutrition(4).saturationMod(1.5f).build()));
+				.food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.8f).build()));
 	}
 
 	@Override

@@ -33,7 +33,7 @@ import java.util.List;
 public class DaBanShaoItem extends Item {
 	public DaBanShaoItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.UNCOMMON)
-				.food((new FoodProperties.Builder()).nutrition(7).saturationMod(6f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

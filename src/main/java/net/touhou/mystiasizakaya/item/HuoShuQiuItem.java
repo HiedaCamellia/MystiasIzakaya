@@ -31,7 +31,7 @@ import java.util.List;
 public class HuoShuQiuItem extends Item {
 	public HuoShuQiuItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).nutrition(8).saturationMod(6.1f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(8).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

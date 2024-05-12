@@ -33,7 +33,7 @@ import java.util.List;
 public class HeNiuItem extends Item {
 	public HeNiuItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).nutrition(3).saturationMod(2.4f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(3).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

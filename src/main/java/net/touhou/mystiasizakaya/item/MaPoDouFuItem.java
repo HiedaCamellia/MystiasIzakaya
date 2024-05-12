@@ -33,7 +33,7 @@ import java.util.List;
 public class MaPoDouFuItem extends Item {
 	public MaPoDouFuItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.UNCOMMON)
-				.food((new FoodProperties.Builder()).nutrition(7).saturationMod(5.3f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

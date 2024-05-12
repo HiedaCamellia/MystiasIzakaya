@@ -31,7 +31,7 @@ import java.util.List;
 public class JiaoFuItem extends Item {
 	public JiaoFuItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).nutrition(7).saturationMod(4.8f).build()));
+				.food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.8f).build()));
 	}
 
 	@Override

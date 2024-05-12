@@ -33,7 +33,7 @@ import java.util.List;
 public class BaiXueItem extends Item {
 	public BaiXueItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.RARE)
-				.food((new FoodProperties.Builder()).nutrition(14).saturationMod(16f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(14).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

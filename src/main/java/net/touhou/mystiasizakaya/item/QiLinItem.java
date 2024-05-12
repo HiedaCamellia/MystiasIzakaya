@@ -31,7 +31,7 @@ import java.util.List;
 public class QiLinItem extends Item {
 	public QiLinItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).nutrition(7).saturationMod(3.8f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

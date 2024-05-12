@@ -33,7 +33,7 @@ import java.util.List;
 public class LiLiangTangItem extends Item {
 	public LiLiangTangItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.UNCOMMON)
-				.food((new FoodProperties.Builder()).nutrition(14).saturationMod(11.5f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(14).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

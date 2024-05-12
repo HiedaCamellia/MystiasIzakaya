@@ -31,7 +31,7 @@ import java.util.List;
 public class KaPeiItem extends Item {
 	public KaPeiItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).nutrition(5).saturationMod(2.5f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(5).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override
