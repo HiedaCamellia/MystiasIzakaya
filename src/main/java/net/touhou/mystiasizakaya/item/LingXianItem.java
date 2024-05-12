@@ -30,7 +30,7 @@ import java.util.Set;
 public class LingXianItem extends Item {
 	public LingXianItem() {
 		super(new Item.Properties().stacksTo(64).fireResistant().rarity(Rarity.EPIC)
-				.food((new FoodProperties.Builder()).nutrition(1).saturationMod(1f).build()));
+				.food((new FoodProperties.Builder()).nutrition(1).saturationMod(0.8f).build()));
 	}
 
 	@Override

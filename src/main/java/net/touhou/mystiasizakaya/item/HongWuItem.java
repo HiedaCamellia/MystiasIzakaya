@@ -30,7 +30,7 @@ import java.util.List;
 public class HongWuItem extends Item {
 	public HongWuItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).nutrition(5).saturationMod(2.5f).build()));
+				.food((new FoodProperties.Builder()).nutrition(5).saturationMod(0.8f).build()));
 	}
 
 	@Override

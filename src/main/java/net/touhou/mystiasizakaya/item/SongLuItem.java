@@ -32,7 +32,7 @@ import java.util.List;
 public class SongLuItem extends Item {
 	public SongLuItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)
-				.food((new FoodProperties.Builder()).nutrition(2).saturationMod(2f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

@@ -32,7 +32,7 @@ import java.util.List;
 public class NaiYouTunCaiItem extends Item {
 	public NaiYouTunCaiItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)
-				.food((new FoodProperties.Builder()).nutrition(10).saturationMod(7.2f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(10).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

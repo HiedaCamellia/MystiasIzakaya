@@ -32,7 +32,7 @@ import java.util.List;
 public class HaiDanItem extends Item {
 	public HaiDanItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).nutrition(2).saturationMod(1.2f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

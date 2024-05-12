@@ -32,7 +32,7 @@ import java.util.List;
 public class XiaItem extends Item {
 	public XiaItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.6f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

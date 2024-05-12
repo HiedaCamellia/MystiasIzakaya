@@ -32,7 +32,7 @@ import java.util.List;
 public class ShuCaiZhuanJiItem extends Item {
 	public ShuCaiZhuanJiItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.RARE)
-				.food((new FoodProperties.Builder()).nutrition(6).saturationMod(7f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

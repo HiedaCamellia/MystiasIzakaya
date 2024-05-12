@@ -32,7 +32,7 @@ import java.util.List;
 public class BanLiItem extends Item {
 	public BanLiItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).nutrition(1).saturationMod(0.6f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(1).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

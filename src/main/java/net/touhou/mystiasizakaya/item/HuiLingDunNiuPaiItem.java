@@ -32,7 +32,7 @@ import java.util.List;
 public class HuiLingDunNiuPaiItem extends Item {
 	public HuiLingDunNiuPaiItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)
-				.food((new FoodProperties.Builder()).nutrition(16).saturationMod(13f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(16).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

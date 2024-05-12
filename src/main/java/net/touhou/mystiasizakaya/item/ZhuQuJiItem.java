@@ -32,7 +32,7 @@ import java.util.List;
 public class ZhuQuJiItem extends Item {
 	public ZhuQuJiItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)
-				.food((new FoodProperties.Builder()).nutrition(14).saturationMod(24f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(14).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

@@ -31,7 +31,7 @@ import java.util.List;
 public class ShuiTaJiItem extends Item {
 	public ShuiTaJiItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).nutrition(6).saturationMod(3.5f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

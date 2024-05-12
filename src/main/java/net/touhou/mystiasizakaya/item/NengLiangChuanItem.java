@@ -32,7 +32,7 @@ import java.util.List;
 public class NengLiangChuanItem extends Item {
 	public NengLiangChuanItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)
-				.food((new FoodProperties.Builder()).nutrition(14).saturationMod(5.5f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(14).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

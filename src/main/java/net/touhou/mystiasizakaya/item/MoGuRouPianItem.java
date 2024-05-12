@@ -32,7 +32,7 @@ import java.util.List;
 public class MoGuRouPianItem extends Item {
 	public MoGuRouPianItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)
-				.food((new FoodProperties.Builder()).nutrition(7).saturationMod(5.1f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override
