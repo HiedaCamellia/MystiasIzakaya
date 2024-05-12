@@ -52,6 +52,7 @@ public class En5Item extends Item {
 			capability.syncPlayerVariables(entity);
 		});
 		ar.getObject().shrink(ar.getObject().getCount());
+		ar.getObject().setCount(0);
 		return ar;
 	}
 }
