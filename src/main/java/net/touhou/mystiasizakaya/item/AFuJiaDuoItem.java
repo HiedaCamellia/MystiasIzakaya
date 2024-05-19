@@ -2,16 +2,18 @@ package net.touhou.mystiasizakaya.item;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
+
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromTagsProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromIngredientsProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromCuisines;
 import java.util.Arrays;
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;

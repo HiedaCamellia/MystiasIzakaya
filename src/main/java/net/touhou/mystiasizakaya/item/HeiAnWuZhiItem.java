@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.network.chat.Component;
 import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
+
 import java.util.List;
 
 public class HeiAnWuZhiItem extends Item {

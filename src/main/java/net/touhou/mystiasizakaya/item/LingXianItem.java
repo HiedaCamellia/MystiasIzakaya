@@ -6,7 +6,7 @@ import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromTagsProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromIngredientsProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromCuisines;
-import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
+
 
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
@@ -24,6 +24,7 @@ import net.minecraft.client.gui.screens.Screen;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;

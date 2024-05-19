@@ -8,8 +8,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.Screen;
-import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
+
 import java.util.Arrays;
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 import java.util.List;
 
 public class IronKnifeItem extends Item {

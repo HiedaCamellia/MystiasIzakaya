@@ -2,7 +2,7 @@
 package net.touhou.mystiasizakaya.item;
 
 import net.touhou.mystiasizakaya.network.MystiasIzakayaModVariables;
-import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
+
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.TooltipFlag;
@@ -16,6 +16,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.Screen;
 
 import java.util.Arrays;
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 import java.util.List;
 
 public class En5Item extends Item {
