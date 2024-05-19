@@ -32,7 +32,7 @@ import java.util.List;
 public class DaSheYanItem extends Item {
 	public DaSheYanItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)
-				.food((new FoodProperties.Builder()).nutrition(12).saturationMod(0.8f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(12).saturationMod(1.2f).alwaysEat().build()));
 	}
 
 	@Override

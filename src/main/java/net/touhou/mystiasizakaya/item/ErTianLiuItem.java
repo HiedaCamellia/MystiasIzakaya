@@ -32,7 +32,7 @@ import java.util.List;
 public class ErTianLiuItem extends Item {
 	public ErTianLiuItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)
-				.food((new FoodProperties.Builder()).nutrition(21).saturationMod(0.8f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(21).saturationMod(1.2f).alwaysEat().build()));
 	}
 
 	@Override

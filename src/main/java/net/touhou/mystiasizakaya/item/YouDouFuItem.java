@@ -32,7 +32,7 @@ import java.util.List;
 public class YouDouFuItem extends Item {
 	public YouDouFuItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)
-				.food((new FoodProperties.Builder()).nutrition(8).saturationMod(0.8f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(8).saturationMod(1.2f).alwaysEat().build()));
 	}
 
 	@Override

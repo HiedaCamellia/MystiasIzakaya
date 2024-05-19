@@ -30,7 +30,7 @@ import java.util.List;
 public class BingShanMaoYuDongNingItem extends Item {
 	public BingShanMaoYuDongNingItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.8f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(4).saturationMod(1.2f).alwaysEat().build()));
 	}
 
 	@Override

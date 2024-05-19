@@ -32,7 +32,7 @@ import java.util.List;
 public class HuanTanHuaGaoItem extends Item {
 	public HuanTanHuaGaoItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)
-				.food((new FoodProperties.Builder()).nutrition(8).saturationMod(0.8f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(8).saturationMod(1.2f).alwaysEat().build()));
 	}
 
 	@Override
