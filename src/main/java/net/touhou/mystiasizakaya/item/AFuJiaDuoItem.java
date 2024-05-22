@@ -2,16 +2,18 @@ package net.touhou.mystiasizakaya.item;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
+
 import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromTagsProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromIngredientsProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromCuisines;
 import java.util.Arrays;
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
@@ -32,7 +34,7 @@ import java.util.List;
 public class AFuJiaDuoItem extends Item {
 	public AFuJiaDuoItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.COMMON).tab(MystiasIzakayaModTabs.MystiasIzakaya)
-				.food((new FoodProperties.Builder()).nutrition(4).saturationMod(1.8f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.8f).alwaysEat().build()));
 	}
 
 	@Override

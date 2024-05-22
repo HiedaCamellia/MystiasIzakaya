@@ -10,8 +10,8 @@ import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromTagsProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromIngredientsProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromCuisines;
-import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 import java.util.Arrays;
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.UseAnim;
@@ -27,13 +27,17 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 
 import java.util.List;
 
 public class XiangZhaChanShuiItem extends Item {
 	public XiangZhaChanShuiItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.UNCOMMON)
-				.food((new FoodProperties.Builder()).nutrition(9).saturationMod(2.5f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(9).saturationMod(1.2f).alwaysEat().build()));
 	}
 
 	@Override
@@ -77,16 +81,15 @@ public class XiangZhaChanShuiItem extends Item {
 	}
 
 	@Override
-public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
-super.finishUsingItem(itemstack, world, entity);
-GiveEffectFromTagsProcedure.execute(world, itemstack, entity);
-GiveEffectFromIngredientsProcedure.execute(world, itemstack, entity);
-GiveEffectFromCuisines.execute(world, itemstack, entity);
-return itemstack;
-}
+	public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
+		super.finishUsingItem(itemstack, world, entity);
+		GiveEffectFromTagsProcedure.execute(world, itemstack, entity);
+		GiveEffectFromIngredientsProcedure.execute(world, itemstack, entity);
+		GiveEffectFromCuisines.execute(world, itemstack, entity);
+		return itemstack;
+	}
 
-
-public static List<String> gettags() {
+	public static List<String> gettags() {
 		List<String> list = new ArrayList<>();
 		list.add("tag.mystias_izakaya.Economical");
 		list.add("tag.mystias_izakaya.Greasy");

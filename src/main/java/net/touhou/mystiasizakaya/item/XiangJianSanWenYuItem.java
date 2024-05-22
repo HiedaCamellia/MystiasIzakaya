@@ -10,8 +10,8 @@ import net.touhou.mystiasizakaya.procedures.RenderTagsFromNbtProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromTagsProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromIngredientsProcedure;
 import net.touhou.mystiasizakaya.procedures.GiveEffectFromCuisines;
-import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 import java.util.Arrays;
+import net.touhou.mystiasizakaya.init.MystiasIzakayaModTabs;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.UseAnim;
@@ -33,7 +33,7 @@ import java.util.List;
 public class XiangJianSanWenYuItem extends Item {
 	public XiangJianSanWenYuItem() {
 		super(new Item.Properties().tab(MystiasIzakayaModTabs.MystiasIzakaya).stacksTo(64).rarity(Rarity.RARE)
-				.food((new FoodProperties.Builder()).nutrition(12).saturationMod(8f).alwaysEat().build()));
+				.food((new FoodProperties.Builder()).nutrition(12).saturationMod(1.2f).alwaysEat().build()));
 	}
 
 	@Override
