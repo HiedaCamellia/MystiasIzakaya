@@ -1,11 +1,10 @@
 package net.touhou.mystiasizakaya.client.gui;
 
 import net.touhou.mystiasizakaya.world.inventory.CookingRangeUiMenu;
-import net.touhou.mystiasizakaya.procedures.TargetsText;
-import net.touhou.mystiasizakaya.procedures.ButtunShow;
-import net.touhou.mystiasizakaya.procedures.StatusProcedure;
-import net.touhou.mystiasizakaya.procedures.LefttimeProcedure;
-import net.touhou.mystiasizakaya.network.BankUiButtonMessage;
+import net.touhou.mystiasizakaya.util.TargetsText;
+import net.touhou.mystiasizakaya.util.ButtunShow;
+import net.touhou.mystiasizakaya.cooking.ui.Status;
+import net.touhou.mystiasizakaya.cooking.ui.Lefttime;
 import net.touhou.mystiasizakaya.network.CookingRangeUiButtonMessage;
 import net.touhou.mystiasizakaya.MystiasIzakayaMod;
 
@@ -86,8 +85,8 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 		this.font.draw(poseStack, TargetsText.get(world, x, y, z,2), 44, 83, -1);
 		this.font.draw(poseStack, TargetsText.get(world, x, y, z,3), 44, 110, -1);
 		this.font.draw(poseStack, TargetsText.get(world, x, y, z,4), 44, 137, -1);
-		this.font.draw(poseStack, StatusProcedure.execute(world, x, y, z), 233, 26, -1);
-		this.font.draw(poseStack, LefttimeProcedure.execute(world, x, y, z), 238, 65, -1);
+		this.font.draw(poseStack, Status.execute(world, x, y, z), 233, 26, -1);
+		this.font.draw(poseStack, Lefttime.execute(world, x, y, z), 238, 65, -1);
 	}
 
 	@Override

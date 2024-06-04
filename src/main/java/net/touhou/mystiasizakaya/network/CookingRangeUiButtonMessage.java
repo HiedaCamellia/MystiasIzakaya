@@ -2,8 +2,8 @@
 package net.touhou.mystiasizakaya.network;
 
 import net.touhou.mystiasizakaya.world.inventory.CookingRangeUiMenu;
-import net.touhou.mystiasizakaya.procedures.ConfirmProcedure;
-import net.touhou.mystiasizakaya.procedures.SelectTarget;
+import net.touhou.mystiasizakaya.cooking.Confirm;
+import net.touhou.mystiasizakaya.util.SelectTarget;
 import net.touhou.mystiasizakaya.MystiasIzakayaMod;
 
 import net.minecraftforge.network.NetworkEvent;
@@ -65,7 +65,7 @@ public class CookingRangeUiButtonMessage {
 			return;
 		if (buttonID == 0) {
 
-			ConfirmProcedure.execute(world, x, y, z);
+			Confirm.execute(world, x, y, z);
 		}
 		if (buttonID == 1) {
 			SelectTarget.set(world, x, y, z, 7);
