@@ -69,7 +69,7 @@ import net.touhou.mystiasizakaya.item.ChaoRouSiItem;
 import net.touhou.mystiasizakaya.item.BuSiNiaoItem;
 import net.touhou.mystiasizakaya.item.BeiJiTianXiaMiTaoSeLaItem;
 import net.touhou.mystiasizakaya.item.BanNiDiKeDanItem;
-import net.touhou.mystiasizakaya.item.BaiXueItem;
+import net.touhou.mystiasizakaya.item.beverages.BaiXueItem;
 import net.touhou.mystiasizakaya.item.BaiTaoShengBaQiaoItem;
 import net.touhou.mystiasizakaya.item.BaiGuoLuoBuPaiGuTangItem;
 import net.touhou.mystiasizakaya.init.MystiasIzakayaModItems;
