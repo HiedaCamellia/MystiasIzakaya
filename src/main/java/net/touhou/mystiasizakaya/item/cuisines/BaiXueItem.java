@@ -1,5 +1,5 @@
 
-package net.touhou.mystiasizakaya.item.beverages;
+package net.touhou.mystiasizakaya.item.cuisines;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
