@@ -3,7 +3,7 @@ package net.touhou.mystiasizakaya.block;
 
 import net.touhou.mystiasizakaya.world.inventory.CookingRangeUiMenu;
 import net.touhou.mystiasizakaya.procedures.ReProcedure;
-import net.touhou.mystiasizakaya.procedures.MainProcedure;
+import net.touhou.mystiasizakaya.cooking.Main;
 import net.touhou.mystiasizakaya.procedures.InitialCookProcedure;
 import net.touhou.mystiasizakaya.procedures.CleanProcedure;
 import net.touhou.mystiasizakaya.block.entity.CookingRangeBlockEntity;
@@ -46,10 +46,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.client.gui.screens.Screen;
 
 import java.util.List;
-import java.util.Set;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.LinkedHashSet;
 
 import io.netty.buffer.Unpooled;
 
@@ -111,7 +109,7 @@ public class CookingRangeBlock extends Block implements EntityBlock {
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-		MainProcedure.execute(world, x, y, z);
+		Main.execute(world, x, y, z);
 		world.scheduleTick(pos, this, 1);
 	}
 

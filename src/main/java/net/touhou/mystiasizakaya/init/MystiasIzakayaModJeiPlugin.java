@@ -1,16 +1,16 @@
 
 package net.touhou.mystiasizakaya.init;
 
-import net.touhou.mystiasizakaya.jei_recipes.StreamerTypeRecipeCategory;
-import net.touhou.mystiasizakaya.jei_recipes.StreamerTypeRecipe;
-import net.touhou.mystiasizakaya.jei_recipes.GrillTypeRecipeCategory;
-import net.touhou.mystiasizakaya.jei_recipes.GrillTypeRecipe;
-import net.touhou.mystiasizakaya.jei_recipes.FryingPanTypeRecipeCategory;
-import net.touhou.mystiasizakaya.jei_recipes.FryingPanTypeRecipe;
-import net.touhou.mystiasizakaya.jei_recipes.CuttingBoardTypeRecipeCategory;
-import net.touhou.mystiasizakaya.jei_recipes.CuttingBoardTypeRecipe;
-import net.touhou.mystiasizakaya.jei_recipes.BoilingPotTypeRecipeCategory;
-import net.touhou.mystiasizakaya.jei_recipes.BoilingPotTypeRecipe;
+import net.touhou.mystiasizakaya.integration.jei.StreamerTypeRecipeCategory;
+import net.touhou.mystiasizakaya.integration.jei.StreamerTypeRecipe;
+import net.touhou.mystiasizakaya.integration.jei.GrillTypeRecipeCategory;
+import net.touhou.mystiasizakaya.integration.jei.GrillTypeRecipe;
+import net.touhou.mystiasizakaya.integration.jei.FryingPanTypeRecipeCategory;
+import net.touhou.mystiasizakaya.integration.jei.FryingPanTypeRecipe;
+import net.touhou.mystiasizakaya.integration.jei.CuttingBoardTypeRecipeCategory;
+import net.touhou.mystiasizakaya.integration.jei.CuttingBoardTypeRecipe;
+import net.touhou.mystiasizakaya.integration.jei.BoilingPotTypeRecipeCategory;
+import net.touhou.mystiasizakaya.integration.jei.BoilingPotTypeRecipe;
 
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.ItemStack;

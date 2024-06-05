@@ -1,7 +1,6 @@
 package net.touhou.mystiasizakaya.client.gui;
 
 import net.touhou.mystiasizakaya.world.inventory.BankUiMenu;
-import net.touhou.mystiasizakaya.procedures.Text10Procedure;
 import net.touhou.mystiasizakaya.network.BankUiButtonMessage;
 import net.touhou.mystiasizakaya.MystiasIzakayaMod;
 
@@ -78,7 +77,7 @@ public class BankUiScreen extends AbstractContainerScreen<BankUiMenu> {
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 		guiGraphics.drawString(this.font,
 
-				Text10Procedure.execute(), 66, 24, -12829636, false);
+				Component.translatable("gui.mystias_izakaya.bank_ui.bank").getString(), 66, 24, -12829636, false);
 	}
 
 	@Override

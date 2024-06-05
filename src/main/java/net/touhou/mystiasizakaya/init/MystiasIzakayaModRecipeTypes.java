@@ -1,10 +1,10 @@
 package net.touhou.mystiasizakaya.init;
 
-import net.touhou.mystiasizakaya.jei_recipes.StreamerTypeRecipe;
-import net.touhou.mystiasizakaya.jei_recipes.GrillTypeRecipe;
-import net.touhou.mystiasizakaya.jei_recipes.FryingPanTypeRecipe;
-import net.touhou.mystiasizakaya.jei_recipes.CuttingBoardTypeRecipe;
-import net.touhou.mystiasizakaya.jei_recipes.BoilingPotTypeRecipe;
+import net.touhou.mystiasizakaya.integration.jei.StreamerTypeRecipe;
+import net.touhou.mystiasizakaya.integration.jei.GrillTypeRecipe;
+import net.touhou.mystiasizakaya.integration.jei.FryingPanTypeRecipe;
+import net.touhou.mystiasizakaya.integration.jei.CuttingBoardTypeRecipe;
+import net.touhou.mystiasizakaya.integration.jei.BoilingPotTypeRecipe;
 import net.touhou.mystiasizakaya.MystiasIzakayaMod;
 
 import net.minecraftforge.registries.ForgeRegistries;
