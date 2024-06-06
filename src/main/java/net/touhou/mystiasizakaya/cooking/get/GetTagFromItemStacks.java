@@ -1,55 +1,6 @@
 package net.touhou.mystiasizakaya.cooking.get;
 
-import net.touhou.mystiasizakaya.item.ingredients.ZunYuItem;
-import net.touhou.mystiasizakaya.item.ingredients.ZhuZiItem;
-import net.touhou.mystiasizakaya.item.ingredients.ZhuSunItem;
-import net.touhou.mystiasizakaya.item.ingredients.ZhuRouItem;
-import net.touhou.mystiasizakaya.item.ingredients.ZhiShiItem;
-import net.touhou.mystiasizakaya.item.ingredients.ZhangYuItem;
-import net.touhou.mystiasizakaya.item.ingredients.YueGuangCaoItem;
-import net.touhou.mystiasizakaya.item.ingredients.YeZhuRouItem;
-import net.touhou.mystiasizakaya.item.ingredients.YangCongItem;
-import net.touhou.mystiasizakaya.item.ingredients.XiaItem;
-import net.touhou.mystiasizakaya.item.ingredients.TuDouItem;
-import net.touhou.mystiasizakaya.item.ingredients.TaoZiItem;
-import net.touhou.mystiasizakaya.item.ingredients.SongZiItem;
-import net.touhou.mystiasizakaya.item.ingredients.SongLuItem;
-import net.touhou.mystiasizakaya.item.ingredients.SanWenYuItem;
-import net.touhou.mystiasizakaya.item.ingredients.PuTaoItem;
-import net.touhou.mystiasizakaya.item.ingredients.PangXieItem;
-import net.touhou.mystiasizakaya.item.ingredients.NuoMiItem;
-import net.touhou.mystiasizakaya.item.ingredients.NiuRouItem;
-import net.touhou.mystiasizakaya.item.ingredients.NingMengItem;
-import net.touhou.mystiasizakaya.item.ingredients.NanGuaItem;
-import net.touhou.mystiasizakaya.item.ingredients.NaiYouItem;
-import net.touhou.mystiasizakaya.item.ingredients.MoGuItem;
-import net.touhou.mystiasizakaya.item.ingredients.MianFenItem;
-import net.touhou.mystiasizakaya.item.ingredients.LuoBuItem;
-import net.touhou.mystiasizakaya.item.ingredients.LuShuiItem;
-import net.touhou.mystiasizakaya.item.ingredients.LuRouItem;
-import net.touhou.mystiasizakaya.item.ingredients.LianZiItem;
-import net.touhou.mystiasizakaya.item.ingredients.LaJiaoItem;
-import net.touhou.mystiasizakaya.item.ingredients.JinQiangYuItem;
-import net.touhou.mystiasizakaya.item.ingredients.JiShangJinQiangYuItem;
-import net.touhou.mystiasizakaya.item.ingredients.JiDanItem;
-import net.touhou.mystiasizakaya.item.ingredients.HuangYouItem;
-import net.touhou.mystiasizakaya.item.ingredients.HuangGuaItem;
-import net.touhou.mystiasizakaya.item.ingredients.HuanTanHuaItem;
-import net.touhou.mystiasizakaya.item.ingredients.HeiYanItem;
-import net.touhou.mystiasizakaya.item.ingredients.HeiMaoZhuRouItem;
-import net.touhou.mystiasizakaya.item.ingredients.HeTunItem;
-import net.touhou.mystiasizakaya.item.ingredients.HeNiuItem;
-import net.touhou.mystiasizakaya.item.ingredients.HaiTaiItem;
-import net.touhou.mystiasizakaya.item.ingredients.HaiDanItem;
-import net.touhou.mystiasizakaya.item.ingredients.FengMiItem;
-import net.touhou.mystiasizakaya.item.ingredients.DouFuItem;
-import net.touhou.mystiasizakaya.item.ingredients.DiGuaItem;
-import net.touhou.mystiasizakaya.item.ingredients.ChanShuiItem;
-import net.touhou.mystiasizakaya.item.ingredients.BingKuaiItem;
-import net.touhou.mystiasizakaya.item.ingredients.BingDiLianItem;
-import net.touhou.mystiasizakaya.item.ingredients.BanLiItem;
-import net.touhou.mystiasizakaya.item.ingredients.BaiGuoItem;
-import net.touhou.mystiasizakaya.item.ingredients.BaMuManItem;
+import net.touhou.mystiasizakaya.item.ingredients.*;
 import net.touhou.mystiasizakaya.init.MystiasIzakayaModItems;
 
 import net.minecraftforge.registries.ForgeRegistries;
@@ -78,155 +29,188 @@ public class GetTagFromItemStacks {
 			i = i + 1;
 		}
 		List<String> list = new ArrayList<>();
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.DOU_FU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:dou_fu")) {
 			list.addAll(DouFuItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.BA_MU_MAN.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:ba_mu_man")) {
 			list.addAll(BaMuManItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.BAI_GUO.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:bai_guo")) {
 			list.addAll(BaiGuoItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.BAN_LI.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:ban_li")) {
 			list.addAll(BanLiItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.BING_KUAI.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:bing_kuai")) {
 			list.addAll(BingKuaiItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.BING_DI_LIAN.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:bing_di_lian")) {
 			list.addAll(BingDiLianItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.CHAN_SHUI.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:chan_shui")) {
 			list.addAll(ChanShuiItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.DI_GUA.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:di_gua")) {
 			list.addAll(DiGuaItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.FENG_MI.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:feng_mi")) {
 			list.addAll(FengMiItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.HAI_DAN.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:hai_dan")) {
 			list.addAll(HaiDanItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.HAI_TAI.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:hai_tai")) {
 			list.addAll(HaiTaiItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.HE_NIU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:he_niu")) {
 			list.addAll(HeNiuItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.HE_TUN.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:he_tun")) {
 			list.addAll(HeTunItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.HEI_MAO_ZHU_ROU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:hei_mao_zhu_rou")) {
 			list.addAll(HeiMaoZhuRouItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.HEI_YAN.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:hei_yan")) {
 			list.addAll(HeiYanItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.HUAN_TAN_HUA.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:huan_tan_hua")) {
 			list.addAll(HuanTanHuaItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.HUANG_GUA.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:huang_gua")) {
 			list.addAll(HuangGuaItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.HUANG_YOU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:huang_you")) {
 			list.addAll(HuangYouItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.JI_DAN.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:ji_dan")) {
 			list.addAll(JiDanItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.JI_SHANG_JIN_QIANG_YU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:ji_shang_jin_qiang_yu")) {
 			list.addAll(JiShangJinQiangYuItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.JIN_QIANG_YU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:jin_qiang_yu")) {
 			list.addAll(JinQiangYuItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.LA_JIAO.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:la_jiao")) {
 			list.addAll(LaJiaoItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.LIAN_ZI.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:lian_zi")) {
 			list.addAll(LianZiItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.LU_ROU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:lu_rou")) {
 			list.addAll(LuRouItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.LU_SHUI.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:lu_shui")) {
 			list.addAll(LuShuiItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.LUO_BU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:luo_bu")) {
 			list.addAll(LuoBuItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.MIAN_FEN.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:mian_fen")) {
 			list.addAll(MianFenItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.MO_GU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:mo_gu")) {
 			list.addAll(MoGuItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.NAI_YOU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:nai_you")) {
 			list.addAll(NaiYouItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.NAN_GUA.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:nan_gua")) {
 			list.addAll(NanGuaItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.NING_MENG.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:ning_meng")) {
 			list.addAll(NingMengItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.NIU_ROU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:niu_rou")) {
 			list.addAll(NiuRouItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.NUO_MI.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:nuo_mi")) {
 			list.addAll(NuoMiItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.PANG_XIE.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:pang_xie")) {
 			list.addAll(PangXieItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.PU_TAO.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:pu_tao")) {
 			list.addAll(PuTaoItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.SAN_WEN_YU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:san_wen_yu")) {
 			list.addAll(SanWenYuItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.SONG_LU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:song_lu")) {
 			list.addAll(SongLuItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.SONG_ZI.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:song_zi")) {
 			list.addAll(SongZiItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.TAO_ZI.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:tao_zi")) {
 			list.addAll(TaoZiItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.TU_DOU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:tu_dou")) {
 			list.addAll(TuDouItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.XIA.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:xia")) {
 			list.addAll(XiaItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.YANG_CONG.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:yang_cong")) {
 			list.addAll(YangCongItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.YE_ZHU_ROU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:ye_zhu_rou")) {
 			list.addAll(YeZhuRouItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.YUE_GUANG_CAO.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:yue_guang_cao")) {
 			list.addAll(YueGuangCaoItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.ZHANG_YU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:zhang_yu")) {
 			list.addAll(ZhangYuItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.ZHI_SHI.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:zhi_shi")) {
 			list.addAll(ZhiShiItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.ZHU_ROU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:zhu_rou")) {
 			list.addAll(ZhuRouItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.ZHU_SUN.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:zhu_sun")) {
 			list.addAll(ZhuSunItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.ZHU_ZI.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:zhu_zi")) {
 			list.addAll(ZhuZiItem.gettags());
 		}
-		if (raws.contains((ForgeRegistries.ITEMS.getKey(MystiasIzakayaModItems.ZUN_YU.get()).toString()))) {
+		if (raws.contains("mystias_izakaya:zun_yu")) {
 			list.addAll(ZunYuItem.gettags());
+		}
+		if (raws.contains("mystias_izakaya:chun_chun")) {
+			list.addAll(ChunChunItem.gettags());
+		}
+		if (raws.contains("mystias_izakaya:hong_dou")) {
+			list.addAll(HongDouItem.gettags());
+		}
+		if (raws.contains("mystias_izakaya:ke_ke_dou")) {
+			list.addAll(KeKeDouItem.gettags());
+		}
+		if (raws.contains("mystias_izakaya:xu_li")) {
+			list.addAll(XuLiItem.gettags());
+		}
+		if (raws.contains("mystias_izakaya:mei_zi")) {
+			list.addAll(MeiZiItem.gettags());
+		}
+		if (raws.contains("mystias_izakaya:pu_pu_you_guo")) {
+			list.addAll(PuPuYouGuoItem.gettags());
+		}
+		if (raws.contains("mystias_izakaya:qiang_xiao_la_jiao_su")) {
+			list.addAll(QiangXiaoLaJiaoSu.gettags());
+		}
+		if (raws.contains("mystias_izakaya:xi_hong_shi")) {
+			list.addAll(XiHongShiItem.gettags());
+		}
+		if (raws.contains("mystias_izakaya:xi_lan_hua")) {
+			list.addAll(XiLanHuaItem.gettags());
+		}
+		if (raws.contains("mystias_izakaya:xian_hua")) {
+			list.addAll(XianHuaItem.gettags());
+		}
+		if (raws.contains("mystias_izakaya:yin_er")) {
+			list.addAll(YinErItem.gettags());
 		}
 		Set<String> set = new LinkedHashSet<>(list); // 使用LinkedHashSet以保持原始顺序
 		list.clear();
