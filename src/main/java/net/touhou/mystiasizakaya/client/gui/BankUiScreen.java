@@ -1,7 +1,7 @@
 package net.touhou.mystiasizakaya.client.gui;
 
 import net.touhou.mystiasizakaya.world.inventory.BankUiMenu;
-import net.touhou.mystiasizakaya.network.BankUiButtonMessage;
+import net.touhou.mystiasizakaya.network.BankUiButton;
 import net.touhou.mystiasizakaya.MystiasIzakayaMod;
 
 import net.minecraft.world.level.Level;
@@ -113,8 +113,8 @@ public class BankUiScreen extends AbstractContainerScreen<BankUiMenu> {
 		this.addWidget(this.input);
 		button_take_out = Button.builder(Component.translatable("gui.mystias_izakaya.bank_ui.button_take_out"), e -> {
 			if (true) {
-				MystiasIzakayaMod.PACKET_HANDLER.sendToServer(new BankUiButtonMessage(0, x, y, z));
-				BankUiButtonMessage.handleButtonAction(entity, 0, x, y, z);
+				MystiasIzakayaMod.PACKET_HANDLER.sendToServer(new BankUiButton(0, x, y, z));
+				BankUiButton.handleButtonAction(entity, 0, x, y, z);
 			}
 		}).bounds(this.leftPos + 31, this.topPos + 100, 110, 20).build();
 		guistate.put("button:button_take_out", button_take_out);

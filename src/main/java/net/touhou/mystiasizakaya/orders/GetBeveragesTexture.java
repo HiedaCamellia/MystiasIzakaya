@@ -9,7 +9,6 @@ import net.touhou.mystiasizakaya.network.Variables;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.resources.ResourceLocation;
-import net.touhou.mystiasizakaya.procedures.GetTextureProcedure;
 
 import java.util.List;
 
@@ -23,6 +22,6 @@ public class GetBeveragesTexture {
 		if (!new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(order))).is(tag)) {
 			return "";
 		}
-		return GetTextureProcedure.get(order);
+		return order.split(":")[1]+ "_";
 	}
 }

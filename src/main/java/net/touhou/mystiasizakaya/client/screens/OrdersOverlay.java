@@ -18,24 +18,14 @@ import net.minecraft.client.Minecraft;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.platform.GlStateManager;
+import net.touhou.mystiasizakaya.orders.Initorders;
 
 @Mod.EventBusSubscriber({ Dist.CLIENT })
 public class OrdersOverlay {
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public static void eventHandler(RenderGuiEvent.Pre event) {
-		int w = event.getWindow().getGuiScaledWidth();
 		int h = event.getWindow().getGuiScaledHeight();
-		Level world = null;
-		double x = 0;
-		double y = 0;
-		double z = 0;
 		Player entity = Minecraft.getInstance().player;
-		if (entity != null) {
-			world = entity.level();
-			x = entity.getX();
-			y = entity.getY();
-			z = entity.getZ();
-		}
 		RenderSystem.disableDepthTest();
 		RenderSystem.depthMask(false);
 		RenderSystem.enableBlend();
@@ -47,6 +37,7 @@ public class OrdersOverlay {
 		String fm = "";
 		String fmb = "";
 		int reali = 0;
+		Initorders.init(entity);
 		for (int i = 0; i < 7; i++) {
 			fm = GetCuisinesTexture.execute(i, entity);
 			fmb = GetBeveragesTexture.execute(i, entity);

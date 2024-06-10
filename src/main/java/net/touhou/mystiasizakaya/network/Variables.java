@@ -27,14 +27,13 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.Direction;
 import net.minecraft.client.Minecraft;
 
+import java.util.Arrays;
 import java.util.function.Supplier;
 import java.util.List;
 import java.util.ArrayList;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Variables {
-	public static List<Object> orders = new ArrayList<>();
-	public static List<Object> ordersbeverages = new ArrayList<>();
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
@@ -113,8 +112,8 @@ public class Variables {
 	public static class PlayerVariables {
 		public double balance = 0;
 		public boolean showbalance = true;
-		public List<String> orders = new ArrayList<>();
-		public List<String> ordersbeverages = new ArrayList<>();
+		public List<String> orders = Arrays.asList("minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air","minecraft:air");
+		public List<String> ordersbeverages = Arrays.asList("minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air","minecraft:air");
 
 		public void syncPlayerVariables(Entity entity) {
 			if (entity instanceof ServerPlayer serverPlayer)

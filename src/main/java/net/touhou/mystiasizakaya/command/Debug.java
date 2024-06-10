@@ -37,7 +37,7 @@ public class Debug {
 							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
 							Player player = arguments.getSource().getPlayer();
 							List<String> orders_list = player.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new Variables.PlayerVariables()).orders;
-							orders_list.set(id, "");
+							orders_list.set(id, "minecraft:air");
 							player.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 								capability.orders = orders_list;
 								capability.syncPlayerVariables(player);
@@ -59,7 +59,7 @@ public class Debug {
 							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
 							Player player = arguments.getSource().getPlayer();
 							List<String> ordersbeverages_list = player.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new Variables.PlayerVariables()).ordersbeverages;
-							ordersbeverages_list.set(id, "");
+							ordersbeverages_list.set(id, "minecraft:air");
 							player.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 								capability.ordersbeverages = ordersbeverages_list;
 								capability.syncPlayerVariables(player);

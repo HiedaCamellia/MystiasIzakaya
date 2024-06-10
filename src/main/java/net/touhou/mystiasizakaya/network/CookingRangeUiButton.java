@@ -1,8 +1,9 @@
 
 package net.touhou.mystiasizakaya.network;
 
-import net.touhou.mystiasizakaya.world.inventory.BankUiMenu;
-import net.touhou.mystiasizakaya.procedures.BankPProcedure;
+import net.touhou.mystiasizakaya.world.inventory.CookingRangeUiMenu;
+import net.touhou.mystiasizakaya.cooking.Confirm;
+import net.touhou.mystiasizakaya.util.SelectTarget;
 import net.touhou.mystiasizakaya.MystiasIzakayaMod;
 
 import net.minecraftforge.network.NetworkEvent;
@@ -19,31 +20,31 @@ import java.util.function.Supplier;
 import java.util.HashMap;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class BankUiButtonMessage {
+public class CookingRangeUiButton {
 	private final int buttonID, x, y, z;
 
-	public BankUiButtonMessage(FriendlyByteBuf buffer) {
+	public CookingRangeUiButton(FriendlyByteBuf buffer) {
 		this.buttonID = buffer.readInt();
 		this.x = buffer.readInt();
 		this.y = buffer.readInt();
 		this.z = buffer.readInt();
 	}
 
-	public BankUiButtonMessage(int buttonID, int x, int y, int z) {
+	public CookingRangeUiButton(int buttonID, int x, int y, int z) {
 		this.buttonID = buttonID;
 		this.x = x;
 		this.y = y;
 		this.z = z;
 	}
 
-	public static void buffer(BankUiButtonMessage message, FriendlyByteBuf buffer) {
+	public static void buffer(CookingRangeUiButton message, FriendlyByteBuf buffer) {
 		buffer.writeInt(message.buttonID);
 		buffer.writeInt(message.x);
 		buffer.writeInt(message.y);
 		buffer.writeInt(message.z);
 	}
 
-	public static void handler(BankUiButtonMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
+	public static void handler(CookingRangeUiButton message, Supplier<NetworkEvent.Context> contextSupplier) {
 		NetworkEvent.Context context = contextSupplier.get();
 		context.enqueueWork(() -> {
 			Player entity = context.getSender();
@@ -58,18 +59,38 @@ public class BankUiButtonMessage {
 
 	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
 		Level world = entity.level();
-		HashMap guistate = BankUiMenu.guistate;
+		HashMap guistate = CookingRangeUiMenu.guistate;
 		// security measure to prevent arbitrary chunk generation
 		if (!world.hasChunkAt(new BlockPos(x, y, z)))
 			return;
 		if (buttonID == 0) {
 
-			BankPProcedure.execute(entity, guistate);
+			Confirm.execute(world, x, y, z);
+		}
+		if (buttonID == 1) {
+			SelectTarget.set(world, x, y, z, 7);
+		}
+		if (buttonID == 2) {
+
+			SelectTarget.set(world, x, y, z, 8);
+		}
+		if (buttonID == 3) {
+
+			SelectTarget.set(world, x, y, z, 9);
+		}
+		if (buttonID == 4) {
+
+			SelectTarget.set(world, x, y, z, 10);
+		}
+		if (buttonID == 5) {
+
+			SelectTarget.set(world, x, y, z, 11);
 		}
 	}
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		MystiasIzakayaMod.addNetworkMessage(BankUiButtonMessage.class, BankUiButtonMessage::buffer, BankUiButtonMessage::new, BankUiButtonMessage::handler);
+		MystiasIzakayaMod.addNetworkMessage(CookingRangeUiButton.class, CookingRangeUiButton::buffer,
+				CookingRangeUiButton::new, CookingRangeUiButton::handler);
 	}
 }
