@@ -19,4 +19,12 @@ public class GetTextureProcedure {
 		fm += "_";
 		return fm;
 	}
+	public static String get(String Reg) {
+		String fm = "";
+		fm = Reg;
+		fm = fm.split(":")[1];
+		fm += "_";
+		return fm;
+	}
+
 }

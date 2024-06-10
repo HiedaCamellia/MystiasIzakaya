@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class MystiasIzakayaModVariables {
+public class Variables {
 	public static List<Object> orders = new ArrayList<>();
 	public static List<Object> ordersbeverages = new ArrayList<>();
 
@@ -73,6 +73,8 @@ public class MystiasIzakayaModVariables {
 			PlayerVariables clone = ((PlayerVariables) event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
 			clone.balance = original.balance;
 			clone.showbalance = original.showbalance;
+			clone.orders = original.orders;
+			clone.ordersbeverages = original.ordersbeverages;
 			if (!event.isWasDeath()) {
 			}
 		}
@@ -111,6 +113,8 @@ public class MystiasIzakayaModVariables {
 	public static class PlayerVariables {
 		public double balance = 0;
 		public boolean showbalance = true;
+		public List<String> orders = new ArrayList<>();
+		public List<String> ordersbeverages = new ArrayList<>();
 
 		public void syncPlayerVariables(Entity entity) {
 			if (entity instanceof ServerPlayer serverPlayer)
@@ -121,6 +125,10 @@ public class MystiasIzakayaModVariables {
 			CompoundTag nbt = new CompoundTag();
 			nbt.putDouble("balance", balance);
 			nbt.putBoolean("showbalance", showbalance);
+			String orders_string = String.join(",", orders);
+			String ordersbeverages_string = String.join(",", ordersbeverages);
+			nbt.putString("orders", orders_string);
+			nbt.putString("ordersbeverages", ordersbeverages_string);
 			return nbt;
 		}
 
@@ -128,6 +136,10 @@ public class MystiasIzakayaModVariables {
 			CompoundTag nbt = (CompoundTag) Tag;
 			balance = nbt.getDouble("balance");
 			showbalance = nbt.getBoolean("showbalance");
+			String orders_string = nbt.getString("orders");
+			String ordersbeverages_string = nbt.getString("ordersbeverages");
+			orders = new ArrayList<>(List.of(orders_string.split(",")));
+			ordersbeverages = new ArrayList<>(List.of(ordersbeverages_string.split(",")));
 		}
 	}
 
@@ -154,6 +166,8 @@ public class MystiasIzakayaModVariables {
 					PlayerVariables variables = ((PlayerVariables) Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
 					variables.balance = message.data.balance;
 					variables.showbalance = message.data.showbalance;
+					variables.orders = message.data.orders;
+					variables.ordersbeverages = message.data.ordersbeverages;
 				}
 			});
 			context.setPacketHandled(true);

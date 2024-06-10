@@ -1,7 +1,7 @@
 
 package net.touhou.mystiasizakaya.item.currency;
 
-import net.touhou.mystiasizakaya.network.MystiasIzakayaModVariables;
+import net.touhou.mystiasizakaya.network.Variables;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.UseAnim;
@@ -46,8 +46,8 @@ public class En5Item extends Item {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		double _setval = 5 * ar.getObject().getCount() + (entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MystiasIzakayaModVariables.PlayerVariables())).balance;
-		entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+		double _setval = 5 * ar.getObject().getCount() + (entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new Variables.PlayerVariables())).balance;
+		entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 			capability.balance = _setval;
 			capability.syncPlayerVariables(entity);
 		});

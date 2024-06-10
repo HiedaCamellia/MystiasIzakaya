@@ -1,10 +1,10 @@
-package net.touhou.mystiasizakaya.procedures;
+package net.touhou.mystiasizakaya.cooking.get;
 
 import net.touhou.mystiasizakaya.init.MystiasIzakayaModItems;
 
 import net.minecraft.world.item.ItemStack;
 
-public class GetKitchenwareTagProcedure {
+public class GetKitchenwareTag {
 	public static String execute(ItemStack Kitchenware) {
 		ItemStack util = ItemStack.EMPTY;
 		String tag = "";

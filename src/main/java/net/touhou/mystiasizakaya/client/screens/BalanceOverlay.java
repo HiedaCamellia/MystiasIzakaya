@@ -1,8 +1,8 @@
 
 package net.touhou.mystiasizakaya.client.screens;
 
+import net.touhou.mystiasizakaya.network.Variables;
 import net.touhou.mystiasizakaya.procedures.ShowbalanceLProcedure;
-import net.touhou.mystiasizakaya.network.MystiasIzakayaModVariables;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,8 +23,8 @@ public class BalanceOverlay {
 		Player entity = Minecraft.getInstance().player;
 		String text = Component.translatable("gui.mystias_izakaya.balance").getString() + ""
 				+ new java.text.DecimalFormat("#######")
-						.format((entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null)
-								.orElse(new MystiasIzakayaModVariables.PlayerVariables())).balance)
+						.format((entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null)
+								.orElse(new Variables.PlayerVariables())).balance)
 				+ "\u5186";
 		int strlength = Minecraft.getInstance().font.width(text);
 

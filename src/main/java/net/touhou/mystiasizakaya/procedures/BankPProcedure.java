@@ -1,8 +1,7 @@
 package net.touhou.mystiasizakaya.procedures;
 
-import org.checkerframework.checker.units.qual.s;
+import net.touhou.mystiasizakaya.network.Variables;
 
-import net.touhou.mystiasizakaya.network.MystiasIzakayaModVariables;
 import net.touhou.mystiasizakaya.init.MystiasIzakayaModItems;
 
 import net.minecraftforge.items.ItemHandlerHelper;
@@ -29,10 +28,10 @@ public class BankPProcedure {
 				return 0;
 			}
 		}.convert(guistate.containsKey("text:input") ? ((EditBox) guistate.get("text:input")).getValue() : "");
-		if (!(i < 0) && (entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MystiasIzakayaModVariables.PlayerVariables())).balance >= i) {
+		if (!(i < 0) && (entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new Variables.PlayerVariables())).balance >= i) {
 			{
-				double _setval = (entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MystiasIzakayaModVariables.PlayerVariables())).balance - i;
-				entity.getCapability(MystiasIzakayaModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+				double _setval = (entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new Variables.PlayerVariables())).balance - i;
+				entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 					capability.balance = _setval;
 					capability.syncPlayerVariables(entity);
 				});

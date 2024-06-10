@@ -1,10 +1,8 @@
 
 package net.touhou.mystiasizakaya.client.screens;
 
-import org.checkerframework.checker.units.qual.h;
-
-import net.touhou.mystiasizakaya.procedures.GetCuisinesTextureProcedure;
-import net.touhou.mystiasizakaya.procedures.GetBeveragesTextureProcedure;
+import net.touhou.mystiasizakaya.orders.GetCuisinesTexture;
+import net.touhou.mystiasizakaya.orders.GetBeveragesTexture;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -15,7 +13,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.network.chat.Component;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.Minecraft;
 
@@ -51,8 +48,8 @@ public class OrdersOverlay {
 		String fmb = "";
 		int reali = 0;
 		for (int i = 0; i < 7; i++) {
-			fm = GetCuisinesTextureProcedure.execute(i);
-			fmb = GetBeveragesTextureProcedure.execute(i);
+			fm = GetCuisinesTexture.execute(i, entity);
+			fmb = GetBeveragesTexture.execute(i, entity);
 			if (fm != "" || fmb != "") {
 
 				event.getGuiGraphics().blit(new ResourceLocation("mystias_izakaya:textures/screens/page.png"),

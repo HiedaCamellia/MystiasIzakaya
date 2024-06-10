@@ -11,7 +11,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.BlockPos;
 
-import net.touhou.mystiasizakaya.procedures.GetKitchenwareTagProcedure;
+import net.touhou.mystiasizakaya.cooking.get.GetKitchenwareTag;
 import net.touhou.mystiasizakaya.cooking.get.GetTagFromItemStacks;
 import net.touhou.mystiasizakaya.cooking.get.GetTargetNagetivetags;
 import net.touhou.mystiasizakaya.cooking.get.GetTargetTags;
@@ -66,7 +66,7 @@ public class Confirm {
 					&& resultList.contains("tag.mystias_izakaya.Refreshing")) {
 				resultList.remove("tag.mystias_izakaya.Refreshing");
 			}
-			resultList.add(GetKitchenwareTagProcedure.execute(Kitchenware));
+			resultList.add(GetKitchenwareTag.execute(Kitchenware));
 			String resultString = String.join(",", resultList);
 			Set<String> seti = new HashSet<>(resultList);
 			for (String str : targetntags) {

@@ -4,7 +4,7 @@ package net.touhou.mystiasizakaya.block;
 import net.touhou.mystiasizakaya.world.inventory.CookingRangeUiMenu;
 import net.touhou.mystiasizakaya.procedures.ReProcedure;
 import net.touhou.mystiasizakaya.cooking.Main;
-import net.touhou.mystiasizakaya.procedures.InitialCookProcedure;
+import net.touhou.mystiasizakaya.cooking.Init;
 import net.touhou.mystiasizakaya.procedures.CleanProcedure;
 import net.touhou.mystiasizakaya.block.entity.CookingRangeBlockEntity;
 
@@ -100,7 +100,7 @@ public class CookingRangeBlock extends Block implements EntityBlock {
 	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
 		super.onPlace(blockstate, world, pos, oldState, moving);
 		world.scheduleTick(pos, this, 1);
-		InitialCookProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		Init.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
 	@Override

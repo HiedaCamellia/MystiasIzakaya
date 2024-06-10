@@ -20,7 +20,7 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 
 @Mod.EventBusSubscriber
-public class ShowbalanceCCommand {
+public class Showbalance {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("mi_showbalance")
