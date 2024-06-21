@@ -1,5 +1,5 @@
 
-package net.touhou.mystiasizakaya.init;
+package net.touhou.mystiasizakaya.integration.jei;
 
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 @JeiPlugin
-public class MystiasIzakayaModBrewingRecipes implements IModPlugin {
+public class BrewingRecipes implements IModPlugin {
 	@Override
 	public ResourceLocation getPluginUid() {
 		return new ResourceLocation("mystias_izakaya:brewing_recipes");

@@ -6,7 +6,7 @@ import org.apache.logging.log4j.LogManager;
 
 import net.touhou.mystiasizakaya.content.trades.Professions;
 import net.touhou.mystiasizakaya.content.item.ModTab;
-import net.touhou.mystiasizakaya.init.MystiasIzakayaModMenus;
+import net.touhou.mystiasizakaya.functionals.Menus;
 import net.touhou.mystiasizakaya.content.item.ItemRegistery;
 import net.touhou.mystiasizakaya.content.block.ModBlocks;
 import net.touhou.mystiasizakaya.content.block.BlockEntities;
@@ -49,7 +49,7 @@ public class MystiasIzakaya {
 		ModTab.REGISTRY.register(bus);
 
 		Professions.PROFESSIONS.register(bus);
-		MystiasIzakayaModMenus.REGISTRY.register(bus);
+		Menus.REGISTRY.register(bus);
 	}
 
 	private static final String PROTOCOL_VERSION = "1";

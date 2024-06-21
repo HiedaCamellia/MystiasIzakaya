@@ -1,7 +1,7 @@
 
 package net.touhou.mystiasizakaya.functionals.inventory;
 
-import net.touhou.mystiasizakaya.init.MystiasIzakayaModMenus;
+import net.touhou.mystiasizakaya.functionals.Menus;
 
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.IItemHandler;
@@ -36,7 +36,7 @@ public class BankUiMenu extends AbstractContainerMenu implements Supplier<Map<In
 	private BlockEntity boundBlockEntity = null;
 
 	public BankUiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(MystiasIzakayaModMenus.BANK_UI.get(), id);
+		super(Menus.BANK_UI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStackHandler(0);

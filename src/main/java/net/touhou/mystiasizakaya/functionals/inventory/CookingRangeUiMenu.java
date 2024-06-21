@@ -19,7 +19,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
-import net.touhou.mystiasizakaya.init.MystiasIzakayaModMenus;
+import net.touhou.mystiasizakaya.functionals.Menus;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,7 +39,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 	private BlockEntity boundBlockEntity = null;
 
 	public CookingRangeUiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(MystiasIzakayaModMenus.COOKING_RANGE_UI.get(), id);
+		super(Menus.COOKING_RANGE_UI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStackHandler(12);
