@@ -81,7 +81,7 @@ public class BankUiButton {
                 }
                 if (i >= 10000) {
                     j = Math.floor(i / 10000);
-                    i = i - j * 10;
+                    i = i - j * 10000;
                     ItemStack _setstack = new ItemStack(ItemRegistery.EN_10K.get());
                     _setstack.setCount((int) j);
                     ItemHandlerHelper.giveItemToPlayer(entity, _setstack);
