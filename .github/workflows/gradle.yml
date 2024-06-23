@@ -38,17 +38,12 @@ jobs:
         
     - name: Build with Gradle Wrapper
       run: ./gradlew build
-
-    - name: rename
-      id: rename
-      run: |
-        mv build/reobfJar/output.jar build/reobfJar/mystias_izakaya-debug.jar
         
     - name: Upload JAR file
       uses: actions/upload-artifact@v2
       with:
         name: Mystia's Izakaya Debug Version
-        path: build/reobfJar/mystias_izakaya-debug.jar
+        path: build/libs/*.jar
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
     # If your project does not have the Gradle Wrapper configured, you can use the following configuration to run Gradle with a specified version.
     #
