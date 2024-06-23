@@ -210,6 +210,13 @@ public class ItemRegistery {
 	public static final RegistryObject<Item> XIAN_HUA = REGISTRY.register("xian_hua", XianHuaItem::new);
 	public static final RegistryObject<Item> XU_LI = REGISTRY.register("xu_li", XuLiItem::new);
 	public static final RegistryObject<Item> YIN_ER = REGISTRY.register("yin_er", YinErItem::new);
+	public static final RegistryObject<Item> HAI_DE_NV_ER = REGISTRY.register("hai_de_nv_er", HaiDeNvErItem::new);
+	public static final RegistryObject<Item> MO_JI_TUO_BAO_JIANG_QIU = REGISTRY.register("mo_ji_tuo_bao_jiang_qiu", MoJiTuoBaoJiangQiuItem::new);
+	public static final RegistryObject<Item> TAI_KONG_PI_JIU = REGISTRY.register("tai_kong_pi_jiu", TaiKongPiJiuItem::new);
+	public static final RegistryObject<Item> WEI_XIN_BING_KA_PEI = REGISTRY.register("wei_xin_bing_ka_pei", WeiXinBingKaPeiItem::new);
+	public static final RegistryObject<Item> MO_JIE_KA_PEI = REGISTRY.register("mo_jie_ka_pei", MoJieKaPeiItem::new);
+	public static final RegistryObject<Item> TIAN_DI_WU_YON = REGISTRY.register("tian_di_wu_yon", TianDiWuYonItem::new);
+	public static final RegistryObject<Item> LIN_REN_ZHUI = REGISTRY.register("lin_ren_zhui", LinRenZhuiItem::new);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

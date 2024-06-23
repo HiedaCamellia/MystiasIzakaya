@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "mystias_izakaya:item/mo_jie_ka_pei_"
+  }
+}
