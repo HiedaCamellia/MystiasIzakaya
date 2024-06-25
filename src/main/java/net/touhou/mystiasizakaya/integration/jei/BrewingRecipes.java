@@ -1,4 +1,3 @@
-
 package net.touhou.mystiasizakaya.integration.jei;
 
 import net.minecraft.world.item.Items;

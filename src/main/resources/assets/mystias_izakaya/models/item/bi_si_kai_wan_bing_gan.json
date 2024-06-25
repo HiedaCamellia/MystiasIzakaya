@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+      "layer0": "mystias_izakaya:item/bi_si_kai_wan_bing_gan_"
+    }
+  }

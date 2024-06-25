@@ -83,7 +83,7 @@ public static List<String> gettags() {
 		list.add("tag.mystias_izakaya.Vegetarian");
 		list.add("tag.mystias_izakaya.Chinese");
 		list.add("tag.mystias_izakaya.Sweet");
-		list.add("tag.mystias_izakaya.Cultural_Background");
+		list.add("tag.mystias_izakaya.Cultural_Heritage");
 		return list;
 	}
 

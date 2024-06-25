@@ -1,9 +1,6 @@
 package net.touhou.mystiasizakaya.content.cooking;
 
-import net.touhou.mystiasizakaya.content.cooking.get.GetKitchenwareTag;
-import net.touhou.mystiasizakaya.content.cooking.get.GetTagFromItemStacks;
-import net.touhou.mystiasizakaya.content.cooking.get.GetTargetNagetivetags;
-import net.touhou.mystiasizakaya.content.cooking.get.GetTargetTags;
+import net.touhou.mystiasizakaya.content.cooking.get.*;
 import net.touhou.mystiasizakaya.content.item.ItemRegistery;
 
 import net.minecraftforge.registries.ForgeRegistries;

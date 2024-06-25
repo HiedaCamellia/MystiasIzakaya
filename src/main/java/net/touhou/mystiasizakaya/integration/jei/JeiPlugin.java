@@ -1,4 +1,3 @@
-
 package net.touhou.mystiasizakaya.integration.jei;
 
 import net.touhou.mystiasizakaya.content.block.ModBlocks;

@@ -94,7 +94,7 @@ public class GiveEffectFromTagsProcedure {
 				case "tag.mystias_izakaya.Chinese":
 					// Chinese
 					break;
-				case "tag.mystias_izakaya.Cultural_Background":
+				case "tag.mystias_izakaya.Cultural_Heritage":
 					// Cultural Background
 					break;
 				case "tag.mystias_izakaya.cutting_board":
@@ -262,7 +262,7 @@ public class GiveEffectFromTagsProcedure {
  * tag.mystias_izakaya.beverages.western,西洋酒,Western
  * tag.mystias_izakaya.boiling_pot,煮锅,Boiling Pot
  * tag.mystias_izakaya.Chinese,中华,Chinese
- * tag.mystias_izakaya.Cultural_Background,文化底蕴,Cultural Background
+ * tag.mystias_izakaya.Cultural_Heritage,文化底蕴,Cultural Background
  * tag.mystias_izakaya.cutting_board,料理台,Cutting Board
  * tag.mystias_izakaya.Dreamy,梦幻,Dreamy
  * tag.mystias_izakaya.Economical,实惠,Economical

@@ -84,7 +84,7 @@ public static List<String> gettags() {
 		list.add("tag.mystias_izakaya.Meat");
 		list.add("tag.mystias_izakaya.Premium");
 		list.add("tag.mystias_izakaya.Mountain_Delicacy");
-		list.add("tag.mystias_izakaya.Cultural_Background");
+		list.add("tag.mystias_izakaya.Cultural_Heritage");
 		list.add("tag.mystias_izakaya.Grilled");
 		list.add("tag.mystias_izakaya.Aura_Bursting");
 		return list;

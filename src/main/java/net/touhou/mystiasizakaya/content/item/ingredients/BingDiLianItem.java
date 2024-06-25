@@ -83,7 +83,7 @@ public class BingDiLianItem extends Item {
 
     public static List<String> gettags() {
         List<String> list = new ArrayList<>();
-        list.add("tag.mystias_izakaya.Cultural_Background");
+        list.add("tag.mystias_izakaya.Cultural_Heritage");
         list.add("tag.mystias_izakaya.Premium");
         list.add("tag.mystias_izakaya.Legendary");
         list.add("tag.mystias_izakaya.Mild");

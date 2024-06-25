@@ -1,4 +1,3 @@
-
 package net.touhou.mystiasizakaya.functionals.network;
 
 import net.minecraft.client.gui.components.EditBox;

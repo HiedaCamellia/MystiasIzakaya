@@ -1,7 +1,3 @@
-
-/*
- *    MCreator note: This file will be REGENERATED on each build.
- */
 package net.touhou.mystiasizakaya.content.trades;
 
 import net.touhou.mystiasizakaya.MystiasIzakaya;

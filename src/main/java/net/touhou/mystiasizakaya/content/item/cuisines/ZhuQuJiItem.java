@@ -86,7 +86,7 @@ public static List<String> gettags() {
 		list.add("tag.mystias_izakaya.Legendary");
 		list.add("tag.mystias_izakaya.Japanese");
 		list.add("tag.mystias_izakaya.Photogenic");
-		list.add("tag.mystias_izakaya.Cultural_Background");
+		list.add("tag.mystias_izakaya.Cultural_Heritage");
 		list.add("tag.mystias_izakaya.Specialty");
 		return list;
 	}

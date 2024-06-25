@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+      "layer0": "mystias_izakaya:item/xiang_jian_shuang_gu_rou_juan_"
+    }
+  }

@@ -82,7 +82,7 @@ public static List<String> gettags() {
 
 		list.add("tag.mystias_izakaya.Mild");
 		list.add("tag.mystias_izakaya.Dreamy");
-		list.add("tag.mystias_izakaya.Cultural_Background");
+		list.add("tag.mystias_izakaya.Cultural_Heritage");
 		list.add("tag.mystias_izakaya.Wonderful");
 		return list;
 	}

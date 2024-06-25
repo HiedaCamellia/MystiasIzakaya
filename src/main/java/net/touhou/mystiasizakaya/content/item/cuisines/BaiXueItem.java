@@ -85,7 +85,7 @@ GiveEffectFromCuisines.execute(world, itemstack, entity);
 		list.add("tag.mystias_izakaya.Aquatic");
 		list.add("tag.mystias_izakaya.Premium");
 		list.add("tag.mystias_izakaya.Japanese");
-		list.add("tag.mystias_izakaya.Cultural_Background");
+		list.add("tag.mystias_izakaya.Cultural_Heritage");
 		return list;
 	}
 

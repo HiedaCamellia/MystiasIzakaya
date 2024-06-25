@@ -81,7 +81,7 @@ public static List<String> gettags() {
 		List<String> list = new ArrayList<>();
 		list.add("tag.mystias_izakaya.Signature");
 		list.add("tag.mystias_izakaya.Mild");
-		list.add("tag.mystias_izakaya.Cultural_Background");
+		list.add("tag.mystias_izakaya.Cultural_Heritage");
 		return list;
 	}
 

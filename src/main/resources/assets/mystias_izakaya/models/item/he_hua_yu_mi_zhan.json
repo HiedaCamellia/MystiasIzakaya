@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+      "layer0": "mystias_izakaya:item/he_hua_yu_mi_zhan_"
+    }
+  }

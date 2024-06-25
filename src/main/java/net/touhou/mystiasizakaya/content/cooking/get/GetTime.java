@@ -1,4 +1,4 @@
-package net.touhou.mystiasizakaya.content.cooking;
+package net.touhou.mystiasizakaya.content.cooking.get;
 
 import net.touhou.mystiasizakaya.content.item.ItemRegistery;
 

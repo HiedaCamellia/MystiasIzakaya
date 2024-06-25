@@ -1,8 +1,4 @@
-
-/*
- *	MCreator note: This file will be REGENERATED on each build.
- */
-package net.touhou.mystiasizakaya.functionals.client.screens;
+package net.touhou.mystiasizakaya.functionals.client;
 
 import net.touhou.mystiasizakaya.functionals.client.gui.CookingRangeUiScreen;
 import net.touhou.mystiasizakaya.functionals.client.gui.BankUiScreen;

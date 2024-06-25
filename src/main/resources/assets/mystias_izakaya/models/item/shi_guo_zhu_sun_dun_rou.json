@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+      "layer0": "mystias_izakaya:item/shi_guo_zhu_sun_dun_rou_"
+    }
+  }
