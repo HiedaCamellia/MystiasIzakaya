@@ -5,24 +5,16 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.hiedacamellia.mystiasizakaya.content.item.ingredients.*;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class GetTagFromItemStacks {
-	public static ArrayList execute(LevelAccessor world, double x, double y, double z) {
-		String str = "";
-		ItemStack raw = ItemStack.EMPTY;
-		double i = 0;
-		List<Object> raws = new ArrayList<>();
-		List<Object> araws = new ArrayList<>();
-		List<String> tags = new ArrayList<>();
-		List<String> negativetags = new ArrayList<>();
-		araws = (ArrayList) GetRawsFromSelectedFood.execute(world, x, y, z);
+	public static List<String> execute(LevelAccessor world, double x, double y, double z) {
+        double i;
+		List<String> raws = new ArrayList<>();
+        List<ItemStack> araws = GetRawsFromSelectedFood.execute(world, x, y, z);
 		i = 0;
 		while (i < araws.size()) {
-			raws.add((ForgeRegistries.ITEMS.getKey((araws.get((int) i) instanceof ItemStack _bs ? _bs : ItemStack.EMPTY).getItem()).toString()));
+			raws.add((Objects.requireNonNull(ForgeRegistries.ITEMS.getKey((araws.get((int) i)).getItem())).toString()));
 			i = i + 1;
 		}
 		List<String> list = new ArrayList<>();
@@ -212,7 +204,6 @@ public class GetTagFromItemStacks {
 		Set<String> set = new LinkedHashSet<>(list); // 使用LinkedHashSet以保持原始顺序
 		list.clear();
 		list.addAll(set);
-		ArrayList<String> arrayList = new ArrayList<>(list);
-		return arrayList;
+        return new ArrayList<>(list);
 	}
 }

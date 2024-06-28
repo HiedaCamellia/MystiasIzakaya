@@ -9,21 +9,22 @@ import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class GetRawsFromSelectedFood {
-    public static ArrayList execute(LevelAccessor world, double x, double y, double z) {
-        ItemStack s = ItemStack.EMPTY;
-        ItemStack raw = ItemStack.EMPTY;
-        double i = 0;
-        List<Object> rawss = new ArrayList<>();
+    public static List<ItemStack> execute(LevelAccessor world, double x, double y, double z) {
+        ItemStack s;
+        ItemStack raw;
+        double i;
+        List<ItemStack> rawss = new ArrayList<>();
         s = GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 12);
         i = 1;
         while (i <= 5) {
             if (!(GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), (int) i).getItem() == ItemStack.EMPTY.getItem())) {
                 raw = GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), (int) i);
                 raw = IngredientsCompact.execute(raw);
-                String raws = ForgeRegistries.ITEMS.getKey(raw.getItem()).toString();
-                String ss = ForgeRegistries.ITEMS.getKey(s.getItem()).toString();
+                String raws = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(raw.getItem())).toString();
+                String ss = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(s.getItem())).toString();
                 switch (raws) {
                     case "mystias_izakaya:ba_mu_man":
                         if (!(ss.equals("mystias_izakaya:kao_ba_mu_man") || ss.equals("mystias_izakaya:zha_ba_mu_man")
@@ -168,9 +169,6 @@ public class GetRawsFromSelectedFood {
                             rawss.add(raw);
                         }
                         break;
-                    case "mystias_izakaya:pang_xie":
-                        rawss.add(raw);
-                        break;
                     case "mystias_izakaya:san_wen_yu":
                         if (!(ss.equals("mystias_izakaya:zhen_hai_xian_wei_cheng_tang") || ss.equals("mystias_izakaya:xiang_jian_san_wen_yu")
                                 || ss.equals("mystias_izakaya:ci_shen_pin_pan") || ss.equals("mystias_izakaya:peng_lai_yu_zhi"))) {
@@ -243,6 +241,7 @@ public class GetRawsFromSelectedFood {
                             rawss.add(raw);
                         }
                         break;
+                    case "mystias_izakaya:pang_xie":
                     default:
                         rawss.add(raw);
                         break;

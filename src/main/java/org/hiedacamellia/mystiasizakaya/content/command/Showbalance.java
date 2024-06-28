@@ -20,9 +20,6 @@ public class Showbalance {
 
 				.then(Commands.argument("logic", BoolArgumentType.bool()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
-					double x = arguments.getSource().getPosition().x();
-					double y = arguments.getSource().getPosition().y();
-					double z = arguments.getSource().getPosition().z();
 					Entity entity = arguments.getSource().getEntity();
 					if (entity == null && world instanceof ServerLevel _servLevel)
 						entity = FakePlayerFactory.getMinecraft(_servLevel);

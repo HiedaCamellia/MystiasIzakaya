@@ -16,7 +16,6 @@ public class Add {
 					try {
 						return EntityArgument.getEntity(arguments, "player");
 					} catch (CommandSyntaxException e) {
-						e.printStackTrace();
 						return null;
 					}
 				}
@@ -26,7 +25,6 @@ public class Add {
 					try {
 						return EntityArgument.getEntity(arguments, "player");
 					} catch (CommandSyntaxException e) {
-						e.printStackTrace();
 						return null;
 					}
 				}
@@ -37,7 +35,6 @@ public class Add {
 						try {
 							return EntityArgument.getEntity(arguments, "player");
 						} catch (CommandSyntaxException e) {
-							e.printStackTrace();
 							return null;
 						}
 					}

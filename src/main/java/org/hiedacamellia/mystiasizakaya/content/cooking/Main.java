@@ -10,23 +10,23 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.hiedacamellia.mystiasizakaya.content.cooking.kitchenwares.*;
 import org.hiedacamellia.mystiasizakaya.content.item.ItemRegistery;
+import org.hiedacamellia.mystiasizakaya.integration.youkaihomecoming.IngredientsCompact;
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 import org.hiedacamellia.mystiasizakaya.util.GetValue;
 import org.hiedacamellia.mystiasizakaya.util.SetSlotItem;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Locale;
+import java.util.Objects;
 
 public class Main {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		String str = "";
-		double i = 0;
-		double time = 0;
-		ItemStack util = ItemStack.EMPTY;
-		ItemStack target = ItemStack.EMPTY;
-		List<Object> targets = new ArrayList<>();
+        double i;
+		double time;
+		ItemStack util;
+		ItemStack target;
+		List<String> targets = new ArrayList<>();
 		time = GetValue.getDouble(world, BlockPos.containing(x, y, z), "timeleft");
 		if (time > 1) {
 			if (!world.isClientSide()) {
@@ -93,40 +93,39 @@ public class Main {
 				if (util.getItem() == ItemStack.EMPTY.getItem()) {
 					SetSlotItem.setEmptySlot(world, x, y, z, 12);
 				}
-				if (util.getItem() == ItemRegistery.LIAO_LI_TAI.get()) {
-					str = CuttingBoard.execute(world, x, y, z);
-				}
-				if (util.getItem() == ItemRegistery.SHAO_KAO_JIA.get()) {
-					str = Grill.execute(world, x, y, z);
-				}
-				if (util.getItem() == ItemRegistery.YOU_GUO.get()) {
-					str = FryingPan.execute(world, x, y, z);
-				}
-				if (util.getItem() == ItemRegistery.ZHENG_GUO.get()) {
-					str = Steamer.execute(world, x, y, z);
-				}
-				if (util.getItem() == ItemRegistery.ZHU_GUO.get()) {
-					str = BoilingPot.execute(world, x, y, z);
-				}
-				String longString = str;
-				String regex = "\\$start%(.*?)\\$end%"; // 创建 Pattern 对象
-				Pattern pattern = Pattern.compile(regex);
-				Matcher matcher = pattern.matcher(longString);
-				while (matcher.find()) {
-					String matchedString = matcher.group(1);
-					targets.add(matchedString);
-					longString = longString.replace(matcher.group(), "");
-				}
+
+				List<String> raws = new ArrayList<>();
 				i = 1;
 				while (i <= 5) {
-					if (i <= targets.size()) {
-						SetSlotItem.setSlotItem(world, x, y, z,
-								new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(
-										((targets.get((int) (i - 1)) instanceof String _s ? _s : ""))
-												.toLowerCase(java.util.Locale.ENGLISH)))),
-								(int) (6 + i), 1);
+					if (!(GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), (int) i).getItem() == ItemStack.EMPTY.getItem())) {
+						ItemStack raw = GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), (int) i);
+						raw = IngredientsCompact.execute(raw);
+						raws.add((Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(raw.getItem())).toString()));
+					}
+					i = i + 1;
+				}
+				if (util.getItem() == ItemRegistery.LIAO_LI_TAI.get()) {
+					targets = CuttingBoard.get(raws);
+				}
+				if (util.getItem() == ItemRegistery.SHAO_KAO_JIA.get()) {
+					targets = Grill.get(raws);
+				}
+				if (util.getItem() == ItemRegistery.YOU_GUO.get()) {
+					targets = FryingPan.get(raws);
+				}
+				if (util.getItem() == ItemRegistery.ZHENG_GUO.get()) {
+					targets = Steamer.get(raws);
+				}
+				if (util.getItem() == ItemRegistery.ZHU_GUO.get()) {
+					targets = BoilingPot.get(raws);
+				}
+
+                i = 0;
+				while (i < 5) {
+					if (i < targets.size()) {
+						SetSlotItem.setSlotItem(world, x, y, z, new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(((targets.get((int) i))).toLowerCase(Locale.ENGLISH))))), (int) (7 + i), 1);
 					} else {
-						SetSlotItem.setEmptySlot(world, x, y, z, (int) (6 + i));
+						SetSlotItem.setEmptySlot(world, x, y, z, (int) (7 + i));
 					}
 					i = i + 1;
 				}

@@ -74,7 +74,7 @@ public class YueBingItem extends Item {
 		List<String> list = new ArrayList<>();
 		list.add("tag.mystias_izakaya.Filling");
 		list.add("tag.mystias_izakaya.Chinese");
-		list.add("tag.mystias_izakaya.Sweat");
+		list.add("tag.mystias_izakaya.Sweet");
 		list.add("tag.mystias_izakaya.Cultural_Heritage");
 		list.add("tag.mystias_izakaya.Wonderful");
 		list.add("tag.mystias_izakaya.Small_Portion");

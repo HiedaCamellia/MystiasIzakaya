@@ -1,11 +1,9 @@
 package org.hiedacamellia.mystiasizakaya.content.cooking.get;
 
-import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.LevelAccessor;
 import org.hiedacamellia.mystiasizakaya.content.item.ItemRegistery;
 import org.hiedacamellia.mystiasizakaya.content.item.cuisines.*;
-import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -13,12 +11,9 @@ import java.util.List;
 import java.util.Set;
 
 public class GetTargetNagetivetags {
-	public static ArrayList execute(LevelAccessor world, double x, double y, double z) {
-		ItemStack target = ItemStack.EMPTY;
-		double time = 0;
-		List<String> list = new ArrayList<>();
-		target = GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 12);
-		if (GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0).getItem() == ItemRegistery.ZHU_GUO.get()) {
+	public static List<String> execute(ItemStack target , Item util) {
+        List<String> list = new ArrayList<>();
+		if (util == ItemRegistery.ZHU_GUO.get()) {
 			if (ItemRegistery.ZHU_DOU_FU.get() == target.getItem()) {
 				list.addAll(ZhuDouFuItem.getnegativetags());
 			}
@@ -71,7 +66,7 @@ public class GetTargetNagetivetags {
 				list.addAll(ZhuRouGaiJiaoFanItem.getnegativetags());
 			}
 		}
-		if (GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0).getItem() == ItemRegistery.ZHENG_GUO.get()) {
+		if (util == ItemRegistery.ZHENG_GUO.get()) {
 			if (ItemRegistery.HUAN_TAN_HUA_GAO.get() == target.getItem()) {
 				list.addAll(HuanTanHuaGaoItem.getnegativetags());
 			}
@@ -103,7 +98,7 @@ public class GetTargetNagetivetags {
 				list.addAll(ZhuTongZhengDanItem.getnegativetags());
 			}
 		}
-		if (GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0).getItem() == ItemRegistery.YOU_GUO.get()) {
+		if (util == ItemRegistery.YOU_GUO.get()) {
 			if (ItemRegistery.BAN_NI_DI_KE_DAN.get() == target.getItem()) {
 				list.addAll(BanNiDiKeDanItem.getnegativetags());
 			}
@@ -159,7 +154,7 @@ public class GetTargetNagetivetags {
 				list.addAll(ZhuSunChaoRouItem.getnegativetags());
 			}
 		}
-		if (GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0).getItem() == ItemRegistery.LIAO_LI_TAI.get()) {
+		if (util == ItemRegistery.LIAO_LI_TAI.get()) {
 			if (ItemRegistery.BAI_TAO_SHENG_BA_QIAO.get() == target.getItem()) {
 				list.addAll(BaiTaoShengBaQiaoItem.getnegativetags());
 			}
@@ -218,7 +213,7 @@ public class GetTargetNagetivetags {
 				list.addAll(ZhiZhuRouFanTuanItem.getnegativetags());
 			}
 		}
-		if (GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0).getItem() == ItemRegistery.SHAO_KAO_JIA.get()) {
+		if (util == ItemRegistery.SHAO_KAO_JIA.get()) {
 			if (ItemRegistery.BU_SI_NIAO.get() == target.getItem()) {
 				list.addAll(BuSiNiaoItem.getnegativetags());
 			}
@@ -247,7 +242,6 @@ public class GetTargetNagetivetags {
 		Set<String> set = new LinkedHashSet<>(list); // 使用LinkedHashSet以保持原始顺序
 		list.clear();
 		list.addAll(set);
-		ArrayList<String> arrayList = new ArrayList<>(list);
-		return arrayList;
+        return new ArrayList<>(list);
 	}
 }

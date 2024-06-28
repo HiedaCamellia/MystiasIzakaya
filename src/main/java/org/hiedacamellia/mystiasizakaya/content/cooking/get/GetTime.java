@@ -8,7 +8,7 @@ import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 
 public class GetTime {
 	public static double execute(LevelAccessor world, double x, double y, double z) {
-		ItemStack target = ItemStack.EMPTY;
+		ItemStack target;
 		double time = 0;
 		target = GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 12);
 		if (GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0).getItem() == ItemRegistery.ZHU_GUO.get()) {

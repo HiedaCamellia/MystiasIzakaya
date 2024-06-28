@@ -5,7 +5,7 @@ import org.hiedacamellia.mystiasizakaya.content.item.ItemRegistery;
 
 public class GetKitchenwareTag {
 	public static String execute(ItemStack Kitchenware) {
-		ItemStack util = ItemStack.EMPTY;
+		ItemStack util;
 		String tag = "";
 		util = Kitchenware;
 		if (util.getItem() == ItemRegistery.LIAO_LI_TAI.get()) {
