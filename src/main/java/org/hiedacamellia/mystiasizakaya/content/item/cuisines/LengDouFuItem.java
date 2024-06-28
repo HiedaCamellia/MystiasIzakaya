@@ -77,7 +77,7 @@ public static List<String> gettags() {
 		list.add("tag.mystias_izakaya.Vegetarian");
 		list.add("tag.mystias_izakaya.Homecooking");
 		list.add("tag.mystias_izakaya.Mild");
-		list.add("tag.mystias_izakaya.Good_with_Alcohol");
+		list.add("tag.mystias_izakaya.Good_With_Alcohol");
 		list.add("tag.mystias_izakaya.Small_Portion");
 		return list;
 	}

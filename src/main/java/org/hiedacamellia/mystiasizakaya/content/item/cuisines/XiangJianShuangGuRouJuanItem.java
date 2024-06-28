@@ -74,7 +74,7 @@ public class XiangJianShuangGuRouJuanItem extends Item {
 		List<String> list = new ArrayList<>();
 		list.add("tag.mystias_izakaya.Expensive");
 		list.add("tag.mystias_izakaya.Fungus");
-		list.add("tag.mystias_izakaya.Good_with_Alcohol");
+		list.add("tag.mystias_izakaya.Good_With_Alcohol");
 		list.add("tag.mystias_izakaya.Greasy");
 		list.add("tag.mystias_izakaya.Homecooking");
 		list.add("tag.mystias_izakaya.Hot");

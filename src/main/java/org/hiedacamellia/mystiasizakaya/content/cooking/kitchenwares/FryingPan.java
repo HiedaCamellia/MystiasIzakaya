@@ -66,6 +66,9 @@ public class FryingPan {
 		if (raws.contains("mystias_izakaya:zhu_rou")) {
 			rawlist.add("mystias_izakaya:chao_rou_si");
 		}
+		if (raws.contains("mystias_izakaya:xia") && raws.contains("mystias_izakaya:mian_fen")) {
+			rawlist.add("mystias_izakaya:zha_xia_tian_fu_luo");
+		}
 		return rawlist;
 	}
 }

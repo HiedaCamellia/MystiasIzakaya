@@ -71,8 +71,8 @@ public class GetTime {
 			if (ItemRegistery.MI_ZHI_XIAN_JUN_BAO.get() == target.getItem()) {
 				time = 108;
 			}
-			if (ItemRegistery.ZHA_XIA_TIAN_FU_LUO.get() == target.getItem()) {
-				time = 72;
+			if (ItemRegistery.MI_ZHI_XIAN_JUN_BAO.get() == target.getItem()) {
+				time = 96;
 			}
 		}
 		if (util == ItemRegistery.ZHENG_GUO.get()) {
@@ -161,6 +161,9 @@ public class GetTime {
 			}
 			if (ItemRegistery.ZHU_SUN_CHAO_ROU.get() == target.getItem()) {
 				time = 120;
+			}
+			if (ItemRegistery.ZHA_XIA_TIAN_FU_LUO.get() == target.getItem()) {
+				time = 72;
 			}
 		}
 		if (util == ItemRegistery.LIAO_LI_TAI.get()) {

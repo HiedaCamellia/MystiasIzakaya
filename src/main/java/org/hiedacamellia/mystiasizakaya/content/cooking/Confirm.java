@@ -46,7 +46,7 @@ public class Confirm {
 				resultList.remove("tag.mystias_izakaya.Vegetarian");
 			}
 			if (resultList.contains("tag.mystias_izakaya.Filling")) {
-				resultList.remove("tag.mystias_izakaya.Good_with_Alcohol");
+				resultList.remove("tag.mystias_izakaya.Good_With_Alcohol");
 			}
 			if (resultList.contains("tag.mystias_izakaya.Greasy")) {
 				resultList.remove("tag.mystias_izakaya.Mild");

@@ -73,7 +73,7 @@ public class HuanJinShuYuBinItem extends Item {
 	public static List<String> gettags() {
 		List<String> list = new ArrayList<>();
 		list.add("tag.mystias_izakaya.Aquatic");
-		list.add("tag.mystias_izakaya.Good_with_Alcohol");
+		list.add("tag.mystias_izakaya.Good_With_Alcohol");
 		list.add("tag.mystias_izakaya.Greasy");
 		list.add("tag.mystias_izakaya.Strength_Boosting");
 		return list;

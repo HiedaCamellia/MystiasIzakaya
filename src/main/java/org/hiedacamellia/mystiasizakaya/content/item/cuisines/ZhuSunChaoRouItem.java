@@ -76,7 +76,7 @@ public static List<String> gettags() {
 		List<String> list = new ArrayList<>();
 		list.add("tag.mystias_izakaya.Meat");
 		list.add("tag.mystias_izakaya.Homecooking");
-		list.add("tag.mystias_izakaya.Good_with_Alcohol");
+		list.add("tag.mystias_izakaya.Good_With_Alcohol");
 		return list;
 	}
 

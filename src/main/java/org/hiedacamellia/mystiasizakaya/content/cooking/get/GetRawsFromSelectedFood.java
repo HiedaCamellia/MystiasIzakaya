@@ -146,7 +146,7 @@ public class GetRawsFromSelectedFood {
                         }
                         break;
                     case "mystias_izakaya:mo_gu":
-                        if (!(ss.equals("mystias_izakaya:kao_mo_gu") || ss.equals("mystias_izakaya:nai_you_tun_cai") || ss.equals("mystias_izakaya:mo_gu_rou_pian")
+                        if (!(ss.equals("mystias_izakaya:kao_mo_gu") || ss.equals("mystias_izakaya:nai_you_tun_cai") || ss.equals("mystias_izakaya:mo_gu_rou_pian") || ss.equals("mystias_izakaya:nai_xiang_mo_gu_tang")
                                 || ss.equals("mystias_izakaya:zhu_tong_zheng_dan") || ss.equals("mystias_izakaya:yi_shi_hui_fan") || ss.equals("mystias_izakaya:hua_guang_yu_jian_bao")|| ss.equals("mystias_izakaya:mi_zhi_xian_jun_bao"))) {
                             rawss.add(raw);
                         }
@@ -154,6 +154,11 @@ public class GetRawsFromSelectedFood {
                     case "mystias_izakaya:nan_gua":
                         if (!(ss.equals("mystias_izakaya:neng_liang_chuan") || ss.equals("mystias_izakaya:shu_cai_zhuan_ji")
                                 || ss.equals("mystias_izakaya:xing_hong_e_mo_dan_gao") || ss.equals("mystias_izakaya:ye_wei_jia_nong"))) {
+                            rawss.add(raw);
+                        }
+                        break;
+                    case "mystias_izakaya:nai_you":
+                        if (!(ss.equals("mystias_izakaya:nai_xiang_mo_gu_tang"))){
                             rawss.add(raw);
                         }
                         break;
@@ -186,7 +191,7 @@ public class GetRawsFromSelectedFood {
                         }
                         break;
                     case "mystias_izakaya:tu_dou":
-                        if (!(ss.equals("mystias_izakaya:tu_dou_ke_le_bing") || ss.equals("mystias_izakaya:shu_cai_zhuan_ji")
+                        if (!(ss.equals("mystias_izakaya:tu_dou_ke_le_bing") || ss.equals("mystias_izakaya:shu_cai_zhuan_ji") || ss.equals("mystias_izakaya:nai_xiang_mo_gu_tang")
                                 || ss.equals("mystias_izakaya:xing_hong_e_mo_dan_gao") || ss.equals("mystias_izakaya:bu_si_niao") || ss.equals("mystias_izakaya:ye_wei_jia_nong"))) {
                             rawss.add(raw);
                         }

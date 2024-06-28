@@ -73,7 +73,7 @@ public class NaiYouJuXieItem extends Item {
 	public static List<String> gettags() {
 		List<String> list = new ArrayList<>();
 		list.add("tag.mystias_izakaya.Expensive");
-		list.add("tag.mystias_izakaya.Good_with_Alcohol");
+		list.add("tag.mystias_izakaya.Good_With_Alcohol");
 		list.add("tag.mystias_izakaya.Premium");
 		list.add("tag.mystias_izakaya.Photogenic");
 		list.add("tag.mystias_izakaya.Fresh");

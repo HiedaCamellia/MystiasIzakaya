@@ -75,7 +75,7 @@ public class DaJiangHuChuanJiItem extends Item {
 		list.add("tag.mystias_izakaya.Aquatic");
 		list.add("tag.mystias_izakaya.Cultural_Heritage");
 		list.add("tag.mystias_izakaya.Expensive");
-		list.add("tag.mystias_izakaya.Good_with_Alcohol");
+		list.add("tag.mystias_izakaya.Good_With_Alcohol");
 		list.add("tag.mystias_izakaya.Japanese");
 		list.add("tag.mystias_izakaya.Legendary");
 		list.add("tag.mystias_izakaya.Photogenic");

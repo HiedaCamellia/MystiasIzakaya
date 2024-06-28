@@ -73,7 +73,7 @@ public class YanHuangGuaItem extends Item {
 	public static List<String> gettags() {
 		List<String> list = new ArrayList<>();
 		list.add("tag.mystias_izakaya.Economical");
-		list.add("tag.mystias_izakaya.Good_with_Alcohol");
+		list.add("tag.mystias_izakaya.Good_With_Alcohol");
 		list.add("tag.mystias_izakaya.Salty");
 		list.add("tag.mystias_izakaya.Small_Portion");
 		list.add("tag.mystias_izakaya.Vegetarian");

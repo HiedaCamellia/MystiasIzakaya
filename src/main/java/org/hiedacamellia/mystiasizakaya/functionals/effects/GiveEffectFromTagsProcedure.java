@@ -126,7 +126,7 @@ public class GiveEffectFromTagsProcedure {
 				case "tag.mystias_izakaya.Fungus":
 					// Fungus
 					break;
-				case "tag.mystias_izakaya.Good_with_Alcohol":
+				case "tag.mystias_izakaya.Good_With_Alcohol":
 					// Good with Alcohol
 					break;
 				case "tag.mystias_izakaya.Greasy":
@@ -272,7 +272,7 @@ public class GiveEffectFromTagsProcedure {
  * tag.mystias_izakaya.frying_pan,油锅,Frying Pan
  * tag.mystias_izakaya.Fungi,菌类,Fungi
  * tag.mystias_izakaya.Fungus,菌类,Fungus
- * tag.mystias_izakaya.Good_with_Alcohol,下酒,Good with Alcohol
+ * tag.mystias_izakaya.Good_With_Alcohol,下酒,Good with Alcohol
  * tag.mystias_izakaya.Greasy,重油,Greasy
  * tag.mystias_izakaya.grill,烧烤架,Grill
  * tag.mystias_izakaya.Grilled,烧烤,Grilled
