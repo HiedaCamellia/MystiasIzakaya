@@ -82,7 +82,7 @@ public class Confirm {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("timeleft", GetTime.execute(world, x, y, z));
+					_blockEntity.getPersistentData().putDouble("timeleft", GetTime.execute(target,Kitchenware.getItem()));
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}

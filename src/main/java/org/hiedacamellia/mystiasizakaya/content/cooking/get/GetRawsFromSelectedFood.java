@@ -128,7 +128,7 @@ public class GetRawsFromSelectedFood {
                         break;
                     case "mystias_izakaya:lu_shui":
                         if (!(ss.equals("mystias_izakaya:lu_shui_zhu_dan") || ss.equals("mystias_izakaya:tao_hua_geng")
-                                || ss.equals("mystias_izakaya:xing_hong_e_mo_dan_gao") || ss.equals("mystias_izakaya:mao_yu_san_se_bing_ji_ling") || ss.equals("mystias_izakaya:huan_tan_hua_gao"))) {
+                                || ss.equals("mystias_izakaya:xing_hong_e_mo_dan_gao") || ss.equals("mystias_izakaya:mao_yu_san_se_bing_ji_ling") || ss.equals("mystias_izakaya:huan_tan_hua_gao")|| ss.equals("mystias_izakaya:mi_zhi_xian_jun_bao"))) {
                             rawss.add(raw);
                         }
                         break;
@@ -139,7 +139,7 @@ public class GetRawsFromSelectedFood {
                         }
                         break;
                     case "mystias_izakaya:mian_fen":
-                        if (!(ss.equals("mystias_izakaya:si_kang_bing") || ss.equals("mystias_izakaya:re_song_bing")
+                        if (!(ss.equals("mystias_izakaya:si_kang_bing") || ss.equals("mystias_izakaya:re_song_bing")|| ss.equals("mystias_izakaya:zha_xia_tian_fu_luo")
                                 || ss.equals("mystias_izakaya:da_ban_shao") || ss.equals("mystias_izakaya:shui_jiao") || ss.equals("mystias_izakaya:hui_ling_dun_niu_pai")
                                 || ss.equals("mystias_izakaya:yue_zhi_lian_ren") || ss.equals("mystias_izakaya:liu_shui_su_mian") || ss.equals("mystias_izakaya:bu_si_niao"))) {
                             rawss.add(raw);
@@ -147,7 +147,7 @@ public class GetRawsFromSelectedFood {
                         break;
                     case "mystias_izakaya:mo_gu":
                         if (!(ss.equals("mystias_izakaya:kao_mo_gu") || ss.equals("mystias_izakaya:nai_you_tun_cai") || ss.equals("mystias_izakaya:mo_gu_rou_pian")
-                                || ss.equals("mystias_izakaya:zhu_tong_zheng_dan") || ss.equals("mystias_izakaya:yi_shi_hui_fan") || ss.equals("mystias_izakaya:hua_guang_yu_jian_bao"))) {
+                                || ss.equals("mystias_izakaya:zhu_tong_zheng_dan") || ss.equals("mystias_izakaya:yi_shi_hui_fan") || ss.equals("mystias_izakaya:hua_guang_yu_jian_bao")|| ss.equals("mystias_izakaya:mi_zhi_xian_jun_bao"))) {
                             rawss.add(raw);
                         }
                         break;
@@ -176,7 +176,7 @@ public class GetRawsFromSelectedFood {
                         }
                         break;
                     case "mystias_izakaya:song_lu":
-                        if (!(ss.equals("mystias_izakaya:zhu_qu_ji") || ss.equals("mystias_izakaya:yan_jiang") || ss.equals("mystias_izakaya:hui_ling_dun_niu_pai"))) {
+                        if (!(ss.equals("mystias_izakaya:zhu_qu_ji") || ss.equals("mystias_izakaya:yan_jiang") || ss.equals("mystias_izakaya:hui_ling_dun_niu_pai")|| ss.equals("mystias_izakaya:mi_zhi_xian_jun_bao"))) {
                             rawss.add(raw);
                         }
                         break;
@@ -192,7 +192,7 @@ public class GetRawsFromSelectedFood {
                         }
                         break;
                     case "mystias_izakaya:xia":
-                        if (!(ss.equals("mystias_izakaya:bei_ji_tian_xia_mi_tao_se_la"))) {
+                        if (!(ss.equals("mystias_izakaya:bei_ji_tian_xia_mi_tao_se_la")|| ss.equals("mystias_izakaya:zha_xia_tian_fu_luo"))) {
                             rawss.add(raw);
                         }
                         break;

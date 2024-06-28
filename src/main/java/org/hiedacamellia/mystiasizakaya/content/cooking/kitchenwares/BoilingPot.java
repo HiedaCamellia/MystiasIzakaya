@@ -74,6 +74,12 @@ public class BoilingPot {
 		if (raws.contains("mystias_izakaya:niu_rou")) {
 			rawlist.add("mystias_izakaya:niu_rou_gai_jiao_fan");
 		}
+		if (raws.contains("mystias_izakaya:song_lu")&& raws.contains("mystias_izakaya:mo_gu")&& raws.contains("mystias_izakaya:lu_shui")) {
+			rawlist.add("mystias_izakaya:mi_zhi_xian_jun_bao");
+		}
+		if (raws.contains("mystias_izakaya:xia")&& raws.contains("mystias_izakaya:mian_fen")) {
+			rawlist.add("mystias_izakaya:zha_xia_tian_fu_luo");
+		}
 		return rawlist;
 	}
 }

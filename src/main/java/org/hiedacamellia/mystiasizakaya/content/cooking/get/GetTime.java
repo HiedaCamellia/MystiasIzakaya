@@ -1,17 +1,16 @@
 package org.hiedacamellia.mystiasizakaya.content.cooking.get;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import org.hiedacamellia.mystiasizakaya.content.item.ItemRegistery;
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 
 public class GetTime {
-	public static double execute(LevelAccessor world, double x, double y, double z) {
-		ItemStack target;
+	public static double execute(ItemStack target , Item util) {
 		double time = 0;
-		target = GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 12);
-		if (GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0).getItem() == ItemRegistery.ZHU_GUO.get()) {
+		if (util == ItemRegistery.ZHU_GUO.get()) {
 			if (ItemRegistery.ZHU_DOU_FU.get() == target.getItem()) {
 				time = 84;
 			}
@@ -69,8 +68,14 @@ public class GetTime {
 			if (ItemRegistery.SHUI_ZHU_YU.get() == target.getItem()) {
 				time = 96;
 			}
+			if (ItemRegistery.MI_ZHI_XIAN_JUN_BAO.get() == target.getItem()) {
+				time = 108;
+			}
+			if (ItemRegistery.ZHA_XIA_TIAN_FU_LUO.get() == target.getItem()) {
+				time = 72;
+			}
 		}
-		if (GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0).getItem() == ItemRegistery.ZHENG_GUO.get()) {
+		if (util == ItemRegistery.ZHENG_GUO.get()) {
 			if (ItemRegistery.HUAN_TAN_HUA_GAO.get() == target.getItem()) {
 				time = 84;
 			}
@@ -102,7 +107,7 @@ public class GetTime {
 				time = 72;
 			}
 		}
-		if (GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0).getItem() == ItemRegistery.YOU_GUO.get()) {
+		if (util == ItemRegistery.YOU_GUO.get()) {
 			if (ItemRegistery.BAN_NI_DI_KE_DAN.get() == target.getItem()) {
 				time = 84;
 			}
@@ -158,7 +163,7 @@ public class GetTime {
 				time = 120;
 			}
 		}
-		if (GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0).getItem() == ItemRegistery.LIAO_LI_TAI.get()) {
+		if (util == ItemRegistery.LIAO_LI_TAI.get()) {
 			if (ItemRegistery.BAI_TAO_SHENG_BA_QIAO.get() == target.getItem()) {
 				time = 60;
 			}
@@ -217,7 +222,7 @@ public class GetTime {
 				time = 72;
 			}
 		}
-		if (GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0).getItem() == ItemRegistery.SHAO_KAO_JIA.get()) {
+		if (util == ItemRegistery.SHAO_KAO_JIA.get()) {
 			if (ItemRegistery.BU_SI_NIAO.get() == target.getItem()) {
 				time = 144;
 			}
