@@ -86,8 +86,8 @@ public class RanJingBuDingItem extends Item {
 
 	public static List<String> getnegativetags() {
 		List<String> list = new ArrayList<>();
-		list.add("tag.mystias_izakaya.GreasyX");
-		list.add("tag.mystias_izakaya.SaltyX");
+		list.add("tag.mystias_izakaya.Greasy");
+		list.add("tag.mystias_izakaya.Salty");
 		return list;
 	}
 }

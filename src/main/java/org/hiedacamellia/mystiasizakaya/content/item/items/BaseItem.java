@@ -30,10 +30,10 @@ public class BaseItem extends Item {
         List<String> ftags = new ArrayList<>();
         List<String> fntags = new ArrayList<>();
         Arrays.asList(tags).forEach(tag -> {
-            ftags.add("tag.mystias_izakaya."+tag);
+            ftags.add(gettagprefix()+tag);
         });
         Arrays.asList(ntags).forEach(tag -> {
-            fntags.add("tag.mystias_izakaya."+tag);
+            fntags.add(gettagprefix()+tag);
         });
         this.tags = ftags;
         this.ntags = fntags;
@@ -97,7 +97,9 @@ public class BaseItem extends Item {
         return this.ntags;
     }
 
-
+    public String gettagprefix() {
+        return "tag.mystias_izakaya.";
+    }
 }
 
 
