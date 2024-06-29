@@ -87,7 +87,7 @@ public class CookingRangeUiButton {
 	}
 
 	@SubscribeEvent
-	public static void registerMessage(FMLCommonSetupEvent event) {
+	public void registerMessage(FMLCommonSetupEvent event) {
 		MystiasIzakaya.addNetworkMessage(CookingRangeUiButton.class, CookingRangeUiButton::buffer,
 				CookingRangeUiButton::new, CookingRangeUiButton::handler);
 	}

@@ -20,7 +20,7 @@ import org.hiedacamellia.mystiasizakaya.util.TargetsText;
 import java.util.HashMap;
 
 public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUiMenu> {
-	private final static HashMap<String, Object> guistate = CookingRangeUiMenu.guistate;
+	private final HashMap<String, Object> guistate = CookingRangeUiMenu.guistate;
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
