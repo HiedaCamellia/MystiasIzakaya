@@ -6,28 +6,23 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.registries.ForgeRegistries;
-import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.content.cooking.get.GetTagFromItemStacks;
 import org.hiedacamellia.mystiasizakaya.content.cooking.get.GetTime;
-import org.hiedacamellia.mystiasizakaya.content.item.ItemRegistery;
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 import org.hiedacamellia.mystiasizakaya.util.GetValue;
 import org.hiedacamellia.mystiasizakaya.util.SetSlotItem;
 import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Confirm {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		boolean bool = false;
-		double time;
+        double time;
 		time = GetValue.getDouble(world, Pos.get(x, y, z), "timeleft");
 		ItemStack target;
 		ItemStack Kitchenware;
 		List<ItemStack> ingredients = new ArrayList<>();
-		String raws;
-		if ((ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, Pos.get(x, y, z), 6).getItem())
+        if ((ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, Pos.get(x, y, z), 6).getItem())
 				&& !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, Pos.get(x, y, z), 12).getItem())
 				&& time == 0) {
 

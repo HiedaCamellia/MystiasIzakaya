@@ -8,7 +8,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;
-import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.cooking.kitchenwares.*;
 import org.hiedacamellia.mystiasizakaya.content.item.ItemRegistery;
 import org.hiedacamellia.mystiasizakaya.integration.youkaihomecoming.IngredientsCompact;

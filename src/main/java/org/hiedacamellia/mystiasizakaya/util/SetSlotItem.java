@@ -31,4 +31,13 @@ public class SetSlotItem {
             });
         }
     }
+    public static void setEmptySlot(BlockEntity be, int slotid) {
+        if (be != null) {
+            final int _slotid = slotid;
+            be.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+                if (capability instanceof IItemHandlerModifiable)
+                    ((IItemHandlerModifiable) capability).setStackInSlot(_slotid, ItemStack.EMPTY);
+            });
+        }
+    }
 }

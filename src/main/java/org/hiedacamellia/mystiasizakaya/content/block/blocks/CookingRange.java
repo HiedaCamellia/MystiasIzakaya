@@ -40,6 +40,7 @@ import net.minecraftforge.network.NetworkHooks;
 import org.hiedacamellia.mystiasizakaya.content.cooking.Init;
 import org.hiedacamellia.mystiasizakaya.content.cooking.Main;
 import org.hiedacamellia.mystiasizakaya.functionals.inventory.CookingRangeUiMenu;
+import org.hiedacamellia.mystiasizakaya.util.SetSlotItem;
 import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 import java.util.Collections;
@@ -116,13 +117,17 @@ public class CookingRange extends Block implements EntityBlock {
 	@Override
 	public void wasExploded(Level world, BlockPos pos, Explosion e) {
 		super.wasExploded(world, pos, e);
+		BlockEntity blockEntity = world.getBlockEntity(pos);
 		clean(world, pos.getX(), pos.getY(), pos.getZ());
+		clean(blockEntity);
 	}
 
 	@Override
 	public void attack(BlockState blockstate, Level world, BlockPos pos, Player entity) {
 		super.attack(blockstate, world, pos, entity);
 		clean(world, pos.getX(), pos.getY(), pos.getZ());
+		BlockEntity blockEntity = world.getBlockEntity(pos);
+		clean(blockEntity);
 	}
 
 	@Override
@@ -195,5 +200,14 @@ public class CookingRange extends Block implements EntityBlock {
 			if (world instanceof Level _level)
 				_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 		}
+	}
+
+	private static void clean(BlockEntity be){
+		SetSlotItem.setEmptySlot(be, 7);
+		SetSlotItem.setEmptySlot(be, 8);
+		SetSlotItem.setEmptySlot(be, 9);
+		SetSlotItem.setEmptySlot(be, 10);
+		SetSlotItem.setEmptySlot(be, 11);
+		SetSlotItem.setEmptySlot(be, 12);
 	}
 }
