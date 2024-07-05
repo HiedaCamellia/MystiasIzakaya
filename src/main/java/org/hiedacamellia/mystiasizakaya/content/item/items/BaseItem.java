@@ -50,7 +50,6 @@ public class BaseItem extends Item {
         }
     }
 
-
     @Override
     public UseAnim getUseAnimation(ItemStack itemstack) {
         return useAnimation;
