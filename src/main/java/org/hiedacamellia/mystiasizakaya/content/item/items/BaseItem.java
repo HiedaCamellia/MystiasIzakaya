@@ -4,7 +4,6 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
@@ -12,9 +11,9 @@ import org.hiedacamellia.mystiasizakaya.functionals.effects.GiveEffectFromCuisin
 import org.hiedacamellia.mystiasizakaya.functionals.effects.GiveEffectFromIngredientsProcedure;
 import org.hiedacamellia.mystiasizakaya.functionals.effects.GiveEffectFromTagsProcedure;
 
-import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class BaseItem extends Item {
 

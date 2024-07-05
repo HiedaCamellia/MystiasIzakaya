@@ -1,6 +1,5 @@
 package org.hiedacamellia.mystiasizakaya.content.cooking.get;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraftforge.registries.ForgeRegistries;

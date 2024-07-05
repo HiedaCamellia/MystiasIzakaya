@@ -2,10 +2,11 @@ package org.hiedacamellia.mystiasizakaya.content.cooking.get;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraftforge.registries.ForgeRegistries;
-import org.hiedacamellia.mystiasizakaya.content.item.ingredients.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class GetTagFromItemStacks {
 	public static List<String> get(LevelAccessor world, double x, double y, double z) {

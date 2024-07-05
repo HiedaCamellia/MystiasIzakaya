@@ -18,7 +18,6 @@ import org.hiedacamellia.mystiasizakaya.util.ButtunShow;
 import org.hiedacamellia.mystiasizakaya.util.TargetsText;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUiMenu> {
 	private static final HashMap<String, Object> guistate = CookingRangeUiMenu.guistate;

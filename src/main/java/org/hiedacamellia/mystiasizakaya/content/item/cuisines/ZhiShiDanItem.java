@@ -1,7 +1,7 @@
 
 package org.hiedacamellia.mystiasizakaya.content.item.cuisines;
 
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Rarity;
 import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class ZhiShiDanItem extends Cuisines {
