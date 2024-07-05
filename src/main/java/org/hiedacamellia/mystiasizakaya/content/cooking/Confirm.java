@@ -12,6 +12,7 @@ import org.hiedacamellia.mystiasizakaya.content.item.ItemRegistery;
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 import org.hiedacamellia.mystiasizakaya.util.GetValue;
 import org.hiedacamellia.mystiasizakaya.util.SetSlotItem;
+import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 import java.util.*;
 
@@ -19,26 +20,27 @@ public class Confirm {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		boolean bool = false;
 		double time;
-		time = GetValue.getDouble(world, BlockPos.containing(x, y, z), "timeleft");
+		time = GetValue.getDouble(world, Pos.get(x, y, z), "timeleft");
 		ItemStack target;
 		ItemStack Kitchenware;
 		String raws;
-		if ((ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 6).getItem())
-				&& !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 12)
+		if ((ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, Pos.get(x, y, z), 6).getItem())
+				&& !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, Pos.get(x, y, z), 12)
 				.getItem()) && time == 0) {
-			target = GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 12);
-			Kitchenware = GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0);
-			List<String> rawtags = GetTagFromItemStacks.execute(world, x, y, z);
-			List<String> targettags = GetTargetTags.execute(target,Kitchenware.getItem());
-			List<String> targetntags = GetTargetNagetivetags.execute(target,Kitchenware.getItem());
+			target = GetItemStack.getItemStack(world, Pos.get(x, y, z), 12);
+			Kitchenware = GetItemStack.getItemStack(world, Pos.get(x, y, z), 0);
+
+			List<String> rawtags = GetTagFromItemStacks.get(world, x, y, z);
+			List<String> targettags = target.getOrCreateTag().getString("tags").isEmpty() ? new ArrayList<>() : Arrays.asList(target.getOrCreateTag().getString("tags").split(","));
+			List<String> targetntags = target.getOrCreateTag().getString("ntags").isEmpty() ? new ArrayList<>() : Arrays.asList(target.getOrCreateTag().getString("ntags").split(","));
 
 			Set<String> set = new LinkedHashSet<>(rawtags);
+			targettags.sort(Comparator.naturalOrder());
 			set.addAll(targettags);
 			ArrayList<String> resultList = new ArrayList<>(set);
 
 
-			if (!(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 5)
-					.getItem())) {
+			if (!(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, Pos.get(x, y, z), 5).getItem())) {
 				resultList.add("tag.mystias_izakaya.Large_Portion");
                 resultList.remove("tag.mystias_izakaya.Small_Portion");
 			}
@@ -54,7 +56,7 @@ public class Confirm {
 			if (resultList.contains("tag.mystias_izakaya.Hot")) {
 				resultList.remove("tag.mystias_izakaya.Refreshing");
 			}
-			resultList.add(GetKitchenwareTag.execute(Kitchenware));
+			resultList.addAll(Kitchenware.getOrCreateTag().getString("tags").isEmpty() ? List.of() : List.of(Kitchenware.getOrCreateTag().getString("tags").split(",")));
 			String resultString = String.join(",", resultList);
 			Set<String> seti = new HashSet<>(resultList);
 			for (String str : targetntags) {
@@ -65,20 +67,13 @@ public class Confirm {
 			}
 			ArrayList<String> rawslist = new ArrayList<>();
 			for (int i = 1; i < 6; i++) {
-				rawslist.add(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), i).getItem())).toString());
+				rawslist.add(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(GetItemStack.getItemStack(world, Pos.get(x, y, z), i).getItem())).toString());
 			}
-			// 使用StringBuilder来构建字符串
-			StringBuilder sb = new StringBuilder();
-			for (int i = 0; i < rawslist.size(); i++) {
-				sb.append(rawslist.get(i));
-				if (i < rawslist.size() - 1) {
-					sb.append(","); // 在最后一个元素之后不添加逗号
-				}
-			}
+			rawslist.sort(Comparator.naturalOrder());
+			raws = String.join(",",rawslist);
 
-			raws = sb.toString();
 			if (!world.isClientSide()) {
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = Pos.get(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)

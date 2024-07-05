@@ -18,6 +18,7 @@ import org.hiedacamellia.mystiasizakaya.util.ButtunShow;
 import org.hiedacamellia.mystiasizakaya.util.TargetsText;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUiMenu> {
 	private static final HashMap<String, Object> guistate = CookingRangeUiMenu.guistate;
@@ -30,6 +31,7 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 	Button button_select2;
 	Button button_select3;
 	Button button_select4;
+//	List<Button> buttons;
 
 	public CookingRangeUiScreen(CookingRangeUiMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -78,11 +80,11 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 
 	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 0), 44, 29, -1, false);
-		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 1), 44, 56, -1, false);
-		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 2), 44, 83, -1, false);
-		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 3), 44, 110, -1, false);
-		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 4), 44, 137, -1, false);
+		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 7), 44, 29, -1, false);
+		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 8), 44, 56, -1, false);
+		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 9), 44, 83, -1, false);
+		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 10), 44, 110, -1, false);
+		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 11), 44, 137, -1, false);
 		guiGraphics.drawString(this.font, Status.execute(world, x, y, z), 233, 26, -1, false);
 		guiGraphics.drawString(this.font, Lefttime.execute(world, x, y, z), 238, 65, -1, false);
 	}
@@ -104,6 +106,24 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 				}).bounds(this.leftPos + 94, this.topPos + 60, 90, 20).build();
 		guistate.put("button:button_confirm", button_confirm);
 		this.addRenderableWidget(button_confirm);
+
+//		for(int i=0 ;i<5;i++){
+//			int finalI = i;
+//			buttons.add(Button.builder(Component.literal(""), e -> {
+//				if (ButtunShow.get(entity, 7+ finalI)) {
+//					MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(1+ finalI, x, y, z));
+//					CookingRangeUiButton.handleButtonAction(entity, 1+ finalI, x, y, z);
+//				}
+//			}).bounds(this.leftPos + 40, this.topPos + 24+27*i, 45, 20).build(builder -> new Button(builder) {
+//				@Override
+//				public void render(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
+//					if (ButtunShow.get(entity, 7+ finalI))
+//						super.render(guiGraphics, gx, gy, ticks);
+//				}
+//			}));
+//			guistate.put("button:button_select"+ i, buttons.get(i));
+//			this.addRenderableWidget(buttons.get(i));
+//		}
 		button_select = Button.builder(Component.literal(""), e -> {
 			if (ButtunShow.get(entity, 7)) {
 				MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(1, x, y, z));

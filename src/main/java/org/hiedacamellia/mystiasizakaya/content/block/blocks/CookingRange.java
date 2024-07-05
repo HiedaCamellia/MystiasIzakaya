@@ -40,6 +40,7 @@ import net.minecraftforge.network.NetworkHooks;
 import org.hiedacamellia.mystiasizakaya.content.cooking.Init;
 import org.hiedacamellia.mystiasizakaya.content.cooking.Main;
 import org.hiedacamellia.mystiasizakaya.functionals.inventory.CookingRangeUiMenu;
+import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 import java.util.Collections;
 import java.util.List;
@@ -144,7 +145,7 @@ public class CookingRange extends Block implements EntityBlock {
 		int y = pos.getY();
 		int z = pos.getZ();
 		if (!world.isClientSide()) {
-			BlockPos _bp = BlockPos.containing(x, y, z);
+			BlockPos _bp = Pos.get(x, y, z);
 			BlockEntity _blockEntity = world.getBlockEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
 			if (_blockEntity != null)
@@ -186,7 +187,7 @@ public class CookingRange extends Block implements EntityBlock {
 
 	private static void clean(LevelAccessor world, double x, double y, double z){
 		if (!world.isClientSide()) {
-			BlockPos _bp = BlockPos.containing(x, y, z);
+			BlockPos _bp = Pos.get(x, y, z);
 			BlockEntity _blockEntity = world.getBlockEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
 			if (_blockEntity != null)

@@ -6,6 +6,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.hiedacamellia.mystiasizakaya.integration.youkaihomecoming.IngredientsCompact;
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
+import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +18,11 @@ public class GetRawsFromSelectedFood {
         ItemStack raw;
         double i;
         List<ItemStack> rawss = new ArrayList<>();
-        s = GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 12);
+        s = GetItemStack.getItemStack(world, Pos.get(x, y, z), 12);
         i = 1;
         while (i <= 5) {
-            if (!(GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), (int) i).getItem() == ItemStack.EMPTY.getItem())) {
-                raw = GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), (int) i);
+            if (!(GetItemStack.getItemStack(world, Pos.get(x, y, z), (int) i).getItem() == ItemStack.EMPTY.getItem())) {
+                raw = GetItemStack.getItemStack(world, Pos.get(x, y, z), (int) i);
                 raw = IngredientsCompact.execute(raw);
                 String raws = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(raw.getItem())).toString();
                 String ss = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(s.getItem())).toString();

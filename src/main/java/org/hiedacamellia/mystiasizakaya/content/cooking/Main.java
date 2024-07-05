@@ -14,6 +14,7 @@ import org.hiedacamellia.mystiasizakaya.integration.youkaihomecoming.Ingredients
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 import org.hiedacamellia.mystiasizakaya.util.GetValue;
 import org.hiedacamellia.mystiasizakaya.util.SetSlotItem;
+import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +28,10 @@ public class Main {
 		ItemStack util;
 		ItemStack target;
 		List<String> targets = new ArrayList<>();
-		time = GetValue.getDouble(world, BlockPos.containing(x, y, z), "timeleft");
+		time = GetValue.getDouble(world, Pos.get(x, y, z), "timeleft");
 		if (time > 1) {
 			if (!world.isClientSide()) {
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = Pos.get(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
@@ -40,7 +41,7 @@ public class Main {
 			}
 		} else if (time == 1) {
 			if (!world.isClientSide()) {
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = Pos.get(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
@@ -48,48 +49,40 @@ public class Main {
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
-			target = GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 12);
+			target = GetItemStack.getItemStack(world, Pos.get(x, y, z), 12);
 			SetSlotItem.setSlotItem(world, x, y, z, target, 6, 1);
-			GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 6).getOrCreateTag().putString("tags",
-					(GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 12).getOrCreateTag()
+			GetItemStack.getItemStack(world, Pos.get(x, y, z), 6).getOrCreateTag().putString("tags",
+					(GetItemStack.getItemStack(world, Pos.get(x, y, z), 12).getOrCreateTag()
 							.getString("tags")));
 			SetSlotItem.setEmptySlot(world, x, y, z, 12);
 		} else {
-			if (!(GetValue.getBoolean(world, BlockPos.containing(x, y, z), "breaking"))) {
-				if (ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 4)
-						.getItem()
-						&& !(ItemStack.EMPTY.getItem() == GetItemStack
-								.getItemStack(world, BlockPos.containing(x, y, z), 5).getItem())) {
+			if (!(GetValue.getBoolean(world, Pos.get(x, y, z), "breaking"))) {
+				if (ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, Pos.get(x, y, z), 4).getItem()
+						&& !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, Pos.get(x, y, z), 5).getItem())) {
 					SetSlotItem.setSlotItem(world, x, y, z,
-							GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 5), 4, 1);
+							GetItemStack.getItemStack(world, Pos.get(x, y, z), 5), 4, 1);
 					SetSlotItem.setEmptySlot(world, x, y, z, 5);
 				}
-				if (ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 3)
-						.getItem()
-						&& !(ItemStack.EMPTY.getItem() == GetItemStack
-								.getItemStack(world, BlockPos.containing(x, y, z), 4).getItem())) {
+				if (ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, Pos.get(x, y, z), 3).getItem()
+						&& !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, Pos.get(x, y, z), 4).getItem())) {
 					SetSlotItem.setSlotItem(world, x, y, z,
-							GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 4), 3, 1);
+							GetItemStack.getItemStack(world, Pos.get(x, y, z), 4), 3, 1);
 					SetSlotItem.setEmptySlot(world, x, y, z, 4);
 				}
-				if (ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 2)
-						.getItem()
-						&& !(ItemStack.EMPTY.getItem() == GetItemStack
-								.getItemStack(world, BlockPos.containing(x, y, z), 3).getItem())) {
+				if (ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, Pos.get(x, y, z), 2).getItem()
+						&& !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, Pos.get(x, y, z), 3).getItem())) {
 					SetSlotItem.setSlotItem(world, x, y, z,
-							GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 3), 2, 1);
+							GetItemStack.getItemStack(world, Pos.get(x, y, z), 3), 2, 1);
 					SetSlotItem.setEmptySlot(world, x, y, z, 3);
 				}
-				if (ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 1)
-						.getItem()
-						&& !(ItemStack.EMPTY.getItem() == GetItemStack
-								.getItemStack(world, BlockPos.containing(x, y, z), 2).getItem())) {
+				if (ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, Pos.get(x, y, z), 1).getItem()
+						&& !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, Pos.get(x, y, z), 2).getItem())) {
 					SetSlotItem.setSlotItem(world, x, y, z,
-							GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 2), 1, 1);
+							GetItemStack.getItemStack(world, Pos.get(x, y, z), 2), 1, 1);
 					SetSlotItem.setEmptySlot(world, x, y, z, 2);
 				}
 
-				util = GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), 0);
+				util = GetItemStack.getItemStack(world, Pos.get(x, y, z), 0);
 				if (util.getItem() == ItemStack.EMPTY.getItem()) {
 					SetSlotItem.setEmptySlot(world, x, y, z, 12);
 				}
@@ -97,8 +90,8 @@ public class Main {
 				List<String> raws = new ArrayList<>();
 				i = 1;
 				while (i <= 5) {
-					if (!(GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), (int) i).getItem() == ItemStack.EMPTY.getItem())) {
-						ItemStack raw = GetItemStack.getItemStack(world, BlockPos.containing(x, y, z), (int) i);
+					if (!(GetItemStack.getItemStack(world, Pos.get(x, y, z), (int) i).getItem() == ItemStack.EMPTY.getItem())) {
+						ItemStack raw = GetItemStack.getItemStack(world, Pos.get(x, y, z), (int) i);
 						raw = IngredientsCompact.execute(raw);
 						raws.add((Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(raw.getItem())).toString()));
 					}
