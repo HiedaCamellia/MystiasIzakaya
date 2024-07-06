@@ -6,8 +6,8 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class MaoMiKeLuLiItem extends Cuisines {
 	public MaoMiKeLuLiItem() {
-		super(7, 1.2f, Rarity.RARE, "mao_mi_ke_lu_li",
+		super(8, 1.2f, Rarity.RARE, "mao_mi_ke_lu_li",
 				new String[]{"Filling", "Sweet", "Photogenic"},
-				new String[]{"Peculiar"},0);
+				new String[]{"Peculiar"},84);
 	}
 }

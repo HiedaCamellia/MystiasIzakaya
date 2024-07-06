@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:cutting_board_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:ke_ke_dou"
+    },
+    {
+      "item": "mystias_izakaya:nan_gua"
+    },
+    {
+      "item": "mystias_izakaya:nai_you"
+    },
+    {
+      "item": "minecraft:air"
+    },
+    {
+      "item": "minecraft:air"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:feng_zi_dan",
+    "count": 1
+  }
+}

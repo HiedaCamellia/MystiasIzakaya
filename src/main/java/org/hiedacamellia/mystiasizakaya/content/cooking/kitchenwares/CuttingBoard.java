@@ -133,6 +133,44 @@ public class CuttingBoard {
                 && raws.contains("mystias_izakaya:ban_li")) {
             cuisines.add("mystias_izakaya:mi_qian_li_zi");
         }
+        if (raws.contains("mystias_izakaya:zhu_zi")
+                && raws.contains("mystias_izakaya:xian_hua")
+                && raws.contains("mystias_izakaya:mei_zi")
+                && raws.contains("mystias_izakaya:hei_mao_zhu_rou")
+                && raws.contains("mystias_izakaya:song_lu")) {
+            cuisines.add("mystias_izakaya:ni_zhuan_tian_di");
+        }
+        if (raws.contains("mystias_izakaya:hong_dou")
+                && raws.contains("mystias_izakaya:nuo_mi")) {
+            cuisines.add("mystias_izakaya:hong_dou_da_fu");
+        }
+        if (raws.contains("mystias_izakaya:zhu_zi")
+                && raws.contains("mystias_izakaya:xia")
+                && raws.contains("mystias_izakaya:xi_lan_hua")) {
+            cuisines.add("mystias_izakaya:zhu_tong_shao_zui_xia");
+        }
+        if (raws.contains("mystias_izakaya:tao_zi")
+                && raws.contains("mystias_izakaya:xu_li")
+                && raws.contains("mystias_izakaya:nai_you")
+                && raws.contains("mystias_izakaya:ke_ke_dou")
+                && raws.contains("mystias_izakaya:mian_fen")) {
+            cuisines.add("mystias_izakaya:mao_mi_xi_shui");
+        }
+        if (raws.contains("mystias_izakaya:pu_tao")
+                && raws.contains("mystias_izakaya:xu_li")
+                && raws.contains("mystias_izakaya:nai_you")
+                && raws.contains("mystias_izakaya:yin_er")) {
+            cuisines.add("mystias_izakaya:he_tang_yue_she");
+        }
+        if (raws.contains("mystias_izakaya:ke_ke_dou")
+                &&Collections.frequency(raws, "mystias_izakaya:tao_zi") == 4) {
+            cuisines.add("mystias_izakaya:long_yin_tao_zi");
+        }
+        if (raws.contains("mystias_izakaya:ke_ke_dou")
+                && raws.contains("mystias_izakaya:nan_gua")
+                && raws.contains("mystias_izakaya:nai_you")) {
+            cuisines.add("mystias_izakaya:feng_zi_dan");
+        }
         return cuisines;
     }
 }

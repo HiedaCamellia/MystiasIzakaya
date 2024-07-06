@@ -6,9 +6,9 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class ChuiZhuYinChunItem extends Cuisines {
 	public ChuiZhuYinChunItem() {
-		super(5, 1.2f, Rarity.RARE, "chui_zhu_yin_chun",
+		super(16, 1.2f, Rarity.EPIC, "chui_zhu_yin_chun",
 				new String[]{"Expensive", "Premium", "Mountain_Delicacy", "Signature", "Photogenic",
 						"Cultural_Heritage"},
-				new String[]{"Peculiar", "Fungus"},0);
+				new String[]{"Peculiar", "Fungus"},168);
 	}
 }

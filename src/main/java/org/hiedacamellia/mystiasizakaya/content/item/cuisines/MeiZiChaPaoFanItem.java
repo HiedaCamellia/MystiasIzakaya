@@ -6,8 +6,8 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class MeiZiChaPaoFanItem extends Cuisines {
 	public MeiZiChaPaoFanItem() {
-		super(7, 1.2f, Rarity.RARE, "mei_zi_cha_pao_fan",
+		super(4, 1.2f, Rarity.UNCOMMON, "mei_zi_cha_pao_fan",
 				new String[]{"Homecooking", "Japanese"},
-				new String[]{},0);
+				new String[]{},48);
 	}
 }

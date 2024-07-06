@@ -6,8 +6,8 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class HuanXiangFengMiItem extends Cuisines {
 	public HuanXiangFengMiItem() {
-		super(7, 1.2f, Rarity.RARE, "huan_xiang_feng_mi",
+		super(21, 1.2f, Rarity.EPIC, "huan_xiang_feng_mi",
 				new String[]{"Expensive", "Meat", "Greasy", "Filling", "Raw", "Signature", "Photogenic", "Strength_Boosting"},
-				new String[]{"Refreshing", "Mild"},0);
+				new String[]{"Refreshing", "Mild"},216);
 	}
 }

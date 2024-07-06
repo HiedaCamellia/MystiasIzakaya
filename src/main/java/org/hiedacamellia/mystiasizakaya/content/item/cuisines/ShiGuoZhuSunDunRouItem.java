@@ -6,8 +6,8 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class ShiGuoZhuSunDunRouItem extends Cuisines {
 	public ShiGuoZhuSunDunRouItem() {
-		super(7, 1.2f, Rarity.RARE, "shi_guo_zhu_sun_dun_rou",
+		super(8, 1.2f, Rarity.RARE, "shi_guo_zhu_sun_dun_rou",
 				new String[]{"Meat", "Homecooking", "Filling"},
-				new String[]{},0);
+				new String[]{},84);
 	}
 }

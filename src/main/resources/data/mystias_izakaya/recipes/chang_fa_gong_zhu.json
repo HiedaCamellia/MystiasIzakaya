@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:streamer_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:nan_gua"
+    },
+    {
+      "item": "mystias_izakaya:xia"
+    },
+    {
+      "item": "minecraft:air"
+    },
+    {
+      "item": "minecraft:air"
+    },
+    {
+      "item": "minecraft:air"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:chang_fa_gong_zhu",
+    "count": 1
+  }
+}

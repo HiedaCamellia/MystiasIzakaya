@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:boiling_pot_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:hai_dan"
+    },
+    {
+      "item": "mystias_izakaya:jin_qiang_yu"
+    },
+    {
+      "item": "mystias_izakaya:yin_er"
+    },
+    {
+      "item": "mystias_izakaya:lu_shui"
+    },
+    {
+      "item": "minecraft:air"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:hai_dan_xin_xuan_bing",
+    "count": 1
+  }
+}

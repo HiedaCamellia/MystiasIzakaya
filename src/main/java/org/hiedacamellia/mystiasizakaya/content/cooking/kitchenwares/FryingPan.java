@@ -136,6 +136,33 @@ public class FryingPan {
                 && raws.contains("mystias_izakaya:yue_guang_cao")) {
             cuisines.add("mystias_izakaya:shi_jin_tian_fu_luo");
         }
+        if (raws.contains("mystias_izakaya:xi_hong_shi")
+                && raws.contains("mystias_izakaya:tu_dou")) {
+            cuisines.add("mystias_izakaya:zha_fan_qie_tiao");
+        }
+        if (raws.contains("mystias_izakaya:fen_mi")
+                && raws.contains("mystias_izakaya:tao_zi")
+                && raws.contains("mystias_izakaya:zhu_rou")) {
+            cuisines.add("mystias_izakaya:mi_tao_hong_shao_rou");
+        }
+        if (raws.contains("mystias_izakaya:hong_dou")
+                && raws.contains("mystias_izakaya:ji_dan")
+                && raws.contains("mystias_izakaya:mian_fen")) {
+            cuisines.add("mystias_izakaya:tong_luo_shao");
+        }
+        if (raws.contains("mystias_izakaya:xiang_chun")
+                && raws.contains("mystias_izakaya:ji_dan")) {
+            cuisines.add("mystias_izakaya:xiang_chun_jian_bing");
+        }
+        if (raws.contains("mystias_izakaya:ba_mu_man")
+                && raws.contains("mystias_izakaya:ji_dan")) {
+            cuisines.add("mystias_izakaya:man_yu_neng_dan_jing");
+        }
+        if (raws.contains("mystias_izakaya:la_jiao")
+                && raws.contains("mystias_izakaya:niu_rou")
+                && raws.contains("mystias_izakaya:dou_fu")) {
+            cuisines.add("mystias_izakaya:hu_la_tang");
+        }
         return cuisines;
     }
 }

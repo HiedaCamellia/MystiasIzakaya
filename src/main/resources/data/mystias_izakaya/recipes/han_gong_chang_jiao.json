@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:boiling_pot_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:ba_mu_man"
+    },
+    {
+      "item": "mystias_izakaya:dou_fu"
+    },
+    {
+      "item": "mystias_izakaya:pang_xie"
+    },
+    {
+      "item": "mystias_izakaya:zhu_zi"
+    },
+    {
+      "item": "mystias_izakaya:lu_shui"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:han_gong_chang_jiao",
+    "count": 1
+  }
+}

@@ -67,6 +67,24 @@ public class Grill {
                 && raws.contains("mystias_izakaya:fen_mi")) {
             cuisines.add("mystias_izakaya:hai_dao_xun_rou");
         }
+        if (raws.contains("mystias_izakaya:ye_zhu_rou")
+                && raws.contains("mystias_izakaya:yang_cong")
+                && raws.contains("mystias_izakaya:niu_rou")
+                && raws.contains("mystias_izakaya:song_lu")
+                && raws.contains("mystias_izakaya:xi_hong_shi")) {
+            cuisines.add("mystias_izakaya:huan_xiang_feng_mi");
+        }
+        if (raws.contains("mystias_izakaya:ke_ke_dou")
+                && raws.contains("mystias_izakaya:mian_fen")
+                && raws.contains("mystias_izakaya:ji_dan")) {
+            cuisines.add("mystias_izakaya:mao_mi_ke_lu_li");
+        }
+        if (raws.contains("mystias_izakaya:mo_gu")
+                && raws.contains("mystias_izakaya:yang_cong")
+                && raws.contains("mystias_izakaya:xi_lan_hua")
+                && raws.contains("mystias_izakaya:ye_zhu_rou")) {
+            cuisines.add("mystias_izakaya:mao_mi_pi_sha");
+        }
         return cuisines;
     }
 }

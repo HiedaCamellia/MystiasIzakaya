@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:streamer_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:ke_ke_dou"
+    },
+    {
+      "item": "mystias_izakaya:yin_er"
+    },
+    {
+      "item": "mystias_izakaya:nan_gua"
+    },
+    {
+      "item": "mystias_izakaya:lu_shui"
+    },
+    {
+      "item": "minecraft:air"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:sheng_ming_zhi_yuan",
+    "count": 1
+  }
+}

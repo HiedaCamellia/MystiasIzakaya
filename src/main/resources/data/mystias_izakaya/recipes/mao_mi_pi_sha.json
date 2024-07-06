@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:grill_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:mo_gu"
+    },
+    {
+      "item": "mystias_izakaya:yang_cong"
+    },
+    {
+      "item": "mystias_izakaya:xi_lan_hua"
+    },
+    {
+      "item": "mystias_izakaya:ye_zhu_rou"
+    },
+    {
+      "item": "minecraft:air"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:mao_mi_pi_sha",
+    "count": 1
+  }
+}

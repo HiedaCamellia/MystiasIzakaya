@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:streamer_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:pu_tao"
+    },
+    {
+      "item": "mystias_izakaya:huan_tan_hua"
+    },
+    {
+      "item": "mystias_izakaya:nai_you"
+    },
+    {
+      "item": "mystias_izakaya:bai_guo"
+    },
+    {
+      "item": "minecraft:air"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:xiao_xiao_de_tian_mi_du_yao",
+    "count": 1
+  }
+}

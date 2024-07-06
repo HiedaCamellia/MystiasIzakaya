@@ -143,6 +143,56 @@ public class BoilingPot {
                 && raws.contains("mystias_izakaya:ban_li")) {
             cuisines.add("mystias_izakaya:tian_shi_ban_li_meng_gu");
         }
+        if (raws.contains("mystias_izakaya:ba_mu_man")
+                && raws.contains("mystias_izakaya:dou_fu")
+                && raws.contains("mystias_izakaya:pang_xie")
+                && raws.contains("mystias_izakaya:zhu_zi")
+                && raws.contains("mystias_izakaya:lu_shui")) {
+            cuisines.add("mystias_izakaya:han_gong_chang_jiao");
+        }
+        if (raws.contains("mystias_izakaya:zhu_zi")
+                && raws.contains("mystias_izakaya:zhu_sun")
+                && raws.contains("mystias_izakaya:niu_rou")) {
+            cuisines.add("mystias_izakaya:shi_guo_zhu_sun_dun_rou");
+        }
+        if (raws.contains("mystias_izakaya:hai_tai")
+                && raws.contains("mystias_izakaya:mei_zi")) {
+            cuisines.add("mystias_izakaya:mei_zi_cha_pao_fan");
+        }
+        if (raws.contains("mystias_izakaya:xiang_chun")
+                && raws.contains("mystias_izakaya:mo_gu")) {
+            cuisines.add("mystias_izakaya:lv_ye_xian_gu");
+        }
+        if (raws.contains("mystias_izakaya:he_tun")
+                && raws.contains("mystias_izakaya:mei_zi")
+                && raws.contains("mystias_izakaya:ba_mu_man")
+                && raws.contains("mystias_izakaya:bai_guo")) {
+            cuisines.add("mystias_izakaya:du_zhang_hua_yuan");
+        }
+        if (raws.contains("mystias_izakaya:la_jiao")
+                && raws.contains("mystias_izakaya:luo_bu")
+                && raws.contains("mystias_izakaya:song_lu")
+                && raws.contains("mystias_izakaya:niu_rou")
+                && raws.contains("mystias_izakaya:he_niu")) {
+            cuisines.add("mystias_izakaya:niu_rou_yuan_yang_huo_guo");
+        }
+        if (raws.contains("mystias_izakaya:hai_dan")
+                && raws.contains("mystias_izakaya:jin_qiang_yu")
+                && raws.contains("mystias_izakaya:yin_er")
+                && raws.contains("mystias_izakaya:lu_shui")) {
+            cuisines.add("mystias_izakaya:hai_dan_xin_xuan_bing");
+        }
+        if (raws.contains("mystias_izakaya:yin_er")
+                && raws.contains("mystias_izakaya:lian_zi")) {
+            cuisines.add("mystias_izakaya:yang_xin_zhou");
+        }
+        if (raws.contains("mystias_izakaya:ji_shang_jin_qiang_yu")
+                && raws.contains("mystias_izakaya:hai_tai")
+                && raws.contains("mystias_izakaya:zhang_yu")
+                && raws.contains("mystias_izakaya:pang_xie")
+                && raws.contains("mystias_izakaya:xia")) {
+            cuisines.add("mystias_izakaya:zhi_zhung_hai_xian_mian");
+        }
         return cuisines;
     }
 }

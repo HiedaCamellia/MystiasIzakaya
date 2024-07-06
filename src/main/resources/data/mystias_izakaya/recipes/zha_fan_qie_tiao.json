@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:frying_pan_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:xi_hong_shi"
+    },
+    {
+      "item": "mystias_izakaya:tu_dou"
+    },
+    {
+      "item": "minecraft:air"
+    },
+    {
+      "item": "minecraft:air"
+    },
+    {
+      "item": "minecraft:air"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:zha_fan_qie_tiao",
+    "count": 1
+  }
+}

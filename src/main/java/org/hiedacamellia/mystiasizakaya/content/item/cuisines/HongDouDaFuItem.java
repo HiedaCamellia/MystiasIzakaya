@@ -6,8 +6,8 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class HongDouDaFuItem extends Cuisines {
 	public HongDouDaFuItem() {
-		super(7, 1.2f, Rarity.RARE, "hong_dou_da_fu",
+		super(8, 1.2f, Rarity.RARE, "hong_dou_da_fu",
 				new String[]{"Japanese", "Sweet", "Small_Portion"},
-				new String[]{},0);
+				new String[]{},84);
 	}
 }

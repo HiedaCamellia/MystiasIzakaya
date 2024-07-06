@@ -6,8 +6,8 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class ZhiZhungHaiXianMianItem extends Cuisines {
 	public ZhiZhungHaiXianMianItem() {
-		super(7, 1.2f, Rarity.RARE, "zhi_zhung_hai_xian_mian",
+		super(12, 1.2f, Rarity.RARE, "zhi_zhung_hai_xian_mian",
 				new String[]{"Expensive", "Aquatic", "Homecooking", "Premium", "Filling", "Sea_Delicacy", "Fresh"},
-				new String[]{},0);
+				new String[]{},120);
 	}
 }

@@ -6,8 +6,8 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class HaiDanXinXuanBingItem extends Cuisines {
 	public HaiDanXinXuanBingItem() {
-		super(7, 1.2f, Rarity.RARE, "hai_dan_xin_xuan_bing",
+		super(14, 1.2f, Rarity.EPIC, "hai_dan_xin_xuan_bing",
 				new String[]{"Expensive", "Western", "Sweet", "Photogenic", "Fungus", "Wonderful", "Dreamy", "Specialty"},
-				new String[]{"Greasy"},0);
+				new String[]{"Greasy"},144);
 	}
 }

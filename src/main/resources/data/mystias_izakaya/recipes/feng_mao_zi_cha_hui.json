@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:streamer_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:ke_ke_dou"
+    },
+    {
+      "item": "mystias_izakaya:nai_you"
+    },
+    {
+      "item": "mystias_izakaya:mian_fen"
+    },
+    {
+      "item": "mystias_izakaya:mo_gu"
+    },
+    {
+      "item": "mystias_izakaya:xi_lan_hua"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:feng_mao_zi_cha_hui",
+    "count": 1
+  }
+}

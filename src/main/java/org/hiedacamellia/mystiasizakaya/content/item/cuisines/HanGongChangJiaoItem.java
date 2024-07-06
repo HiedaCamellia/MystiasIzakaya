@@ -6,9 +6,9 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class HanGongChangJiaoItem extends Cuisines {
 	public HanGongChangJiaoItem() {
-		super(7, 1.2f, Rarity.RARE, "han_gong_chang_jiao",
+		super(14, 1.2f, Rarity.EPIC, "han_gong_chang_jiao",
 				new String[]{"Expensive", "Aquatic", "Premium", "Legendary", "Chinese", "Peculiar",
 						"Cultural_Heritage", "Soup"},
-				new String[]{"Greasy"},0);
+				new String[]{"Greasy"},144);
 	}
 }
