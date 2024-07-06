@@ -87,7 +87,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(new ResourceLocation("mystiasizakaya:kitchenwares")));
+				return stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:kitchenwares")));
 			}
 		}));
 		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 95, 26) {
@@ -95,7 +95,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(ItemTags.create(new ResourceLocation("mystiasizakaya:ingredients")))){
+				if (stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:ingredients")))){
 					return true;
 				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
 					return true;
@@ -109,7 +109,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(ItemTags.create(new ResourceLocation("mystiasizakaya:ingredients")))){
+				if (stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:ingredients")))){
 					return true;
 				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
 					return true;
@@ -124,7 +124,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(ItemTags.create(new ResourceLocation("mystiasizakaya:ingredients")))){
+				if (stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:ingredients")))){
 					return true;
 				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
 					return true;
@@ -139,7 +139,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(ItemTags.create(new ResourceLocation("mystiasizakaya:ingredients")))){
+				if (stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:ingredients")))){
 					return true;
 				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
 					return true;
@@ -154,7 +154,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(ItemTags.create(new ResourceLocation("mystiasizakaya:ingredients")))){
+				if (stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:ingredients")))){
 					return true;
 				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
 					return true;

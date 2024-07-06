@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:streamer_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:bai_guo"
+    },
+    {
+      "item": "mystias_izakaya:lian_zi"
+    },
+    {
+      "item": "mystias_izakaya:mian_fen"
+    },
+    {
+      "item": "mystias_izakaya:huang_you"
+    },
+    {
+      "item": "minecraft:air"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:sheng_bai_lian_zi_gao",
+    "count": 1
+  }
+}

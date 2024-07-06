@@ -18,7 +18,7 @@ public class GetCuisinesTexture {
 		List<String> orders_list = player.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()).orders;
 		if(orders_list.size()<=id) return "";
 		String order = orders_list.get((int) id);
-		TagKey<Item> tag = ItemTags.create(new ResourceLocation("mystiasizakaya:cuisines"));
+		TagKey<Item> tag = ItemTags.create(new ResourceLocation("mystias_izakaya:cuisines"));
 		if (!new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(order))).is(tag)) {
 			return "";
 		}

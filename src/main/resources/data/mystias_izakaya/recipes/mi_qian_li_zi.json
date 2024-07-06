@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:cutting_board_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:fen_mi"
+    },
+    {
+      "item": "mystias_izakaya:ban_li"
+    },
+    {
+      "item": "minecraft:air"
+    },
+    {
+      "item": "minecraft:air"
+    },
+    {
+      "item": "minecraft:air"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:mi_qian_li_zi",
+    "count": 1
+  }
+}

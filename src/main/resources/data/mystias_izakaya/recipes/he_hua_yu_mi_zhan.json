@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:streamer_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:ji_shang_jin_qiang_yu"
+    },
+    {
+      "item": "mystias_izakaya:lian_zi"
+    },
+    {
+      "item": "mystias_izakaya:bing_di_lian"
+    },
+    {
+      "item": "mystias_izakaya:lu_shui"
+    },
+    {
+      "item": "minecraft:air"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:he_hua_yu_mi_zhan",
+    "count": 1
+  }
+}

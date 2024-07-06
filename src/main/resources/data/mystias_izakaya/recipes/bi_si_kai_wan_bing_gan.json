@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:grill_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:mian_fen"
+    },
+    {
+      "item": "mystias_izakaya:zhi_shi"
+    },
+    {
+      "item": "minecraft:air"
+    },
+    {
+      "item": "minecraft:air"
+    },
+    {
+      "item": "minecraft:air"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:bi_si_kai_wan_bing_gan",
+    "count": 1
+  }
+}

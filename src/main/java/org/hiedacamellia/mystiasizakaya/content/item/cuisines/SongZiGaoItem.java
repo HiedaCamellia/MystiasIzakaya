@@ -6,8 +6,8 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class SongZiGaoItem extends Cuisines {
 	public SongZiGaoItem() {
-		super(7, 1.2f, Rarity.RARE, "song_zi_gao",
+		super(9, 1.2f, Rarity.RARE, "song_zi_gao",
 				new String[]{"Mild", "Specialty"},
-				new String[]{},0);
+				new String[]{},96);
 	}
 }

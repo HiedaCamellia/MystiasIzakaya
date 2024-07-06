@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:streamer_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:lu_rou"
+    },
+    {
+      "item": "mystias_izakaya:song_zi"
+    },
+    {
+      "item": "mystias_izakaya:bai_guo"
+    },
+    {
+      "item": "minecraft:air"
+    },
+    {
+      "item": "minecraft:air"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:bai_lu_zhen_song",
+    "count": 1
+  }
+}

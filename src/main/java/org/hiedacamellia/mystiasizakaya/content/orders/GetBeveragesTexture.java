@@ -17,7 +17,7 @@ public class GetBeveragesTexture {
 		List<String> orders_list = player.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new Variables.PlayerVariables()).ordersbeverages;
 		if(orders_list.size()<=id) return "";
 		String order = orders_list.get((int) id);
-		TagKey<Item> tag = ItemTags.create(new ResourceLocation("mystiasizakaya:beverages"));
+		TagKey<Item> tag = ItemTags.create(new ResourceLocation("mystias_izakaya:beverages"));
 		if (!new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(order))).is(tag)) {
 			return "";
 		}

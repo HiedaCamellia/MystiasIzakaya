@@ -8,6 +8,6 @@ public class KaoDiGuaItem extends Cuisines {
 	public KaoDiGuaItem() {
 		super(7, 1.2f, Rarity.RARE, "kao_di_gua",
 				new String[]{"Economical", "Filling", "Homecooking", "Sweet"},
-				new String[]{"Good_With_Alcohol"},0);
+				new String[]{"Good_With_Alcohol"},72);
 	}
 }
