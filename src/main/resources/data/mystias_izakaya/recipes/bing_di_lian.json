@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:lily_pad"
+    },
+    {
+      "item": "mystias_izakaya:iron_knife"
+    }
+  ],
+  "result": {
+    "item": "mystias_izakaya:bing_di_lian",
+    "count": 1
+  }
+}

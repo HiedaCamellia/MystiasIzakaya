@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:huang_you"
+    }
+  ],
+  "result": {
+    "item": "mystias_izakaya:zhi_shi",
+    "count": 1
+  }
+}

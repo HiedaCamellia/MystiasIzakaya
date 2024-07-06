@@ -94,7 +94,7 @@ public class GiveEffectFromIngredientsProcedure {
 
 					entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 600, 0));
 					break;
-				case "mystias_izakaya:lian_zi":
+				case "mystias_izakaya:lian_zi.json":
 					//
 					break;
 				case "mystias_izakaya:lu_rou":
@@ -207,7 +207,7 @@ public class GiveEffectFromIngredientsProcedure {
  * "mystias_izakaya:ji_shang_jin_qiang_yu",
  * "mystias_izakaya:jin_qiang_yu",
  * "mystias_izakaya:la_jiao",
- * "mystias_izakaya:lian_zi",
+ * "mystias_izakaya:lian_zi.json",
  * "mystias_izakaya:lu_rou",
  * "mystias_izakaya:lu_shui",
  * "mystias_izakaya:luo_bu",

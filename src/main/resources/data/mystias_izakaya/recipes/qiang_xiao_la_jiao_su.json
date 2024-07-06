@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:la_jiao"
+    },
+    {
+      "item": "mystias_izakaya:la_jiao"
+    },
+    {
+      "item": "mystias_izakaya:la_jiao"
+    }
+  ],
+  "result": {
+    "item": "mystias_izakaya:qiang_xiao_la_jiao_su",
+    "count": 1
+  }
+}

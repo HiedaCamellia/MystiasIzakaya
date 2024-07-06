@@ -57,7 +57,7 @@ public class ItemRegistery {
 	public static final RegistryObject<Item> JI_SHANG_JIN_QIANG_YU = REGISTRY.register("ji_shang_jin_qiang_yu", JiShangJinQiangYuItem::new);
 	public static final RegistryObject<Item> KE_KE_DOU = REGISTRY.register("ke_ke_dou", KeKeDouItem::new);
 	public static final RegistryObject<Item> LA_JIAO = REGISTRY.register("la_jiao", LaJiaoItem::new);
-	public static final RegistryObject<Item> LIAN_ZI = REGISTRY.register("lian_zi", LianZiItem::new);
+	public static final RegistryObject<Item> LIAN_ZI = REGISTRY.register("lian_zi.json", LianZiItem::new);
 	public static final RegistryObject<Item> LUO_BU = REGISTRY.register("luo_bu", LuoBuItem::new);
 	public static final RegistryObject<Item> LU_ROU = REGISTRY.register("lu_rou", LuRouItem::new);
 	public static final RegistryObject<Item> LU_SHUI = REGISTRY.register("lu_shui", LuShuiItem::new);

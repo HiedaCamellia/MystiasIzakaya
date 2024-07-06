@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "mystias_izakaya:iron_knife"
+    }
+  ],
+  "result": {
+    "item": "mystias_izakaya:xi_hong_shi",
+    "count": 1
+  }
+}
