@@ -8,13 +8,13 @@
       "item": "mystias_izakaya:jin_qiang_yu"
     },
     {
-      "item": "minecraft:air"
+      "tag": "mystias_izakaya:emptytag"
     },
     {
-      "item": "minecraft:air"
+      "tag": "mystias_izakaya:emptytag"
     },
     {
-      "item": "minecraft:air"
+      "tag": "mystias_izakaya:emptytag"
     }
   ],
   "output": {

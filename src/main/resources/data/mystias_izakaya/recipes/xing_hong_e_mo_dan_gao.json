@@ -14,7 +14,7 @@
       "item": "mystias_izakaya:feng_mi"
     },
     {
-      "item": "minecraft:air"
+      "tag": "mystias_izakaya:emptytag"
     }
   ],
   "output": {

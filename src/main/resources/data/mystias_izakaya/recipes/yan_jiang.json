@@ -14,7 +14,7 @@
       "item": "mystias_izakaya:niu_rou"
     },
     {
-      "item": "minecraft:air"
+      "tag": "mystias_izakaya:emptytag"
     }
   ],
   "output": {

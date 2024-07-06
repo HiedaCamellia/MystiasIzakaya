@@ -14,7 +14,7 @@
       "item": "mystias_izakaya:yin_er"
     },
     {
-      "item": "minecraft:air"
+      "tag": "mystias_izakaya:emptytag"
     }
   ],
   "output": {

@@ -6,7 +6,7 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Ingredients;
 
 public class LianZiItem extends Ingredients {
 	public LianZiItem() {
-		super(1, 0.8f, Rarity.COMMON, "lian_zi.json", new String[]{"Signature", "Mild", "Cultural_Heritage"});
+		super(1, 0.8f, Rarity.COMMON, "lian_zi", new String[]{"Signature", "Mild", "Cultural_Heritage"});
 	}
 
 }

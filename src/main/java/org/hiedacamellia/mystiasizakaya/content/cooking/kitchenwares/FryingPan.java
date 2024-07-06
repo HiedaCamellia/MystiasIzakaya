@@ -86,7 +86,7 @@ public class FryingPan {
         }
         if (raws.contains("mystias_izakaya:zun_yu")
                 && raws.contains("mystias_izakaya:mian_fen")
-                && raws.contains("mystias_izakaya:fen_mi")) {
+                && raws.contains("mystias_izakaya:feng_mi")) {
             cuisines.add("mystias_izakaya:huan_jin_shu_yu_bin");
         }
         if (raws.contains("mystias_izakaya:nai_you")
@@ -117,11 +117,11 @@ public class FryingPan {
                 && Collections.frequency(raws, "mystias_izakaya:la_jiao") == 3) {
             cuisines.add("mystias_izakaya:di_yu_ji_xin_jin_gao");
         }
-        if (raws.contains("mystias_izakaya:fen_mi")
+        if (raws.contains("mystias_izakaya:feng_mi")
                 && raws.contains("mystias_izakaya:tao_zi")) {
             cuisines.add("mystias_izakaya:yun_shan_miao_hua_tang");
         }
-        if (raws.contains("mystias_izakaya:fen_mi")
+        if (raws.contains("mystias_izakaya:feng_mi")
                 && raws.contains("mystias_izakaya:di_gua")) {
             cuisines.add("mystias_izakaya:ba_si_di_gua");
         }
@@ -140,7 +140,7 @@ public class FryingPan {
                 && raws.contains("mystias_izakaya:tu_dou")) {
             cuisines.add("mystias_izakaya:zha_fan_qie_tiao");
         }
-        if (raws.contains("mystias_izakaya:fen_mi")
+        if (raws.contains("mystias_izakaya:feng_mi")
                 && raws.contains("mystias_izakaya:tao_zi")
                 && raws.contains("mystias_izakaya:zhu_rou")) {
             cuisines.add("mystias_izakaya:mi_tao_hong_shao_rou");

@@ -14,7 +14,7 @@
       "item": "mystias_izakaya:huang_you"
     },
     {
-      "item": "minecraft:air"
+      "tag": "mystias_izakaya:emptytag"
     }
   ],
   "output": {

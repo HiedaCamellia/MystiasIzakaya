@@ -5,7 +5,7 @@
       "item": "mystias_izakaya:pu_tao"
     },
     {
-      "item": "mystias_izakaya:fen_mi"
+      "item": "mystias_izakaya:feng_mi"
     },
     {
       "item": "mystias_izakaya:ning_meng"
@@ -14,7 +14,7 @@
       "item": "mystias_izakaya:ning_meng"
     },
     {
-      "item": "minecraft:air"
+      "tag": "mystias_izakaya:emptytag"
     }
   ],
   "output": {

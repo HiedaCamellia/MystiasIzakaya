@@ -14,7 +14,7 @@
       "item": "mystias_izakaya:huan_tan_hua"
     },
     {
-      "item": "minecraft:air"
+      "tag": "mystias_izakaya:emptytag"
     }
   ],
   "output": {

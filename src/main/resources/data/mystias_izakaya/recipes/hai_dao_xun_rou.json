@@ -11,10 +11,10 @@
       "item": "mystias_izakaya:la_jiao"
     },
     {
-      "item": "mystias_izakaya:fen_mi"
+      "item": "mystias_izakaya:feng_mi"
     },
     {
-      "item": "minecraft:air"
+      "tag": "mystias_izakaya:emptytag"
     }
   ],
   "output": {

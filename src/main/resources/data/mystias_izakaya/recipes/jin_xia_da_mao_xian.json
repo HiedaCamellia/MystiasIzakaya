@@ -8,13 +8,13 @@
       "item": "mystias_izakaya:huan_tan_hua"
     },
     {
-      "item": "mystias_izakaya:fen_mi"
+      "item": "mystias_izakaya:feng_mi"
     },
     {
       "item": "mystias_izakaya:nai_you"
     },
     {
-      "item": "minecraft:air"
+      "tag": "mystias_izakaya:emptytag"
     }
   ],
   "output": {

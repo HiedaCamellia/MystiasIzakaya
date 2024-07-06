@@ -129,7 +129,7 @@ public class CuttingBoard {
                 && raws.contains("mystias_izakaya:yue_guang_cao")) {
             cuisines.add("mystias_izakaya:huan_xiang_xing_lian_chuan");
         }
-        if (raws.contains("mystias_izakaya:fen_mi")
+        if (raws.contains("mystias_izakaya:feng_mi")
                 && raws.contains("mystias_izakaya:ban_li")) {
             cuisines.add("mystias_izakaya:mi_qian_li_zi");
         }

@@ -14,7 +14,7 @@
       "item": "mystias_izakaya:ye_zhu_rou"
     },
     {
-      "item": "minecraft:air"
+      "tag": "mystias_izakaya:emptytag"
     }
   ],
   "output": {

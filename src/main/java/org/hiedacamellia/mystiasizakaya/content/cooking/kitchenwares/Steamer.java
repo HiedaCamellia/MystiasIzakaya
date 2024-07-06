@@ -53,7 +53,7 @@ public class Steamer {
         if (raws.contains("mystias_izakaya:hai_tai") && raws.contains("mystias_izakaya:pu_tao") && raws.contains("mystias_izakaya:lu_shui") && raws.contains("mystias_izakaya:huan_tan_hua")) {
             cuisines.add("mystias_izakaya:qi_she_yang_geng");
         }
-        if (raws.contains("mystias_izakaya:fen_mi") && raws.contains("mystias_izakaya:tao_zi")) {
+        if (raws.contains("mystias_izakaya:feng_mi") && raws.contains("mystias_izakaya:tao_zi")) {
             cuisines.add("mystias_izakaya:yin_hua_bu_ding");
         }
         if (raws.contains("mystias_izakaya:zhi_shi")
@@ -70,19 +70,19 @@ public class Steamer {
             cuisines.add("mystias_izakaya:ti_shen_bu_ding");
         }
         if (raws.contains("mystias_izakaya:pu_tao")
-                && raws.contains("mystias_izakaya:fen_mi")
+                && raws.contains("mystias_izakaya:feng_mi")
                 && Collections.frequency(raws, "mystias_izakaya:ning_meng") == 2) {
             cuisines.add("mystias_izakaya:ran_jing_bu_ding");
         }
         if (raws.contains("mystias_izakaya:hei_mao_zhu_rou")
-                && raws.contains("mystias_izakaya:fen_mi")
+                && raws.contains("mystias_izakaya:feng_mi")
                 && raws.contains("mystias_izakaya:mian_fen")
                 && raws.contains("mystias_izakaya:chan_shui")) {
             cuisines.add("mystias_izakaya:dou_jia_zheng_gao");
         }
         if (raws.contains("mystias_izakaya:mo_gu")
                 && raws.contains("mystias_izakaya:huan_tan_hua")
-                && raws.contains("mystias_izakaya:fen_mi")
+                && raws.contains("mystias_izakaya:feng_mi")
                 && raws.contains("mystias_izakaya:nai_you")) {
             cuisines.add("mystias_izakaya:jin_xia_da_mao_xian");
         }

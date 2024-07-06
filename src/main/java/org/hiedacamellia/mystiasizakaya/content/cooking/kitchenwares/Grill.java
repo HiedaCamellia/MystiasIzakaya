@@ -64,7 +64,7 @@ public class Grill {
         if (raws.contains("mystias_izakaya:niu_rou")
                 && raws.contains("mystias_izakaya:hei_yan")
                 && raws.contains("mystias_izakaya:la_jiao")
-                && raws.contains("mystias_izakaya:fen_mi")) {
+                && raws.contains("mystias_izakaya:feng_mi")) {
             cuisines.add("mystias_izakaya:hai_dao_xun_rou");
         }
         if (raws.contains("mystias_izakaya:ye_zhu_rou")

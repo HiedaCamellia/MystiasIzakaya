@@ -14,7 +14,7 @@
       "item": "mystias_izakaya:mian_fen"
     },
     {
-      "item": "minecraft:air"
+      "tag": "mystias_izakaya:emptytag"
     }
   ],
   "output": {
