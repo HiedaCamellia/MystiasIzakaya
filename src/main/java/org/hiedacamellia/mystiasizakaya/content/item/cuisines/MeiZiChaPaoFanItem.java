@@ -8,6 +8,6 @@ public class MeiZiChaPaoFanItem extends Cuisines {
 	public MeiZiChaPaoFanItem() {
 		super(7, 1.2f, Rarity.RARE, "mei_zi_cha_pao_fan",
 				new String[]{"Homecooking", "Japanese"},
-				new String[]{});
+				new String[]{},0);
 	}
 }

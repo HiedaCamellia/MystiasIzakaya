@@ -7,6 +7,6 @@ public class HuoShuQiuItem extends Cuisines {
 	public HuoShuQiuItem() {
 		super(8, 0.8f, Rarity.COMMON, "huo_shu_qiu",
 				new String[]{"High_Alcohol", "Heatable", "Shochu", "Dry"},
-				new String[]{});
+				new String[]{},0);
 	}
 }

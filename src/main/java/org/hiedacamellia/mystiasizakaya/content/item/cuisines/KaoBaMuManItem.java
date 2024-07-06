@@ -8,6 +8,6 @@ public class KaoBaMuManItem extends Cuisines {
 	public KaoBaMuManItem() {
 		super(8, 1.2f, Rarity.UNCOMMON, "kao_ba_mu_man",
 				new String[]{"Aquatic", "Signature", "Grilled"},
-				new String[]{"Meat", "Vegetarian"});
+				new String[]{"Meat", "Vegetarian"},84);
 	}
 }

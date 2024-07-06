@@ -8,6 +8,6 @@ public class HuanXiangFengMiItem extends Cuisines {
 	public HuanXiangFengMiItem() {
 		super(7, 1.2f, Rarity.RARE, "huan_xiang_feng_mi",
 				new String[]{"Expensive", "Meat", "Greasy", "Filling", "Raw", "Signature", "Photogenic", "Strength_Boosting"},
-				new String[]{"Refreshing", "Mild"});
+				new String[]{"Refreshing", "Mild"},0);
 	}
 }

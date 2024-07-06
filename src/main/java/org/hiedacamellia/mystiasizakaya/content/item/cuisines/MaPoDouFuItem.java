@@ -8,6 +8,6 @@ public class MaPoDouFuItem extends Cuisines {
 	public MaPoDouFuItem() {
 		super(7, 1.2f, Rarity.UNCOMMON, "ma_po_dou_fu",
 				new String[]{"Vegetarian", "Chinese", "Hot", "Spicy"},
-				new String[]{"Sweet", "Fruity", "Refreshing"});
+				new String[]{"Sweet", "Fruity", "Refreshing"},72);
 	}
 }

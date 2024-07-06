@@ -8,6 +8,6 @@ public class ZhenHaiXianWeiChengTangItem extends Cuisines {
 	public ZhenHaiXianWeiChengTangItem() {
 		super(9, 1.2f, Rarity.RARE, "zhen_hai_xian_wei_cheng_tang",
 				new String[]{"Aquatic", "Homecooking", "Greasy", "Filling"},
-				new String[]{});
+				new String[]{},96);
 	}
 }

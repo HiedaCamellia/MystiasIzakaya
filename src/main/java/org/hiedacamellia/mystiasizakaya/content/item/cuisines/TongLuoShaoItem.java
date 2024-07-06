@@ -8,6 +8,6 @@ public class TongLuoShaoItem extends Cuisines {
 	public TongLuoShaoItem() {
 		super(7, 1.2f, Rarity.RARE, "tong_luo_shao",
 				new String[]{"Vegetarian", "Japanese", "Sweet", "Specialty"},
-				new String[]{"Meat"});
+				new String[]{"Meat"},0);
 	}
 }

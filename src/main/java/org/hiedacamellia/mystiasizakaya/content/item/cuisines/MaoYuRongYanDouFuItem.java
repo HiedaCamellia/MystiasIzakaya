@@ -8,6 +8,6 @@ public class MaoYuRongYanDouFuItem extends Cuisines {
 	public MaoYuRongYanDouFuItem() {
 		super(9, 1.2f, Rarity.RARE, "mao_yu_rong_yan_dou_fu",
 				new String[]{"Expensive", "Vegetarian", "Chinese", "Fresh", "Photogenic", "Wonderful"},
-				new String[]{});
+				new String[]{},96);
 	}
 }

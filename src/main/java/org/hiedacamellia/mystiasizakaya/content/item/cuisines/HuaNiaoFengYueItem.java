@@ -8,6 +8,6 @@ public class HuaNiaoFengYueItem extends Cuisines {
 	public HuaNiaoFengYueItem() {
 		super(7, 1.2f, Rarity.RARE, "hua_niao_feng_yue",
 				new String[]{"Expensive", "Premium", "Wonderful", "Dreamy", "Specialty"},
-				new String[]{"Hot", "Greasy"});
+				new String[]{"Hot", "Greasy"},0);
 	}
 }

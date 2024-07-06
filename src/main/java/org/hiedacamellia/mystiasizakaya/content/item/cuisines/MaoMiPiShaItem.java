@@ -8,6 +8,6 @@ public class MaoMiPiShaItem extends Cuisines {
 	public MaoMiPiShaItem() {
 		super(7, 1.2f, Rarity.RARE, "mao_mi_pi_sha",
 				new String[]{"Expensive", "Filling", "Western", "Photogenic", "Fungus"},
-				new String[]{"Refreshing"});
+				new String[]{"Refreshing"},0);
 	}
 }

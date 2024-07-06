@@ -8,6 +8,6 @@ public class XiangJianSanWenYuItem extends Cuisines {
 	public XiangJianSanWenYuItem() {
 		super(12, 1.2f, Rarity.RARE, "xiang_jian_san_wen_yu",
 				new String[]{"Meat", "Western", "Fresh"},
-				new String[]{});
+				new String[]{},120);
 	}
 }

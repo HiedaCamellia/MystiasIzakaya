@@ -8,6 +8,6 @@ public class WenNuanFanTuanItem extends Cuisines {
 	public WenNuanFanTuanItem() {
 		super(9, 1.2f, Rarity.UNCOMMON, "wen_nuan_fan_tuan",
 				new String[]{"Aquatic", "Vegetarian", "Homecooking", "Filling", "Japanese", "Hot"},
-				new String[]{});
+				new String[]{},96);
 	}
 }

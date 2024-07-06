@@ -7,6 +7,6 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 public class FengZiDanItem extends Cuisines {
 	public FengZiDanItem() {
 		super(7, 1.2f, Rarity.RARE, "feng_zi_dan", new String[]{"Expensive", "Vegetarian", "Premium", "Mild", "Sweet", "Wonderful", "Small_Portion"},
-				new String[]{"Mountain_Delicacy"});
+				new String[]{"Mountain_Delicacy"},0);
 	}
 }

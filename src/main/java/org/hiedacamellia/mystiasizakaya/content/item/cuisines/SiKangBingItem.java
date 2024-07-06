@@ -8,6 +8,6 @@ public class SiKangBingItem extends Cuisines {
 	public SiKangBingItem() {
 		super(8, 1.2f, Rarity.COMMON, "si_kang_bing",
 				new String[]{"Economical", "Filling", "Western"},
-				new String[]{});
+				new String[]{},84);
 	}
 }

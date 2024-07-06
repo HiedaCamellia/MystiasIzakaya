@@ -8,6 +8,6 @@ public class YingLuoXueItem extends Cuisines {
 	public YingLuoXueItem() {
 		super(14, 1.2f, Rarity.RARE, "ying_luo_xue",
 				new String[]{"Aquatic", "Premium", "Sea_Delicacy", "Japanese", "Raw", "Photogenic", "Small_Portion"},
-				new String[]{"Greasy"});
+				new String[]{"Greasy"},144);
 	}
 }

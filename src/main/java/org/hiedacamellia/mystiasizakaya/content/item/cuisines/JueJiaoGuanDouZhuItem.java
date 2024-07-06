@@ -6,9 +6,9 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class JueJiaoGuanDouZhuItem extends Cuisines {
 	public JueJiaoGuanDouZhuItem() {
-		super(7, 1.2f, Rarity.RARE, "jue_jiao_guan_dou_zhu",
+		super(14, 1.2f, Rarity.RARE, "jue_jiao_guan_dou_zhu",
 				new String[]{"Expensive", "Filling", "Hot", "Large_Portion", "Meat", "Premium", "Fresh",
 						"Specialty", "Spicy", "Strength_Boosting"},
-				new String[]{});
+				new String[]{},144);
 	}
 }

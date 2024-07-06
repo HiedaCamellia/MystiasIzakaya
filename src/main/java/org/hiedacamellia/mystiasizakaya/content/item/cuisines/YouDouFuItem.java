@@ -8,6 +8,6 @@ public class YouDouFuItem extends Cuisines {
 	public YouDouFuItem() {
 		super(8, 1.2f, Rarity.UNCOMMON, "you_dou_fu",
 				new String[]{"Economical", "Vegetarian", "Homecooking", "Greasy", "Japanese"},
-				new String[]{});
+				new String[]{},84);
 	}
 }

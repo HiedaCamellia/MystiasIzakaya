@@ -8,6 +8,6 @@ public class YiShiHuiFanItem extends Cuisines {
 	public YiShiHuiFanItem() {
 		super(14, 1.2f, Rarity.RARE, "yi_shi_hui_fan",
 				new String[]{"Expensive", "Filling", "Western", "Fresh", "Fungus"},
-				new String[]{"Sweet"});
+				new String[]{"Sweet"},72);
 	}
 }

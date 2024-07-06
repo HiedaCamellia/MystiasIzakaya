@@ -8,6 +8,6 @@ public class ZhuTongZhengDanItem extends Cuisines {
 	public ZhuTongZhengDanItem() {
 		super(7, 1.2f, Rarity.UNCOMMON, "zhu_tong_zheng_dan",
 				new String[]{"Homecooking", "Mild", "Fungi"},
-				new String[]{});
+				new String[]{},72);
 	}
 }

@@ -7,6 +7,6 @@ public class HongYouGuoZhiItem extends Cuisines {
 	public HongYouGuoZhiItem() {
 		super(3, 0.8f, Rarity.COMMON, "hong_you_guo_zhi",
 				new String[]{"no_alcohol", "fruity"},
-				new String[]{});
+				new String[]{},0);
 	}
 }

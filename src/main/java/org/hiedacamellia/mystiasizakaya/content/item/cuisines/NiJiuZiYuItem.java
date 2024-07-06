@@ -6,9 +6,9 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class NiJiuZiYuItem extends Cuisines {
 	public NiJiuZiYuItem() {
-		super(7, 1.2f, Rarity.RARE, "ni_jiu_zi_yu",
+		super(14, 1.2f, Rarity.EPIC, "ni_jiu_zi_yu",
 				new String[]{"Dreamy", "Expensive", "Good_With_Alcohol", "Hot", "Legendary", "Small_Portion",
 						"Peculiar"},
-				new String[]{});
+				new String[]{},144);
 	}
 }

@@ -27,7 +27,7 @@ public class BuildTags {
         targettags.sort(Comparator.naturalOrder());
         set.addAll(targettags);
         ArrayList<String> resultList = getStrings(ingredients, set);
-        resultList.addAll(Kitchenware.getOrCreateTag().getString("tags").isEmpty() ? List.of() : List.of(Kitchenware.getOrCreateTag().getString("tags").split(",")));
+        resultList.addAll(Kitchenware.getOrCreateTag().getString("tags").isEmpty() ? new ArrayList<>() : List.of(Kitchenware.getOrCreateTag().getString("tags").split(",")));
 
         ArrayList<String> rawslist = new ArrayList<>();
         for (int i = 0; i < 5; i++) {

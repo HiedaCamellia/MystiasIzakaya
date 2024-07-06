@@ -8,6 +8,6 @@ public class ShuCaiZhuanJiItem extends Cuisines {
 	public ShuCaiZhuanJiItem() {
 		super(6, 1.2f, Rarity.RARE, "shu_cai_zhuan_ji",
 				new String[]{"Vegetarian", "Mild", "Raw", "Refreshing"},
-				new String[]{"Meat", "Aquatic", "Hot"});
+				new String[]{"Meat", "Aquatic", "Hot"},60);
 	}
 }

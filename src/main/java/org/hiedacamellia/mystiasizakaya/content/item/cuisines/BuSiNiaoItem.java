@@ -8,6 +8,6 @@ public class BuSiNiaoItem extends Cuisines {
 	public BuSiNiaoItem() {
 		super(14, 1.2f, Rarity.EPIC, "bu_si_niao",
 				new String[]{"Expensive", "Premium", "Legendary", "Western", "Photogenic", "Grilled", "Aura_Bursting"},
-				new String[]{});
+				new String[]{},144);
 	}
 }

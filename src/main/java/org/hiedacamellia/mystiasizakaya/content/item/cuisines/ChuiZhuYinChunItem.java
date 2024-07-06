@@ -9,6 +9,6 @@ public class ChuiZhuYinChunItem extends Cuisines {
 		super(5, 1.2f, Rarity.RARE, "chui_zhu_yin_chun",
 				new String[]{"Expensive", "Premium", "Mountain_Delicacy", "Signature", "Photogenic",
 						"Cultural_Heritage"},
-				new String[]{"Peculiar", "Fungus"});
+				new String[]{"Peculiar", "Fungus"},0);
 	}
 }

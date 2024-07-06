@@ -8,6 +8,6 @@ public class ZhiZhungHaiXianMianItem extends Cuisines {
 	public ZhiZhungHaiXianMianItem() {
 		super(7, 1.2f, Rarity.RARE, "zhi_zhung_hai_xian_mian",
 				new String[]{"Expensive", "Aquatic", "Homecooking", "Premium", "Filling", "Sea_Delicacy", "Fresh"},
-				new String[]{});
+				new String[]{},0);
 	}
 }

@@ -9,6 +9,6 @@ public class ShiJinTianFuLuoItem extends Cuisines {
 		super(7, 1.2f, Rarity.RARE, "shi_jin_tian_fu_luo",
 				new String[]{"Expensive", "Meat", "Fungus", "Good_With_Alcohol", "Greasy", "Homecooking", "Japanese",
 						"Signature", "Strength_Boosting"},
-				new String[]{});
+				new String[]{},0);
 	}
 }

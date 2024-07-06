@@ -8,6 +8,6 @@ public class ZhaFanQieTiaoItem extends Cuisines {
 	public ZhaFanQieTiaoItem() {
 		super(7, 1.2f, Rarity.RARE, "zha_fan_qie_tiao",
 				new String[]{"Peculiar", "Wonderful", "Small_Portion"},
-				new String[]{"Aquatic"});
+				new String[]{"Aquatic"},0);
 	}
 }

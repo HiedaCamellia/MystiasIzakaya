@@ -6,9 +6,9 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class RanJingBuDingItem extends Cuisines {
 	public RanJingBuDingItem() {
-		super(7, 1.2f, Rarity.RARE, "ran_jing_bu_ding",
+		super(9, 1.2f, Rarity.RARE, "ran_jing_bu_ding",
 				new String[]{"Refreshing", "Dreamy", "Expensive", "Fruity", "Signature", "Small_Portion", "Sour",
 						"Strength_Boosting", "Sweet"},
-				new String[]{"Greasy", "Salty"});
+				new String[]{"Greasy", "Salty"},96);
 	}
 }

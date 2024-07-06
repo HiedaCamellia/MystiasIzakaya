@@ -8,6 +8,6 @@ public class ManYuNengDanJingItem extends Cuisines {
 	public ManYuNengDanJingItem() {
 		super(7, 1.2f, Rarity.RARE,"man_yu_neng_dan_jing",
 				new String[]{"Aquatic", "Raw", "Signature"},
-				new String[]{});
+				new String[]{},0);
 	}
 }

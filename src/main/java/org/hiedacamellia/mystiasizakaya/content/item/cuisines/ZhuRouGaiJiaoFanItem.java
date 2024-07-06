@@ -8,6 +8,6 @@ public class ZhuRouGaiJiaoFanItem extends Cuisines {
 	public ZhuRouGaiJiaoFanItem() {
 		super(8, 1.2f, Rarity.UNCOMMON, "zhu_rou_gai_jiao_fan",
 				new String[]{"Meat", "Homecooking", "Filling"},
-				new String[]{});
+				new String[]{},84);
 	}
 }

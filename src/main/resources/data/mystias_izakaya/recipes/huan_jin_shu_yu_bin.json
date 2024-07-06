@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:frying_pan_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:zun_yu"
+    },
+    {
+      "item": "mystias_izakaya:mian_fen"
+    },
+    {
+      "item": "mystias_izakaya:fen_mi"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:huan_jin_shu_yu_bin",
+    "count": 1
+  }
+}

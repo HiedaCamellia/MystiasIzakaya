@@ -8,6 +8,6 @@ public class ZhiZhuRouFanTuanItem extends Cuisines {
 	public ZhiZhuRouFanTuanItem() {
 		super(7, 1.2f, Rarity.COMMON, "zhi_zhu_rou_fan_tuan",
 				new String[]{"Economical", "Meat", "Homecooking", "Filling", "Japanese"},
-				new String[]{});
+				new String[]{},72);
 	}
 }

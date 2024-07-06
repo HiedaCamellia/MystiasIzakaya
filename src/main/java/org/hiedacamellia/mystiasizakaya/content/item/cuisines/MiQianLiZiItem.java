@@ -8,6 +8,6 @@ public class MiQianLiZiItem extends Cuisines {
 	public MiQianLiZiItem() {
 		super(7, 1.2f, Rarity.RARE, "mi_qian_li_zi",
 				new String[]{"Small_Portion", "Specialty", "Sweet"},
-				new String[]{});
+				new String[]{},0);
 	}
 }

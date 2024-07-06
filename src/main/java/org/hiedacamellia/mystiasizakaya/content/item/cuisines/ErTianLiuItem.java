@@ -8,6 +8,6 @@ public class ErTianLiuItem extends Cuisines {
 	public ErTianLiuItem() {
 		super(21, 1.2f, Rarity.EPIC, "er_tian_liu",
 				new String[]{"Expensive", "Meat", "Premium", "Mountain_Delicacy", "Cultural_Heritage", "Grilled", "Aura_Bursting"},
-				new String[]{"Homecooking"});
+				new String[]{"Homecooking"},216);
 	}
 }

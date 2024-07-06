@@ -8,6 +8,6 @@ public class XiangZhaChanShuiItem extends Cuisines {
 	public XiangZhaChanShuiItem() {
 		super(9, 1.2f, Rarity.UNCOMMON, "xiang_zha_chan_shui",
 				new String[]{"Economical", "Greasy", "Peculiar"},
-				new String[]{});
+				new String[]{},96);
 	}
 }

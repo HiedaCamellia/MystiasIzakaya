@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:streamer_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:ji_dan"
+    },
+    {
+      "item": "mystias_izakaya:pu_tao"
+    },
+    {
+      "item": "mystias_izakaya:nai_you"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:pu_tong_xia_dan_gao",
+    "count": 1
+  }
+}

@@ -8,6 +8,6 @@ public class ZhuTongShaoZuiXiaItem extends Cuisines {
 	public ZhuTongShaoZuiXiaItem() {
 		super(7, 1.2f, Rarity.RARE, "zhu_tong_shao_zui_xia",
 				new String[]{"Aquatic", "Fresh", "Raw", "Peculiar"},
-				new String[]{"Filling"});
+				new String[]{"Filling"},0);
 	}
 }

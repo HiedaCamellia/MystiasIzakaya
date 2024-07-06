@@ -9,6 +9,6 @@ public class HuoXingItem extends Cuisines {
 		super(7, 1.2f, Rarity.RARE, "huo_xing",
 				new String[]{"Expensive", "Aquatic", "Premium", "Legendary", "Sea_Delicacy", "Photogenic",
 						"Cultural_Heritage", "Wonderful", "Fruity"},
-				new String[]{"Mountain_Delicacy"});
+				new String[]{"Mountain_Delicacy"},0);
 	}
 }

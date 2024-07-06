@@ -8,6 +8,6 @@ public class ZhuTongFenZhengDanItem extends Cuisines {
 	public ZhuTongFenZhengDanItem() {
 		super(7, 1.2f, Rarity.RARE, "zhu_tong_fen_zheng_dan",
 				new String[]{"Expensive", "Meat", "Homecooking", "Mountain_Delicacy"},
-				new String[]{"Raw"});
+				new String[]{"Raw"},0);
 	}
 }

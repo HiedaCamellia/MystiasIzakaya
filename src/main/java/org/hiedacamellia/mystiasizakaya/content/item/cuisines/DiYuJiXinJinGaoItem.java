@@ -6,9 +6,9 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class DiYuJiXinJinGaoItem extends Cuisines {
 	public DiYuJiXinJinGaoItem() {
-		super(7, 1.2f, Rarity.RARE, "di_yu_ji_xin_jin_gao",
+		super(14, 1.2f, Rarity.EPIC, "di_yu_ji_xin_jin_gao",
 				new String[]{"Expenisve", "Greasy", "Hot", "Meat", "Photogenic", "Salty", "Spicy", "Peculiar",
 						"Strength_Boosting"},
-				new String[]{"Mild", "Vegetarian"});
+				new String[]{"Mild", "Vegetarian"},144);
 	}
 }

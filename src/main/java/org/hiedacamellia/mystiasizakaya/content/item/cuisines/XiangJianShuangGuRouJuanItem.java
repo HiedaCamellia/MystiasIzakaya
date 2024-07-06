@@ -9,6 +9,6 @@ public class XiangJianShuangGuRouJuanItem extends Cuisines {
 		super(7, 1.2f, Rarity.RARE, "xiang_jian_shuang_gu_rou_juan",
 				new String[]{"Expensive", "Fungus", "Good_With_Alcohol", "Greasy", "Homecooking", "Hot", "Meat",
 						"Signature"},
-				new String[]{"Refreshing"});
+				new String[]{"Refreshing"},0);
 	}
 }

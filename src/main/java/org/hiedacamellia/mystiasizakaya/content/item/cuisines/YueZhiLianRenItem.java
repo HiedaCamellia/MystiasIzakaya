@@ -8,6 +8,6 @@ public class YueZhiLianRenItem extends Cuisines {
 	public YueZhiLianRenItem() {
 		super(12, 1.2f, Rarity.RARE, "yue_zhi_lian_ren",
 				new String[]{"Expensive", "Sweet", "Photogenic", "Small_Portion", "Specialty"},
-				new String[]{"Meat", "Aquatic", "Vegetarian"});
+				new String[]{"Meat", "Aquatic", "Vegetarian"},120);
 	}
 }

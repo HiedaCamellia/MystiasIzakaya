@@ -9,6 +9,6 @@ public class JinXiaDaMaoXianItem extends Cuisines {
 		super(7, 1.2f, Rarity.RARE, "jin_xia_da_mao_xian",
 				new String[]{"Dreamy", "Expensive", "Photogenic", "Specialty", "Peculiar", "Strength_Boosting",
 						"Wonderful"},
-				new String[]{"Homecooking"});
+				new String[]{"Homecooking"},0);
 	}
 }

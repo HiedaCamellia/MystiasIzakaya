@@ -6,8 +6,8 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class PuTongXiaDanGaoItem extends Cuisines {
 	public PuTongXiaDanGaoItem() {
-		super(7, 1.2f, Rarity.RARE, "pu_tong_xia_dan_gao",
+		super(9, 1.2f, Rarity.RARE, "pu_tong_xia_dan_gao",
 				new String[]{"Cultural_Heritage", "Fruity", "Photogenic", "Premium", "Sweet"},
-				new String[]{});
+				new String[]{},96);
 	}
 }

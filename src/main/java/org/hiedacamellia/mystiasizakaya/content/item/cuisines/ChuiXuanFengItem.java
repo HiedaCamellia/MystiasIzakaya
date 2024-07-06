@@ -6,7 +6,7 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class ChuiXuanFengItem extends Cuisines {
 	public ChuiXuanFengItem() {
-		super(7, 1.2f, Rarity.RARE, "chui_xuan_feng", new String[]{"Filling", "Raw", "Specialty", "Peculiar"},
-				new String[]{"Greasy"});
+		super(6, 1.2f, Rarity.UNCOMMON, "chui_xuan_feng", new String[]{"Filling", "Raw", "Specialty", "Peculiar"},
+				new String[]{"Greasy"},60);
 	}
 }

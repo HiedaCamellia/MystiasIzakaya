@@ -8,6 +8,6 @@ public class MiZhiChaShaoItem extends Cuisines {
 	public MiZhiChaShaoItem() {
 		super(8, 1.2f, Rarity.RARE, "mi_zhi_cha_shao",
 				new String[]{"Expensive", "Meat", "Greasy", "Chinese", "Sweet", "Wonderful"},
-				new String[]{});
+				new String[]{},84);
 	}
 }

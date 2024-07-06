@@ -260,7 +260,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 	@Override
 	public ItemStack quickMoveStack(Player playerIn, int index) {
 		ItemStack itemstack = ItemStack.EMPTY;
-		Slot slot = (Slot) this.slots.get(index);
+		Slot slot = this.slots.get(index);
 		if (slot != null && slot.hasItem()) {
 			ItemStack itemstack1 = slot.getItem();
 			itemstack = itemstack1.copy();
@@ -373,7 +373,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 				for (int j = 0; j < internal.getSlots(); ++j) {
 					if (j == 0)
 						continue;
-					if (j == 6)
+					if (j == 12)
 						continue;
 					if (j == 7)
 						continue;
@@ -391,7 +391,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 				for (int i = 0; i < internal.getSlots(); ++i) {
 					if (i == 0)
 						continue;
-					if (i == 6)
+					if (i == 12)
 						continue;
 					if (i == 7)
 						continue;

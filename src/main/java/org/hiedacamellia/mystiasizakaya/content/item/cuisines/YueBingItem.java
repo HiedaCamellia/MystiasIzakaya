@@ -8,6 +8,6 @@ public class YueBingItem extends Cuisines {
 	public YueBingItem() {
 		super(7, 1.2f, Rarity.RARE, "yue_bing",
 				new String[]{"Filling", "Chinese", "Sweet", "Cultural_Heritage", "Wonderful", "Small_Portion"},
-				new String[]{});
+				new String[]{},0);
 	}
 }

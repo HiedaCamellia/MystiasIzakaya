@@ -8,6 +8,6 @@ public class DuZhangHuaYuanItem extends Cuisines {
 	public DuZhangHuaYuanItem() {
 		super(4, 1.2f, Rarity.RARE, "du_zhang_hua_yuan",
 				new String[]{"Aquatic", "Signature", "Peculiar", "Poison"},
-				new String[]{});
+				new String[]{},0);
 	}
 }

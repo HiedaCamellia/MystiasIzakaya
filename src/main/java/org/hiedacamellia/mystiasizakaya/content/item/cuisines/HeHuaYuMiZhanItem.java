@@ -9,6 +9,6 @@ public class HeHuaYuMiZhanItem extends Cuisines {
 		super(7, 1.2f, Rarity.RARE, "he_hua_yu_mi_zhan",
 				new String[]{"Aquatic", "Chinese", "Cultural_Heritage", "Dreamy", "Expensive", "Legendary", "Mild",
 						"Wonderful"},
-				new String[]{});
+				new String[]{},0);
 	}
 }

@@ -8,6 +8,6 @@ public class HuangYouNiuPaiItem extends Cuisines {
 	public HuangYouNiuPaiItem() {
 		super(8, 1.2f, Rarity.RARE, "huang_you_niu_pai",
 				new String[]{"Meat", "Greasy", "Filling", "Western"},
-				new String[]{"Sweet", "Refreshing"});
+				new String[]{"Sweet", "Refreshing"},84);
 	}
 }

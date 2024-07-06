@@ -1,0 +1,24 @@
+{
+  "type": "mystias_izakaya:streamer_type",
+  "ingredients": [
+    {
+      "item": "mystias_izakaya:ning_meng"
+    },
+    {
+      "item": "mystias_izakaya:pu_tao"
+    },
+    {
+      "item": "mystias_izakaya:pu_tao"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    },
+    {
+      "tag": "mystias_izakaya:jei_empty_tag"
+    }
+  ],
+  "output": {
+    "item": "mystias_izakaya:ti_shen_bu_ding",
+    "count": 1
+  }
+}

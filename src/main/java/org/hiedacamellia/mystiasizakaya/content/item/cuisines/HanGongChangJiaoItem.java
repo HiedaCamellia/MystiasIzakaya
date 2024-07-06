@@ -9,6 +9,6 @@ public class HanGongChangJiaoItem extends Cuisines {
 		super(7, 1.2f, Rarity.RARE, "han_gong_chang_jiao",
 				new String[]{"Expensive", "Aquatic", "Premium", "Legendary", "Chinese", "Peculiar",
 						"Cultural_Heritage", "Soup"},
-				new String[]{"Greasy"});
+				new String[]{"Greasy"},0);
 	}
 }

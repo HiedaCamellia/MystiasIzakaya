@@ -8,6 +8,6 @@ public class TangYuanItem extends Cuisines {
 	public TangYuanItem() {
 		super(6, 1.2f, Rarity.UNCOMMON, "tang_yuan",
 				new String[]{"Vegetarian", "Homecooking", "Chinese", "Cultural_Heritage"},
-				new String[]{});
+				new String[]{},60);
 	}
 }

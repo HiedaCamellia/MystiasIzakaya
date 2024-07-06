@@ -8,6 +8,6 @@ public class ZaChuiItem extends Cuisines {
 	public ZaChuiItem() {
 		super(6, 1.2f, Rarity.UNCOMMON, "za_chui",
 				new String[]{"Meat", "Homecooking", "Fresh", "Hot"},
-				new String[]{});
+				new String[]{},60);
 	}
 }

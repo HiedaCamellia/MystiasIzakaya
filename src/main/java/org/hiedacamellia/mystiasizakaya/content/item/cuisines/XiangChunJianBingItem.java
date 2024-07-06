@@ -8,6 +8,6 @@ public class XiangChunJianBingItem extends Cuisines {
 	public XiangChunJianBingItem() {
 		super(7, 1.2f, Rarity.RARE, "xiang_chun_jian_bing",
 				new String[]{"Signature", "Specialty"},
-				new String[]{});
+				new String[]{},0);
 	}
 }

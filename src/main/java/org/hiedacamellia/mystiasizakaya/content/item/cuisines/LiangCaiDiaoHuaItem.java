@@ -8,6 +8,6 @@ public class LiangCaiDiaoHuaItem extends Cuisines {
 	public LiangCaiDiaoHuaItem() {
 		super(6, 1.2f, Rarity.UNCOMMON, "liang_cai_diao_hua",
 				new String[]{"Vegetarian", "Mild", "Photogenic", "Refreshing"},
-				new String[]{"Meat", "Hot"});
+				new String[]{"Meat", "Hot"},60);
 	}
 }

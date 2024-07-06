@@ -8,6 +8,6 @@ public class ZhuQuJiItem extends Cuisines {
 	public ZhuQuJiItem() {
 		super(14, 1.2f, Rarity.EPIC, "zhu_qu_ji",
 				new String[]{"Expensive", "Meat", "Premium", "Legendary", "Japanese", "Photogenic", "Cultural_Heritage", "Specialty"},
-				new String[]{});
+				new String[]{},144);
 	}
 }

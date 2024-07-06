@@ -7,6 +7,6 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 public class BanNiDiKeDanItem extends Cuisines {
 	public BanNiDiKeDanItem() {
 		super(8, 1.2f, Rarity.UNCOMMON, "ban_ni_di_ke_dan", new String[]{"Filling", "Western", "Raw", "Small_Portion"},
-				new String[]{"Sweet", "Fruity"});
+				new String[]{"Sweet", "Fruity"},84);
 	}
 }

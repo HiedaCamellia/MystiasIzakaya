@@ -8,6 +8,6 @@ public class NengLiangChuanItem extends Cuisines {
 	public NengLiangChuanItem() {
 		super(14, 1.2f, Rarity.UNCOMMON, "neng_liang_chuan",
 				new String[]{"Meat", "Filling", "Grilled"},
-				new String[]{});
+				new String[]{},144);
 	}
 }

@@ -8,6 +8,6 @@ public class HongShaoManYuItem extends Cuisines {
 	public HongShaoManYuItem() {
 		super(9, 1.2f, Rarity.UNCOMMON, "hong_shao_man_yu",
 				new String[]{"Aquatic", "Vegetarian", "Greasy", "Fresh", "Signature"},
-				new String[]{});
+				new String[]{},0);
 	}
 }

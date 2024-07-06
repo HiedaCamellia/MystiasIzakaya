@@ -8,6 +8,6 @@ public class XingHongEMoDanGaoItem extends Cuisines {
 	public XingHongEMoDanGaoItem() {
 		super(9, 1.2f, Rarity.EPIC, "xing_hong_e_mo_dan_gao",
 				new String[]{"Western", "Sweet", "Photogenic", "Peculiar", "Dreamy"},
-				new String[]{});
+				new String[]{},96);
 	}
 }

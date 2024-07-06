@@ -8,6 +8,6 @@ public class YanJiangItem extends Cuisines {
 	public YanJiangItem() {
 		super(9, 1.2f, Rarity.EPIC, "yan_jiang",
 				new String[]{"Expensive", "Meat", "Aquatic", "Premium", "Filling", "Hot", "Strength_Boosting", "Fungus"},
-				new String[]{"Refreshing"});
+				new String[]{"Refreshing"},96);
 	}
 }

@@ -8,6 +8,6 @@ public class PengLaiYuZhiItem extends Cuisines {
 	public PengLaiYuZhiItem() {
 		super(15, 1.2f, Rarity.EPIC, "peng_lai_yu_zhi",
 				new String[]{"Expensive", "Meat", "Premium", "Legendary", "Cultural_Heritage", "Grilled"},
-				new String[]{});
+				new String[]{},156);
 	}
 }

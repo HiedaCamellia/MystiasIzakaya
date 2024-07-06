@@ -8,6 +8,6 @@ public class FanTuanItem extends Cuisines {
 	public FanTuanItem() {
 		super(6, 0.8f, Rarity.COMMON, "fan_tuan",
 				new String[]{"Economical", "Vegetarian", "Homecooking", "Filling", "Japanese"},
-				new String[]{});
+				new String[]{},60);
 	}
 }

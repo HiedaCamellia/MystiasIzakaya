@@ -6,8 +6,8 @@ import org.hiedacamellia.mystiasizakaya.content.item.items.Cuisines;
 
 public class YinHuaBuDingItem extends Cuisines {
 	public YinHuaBuDingItem() {
-		super(7, 1.2f, Rarity.RARE, "yin_hua_bu_ding",
+		super(7, 1.2f, Rarity.UNCOMMON, "yin_hua_bu_ding",
 				new String[]{"Refreshing", "Fruity", "Photogenic", "Small_Portion", "Specialty", "Sweet"},
-				new String[]{"Greasy", "Salty"});
+				new String[]{"Greasy", "Salty"},72);
 	}
 }

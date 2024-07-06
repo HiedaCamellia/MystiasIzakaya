@@ -68,9 +68,6 @@ public class GetTime {
 			if (ItemRegistery.MI_ZHI_XIAN_JUN_BAO.get() == target.getItem()) {
 				time = 108;
 			}
-			if (ItemRegistery.MI_ZHI_XIAN_JUN_BAO.get() == target.getItem()) {
-				time = 96;
-			}
 		}
 		if (util == ItemRegistery.ZHENG_GUO.get()) {
 			if (ItemRegistery.HUAN_TAN_HUA_GAO.get() == target.getItem()) {
