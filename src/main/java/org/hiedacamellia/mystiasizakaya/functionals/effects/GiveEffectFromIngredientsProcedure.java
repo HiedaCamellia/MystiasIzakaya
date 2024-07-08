@@ -1,6 +1,5 @@
 package org.hiedacamellia.mystiasizakaya.functionals.effects;
 
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
@@ -87,10 +86,7 @@ public class GiveEffectFromIngredientsProcedure {
 					//
 					break;
 				case "mystias_izakaya:la_jiao":
-					entity.hurt(new DamageSource(
-							world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey
-									.create(Registries.DAMAGE_TYPE, new ResourceLocation("mystias_izakaya:chili")))),
-							2);
+					entity.hurt(DamageSources.CHILI, 2);
 
 					entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 600, 0));
 					break;

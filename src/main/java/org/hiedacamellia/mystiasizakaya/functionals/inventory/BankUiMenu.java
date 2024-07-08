@@ -36,7 +36,7 @@ public class BankUiMenu extends AbstractContainerMenu implements Supplier<Map<In
 	public BankUiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
 		super(Menus.BANK_UI.get(), id);
 		this.entity = inv.player;
-		this.world = inv.player.level();
+		this.world = inv.player.getLevel();
 		this.internal = new ItemStackHandler(0);
 		BlockPos pos = null;
 		if (extraData != null) {

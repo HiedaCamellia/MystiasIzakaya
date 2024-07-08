@@ -26,8 +26,7 @@ public class BalanceOverlay {
 		int strlength = Minecraft.getInstance().font.width(text);
 
 		if ((entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new Variables.PlayerVariables())).showbalance)
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, text, w - 20 - strlength, h - 11, -1,
-					false);
+			Minecraft.getInstance().font.draw(event.getPoseStack(), text, w - 20 - strlength, h - 11, -1);
 
 	}
 }

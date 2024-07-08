@@ -17,7 +17,6 @@ import org.apache.logging.log4j.Logger;
 import org.hiedacamellia.mystiasizakaya.content.block.BlockEntities;
 import org.hiedacamellia.mystiasizakaya.content.block.ModBlocks;
 import org.hiedacamellia.mystiasizakaya.content.item.ItemRegistery;
-import org.hiedacamellia.mystiasizakaya.content.item.ModTab;
 import org.hiedacamellia.mystiasizakaya.content.trades.Professions;
 import org.hiedacamellia.mystiasizakaya.functionals.Menus;
 
@@ -42,8 +41,6 @@ public class MystiasIzakaya {
 		ModBlocks.REGISTRY.register(bus);
 		BlockEntities.REGISTRY.register(bus);
 		ItemRegistery.REGISTRY.register(bus);
-
-		ModTab.REGISTRY.register(bus);
 
 		Professions.PROFESSIONS.register(bus);
 		Menus.REGISTRY.register(bus);

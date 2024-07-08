@@ -1,6 +1,5 @@
 package org.hiedacamellia.mystiasizakaya.functionals.effects;
 
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
@@ -128,11 +127,7 @@ public class GiveEffectFromCuisines {
 				break;
 			case "mystias_izakaya:xiang_zha_chan_shui":
 				entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 2400, 0));
-				entity.hurt(new DamageSource(
-						world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(
-								ResourceKey.create(Registries.DAMAGE_TYPE,
-										new ResourceLocation("mystias_izakaya:chili")))),
-						2);
+				entity.hurt(DamageSources.CHILI, 2);
 				break;
 			case "mystias_izakaya:xing_hong_e_mo_dan_gao":
 				break;

@@ -40,20 +40,18 @@ public class CuttingBoardTypeRecipe implements Recipe<SimpleContainer> {
 	}
 
 	@Override
-	public ItemStack assemble(SimpleContainer pContainer, RegistryAccess access) {
+	public ItemStack assemble(SimpleContainer pContainer) {
 		return output;
 	}
-
 	@Override
 	public boolean canCraftInDimensions(int pWidth, int pHeight) {
 		return true;
 	}
 
 	@Override
-	public ItemStack getResultItem(RegistryAccess access) {
+	public ItemStack getResultItem() {
 		return output.copy();
 	}
-
 	@Override
 	public ResourceLocation getId() {
 		return id;
@@ -108,7 +106,7 @@ public class CuttingBoardTypeRecipe implements Recipe<SimpleContainer> {
 			for (Ingredient ing : recipe.getIngredients()) {
 				ing.toNetwork(buf);
 			}
-			buf.writeItemStack(recipe.getResultItem(null), false);
+			buf.writeItemStack(recipe.getResultItem(), false);
 		}
 	}
 }

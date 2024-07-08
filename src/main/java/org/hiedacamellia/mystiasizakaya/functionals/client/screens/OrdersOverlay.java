@@ -4,6 +4,7 @@ package org.hiedacamellia.mystiasizakaya.functionals.client.screens;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -38,25 +39,24 @@ public class OrdersOverlay {
 			fm = GetCuisinesTexture.execute(i, entity);
 			fmb = GetBeveragesTexture.execute(i, entity);
 			if (fm != "" || fmb != "") {
+				RenderSystem.setShaderTexture(0, new ResourceLocation("mystias_izakaya:textures/screens/page.png"));
+				GuiComponent.blit(event.getPoseStack(), 0 + reali * 34, h - 32, 0, 0, 36, 32, 36, 32);
 
-				event.getGuiGraphics().blit(new ResourceLocation("mystias_izakaya:textures/screens/page.png"),
-						0 + reali * 34,
-						h - 32, 0, 0, 36, 32, 36, 32);
 				if (fm != "") {
-					event.getGuiGraphics().blit(new ResourceLocation("mystias_izakaya:textures/item/" + fm + ".png"),
-							2 + reali * 34,
-							h - 30, 0, 0, 16, 16, 16, 16);
+
+					RenderSystem.setShaderTexture(0,
+							new ResourceLocation("mystias_izakaya:textures/item/" + fm + ".png"));
+					GuiComponent.blit(event.getPoseStack(), 2 + reali * 34, h - 30, 0, 0, 16, 16, 16,
+							16);
 				}
 				if (fmb != "") {
-					event.getGuiGraphics().blit(new ResourceLocation("mystias_izakaya:textures/item/" + fmb + ".png"),
-							18 + reali * 34,
-							h - 30, 0, 0, 16, 16, 16, 16);
+					RenderSystem.setShaderTexture(0,
+							new ResourceLocation("mystias_izakaya:textures/item/" + fmb + ".png"));
+					GuiComponent.blit(event.getPoseStack(), 18 + reali * 34, h - 30, 0, 0, 16, 16, 16,
+							16);
 				}
-				event.getGuiGraphics().drawString(Minecraft.getInstance().font,
-						new java.text.DecimalFormat("#######").format(i) + "\u53f7\u684c", 8 + reali * 34, h - 10,
-						-16777216,
-						false);
-
+				Minecraft.getInstance().font.draw(event.getPoseStack(), new java.text.DecimalFormat("#######").format(i) + "\u53f7\u684c", 8 + reali * 34, h - 10,
+						-16777216);
 				reali++;
 			}
 			fm = "";

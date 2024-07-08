@@ -7,6 +7,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import org.hiedacamellia.mystiasizakaya.content.item.ModTab;
 import org.hiedacamellia.mystiasizakaya.functionals.effects.GiveEffectFromCuisines;
 import org.hiedacamellia.mystiasizakaya.functionals.effects.GiveEffectFromIngredientsProcedure;
 import org.hiedacamellia.mystiasizakaya.functionals.effects.GiveEffectFromTagsProcedure;
@@ -24,7 +25,7 @@ public class BaseItem extends Item {
     private final List<String> ntags;
 
     public BaseItem(int stacks,int nutrition,float saturation,Rarity rarity,UseAnim useAnimation, int useDuration, String regname, String[] tags, String[] ntags) {
-        super(new Item.Properties().stacksTo(stacks).rarity(rarity)
+        super(new Item.Properties().stacksTo(stacks).rarity(rarity).tab(ModTab.MystiasIzakaya)
                 .food((new FoodProperties.Builder()).nutrition(nutrition).saturationMod(saturation).alwaysEat().build()));
         this.useAnimation = useAnimation;
         this.useDuration = useDuration;
