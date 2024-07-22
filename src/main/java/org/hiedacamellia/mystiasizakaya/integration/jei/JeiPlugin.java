@@ -1,6 +1,8 @@
 package org.hiedacamellia.mystiasizakaya.integration.jei;
 
 import mezz.jei.api.IModPlugin;
+import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
@@ -13,6 +15,7 @@ import org.hiedacamellia.mystiasizakaya.integration.jei.categories.*;
 import org.hiedacamellia.mystiasizakaya.integration.jei.recipes.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.Objects;
 
 @mezz.jei.api.JeiPlugin
@@ -25,7 +28,7 @@ public class JeiPlugin implements IModPlugin {
 
 	@Override
 	public ResourceLocation getPluginUid() {
-		return new ResourceLocation("mystias_izakaya:jei_plugin");
+		return ResourceLocation.parse("mystias_izakaya:jei_plugin");
 	}
 
 	@Override
@@ -40,15 +43,16 @@ public class JeiPlugin implements IModPlugin {
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) {
 		RecipeManager recipeManager = Objects.requireNonNull(Minecraft.getInstance().level).getRecipeManager();
-		List<BoilingPotTypeRecipe> BoilingPotTypeRecipes = recipeManager.getAllRecipesFor(BoilingPotTypeRecipe.Type.INSTANCE);
+
+		List<BoilingPotTypeRecipe> BoilingPotTypeRecipes = recipeManager.getAllRecipesFor(BoilingPotTypeRecipe.Type.INSTANCE).stream().map(RecipeHolder::value).collect(Collectors.toList());
 		registration.addRecipes(BoilingPotType_Type, BoilingPotTypeRecipes);
-		List<CuttingBoardTypeRecipe> CuttingBoardTypeRecipes = recipeManager.getAllRecipesFor(CuttingBoardTypeRecipe.Type.INSTANCE);
+		List<CuttingBoardTypeRecipe> CuttingBoardTypeRecipes = recipeManager.getAllRecipesFor(CuttingBoardTypeRecipe.Type.INSTANCE).stream().map(RecipeHolder::value).collect(Collectors.toList());
 		registration.addRecipes(CuttingBoardType_Type, CuttingBoardTypeRecipes);
-		List<FryingPanTypeRecipe> FryingPanTypeRecipes = recipeManager.getAllRecipesFor(FryingPanTypeRecipe.Type.INSTANCE);
+		List<FryingPanTypeRecipe> FryingPanTypeRecipes = recipeManager.getAllRecipesFor(FryingPanTypeRecipe.Type.INSTANCE).stream().map(RecipeHolder::value).collect(Collectors.toList());
 		registration.addRecipes(FryingPanType_Type, FryingPanTypeRecipes);
-		List<GrillTypeRecipe> GrillTypeRecipes = recipeManager.getAllRecipesFor(GrillTypeRecipe.Type.INSTANCE);
+		List<GrillTypeRecipe> GrillTypeRecipes = recipeManager.getAllRecipesFor(GrillTypeRecipe.Type.INSTANCE).stream().map(RecipeHolder::value).collect(Collectors.toList());
 		registration.addRecipes(GrillType_Type, GrillTypeRecipes);
-		List<StreamerTypeRecipe> StreamerTypeRecipes = recipeManager.getAllRecipesFor(StreamerTypeRecipe.Type.INSTANCE);
+		List<StreamerTypeRecipe> StreamerTypeRecipes = recipeManager.getAllRecipesFor(StreamerTypeRecipe.Type.INSTANCE).stream().map(RecipeHolder::value).collect(Collectors.toList());
 		registration.addRecipes(StreamerType_Type, StreamerTypeRecipes);
 	}
 

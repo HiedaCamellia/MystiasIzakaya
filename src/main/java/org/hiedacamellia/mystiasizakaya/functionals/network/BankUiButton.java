@@ -2,13 +2,19 @@ package org.hiedacamellia.mystiasizakaya.functionals.network;
 
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.PacketFlow;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.items.ItemHandlerHelper;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.items.ItemHandlerHelper;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.item.ItemRegistery;
 import org.hiedacamellia.mystiasizakaya.functionals.inventory.BankUiMenu;
@@ -16,74 +22,58 @@ import org.hiedacamellia.mystiasizakaya.functionals.inventory.BankUiMenu;
 import java.util.HashMap;
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class BankUiButton {
-    private final int buttonID, x, y, z;
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
+public record BankUiButton(int buttonID, int x, int y, int z) implements CustomPacketPayload {
 
-    public BankUiButton(FriendlyByteBuf buffer) {
-        this.buttonID = buffer.readInt();
-        this.x = buffer.readInt();
-        this.y = buffer.readInt();
-        this.z = buffer.readInt();
-    }
-
-    public BankUiButton(int buttonID, int x, int y, int z) {
-        this.buttonID = buttonID;
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
-
-    public static void buffer(BankUiButton message, FriendlyByteBuf buffer) {
+    public static final Type<BankUiButton> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "bankui_button"));
+    public static final StreamCodec<RegistryFriendlyByteBuf, BankUiButton> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, BankUiButton message) -> {
         buffer.writeInt(message.buttonID);
         buffer.writeInt(message.x);
         buffer.writeInt(message.y);
         buffer.writeInt(message.z);
+    }, (RegistryFriendlyByteBuf buffer) -> new BankUiButton(buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt()));
+    @Override
+    public Type<BankUiButton> type() {
+        return TYPE;
     }
 
-    public static void handler(BankUiButton message, Supplier<NetworkEvent.Context> contextSupplier) {
-        NetworkEvent.Context context = contextSupplier.get();
-        context.enqueueWork(() -> {
-            Player entity = context.getSender();
-            int buttonID = message.buttonID;
-            int x = message.x;
-            int y = message.y;
-            int z = message.z;
-            handleButtonAction(entity, buttonID, x, y, z);
-        });
-        context.setPacketHandled(true);
+    public static void handleData(final BankUiButton message, final IPayloadContext context) {
+        if (context.flow() == PacketFlow.SERVERBOUND) {
+            context.enqueueWork(() -> {
+                Player entity = context.player();
+                int buttonID = message.buttonID;
+                int x = message.x;
+                int y = message.y;
+                int z = message.z;
+                handleButtonAction(entity, buttonID, x, y, z);
+            }).exceptionally(e -> {
+                context.connection().disconnect(Component.literal(e.getMessage()));
+                return null;
+            });
+        }
     }
 
     public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
         HashMap<String, Object> guistate = BankUiMenu.guistate;
         if (buttonID == 0) {
-            double i = 0;
-            double j = 0;
-            i = new Object() {
-                double convert(String s) {
-                    try {
-                        return Double.parseDouble(s.trim());
-                    } catch (Exception e) {
-                    }
-                    return 0;
-                }
-            }.convert(guistate.containsKey("text:input") ? ((EditBox) guistate.get("text:input")).getValue() : "");
-            if (!(i < 0) && (entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new Variables.PlayerVariables())).balance >= i) {
+            int i = 0;
+            int j = 0;
+            i = Integer.parseInt((guistate.containsKey("text:input") ? ((EditBox) guistate.get("text:input")).getValue() : "0" ).trim()) ;
+
+            if (!(i < 0) && entity.getData(Variables.PLAYER_VARIABLES).balance >= i) {
                 {
-                    double _setval = (entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new Variables.PlayerVariables())).balance - i;
-                    entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-                        capability.balance = _setval;
-                        capability.syncPlayerVariables(entity);
-                    });
+                    Variables.PlayerVariables _vars = entity.getData(Variables.PLAYER_VARIABLES);
+                    _vars.balance -= i;
+                    _vars.syncPlayerVariables(entity);
                 }
                 if (i >= 10000) {
-                    j = Math.floor(i / 10000);
+                    j = i / 10000;
                     i = i - j * 10000;
                     ItemStack _setstack = new ItemStack(ItemRegistery.EN_10K.get());
                     _setstack.setCount((int) j);
                     ItemHandlerHelper.giveItemToPlayer(entity, _setstack);
                 }
-                j = Math.floor(i / 10);
+                j = i / 10;
                 i = i - j * 10;
                 ItemStack _setstack = new ItemStack(ItemRegistery.EN_10.get());
                 _setstack.setCount((int) j);
@@ -98,6 +88,6 @@ public class BankUiButton {
 
     @SubscribeEvent
     public static void registerMessage(FMLCommonSetupEvent event) {
-        MystiasIzakaya.addNetworkMessage(BankUiButton.class, BankUiButton::buffer, BankUiButton::new, BankUiButton::handler);
+        MystiasIzakaya.addNetworkMessage(BankUiButton.TYPE, BankUiButton.STREAM_CODEC, BankUiButton::handleData);
     }
 }

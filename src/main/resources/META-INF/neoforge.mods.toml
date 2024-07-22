@@ -13,17 +13,21 @@ description=""
 
 [[dependencies."${mod_id}"]]
     modId="minecraft"
-    mandatory=true
+    type="required"
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
 
-
-
 [[dependencies."${mod_id}"]]
     modId="jei"
-    mandatory=false
+    type="optional"
     versionRange="[0,)"
     ordering="NONE"
-    side="BOTH"
+    side="CLIENT"
 
+[[dependencies."${mod_id}"]]
+    modId="neoforge" #mandatory
+    type="required" #mandatory
+    versionRange="${neo_version_range}"
+    ordering="NONE"
+    side="BOTH"

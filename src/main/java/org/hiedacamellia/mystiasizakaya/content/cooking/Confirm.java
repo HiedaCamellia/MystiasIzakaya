@@ -6,6 +6,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.hiedacamellia.mystiasizakaya.content.datacomponent.DataComponentsReg;
+import org.hiedacamellia.mystiasizakaya.content.datacomponent.ValueRecord;
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 import org.hiedacamellia.mystiasizakaya.util.GetValue;
 import org.hiedacamellia.mystiasizakaya.util.SetSlotItem;
@@ -27,14 +29,14 @@ public class Confirm {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("timeleft", target.getOrCreateTag().getInt("cooktime"));
+					_blockEntity.getPersistentData().putDouble("timeleft", Integer.parseInt(target.getOrDefault(DataComponentsReg.Cooktime.get(), new ValueRecord("0")).value()));
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
 
 			BlockEntity be = world.getBlockEntity(Pos.get(x, y, z));
-			SetSlotItem.setEmptySlot(be, new int[]{1,2,3,4,5,6,7,8,9,10,11});
-			SetSlotItem.setSlotItem(be, BuildTags.check(target), 12, 1);
+			SetSlotItem.setEmptySlot(world,Pos.get(x,y,z), new int[]{1,2,3,4,5,6,7,8,9,10,11});
+			SetSlotItem.setSlotItem(world, Pos.get(x,y,z),BuildTags.check(target), 12, 1);
 		}
 	}
 }

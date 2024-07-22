@@ -17,6 +17,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.TooltipFlag;
@@ -33,15 +34,16 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.network.NetworkHooks;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.hiedacamellia.mystiasizakaya.content.cooking.Init;
 import org.hiedacamellia.mystiasizakaya.content.cooking.Main;
 import org.hiedacamellia.mystiasizakaya.functionals.inventory.CookingRangeUiMenu;
 import org.hiedacamellia.mystiasizakaya.util.SetSlotItem;
 import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.List;
@@ -52,8 +54,9 @@ public class CookingRange extends Block implements EntityBlock {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, BlockGetter world, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, world, list, flag);
+	@OnlyIn(Dist.CLIENT)
+	public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, context, list, flag);
 		if (!Screen.hasShiftDown()) {
 			list.add(Component.literal(
 					"§7§o" + Component.translatable("tooltip.mystias_izakaya.press_shift").getString() + "§r"));
@@ -70,17 +73,9 @@ public class CookingRange extends Block implements EntityBlock {
 		return 15;
 	}
 
-	@Override
-	public BlockPathTypes getBlockPathType(BlockState state, BlockGetter world, BlockPos pos, Mob entity) {
-		return BlockPathTypes.BLOCKED;
-	}
 
-	@Override
-	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		if (player.getInventory().getSelected().getItem() instanceof PickaxeItem tieredItem)
-			return tieredItem.getTier().getLevel() >= 1;
-		return false;
-	}
+
+
 
 	@Override
 	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
@@ -119,7 +114,6 @@ public class CookingRange extends Block implements EntityBlock {
 		super.wasExploded(world, pos, e);
 		BlockEntity blockEntity = world.getBlockEntity(pos);
 		clean(world, pos.getX(), pos.getY(), pos.getZ());
-		clean(blockEntity);
 	}
 
 	@Override
@@ -127,47 +121,43 @@ public class CookingRange extends Block implements EntityBlock {
 		super.attack(blockstate, world, pos, entity);
 		clean(world, pos.getX(), pos.getY(), pos.getZ());
 		BlockEntity blockEntity = world.getBlockEntity(pos);
-		clean(blockEntity);
 	}
 
 	@Override
-	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
-		super.use(blockstate, world, pos, entity, hand, hit);
+	public @NotNull InteractionResult useWithoutItem(@NotNull BlockState blockstate, @NotNull Level world, @NotNull BlockPos pos, @NotNull Player entity, @NotNull BlockHitResult hit) {
+		super.useWithoutItem(blockstate, world, pos, entity, hit);
 		if (entity instanceof ServerPlayer player) {
-			NetworkHooks.openScreen(player, new MenuProvider() {
+			player.openMenu(new MenuProvider() {
 				@Override
-				public Component getDisplayName() {
+				public @NotNull Component getDisplayName() {
 					return Component.literal("Cooking Range");
 				}
 
 				@Override
-				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+				public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
 					return new CookingRangeUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
 				}
 			}, pos);
 		}
-		int x = pos.getX();
-		int y = pos.getY();
-		int z = pos.getZ();
 		if (!world.isClientSide()) {
-			BlockPos _bp = Pos.get(x, y, z);
-			BlockEntity _blockEntity = world.getBlockEntity(_bp);
-			BlockState _bs = world.getBlockState(_bp);
+			BlockEntity _blockEntity = world.getBlockEntity(pos);
+			BlockState _bs = world.getBlockState(pos);
 			if (_blockEntity != null)
 				_blockEntity.getPersistentData().putBoolean("breaking", false);
-			world.sendBlockUpdated(_bp, _bs, _bs, 3);
+			world.sendBlockUpdated(pos, _bs, _bs, 3);
 		}
 		return InteractionResult.SUCCESS;
 	}
 
+
 	@Override
-	public MenuProvider getMenuProvider(BlockState state, Level worldIn, BlockPos pos) {
+	public MenuProvider getMenuProvider(@NotNull BlockState state, Level worldIn, @NotNull BlockPos pos) {
 		BlockEntity tileEntity = worldIn.getBlockEntity(pos);
 		return tileEntity instanceof MenuProvider menuProvider ? menuProvider : null;
 	}
 
 	@Override
-	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+	public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
 		return new org.hiedacamellia.mystiasizakaya.content.block.entities.CookingRange(pos, state);
 	}
 
@@ -200,14 +190,5 @@ public class CookingRange extends Block implements EntityBlock {
 			if (world instanceof Level _level)
 				_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 		}
-	}
-
-	private static void clean(BlockEntity be){
-		SetSlotItem.setEmptySlot(be, 7);
-		SetSlotItem.setEmptySlot(be, 8);
-		SetSlotItem.setEmptySlot(be, 9);
-		SetSlotItem.setEmptySlot(be, 10);
-		SetSlotItem.setEmptySlot(be, 11);
-		SetSlotItem.setEmptySlot(be, 12);
 	}
 }

@@ -23,8 +23,8 @@ public class En5Item extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, world, list, flag);
+	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, context, list, flag);
 		if (!Screen.hasShiftDown()) {
 			list.add(Component.literal(
 					"§7§o" + Component.translatable("tooltip.mystias_izakaya.press_shift").getString() + "§r"));
@@ -39,11 +39,9 @@ public class En5Item extends Item {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		double _setval = 5 * ar.getObject().getCount() + (entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new Variables.PlayerVariables())).balance;
-		entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-			capability.balance = _setval;
-			capability.syncPlayerVariables(entity);
-		});
+		Variables.PlayerVariables _vars = entity.getData(Variables.PLAYER_VARIABLES);
+		_vars.balance += 5 * ar.getObject().getCount();
+		_vars.syncPlayerVariables(entity);
 		ar.getObject().shrink(ar.getObject().getCount());
 		ar.getObject().setCount(0);
 		return ar;

@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.functionals.inventory.BankUiMenu;
 import org.hiedacamellia.mystiasizakaya.functionals.network.BankUiButton;
@@ -35,11 +36,11 @@ public class BankUiScreen extends AbstractContainerScreen<BankUiMenu> {
 		this.imageHeight = 166;
 	}
 
-	private static final ResourceLocation texture = new ResourceLocation("mystias_izakaya:textures/screens/bank_ui.png");
+	private static final ResourceLocation texture = ResourceLocation.parse("mystias_izakaya:textures/screens/bank_ui.png");
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-		this.renderBackground(guiGraphics);
+		this.renderBackground(guiGraphics,mouseX,mouseY,partialTicks);
 		super.render(guiGraphics, mouseX, mouseY, partialTicks);
 		input.render(guiGraphics, mouseX, mouseY, partialTicks);
 		this.renderTooltip(guiGraphics, mouseX, mouseY);
@@ -66,15 +67,8 @@ public class BankUiScreen extends AbstractContainerScreen<BankUiMenu> {
 	}
 
 	@Override
-	public void containerTick() {
-		super.containerTick();
-		input.tick();
-	}
-
-	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 		guiGraphics.drawString(this.font,
-
 				Component.translatable("gui.mystias_izakaya.bank_ui.bank").getString(), 66, 24, -12829636, false);
 	}
 
@@ -97,8 +91,8 @@ public class BankUiScreen extends AbstractContainerScreen<BankUiMenu> {
 			}
 
 			@Override
-			public void moveCursorTo(int pos) {
-				super.moveCursorTo(pos);
+			public void moveCursorTo(int pos,boolean selected) {
+				super.moveCursorTo(pos,selected);
 				if (getValue().isEmpty())
 					setSuggestion(Component.translatable("gui.mystias_izakaya.bank_ui.input").getString());
 				else
@@ -109,9 +103,10 @@ public class BankUiScreen extends AbstractContainerScreen<BankUiMenu> {
 		input.setMaxLength(32767);
 		guistate.put("text:input", input);
 		this.addWidget(this.input);
+
 		button_take_out = Button.builder(Component.translatable("gui.mystias_izakaya.bank_ui.button_take_out"), e -> {
 			if (true) {
-				MystiasIzakaya.PACKET_HANDLER.sendToServer(new BankUiButton(0, x, y, z));
+				PacketDistributor.sendToServer(new BankUiButton(0, x, y, z));
 				BankUiButton.handleButtonAction(entity, 0, x, y, z);
 			}
 		}).bounds(this.leftPos + 31, this.topPos + 100, 110, 20).build();

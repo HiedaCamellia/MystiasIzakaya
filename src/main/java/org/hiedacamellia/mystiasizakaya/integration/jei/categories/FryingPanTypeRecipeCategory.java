@@ -17,8 +17,8 @@ import org.hiedacamellia.mystiasizakaya.integration.jei.JeiPlugin;
 import org.hiedacamellia.mystiasizakaya.integration.jei.recipes.FryingPanTypeRecipe;
 
 public class FryingPanTypeRecipeCategory implements IRecipeCategory<FryingPanTypeRecipe> {
-	public final static ResourceLocation UID = new ResourceLocation("mystias_izakaya", "frying_pan_type");
-	public final static ResourceLocation TEXTURE = new ResourceLocation("mystias_izakaya", "textures/screens/recipe_gui.png");
+	public final static ResourceLocation UID = ResourceLocation.fromNamespaceAndPath("mystias_izakaya", "frying_pan_type");
+	public final static ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("mystias_izakaya", "textures/screens/recipe_gui.png");
 	private final IDrawable background;
 	private final IDrawable icon;
 

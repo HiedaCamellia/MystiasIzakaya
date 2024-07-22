@@ -4,6 +4,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.UseAnim;
 import org.hiedacamellia.mystiasizakaya.content.item.items.Beverages;
+import org.jetbrains.annotations.NotNull;
 
 public class DaBingGunErItem extends Beverages {
 	public DaBingGunErItem() {
@@ -11,7 +12,7 @@ public class DaBingGunErItem extends Beverages {
 	}
 
 	@Override
-	public UseAnim getUseAnimation(ItemStack itemstack) {
+	public @NotNull UseAnim getUseAnimation(@NotNull ItemStack itemstack) {
 		return UseAnim.EAT;
 	}
 

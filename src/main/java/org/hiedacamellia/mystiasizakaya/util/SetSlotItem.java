@@ -1,68 +1,38 @@
 package org.hiedacamellia.mystiasizakaya.util;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.items.IItemHandlerModifiable;
+
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.common.extensions.ILevelExtension;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class SetSlotItem {
-    public static void setSlotItem(LevelAccessor world, double x, double y, double z, ItemStack itemStack, int slotid,
-            int count) {
-        BlockEntity _ent = world.getBlockEntity(Pos.get(x, y, z));
-        if (_ent != null) {
-            final int _slotid = slotid;
-            final ItemStack _setstack = itemStack;
-            _setstack.setCount(count);
-            _ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-                if (capability instanceof IItemHandlerModifiable)
-                    ((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack );
-            });
+    public static void setSlotItem(LevelAccessor world, BlockPos pos, ItemStack itemStack, int slotid, int count) {
+        if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, pos , null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
+            itemStack.setCount(count);
+            _itemHandlerModifiable.setStackInSlot(slotid, itemStack);
         }
     }
-    public static void setSlotItem(BlockEntity be, ItemStack itemStack, int slotid,
-                                   int count) {
-        if (be != null) {
-            final int _slotid = slotid;
-            final ItemStack _setstack = itemStack;
-            _setstack.setCount(count);
-            be.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-                if (capability instanceof IItemHandlerModifiable)
-                    ((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack );
-            });
+
+    public static void setEmptySlot(LevelAccessor world, BlockPos pos, int slotid) {
+        if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, pos , null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
+            _itemHandlerModifiable.setStackInSlot(slotid,  ItemStack.EMPTY);
         }
     }
-    public static void setEmptySlot(LevelAccessor world, double x, double y, double z, int slotid) {
-        BlockEntity _ent = world.getBlockEntity(Pos.get(x, y, z));
-        if (_ent != null) {
-            final int _slotid = slotid;
-            _ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-                if (capability instanceof IItemHandlerModifiable)
-                    ((IItemHandlerModifiable) capability).setStackInSlot(_slotid, ItemStack.EMPTY);
-            });
-        }
-    }
-    public static void setEmptySlot(BlockEntity be, int slotid) {
-        if (be != null) {
-            final int _slotid = slotid;
-            be.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-                if (capability instanceof IItemHandlerModifiable)
-                    ((IItemHandlerModifiable) capability).setStackInSlot(_slotid, ItemStack.EMPTY);
-            });
-        }
-    }
-    public static void setEmptySlot(BlockEntity be, int[] slotid) {
-        if (be != null) {
-            for (int slot : slotid) {
-                be.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-                    if (capability instanceof IItemHandlerModifiable)
-                        ((IItemHandlerModifiable) capability).setStackInSlot(slot, ItemStack.EMPTY);
-                });
-            };
+
+    public static void setEmptySlot(LevelAccessor world, BlockPos pos,int[] slotid) {
+        if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, pos , null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
+            for (int i : slotid) {
+                _itemHandlerModifiable.setStackInSlot(i, ItemStack.EMPTY);
+            }
         }
     }
 }

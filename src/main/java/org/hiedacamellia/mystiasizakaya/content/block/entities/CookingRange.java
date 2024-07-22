@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -15,40 +16,38 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.wrapper.SidedInvWrapper;
+import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
 import org.hiedacamellia.mystiasizakaya.content.block.BlockEntities;
 import org.hiedacamellia.mystiasizakaya.functionals.inventory.CookingRangeUiMenu;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.stream.IntStream;
 
 public class CookingRange extends RandomizableContainerBlockEntity implements WorldlyContainer {
 	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(13, ItemStack.EMPTY);
-	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
+	private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
 
 	public CookingRange(BlockPos position, BlockState state) {
 		super(BlockEntities.COOKING_RANGE.get(), position, state);
 	}
 
 	@Override
-	public void load(CompoundTag compound) {
-		super.load(compound);
+	public void loadAdditional(CompoundTag compound, HolderLookup.Provider lookupProvider) {
+		super.loadAdditional(compound, lookupProvider);
 		if (!this.tryLoadLootTable(compound))
 			this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-		ContainerHelper.loadAllItems(compound, this.stacks);
+		ContainerHelper.loadAllItems(compound, this.stacks, lookupProvider);
 	}
 
 	@Override
-	public void saveAdditional(CompoundTag compound) {
-		super.saveAdditional(compound);
+	public void saveAdditional(CompoundTag compound, HolderLookup.Provider lookupProvider) {
+		super.saveAdditional(compound, lookupProvider);
 		if (!this.trySaveLootTable(compound)) {
-			ContainerHelper.saveAllItems(compound, this.stacks);
+			ContainerHelper.saveAllItems(compound, this.stacks, lookupProvider);
 		}
 	}
+
 
 	@Override
 	public ClientboundBlockEntityDataPacket getUpdatePacket() {
@@ -56,8 +55,8 @@ public class CookingRange extends RandomizableContainerBlockEntity implements Wo
 	}
 
 	@Override
-	public CompoundTag getUpdateTag() {
-		return this.saveWithFullMetadata();
+	public CompoundTag getUpdateTag(HolderLookup.Provider lookupProvider) {
+		return this.saveWithFullMetadata(lookupProvider);
 	}
 
 	@Override
@@ -73,8 +72,9 @@ public class CookingRange extends RandomizableContainerBlockEntity implements Wo
 		return true;
 	}
 
+
 	@Override
-	public Component getDefaultName() {
+	public @NotNull Component getDefaultName() {
 		return Component.literal("cooking_range");
 	}
 
@@ -84,82 +84,57 @@ public class CookingRange extends RandomizableContainerBlockEntity implements Wo
 	}
 
 	@Override
-	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
+	public @NotNull AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory) {
 		return new CookingRangeUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
 	}
 
 	@Override
-	public Component getDisplayName() {
+	public @NotNull Component getDisplayName() {
 		return Component.literal("Cooking Range");
 	}
 
 	@Override
-	protected NonNullList<ItemStack> getItems() {
+	protected @NotNull NonNullList<ItemStack> getItems() {
 		return this.stacks;
 	}
 
 	@Override
-	protected void setItems(NonNullList<ItemStack> stacks) {
+	protected void setItems(@NotNull NonNullList<ItemStack> stacks) {
 		this.stacks = stacks;
 	}
 
 	@Override
-	public boolean canPlaceItem(int index, ItemStack stack) {
-		if (index == 6)
-			return false;
-		if (index == 7)
-			return false;
-		if (index == 8)
-			return false;
-		if (index == 9)
-			return false;
-		if (index == 10)
-			return false;
-		if (index == 11)
-			return false;
-		if (index == 12)
-			return false;
-		return true;
+	public boolean canPlaceItem(int index, @NotNull ItemStack stack) {
+		return switch (index) {
+			case 6,7, 8, 9, 10, 11, 12 -> false;
+			default -> true;
+		};
 	}
 
 	@Override
-	public int[] getSlotsForFace(Direction side) {
-		return IntStream.range(0, this.getContainerSize()).toArray();
+	public int @NotNull [] getSlotsForFace(@NotNull Direction side) {
+		if(side==Direction.DOWN)
+			return new int[]{6};
+		return new int[]{};
 	}
 
 	@Override
-	public boolean canPlaceItemThroughFace(int index, ItemStack stack, @Nullable Direction direction) {
-		return this.canPlaceItem(index, stack);
+	public boolean canPlaceItemThroughFace(int index, @NotNull ItemStack stack, @Nullable Direction side) {
+		if(side!=Direction.DOWN)
+			return this.canPlaceItem(index, stack);
+		return false;
 	}
 
 	@Override
-	public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
-		if (index == 7)
-			return false;
-		if (index == 8)
-			return false;
-		if (index == 9)
-			return false;
-		if (index == 10)
-			return false;
-		if (index == 11)
-			return false;
-		if (index == 12)
-			return false;
-		return true;
+	public boolean canTakeItemThroughFace(int index, @NotNull ItemStack stack, @NotNull Direction direction) {
+        return switch (index) {
+            case 7, 8, 9, 10, 11, 12 -> false;
+            default -> true;
+        };
 	}
 
-	@Override
-	public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
-		if (!this.remove && facing != null && capability == ForgeCapabilities.ITEM_HANDLER)
-			return handlers[facing.ordinal()].cast();
-		return super.getCapability(capability, facing);
-	}
 
-	@Override
-	public void setRemoved() {
-		super.setRemoved();
-		for (LazyOptional<? extends IItemHandler> handler : handlers)
-			handler.invalidate();
+	public SidedInvWrapper getItemHandler() {
+		return handler;
 	}
 }

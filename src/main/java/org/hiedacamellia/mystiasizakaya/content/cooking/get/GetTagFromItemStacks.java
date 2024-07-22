@@ -1,6 +1,8 @@
 package org.hiedacamellia.mystiasizakaya.content.cooking.get;
 
 import net.minecraft.world.item.ItemStack;
+import org.hiedacamellia.mystiasizakaya.content.datacomponent.DataComponentsReg;
+import org.hiedacamellia.mystiasizakaya.content.datacomponent.ValueRecord;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,7 +19,7 @@ public class GetTagFromItemStacks {
 
 	public static List<String> newadd(List<ItemStack> raws) {
 		Set<String> set = new HashSet<>();
-		raws.forEach((raw) -> set.addAll(List.of(raw.getOrCreateTag().getString("tags").split(","))));
+		raws.forEach((raw) -> set.addAll(List.of(raw.getOrDefault(DataComponentsReg.Tags.get(),new ValueRecord("")).value().split(","))));
 		return new ArrayList<>(set);
 	}
 }

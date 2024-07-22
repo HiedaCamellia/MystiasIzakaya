@@ -5,6 +5,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import org.hiedacamellia.mystiasizakaya.content.datacomponent.DataComponentsReg;
+import org.hiedacamellia.mystiasizakaya.content.datacomponent.ValueRecord;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
@@ -15,19 +18,22 @@ public class Cuisines extends BaseItem{
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
+    public void inventoryTick(@NotNull ItemStack stack, @NotNull Level world, @NotNull Entity entity, int slot, boolean selected) {
         super.inventoryTick(stack, world, entity, slot, selected);
-        String tags = stack.getOrCreateTag().getString("tags");
+        String tags = stack.getOrDefault(DataComponentsReg.Tags.get(),  new ValueRecord("")).value();
         if (tags.isEmpty()){
-            stack.getOrCreateTag().putString("tags", String.join(",", gettags()));
+            stack.set(DataComponentsReg.Tags.get(), new ValueRecord(String.join(",", gettags())));
+
         }
-        int cooktime = stack.getOrCreateTag().getInt("cooktime");
+        int cooktime = Integer.parseInt(stack.getOrDefault(DataComponentsReg.Cooktime.get(), new ValueRecord("0")).value());
+
         if (cooktime == 0){
-            stack.getOrCreateTag().putInt("cooktime", getcooktime());
+            stack.set(DataComponentsReg.Cooktime.get(), new ValueRecord(String.valueOf(getcooktime())));
         }
-        String ntags = stack.getOrCreateTag().getString("ntags");
+
+        String ntags = stack.getOrDefault(DataComponentsReg.nTags.get(),  new ValueRecord("")).value();
         if (ntags.isEmpty()){
-            stack.getOrCreateTag().putString("ntags", String.join(",", getnegativetags()));
+            stack.set(DataComponentsReg.nTags.get(), new ValueRecord(String.join(",", getnegativetags())));
         }
     }
 

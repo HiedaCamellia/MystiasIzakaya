@@ -1,9 +1,11 @@
 package org.hiedacamellia.mystiasizakaya.content.cooking;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.cooking.get.GetTagFromItemStacks;
+import org.hiedacamellia.mystiasizakaya.content.datacomponent.DataComponentsReg;
+import org.hiedacamellia.mystiasizakaya.content.datacomponent.ValueRecord;
 import org.hiedacamellia.mystiasizakaya.content.item.ItemRegistery;
 import org.jetbrains.annotations.NotNull;
 
@@ -15,29 +17,33 @@ public class BuildTags {
         try {
             target.inventoryTick(null, null, 0, false);
         } catch (Exception e) {
-            MystiasIzakaya.LOGGER.atTrace().log("Failed to execute inventoryTick for {}", Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(target.getItem())));
+            MystiasIzakaya.LOGGER.atTrace().log("Failed to execute inventoryTick for {}", Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(target.getItem())));
             MystiasIzakaya.LOGGER.atTrace().log(e);
         }
 
         List<String> rawtags = GetTagFromItemStacks.get(target, ingredients);
-        List<String> targettags = target.getOrCreateTag().getString("tags").isEmpty() ? new ArrayList<>() : Arrays.asList(target.getOrCreateTag().getString("tags").split(","));
+
+        List<String> targettags = target.getOrDefault(DataComponentsReg.Tags.get(),  new ValueRecord("")).toString().isEmpty() ? new ArrayList<>() : Arrays.asList(target.getOrDefault(DataComponentsReg.Tags.get(),  new ValueRecord("")).value().split(","));
         //List<String> targetntags = target.getOrCreateTag().getString("ntags").isEmpty() ? new ArrayList<>() : Arrays.asList(target.getOrCreateTag().getString("ntags").split(","));
 
         Set<String> set = new LinkedHashSet<>(rawtags);
         targettags.sort(Comparator.naturalOrder());
         set.addAll(targettags);
         ArrayList<String> resultList = getStrings(ingredients, set);
-        resultList.addAll(Kitchenware.getOrCreateTag().getString("tags").isEmpty() ? new ArrayList<>() : List.of(Kitchenware.getOrCreateTag().getString("tags").split(",")));
+
+        resultList.addAll(Kitchenware.getOrDefault(DataComponentsReg.Tags.get(),  new ValueRecord("")).toString().isEmpty() ? new ArrayList<>() : Arrays.asList(Kitchenware.getOrDefault(DataComponentsReg.Tags.get(),  new ValueRecord("")).value().split(",")));
 
         ArrayList<String> rawslist = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            rawslist.add(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(ingredients.get(i).getItem())).toString());
+            rawslist.add(Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(ingredients.get(i).getItem())).toString());
         }
         rawslist.sort(Comparator.naturalOrder());
 
-        target.getOrCreateTag().putString("tags", String.join(",", resultList));
+        target.set(DataComponentsReg.Tags.get(), new ValueRecord(String.join(",", resultList)));
+
         //target.getOrCreateTag().putString("ntags", String.join(",", targetntags));
-        target.getOrCreateTag().putString("ingredients", String.join(",", rawslist));
+
+        target.set(DataComponentsReg.Ingredients.get(), new ValueRecord(String.join(",", rawslist)));
 
         return target;
     }
@@ -66,8 +72,9 @@ public class BuildTags {
     }
 
     public static ItemStack check(ItemStack cuisine){
-        String[] tags = cuisine.getOrCreateTag().getString("tags").split(",");
-        String[] ntags = cuisine.getOrCreateTag().getString("ntags").split(",");
+        String[] tags = cuisine.getOrDefault(DataComponentsReg.Tags.get(),  new ValueRecord("")).value().split(",");
+        String[] ntags = cuisine.getOrDefault(DataComponentsReg.nTags.get(),  new ValueRecord("")).value().split(",");
+
         Set<String> seti = new HashSet<>(List.of(tags));
         for (String str : ntags) {
             if (seti.contains(str)) {

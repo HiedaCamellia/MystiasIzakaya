@@ -6,13 +6,13 @@ import net.minecraft.commands.Commands;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.util.FakePlayerFactory;
-import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.util.FakePlayerFactory;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import org.hiedacamellia.mystiasizakaya.functionals.network.Variables;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class Showbalance {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
@@ -27,11 +27,11 @@ public class Showbalance {
 						return 0;
 					{
 						boolean _setval = BoolArgumentType.getBool(arguments, "logic");
-						Entity finalEntity = entity;
-						entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-							capability.showbalance = _setval;
-							capability.syncPlayerVariables(finalEntity);
-						});
+
+						Variables.PlayerVariables _vars = entity.getData(Variables.PLAYER_VARIABLES);
+						_vars.showbalance = _setval;
+						_vars.syncPlayerVariables(entity);
+
 					}
 					return 0;
 				}))));

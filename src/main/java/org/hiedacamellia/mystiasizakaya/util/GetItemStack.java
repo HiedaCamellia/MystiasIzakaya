@@ -4,17 +4,19 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.common.extensions.ILevelExtension;
+import net.neoforged.neoforge.items.IItemHandler;
 
 import java.util.concurrent.atomic.AtomicReference;
 
 public class GetItemStack {
     public static ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-        AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-        BlockEntity _ent = world.getBlockEntity(pos);
-        if (_ent != null)
-            _ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
-                    .ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-        return _retval.get();
+        if (world instanceof ILevelExtension _ext) {
+            IItemHandler _itemHandler = _ext.getCapability(Capabilities.ItemHandler.BLOCK, pos, null);
+            if (_itemHandler != null)
+                return _itemHandler.getStackInSlot(slotid).copy();
+        }
+        return ItemStack.EMPTY;
     }
 }

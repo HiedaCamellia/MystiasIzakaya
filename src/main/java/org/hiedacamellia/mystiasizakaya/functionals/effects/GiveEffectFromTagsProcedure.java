@@ -1,18 +1,20 @@
 package org.hiedacamellia.mystiasizakaya.functionals.effects;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraftforge.registries.ForgeRegistries;
+import org.hiedacamellia.mystiasizakaya.content.datacomponent.DataComponentsReg;
+import org.hiedacamellia.mystiasizakaya.content.datacomponent.ValueRecord;
 
 public class GiveEffectFromTagsProcedure {
 	public static void execute(LevelAccessor world, ItemStack itemstack, LivingEntity entity) {
 		String s = "";
-		s = itemstack.getOrCreateTag().getString("tags");
+		s = itemstack.getOrDefault(DataComponentsReg.Tags.get(),  new ValueRecord("")).value();
 		if (s.isEmpty()) {
-			s = ForgeRegistries.ITEMS.getKey(itemstack.getItem()).toString();
+			s = BuiltInRegistries.ITEM.getKey(itemstack.getItem()).toString();
 		}
 		String[] tags = s.split(",");
 		for (int i = 0; i < tags.length; i++) {
@@ -142,7 +144,7 @@ public class GiveEffectFromTagsProcedure {
 					// Homecooking
 					break;
 				case "tag.mystias_izakaya.Hot":
-					entity.setSecondsOnFire(3);
+					entity.setRemainingFireTicks(60);
 					entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1200, 0));
 					break;
 				case "tag.mystias_izakaya.Japanese":

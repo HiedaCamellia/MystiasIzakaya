@@ -5,6 +5,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.UseAnim;
 import org.hiedacamellia.mystiasizakaya.content.item.items.Ingredients;
+import org.jetbrains.annotations.NotNull;
 
 public class JiDanItem extends Ingredients {
 	public JiDanItem() {
@@ -12,7 +13,7 @@ public class JiDanItem extends Ingredients {
 	}
 
 	@Override
-	public UseAnim getUseAnimation(ItemStack itemstack) {
+	public @NotNull UseAnim getUseAnimation(@NotNull ItemStack itemstack) {
 		return UseAnim.NONE;
 	}
 

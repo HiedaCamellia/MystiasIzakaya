@@ -1,5 +1,6 @@
 package org.hiedacamellia.mystiasizakaya.functionals.effects;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -9,11 +10,10 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class GiveEffectFromCuisines {
 	public static void execute(LevelAccessor world, ItemStack itemstack, LivingEntity entity) {
-		String s = ForgeRegistries.ITEMS.getKey(itemstack.getItem()).toString();
+		String s = BuiltInRegistries.ITEM.getKey(itemstack.getItem()).toString();
 		switch (s) {
 			case "mystias_izakaya:bai_guo_luo_bu_pai_gu_tang":
 				break;
@@ -131,7 +131,7 @@ public class GiveEffectFromCuisines {
 				entity.hurt(new DamageSource(
 						world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(
 								ResourceKey.create(Registries.DAMAGE_TYPE,
-										new ResourceLocation("mystias_izakaya:chili")))),
+										ResourceLocation.parse("mystias_izakaya:chili")))),
 						2);
 				break;
 			case "mystias_izakaya:xing_hong_e_mo_dan_gao":

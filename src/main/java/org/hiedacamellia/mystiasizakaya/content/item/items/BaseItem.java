@@ -6,10 +6,15 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
+import org.hiedacamellia.mystiasizakaya.content.datacomponent.ValueRecord;
+import org.hiedacamellia.mystiasizakaya.content.datacomponent.DataComponentsReg;
 import org.hiedacamellia.mystiasizakaya.functionals.effects.GiveEffectFromCuisines;
 import org.hiedacamellia.mystiasizakaya.functionals.effects.GiveEffectFromIngredientsProcedure;
 import org.hiedacamellia.mystiasizakaya.functionals.effects.GiveEffectFromTagsProcedure;
+import org.jetbrains.annotations.NotNull;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,7 +30,7 @@ public class BaseItem extends Item {
 
     public BaseItem(int stacks,int nutrition,float saturation,Rarity rarity,UseAnim useAnimation, int useDuration, String regname, String[] tags, String[] ntags) {
         super(new Item.Properties().stacksTo(stacks).rarity(rarity)
-                .food((new FoodProperties.Builder()).nutrition(nutrition).saturationMod(saturation).alwaysEat().build()));
+                .food((new FoodProperties.Builder()).nutrition(nutrition).saturationModifier(saturation).alwaysEdible().build()));
         this.useAnimation = useAnimation;
         this.useDuration = useDuration;
         this.regname = regname;
@@ -38,44 +43,42 @@ public class BaseItem extends Item {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
+    public void inventoryTick(@NotNull ItemStack stack, @NotNull Level world, @NotNull Entity entity, int slot, boolean selected) {
         super.inventoryTick(stack, world, entity, slot, selected);
-        String tags = stack.getOrCreateTag().getString("tags");
+
+        String tags = stack.getOrDefault(DataComponentsReg.Tags.get(),  new ValueRecord("")).value();
         if (tags.isEmpty()){
-            stack.getOrCreateTag().putString("tags", String.join(",", gettags()));
+
+            stack.set(DataComponentsReg.Tags.get(), new ValueRecord(String.join(",", gettags())));
+
         }
-        String ntags = stack.getOrCreateTag().getString("ntags");
+        String ntags = stack.getOrDefault(DataComponentsReg.nTags.get(),  new ValueRecord("")).value();
         if (ntags.isEmpty()){
-            stack.getOrCreateTag().putString("ntags", String.join(",", getnegativetags()));
+            stack.set(DataComponentsReg.nTags.get(), new ValueRecord(String.join(",", getnegativetags())));
         }
     }
 
     @Override
-    public UseAnim getUseAnimation(ItemStack itemstack) {
+    public @NotNull UseAnim getUseAnimation(@NotNull ItemStack itemstack) {
         return useAnimation;
     }
 
-    @Override
+
     public int getUseDuration(ItemStack itemstack) {
         return useDuration;
     }
 
     @Override
-    public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, world, list, flag);
+    public void appendHoverText(@NotNull ItemStack itemstack, Item.@NotNull TooltipContext context, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        super.appendHoverText(itemstack, context, list, flag);
         if (!Screen.hasShiftDown()) {
-            //List<String> tags = gettags();
-            //for (String tag : tags) {
-           //     list.add(Component.literal("§6+ " + Component.translatable(tag).getString() + "§r"));
-           // }
-            List<String> tags = itemstack.getOrCreateTag().getString("tags").isEmpty() ? gettags() : Arrays.asList(itemstack.getOrCreateTag().getString("tags").split(","));
-            //List<String> tagsfnbt = GetTagsFromNbt.execute(itemstack);
+            List<String> tags = itemstack.getOrDefault(DataComponentsReg.Tags.get(),  new ValueRecord("")).isEmpty() ? gettags() : List.of(itemstack.getOrDefault(DataComponentsReg.Tags.get(), new ValueRecord("")).value().split(","));
+
+
             for (String tag : tags) {
                 list.add(Component.literal("§6+ " + Component.translatable(tag).getString() + "§r"));
             }
-            //Set<Component> set = new LinkedHashSet<>(list);
-            //list.clear();
-            //list.addAll(set);
+
             List<String> negativetags = getnegativetags();
             for (String tag : negativetags) {
                 list.add(Component.literal("§4- " + Component.translatable(tag).getString() + "§r"));
@@ -91,7 +94,7 @@ public class BaseItem extends Item {
     }
 
     @Override
-    public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
+    public @NotNull ItemStack finishUsingItem(@NotNull ItemStack itemstack, @NotNull Level world, @NotNull LivingEntity entity) {
         super.finishUsingItem(itemstack, world, entity);
         GiveEffectFromTagsProcedure.execute(world, itemstack, entity);
         GiveEffectFromIngredientsProcedure.execute(world, itemstack, entity);

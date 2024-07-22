@@ -7,20 +7,20 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RenderGuiEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import org.hiedacamellia.mystiasizakaya.content.orders.GetBeveragesTexture;
 import org.hiedacamellia.mystiasizakaya.content.orders.GetCuisinesTexture;
 import org.hiedacamellia.mystiasizakaya.content.orders.Initorders;
 
-@Mod.EventBusSubscriber({ Dist.CLIENT })
+@EventBusSubscriber({ Dist.CLIENT })
 public class OrdersOverlay {
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public static void eventHandler(RenderGuiEvent.Pre event) {
-		int h = event.getWindow().getGuiScaledHeight();
+		int h = event.getGuiGraphics().guiHeight();
 		Player entity = Minecraft.getInstance().player;
 		RenderSystem.disableDepthTest();
 		RenderSystem.depthMask(false);
@@ -39,16 +39,16 @@ public class OrdersOverlay {
 			fmb = GetBeveragesTexture.execute(i, entity);
 			if (fm != "" || fmb != "") {
 
-				event.getGuiGraphics().blit(new ResourceLocation("mystias_izakaya:textures/screens/page.png"),
+				event.getGuiGraphics().blit(ResourceLocation.parse("mystias_izakaya:textures/screens/page.png"),
 						0 + reali * 34,
 						h - 32, 0, 0, 36, 32, 36, 32);
 				if (fm != "") {
-					event.getGuiGraphics().blit(new ResourceLocation("mystias_izakaya:textures/item/" + fm + ".png"),
+					event.getGuiGraphics().blit(ResourceLocation.parse("mystias_izakaya:textures/item/" + fm + ".png"),
 							2 + reali * 34,
 							h - 30, 0, 0, 16, 16, 16, 16);
 				}
 				if (fmb != "") {
-					event.getGuiGraphics().blit(new ResourceLocation("mystias_izakaya:textures/item/" + fmb + ".png"),
+					event.getGuiGraphics().blit(ResourceLocation.parse("mystias_izakaya:textures/item/" + fmb + ".png"),
 							18 + reali * 34,
 							h - 30, 0, 0, 16, 16, 16, 16);
 				}
