@@ -106,23 +106,26 @@ public class CookingRange extends RandomizableContainerBlockEntity implements Wo
 	@Override
 	public boolean canPlaceItem(int index, @NotNull ItemStack stack) {
 		return switch (index) {
-			case 6,7, 8, 9, 10, 11, 12 -> false;
+			case 6, 7, 8, 9, 10, 11, 12 -> false;
 			default -> true;
 		};
+		//return true;
 	}
 
 	@Override
 	public int @NotNull [] getSlotsForFace(@NotNull Direction side) {
-		if(side==Direction.DOWN)
-			return new int[]{6};
-		return new int[]{};
+//		if (side == Direction.DOWN)
+//			return new int[]{6};
+//		if (side == Direction.UP)
+//			return new int[]{1, 2, 3, 4, 5};
+		return IntStream.range(0, this.getContainerSize()).toArray();
 	}
 
 	@Override
 	public boolean canPlaceItemThroughFace(int index, @NotNull ItemStack stack, @Nullable Direction side) {
-		if(side!=Direction.DOWN)
+		//if(side!=Direction.DOWN)
 			return this.canPlaceItem(index, stack);
-		return false;
+		//return false;
 	}
 
 	@Override

@@ -66,6 +66,15 @@ public class Variables {
 						PlayerVariablesSyncMessage::handleData
 				)
 		);
+		final PayloadRegistrar registrarsync = event.registrar("2");
+		registrarsync.playBidirectional(
+				SavedDataSyncMessage.TYPE,
+				SavedDataSyncMessage.STREAM_CODEC,
+				new DirectionalPayloadHandler<>(
+						SavedDataSyncMessage::handleData,
+						SavedDataSyncMessage::handleData
+				)
+		);
 	}
 
 	@EventBusSubscriber

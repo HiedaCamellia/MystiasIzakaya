@@ -128,6 +128,7 @@ public class Main {
                         SetSlotItem.setEmptySlot(world, Pos.get(x, y, z), 7 + i);
                     }
                 }
+                SetSlotItem.setEmptySlot(world, Pos.get(x, y, z), 12);
 
 //				ItemStack cuisine = GetItemStack.getItemStack(world, Pos.get(x, y, z), 12);
 //				try {

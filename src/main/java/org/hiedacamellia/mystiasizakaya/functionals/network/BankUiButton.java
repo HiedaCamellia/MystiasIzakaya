@@ -14,7 +14,10 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.handling.DirectionalPayloadHandler;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.item.ItemRegistery;
 import org.hiedacamellia.mystiasizakaya.functionals.inventory.BankUiMenu;
@@ -58,7 +61,11 @@ public record BankUiButton(int buttonID, int x, int y, int z) implements CustomP
         if (buttonID == 0) {
             int i = 0;
             int j = 0;
-            i = Integer.parseInt((guistate.containsKey("text:input") ? ((EditBox) guistate.get("text:input")).getValue() : "0" ).trim()) ;
+            try{
+                i = Integer.parseInt((guistate.containsKey("text:input") ? ((EditBox) guistate.get("text:input")).getValue() : "0" ).trim()) ;
+            } catch (NumberFormatException e) {
+                return;
+            }
 
             if (!(i < 0) && entity.getData(Variables.PLAYER_VARIABLES).balance >= i) {
                 {
@@ -87,7 +94,19 @@ public record BankUiButton(int buttonID, int x, int y, int z) implements CustomP
     }
 
     @SubscribeEvent
-    public static void registerMessage(FMLCommonSetupEvent event) {
-        MystiasIzakaya.addNetworkMessage(BankUiButton.TYPE, BankUiButton.STREAM_CODEC, BankUiButton::handleData);
+    public static void register(final RegisterPayloadHandlersEvent event) {
+        final PayloadRegistrar registrar = event.registrar("4");
+        registrar.playBidirectional(
+                BankUiButton.TYPE,
+                BankUiButton.STREAM_CODEC,
+                new DirectionalPayloadHandler<>(
+                        BankUiButton::handleData,
+                        BankUiButton::handleData
+                )
+        );
     }
+//    @SubscribeEvent
+//    public static void registerMessage(FMLCommonSetupEvent event) {
+//        MystiasIzakaya.addNetworkMessage(BankUiButton.TYPE, BankUiButton.STREAM_CODEC, BankUiButton::handleData);
+//    }
 }

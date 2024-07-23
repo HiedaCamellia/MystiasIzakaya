@@ -14,7 +14,10 @@ import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.handling.DirectionalPayloadHandler;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.cooking.Confirm;
 import org.hiedacamellia.mystiasizakaya.functionals.inventory.CookingRangeUiMenu;
@@ -86,7 +89,16 @@ public record CookingRangeUiButton (int buttonID, int x, int y, int z) implement
 	}
 
 	@SubscribeEvent
-	public static void registerMessage(FMLCommonSetupEvent event) {
-		MystiasIzakaya.addNetworkMessage(CookingRangeUiButton.TYPE, CookingRangeUiButton.STREAM_CODEC, CookingRangeUiButton::handleData);
+	public static void register(final RegisterPayloadHandlersEvent event) {
+		final PayloadRegistrar registrar = event.registrar("3");
+		registrar.playBidirectional(
+				CookingRangeUiButton.TYPE,
+				CookingRangeUiButton.STREAM_CODEC,
+				new DirectionalPayloadHandler<>(
+						CookingRangeUiButton::handleData,
+						CookingRangeUiButton::handleData
+				)
+		);
 	}
+
 }

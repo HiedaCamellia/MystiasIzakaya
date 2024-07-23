@@ -3,16 +3,10 @@ package org.hiedacamellia.mystiasizakaya.util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
 
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.common.extensions.ILevelExtension;
 import net.neoforged.neoforge.items.IItemHandlerModifiable;
-import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class SetSlotItem {
     public static void setSlotItem(LevelAccessor world, BlockPos pos, ItemStack itemStack, int slotid, int count) {
