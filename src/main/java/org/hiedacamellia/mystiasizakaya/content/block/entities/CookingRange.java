@@ -105,21 +105,14 @@ public class CookingRange extends RandomizableContainerBlockEntity implements Wo
 
 	@Override
 	public boolean canPlaceItem(int index, ItemStack stack) {
-		if (index == 6)
-			return false;
-		if (index == 7)
-			return false;
-		if (index == 8)
-			return false;
-		if (index == 9)
-			return false;
-		if (index == 10)
-			return false;
-		if (index == 11)
-			return false;
-		if (index == 12)
-			return false;
-		return true;
+		switch (index){
+			case 6,7,8,9,10,11,12 -> {
+				return false;
+			}
+            default -> {
+                return true;
+            }
+        }
 	}
 
 	@Override
@@ -129,25 +122,17 @@ public class CookingRange extends RandomizableContainerBlockEntity implements Wo
 
 	@Override
 	public boolean canPlaceItemThroughFace(int index, ItemStack stack, @Nullable Direction direction) {
-		return this.canPlaceItem(index, stack);
+		//if(index==0)
+
+			return false;
+
+		//return this.canPlaceItem(index, stack);
 	}
 
 	@Override
 	public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
-		if (index == 7)
-			return false;
-		if (index == 8)
-			return false;
-		if (index == 9)
-			return false;
-		if (index == 10)
-			return false;
-		if (index == 11)
-			return false;
-		if (index == 12)
-			return false;
-		return true;
-	}
+        return index == 6;
+    }
 
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {

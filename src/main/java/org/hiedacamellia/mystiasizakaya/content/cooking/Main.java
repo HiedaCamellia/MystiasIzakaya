@@ -82,9 +82,10 @@ public class Main {
                 }
 
                 util = GetItemStack.getItemStack(world, Pos.get(x, y, z), 0);
+                /*
                 if (util.getItem() == ItemStack.EMPTY.getItem()) {
                     SetSlotItem.setSlotItem(world, x, y, z, new ItemStack(ItemRegistery.HEI_AN_WU_ZHI.get()), 12, 1);
-                }
+                }*/
 
 				List<String> raws = new ArrayList<>();
 				List<ItemStack> ingredients = new ArrayList<>();
@@ -125,6 +126,8 @@ public class Main {
                         SetSlotItem.setEmptySlot(world, x, y, z, 7 + i);
                     }
                 }
+
+                //SetSlotItem.setEmptySlot(world, x, y, z, 12);
 
 //				ItemStack cuisine = GetItemStack.getItemStack(world, Pos.get(x, y, z), 12);
 //				try {

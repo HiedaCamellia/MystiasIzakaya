@@ -13,8 +13,15 @@ public class GetItemStack {
         AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
         BlockEntity _ent = world.getBlockEntity(pos);
         if (_ent != null)
-            _ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+            return getItemStack(_ent, slotid);
+        return _retval.get();
+    }
+    public static ItemStack getItemStack(BlockEntity be, int slotid) {
+        AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+        if (be != null) {
+            be.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
                     .ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+        }
         return _retval.get();
     }
 }
