@@ -10,6 +10,8 @@
   "gui.mystias_izakaya.bank_ui.button_take_out": "take out",
   "gui.mystias_izakaya.bank_ui.input": "10",
   "gui.mystias_izakaya.cooking_range_ui.button_confirm": "Confirm",
+  "gui.mystias_izakaya.cooking_range_ui.button_next": ">",
+  "gui.mystias_izakaya.cooking_range_ui.button_back": "<",
   "item.mystias_izakaya.a_fu_jia_duo": "Affogato",
   "item.mystias_izakaya.ba_mu_man": "Lamprey",
   "item.mystias_izakaya.bai_guo": "Ginkgo Nut",

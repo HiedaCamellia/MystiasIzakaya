@@ -5,14 +5,19 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.network.NetworkEvent;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.cooking.Confirm;
+import org.hiedacamellia.mystiasizakaya.content.cooking.get.GetTargets;
 import org.hiedacamellia.mystiasizakaya.functionals.inventory.CookingRangeUiMenu;
+import org.hiedacamellia.mystiasizakaya.util.GetValue;
 import org.hiedacamellia.mystiasizakaya.util.SelectTarget;
+import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 import java.util.HashMap;
 import java.util.function.Supplier;
@@ -50,39 +55,62 @@ public class CookingRangeUiButton {
 			int x = message.x;
 			int y = message.y;
 			int z = message.z;
-			handleButtonAction(entity, buttonID, x, y, z);
+			handleButtonAction(entity, buttonID, Pos.get(x, y, z));
 		});
 		context.setPacketHandled(true);
 	}
 
-	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
+	public static void handleButtonAction(Player entity, int buttonID, BlockPos pos) {
 		Level world = entity.level();
 		HashMap guistate = CookingRangeUiMenu.guistate;
 		// security measure to prevent arbitrary chunk generation
-		if (!world.hasChunkAt(new BlockPos(x, y, z)))
+		if (!world.hasChunkAt(pos))
 			return;
 		if (buttonID == 0) {
 
-			Confirm.execute(world, x, y, z);
+			Confirm.execute(world, pos);
 		}
 		if (buttonID == 1) {
-			SelectTarget.set(world, x, y, z, 7);
+			SelectTarget.set(world, pos, 7);
 		}
 		if (buttonID == 2) {
 
-			SelectTarget.set(world, x, y, z, 8);
+			SelectTarget.set(world, pos, 8);
 		}
 		if (buttonID == 3) {
 
-			SelectTarget.set(world, x, y, z, 9);
+			SelectTarget.set(world, pos, 9);
 		}
 		if (buttonID == 4) {
 
-			SelectTarget.set(world, x, y, z, 10);
+			SelectTarget.set(world, pos, 10);
 		}
 		if (buttonID == 5) {
 
-			SelectTarget.set(world, x, y, z, 11);
+			SelectTarget.set(world, pos, 11);
+		}
+		if (buttonID == 6) {
+			if (!world.isClientSide()) {
+				BlockPos _bp = pos;
+				BlockEntity _blockEntity = world.getBlockEntity(_bp);
+				BlockState _bs = world.getBlockState(_bp);
+				int page = GetValue.getInt(world, pos, "page");
+				int targets = GetValue.getInt(world, pos, "targets");
+				if (_blockEntity != null && page + 5 < targets)
+					_blockEntity.getPersistentData().putInt("page", page + 1);
+				world.sendBlockUpdated(_bp, _bs, _bs, 3);
+			}
+		}
+		if (buttonID == 7) {
+			if (!world.isClientSide()) {
+				BlockPos _bp = pos;
+				BlockEntity _blockEntity = world.getBlockEntity(_bp);
+				BlockState _bs = world.getBlockState(_bp);
+				int page = GetValue.getInt(world, pos, "page");
+				if (_blockEntity != null && page > 0)
+					_blockEntity.getPersistentData().putInt("page", page - 1);
+				world.sendBlockUpdated(_bp, _bs, _bs, 3);
+			}
 		}
 	}
 

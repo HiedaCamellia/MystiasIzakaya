@@ -17,4 +17,10 @@ public class GetValue {
             return blockEntity.getPersistentData().getBoolean(tag);
         return false;
     }
+    public static int getInt(LevelAccessor world, BlockPos pos, String tag) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity != null)
+            return blockEntity.getPersistentData().getInt(tag);
+        return 0;
+    }
 }

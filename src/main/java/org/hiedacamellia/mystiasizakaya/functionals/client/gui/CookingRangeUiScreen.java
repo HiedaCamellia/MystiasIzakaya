@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -16,6 +17,7 @@ import org.hiedacamellia.mystiasizakaya.functionals.inventory.CookingRangeUiMenu
 import org.hiedacamellia.mystiasizakaya.functionals.network.CookingRangeUiButton;
 import org.hiedacamellia.mystiasizakaya.util.ButtunShow;
 import org.hiedacamellia.mystiasizakaya.util.TargetsText;
+import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 import java.util.HashMap;
 
@@ -23,6 +25,7 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 	private static final HashMap<String, Object> guistate = CookingRangeUiMenu.guistate;
 	private final Level world;
 	private final int x, y, z;
+	private final BlockPos pos;
 	private final Player entity;
 	Button button_confirm;
 	Button button_select;
@@ -31,6 +34,8 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 	Button button_select3;
 	Button button_select4;
 //	List<Button> buttons;
+	Button button_next;
+	Button button_back;
 
 	public CookingRangeUiScreen(CookingRangeUiMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -38,6 +43,7 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 		this.x = container.x;
 		this.y = container.y;
 		this.z = container.z;
+		this.pos = Pos.get(x, y, z);
 		this.entity = container.entity;
 		this.imageWidth = 280;
 		this.imageHeight = 166;
@@ -100,33 +106,13 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 				.builder(Component.translatable("gui.mystias_izakaya.cooking_range_ui.button_confirm"), e -> {
 					if (true) {
 						MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(0, x, y, z));
-						CookingRangeUiButton.handleButtonAction(entity, 0, x, y, z);
+						CookingRangeUiButton.handleButtonAction(entity, 0, pos);
 					}
 				}).bounds(this.leftPos + 94, this.topPos + 60, 90, 20).build();
-		guistate.put("button:button_confirm", button_confirm);
-		this.addRenderableWidget(button_confirm);
-
-//		for(int i=0 ;i<5;i++){
-//			int finalI = i;
-//			buttons.add(Button.builder(Component.literal(""), e -> {
-//				if (ButtunShow.get(entity, 7+ finalI)) {
-//					MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(1+ finalI, x, y, z));
-//					CookingRangeUiButton.handleButtonAction(entity, 1+ finalI, x, y, z);
-//				}
-//			}).bounds(this.leftPos + 40, this.topPos + 24+27*i, 45, 20).build(builder -> new Button(builder) {
-//				@Override
-//				public void render(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
-//					if (ButtunShow.get(entity, 7+ finalI))
-//						super.render(guiGraphics, gx, gy, ticks);
-//				}
-//			}));
-//			guistate.put("button:button_select"+ i, buttons.get(i));
-//			this.addRenderableWidget(buttons.get(i));
-//		}
 		button_select = Button.builder(Component.literal(""), e -> {
 			if (ButtunShow.get(entity, 7)) {
 				MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(1, x, y, z));
-				CookingRangeUiButton.handleButtonAction(entity, 1, x, y, z);
+				CookingRangeUiButton.handleButtonAction(entity, 1, pos);
 			}
 		}).bounds(this.leftPos + 40, this.topPos + 24, 45, 20).build(builder -> new Button(builder) {
 			@Override
@@ -135,12 +121,10 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 					super.render(guiGraphics, gx, gy, ticks);
 			}
 		});
-		guistate.put("button:button_select", button_select);
-		this.addRenderableWidget(button_select);
 		button_select1 = Button.builder(Component.literal(""), e -> {
 			if (ButtunShow.get(entity, 8)) {
 				MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(2, x, y, z));
-				CookingRangeUiButton.handleButtonAction(entity, 2, x, y, z);
+				CookingRangeUiButton.handleButtonAction(entity, 2, pos);
 			}
 		}).bounds(this.leftPos + 40, this.topPos + 51, 45, 20).build(builder -> new Button(builder) {
 			@Override
@@ -149,12 +133,10 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 					super.render(guiGraphics, gx, gy, ticks);
 			}
 		});
-		guistate.put("button:button_select1", button_select1);
-		this.addRenderableWidget(button_select1);
 		button_select2 = Button.builder(Component.literal(""), e -> {
 			if (ButtunShow.get(entity, 9)) {
 				MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(3, x, y, z));
-				CookingRangeUiButton.handleButtonAction(entity, 3, x, y, z);
+				CookingRangeUiButton.handleButtonAction(entity, 3, pos);
 			}
 		}).bounds(this.leftPos + 40, this.topPos + 78, 45, 20).build(builder -> new Button(builder) {
 			@Override
@@ -163,12 +145,10 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 					super.render(guiGraphics, gx, gy, ticks);
 			}
 		});
-		guistate.put("button:button_select2", button_select2);
-		this.addRenderableWidget(button_select2);
 		button_select3 = Button.builder(Component.literal(""), e -> {
 			if (ButtunShow.get(entity, 10)) {
 				MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(4, x, y, z));
-				CookingRangeUiButton.handleButtonAction(entity, 4, x, y, z);
+				CookingRangeUiButton.handleButtonAction(entity, 4, pos);
 			}
 		}).bounds(this.leftPos + 40, this.topPos + 105, 45, 20).build(builder -> new Button(builder) {
 			@Override
@@ -177,12 +157,10 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 					super.render(guiGraphics, gx, gy, ticks);
 			}
 		});
-		guistate.put("button:button_select3", button_select3);
-		this.addRenderableWidget(button_select3);
 		button_select4 = Button.builder(Component.literal(""), e -> {
 			if (ButtunShow.get(entity, 11)) {
 				MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(5, x, y, z));
-				CookingRangeUiButton.handleButtonAction(entity, 5, x, y, z);
+				CookingRangeUiButton.handleButtonAction(entity, 5, pos);
 			}
 		}).bounds(this.leftPos + 40, this.topPos + 132, 45, 20).build(builder -> new Button(builder) {
 			@Override
@@ -191,7 +169,33 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 					super.render(guiGraphics, gx, gy, ticks);
 			}
 		});
+
+		button_next = Button.builder(Component.translatable("gui.mystias_izakaya.cooking_range_ui.button_next"), e -> {
+				MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(6, x, y, z));
+				CookingRangeUiButton.handleButtonAction(entity, 6, pos);
+
+		}).bounds(this.leftPos + 26, this.topPos + 5, 15, 15).build();
+		button_back = Button.builder(Component.translatable("gui.mystias_izakaya.cooking_range_ui.button_back"), e -> {
+				MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(7, x, y, z));
+				CookingRangeUiButton.handleButtonAction(entity, 7, pos);
+
+		}).bounds(this.leftPos + 10, this.topPos + 5, 15, 15).build();
+
+		guistate.put("button:button_confirm", button_confirm);
+		guistate.put("button:button_select", button_select);
+		guistate.put("button:button_select1", button_select1);
+		guistate.put("button:button_select2", button_select2);
+		guistate.put("button:button_select3", button_select3);
 		guistate.put("button:button_select4", button_select4);
+		guistate.put("button:button_next", button_next);
+		guistate.put("button:button_back", button_back);
+		this.addRenderableWidget(button_confirm);
+		this.addRenderableWidget(button_select);
+		this.addRenderableWidget(button_select1);
+		this.addRenderableWidget(button_select2);
+		this.addRenderableWidget(button_select3);
 		this.addRenderableWidget(button_select4);
+		this.addRenderableWidget(button_next);
+		this.addRenderableWidget(button_back);
 	}
 }
