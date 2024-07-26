@@ -10,6 +10,8 @@
   "gui.mystias_izakaya.bank_ui.button_take_out": "取出",
   "gui.mystias_izakaya.bank_ui.input": "10",
   "gui.mystias_izakaya.cooking_range_ui.button_confirm": "开始料理",
+  "gui.mystias_izakaya.cooking_range_ui.button_next": ">",
+  "gui.mystias_izakaya.cooking_range_ui.button_back": "<",
   "item.mystias_izakaya.a_fu_jia_duo": "阿芙加朵",
   "item.mystias_izakaya.ba_mu_man": "八目鳗",
   "item.mystias_izakaya.ba_si_di_gua": "拔丝地瓜",
