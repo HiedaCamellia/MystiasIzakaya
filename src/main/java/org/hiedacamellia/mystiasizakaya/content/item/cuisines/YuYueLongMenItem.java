@@ -9,6 +9,6 @@ public class YuYueLongMenItem extends Cuisines {
 		super(7, 1.2f, Rarity.RARE, "yu_yue_long_men",
 				new String[]{"Aquatic", "Chinese", "Cultural_Heritage", "Dreamy", "Expensive", "Fungus",
 						"Large_Portion", "Meat", "Premium", "Fresh", "Sea_Delicacy", "Sweet"},
-				new String[]{},0);
+				new String[]{},144);
 	}
 }
