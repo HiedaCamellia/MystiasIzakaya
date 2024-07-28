@@ -152,7 +152,7 @@ public class GetRawsFromSelectedFood {
                         }
                         break;
                     case "mystias_izakaya:nai_you":
-                        if (!(ss.equals("mystias_izakaya:nai_xiang_mo_gu_tang"))){
+                        if (!(ss.equals("mystias_izakaya:nai_xiang_mo_gu_tang")||ss.equals("mystias_izakaya:jin_xia_da_mao_xian"))){
                             rawss.add(raw);
                         }
                         break;
