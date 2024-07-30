@@ -70,7 +70,7 @@ public class BuildTags {
         String[] ntags = cuisine.getOrCreateTag().getString("ntags").split(",");
         Set<String> seti = new HashSet<>(List.of(tags));
         for (String str : ntags) {
-            if (seti.contains(str)) {
+            if (seti.contains(str)&& !Objects.equals(str, "")) {
                 return new ItemStack(ItemRegistery.HEI_AN_WU_ZHI.get());
             }
         }

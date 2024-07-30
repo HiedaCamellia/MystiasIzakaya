@@ -8,6 +8,6 @@ public class YeWeiJiaNongItem extends Cuisines {
 	public YeWeiJiaNongItem() {
 		super(9, 1.2f, Rarity.EPIC, "ye_wei_jia_nong",
 				new String[]{"Expensive", "Meat", "Greasy", "Filling", "Mountain_Delicacy", "Hot"},
-				new String[]{},0);
+				new String[]{},96);
 	}
 }
