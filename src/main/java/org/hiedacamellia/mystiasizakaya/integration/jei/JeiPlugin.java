@@ -1,22 +1,21 @@
 package org.hiedacamellia.mystiasizakaya.integration.jei;
 
 import mezz.jei.api.IModPlugin;
-import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
-import org.hiedacamellia.mystiasizakaya.content.block.ModBlocks;
 import org.hiedacamellia.mystiasizakaya.integration.jei.categories.*;
 import org.hiedacamellia.mystiasizakaya.integration.jei.recipes.*;
+import org.hiedacamellia.mystiasizakaya.registries.MIBlock;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @mezz.jei.api.JeiPlugin
 public class JeiPlugin implements IModPlugin {
@@ -58,10 +57,10 @@ public class JeiPlugin implements IModPlugin {
 
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-		registration.addRecipeCatalyst(new ItemStack(ModBlocks.COOKING_RANGE.get().asItem()), BoilingPotType_Type);
-		registration.addRecipeCatalyst(new ItemStack(ModBlocks.COOKING_RANGE.get().asItem()), CuttingBoardType_Type);
-		registration.addRecipeCatalyst(new ItemStack(ModBlocks.COOKING_RANGE.get().asItem()), FryingPanType_Type);
-		registration.addRecipeCatalyst(new ItemStack(ModBlocks.COOKING_RANGE.get().asItem()), GrillType_Type);
-		registration.addRecipeCatalyst(new ItemStack(ModBlocks.COOKING_RANGE.get().asItem()), StreamerType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), BoilingPotType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), CuttingBoardType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), FryingPanType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), GrillType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), StreamerType_Type);
 	}
 }

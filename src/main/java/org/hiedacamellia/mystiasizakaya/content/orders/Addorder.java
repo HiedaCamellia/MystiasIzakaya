@@ -3,13 +3,22 @@ package org.hiedacamellia.mystiasizakaya.content.orders;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import org.hiedacamellia.mystiasizakaya.functionals.network.Variables;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
+import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
+
+import java.util.List;
 
 public class Addorder {
 	public static void execute(ItemStack beverages, ItemStack cuisines, double id, Player player) {
-		Variables.PlayerVariables _vars = player.getData(Variables.PLAYER_VARIABLES);
-		_vars.orders.set((int) id, BuiltInRegistries.ITEM.getKey(cuisines.getItem()).toString());
-		_vars.ordersbeverages.set((int) id, BuiltInRegistries.ITEM.getKey(beverages.getItem()).toString());
-		_vars.syncPlayerVariables(player);
+
+		MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS.get());
+
+		List<String> orders = miOrders.orders();
+		List<String> ordersbeverages = miOrders.beverages();
+
+		orders.set((int) id, BuiltInRegistries.ITEM.getKey(cuisines.getItem()).toString());
+		ordersbeverages.set((int) id, BuiltInRegistries.ITEM.getKey(beverages.getItem()).toString());
+
+		player.setData(MIAttachment.MI_ORDERS.get(), new MIOrders(orders, ordersbeverages));
 	}
 }

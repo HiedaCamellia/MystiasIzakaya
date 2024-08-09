@@ -12,20 +12,20 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import org.hiedacamellia.mystiasizakaya.content.item.ItemRegistery;
 import org.hiedacamellia.mystiasizakaya.integration.jei.JeiPlugin;
 import org.hiedacamellia.mystiasizakaya.integration.jei.recipes.CuttingBoardTypeRecipe;
+import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 
 public class CuttingBoardTypeRecipeCategory implements IRecipeCategory<CuttingBoardTypeRecipe> {
 	public final static ResourceLocation UID = ResourceLocation.fromNamespaceAndPath("mystias_izakaya", "cutting_board_type");
-	public final static ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("mystias_izakaya", "textures/screens/recipe_gui.png");
+	public final static ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("mystias_izakaya", "textures/overlay/recipe_gui.png");
 	private final IDrawable background;
 	private final IDrawable icon;
 
 	public CuttingBoardTypeRecipeCategory(IGuiHelper helper) {
 		IDrawableBuilder drawableBuilder = helper.drawableBuilder(TEXTURE, 0, 0, 176, 87).setTextureSize(176, 87);
 		this.background = drawableBuilder.build();
-		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ItemRegistery.LIAO_LI_TAI.get()));
+		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(MIItem.LIAO_LI_TAI.get()));
 	}
 
 	@Override
