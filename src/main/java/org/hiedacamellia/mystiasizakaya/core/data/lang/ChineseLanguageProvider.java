@@ -674,8 +674,8 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("tooltip.mystias_izakaya.zha_xia_tian_fu_luo", "“天妇罗”又名“天麸罗”。将新鲜大虾暑上面粉做的罗衣,放入油锅炸至金黄酥脆,再控油捞出,隔壁家的童子都馋哭了。");
         add("item.mystias_izakaya.yue_bing", "月饼");
         add("tooltip.mystias_izakaya.yue_bing","诶 ?! 这是什么?你为什么会获得这个?嗯。。。祝你玩得愉快");
-        add("item.mystias_izakaya.account_book", "账本");
-        add("tooltip.mystias_izakaya.account_book","你可以使用这个物品打开塞钱箱");
+        add("item.mystias_izakaya.ledger", "账本");
+        add("tooltip.mystias_izakaya.ledger","你可以使用这个物品打开塞钱箱");
 
 
     }

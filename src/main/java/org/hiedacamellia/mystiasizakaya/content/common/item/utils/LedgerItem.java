@@ -21,8 +21,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class AccountBookItem extends Item {
-    public AccountBookItem() {
+public class LedgerItem extends Item {
+    public LedgerItem() {
         super(new Properties().stacksTo(1).rarity(Rarity.RARE));
     }
 

@@ -675,7 +675,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.mystias_izakaya.zha_xia_tian_fu_luo", "An iconic Japanese dish of the Outside World. Fresh shrimps are coated in flour and deep-fried until they are golden and crispy. Just the sight of it is enough to make one drool!");
         add("item.mystias_izakaya.yue_bing", "Moon Cake");
         add("tooltip.mystias_izakaya.yue_bing","Ei??Why you got it....Have fun with the game!");
-        add("item.mystias_izakaya.account_book", "Account Book");
-        add("tooltip.mystias_izakaya.account_book","You can use this item open zhe Donation");
+        add("item.mystias_izakaya.ledger", "Account Book");
+        add("tooltip.mystias_izakaya.ledger","You can use this item open zhe Donation");
     }
 }

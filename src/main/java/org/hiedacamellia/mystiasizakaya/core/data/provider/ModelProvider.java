@@ -13,9 +13,9 @@ public class ModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        singleTexture("account_book",
+        singleTexture("ledger",
                 ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
-                ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "item/" + "account_book"));
+                ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "item/" + "ledger"));
 
     }
 
