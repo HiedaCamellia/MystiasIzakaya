@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
@@ -19,23 +20,26 @@ public class Currency {
         event.getDispatcher().register(Commands.literal("mystiasizakaya").then(Commands.literal("currency")
                 .requires(s -> s.hasPermission(3)).then(Commands.literal("add")
                         .then(Commands.argument("player", EntityArgument.player()).then(Commands.argument("number", IntegerArgumentType.integer(0)).executes(arguments -> {
-                            Player player = EntityArgument.getPlayer(arguments, "player");
+                            ServerPlayer player = EntityArgument.getPlayer(arguments, "player");
                             int change = IntegerArgumentType.getInteger(arguments, "number");
                             player.setData(MIAttachment.MI_BALANCE, new MIBalance(player.getData(MIAttachment.MI_BALANCE).balance() + change));
+                            PacketDistributor.sendToPlayer(player, new MIBalance(player.getData(MIAttachment.MI_BALANCE).balance()));
                             return 0;
                         }))))
                 .then(Commands.literal("query")
                         .then(Commands.argument("player", EntityArgument.player()).then(Commands.argument("number", IntegerArgumentType.integer(0)).executes(arguments -> {
-                            Player player = EntityArgument.getPlayer(arguments, "player");
+                            ServerPlayer player = EntityArgument.getPlayer(arguments, "player");
                             int change = IntegerArgumentType.getInteger(arguments, "number");
                             player.setData(MIAttachment.MI_BALANCE, new MIBalance(player.getData(MIAttachment.MI_BALANCE).balance() - change));
+                            PacketDistributor.sendToPlayer(player, new MIBalance(player.getData(MIAttachment.MI_BALANCE).balance()));
                              return 0;
                         }))))
                 .then(Commands.literal("set")
                         .then(Commands.argument("player", EntityArgument.player()).then(Commands.argument("number", IntegerArgumentType.integer(0)).executes(arguments -> {
-                            Player player = EntityArgument.getPlayer(arguments, "player");
+                            ServerPlayer player = EntityArgument.getPlayer(arguments, "player");
                             int change = IntegerArgumentType.getInteger(arguments, "number");
                             player.setData(MIAttachment.MI_BALANCE, new MIBalance(change));
+                            PacketDistributor.sendToPlayer(player, new MIBalance(player.getData(MIAttachment.MI_BALANCE).balance()));
                             return 0;
                         }))))));
     }

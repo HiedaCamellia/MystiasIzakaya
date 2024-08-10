@@ -13,6 +13,7 @@ import org.hiedacamellia.mystiasizakaya.content.common.item.currency.En1Item;
 import org.hiedacamellia.mystiasizakaya.content.common.item.currency.En5Item;
 import org.hiedacamellia.mystiasizakaya.content.common.item.ingredients.*;
 import org.hiedacamellia.mystiasizakaya.content.common.item.kitchenwares.*;
+import org.hiedacamellia.mystiasizakaya.content.common.item.utils.AccountBookItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.IconItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.IronKnifeItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.LingXianItem;
@@ -22,6 +23,9 @@ public class MIItem {
 
 	public static final DeferredItem<BlockItem> COOKING_RANGE = REGISTRY.registerSimpleBlockItem("cooking_range", MIBlock.COOKING_RANGE);
 	public static final DeferredItem<BlockItem> BANK = REGISTRY.registerSimpleBlockItem("donation", MIBlock.DONATION);
+
+	//Util
+	public static final DeferredItem<Item> ACCOUNT_BOOK = REGISTRY.register("account_book", AccountBookItem::new);
 	//kictenwires
 	public static final DeferredItem<Item> LIAO_LI_TAI = REGISTRY.register("liao_li_tai", LiaoLiTaiItem::new);
 	public static final DeferredItem<Item> SHAO_KAO_JIA = REGISTRY.register("shao_kao_jia", ShaoKaoJiaItem::new);

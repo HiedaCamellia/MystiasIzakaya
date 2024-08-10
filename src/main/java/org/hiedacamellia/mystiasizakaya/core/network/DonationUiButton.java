@@ -11,6 +11,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
+import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.DonationUiMenu;
@@ -22,21 +23,21 @@ import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import java.util.HashMap;
 
 
-public record BankUiButton(int buttonID, int x, int y, int z) implements CustomPacketPayload {
+public record DonationUiButton(int buttonID, int x, int y, int z) implements CustomPacketPayload {
 
-    public static final Type<BankUiButton> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "donationui_button"));
-    public static final StreamCodec<RegistryFriendlyByteBuf, BankUiButton> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, BankUiButton message) -> {
+    public static final Type<DonationUiButton> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "donationui_button"));
+    public static final StreamCodec<RegistryFriendlyByteBuf, DonationUiButton> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, DonationUiButton message) -> {
         buffer.writeInt(message.buttonID);
         buffer.writeInt(message.x);
         buffer.writeInt(message.y);
         buffer.writeInt(message.z);
-    }, (RegistryFriendlyByteBuf buffer) -> new BankUiButton(buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt()));
+    }, (RegistryFriendlyByteBuf buffer) -> new DonationUiButton(buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt()));
     @Override
-    public Type<BankUiButton> type() {
+    public Type<DonationUiButton> type() {
         return TYPE;
     }
 
-    public static void handleData(final BankUiButton message, final IPayloadContext context) {
+    public static void handleData(final DonationUiButton message, final IPayloadContext context) {
         if (context.flow() == PacketFlow.SERVERBOUND) {
             context.enqueueWork(() -> {
                 Player entity = context.player();
@@ -63,32 +64,30 @@ public record BankUiButton(int buttonID, int x, int y, int z) implements CustomP
                 return;
             }
 
-            Debug.getLogger().debug("Button Pressed with ID: " + buttonID + " with value: " + i);
-            if(!(entity instanceof ServerPlayer))
-                return;
-
-            if (i > 0 && entity.getData(MIAttachment.MI_BALANCE).balance() >= i) {
-                Debug.getLogger().debug("Balance: " + entity.getData(MIAttachment.MI_BALANCE).balance());
-                entity.setData(MIAttachment.MI_BALANCE, new MIBalance(entity.getData(MIAttachment.MI_BALANCE).balance() - i));
-                Debug.getLogger().debug("NowBalance: " + entity.getData(MIAttachment.MI_BALANCE).balance());
-                if (i >= 10000) {
-                    j = i / 10000;
-                    i = i - j * 10000;
-                    ItemStack _setstack = new ItemStack(MIItem.EN_10K.get());
+            //Debug.getLogger().debug("Button Pressed with ID: " + buttonID + " with value: " + i);
+            if(entity instanceof ServerPlayer player)
+                if (i > 0 && player.getData(MIAttachment.MI_BALANCE).balance() >= i) {
+                    //Debug.getLogger().debug("Balance: " + player.getData(MIAttachment.MI_BALANCE).balance());
+                    player.setData(MIAttachment.MI_BALANCE, new MIBalance(player.getData(MIAttachment.MI_BALANCE).balance() - i));
+                   //Debug.getLogger().debug("NowBalance: " + player.getData(MIAttachment.MI_BALANCE).balance());
+                    if (i >= 10000) {
+                        j = i / 10000;
+                        i = i - j * 10000;
+                        ItemStack _setstack = new ItemStack(MIItem.EN_10K.get());
+                        _setstack.setCount((int) j);
+                        ItemHandlerHelper.giveItemToPlayer(player, _setstack);
+                    }
+                    j = i / 10;
+                    i = i - j * 10;
+                    ItemStack _setstack = new ItemStack(MIItem.EN_10.get());
                     _setstack.setCount((int) j);
-                    ItemHandlerHelper.giveItemToPlayer(entity, _setstack);
+                    ItemHandlerHelper.giveItemToPlayer(player, _setstack);
+                    ItemStack setstack = new ItemStack(MIItem.EN_1.get());
+                    setstack.setCount((int) i);
+                    ItemHandlerHelper.giveItemToPlayer(player, setstack);
+                    PacketDistributor.sendToPlayer(player, new MIBalance(player.getData(MIAttachment.MI_BALANCE).balance()));
+                    //Debug.getLogger().debug("Success in withdrawing " + i + " yen");
                 }
-                j = i / 10;
-                i = i - j * 10;
-                ItemStack _setstack = new ItemStack(MIItem.EN_10.get());
-                _setstack.setCount((int) j);
-                ItemHandlerHelper.giveItemToPlayer(entity, _setstack);
-                ItemStack setstack = new ItemStack(MIItem.EN_1.get());
-                setstack.setCount((int) i);
-                ItemHandlerHelper.giveItemToPlayer(entity, setstack);
-
-                //Debug.getLogger().debug("Success in withdrawing " + i + " yen");
-            }
         }
     }
 

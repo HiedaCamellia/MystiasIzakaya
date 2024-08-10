@@ -1,5 +1,5 @@
 {
-  "parent": "mystias_izakaya:block/bank",
+  "parent": "mystias_izakaya:block/donation",
   "display": {
     "thirdperson": {
       "rotation": [

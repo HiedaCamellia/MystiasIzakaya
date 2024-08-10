@@ -1,6 +1,7 @@
 package org.hiedacamellia.mystiasizakaya.core.data.provider;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
@@ -12,6 +13,9 @@ public class ModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        singleTexture("account_book",
+                ResourceLocation.withDefaultNamespace("item/generated"), "layer0",
+                ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "item/" + "account_book"));
 
     }
 

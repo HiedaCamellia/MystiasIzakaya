@@ -30,11 +30,11 @@ public class MIPayload {
                 )
         );
         registrar.playBidirectional(
-                BankUiButton.TYPE,
-                BankUiButton.STREAM_CODEC,
+                DonationUiButton.TYPE,
+                DonationUiButton.STREAM_CODEC,
                 new DirectionalPayloadHandler<>(
-                        BankUiButton::handleData,
-                        BankUiButton::handleData
+                        DonationUiButton::handleData,
+                        DonationUiButton::handleData
                 )
         );
         registrar.playBidirectional(
