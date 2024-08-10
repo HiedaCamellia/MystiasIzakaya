@@ -21,7 +21,7 @@ public class MIItem {
 	public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems(MystiasIzakaya.MODID);
 
 	public static final DeferredItem<BlockItem> COOKING_RANGE = REGISTRY.registerSimpleBlockItem("cooking_range", MIBlock.COOKING_RANGE);
-	public static final DeferredItem<BlockItem> BANK = REGISTRY.registerSimpleBlockItem("bank", MIBlock.BANK);
+	public static final DeferredItem<BlockItem> BANK = REGISTRY.registerSimpleBlockItem("donation", MIBlock.DONATION);
 	//kictenwires
 	public static final DeferredItem<Item> LIAO_LI_TAI = REGISTRY.register("liao_li_tai", LiaoLiTaiItem::new);
 	public static final DeferredItem<Item> SHAO_KAO_JIA = REGISTRY.register("shao_kao_jia", ShaoKaoJiaItem::new);

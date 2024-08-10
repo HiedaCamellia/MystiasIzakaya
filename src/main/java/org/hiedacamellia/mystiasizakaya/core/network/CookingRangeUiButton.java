@@ -51,8 +51,7 @@ public record CookingRangeUiButton (int buttonID, BlockPos pos) implements Custo
 
 	public static void handleButtonAction(Player entity, int buttonID, BlockPos pos) {
 		Level world = entity.level();
-		HashMap guistate = CookingRangeUiMenu.guistate;
-		// security measure to prevent arbitrary chunk generation
+        // security measure to prevent arbitrary chunk generation
 		if (buttonID == 0) {
 
 			Confirm.execute(world, pos);
@@ -77,26 +76,29 @@ public record CookingRangeUiButton (int buttonID, BlockPos pos) implements Custo
 			SelectTarget.set(world, pos, 11);
 		}
 		if (buttonID == 6) {
-			Debug.getLogger().debug("Set data");
+			//Debug.getLogger().debug("Set data");
 			if (!world.isClientSide()) {
 				BlockPos _bp = pos;
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 
 				int page = GetValue.getInt(world, pos, "page");
+				//Debug.getLogger().debug("page:" + page);
 				int targets = GetValue.getInt(world, pos, "targets");
+				//Debug.getLogger().debug("targets:" + targets);
 				if (_blockEntity != null && page + 5 < targets)
 					_blockEntity.getPersistentData().putInt("page", page + 1);
 				world.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
 		}
 		if (buttonID == 7) {
-			Debug.getLogger().debug("Set data");
+			//Debug.getLogger().debug("Set data");
 			if (!world.isClientSide()) {
 				BlockPos _bp = pos;
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				int page = GetValue.getInt(world, pos, "page");
+				//Debug.getLogger().debug("page:" + page);
 				if (_blockEntity != null && page > 0)
 					_blockEntity.getPersistentData().putInt("page", page - 1);
 				world.sendBlockUpdated(_bp, _bs, _bs, 3);

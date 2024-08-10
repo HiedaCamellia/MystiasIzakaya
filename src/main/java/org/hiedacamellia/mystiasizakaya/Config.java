@@ -17,10 +17,11 @@ public class Config
             .comment("设置为true以启用调试信息")
             .define("debug", true);
 
+
     public static final ModConfigSpec.BooleanValue SHOW_BALANCE = BUILDER
-            .comment("Set to true to display balance in the hud")
-            .comment("设置为true以在hud中显示余额")
-            .define("show_balance", true);
+            .comment("Set to true to display balance in the hud ( deprecated ) ")
+            .comment("设置为true以在hud中显示余额（弃用）")
+            .define("show_balance", false);
 
     static final ModConfigSpec SPEC = BUILDER.build();
 

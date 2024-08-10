@@ -16,16 +16,16 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("network.mystiasizakaya.failed", "无法处理网络数据: %s");
 
 
-        add("block.mystias_izakaya.bank", "银行");
+        add("block.mystias_izakaya.donation", "赛钱箱");
         add("block.mystias_izakaya.cooking_range", "灶");
         add("death.attack.chili", "%1$s 被辣死了");
         add("death.attack.chili.item", "%1$s 被 %2$s 用 %3$s 辣死了");
         add("death.attack.chili.player", "%1$s 在试图逃离 %2$s 时辣死了");
         add("entity.minecraft.villager.mystias_izakaya.trader", "商人");
         add("gui.mystias_izakaya.balance", "余额: ");
-        add("gui.mystias_izakaya.bank_ui.bank", "银行");
-        add("gui.mystias_izakaya.bank_ui.button_take_out", "取出");
-        add("gui.mystias_izakaya.bank_ui.input", "10");
+        add("gui.mystias_izakaya.donation_ui.donation", "赛钱箱");
+        add("gui.mystias_izakaya.donation_ui.button_take_out", "取出");
+        add("gui.mystias_izakaya.donation_ui.input", "10");
         add("gui.mystias_izakaya.cooking_range_ui.button_confirm", "开始料理");
         add("item.mystias_izakaya.a_fu_jia_duo", "阿芙加朵");
         add("item.mystias_izakaya.ba_mu_man", "八目鳗");
@@ -309,7 +309,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("tooltip.mystias_izakaya.bai_xue", "使用鲜美的八目鳗与河豚，在佐以海苔炖煮而成的高级烩锅，由于煮的过程中会飘出纯白的泡沫而得名，是非常高级的家庭料理。");
         add("tooltip.mystias_izakaya.ban_li", "相传道教创始人修炼时，由于不爱荤腥，便栽了很多板栗树，以栗代饭。栗子种仁肥厚，营养丰富，不仅受到许多道教人士的推崇，也经常被农民用来代替粮食。");
         add("tooltip.mystias_izakaya.ban_ni_di_ke_dan", "流黄的水波蛋和大口的碳水，是早午餐的常见选择。");
-        add("tooltip.mystias_izakaya.bank_block", "模组经济系统功能方块（暂时）");
+        add("tooltip.mystias_izakaya.donation_block", "模组经济系统功能方块");
         add("tooltip.mystias_izakaya.bei_ji_tian_xia_mi_tao_se_la", "选用品质最好、肉质最鲜的虾和桃子加工而成的高级料理，据说在外界只有在宴席上才有机会一见。");
         add("tooltip.mystias_izakaya.bing_di_lian", "根茎生长在桥的附近，花朵成熟后会破水而出，淡红色并有淡香味，高级食材，也是地底人的节日装饰。");
         add("tooltip.mystias_izakaya.bing_kuai", "水的固体形态，帮助食材保温，晶莹剔透");

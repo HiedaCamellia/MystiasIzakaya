@@ -1,9 +1,8 @@
-
 {
   "parent": "block/cube",
   "texture_size": [64, 64],
   "textures": {
-    "0": "mystias_izakaya:block/cookingrange",
+    "0": "mystias_izakaya:block/donation",
     "particle": "texture"
   },
   "elements": [

@@ -51,35 +51,36 @@ public class Main {
             target = GetItemStack.getItemStack(world,pos, 12);
             SetSlotItem.setSlotItem(world,pos, target, 6, 1);
 
-            MITags miTags = GetItemStack.getItemStack(world,pos, 12).get(MIDatacomponet.MI_TAGS.get());
-            GetItemStack.getItemStack(world,pos, 6).set(MIDatacomponet.MI_TAGS.get(), miTags);
+//            MITags miTags = GetItemStack.getItemStack(world,pos, 12).get(MIDatacomponet.MI_TAGS.get());
+//            target.set(MIDatacomponet.MI_TAGS.get(), miTags);
             
             SetSlotItem.setEmptySlot(world,pos, 12);
         } else {
             if (!(GetValue.getBoolean(world,pos, "breaking"))) {
-                if (ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world,pos, 4).getItem()
-                        && !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world,pos, 5).getItem())) {
-                    SetSlotItem.setSlotItem(world,pos,
-                            GetItemStack.getItemStack(world,pos, 5), 4, 1);
-                    SetSlotItem.setEmptySlot(world,pos, 5);
+
+                if (ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 4)
+                        && !(ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 5))) {
+                    SetSlotItem.setSlotItem(world, pos, GetItemStack.getItemStack(world, pos, 5), 4, 1);
+                    SetSlotItem.setEmptySlot(world, pos, 5);
+                    resetpage(world, pos);
                 }
-                if (ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world,pos, 3).getItem()
-                        && !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world,pos, 4).getItem())) {
-                    SetSlotItem.setSlotItem(world,pos,
-                            GetItemStack.getItemStack(world,pos, 4), 3, 1);
-                    SetSlotItem.setEmptySlot(world,pos, 4);
+                if (ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 3)
+                        && !(ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 4))) {
+                    SetSlotItem.setSlotItem(world, pos, GetItemStack.getItemStack(world, pos, 4), 3, 1);
+                    SetSlotItem.setEmptySlot(world, pos, 4);
+                    resetpage(world, pos);
                 }
-                if (ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world,pos, 2).getItem()
-                        && !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world,pos, 3).getItem())) {
-                    SetSlotItem.setSlotItem(world,pos,
-                            GetItemStack.getItemStack(world,pos, 3), 2, 1);
-                    SetSlotItem.setEmptySlot(world,pos, 3);
+                if (ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 2)
+                        && !(ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 3))) {
+                    SetSlotItem.setSlotItem(world, pos, GetItemStack.getItemStack(world, pos, 3), 2, 1);
+                    SetSlotItem.setEmptySlot(world, pos, 3);
+                    resetpage(world, pos);
                 }
-                if (ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world,pos, 1).getItem()
-                        && !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world,pos, 2).getItem())) {
-                    SetSlotItem.setSlotItem(world,pos,
-                            GetItemStack.getItemStack(world,pos, 2), 1, 1);
-                    SetSlotItem.setEmptySlot(world,pos, 2);
+                if (ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 1)
+                        && !(ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 2))) {
+                    SetSlotItem.setSlotItem(world, pos, GetItemStack.getItemStack(world, pos, 2), 1, 1);
+                    SetSlotItem.setEmptySlot(world, pos, 2);
+                    resetpage(world, pos);
                 }
 
                 util = GetItemStack.getItemStack(world,pos, 0);
@@ -109,17 +110,17 @@ public class Main {
                     if (world instanceof Level _level)
                         _level.sendBlockUpdated(_bp, _bs, _bs, 3);
                 }
-
+                int page = GetValue.getInt(world, pos, "page");
 
                 for (int i = 0; i < 5; i++) {
 					if (i < targets.size()) {
-						ItemStack taget = new ItemStack(Objects.requireNonNull(BuiltInRegistries.ITEM.get(ResourceLocation.parse(((targets.get(i))).toLowerCase(Locale.ENGLISH)))));
+						ItemStack taget = new ItemStack(Objects.requireNonNull(BuiltInRegistries.ITEM.get(ResourceLocation.parse(((targets.get(i+page))).toLowerCase(Locale.ENGLISH)))));
 						SetSlotItem.setSlotItem(world,pos, BuildTags.execute(taget, util, ingredients), 7 + i, 1);
                     } else {
                         SetSlotItem.setEmptySlot(world,pos, 7 + i);
                     }
                 }
-                SetSlotItem.setEmptySlot(world,pos, 12);
+                //SetSlotItem.setEmptySlot(world,pos, 12);
 
             } else {
                 SetSlotItem.setEmptySlot(world,pos, new int[]{7,8,9,10,11,12});

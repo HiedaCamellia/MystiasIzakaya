@@ -20,10 +20,9 @@ public class BalanceOverlay {
 		int w = event.getGuiGraphics().guiWidth();
 		int h = event.getGuiGraphics().guiHeight();
 		Player entity = Minecraft.getInstance().player;
-		String text = Component.translatable("gui.mystias_izakaya.balance").getString() + ""
-				+ new java.text.DecimalFormat("#######")
-						.format(entity.getData(MIAttachment.MI_BALANCE).balance())
-				+ "\u5186";
+        assert entity != null;
+        String text = Component.translatable("gui.mystias_izakaya.balance").getString() + new java.text.DecimalFormat("#######")
+						.format(entity.getData(MIAttachment.MI_BALANCE).balance()) + "\u5186";
 		int strlength = Minecraft.getInstance().font.width(text);
 
 		if (Config.SHOW_BALANCE.get())

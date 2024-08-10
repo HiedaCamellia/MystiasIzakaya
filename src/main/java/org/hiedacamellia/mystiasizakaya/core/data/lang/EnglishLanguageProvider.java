@@ -17,16 +17,16 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.cooking_range_ui.button_next", ">");
         add("network.mystiasizakaya.failed", "Failed to handle network data: %s");
 
-        add("block.mystias_izakaya.bank", "Bank");
+        add("block.mystias_izakaya.donation", "Donation");
         add("block.mystias_izakaya.cooking_range", "Cooking Range");
         add("death.attack.chili", "%1$s Killed by the spiciness");
         add("death.attack.chili.item", "%1$s was killed by %2$s using %3$s ");
         add("death.attack.chili.player", "%1$s was extremely spicy while trying to escape %2$s ");
         add("entity.minecraft.villager.mystias_izakaya.trader", "Trader");
         add("gui.mystias_izakaya.balance", "Balance: ");
-        add("gui.mystias_izakaya.bank_ui.bank", "Bank");
-        add("gui.mystias_izakaya.bank_ui.button_take_out", "take out");
-        add("gui.mystias_izakaya.bank_ui.input", "10");
+        add("gui.mystias_izakaya.donation_ui.donation", "Donation");
+        add("gui.mystias_izakaya.donation_ui.button_take_out", "take out");
+        add("gui.mystias_izakaya.donation_ui.input", "10");
         add("gui.mystias_izakaya.cooking_range_ui.button_confirm", "Confirm");
         add("item.mystias_izakaya.a_fu_jia_duo", "Affogato");
         add("item.mystias_izakaya.ba_mu_man", "Lamprey");
@@ -310,7 +310,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.mystias_izakaya.bai_xue", "A premium stew made with lamprey, pufferfish, and seaweed. The name means \"white snow.\" The most luxurious family dish, if you can call it that.");
         add("tooltip.mystias_izakaya.ban_li", "It's said that while the founder of Taoism was training, he planted many chestnut trees due to a dislike of meat, substituting rice with chestnuts. They have fat kernels and are highly nutritious; Taoists hold them in high esteem, and even farmers frequently use them as a substitute for grain.");
         add("tooltip.mystias_izakaya.ban_ni_di_ke_dan", "Poached eggs on freshly toasted muffins. A great choice for brunch.");
-        add("tooltip.mystias_izakaya.bank_block", "Module Economic System Function Block (Temporary)");
+        add("tooltip.mystias_izakaya.donation_block", "Module Economic System Function Block");
         add("tooltip.mystias_izakaya.bei_ji_tian_xia_mi_tao_se_la", "A high-class dish made from the freshest shrimp and peaches. Supposedly, they are only served at banquets in the Outside World.");
         add("tooltip.mystias_izakaya.bing_di_lian", "Its roots grow near bridges, blooming on the water's surface when mature. It possesses a light pink hue and a subtle fragrance, a high-quality ingredient used as festive decorations in the Underworld.");
         add("tooltip.mystias_izakaya.bing_kuai", "Water in solid form. Can be used for keeping foods cold.");

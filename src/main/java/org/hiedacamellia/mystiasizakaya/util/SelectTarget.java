@@ -2,6 +2,7 @@ package org.hiedacamellia.mystiasizakaya.util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
+import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 public class SelectTarget {
@@ -10,6 +11,7 @@ public class SelectTarget {
 		set(world, Pos.get(x, y, z), targetSlot);
 	}
 	public static void set(LevelAccessor world, BlockPos pos, int targetSlot) {
+		//Debug.getLogger().debug("SelectTarget.set");
 		SetSlotItem.setSlotItem(world, pos, GetItemStack.getItemStack(world, pos, targetSlot), 12, 1);
 	}
 }

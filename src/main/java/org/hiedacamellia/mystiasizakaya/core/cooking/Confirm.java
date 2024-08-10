@@ -19,11 +19,15 @@ public class Confirm {
         double time;
 		time = GetValue.getDouble(world, pos, "timeleft");
 		ItemStack target;
+		//Debug.getLogger().debug("Get data");
+		//Debug.getLogger().debug("Time: " + time);
+		//Debug.getLogger().debug("Item6: " + GetItemStack.getItemStack(world, pos, 6).getItem());
+		//Debug.getLogger().debug("Item12: " + GetItemStack.getItemStack(world, pos, 12).getItem());
         if ((ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, pos, 6).getItem())
 				&& !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, pos, 12).getItem())
 				&& time == 0) {
 
-			Debug.getLogger().debug("Get data");
+			//Debug.getLogger().debug("Get data");
 
 			target = GetItemStack.getItemStack(world, pos, 12);
 
@@ -37,11 +41,20 @@ public class Confirm {
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
 
-			Debug.getLogger().debug("Get data");
+			//Debug.getLogger().debug("Get data");
 
 			BlockEntity be = world.getBlockEntity(pos);
-			SetSlotItem.setEmptySlot(world,pos, new int[]{1,2,3,4,5,6,7,8,9,10,11});
-			SetSlotItem.setSlotItem(world, pos,BuildTags.check(target), 12, 1);
+			SetSlotItem.setEmptySlot(world,pos, new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11});
+			SetSlotItem.setSlotItem(world, pos, BuildTags.check(target), 12, 1);
+			if (!world.isClientSide()) {
+				BlockEntity _blockEntity = world.getBlockEntity(pos);
+				BlockState _bs = world.getBlockState(pos);
+				if (_blockEntity != null) {
+					_blockEntity.getPersistentData().putInt("page", 0);
+				}
+				if (world instanceof Level _level) _level.sendBlockUpdated(pos, _bs, _bs, 3);
+			}
+
 		}
 	}
 }

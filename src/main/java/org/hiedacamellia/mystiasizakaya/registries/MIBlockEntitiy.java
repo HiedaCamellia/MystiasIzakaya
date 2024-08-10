@@ -10,14 +10,14 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.content.common.block.entities.Bank;
+import org.hiedacamellia.mystiasizakaya.content.common.block.entities.Donation;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRange;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class MIBlockEntitiy {
 	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, MystiasIzakaya.MODID);
 	public static final DeferredHolder<BlockEntityType<?>,BlockEntityType<?>> COOKING_RANGE = register("cooking_range", MIBlock.COOKING_RANGE, CookingRange::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> BANK = register("bank", MIBlock.BANK, Bank::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> DONATION = register("donation", MIBlock.DONATION, Donation::new);
 
 	private static DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> register(String registryname, DeferredHolder<Block, Block> block, BlockEntityType.BlockEntitySupplier<?> supplier) {
 		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));

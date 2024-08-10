@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Objects;
 
 @EventBusSubscriber
-public class Debug {
+public class MIDebug {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("mystiasizakaya").then(Commands.literal("debug")

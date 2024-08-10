@@ -17,18 +17,18 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.BankUiMenu;
+import org.hiedacamellia.mystiasizakaya.content.common.inventory.DonationUiMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlockEntitiy;
 
 import javax.annotation.Nullable;
 import java.util.stream.IntStream;
 
-public class Bank extends RandomizableContainerBlockEntity implements WorldlyContainer {
+public class Donation extends RandomizableContainerBlockEntity implements WorldlyContainer {
 	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(0, ItemStack.EMPTY);
 	private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
 
-	public Bank(BlockPos position, BlockState state) {
-		super(MIBlockEntitiy.BANK.get(), position, state);
+	public Donation(BlockPos position, BlockState state) {
+		super(MIBlockEntitiy.DONATION.get(), position, state);
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class Bank extends RandomizableContainerBlockEntity implements WorldlyCon
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("bank");
+		return Component.literal("donation");
 	}
 
 	@Override
@@ -81,7 +81,7 @@ public class Bank extends RandomizableContainerBlockEntity implements WorldlyCon
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
-		return new BankUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
+		return new DonationUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
 	}
 
 	@Override

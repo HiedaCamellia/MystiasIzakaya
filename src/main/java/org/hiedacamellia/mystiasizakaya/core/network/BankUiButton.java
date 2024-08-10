@@ -7,13 +7,13 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.BankUiMenu;
+import org.hiedacamellia.mystiasizakaya.content.common.inventory.DonationUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
@@ -24,7 +24,7 @@ import java.util.HashMap;
 
 public record BankUiButton(int buttonID, int x, int y, int z) implements CustomPacketPayload {
 
-    public static final Type<BankUiButton> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "bankui_button"));
+    public static final Type<BankUiButton> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "donationui_button"));
     public static final StreamCodec<RegistryFriendlyByteBuf, BankUiButton> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, BankUiButton message) -> {
         buffer.writeInt(message.buttonID);
         buffer.writeInt(message.x);
@@ -53,7 +53,7 @@ public record BankUiButton(int buttonID, int x, int y, int z) implements CustomP
     }
 
     public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
-        HashMap<String, Object> guistate = BankUiMenu.guistate;
+        HashMap<String, Object> guistate = DonationUiMenu.guistate;
         if (buttonID == 0) {
             int i;
             int j;
@@ -62,11 +62,15 @@ public record BankUiButton(int buttonID, int x, int y, int z) implements CustomP
             } catch (NumberFormatException e) {
                 return;
             }
-            //Debug.getLogger().debug("Button Pressed with ID: " + buttonID + " with value: " + i);
-            if (i > 0 && entity.getData(MIAttachment.MI_BALANCE).balance() >= i) {
-                //Debug.getLogger().debug("Get data");
-                entity.setData(MIAttachment.MI_BALANCE, new MIBalance(entity.getData(MIAttachment.MI_BALANCE).balance() - i));
 
+            Debug.getLogger().debug("Button Pressed with ID: " + buttonID + " with value: " + i);
+            if(!(entity instanceof ServerPlayer))
+                return;
+
+            if (i > 0 && entity.getData(MIAttachment.MI_BALANCE).balance() >= i) {
+                Debug.getLogger().debug("Balance: " + entity.getData(MIAttachment.MI_BALANCE).balance());
+                entity.setData(MIAttachment.MI_BALANCE, new MIBalance(entity.getData(MIAttachment.MI_BALANCE).balance() - i));
+                Debug.getLogger().debug("NowBalance: " + entity.getData(MIAttachment.MI_BALANCE).balance());
                 if (i >= 10000) {
                     j = i / 10000;
                     i = i - j * 10000;

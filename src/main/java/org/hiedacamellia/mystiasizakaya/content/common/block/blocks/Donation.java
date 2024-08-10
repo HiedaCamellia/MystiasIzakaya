@@ -29,14 +29,14 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.BankUiMenu;
+import org.hiedacamellia.mystiasizakaya.content.common.inventory.DonationUiMenu;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.List;
 
-public class Bank extends Block implements EntityBlock {
-	public Bank() {
+public class Donation extends Block implements EntityBlock {
+	public Donation() {
 		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.METAL).strength(1f, 10f));
 	}
 
@@ -48,7 +48,7 @@ public class Bank extends Block implements EntityBlock {
 			list.add(Component.literal(
 					"§7§o" + Component.translatable("tooltip.mystias_izakaya.press_shift").getString() + "§r"));
 		} else {
-			String[] description = Component.translatable("tooltip.mystias_izakaya.bank_block").getString().split("§n");
+			String[] description = Component.translatable("tooltip.mystias_izakaya.donation_block").getString().split("§n");
 			for (String line : description) {
 				list.add(Component.literal(line));
 			}
@@ -80,7 +80,7 @@ public class Bank extends Block implements EntityBlock {
 
 				@Override
 				public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
-					return new BankUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+					return new DonationUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
 				}
 			}, pos);
 		}
@@ -95,7 +95,7 @@ public class Bank extends Block implements EntityBlock {
 
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return new org.hiedacamellia.mystiasizakaya.content.common.block.entities.Bank(pos, state);
+		return new org.hiedacamellia.mystiasizakaya.content.common.block.entities.Donation(pos, state);
 	}
 
 	@Override
@@ -109,7 +109,7 @@ public class Bank extends Block implements EntityBlock {
 	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
 		if (state.getBlock() != newState.getBlock()) {
 			BlockEntity blockEntity = world.getBlockEntity(pos);
-			if (blockEntity instanceof org.hiedacamellia.mystiasizakaya.content.common.block.entities.Bank be) {
+			if (blockEntity instanceof org.hiedacamellia.mystiasizakaya.content.common.block.entities.Donation be) {
 				Containers.dropContents(world, pos, be);
 				world.updateNeighbourForOutputSignal(pos, this);
 			}
@@ -125,7 +125,7 @@ public class Bank extends Block implements EntityBlock {
 	@Override
 	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
 		BlockEntity tileentity = world.getBlockEntity(pos);
-		if (tileentity instanceof org.hiedacamellia.mystiasizakaya.content.common.block.entities.Bank be)
+		if (tileentity instanceof org.hiedacamellia.mystiasizakaya.content.common.block.entities.Donation be)
 			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);
 		else
 			return 0;
