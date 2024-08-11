@@ -70,7 +70,7 @@ public class DonationUiScreen extends AbstractContainerScreen<DonationUiMenu> {
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         String title = Component.translatable("gui.mystias_izakaya.donation_ui.donation").getString();
 
-        guiGraphics.drawCenteredString(this.font, title, 88- font.width(title) / 2, 24, -12829636);
+        guiGraphics.drawString(this.font, title, 88- font.width(title) / 2, 24, -12829636,false);
 
         String text = Component.translatable("gui.mystias_izakaya.balance").getString() + new java.text.DecimalFormat("#######")
                 .format(entity.getData(MIAttachment.MI_BALANCE).balance()) + " \u5186";
