@@ -45,8 +45,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class CookingRange extends Block implements EntityBlock {
-	public CookingRange() {
+
+	private String regname;
+
+	public CookingRange(String regname) {
 		super(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).sound(SoundType.METAL).strength(1f, 10f).requiresCorrectToolForDrops().pushReaction(PushReaction.IGNORE));
+		this.regname = regname;
 	}
 
 	@Override
@@ -57,7 +61,7 @@ public class CookingRange extends Block implements EntityBlock {
 			list.add(Component.literal(
 					"§7§o" + Component.translatable("tooltip.mystias_izakaya.press_shift").getString() + "§r"));
 		} else {
-			String[] description = Component.translatable("tooltip.mystias_izakaya.cooking_range").getString().split("§n");
+			String[] description = Component.translatable("tooltip.mystias_izakaya."+this.regname).getString().split("§n");
 			for (String line : description) {
 				list.add(Component.literal(line));
 			}
@@ -91,7 +95,7 @@ public class CookingRange extends Block implements EntityBlock {
 	@Override
 	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
 		super.tick(blockstate, world, pos, random);
-		Main.execute(world, pos);
+		Main.execute(world, pos,blockstate);
 		world.scheduleTick(pos, this, 1);
 	}
 
@@ -105,7 +109,6 @@ public class CookingRange extends Block implements EntityBlock {
 	@Override
 	public void wasExploded(Level world, BlockPos pos, Explosion e) {
 		super.wasExploded(world, pos, e);
-		BlockEntity blockEntity = world.getBlockEntity(pos);
 		clean(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 

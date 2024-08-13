@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
+public class KitchenwaresUiMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
 	public final static HashMap<String, Object> guistate = new HashMap<>();
 	public final Level world;
 	public final Player entity;
@@ -40,7 +40,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 	private Entity boundEntity = null;
 	private BlockEntity boundBlockEntity = null;
 
-	public CookingRangeUiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+	public KitchenwaresUiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
 		super(MIMenu.COOKING_RANGE_UI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
@@ -84,11 +84,6 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 203, 62) {
 			private final int slot = 0;
-
-			@Override
-			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(ResourceLocation.parse("mystias_izakaya:kitchenwares")));
-			}
 		}));
 		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 95, 26) {
 			private final int slot = 1;
