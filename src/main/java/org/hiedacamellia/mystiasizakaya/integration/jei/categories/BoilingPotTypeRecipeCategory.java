@@ -25,7 +25,7 @@ public class BoilingPotTypeRecipeCategory implements IRecipeCategory<BoilingPotT
 	public BoilingPotTypeRecipeCategory(IGuiHelper helper) {
 		IDrawableBuilder drawableBuilder = helper.drawableBuilder(TEXTURE, 0, 0, 176, 87).setTextureSize(176, 87);
 		this.background = drawableBuilder.build();
-		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(MIItem.ZHU_GUO.get()));
+		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(MIItem.BOILING_POT.get()));
 	}
 
 	@Override

@@ -18,6 +18,13 @@ public class ChineseLanguageProvider extends LanguageProvider {
 
         add("block.mystias_izakaya.donation", "赛钱箱");
         add("block.mystias_izakaya.cooking_range", "灶");
+
+        add("block.mystias_izakaya.cutting_board", "料理台");
+        add("block.mystias_izakaya.boiling_pot", "煮锅");
+        add("block.mystias_izakaya.frying_pan", "油锅");
+        add("block.mystias_izakaya.steamer", "蒸锅");
+        add("block.mystias_izakaya.grill", "烧烤架");
+
         add("death.attack.chili", "%1$s 被辣死了");
         add("death.attack.chili.item", "%1$s 被 %2$s 用 %3$s 辣死了");
         add("death.attack.chili.player", "%1$s 在试图逃离 %2$s 时辣死了");

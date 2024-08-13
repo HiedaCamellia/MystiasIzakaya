@@ -1,6 +1,5 @@
 package org.hiedacamellia.mystiasizakaya.content.orders;
 
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.player.Player;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;

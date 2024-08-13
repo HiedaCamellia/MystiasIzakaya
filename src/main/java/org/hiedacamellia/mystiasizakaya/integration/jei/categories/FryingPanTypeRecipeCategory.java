@@ -25,7 +25,7 @@ public class FryingPanTypeRecipeCategory implements IRecipeCategory<FryingPanTyp
 	public FryingPanTypeRecipeCategory(IGuiHelper helper) {
 		IDrawableBuilder drawableBuilder = helper.drawableBuilder(TEXTURE, 0, 0, 176, 87).setTextureSize(176, 87);
 		this.background = drawableBuilder.build();
-		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(MIItem.YOU_GUO.get()));
+		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(MIItem.FRYING_PAN.get()));
 	}
 
 	@Override

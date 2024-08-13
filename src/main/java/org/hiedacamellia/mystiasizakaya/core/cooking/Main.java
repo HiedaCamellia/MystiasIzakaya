@@ -6,18 +6,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
 import org.hiedacamellia.mystiasizakaya.core.cooking.get.GetTargets;
-import org.hiedacamellia.mystiasizakaya.core.cooking.kitchenwares.*;
 import org.hiedacamellia.mystiasizakaya.integration.youkaihomecoming.IngredientsCompact;
-import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 import org.hiedacamellia.mystiasizakaya.util.GetValue;
 import org.hiedacamellia.mystiasizakaya.util.SetSlotItem;
-import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +22,7 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class Main {
-    public static void execute(LevelAccessor world, BlockPos pos) {
+    public static void execute(LevelAccessor world, BlockPos pos,BlockState blockState) {
         double time;
         ItemStack util;
         ItemStack target;
@@ -56,7 +53,6 @@ public class Main {
             
             SetSlotItem.setEmptySlot(world,pos, 12);
         } else {
-            if (!(GetValue.getBoolean(world,pos, "breaking"))) {
 
                 if (ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 4)
                         && !(ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 5))) {
@@ -84,6 +80,34 @@ public class Main {
                 }
 
                 util = GetItemStack.getItemStack(world,pos, 0);
+//            Debug.send(GetItemStack.getItemStack(world, pos, 1).getDescriptionId());
+//            Debug.send(GetItemStack.getItemStack(world, pos, 2).getDescriptionId());
+//            Debug.send(GetItemStack.getItemStack(world, pos, 3).getDescriptionId());
+//            Debug.send(GetItemStack.getItemStack(world, pos, 4).getDescriptionId());
+//            Debug.send(GetItemStack.getItemStack(world, pos, 5).getDescriptionId());
+
+                if(util==ItemStack.EMPTY){
+                    Block utilblcok =  world.getBlockState(pos).getBlock();
+                    //Debug.send(utilblcok.getDescriptionId());
+                    switch (utilblcok.getDescriptionId()) {
+                        case "block.mystias_izakaya.cutting_board":
+                            util = MIItem.CUTTING_BOARD.get().getDefaultInstance();
+                            break;
+                        case "block.mystias_izakaya.boiling_pot":
+                            util = MIItem.BOILING_POT.get().getDefaultInstance();
+                            break;
+                        case "block.mystias_izakaya.frying_pan":
+                            util = MIItem.FRYING_PAN.get().getDefaultInstance();
+                            break;
+                        case "block.mystias_izakaya.steamer":
+                            util = MIItem.STEAMER.get().getDefaultInstance();
+                            break;
+                        case "block.mystias_izakaya.grill":
+                            util = new ItemStack(MIItem.GRILL.get());
+                            break;
+                    }
+                }
+                //Debug.send(util.getDescriptionId());
 
 				List<String> raws = new ArrayList<>();
 				List<ItemStack> ingredients = new ArrayList<>();
@@ -120,11 +144,7 @@ public class Main {
                         SetSlotItem.setEmptySlot(world,pos, 7 + i);
                     }
                 }
-                //SetSlotItem.setEmptySlot(world,pos, 12);
 
-            } else {
-                SetSlotItem.setEmptySlot(world,pos, new int[]{7,8,9,10,11,12});
-            }
         }
     }
 

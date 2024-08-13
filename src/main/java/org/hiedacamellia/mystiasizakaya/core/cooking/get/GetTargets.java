@@ -10,19 +10,19 @@ import java.util.List;
 
 public class GetTargets {
     public static List<String> getTargets(List<String> raws, ItemStack util) {
-        if (util.getItem() == MIItem.LIAO_LI_TAI.get()) {
+        if (util.getItem() == MIItem.CUTTING_BOARD.get()) {
             return CuttingBoard.get(raws);
         }
-        if (util.getItem() == MIItem.SHAO_KAO_JIA.get()) {
+        if (util.getItem() == MIItem.GRILL.get()) {
             return Grill.get(raws);
         }
-        if (util.getItem() == MIItem.YOU_GUO.get()) {
+        if (util.getItem() == MIItem.FRYING_PAN.get()) {
             return FryingPan.get(raws);
         }
-        if (util.getItem() == MIItem.ZHENG_GUO.get()) {
+        if (util.getItem() == MIItem.STEAMER.get()) {
             return Steamer.get(raws);
         }
-        if (util.getItem() == MIItem.ZHU_GUO.get()) {
+        if (util.getItem() == MIItem.BOILING_POT.get()) {
             return BoilingPot.get(raws);
         }
         return new ArrayList<>();

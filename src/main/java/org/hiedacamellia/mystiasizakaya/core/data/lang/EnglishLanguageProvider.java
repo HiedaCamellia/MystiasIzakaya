@@ -19,6 +19,13 @@ public class EnglishLanguageProvider extends LanguageProvider {
 
         add("block.mystias_izakaya.donation", "Donation");
         add("block.mystias_izakaya.cooking_range", "Cooking Range");
+
+        add("block.mystias_izakaya.cutting_board", "Cutting Board");
+        add("block.mystias_izakaya.boiling_pot", "Boiling Pot");
+        add("block.mystias_izakaya.frying_pan", "Frying Pan");
+        add("block.mystias_izakaya.steamer", "Steamer");
+        add("block.mystias_izakaya.grill", "Grill");
+
         add("death.attack.chili", "%1$s Killed by the spiciness");
         add("death.attack.chili.item", "%1$s was killed by %2$s using %3$s ");
         add("death.attack.chili.player", "%1$s was extremely spicy while trying to escape %2$s ");

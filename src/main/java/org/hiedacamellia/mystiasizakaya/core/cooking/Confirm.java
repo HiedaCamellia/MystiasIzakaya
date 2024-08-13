@@ -19,10 +19,7 @@ public class Confirm {
         double time;
 		time = GetValue.getDouble(world, pos, "timeleft");
 		ItemStack target;
-		//Debug.getLogger().debug("Get data");
-		//Debug.getLogger().debug("Time: " + time);
-		//Debug.getLogger().debug("Item6: " + GetItemStack.getItemStack(world, pos, 6).getItem());
-		//Debug.getLogger().debug("Item12: " + GetItemStack.getItemStack(world, pos, 12).getItem());
+
         if ((ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, pos, 6).getItem())
 				&& !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, pos, 12).getItem())
 				&& time == 0) {
@@ -43,8 +40,7 @@ public class Confirm {
 
 			//Debug.getLogger().debug("Get data");
 
-			BlockEntity be = world.getBlockEntity(pos);
-			SetSlotItem.setEmptySlot(world,pos, new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11});
+            SetSlotItem.setEmptySlot(world,pos, new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11});
 			SetSlotItem.setSlotItem(world, pos, BuildTags.check(target), 12, 1);
 			if (!world.isClientSide()) {
 				BlockEntity _blockEntity = world.getBlockEntity(pos);
