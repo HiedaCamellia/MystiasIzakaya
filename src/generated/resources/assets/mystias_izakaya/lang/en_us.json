@@ -1,6 +1,11 @@
 {
+  "block.mystias_izakaya.boiling_pot": "Boiling Pot",
   "block.mystias_izakaya.cooking_range": "Cooking Range",
+  "block.mystias_izakaya.cutting_board": "Cutting Board",
   "block.mystias_izakaya.donation": "Donation",
+  "block.mystias_izakaya.frying_pan": "Frying Pan",
+  "block.mystias_izakaya.grill": "Grill",
+  "block.mystias_izakaya.steamer": "Steamer",
   "death.attack.chili": "%1$s Killed by the spiciness",
   "death.attack.chili.item": "%1$s was killed by %2$s using %3$s ",
   "death.attack.chili.player": "%1$s was extremely spicy while trying to escape %2$s ",
