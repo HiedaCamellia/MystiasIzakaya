@@ -17,6 +17,7 @@ import org.hiedacamellia.mystiasizakaya.content.common.item.utils.LedgerItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.IconItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.IronKnifeItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.LingXianItem;
+import org.hiedacamellia.mystiasizakaya.content.common.blockitem.*;
 
 public class MIItem {
 	public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems(MystiasIzakaya.MODID);
@@ -24,14 +25,21 @@ public class MIItem {
 	public static final DeferredItem<BlockItem> COOKING_RANGE = REGISTRY.registerSimpleBlockItem("cooking_range", MIBlock.COOKING_RANGE);
 	public static final DeferredItem<BlockItem> BANK = REGISTRY.registerSimpleBlockItem("donation", MIBlock.DONATION);
 
+	//kictenwires
+	public static final DeferredItem<BlockItem> CUTTING_BOARD = REGISTRY.register("cutting_board", CuttingBoardBlockItem::new);
+	public static final DeferredItem<BlockItem> BOILING_POT = REGISTRY.register("boiling_pot", BoilingPotBlockItem::new);
+	public static final DeferredItem<BlockItem> FRYING_PAN = REGISTRY.register("frying_pan", FryingPanBlockItem::new);
+	public static final DeferredItem<BlockItem> STEAMER = REGISTRY.register("steamer", SteamerBlockItem::new);
+	public static final DeferredItem<BlockItem> GRILL = REGISTRY.register("grill", GrillBlockItem::new);
+
 	//Util
 	public static final DeferredItem<Item> LEDGER = REGISTRY.register("ledger", LedgerItem::new);
 	//kictenwires
-	public static final DeferredItem<Item> LIAO_LI_TAI = REGISTRY.register("liao_li_tai", LiaoLiTaiItem::new);
-	public static final DeferredItem<Item> SHAO_KAO_JIA = REGISTRY.register("shao_kao_jia", ShaoKaoJiaItem::new);
-	public static final DeferredItem<Item> YOU_GUO = REGISTRY.register("you_guo", YouGuoItem::new);
-	public static final DeferredItem<Item> ZHENG_GUO = REGISTRY.register("zheng_guo", ZhengGuoItem::new);
-	public static final DeferredItem<Item> ZHU_GUO = REGISTRY.register("zhu_guo", ZhuGuoItem::new);
+//	public static final DeferredItem<Item> LIAO_LI_TAI = REGISTRY.register("liao_li_tai", LiaoLiTaiItem::new);
+//	public static final DeferredItem<Item> SHAO_KAO_JIA = REGISTRY.register("shao_kao_jia", ShaoKaoJiaItem::new);
+//	public static final DeferredItem<Item> YOU_GUO = REGISTRY.register("you_guo", YouGuoItem::new);
+//	public static final DeferredItem<Item> ZHENG_GUO = REGISTRY.register("zheng_guo", ZhengGuoItem::new);
+//	public static final DeferredItem<Item> ZHU_GUO = REGISTRY.register("zhu_guo", ZhuGuoItem::new);
 	//ingredients
 	public static final DeferredItem<Item> BA_MU_MAN = REGISTRY.register("ba_mu_man", BaMuManItem::new);
 	public static final DeferredItem<Item> BAI_GUO = REGISTRY.register("bai_guo", BaiGuoItem::new);
