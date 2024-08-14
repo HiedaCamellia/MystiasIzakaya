@@ -22,7 +22,7 @@ public class StateProvider extends BlockStateProvider {
         simpleBlockItem(MIBlock.BOILING_POT.get(),models().getExistingFile(modLoc("item/zhu_guo")));
 //        simpleBlock(MIBlock.STEAMER.get(),models().getExistingFile(modLoc("block/steamer")));
         simpleBlockItem(MIBlock.STEAMER.get(),models().getExistingFile(modLoc("item/zheng_guo")));
-//        simpleBlock(MIBlock.FRYING_PAN.get(),models().getExistingFile(modLoc("block/frying_pan")));
+        simpleBlock(MIBlock.FRYING_PAN.get(),models().getExistingFile(modLoc("block/frying_pan")));
         simpleBlockItem(MIBlock.FRYING_PAN.get(),models().getExistingFile(modLoc("item/you_guo")));
     }
 }

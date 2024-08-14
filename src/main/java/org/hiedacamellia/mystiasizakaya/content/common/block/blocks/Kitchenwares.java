@@ -16,6 +16,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -33,7 +34,7 @@ import org.hiedacamellia.mystiasizakaya.core.cooking.Init;
 import org.hiedacamellia.mystiasizakaya.core.cooking.Main;
 import org.jetbrains.annotations.NotNull;
 
-public class Kitchenwares extends Block implements EntityBlock {
+public class Kitchenwares extends RotatedPillarBlock implements EntityBlock {
     public Kitchenwares() {
         super(Properties.of().mapColor(MapColor.METAL).sound(SoundType.METAL).strength(1f, 10f)
                 .requiresCorrectToolForDrops().pushReaction(PushReaction.IGNORE).noOcclusion());
@@ -115,7 +116,7 @@ public class Kitchenwares extends Block implements EntityBlock {
         return switch (state.getBlock().getDescriptionId()) {
             case "block.mystias_izakaya.cutting_board" -> Shapes.join(box(1,0,3,15,1,13),box(0,0,0,0,0,0),BooleanOp.FIRST);
             case "block.mystias_izakaya.boiling_pot" -> Shapes.block();
-            case "block.mystias_izakaya.frying_pan" -> Shapes.block();
+            case "block.mystias_izakaya.frying_pan" -> Shapes.join(box(3,0,1,13,2,11),box(7.25,1,11,8.75,2,17), BooleanOp.OR);
             case "block.mystias_izakaya.steamer" -> Shapes.block();
             case "block.mystias_izakaya.grill" -> Shapes.join(box(1,0,3,15,4,14),box(0,0,0,0,0,0), BooleanOp.FIRST);
             default -> Shapes.block();
