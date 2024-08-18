@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class DonationUiMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
+public class LedgerUiMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
 	public final static HashMap<String, Object> guistate = new HashMap<>();
 	public final Level world;
 	public final Player entity;
@@ -33,8 +33,8 @@ public class DonationUiMenu extends AbstractContainerMenu implements Supplier<Ma
 	private Entity boundEntity = null;
 	private BlockEntity boundBlockEntity = null;
 
-	public DonationUiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(MIMenu.Donation_UI.get(), id);
+	public LedgerUiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+		super(MIMenu.LEDGER_UI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStackHandler(0);

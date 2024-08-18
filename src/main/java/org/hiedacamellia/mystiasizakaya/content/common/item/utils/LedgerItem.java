@@ -17,6 +17,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.DonationUiMenu;
+import org.hiedacamellia.mystiasizakaya.content.common.inventory.LedgerUiMenu;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -47,7 +48,7 @@ public class LedgerItem extends Item {
 
                 @Override
                 public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
-                    return new DonationUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+                    return new LedgerUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
                 }
             }, pos);
         }

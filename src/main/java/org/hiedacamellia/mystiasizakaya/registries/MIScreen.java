@@ -7,6 +7,7 @@ import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import org.hiedacamellia.mystiasizakaya.content.client.screen.DonationUiScreen;
 import org.hiedacamellia.mystiasizakaya.content.client.screen.CookingRangeUiScreen;
 import org.hiedacamellia.mystiasizakaya.content.client.screen.KitchenwaresUiScreen;
+import org.hiedacamellia.mystiasizakaya.content.client.screen.LedgerUiScreen;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class MIScreen {
@@ -14,6 +15,7 @@ public class MIScreen {
 	public static void clientLoad(RegisterMenuScreensEvent event) {
 		event.register(MIMenu.COOKING_RANGE_UI.get(), CookingRangeUiScreen::new);
 		event.register(MIMenu.KITCHENWARES_UI.get(), KitchenwaresUiScreen::new);
-		event.register(MIMenu.BANK_UI.get(), DonationUiScreen::new);
+		event.register(MIMenu.Donation_UI.get(), DonationUiScreen::new);
+		event.register(MIMenu.LEDGER_UI.get(), LedgerUiScreen::new);
 	}
 }
