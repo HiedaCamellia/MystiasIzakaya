@@ -16,6 +16,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.DonationUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
@@ -65,11 +66,19 @@ public record DonationUiButton(int buttonID, int x, int y, int z) implements Cus
             }
 
             //Debug.getLogger().debug("Button Pressed with ID: " + buttonID + " with value: " + i);
-            if(entity instanceof ServerPlayer player)
+            if(entity instanceof ServerPlayer player) {
+
+                MITurnover miTurnover = player.getData(MIAttachment.MI_TURNOVER);
+                miTurnover.addTurnover("to_donation",(double) i);
+                miTurnover = miTurnover.deleteOverStack();
+                player.setData(MIAttachment.MI_TURNOVER, miTurnover);
+                PacketDistributor.sendToPlayer(player, miTurnover);
+
+
                 if (i > 0 && player.getData(MIAttachment.MI_BALANCE).balance() >= i) {
                     //Debug.getLogger().debug("Balance: " + player.getData(MIAttachment.MI_BALANCE).balance());
                     player.setData(MIAttachment.MI_BALANCE, new MIBalance(player.getData(MIAttachment.MI_BALANCE).balance() - i));
-                   //Debug.getLogger().debug("NowBalance: " + player.getData(MIAttachment.MI_BALANCE).balance());
+                    //Debug.getLogger().debug("NowBalance: " + player.getData(MIAttachment.MI_BALANCE).balance());
                     if (i >= 10000) {
                         j = i / 10000;
                         i = i - j * 10000;
@@ -80,14 +89,15 @@ public record DonationUiButton(int buttonID, int x, int y, int z) implements Cus
                     j = i / 10;
                     i = i - j * 10;
                     ItemStack _setstack = new ItemStack(MIItem.EN_10.get());
-                    _setstack.setCount((int) j);
+                    _setstack.setCount(j);
                     ItemHandlerHelper.giveItemToPlayer(player, _setstack);
                     ItemStack setstack = new ItemStack(MIItem.EN_1.get());
-                    setstack.setCount((int) i);
+                    setstack.setCount(i);
                     ItemHandlerHelper.giveItemToPlayer(player, setstack);
                     PacketDistributor.sendToPlayer(player, new MIBalance(player.getData(MIAttachment.MI_BALANCE).balance()));
                     //Debug.getLogger().debug("Success in withdrawing " + i + " yen");
                 }
+            }
         }
     }
 

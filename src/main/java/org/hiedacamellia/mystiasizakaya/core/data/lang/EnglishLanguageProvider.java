@@ -13,6 +13,9 @@ public class EnglishLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
 
+        add("gui.mystias_izakaya.ledger_ui.ledger","Ledger");
+
+
         add("gui.mystias_izakaya.cooking_range_ui.button_back", "<");
         add("gui.mystias_izakaya.cooking_range_ui.button_next", ">");
         add("network.mystiasizakaya.failed", "Failed to handle network data: %s");

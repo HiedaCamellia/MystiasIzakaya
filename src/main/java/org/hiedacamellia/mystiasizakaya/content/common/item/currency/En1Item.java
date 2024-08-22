@@ -8,7 +8,9 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.List;
@@ -42,6 +44,11 @@ public class En1Item extends Item {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
 		MIBalance miBalance = entity.getData(MIAttachment.MI_BALANCE.get());
 		entity.setData(MIAttachment.MI_BALANCE.get(), new MIBalance(miBalance.balance() + ar.getObject().getCount()));
+
+		MITurnover miTurnover = entity.getData(MIAttachment.MI_TURNOVER);
+		miTurnover.addTurnover("from_currency", (double)ar.getObject().getCount());
+		miTurnover = miTurnover.deleteOverStack();
+		entity.setData(MIAttachment.MI_TURNOVER, miTurnover);
 
 		ar.getObject().shrink(ar.getObject().getCount());
 		ar.getObject().setCount(0);

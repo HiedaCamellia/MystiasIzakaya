@@ -13,9 +13,11 @@ public class ChineseLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
 
+        add("gui.mystias_izakaya.ledger_ui.ledger","账本");
+
+
+
         add("network.mystiasizakaya.failed", "无法处理网络数据: %s");
-
-
         add("block.mystias_izakaya.donation", "赛钱箱");
         add("block.mystias_izakaya.cooking_range", "灶");
 

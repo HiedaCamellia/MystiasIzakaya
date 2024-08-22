@@ -17,20 +17,20 @@ public class Config
             .comment("设置为true以启用调试信息")
             .define("debug", true);
 
-
     public static final ModConfigSpec.BooleanValue SHOW_BALANCE = BUILDER
             .comment("Set to true to display balance in the hud ( deprecated ) ")
             .comment("设置为true以在hud中显示余额（弃用）")
             .define("show_balance", false);
 
+    public static final ModConfigSpec.IntValue MAX_OVERTURN = BUILDER
+            .comment("The maximum number of turnovers to store")
+            .comment("要存储的最大流水次数")
+            .defineInRange("max_overturn", 10, 0, Integer.MAX_VALUE);
+
     static final ModConfigSpec SPEC = BUILDER.build();
 
     public static boolean debug;
 
-//    private static boolean validateItemName(final Object obj)
-//    {
-//        return obj instanceof String itemName && BuiltInRegistries.ITEM.containsKey(ResourceLocation.parse(itemName));
-//    }
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event)

@@ -64,7 +64,7 @@ public class LedgerUiScreen extends AbstractContainerScreen<LedgerUiMenu> {
 
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        String title = Component.translatable("gui.mystias_izakaya.donation_ui.donation").getString();
+        String title = Component.translatable("gui.mystias_izakaya.ledger_ui.ledger").getString();
 
         guiGraphics.drawString(this.font, title, 88- font.width(title) / 2, 24, -12829636,false);
 

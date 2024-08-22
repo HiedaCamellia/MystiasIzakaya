@@ -9,6 +9,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.List;
@@ -43,6 +44,11 @@ public class En10kItem extends Item {
 
 		MIBalance miBalance = entity.getData(MIAttachment.MI_BALANCE.get());
 		entity.setData(MIAttachment.MI_BALANCE.get(), new MIBalance(miBalance.balance() + 10000 * ar.getObject().getCount()));
+
+		MITurnover miTurnover = entity.getData(MIAttachment.MI_TURNOVER);
+		miTurnover.addTurnover("from_currency", (double)10000*ar.getObject().getCount());
+		miTurnover = miTurnover.deleteOverStack();
+		entity.setData(MIAttachment.MI_TURNOVER, miTurnover);
 
 		ar.getObject().shrink(ar.getObject().getCount());
 		ar.getObject().setCount(0);
