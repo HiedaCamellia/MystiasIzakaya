@@ -6,6 +6,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.ArrayList;
@@ -28,6 +29,10 @@ public class MIPlayerEvent {
             MIBalance miBalance = event.getOriginal().getData(MIAttachment.MI_BALANCE);
             event.getEntity().setData(MIAttachment.MI_BALANCE, miBalance);
         }
+        if (event.getOriginal().hasData(MIAttachment.MI_TURNOVER)) {
+            MITurnover miTurnover = event.getOriginal().getData(MIAttachment.MI_TURNOVER);
+            event.getEntity().setData(MIAttachment.MI_TURNOVER, miTurnover);
+        }
 
     }
 
@@ -38,6 +43,9 @@ public class MIPlayerEvent {
         }
         if (!event.getEntity().hasData(MIAttachment.MI_BALANCE)) {
             event.getEntity().setData(MIAttachment.MI_BALANCE, new MIBalance(0));
+        }
+        if (!event.getEntity().hasData(MIAttachment.MI_TURNOVER)) {
+            event.getEntity().setData(MIAttachment.MI_TURNOVER, new MITurnover());
         }
     }
 

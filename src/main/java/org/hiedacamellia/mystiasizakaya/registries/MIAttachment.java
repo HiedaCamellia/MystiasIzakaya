@@ -8,6 +8,7 @@ import org.hiedacamellia.mystiasizakaya.core.codec.MICodec;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
 
 import java.util.ArrayList;
 import java.util.function.Supplier;
@@ -28,4 +29,7 @@ public class MIAttachment {
             "mi_balance", () -> AttachmentType.builder(() -> new MIBalance(0)).serialize(MICodec.MI_BALANCE_CODEC).build()
     );
 
+    public static final Supplier<AttachmentType<MITurnover>> MI_TURNOVER = ATTACHMENTS.register(
+            "mi_turnover", () -> AttachmentType.builder(() -> new MITurnover()).serialize(MICodec.MI_TURNOVER_CODEC).build()
+    );
 }
