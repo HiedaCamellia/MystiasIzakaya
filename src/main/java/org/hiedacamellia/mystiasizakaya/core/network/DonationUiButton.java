@@ -69,7 +69,7 @@ public record DonationUiButton(int buttonID, int x, int y, int z) implements Cus
             if(entity instanceof ServerPlayer player) {
 
                 MITurnover miTurnover = player.getData(MIAttachment.MI_TURNOVER);
-                miTurnover.addTurnover("to_donation",(double) i);
+                miTurnover = miTurnover.addTurnover("to_donation",(double) -i);
                 miTurnover = miTurnover.deleteOverStack();
                 player.setData(MIAttachment.MI_TURNOVER, miTurnover);
                 PacketDistributor.sendToPlayer(player, miTurnover);

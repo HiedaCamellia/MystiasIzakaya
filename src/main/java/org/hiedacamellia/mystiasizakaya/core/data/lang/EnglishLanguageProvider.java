@@ -13,6 +13,12 @@ public class EnglishLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
 
+        add("gui.mystias_izakaya.ledger_ui.outcome","Outcome");
+        add("gui.mystias_izakaya.ledger_ui.income","Income");
+        add("gui.mystias_izakaya.ledger_ui.to_donation","Donation");
+        add("gui.mystias_izakaya.ledger_ui.from_command","Command");
+        add("gui.mystias_izakaya.ledger_ui.from_currency","Currency");
+
         add("gui.mystias_izakaya.ledger_ui.ledger","Ledger");
 
 

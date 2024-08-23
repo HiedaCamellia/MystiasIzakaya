@@ -46,7 +46,7 @@ public class En1Item extends Item {
 		entity.setData(MIAttachment.MI_BALANCE.get(), new MIBalance(miBalance.balance() + ar.getObject().getCount()));
 
 		MITurnover miTurnover = entity.getData(MIAttachment.MI_TURNOVER);
-		miTurnover.addTurnover("from_currency", (double)ar.getObject().getCount());
+		miTurnover = miTurnover.addTurnover("from_currency", (double)ar.getObject().getCount());
 		miTurnover = miTurnover.deleteOverStack();
 		entity.setData(MIAttachment.MI_TURNOVER, miTurnover);
 

@@ -10,6 +10,7 @@ import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @EventBusSubscriber
@@ -45,7 +46,7 @@ public class MIPlayerEvent {
             event.getEntity().setData(MIAttachment.MI_BALANCE, new MIBalance(0));
         }
         if (!event.getEntity().hasData(MIAttachment.MI_TURNOVER)) {
-            event.getEntity().setData(MIAttachment.MI_TURNOVER, new MITurnover());
+            event.getEntity().setData(MIAttachment.MI_TURNOVER, new MITurnover(new ArrayList<>(),new ArrayList<>()));
         }
     }
 

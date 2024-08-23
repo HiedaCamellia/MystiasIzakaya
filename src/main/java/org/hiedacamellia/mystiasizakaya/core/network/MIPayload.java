@@ -7,6 +7,7 @@ import net.neoforged.neoforge.network.handling.DirectionalPayloadHandler;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class MIPayload {
@@ -45,6 +46,15 @@ public class MIPayload {
                         CookingRangeUiButton::handleData
                 )
         );
+        registrar.playBidirectional(
+                MITurnover.TYPE,
+                MITurnover.STREAM_CODEC,
+                new DirectionalPayloadHandler<>(
+                        MITurnover::handleData,
+                        MITurnover::handleData
+                )
+        );
+
 
     }
 }

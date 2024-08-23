@@ -16,25 +16,25 @@ import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public record MITurnover(Map<String,Double> turnover) implements CustomPacketPayload {
-
-    public MITurnover(){
-        this(new HashMap<>());
-    }
+public record MITurnover(List<String> k, List<Double> v) implements CustomPacketPayload {
 
     public void sync(Player player){
         if (player instanceof ServerPlayer serverPlayer)
-            PacketDistributor.sendToPlayer(serverPlayer, new MITurnover(this.turnover));
+            PacketDistributor.sendToPlayer(serverPlayer, new MITurnover(this.k, this.v));
     }
 
     public static final CustomPacketPayload.Type<MITurnover> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "mi_turnover"));
 
     public static final StreamCodec<ByteBuf, MITurnover> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.fromCodec(Codec.unboundedMap(Codec.STRING, Codec.DOUBLE)),
-            MITurnover::turnover,
+            ByteBufCodecs.fromCodec(Codec.list(Codec.STRING)),
+            MITurnover::k,
+            ByteBufCodecs.fromCodec(Codec.list(Codec.DOUBLE)),
+            MITurnover::v,
             MITurnover::new
     );
 
@@ -53,20 +53,35 @@ public record MITurnover(Map<String,Double> turnover) implements CustomPacketPay
                 });
     }
 
-    public void addTurnover(String key, Double value){
-        this.turnover.put(key, value);
+    public MITurnover addTurnover(String key, Double value){
+        List<String> k = new ArrayList<>(this.k());
+        k.add(key);
+        List<Double> v = new ArrayList<>(this.v());
+        v.add(value);
+        return new MITurnover(k, v);
     }
 
-    public void deleteTurnover(String key){
-        this.turnover.remove(key);
+    public MITurnover deleteTurnover(String key){
+        List<String> k = new ArrayList<>(this.k());
+        List<Double> v = new ArrayList<>(this.v());
+        for(int i = 0; i < k.size(); i++){
+            if(k.get(i).equals(key)){
+                k.remove(i);
+                v.remove(i);
+                break;
+            }
+        }
+        return new MITurnover(k, v);
     }
 
     public MITurnover deleteOverStack(){
         int stack = Config.MAX_OVERTURN.get();
-        MITurnover miTurnover = new MITurnover();
-        for(int i = this.turnover.size() - stack; i < this.turnover.size(); i++){
-            miTurnover.addTurnover(this.turnover.keySet().toArray()[i].toString(), (Double) this.turnover.values().toArray()[i]);
+        List<String> k = new ArrayList<>(this.k());
+        List<Double> v = new ArrayList<>(this.v());
+        while(k.size() > stack){
+            k.remove(0);
+            v.remove(0);
         }
-        return miTurnover;
+        return new MITurnover(k, v);
     }
 }

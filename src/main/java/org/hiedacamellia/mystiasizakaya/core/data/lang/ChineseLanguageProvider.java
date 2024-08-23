@@ -13,6 +13,12 @@ public class ChineseLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
 
+        add("gui.mystias_izakaya.ledger_ui.outcome","支出");
+        add("gui.mystias_izakaya.ledger_ui.income","收入");
+        add("gui.mystias_izakaya.ledger_ui.to_donation","赛钱箱");
+        add("gui.mystias_izakaya.ledger_ui.from_command","命令");
+        add("gui.mystias_izakaya.ledger_ui.from_currency","货币");
+
         add("gui.mystias_izakaya.ledger_ui.ledger","账本");
 
 

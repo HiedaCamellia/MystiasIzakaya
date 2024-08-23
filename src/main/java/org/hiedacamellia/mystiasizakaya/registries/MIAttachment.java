@@ -11,6 +11,7 @@ import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.function.Supplier;
 
 public class MIAttachment {
@@ -30,6 +31,6 @@ public class MIAttachment {
     );
 
     public static final Supplier<AttachmentType<MITurnover>> MI_TURNOVER = ATTACHMENTS.register(
-            "mi_turnover", () -> AttachmentType.builder(() -> new MITurnover()).serialize(MICodec.MI_TURNOVER_CODEC).build()
+            "mi_turnover", () -> AttachmentType.builder(() -> new MITurnover(new ArrayList<>(),new ArrayList<>())).serialize(MICodec.MI_TURNOVER_CODEC).build()
     );
 }

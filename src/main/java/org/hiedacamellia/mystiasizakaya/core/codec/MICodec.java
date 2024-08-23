@@ -67,12 +67,14 @@ public class MICodec {
 
     public static final Codec<MITurnover> MI_TURNOVER_CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
-                    Codec.unboundedMap(Codec.STRING, Codec.DOUBLE).fieldOf("turnover").forGetter(MITurnover::turnover)
+                    Codec.list(Codec.STRING).fieldOf("k").forGetter(MITurnover::k),
+                    Codec.list(Codec.DOUBLE).fieldOf("v").forGetter(MITurnover::v)
             ).apply(instance, MITurnover::new)
     );
 
     public static final StreamCodec<ByteBuf, MITurnover> MI_TURNOVER_STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.fromCodec(Codec.unboundedMap(Codec.STRING, Codec.DOUBLE)), MITurnover::turnover,
+            ByteBufCodecs.fromCodec(Codec.list(Codec.STRING)), MITurnover::k,
+            ByteBufCodecs.fromCodec(Codec.list(Codec.DOUBLE)), MITurnover::v,
             MITurnover::new
     );
 

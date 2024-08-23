@@ -13,10 +13,13 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.LedgerUiMenu;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.LedgerUiMenu;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
 import org.hiedacamellia.mystiasizakaya.core.network.DonationUiButton;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class LedgerUiScreen extends AbstractContainerScreen<LedgerUiMenu> {
     private final static HashMap<String, Object> guistate = LedgerUiMenu.guistate;
@@ -66,13 +69,34 @@ public class LedgerUiScreen extends AbstractContainerScreen<LedgerUiMenu> {
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         String title = Component.translatable("gui.mystias_izakaya.ledger_ui.ledger").getString();
 
-        guiGraphics.drawString(this.font, title, 88- font.width(title) / 2, 24, -12829636,false);
+        guiGraphics.drawString(this.font, title, 88- font.width(title) / 2, 12, -12829636,false);
 
         String text = Component.translatable("gui.mystias_izakaya.balance").getString() + new java.text.DecimalFormat("#######")
                 .format(entity.getData(MIAttachment.MI_BALANCE).balance()) + " \u5186";
 
         guiGraphics.drawString(this.font,
-                text, 88 - font.width(text) / 2, 42, -12829636,false);
+                text, 88 - font.width(text) / 2, 25, -12829636,false);
+
+        MITurnover miTurnover = entity.getData(MIAttachment.MI_TURNOVER);
+        List<String> k = miTurnover.k();
+        List<Double> v = miTurnover.v();
+        for(int i = 0; i < k.size(); i++){
+            String key = Component.translatable("gui.mystias_izakaya.ledger_ui."+ k.get(i)).getString();
+            String value = String.valueOf(Math.abs(v.get(i)));
+            double vi = v.get(i);
+            String op = Component.translatable("gui.mystias_izakaya.ledger_ui.outcome").getString();
+            if(vi>0){
+                op = Component.translatable("gui.mystias_izakaya.ledger_ui.income").getString();
+            }
+            guiGraphics.drawString(this.font,
+                    op, 10, 40 + i * 10, -12829636,false);
+            guiGraphics.drawString(this.font,
+                    key, 40, 40 + i * 10, -12829636,false);
+            guiGraphics.drawString(this.font,
+                    value, 176 - 10 - font.width(value) , 40 + i * 10, -12829636,false);
+        }
+
+
     }
 
     @Override

@@ -26,7 +26,7 @@ public class Currency {
                             player.setData(MIAttachment.MI_BALANCE, new MIBalance(player.getData(MIAttachment.MI_BALANCE).balance() + change));
                             PacketDistributor.sendToPlayer(player, new MIBalance(player.getData(MIAttachment.MI_BALANCE).balance()));
                             MITurnover miTurnover = player.getData(MIAttachment.MI_TURNOVER);
-                            miTurnover.addTurnover("from_command", (double)change);
+                            miTurnover = miTurnover.addTurnover("from_command", (double)change);
                             miTurnover = miTurnover.deleteOverStack();
                             player.setData(MIAttachment.MI_TURNOVER, miTurnover);
                             PacketDistributor.sendToPlayer(player, miTurnover);
@@ -40,7 +40,7 @@ public class Currency {
                             player.setData(MIAttachment.MI_BALANCE, new MIBalance(player.getData(MIAttachment.MI_BALANCE).balance() - change));
                             PacketDistributor.sendToPlayer(player, new MIBalance(player.getData(MIAttachment.MI_BALANCE).balance()));
                             MITurnover miTurnover = player.getData(MIAttachment.MI_TURNOVER);
-                            miTurnover.addTurnover("from_command", (double)change);
+                            miTurnover = miTurnover.addTurnover("from_command", (double)change);
                             miTurnover = miTurnover.deleteOverStack();
                             player.setData(MIAttachment.MI_TURNOVER, miTurnover);
                             PacketDistributor.sendToPlayer(player, miTurnover);
@@ -54,7 +54,7 @@ public class Currency {
                             player.setData(MIAttachment.MI_BALANCE, new MIBalance(set));
                             PacketDistributor.sendToPlayer(player, new MIBalance(player.getData(MIAttachment.MI_BALANCE).balance()));
                             MITurnover miTurnover = player.getData(MIAttachment.MI_TURNOVER);
-                            miTurnover.addTurnover("from_command",change);
+                            miTurnover = miTurnover.addTurnover("from_command",change);
                             miTurnover = miTurnover.deleteOverStack();
                             player.setData(MIAttachment.MI_TURNOVER, miTurnover);
                             PacketDistributor.sendToPlayer(player, miTurnover);
