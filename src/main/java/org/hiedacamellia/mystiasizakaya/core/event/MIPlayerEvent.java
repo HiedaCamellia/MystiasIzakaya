@@ -1,5 +1,7 @@
 package org.hiedacamellia.mystiasizakaya.core.event;
 
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
@@ -39,6 +41,7 @@ public class MIPlayerEvent {
 
     @SubscribeEvent
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
+        Player player = event.getEntity();
         if (!event.getEntity().hasData(MIAttachment.MI_ORDERS)) {
             event.getEntity().setData(MIAttachment.MI_ORDERS, new MIOrders(new ArrayList<>(10),new ArrayList<>(10)));
         }
@@ -47,6 +50,14 @@ public class MIPlayerEvent {
         }
         if (!event.getEntity().hasData(MIAttachment.MI_TURNOVER)) {
             event.getEntity().setData(MIAttachment.MI_TURNOVER, new MITurnover(new ArrayList<>(),new ArrayList<>()));
+        }
+        if(player instanceof ServerPlayer){
+            MIBalance miBalance = player.getData(MIAttachment.MI_BALANCE);
+            miBalance.sync(player);
+            MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
+            miOrders.sync(player);
+            MITurnover miTurnover = player.getData(MIAttachment.MI_TURNOVER);
+            miTurnover.sync(player);
         }
     }
 

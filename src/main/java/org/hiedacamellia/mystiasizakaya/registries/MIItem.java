@@ -12,7 +12,6 @@ import org.hiedacamellia.mystiasizakaya.content.common.item.currency.En10kItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.currency.En1Item;
 import org.hiedacamellia.mystiasizakaya.content.common.item.currency.En5Item;
 import org.hiedacamellia.mystiasizakaya.content.common.item.ingredients.*;
-import org.hiedacamellia.mystiasizakaya.content.common.item.kitchenwares.*;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.LedgerItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.IconItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.IronKnifeItem;

@@ -5,6 +5,7 @@ import org.hiedacamellia.mystiasizakaya.content.common.item.items.Beverages;
 
 public class QiItem extends Beverages {
 	public QiItem() {
-		super(4, 0.8f, Rarity.COMMON, "qi", new String[]{"low_alcohol", "chiilable", "sake", "cocktail", "soda", "sweet", "dry", "bitter"});
+		super(4, 0.8f, Rarity.COMMON, "qi",
+				new String[]{"low_alcohol", "chillable", "sake", "cocktail", "soda", "sweet", "dry", "bitter"});
 	}
 }
