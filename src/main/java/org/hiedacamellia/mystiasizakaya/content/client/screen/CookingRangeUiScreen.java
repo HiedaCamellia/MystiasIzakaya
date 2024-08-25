@@ -107,6 +107,7 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 					if (true) {
 						PacketDistributor.sendToServer(new CookingRangeUiButton(0, pos));
 						CookingRangeUiButton.handleButtonAction(entity, 0, pos);
+						onClose();
 					}
 				}).bounds(this.leftPos + 94, this.topPos + 60, 90, 20).build();
 

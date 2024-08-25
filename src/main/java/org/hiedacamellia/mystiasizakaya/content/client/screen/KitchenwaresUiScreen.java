@@ -104,10 +104,9 @@ public class KitchenwaresUiScreen extends AbstractContainerScreen<KitchenwaresUi
 		super.init();
 		button_confirm = Button
 				.builder(Component.translatable("gui.mystias_izakaya.cooking_range_ui.button_confirm"), e -> {
-					if (true) {
-						PacketDistributor.sendToServer(new CookingRangeUiButton(0, pos));
-						CookingRangeUiButton.handleButtonAction(entity, 0, pos);
-					}
+					PacketDistributor.sendToServer(new CookingRangeUiButton(0, pos));
+					CookingRangeUiButton.handleButtonAction(entity, 0, pos);
+					onClose();
 				}).bounds(this.leftPos + 94, this.topPos + 60, 90, 20).build();
 
 
