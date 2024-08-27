@@ -17,6 +17,22 @@ public class MITab {
                         for (DeferredHolder<Item, ? extends Item> item: MIItem.REGISTRY.getEntries()){
                             tabData.accept(item.get());
                         }
+                        for (DeferredHolder<Item, ? extends Item> item: MIItem.Ingredients.getEntries()){
+                            tabData.accept(item.get());
+                        }
+                        for (DeferredHolder<Item, ? extends Item> item: MIItem.Cuisines.getEntries()){
+                            tabData.accept(item.get());
+                        }
+                        for (DeferredHolder<Item, ? extends Item> item: MIItem.Beverages.getEntries()){
+                            tabData.accept(item.get());
+                        }
+                        tabData.accept(MIItem.HEI_AN_WU_ZHI.get());
+                        tabData.accept(MIItem.REISEN.get());
+                        tabData.accept(MIItem.EN_1.get());
+                        tabData.accept(MIItem.EN_5.get());
+                        tabData.accept(MIItem.EN_10.get());
+                        tabData.accept(MIItem.EN_10K.get());
+                        tabData.accept(MIItem.IRON_KNIFE.get());
                     })
                     .build());
 }

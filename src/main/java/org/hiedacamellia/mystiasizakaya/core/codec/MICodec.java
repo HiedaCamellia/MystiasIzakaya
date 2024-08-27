@@ -78,4 +78,13 @@ public class MICodec {
             MITurnover::new
     );
 
+    public static final Codec<MICost> MI_COST_CODEC = RecordCodecBuilder.create(instance ->
+            instance.group(
+                    Codec.INT.fieldOf("cost").forGetter(MICost::cost)
+            ).apply(instance, MICost::new)
+    );
+    public static final StreamCodec<ByteBuf, MICost> MI_COST_STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.INT, MICost::cost,
+            MICost::new
+    );
 }

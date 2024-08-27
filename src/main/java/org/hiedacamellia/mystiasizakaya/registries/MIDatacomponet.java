@@ -6,6 +6,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.core.codec.MICodec;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MICooktime;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MICost;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIIngredient;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
 
@@ -32,5 +33,12 @@ public class MIDatacomponet {
             builder -> builder
                     .persistent(MICodec.MI_INGREDIENT_CODEC)
                     .networkSynchronized(MICodec.MI_INGREDIENT_STREAM_CODEC)
+    );
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<MICost>> MI_COST = DATA_COMPONENTS.registerComponentType(
+            "mi_cost",
+            builder -> builder
+                    .persistent(MICodec.MI_COST_CODEC)
+                    .networkSynchronized(MICodec.MI_COST_STREAM_CODEC)
     );
 }
