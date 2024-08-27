@@ -1,7 +1,9 @@
 package org.hiedacamellia.mystiasizakaya.registries;
 
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -18,6 +20,9 @@ import org.hiedacamellia.mystiasizakaya.content.common.item.utils.IconItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.IronKnifeItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.LingXianItem;
 import org.hiedacamellia.mystiasizakaya.content.common.blockitem.*;
+import org.hiedacamellia.mystiasizakaya.core.entry.builder.BaseItemBuilder;
+
+import java.util.List;
 
 public class MIItem {
 	public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems(MystiasIzakaya.MODID);
@@ -37,7 +42,14 @@ public class MIItem {
 
 	public static final DeferredRegister.Items Ingredients = DeferredRegister.createItems(MystiasIzakaya.MODID);
 	//ingredients
-	public static final DeferredItem<Item> BA_MU_MAN = Ingredients.register("ba_mu_man", BaMuManItem::new);
+//	public static final DeferredItem<Item> BA_MU_MAN = Ingredients.register("ba_mu_man", BaMuManItem::new);
+	public static final DeferredItem<Item> BA_MU_MAN = Ingredients.register("ba_mu_man",()->
+			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+					.food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build()))
+					.tags(List.of("Aquatic","Signature","Fresh"))
+					.cost(14).build());
+
+
 	public static final DeferredItem<Item> BAI_GUO = Ingredients.register("bai_guo", BaiGuoItem::new);
 	public static final DeferredItem<Item> BAN_LI = Ingredients.register("ban_li", BanLiItem::new);
 	public static final DeferredItem<Item> BING_DI_LIAN = Ingredients.register("bing_di_lian", BingDiLianItem::new);

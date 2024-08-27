@@ -20,7 +20,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.ledger_ui.from_currency","Currency");
 
         add("gui.mystias_izakaya.ledger_ui.ledger","Ledger");
-
+        add("tooltip.mystias_izakaya.cost","Cost: ");
 
         add("gui.mystias_izakaya.cooking_range_ui.button_back", "<");
         add("gui.mystias_izakaya.cooking_range_ui.button_next", ">");

@@ -20,6 +20,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.ledger_ui.from_currency","货币");
 
         add("gui.mystias_izakaya.ledger_ui.ledger","账本");
+        add("tooltip.mystias_izakaya.cost","价格: ");
 
 
 
