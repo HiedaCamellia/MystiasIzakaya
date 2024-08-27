@@ -14,12 +14,12 @@ import org.hiedacamellia.mystiasizakaya.content.common.item.currency.En10Item;
 import org.hiedacamellia.mystiasizakaya.content.common.item.currency.En10kItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.currency.En1Item;
 import org.hiedacamellia.mystiasizakaya.content.common.item.currency.En5Item;
-import org.hiedacamellia.mystiasizakaya.content.common.item.ingredients.*;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.LedgerItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.IconItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.IronKnifeItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.LingXianItem;
 import org.hiedacamellia.mystiasizakaya.content.common.blockitem.*;
+import org.hiedacamellia.mystiasizakaya.core.entry.BaseItem;
 import org.hiedacamellia.mystiasizakaya.core.entry.builder.BaseItemBuilder;
 
 import java.util.List;
@@ -508,52 +508,190 @@ public class MIItem {
 
     public static final DeferredRegister.Items Beverages = DeferredRegister.createItems(MystiasIzakaya.MODID);
     //beverages
-    public static final DeferredItem<Item> A_FU_JIA_DUO = Beverages.register("a_fu_jia_duo", AFuJiaDuoItem::new);
-    public static final DeferredItem<Item> BING_SHAN_MAO_YU_DONG_NING = Beverages.register("bing_shan_mao_yu_dong_ning", BingShanMaoYuDongNingItem::new);
-    public static final DeferredItem<Item> BO_ZI_QI_SHUI = Beverages.register("bo_zi_qi_shui", BoZiQiShuiItem::new);
-    public static final DeferredItem<Item> CHAO_ZUN_PI_JIU = Beverages.register("chao_zun_pi_jiu", ChaoZUNPiJiuItem::new);
-    public static final DeferredItem<Item> DA_BING_GUN_ER = Beverages.register("da_bing_gun_er", DaBingGunErItem::new);
-    public static final DeferredItem<Item> DA_YIN_NIANG = Beverages.register("da_yin_niang", DaYinNiangItem::new);
-    public static final DeferredItem<Item> DONG_NIANG = Beverages.register("dong_niang", DongNiangItem::new);
-    public static final DeferredItem<Item> FENG_ZHU = Beverages.register("feng_zhu", FengZhuItem::new);
-    public static final DeferredItem<Item> GUI_SHA = Beverages.register("gui_sha", GuiShaItem::new);
-    public static final DeferredItem<Item> GUO_WEI_HIGH_BALL = Beverages.register("guo_wei_high_ball", GuoWeiHighBallItem::new);
-    public static final DeferredItem<Item> GUO_WEI_SOUR = Beverages.register("guo_wei_sour", GuoWeiSOURItem::new);
-    public static final DeferredItem<Item> GU_FA_NAI_YOU_BING_SHA = Beverages.register("gu_fa_nai_you_bing_sha", GuFaNaiYouBingShaItem::new);
-    public static final DeferredItem<Item> GU_MING_DI_BING_JI_LING = Beverages.register("gu_ming_di_bing_ji_ling", GuMingDiBingJiLingItem::new);
-    public static final DeferredItem<Item> HAI_DE_NV_ER = Beverages.register("hai_de_nv_er", HaiDeNvErItem::new);
-    public static final DeferredItem<Item> HONG_MO_GUAN_HONG_CHA = Beverages.register("hong_mo_guan_hong_cha", HongMoGuanHongChaItem::new);
-    public static final DeferredItem<Item> HONG_WU = Beverages.register("hong_wu", HongWuItem::new);
-    public static final DeferredItem<Item> HONG_YOU_GUO_ZHI = Beverages.register("hong_you_guo_zhi", HongYouGuoZhiItem::new);
-    public static final DeferredItem<Item> HUO_SHU_QIU = Beverages.register("huo_shu_qiu", HuoShuQiuItem::new);
-    public static final DeferredItem<Item> JIAO_FU = Beverages.register("jiao_fu", JiaoFuItem::new);
-    public static final DeferredItem<Item> KA_PEI = Beverages.register("ka_pei", KaPeiItem::new);
-    public static final DeferredItem<Item> LIN_REN_ZHUI = Beverages.register("lin_ren_zhui", LinRenZhuiItem::new);
-    public static final DeferredItem<Item> LU_CHA = Beverages.register("lu_cha", LuChaItem::new);
-    public static final DeferredItem<Item> MEI_JIU = Beverages.register("mei_jiu", MeiJiuItem::new);
-    public static final DeferredItem<Item> MO_JIE_KA_PEI = Beverages.register("mo_jie_ka_pei", MoJieKaPeiItem::new);
-    public static final DeferredItem<Item> MO_JI_TUO_BAO_JIANG_QIU = Beverages.register("mo_ji_tuo_bao_jiang_qiu", MoJiTuoBaoJiangQiuItem::new);
-    public static final DeferredItem<Item> NIU_NAI = Beverages.register("niu_nai", NiuNaiItem::new);
-    public static final DeferredItem<Item> NI_GE_LUO_NI = Beverages.register("ni_ge_luo_ni", NiGeLuoNiItem::new);
-    public static final DeferredItem<Item> PU_TONG_JIAN_SHEN_CHA = Beverages.register("pu_tong_jian_shen_cha", PuTongJianShenChaItem::new);
-    public static final DeferredItem<Item> QI = Beverages.register("qi", QiItem::new);
-    public static final DeferredItem<Item> QI_BAO_JIAN = Beverages.register("qi_bao_jian", QiBaoJianItem::new);
-    public static final DeferredItem<Item> QI_LIN = Beverages.register("qi_lin", QiLinItem::new);
-    public static final DeferredItem<Item> QUE_JIU = Beverages.register("que_jiu", QueJiuItem::new);
-    public static final DeferredItem<Item> RI_YUE_XING = Beverages.register("ri_yue_xing", RiYueXingItem::new);
-    public static final DeferredItem<Item> SHEN_ZHI_MAI = Beverages.register("shen_zhi_mai", ShenZhiMaiItem::new);
-    public static final DeferredItem<Item> SHI_SI_YE = Beverages.register("shi_si_ye", ShiSiYeItem::new);
-    public static final DeferredItem<Item> SHUI_TA_JI = Beverages.register("shui_ta_ji", ShuiTaJiItem::new);
-    public static final DeferredItem<Item> TAI_KONG_PI_JIU = Beverages.register("tai_kong_pi_jiu", TaiKongPiJiuItem::new);
-    public static final DeferredItem<Item> TIAN_DI_WU_YON = Beverages.register("tian_di_wu_yon", TianDiWuYonItem::new);
-    public static final DeferredItem<Item> TIAN_GOU_YONG = Beverages.register("tian_gou_yong", TianGouYongItem::new);
-    public static final DeferredItem<Item> WEI_XIN_BING_KA_PEI = Beverages.register("wei_xin_bing_ka_pei", WeiXinBingKaPeiItem::new);
-    public static final DeferredItem<Item> XIAO = Beverages.register("xiao", XiaoItem::new);
-    public static final DeferredItem<Item> XING_HONG_E_MO = Beverages.register("xing_hong_e_mo", XingHongEMoItem::new);
-    public static final DeferredItem<Item> YANG_ZHI_GAN_LU = Beverages.register("yang_zhi_gan_lu", YangZhiGanLuItem::new);
-    public static final DeferredItem<Item> YAO_JING_YU_LU = Beverages.register("yao_jing_yu_lu", YaoJingYuLuItem::new);
-    public static final DeferredItem<Item> YUE_MIAN_HUO_JIAN = Beverages.register("yue_mian_huo_jian", YueMianHuoJianItem::new);
-    public static final DeferredItem<Item> YU_LU_CHA = Beverages.register("yu_lu_cha", YuLuChaItem::new);
+    public static final DeferredItem<Item> A_FU_JIA_DUO = Beverages.register("a_fu_jia_duo", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("chillable", "stimulating", "sweet", "bitter")).beverages().cost(35).build());
+    public static final DeferredItem<Item> BING_SHAN_MAO_YU_DONG_NING = Beverages.register("bing_shan_mao_yu_dong_ning", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("no_alcohol", "chillable", "soda", "stimulating", "fruity", "neat", "sweet")).beverages().cost(45).build());
+    public static final DeferredItem<Item> BO_ZI_QI_SHUI = Beverages.register("bo_zi_qi_shui", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("no_alcohol", "soda", "modern")).beverages().cost(30).build());
+    public static final DeferredItem<Item> CHAO_ZUN_PI_JIU = Beverages.register("chao_zun_pi_jiu", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("low_alcohol", "chillable", "beer", "bitter")).beverages().cost(18).build());
+    public static final DeferredItem<Item> DA_BING_GUN_ER = Beverages.register("da_bing_gun_er", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("no_alcohol", "stimulating", "modern", "sweet")).beverages().cost(35).build());
+    public static final DeferredItem<Item> DA_YIN_NIANG = Beverages.register("da_yin_niang", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(7).saturationModifier(0.8f).build()))
+                    .tags(List.of("mid_alcohol", "sake", "vintage", "chillable", "fruity", "neat", "sweet")).beverages().cost(210).build());
+    public static final DeferredItem<Item> DONG_NIANG = Beverages.register("dong_niang", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("low_alcohol", "chillable", "heatable", "vintage", "sweet")).beverages().cost(60).build());;
+    public static final DeferredItem<Item> FENG_ZHU = Beverages.register("feng_zhu", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.8f).build()))
+                    .tags(List.of("mid_alcohol", "chillable", "cocktail", "modern", "sweet")).beverages().cost(130).build());
+    public static final DeferredItem<Item> GUI_SHA = Beverages.register("gui_sha", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.8f).build()))
+                    .tags(List.of("high_alcohol", "chillable", "shochu", "dry", "vintage")).beverages().cost(320).build());
+    public static final DeferredItem<Item> GUO_WEI_HIGH_BALL = Beverages.register("guo_wei_high_ball", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
+                    .tags(List.of("low_alcohol", "chillable", "western", "cocktail", "fruity", "sweet", "bitter")).beverages().cost(12).build());
+    public static final DeferredItem<Item> GUO_WEI_SOUR = Beverages.register("guo_wei_sour", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
+                    .tags(List.of("low_alcohol", "chillable", "shochu", "cocktail", "fruity", "sweet", "bitter")).beverages().cost(12).build());
+    public static final DeferredItem<Item> GU_FA_NAI_YOU_BING_SHA = Beverages.register("gu_fa_nai_you_bing_sha", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("no_alcohol", "sweet", "chillable", "vintage")).beverages().cost(42).build());
+    public static final DeferredItem<Item> GU_MING_DI_BING_JI_LING = Beverages.register("gu_ming_di_bing_ji_ling", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("no_alcohol", "sweet", "fruity", "modern")).beverages().cost(35).build());
+    public static final DeferredItem<Item> HAI_DE_NV_ER = Beverages.register("hai_de_nv_er", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("no_alcohol", "sweet", "fruity", "modern")).beverages().cost(80).build());
+    public static final DeferredItem<Item> HONG_MO_GUAN_HONG_CHA = Beverages.register("hong_mo_guan_hong_cha", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
+                    .tags(List.of("no_alcohol", "heatable", "stimulating", "fruity")).beverages().cost(25).build());
+    public static final DeferredItem<Item> HONG_WU = Beverages.register("hong_wu", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).build()))
+                    .tags(List.of("mid_alcohol", "heatable", "western")).beverages().cost(75).build());
+    public static final DeferredItem<Item> HONG_YOU_GUO_ZHI = Beverages.register("hong_you_guo_zhi", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
+                    .tags(List.of("no_alcohol", "fruity")).beverages().cost(24).build());
+    public static final DeferredItem<Item> HUO_SHU_QIU = Beverages.register("huo_shu_qiu", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.8f).build()))
+                    .tags(List.of("high_alcohol", "heatable", "shochu", "dry")).beverages().cost(420).build());
+    public static final DeferredItem<Item> JIAO_FU = Beverages.register("jiao_fu", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(7).saturationModifier(0.8f).build()))
+                    .tags(List.of("high_alcohol", "chillable", "western", "cocktail", "vintage", "bitter")).beverages().cost(180).build());
+    public static final DeferredItem<Item> KA_PEI = Beverages.register("ka_pei", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).build()))
+                    .tags(List.of("no_alcohol", "bitter", "modern", "heatable", "chillable", "stimulating")).beverages().cost(62).build());
+    public static final DeferredItem<Item> LIN_REN_ZHUI = Beverages.register("lin_ren_zhui", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("low_alcohol", "neat", "fruity", "vintage", "sweet")).beverages().cost(100).build());
+    public static final DeferredItem<Item> LU_CHA = Beverages.register("lu_cha", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build()))
+                    .tags(List.of("no_alcohol")).beverages().cost(1).build());
+    public static final DeferredItem<Item> MEI_JIU = Beverages.register("mei_jiu", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("mid_alcohol", "chillable", "heatable", "liquor", "fruity")).beverages().cost(32).build());
+    public static final DeferredItem<Item> MO_JIE_KA_PEI = Beverages.register("mo_jie_ka_pei", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("high_alcohol", "stimulating", "heatable", "western")).beverages().cost(210).build());
+    public static final DeferredItem<Item> MO_JI_TUO_BAO_JIANG_QIU = Beverages.register("mo_ji_tuo_bao_jiang_qiu", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("low_alcohol", "soda", "modern", "cocktail")).beverages().cost(300).build());
+    public static final DeferredItem<Item> NIU_NAI = Beverages.register("niu_nai", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
+                    .tags(List.of("no_alcohol", "neat")).beverages().cost(16).build());
+    public static final DeferredItem<Item> NI_GE_LUO_NI = Beverages.register("ni_ge_luo_ni", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.8f).build()))
+                    .tags(List.of("mid_alcohol", "chillable", "western", "cocktail", "fruity", "bitter")).beverages().cost(100).build());
+    public static final DeferredItem<Item> PU_TONG_JIAN_SHEN_CHA = Beverages.register("pu_tong_jian_shen_cha", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
+                    .tags(List.of("mid_alcohol", "bitter", "soda", "liquor")).beverages().cost(32).build());
+    public static final DeferredItem<Item> QI = Beverages.register("qi", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("low_alcohol", "chillable", "sake", "cocktail", "soda", "sweet", "dry", "bitter")).beverages().cost(18).build());
+    public static final DeferredItem<Item> QI_BAO_JIAN = Beverages.register("qi_bao_jian", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("no_alcohol", "sweet", "neat", "stimulating")).beverages().cost(45).build());
+    public static final DeferredItem<Item> QI_LIN = Beverages.register("qi_lin", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(7).saturationModifier(0.8f).build()))
+                    .tags(List.of("mid_alcohol", "beer", "neat")).beverages().cost(180).build());
+    public static final DeferredItem<Item> QUE_JIU = Beverages.register("que_jiu", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("mid_alcohol", "chillable", "heatable", "sake", "dry")).beverages().cost(50).build());
+    public static final DeferredItem<Item> RI_YUE_XING = Beverages.register("ri_yue_xing", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("mid_alcohol", "chillable", "heatable", "sake", "neat")).beverages().cost(34).build());
+    public static final DeferredItem<Item> SHEN_ZHI_MAI = Beverages.register("shen_zhi_mai", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("mid_Alcohol", "chillable", "heatable", "shochu", "neat")).beverages().cost(45).build());
+    public static final DeferredItem<Item> SHI_SI_YE = Beverages.register("shi_si_ye", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.8f).build()))
+                    .tags(List.of("mid_alcohol", "chillable", "heatable", "sake", "vintage", "sweet")).beverages().cost(440).build());
+    public static final DeferredItem<Item> SHUI_TA_JI = Beverages.register("shui_ta_ji", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.8f).build()))
+                    .tags(List.of("mid_alcohol", "chillable", "heatable", "sake", "neat")).beverages().cost(130).build());
+    public static final DeferredItem<Item> TAI_KONG_PI_JIU = Beverages.register("tai_kong_pi_jiu", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("mid_alcohol","modern", "fruity", "beer")).beverages().cost(42).build());
+    public static final DeferredItem<Item> TIAN_DI_WU_YON = Beverages.register("tian_di_wu_yon", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("high_alcohol", "shochu")).beverages().cost(150).build());
+    public static final DeferredItem<Item> TIAN_GOU_YONG = Beverages.register("tian_gou_yong", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).build()))
+                    .tags(List.of("high_alcohol", "chillable", "heatable", "sake", "neat")).beverages().cost(70).build());
+    public static final DeferredItem<Item> WEI_XIN_BING_KA_PEI = Beverages.register("wei_xin_bing_ka_pei", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("no_alcohol", "modern", "stimulating", "bitter")).beverages().cost(70).build());
+    public static final DeferredItem<Item> XIAO = Beverages.register("xiao", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.8f).build()))
+                    .tags(List.of("high_alcohol", "chillable", "western", "neat")).beverages().cost(400).build());
+    public static final DeferredItem<Item> XING_HONG_E_MO = Beverages.register("xing_hong_e_mo", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("low_alcohol", "chillable", "cocktail")).beverages().cost(45).build());
+    public static final DeferredItem<Item> YANG_ZHI_GAN_LU = Beverages.register("yang_zhi_gan_lu", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("no_alcohol", "chillable", "fruity")).beverages().cost(50).build());
+    public static final DeferredItem<Item> YAO_JING_YU_LU = Beverages.register("yao_jing_yu_lu", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).build()))
+                    .tags(List.of("no_alcohol", "sweet", "chillable")).beverages().cost(80).build());
+    public static final DeferredItem<Item> YUE_MIAN_HUO_JIAN = Beverages.register("yue_mian_huo_jian", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("no_alcohol", "sweet", "chillable")).beverages().cost(45).build());
+    public static final DeferredItem<Item> YU_LU_CHA = Beverages.register("yu_lu_cha", ()->
+            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
+                    .tags(List.of("no_alcohol", "heatable", "vintage")).beverages().cost(50).build());
 
 
     public static final DeferredRegister.Items Others = DeferredRegister.createItems(MystiasIzakaya.MODID);
