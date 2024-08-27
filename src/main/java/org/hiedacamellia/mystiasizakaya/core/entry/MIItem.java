@@ -35,10 +35,10 @@ public class MIItem extends Item {
             List<String> ntags = mitags.ntags();
 
             for (String tag : tags) {
-                list.add(Component.translatable(tagprefix+tag).withStyle(ChatFormatting.GOLD));
+                list.add(Component.literal("+ ").append(Component.translatable(tagprefix+tag)).withStyle(ChatFormatting.GOLD));
             }
             for (String tag : ntags) {
-                list.add(Component.translatable(tagprefix+tag).withStyle(ChatFormatting.RED));
+                list.add(Component.literal("- ").append(Component.translatable(tagprefix+tag)).withStyle(ChatFormatting.RED));
             }
             list.add(Component.translatable("tooltip.mystias_izakaya.cost").append(String.valueOf(itemstack.getOrDefault(MIDatacomponet.MI_COST.get(), new MICost(0)).cost())).withStyle(ChatFormatting.YELLOW));
 
