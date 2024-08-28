@@ -6,8 +6,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.hiedacamellia.mystiasizakaya.content.common.block.blocks.CookingRange;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MICooktime;
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
+import org.hiedacamellia.mystiasizakaya.registries.MIBlock;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 import org.hiedacamellia.mystiasizakaya.util.GetValue;
@@ -20,9 +22,15 @@ public class Confirm {
 		time = GetValue.getDouble(world, pos, "timeleft");
 		ItemStack target;
 
+		if(ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 1)){
+			return;
+		}
+
         if ((ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, pos, 6).getItem())
 				&& !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, pos, 12).getItem())
 				&& time == 0) {
+
+
 
 			//Debug.getLogger().debug("Get data");
 
@@ -32,8 +40,15 @@ public class Confirm {
 				BlockPos _bp = pos;
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
+
+				int cooktime = target.getOrDefault(MIDatacomponet.MI_COOKTIME.get(), new MICooktime(0)).cooktime();
+
+				if(_bs.getBlock()== MIBlock.COOKING_RANGE.get()){
+					cooktime = (int) (cooktime * 0.6);
+				}
+
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("timeleft", target.getOrDefault(MIDatacomponet.MI_COOKTIME.get(), new MICooktime(0)).cooktime());
+					_blockEntity.getPersistentData().putDouble("timeleft", cooktime);
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}

@@ -6,6 +6,7 @@ import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIIngredient;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
 import org.hiedacamellia.mystiasizakaya.core.cooking.get.GetTagFromItemStacks;
+import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.jetbrains.annotations.NotNull;
@@ -29,8 +30,15 @@ public class BuildTags {
         List<String> targettags = miTags.tags();
         //List<String> targetntags = target.getOrCreateTag().getString("ntags").isEmpty() ? new ArrayList<>() : Arrays.asList(target.getOrCreateTag().getString("ntags").split(","));
 
+        //Debug.send(target.toString());
         Set<String> set = new LinkedHashSet<>(rawtags);
-        targettags.sort(Comparator.naturalOrder());
+        try {
+            targettags.sort(Comparator.naturalOrder());
+        }catch (Exception e){
+            MystiasIzakaya.LOGGER.atTrace().log("Failed to sort targettags for {}", Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(target.getItem())));
+            MystiasIzakaya.LOGGER.atTrace().log(e);
+        }
+        //烧香！本来这是有问题的，但是改了后再回滚，它就好了
         set.addAll(targettags);
         ArrayList<String> resultList = getStrings(ingredients, set);
 

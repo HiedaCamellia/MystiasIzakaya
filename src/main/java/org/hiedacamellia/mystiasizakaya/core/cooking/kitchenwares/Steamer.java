@@ -176,6 +176,12 @@ public class Steamer {
                 && raws.contains("mystias_izakaya:xi_lan_hua")) {
             cuisines.add("mystias_izakaya:feng_mao_zi_cha_hui");
         }
+        if (raws.contains("mystias_izakaya:yue_guang_cao")
+                && raws.contains("mystias_izakaya:feng_mi")
+                && raws.contains("mystias_izakaya:mian_fen")
+                && raws.contains("mystias_izakaya:nuo_mi")) {
+            cuisines.add("mystias_izakaya:yue_bing");
+        }
         return cuisines;
     }
 }

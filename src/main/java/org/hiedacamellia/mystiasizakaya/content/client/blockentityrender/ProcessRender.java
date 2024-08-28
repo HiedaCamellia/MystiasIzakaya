@@ -13,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.KitchenwaresEntity;
-import org.hiedacamellia.mystiasizakaya.content.common.item.items.Cuisines;
+import org.hiedacamellia.mystiasizakaya.core.entry.MIItem;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 
 //感谢https://github.com/Crystal1921/mystias_izakaya
@@ -33,7 +33,7 @@ public class ProcessRender implements BlockEntityRenderer<KitchenwaresEntity> {
 
     @Override
     public void render(KitchenwaresEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
-        if (pBlockEntity.getItems().get(12).getItem() instanceof Cuisines cookedMealItem) {
+        if (pBlockEntity.getItems().get(12).getItem() instanceof MIItem cookedMealItem) {
             pPoseStack.pushPose();
             pPoseStack.translate(0.5, 0.7, 0.5);
             pPoseStack.mulPose(this.entityRenderDispatcher.cameraOrientation());

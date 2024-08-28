@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.UseAnim;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MICost;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
@@ -18,11 +19,19 @@ import java.util.List;
 
 public class MIItem extends Item {
 
+    private final UseAnim useAnimation;
+
     private String tagprefix;
 
-    public MIItem(Properties properties,String tagprefix) {
+    public MIItem(Properties properties, UseAnim useAnimation, String tagprefix) {
         super(properties);
+        this.useAnimation = useAnimation;
         this.tagprefix = tagprefix;
+    }
+
+    @Override
+    public @NotNull UseAnim getUseAnimation(@NotNull ItemStack itemstack) {
+        return useAnimation;
     }
 
     @Override
