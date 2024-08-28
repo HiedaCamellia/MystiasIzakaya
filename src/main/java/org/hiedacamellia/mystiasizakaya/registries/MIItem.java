@@ -33,1573 +33,290 @@ public class MIItem {
 
     public static final DeferredRegister.Items Ingredients = DeferredRegister.createItems(MystiasIzakaya.MODID);
     //ingredients
-    public static final DeferredItem<Item> BA_MU_MAN = Ingredients.register("ba_mu_man", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build()))
-                    .tags(List.of("Aquatic", "Signature", "Fresh"))
-                    .cost(14).build());
-    public static final DeferredItem<Item> BAI_GUO = Ingredients.register("bai_guo", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-                    .tags(List.of("Photogenic"))
-                    .cost(7).build());
-    public static final DeferredItem<Item> BAN_LI = Ingredients.register("ban_li", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build()))
-                    .tags(List.of("Homecooking", "Vegetarian"))
-                    .cost(10).build());
-    public static final DeferredItem<Item> BING_DI_LIAN = Ingredients.register("bing_di_lian", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-                    .tags(List.of("Cultural_Heritage", "Premium", "Legendary", "Mild", "Dreamy"))
-                    .cost(36).build());
-    public static final DeferredItem<Item> BING_KUAI = Ingredients.register("bing_kuai", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON))
-                    .tags(List.of("Refreshing"))
-                    .cost(2).build());
-    public static final DeferredItem<Item> CHAN_SHUI = Ingredients.register("chan_shui", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON))
-                    .tags(List.of("Peculiar"))
-                    .cost(5).build());
-    public static final DeferredItem<Item> CHUN_CHUN = Ingredients.register("chun_chun", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-                    .tags(List.of("Poison", "Vegetarian"))
-                    .cost(20).build());
-    public static final DeferredItem<Item> DI_GUA = Ingredients.register("di_gua", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-                    .tags(List.of("Filling"))
-                    .cost(8).build());
-    public static final DeferredItem<Item> DOU_FU = Ingredients.register("dou_fu", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-                    .tags(List.of("Vegetarian", "Homecooking", "Mild"))
-                    .cost(8).build());
-    public static final DeferredItem<Item> FENG_MI = Ingredients.register("feng_mi", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.8f).build()))
-                    .tags(List.of("Sweet"))
-                    .cost(15).build());
-    public static final DeferredItem<Item> HAI_DAN = Ingredients.register("hai_dan", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build()))
-                    .tags(List.of("Aquatic", "Sea_Delicacy", "Fresh", "Legendary", "Premium"))
-                    .cost(18).build());
-    public static final DeferredItem<Item> HAI_TAI = Ingredients.register("hai_tai", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build()))
-                    .tags(List.of("Aquatic", "Sea_Delicacy", "Fresh", "Legendary", "Premium"))
-                    .cost(3).build());
-    public static final DeferredItem<Item> HEI_MAO_ZHU_ROU = Ingredients.register("hei_mao_zhu_rou",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
-					.tags(List.of("Meat","Legendary","Mountain_Delicacy"))
-					.cost(35).build());
-    public static final DeferredItem<Item> HEI_YAN = Ingredients.register("hei_yan", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON))
-					.tags(List.of("Salty"))
-					.cost(3).build());
-    public static final DeferredItem<Item> HE_NIU = Ingredients.register("he_niu", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
-					.tags(List.of("Meat","Legendary","Premium"))
-					.cost(40).build());
-    public static final DeferredItem<Item> HE_TUN = Ingredients.register("he_tun",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON))
-					.tags(List.of("Aquatic","Sea_Delicacy","Fresh"))
-					.cost(3).build());
-    public static final DeferredItem<Item> HONG_DOU = Ingredients.register("hong_dou", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Homecooking"))
-					.cost(18).build());
-    public static final DeferredItem<Item> HUANG_GUA = Ingredients.register("huang_gua",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Vegetarian", "Homecooking", "Mild"))
-					.cost(7).build());
-    public static final DeferredItem<Item> HUANG_YOU = Ingredients.register("huang_you", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build()))
-					.tags(List.of("Greasy"))
-					.cost(8).build());
-    public static final DeferredItem<Item> HUAN_TAN_HUA = Ingredients.register("huan_tan_hua",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build()))
-					.tags(List.of("Premium", "Legendary", "Dreamy", "Wonderful"))
-					.cost(70).build());
-    public static final DeferredItem<Item> JIN_QIANG_YU = Ingredients.register("jin_qiang_yu", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build()))
-					.tags(List.of("Aquatic", "Premium", "Fresh"))
-					.cost(30).build());
-    public static final DeferredItem<Item> JI_DAN = Ingredients.register("ji_dan", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON))
-					.tags(List.of("Raw"))
-					.cost(4).build());
-    public static final DeferredItem<Item> JI_SHANG_JIN_QIANG_YU = Ingredients.register("ji_shang_jin_qiang_yu",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build()))
-					.tags(List.of("Aquatic", "Premium", "Legendary", "Sea_Delicacy", "Fresh"))
-					.cost(34).build());
-    public static final DeferredItem<Item> KE_KE_DOU = Ingredients.register("ke_ke_dou",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Sweet", "Wonderful"))
-					.cost(22).build());
-    public static final DeferredItem<Item> LA_JIAO = Ingredients.register("la_jiao",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Spicy"))
-					.cost(2).build());
-    public static final DeferredItem<Item> LIAN_ZI = Ingredients.register("lian_zi", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Signature", "Mild", "Cultural_Heritage"))
-					.cost(22).build());
-    public static final DeferredItem<Item> LUO_BU = Ingredients.register("luo_bu", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Vegetarian","Good_With_Alcohol"))
-					.cost(16).build());
-    public static final DeferredItem<Item> LU_ROU = Ingredients.register("lu_rou",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
-					.tags(List.of("Meat"))
-					.cost(20).build());
-    public static final DeferredItem<Item> LU_SHUI = Ingredients.register("lu_shui", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON))
-					.tags(List.of("Mild"))
-					.cost(10).build());
-    public static final DeferredItem<Item> MEI_ZI = Ingredients.register("mei_zi", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Salty", "Small_Portion"))
-					.cost(12).build());
-    public static final DeferredItem<Item> MIAN_FEN = Ingredients.register("mian_fen", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Filling"))
-					.cost(10).build());
-    public static final DeferredItem<Item> MO_GU = Ingredients.register("mo_gu",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Vegetarian","Fresh","Fungi"))
-					.cost(18).build());
-    public static final DeferredItem<Item> NAI_YOU = Ingredients.register("nai_you", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Homecooking","Sweet","Western"))
-					.cost(9).build());
-    public static final DeferredItem<Item> NAN_GUA = Ingredients.register("nan_gua", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Vegetarian","Filling"))
-					.cost(14).build());
-    public static final DeferredItem<Item> NING_MENG = Ingredients.register("ning_meng",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Sour","Fruity"))
-					.cost(8).build());
-    public static final DeferredItem<Item> NIU_ROU = Ingredients.register("niu_rou",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
-					.tags(List.of("Meat"))
-					.cost(15).build());
-    public static final DeferredItem<Item> NUO_MI = Ingredients.register("nuo_mi", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.cost(15).build());
-    public static final DeferredItem<Item> PANG_XIE = Ingredients.register("pang_xie", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
-					.tags(List.of("Aquatic","Fresh","Premium"))
-					.cost(10).build());
-    public static final DeferredItem<Item> PU_PU_YOU_GUO = Ingredients.register("pu_pu_you_guo",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Divine_Punishment"))
-					.cost(10).build());
-    public static final DeferredItem<Item> PU_TAO = Ingredients.register("pu_tao",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build()))
-					.tags(List.of("Fruity","Sweet"))
-					.cost(5).build());
-    public static final DeferredItem<Item> QIANG_XIAO_LA_JIAO_SU = Ingredients.register("qiang_xiao_la_jiao_su", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON))
-					.tags(List.of("Divine_Punishment"))
-					.cost(0).build());
-    public static final DeferredItem<Item> SAN_WEN_YU = Ingredients.register("san_wen_yu", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
-					.tags(List.of("Aquatic","Premium","Fresh"))
-					.cost(24).build());
-    public static final DeferredItem<Item> SONG_LU = Ingredients.register("song_lu",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build()))
-					.tags(List.of("Vegetarian","Fresh","Fungi","Premium","Legendary","Mountain_Delicacy"))
-					.cost(24).build());
-    public static final DeferredItem<Item> SONG_ZI = Ingredients.register("song_zi",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Aquatic","Premium","Fresh"))
-					.cost(50).build());
-    public static final DeferredItem<Item> TAO_ZI = Ingredients.register("tao_zi", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Sweet","Fruity"))
-					.cost(10).build());
-    public static final DeferredItem<Item> TU_DOU = Ingredients.register("tu_dou", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Vegetarian","Homecooking"))
-					.cost(10).build());
-    public static final DeferredItem<Item> XIA = Ingredients.register("xia",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build()))
-					.tags(List.of("Aquatic","Fresh"))
-					.cost(30).build());
-    public static final DeferredItem<Item> XIAN_HUA = Ingredients.register("xian_hua",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Dreamy","Photogenic"))
-					.cost(45).build());
-    public static final DeferredItem<Item> XI_HONG_SHI = Ingredients.register("xi_hong_shi",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Vegetarian"))
-					.cost(8).build());
-    public static final DeferredItem<Item> XI_LAN_HUA = Ingredients.register("xi_lan_hua", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Vegetarian", "Homecooking"))
-					.cost(18).build());
-    public static final DeferredItem<Item> XU_LI = Ingredients.register("xu_li",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Refreshing","Dreamy"))
-					.cost(21).build());
-    public static final DeferredItem<Item> YANG_CONG = Ingredients.register("yang_cong", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Vegetarian","Fresh"))
-					.cost(12).build());
-    public static final DeferredItem<Item> YE_ZHU_ROU = Ingredients.register("ye_zhu_rou",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Meat"))
-					.cost(35).build());
-    public static final DeferredItem<Item> YIN_ER = Ingredients.register("yin_er", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Fungus", "Mild"))
-					.cost(14).build());
-    public static final DeferredItem<Item> YUE_GUANG_CAO = Ingredients.register("yue_guang_cao", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Mild","Dreamy","Cultural_Heritage","Wonderful"))
-					.cost(70).build());
-    public static final DeferredItem<Item> ZHANG_YU = Ingredients.register("zhang_yu",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build()))
-					.tags(List.of("Aquatic","Fresh","Sea_Delicacy"))
-					.cost(12).build());
-    public static final DeferredItem<Item> ZHI_SHI = Ingredients.register("zhi_shi", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
-					.tags(List.of("Premium","Salty","Fresh"))
-					.cost(18).build());
-    public static final DeferredItem<Item> ZHU_ROU = Ingredients.register("zhu_rou",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
-					.tags(List.of("Meat"))
-					.cost(10).build());
-    public static final DeferredItem<Item> ZHU_SUN = Ingredients.register("zhu_sun", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
-					.tags(List.of("Vegetarian","Mild"))
-					.cost(40).build());
-    public static final DeferredItem<Item> ZHU_ZI = Ingredients.register("zhu_zi",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build()))
-					.tags(List.of("Photogenic"))
-					.cost(15).build());
-    public static final DeferredItem<Item> ZUN_YU = Ingredients.register("zun_yu", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build()))
-					.tags(List.of("Aquatic","Fresh"))
-					.cost(8).build());
+    public static final DeferredItem<Item> BA_MU_MAN = Ingredients.register("ba_mu_man", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build())).tags(List.of("Aquatic", "Signature", "Fresh")).cost(14).build());
+    public static final DeferredItem<Item> BAI_GUO = Ingredients.register("bai_guo", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Photogenic")).cost(7).build());
+    public static final DeferredItem<Item> BAN_LI = Ingredients.register("ban_li", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build())).tags(List.of("Homecooking", "Vegetarian")).cost(10).build());
+    public static final DeferredItem<Item> BING_DI_LIAN = Ingredients.register("bing_di_lian", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Cultural_Heritage", "Premium", "Legendary", "Mild", "Dreamy")).cost(36).build());
+    public static final DeferredItem<Item> BING_KUAI = Ingredients.register("bing_kuai", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)).tags(List.of("Refreshing")).cost(2).build());
+    public static final DeferredItem<Item> CHAN_SHUI = Ingredients.register("chan_shui", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)).tags(List.of("Peculiar")).cost(5).build());
+    public static final DeferredItem<Item> CHUN_CHUN = Ingredients.register("chun_chun", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Poison", "Vegetarian")).cost(20).build());
+    public static final DeferredItem<Item> DI_GUA = Ingredients.register("di_gua", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Filling")).cost(8).build());
+    public static final DeferredItem<Item> DOU_FU = Ingredients.register("dou_fu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Vegetarian", "Homecooking", "Mild")).cost(8).build());
+    public static final DeferredItem<Item> FENG_MI = Ingredients.register("feng_mi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.8f).build())).tags(List.of("Sweet")).cost(15).build());
+    public static final DeferredItem<Item> HAI_DAN = Ingredients.register("hai_dan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build())).tags(List.of("Aquatic", "Sea_Delicacy", "Fresh", "Legendary", "Premium")).cost(18).build());
+    public static final DeferredItem<Item> HAI_TAI = Ingredients.register("hai_tai", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build())).tags(List.of("Aquatic", "Sea_Delicacy", "Fresh", "Legendary", "Premium")).cost(3).build());
+    public static final DeferredItem<Item> HEI_MAO_ZHU_ROU = Ingredients.register("hei_mao_zhu_rou", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build())).tags(List.of("Meat", "Legendary", "Mountain_Delicacy")).cost(35).build());
+    public static final DeferredItem<Item> HEI_YAN = Ingredients.register("hei_yan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)).tags(List.of("Salty")).cost(3).build());
+    public static final DeferredItem<Item> HE_NIU = Ingredients.register("he_niu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build())).tags(List.of("Meat", "Legendary", "Premium")).cost(40).build());
+    public static final DeferredItem<Item> HE_TUN = Ingredients.register("he_tun", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)).tags(List.of("Aquatic", "Sea_Delicacy", "Fresh")).cost(3).build());
+    public static final DeferredItem<Item> HONG_DOU = Ingredients.register("hong_dou", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Homecooking")).cost(18).build());
+    public static final DeferredItem<Item> HUANG_GUA = Ingredients.register("huang_gua", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Vegetarian", "Homecooking", "Mild")).cost(7).build());
+    public static final DeferredItem<Item> HUANG_YOU = Ingredients.register("huang_you", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build())).tags(List.of("Greasy")).cost(8).build());
+    public static final DeferredItem<Item> HUAN_TAN_HUA = Ingredients.register("huan_tan_hua", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build())).tags(List.of("Premium", "Legendary", "Dreamy", "Wonderful")).cost(70).build());
+    public static final DeferredItem<Item> JIN_QIANG_YU = Ingredients.register("jin_qiang_yu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build())).tags(List.of("Aquatic", "Premium", "Fresh")).cost(30).build());
+    public static final DeferredItem<Item> JI_DAN = Ingredients.register("ji_dan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)).tags(List.of("Raw")).cost(4).build());
+    public static final DeferredItem<Item> JI_SHANG_JIN_QIANG_YU = Ingredients.register("ji_shang_jin_qiang_yu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build())).tags(List.of("Aquatic", "Premium", "Legendary", "Sea_Delicacy", "Fresh")).cost(34).build());
+    public static final DeferredItem<Item> KE_KE_DOU = Ingredients.register("ke_ke_dou", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Sweet", "Wonderful")).cost(22).build());
+    public static final DeferredItem<Item> LA_JIAO = Ingredients.register("la_jiao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Spicy")).cost(2).build());
+    public static final DeferredItem<Item> LIAN_ZI = Ingredients.register("lian_zi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Signature", "Mild", "Cultural_Heritage")).cost(22).build());
+    public static final DeferredItem<Item> LUO_BU = Ingredients.register("luo_bu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Vegetarian", "Good_With_Alcohol")).cost(16).build());
+    public static final DeferredItem<Item> LU_ROU = Ingredients.register("lu_rou", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build())).tags(List.of("Meat")).cost(20).build());
+    public static final DeferredItem<Item> LU_SHUI = Ingredients.register("lu_shui", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)).tags(List.of("Mild")).cost(10).build());
+    public static final DeferredItem<Item> MEI_ZI = Ingredients.register("mei_zi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Salty", "Small_Portion")).cost(12).build());
+    public static final DeferredItem<Item> MIAN_FEN = Ingredients.register("mian_fen", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Filling")).cost(10).build());
+    public static final DeferredItem<Item> MO_GU = Ingredients.register("mo_gu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Vegetarian", "Fresh", "Fungi")).cost(18).build());
+    public static final DeferredItem<Item> NAI_YOU = Ingredients.register("nai_you", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Homecooking", "Sweet", "Western")).cost(9).build());
+    public static final DeferredItem<Item> NAN_GUA = Ingredients.register("nan_gua", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Vegetarian", "Filling")).cost(14).build());
+    public static final DeferredItem<Item> NING_MENG = Ingredients.register("ning_meng", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Sour", "Fruity")).cost(8).build());
+    public static final DeferredItem<Item> NIU_ROU = Ingredients.register("niu_rou", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build())).tags(List.of("Meat")).cost(15).build());
+    public static final DeferredItem<Item> NUO_MI = Ingredients.register("nuo_mi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).cost(15).build());
+    public static final DeferredItem<Item> PANG_XIE = Ingredients.register("pang_xie", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build())).tags(List.of("Aquatic", "Fresh", "Premium")).cost(10).build());
+    public static final DeferredItem<Item> PU_PU_YOU_GUO = Ingredients.register("pu_pu_you_guo", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Divine_Punishment")).cost(10).build());
+    public static final DeferredItem<Item> PU_TAO = Ingredients.register("pu_tao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build())).tags(List.of("Fruity", "Sweet")).cost(5).build());
+    public static final DeferredItem<Item> QIANG_XIAO_LA_JIAO_SU = Ingredients.register("qiang_xiao_la_jiao_su", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)).tags(List.of("Divine_Punishment")).cost(0).build());
+    public static final DeferredItem<Item> SAN_WEN_YU = Ingredients.register("san_wen_yu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build())).tags(List.of("Aquatic", "Premium", "Fresh")).cost(24).build());
+    public static final DeferredItem<Item> SONG_LU = Ingredients.register("song_lu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build())).tags(List.of("Vegetarian", "Fresh", "Fungi", "Premium", "Legendary", "Mountain_Delicacy")).cost(24).build());
+    public static final DeferredItem<Item> SONG_ZI = Ingredients.register("song_zi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Aquatic", "Premium", "Fresh")).cost(50).build());
+    public static final DeferredItem<Item> TAO_ZI = Ingredients.register("tao_zi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Sweet", "Fruity")).cost(10).build());
+    public static final DeferredItem<Item> TU_DOU = Ingredients.register("tu_dou", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Vegetarian", "Homecooking")).cost(10).build());
+    public static final DeferredItem<Item> XIA = Ingredients.register("xia", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build())).tags(List.of("Aquatic", "Fresh")).cost(30).build());
+    public static final DeferredItem<Item> XIAN_HUA = Ingredients.register("xian_hua", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Dreamy", "Photogenic")).cost(45).build());
+    public static final DeferredItem<Item> XI_HONG_SHI = Ingredients.register("xi_hong_shi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Vegetarian")).cost(8).build());
+    public static final DeferredItem<Item> XI_LAN_HUA = Ingredients.register("xi_lan_hua", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Vegetarian", "Homecooking")).cost(18).build());
+    public static final DeferredItem<Item> XU_LI = Ingredients.register("xu_li", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Refreshing", "Dreamy")).cost(21).build());
+    public static final DeferredItem<Item> YANG_CONG = Ingredients.register("yang_cong", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Vegetarian", "Fresh")).cost(12).build());
+    public static final DeferredItem<Item> YE_ZHU_ROU = Ingredients.register("ye_zhu_rou", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Meat")).cost(35).build());
+    public static final DeferredItem<Item> YIN_ER = Ingredients.register("yin_er", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Fungus", "Mild")).cost(14).build());
+    public static final DeferredItem<Item> YUE_GUANG_CAO = Ingredients.register("yue_guang_cao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Mild", "Dreamy", "Cultural_Heritage", "Wonderful")).cost(70).build());
+    public static final DeferredItem<Item> ZHANG_YU = Ingredients.register("zhang_yu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build())).tags(List.of("Aquatic", "Fresh", "Sea_Delicacy")).cost(12).build());
+    public static final DeferredItem<Item> ZHI_SHI = Ingredients.register("zhi_shi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build())).tags(List.of("Premium", "Salty", "Fresh")).cost(18).build());
+    public static final DeferredItem<Item> ZHU_ROU = Ingredients.register("zhu_rou", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build())).tags(List.of("Meat")).cost(10).build());
+    public static final DeferredItem<Item> ZHU_SUN = Ingredients.register("zhu_sun", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build())).tags(List.of("Vegetarian", "Mild")).cost(40).build());
+    public static final DeferredItem<Item> ZHU_ZI = Ingredients.register("zhu_zi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.8f).build())).tags(List.of("Photogenic")).cost(15).build());
+    public static final DeferredItem<Item> ZUN_YU = Ingredients.register("zun_yu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build())).tags(List.of("Aquatic", "Fresh")).cost(8).build());
 
     public static final DeferredRegister.Items Cuisines = DeferredRegister.createItems(MystiasIzakaya.MODID);
     //cuisines
-    public static final DeferredItem<Item> BAI_GUO_LUO_BU_PAI_GU_TANG = Cuisines.register("bai_guo_luo_bu_pai_gu_tang", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-                    .food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-                    .tags(List.of("Expensive", "Meat", "Chinese", "Hot", "Soup"))
-                    .cooktimes(6)
-                    .cost(65).build());
-    public static final DeferredItem<Item> BAI_LU_ZHEN_SONG = Cuisines.register("bai_lu_zhen_song", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-                    .food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-                    .tags(List.of("Expensive", "Meat", "Chinese", "Hot", "Soup"))
-                    .ntags(List.of("Sour"))
-                    .cooktimes(12)
-                    .cost(72).build());
-    public static final DeferredItem<Item> BAI_TAO_SHENG_BA_QIAO = Cuisines.register("bai_tao_sheng_ba_qiao", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-                    .food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-                    .tags(List.of("Japanese", "Sweet", "Fruity"))
-                    .ntags(List.of("Meat", "Aquatic", "Salty", "Fresh"))
-                    .cooktimes(12)
-                    .cost(72).build());
-    public static final DeferredItem<Item> BAI_XUE = Cuisines.register("bai_xue", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-                    .food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-                    .tags(List.of("Expensive", "Meat", "Aquatic", "Premium", "Japanese", "Cultural_Heritage"))
-                    .cooktimes(12)
-                    .cost(98).build());
-    public static final DeferredItem<Item> BAN_NI_DI_KE_DAN = Cuisines.register("ban_ni_di_ke_dan", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-                    .food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-                    .tags(List.of("Filling", "Western", "Raw", "Small_Portion"))
-                    .ntags(List.of("Sweet", "Fruity"))
-                    .cooktimes(7)
-                    .cost(98).build());
-    public static final DeferredItem<Item> BA_SI_DI_GUA = Cuisines.register("ba_si_di_gua",  () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-                    .food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-                    .tags(List.of("Filling", "Homecooking", "Sweet", "Vegetarian"))
-                    .ntags(List.of("Raw"))
-                    .cooktimes(6)
-                    .cost(30).build());
-    public static final DeferredItem<Item> BEI_JI_TIAN_XIA_MI_TAO_SE_LA = Cuisines.register("bei_ji_tian_xia_mi_tao_se_la",  () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-                    .food(new FoodProperties.Builder().nutrition(11).saturationModifier(1.2f).build()))
-                    .tags(List.of("Aquatic", "Vegetarian", "Mild", "Sweet", "Photogenic", "Wonderful", "Fruity"))
-                    .ntags(List.of("Salty", "Meat"))
-                    .cooktimes(10)
-                    .cost(25).build());
-    public static final DeferredItem<Item> BI_SI_KAI_WAN_BING_GAN = Cuisines.register("bi_si_kai_wan_bing_gan", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-                    .food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-                    .tags(List.of("Filling", "Hot", "Salty"))
-                    .ntags(List.of("Sour"))
-                    .cooktimes(5)
-                    .cost(26).build());
-    public static final DeferredItem<Item> BU_SI_NIAO = Cuisines.register("bu_si_niao",  () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-                    .food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-                    .tags(List.of("Expensive", "Premium", "Legendary", "Western", "Photogenic", "Grilled", "Aura_Bursting"))
-                    .cooktimes(12)
-                    .cost(65).build());
-    public static final DeferredItem<Item> CHANG_FA_GONG_ZHU = Cuisines.register("chang_fa_gong_zhu", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-                    .food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-                    .tags(List.of("Aquatic", "Filling", "Photogenic"))
-                    .ntags(List.of("Peculiar"))
-                    .cooktimes(5)
-                    .cost(36).build());
-    public static final DeferredItem<Item> CHAO_ROU_SI = Cuisines.register("chao_rou_si", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-                    .tags(List.of("Economical", "Meat", "Homecooking", "Greasy", "Good_With_Alcohol", "Chinese"))
-                    .cooktimes(8)
-                    .cost(15).build());
-    public static final DeferredItem<Item> CHOU_DOU_FU = Cuisines.register("chou_dou_fu",  () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-                    .food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-                    .tags(List.of("Vegetarian", "Chinese", "Peculiar", "Spicy"))
-                    .ntags(List.of("Sweet", "Fruity"))
-                    .cooktimes(5)
-                    .cost(24).build());
-    public static final DeferredItem<Item> CHUI_XUAN_FENG = Cuisines.register("chui_xuan_feng",  () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-                    .food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-                    .tags(List.of("Filling", "Raw", "Specialty", "Peculiar"))
-                    .cooktimes(5)
-                    .cost(42).build());
-    public static final DeferredItem<Item> CHUI_ZHU_YIN_CHUN = Cuisines.register("chui_zhu_yin_chun", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-                    .food(new FoodProperties.Builder().nutrition(15).saturationModifier(1.2f).build()))
-                    .tags(List.of("Expensive", "Premium", "Mountain_Delicacy", "Signature", "Photogenic", "Cultural_Heritage"))
-                    .ntags(List.of("Peculiar", "Fungus"))
-                    .cooktimes(14)
-                    .cost(99).build());
-    public static final DeferredItem<Item> CI_SHEN_PIN_PAN = Cuisines.register("ci_shen_pin_pan",  () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-                    .food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-                    .tags(List.of("Expensive", "Aquatic", "Premium", "Japanese", "Raw", "Photogenic"))
-                    .ntags(List.of("Hot"))
-                    .cooktimes(5)
-                    .cost(88).build());
-    public static final DeferredItem<Item> DA_BAN_SHAO = Cuisines.register("da_ban_shao", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-                    .food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-                    .tags(List.of("Japanese", "Signature", "Photogenic", "Small_Portion"))
-                    .cooktimes(6)
-                    .cost(24).build());
-    public static final DeferredItem<Item> DA_JIANG_HU_CHUAN_JI = Cuisines.register("da_jiang_hu_chuan_ji", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-                    .food(new FoodProperties.Builder().nutrition(25).saturationModifier(1.2f).build()))
-                    .tags(List.of("Aquatic", "Cultural_Heritage", "Expensive", "Good_With_Alcohol", "Japanese", "Legendary",
-                            "Photogenic", "Premium", "Raw", "Fresh", "Sea_Delicacy", "Signature"))
-                    .cooktimes(24)
-                    .cost(206).build());
-    public static final DeferredItem<Item> DA_SHE_YAN = Cuisines.register("da_she_yan", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-                    .food(new FoodProperties.Builder().nutrition(11).saturationModifier(1.2f).build()))
-                    .tags(List.of("Expensive", "Meat", "Aquatic", "Premium", "Filling", "Mountain_Delicacy"))
-                    .ntags(List.of("Homecooking", "Economical"))
-                    .cooktimes(10)
-                    .cost(105).build());
-    public static final DeferredItem<Item> DI_YU_JI_XIN_JIN_GAO = Cuisines.register("di_yu_ji_xin_jin_gao",  () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-                    .food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-                    .tags(List.of("Expenisve", "Greasy", "Hot", "Meat", "Photogenic", "Salty", "Spicy", "Peculiar", "Strength_Boosting"))
-                    .ntags(List.of("Mild", "Vegetarian"))
-                    .cooktimes(12)
-                    .cost(108).build());
-    public static final DeferredItem<Item> DOU_FU_GUO = Cuisines.register("dou_fu_guo",   () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-                    .food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-                    .tags(List.of("Economical", "Vegetarian", "Mild", "Japanese", "Hot"))
-                    .ntags(List.of("Photogenic"))
-                    .cooktimes(5)
-                    .cost(19).build());
-    public static final DeferredItem<Item> DOU_FU_WEI_CHENG = Cuisines.register("dou_fu_wei_cheng",  () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-                    .food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-                    .tags(List.of("Vegetarian", "Homecooking", "Mild", "Japanese", "Soup"))
-                    .ntags(List.of("Greasy"))
-                    .cooktimes(7)
-                    .cost(21).build());
-    public static final DeferredItem<Item> DOU_JIA_ZHENG_GAO = Cuisines.register("dou_jia_zheng_gao",  () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-                    .food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-                    .tags(List.of("Expensive", "Filling", "Photogenic", "Premium", "Raw", "Fresh", "Signature", "Peculiar",
-                            "Strength_Boosting", "Specialty"))
-                    .cooktimes(12)
-                    .cost(105).build());
-    public static final DeferredItem<Item> DU_ZHANG_HUA_YUAN = Cuisines.register("du_zhang_hua_yuan",  () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-                    .food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-                    .tags(List.of("Aquatic", "Signature", "Peculiar", "Poison"))
-                    .cooktimes(8)
-                    .cost(58).build());
-    public static final DeferredItem<Item> ER_TIAN_LIU = Cuisines.register("er_tian_liu",  () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-                    .food(new FoodProperties.Builder().nutrition(19).saturationModifier(1.2f).build()))
-                    .tags(List.of("Expensive", "Meat", "Premium", "Mountain_Delicacy", "Cultural_Heritage", "Grilled", "Aura_Bursting"))
-                    .ntags(List.of("Homecooking"))
-                    .cooktimes(18)
-                    .cost(90).build());
-    public static final DeferredItem<Item> FAN_TUAN = Cuisines.register("fan_tuan", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-                    .tags(List.of("Economical", "Vegetarian", "Homecooking", "Filling", "Japanese"))
-                    .cooktimes(5)
-                    .cost(6).build());
-    public static final DeferredItem<Item> FENG_MAO_ZI_CHA_HUI = Cuisines.register("feng_mao_zi_cha_hui", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-                    .food(new FoodProperties.Builder().nutrition(16).saturationModifier(1.2f).build()))
-                    .tags(List.of("Expensive", "Western", "Sweet", "Photogenic", "Fungus", "Wonderful", "Dreamy", "Specialty"))
-                    .ntags(List.of("Greasy"))
-                    .cooktimes(15)
-                    .cost(188).build());
-    public static final DeferredItem<Item> FENG_ZI_DAN = Cuisines.register("feng_zi_dan", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-                    .food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-                    .tags(List.of("Expensive", "Vegetarian", "Premium", "Mild", "Sweet", "Wonderful", "Small_Portion"))
-                    .ntags(List.of("Mountain_Delicacy"))
-                    .cooktimes(7)
-                    .cost(80).build());
-    public static final DeferredItem<Item> HAI_DAN_CI_SHEN = Cuisines.register("hai_dan_ci_shen",  () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-                    .food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-                    .tags(List.of("Expensive", "Premium", "Sea_Delicacy", "Small_Portion", "Specialty", "Sweet", "Wonderful"))
-                    .cooktimes(8)
-                    .cost(108).build());
-    public static final DeferredItem<Item> HAI_DAN_XIN_XUAN_BING = Cuisines.register("hai_dan_xin_xuan_bing",() ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-                    .food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-                    .tags(List.of("Expensive", "Western", "Sweet", "Photogenic", "Fungus", "Wonderful", "Dreamy", "Specialty"))
-                    .ntags(List.of("Greasy"))
-                    .cooktimes(12)
-                    .cost(128).build());
-    public static final DeferredItem<Item> HAI_DAN_ZHENG_DAN = Cuisines.register("hai_dan_zheng_dan", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-                    .food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-                    .tags(List.of("Expensive", "Sea_Delicacy", "Fresh", "Photogenic"))
-                    .ntags(List.of("Mountain_Delicacy"))
-                    .cooktimes(7)
-                    .cost(112).build());
-    public static final DeferredItem<Item> HAI_DAO_XUN_ROU = Cuisines.register("hai_dao_xun_rou", () ->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-                    .food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build()))
-                    .tags(List.of("Large_Portion", "Legendary", "Meat", "Specialty", "Strength_Boosting"))
-                    .ntags(List.of("Sour"))
-                    .cooktimes(9)
-                    .cost(58).build());
-    public static final DeferredItem<Item> HAI_XIAN_WEI_CHENG_TANG = Cuisines.register("hai_xian_wei_cheng_tang", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Economical", "Vegetarian", "Homecooking", "Soup"))
-					.ntags(List.of("Greasy"))
-					.cooktimes(6)
-					.cost(8).build());
-    public static final DeferredItem<Item> HAN_GONG_CHANG_JIAO = Cuisines.register("han_gong_chang_jiao",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Aquatic", "Premium", "Legendary", "Chinese", "Peculiar",
-							"Cultural_Heritage", "Soup"))
-					.ntags(List.of("Greasy"))
-					.cooktimes(12)
-					.cost(115).build());
-    public static final DeferredItem<Item> HE_HUA_YU_MI_ZHAN = Cuisines.register("he_hua_yu_mi_zhan",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(12).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Chinese", "Cultural_Heritage", "Dreamy", "Expensive", "Legendary", "Mild",
-							"Wonderful"))
-					.cooktimes(11)
-					.cost(94).build());
-    public static final DeferredItem<Item> HE_TANG_YUE_SHE = Cuisines.register("he_tang_yue_she", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Premium", "Mild", "Chinese", "Sweet", "Photogenic", "Refreshing", "Cultural_Heritage"))
-					.ntags(List.of("Meat", "Good_With_Alcohol", "Hot"))
-					.cooktimes(12)
-					.cost(128).build());
-    public static final DeferredItem<Item> HONG_DOU_DA_FU = Cuisines.register("hong_dou_da_fu", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Japanese", "Sweet", "Small_Portion"))
-					.cooktimes(7)
-					.cost(28).build());
-    public static final DeferredItem<Item> HONG_SHAO_MAN_YU = Cuisines.register("hong_shao_man_yu", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Vegetarian", "Greasy", "Fresh", "Signature"))
-					.cooktimes(8)
-					.cost(42).build());
-    public static final DeferredItem<Item> HUANG_YOU_NIU_PAI = Cuisines.register("huang_you_niu_pai", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Meat", "Greasy", "Filling", "Western"))
-					.ntags(List.of("Sweet", "Refreshing"))
-					.cooktimes(7)
-					.cost(60).build());
-    public static final DeferredItem<Item> HUAN_JIN_SHU_YU_BIN = Cuisines.register("huan_jin_shu_yu_bin",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Good_With_Alcohol", "Greasy", "Strength_Boosting"))
-					.cooktimes(9)
-					.cost(40).build());
-    public static final DeferredItem<Item> HUAN_TAN_HUA_GAO = Cuisines.register("huan_tan_hua_gao", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Premium", "Legendary", "Sweet", "Photogenic", "Dreamy"))
-					.ntags(List.of("Meat", "Aquatic"))
-					.cooktimes(7)
-					.cost(78).build());
-    public static final DeferredItem<Item> HUAN_XIANG_FENG_MI = Cuisines.register("huan_xiang_feng_mi",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(19).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Meat", "Greasy", "Filling", "Raw", "Signature", "Photogenic", "Strength_Boosting"))
-					.ntags(List.of("Refreshing", "Mild"))
-					.cooktimes(18)
-					.cost(185).build());
-    public static final DeferredItem<Item> HUAN_XIANG_FOU_TIAO_QIANG = Cuisines.register("huan_xiang_fou_tiao_qiang",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(19).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Chinese", "Cultural_Heritage", "Expensive", "Fungus", "Legendary", "Meat",
-							"Mountain_Delicacy", "Photogenic", "Premium", "Specialty", "Strength_Boosting"))
-					.cooktimes(18)
-					.cost(160).build());
-    public static final DeferredItem<Item> HUAN_XIANG_XING_LIAN_CHUAN = Cuisines.register("huan_xiang_xing_lian_chuan", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(14).saturationModifier(1.2f).build()))
-					.tags(List.of("Refreshing", "Dreamy", "Expensive", "Photogenic", "Premium", "Raw", "Fresh", "Signature",
-							"Specialty", "Wonderful"))
-					.ntags(List.of("Peculiar"))
-					.cooktimes(13)
-					.cost(132).build());
-    public static final DeferredItem<Item> HUA_GUANG_YU_JIAN_BAO = Cuisines.register("hua_guang_yu_jian_bao",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Meat", "Premium", "Legendary", "Chinese", "Fungus", "Dreamy"))
-					.cooktimes(8)
-					.cost(128).build());
-    public static final DeferredItem<Item> HUA_NIAO_FENG_YUE = Cuisines.register("hua_niao_feng_yue", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Premium", "Wonderful", "Dreamy", "Specialty"))
-					.ntags(List.of("Hot", "Greasy"))
-					.cooktimes(9)
-					.cost(78).build());
-    public static final DeferredItem<Item> HUI_LING_DUN_NIU_PAI = Cuisines.register("hui_ling_dun_niu_pai", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(15).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Meat", "Premium", "Legendary", "Mountain_Delicacy", "Western"))
-					.ntags(List.of("Sweet", "Refreshing"))
-					.cooktimes(14)
-					.cost(150).build());
-    public static final DeferredItem<Item> HUO_XING = Cuisines.register("huo_xing", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(25).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Aquatic", "Premium", "Legendary", "Sea_Delicacy", "Photogenic",
-							"Cultural_Heritage", "Wonderful", "Fruity"))
-					.ntags(List.of("Mountain_Delicacy"))
-					.cooktimes(24)
-					.cost(198).build());
-    public static final DeferredItem<Item> HU_LA_TANG = Cuisines.register("hu_la_tang", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Homecooking", "Chinese", "Hot", "Soup", "Spicy", "Aura_Bursting"))
-					.cooktimes(8)
-					.cost(60).build());
-    public static final DeferredItem<Item> JIN_XIA_DA_MAO_XIAN = Cuisines.register("jin_xia_da_mao_xian", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Dreamy", "Expensive", "Photogenic", "Specialty", "Peculiar", "Strength_Boosting",
-							"Wonderful"))
-					.ntags(List.of("Homecooking"))
-					.cooktimes(12)
-					.cost(90).build());
-    public static final DeferredItem<Item> JUE_JIAO_GUAN_DOU_ZHU = Cuisines.register("jue_jiao_guan_dou_zhu", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Filling", "Hot", "Large_Portion", "Meat", "Premium", "Fresh",
-							"Specialty", "Spicy", "Strength_Boosting"))
-					.cooktimes(12)
-					.cost(92).build());
-    public static final DeferredItem<Item> JU_REN_YU_ZI_SHAO = Cuisines.register("ju_ren_yu_zi_shao", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Filling", "Japanese", "Premium", "Strength_Boosting", "Sweet"))
-					.ntags(List.of("Good_With_Alcohol"))
-					.cooktimes(12)
-					.cost(60).build());
-    public static final DeferredItem<Item> KAO_BA_MU_MAN = Cuisines.register("kao_ba_mu_man", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Signature", "Grilled"))
-					.ntags(List.of("Meat", "Vegetarian"))
-					.cooktimes(7)
-					.cost(22).build());
-    public static final DeferredItem<Item> KAO_DI_GUA = Cuisines.register("kao_di_gua", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-					.tags(List.of("Economical", "Filling", "Homecooking", "Sweet"))
-					.ntags(List.of("Good_With_Alcohol"))
-					.cooktimes(5)
-					.cost(25).build());
-    public static final DeferredItem<Item> KAO_MO_GU = Cuisines.register("kao_mo_gu", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Economical", "Vegetarian", "Salty", "Hot", "Fungus", "Grilled"))
-					.cooktimes(6)
-					.cost(18).build());
-    public static final DeferredItem<Item> LENG_DOU_FU = Cuisines.register("leng_dou_fu",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Economical", "Vegetarian", "Salty", "Hot", "Fungus", "Grilled"))
-					.cooktimes(6)
-					.cost(18).build());
-    public static final DeferredItem<Item> LIANG_CAI_DIAO_HUA = Cuisines.register("liang_cai_diao_hua", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-					.tags(List.of("Vegetarian", "Mild", "Photogenic", "Refreshing"))
-					.ntags(List.of("Meat", "Hot"))
-					.cooktimes(5)
-					.cost(20).build());
-    public static final DeferredItem<Item> LIU_SHUI_SU_MIAN = Cuisines.register("liu_shui_su_mian", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Vegetarian", "Mild", "Refreshing", "Wonderful"))
-					.ntags(List.of("Greasy"))
-					.cooktimes(7)
-					.cost(40).build());
-    public static final DeferredItem<Item> LI_LIANG_TANG = Cuisines.register("li_liang_tang", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Meat", "Mountain_Delicacy", "Hot", "Strength_Boosting", "Soup"))
-					.ntags(List.of("Small_Portion", "Refreshing"))
-					.cooktimes(12)
-					.cost(34).build());
-    public static final DeferredItem<Item> LONG_YIN_TAO_ZI = Cuisines.register("long_yin_tao_zi",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(19).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Premium", "Legendary", "Mild", "Sweet", "Refreshing", "Wonderful", "Specialty", "Fruity"))
-					.ntags(List.of("Fungus", "Meat", "Sea_Delicacy", "Peculiar", "Raw"))
-					.cooktimes(18)
-					.cost(199).build());
-    public static final DeferredItem<Item> LUO_HAN_SHANG_SU = Cuisines.register("luo_han_shang_su", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Refreshing", "Cultural_Heritage", "Dreamy", "Expensive", "Mild", "Premium", "Fresh",
-							"Specialty", "Vegetarian"))
-					.ntags(List.of("Meat", "Spicy"))
-					.cooktimes(12)
-					.cost(97).build());
-    public static final DeferredItem<Item> LU_SHUI_ZHU_DAN = Cuisines.register("lu_shui_zhu_dan", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(4).saturationModifier(1.2f).build()))
-					.tags(List.of("Economical", "Mild", "Raw"))
-					.ntags(List.of("Meat", "Aquatic", "Greasy"))
-					.cooktimes(3)
-					.cost(18).build());
-    public static final DeferredItem<Item> LV_YE_XIAN_GU = Cuisines.register("lv_ye_xian_gu", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Mild", "Cultural_Heritage", "Fungus", "Specialty"))
-					.cooktimes(6)
-					.cost(24).build());
-    public static final DeferredItem<Item> MAN_YU_NENG_DAN_JING = Cuisines.register("man_yu_neng_dan_jing", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Raw", "Signature"))
-					.cooktimes(5)
-					.cost(45).build());
-    public static final DeferredItem<Item> MAO_FAN = Cuisines.register("mao_fan", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Fresh", "Small_Portion"))
-					.ntags(List.of("Greasy"))
-					.cooktimes(5)
-					.cost(26).build());
-    public static final DeferredItem<Item> MAO_MI_KE_LU_LI = Cuisines.register("mao_mi_ke_lu_li", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Filling", "Sweet", "Photogenic"))
-					.ntags(List.of("Peculiar"))
-					.cooktimes(7)
-					.cost(45).build());
-    public static final DeferredItem<Item> MAO_MI_PI_SHA = Cuisines.register("mao_mi_pi_sha", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(11).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Filling", "Western", "Photogenic", "Fungus"))
-					.ntags(List.of("Refreshing"))
-					.cooktimes(10)
-					.cost(75).build());
-    public static final DeferredItem<Item> MAO_MI_XI_SHUI = Cuisines.register("mao_mi_xi_shui", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Vegetarian", "Sweet", "Photogenic", "Refreshing", "Wonderful", "Dreamy"))
-					.ntags(List.of("Good_With_Alcohol", "Hot"))
-					.cooktimes(12)
-					.cost(120).build());
-    public static final DeferredItem<Item> MAO_YU_RONG_YAN_DOU_FU = Cuisines.register("mao_yu_rong_yan_dou_fu", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Vegetarian", "Chinese", "Fresh", "Photogenic", "Wonderful"))
-					.cooktimes(8)
-					.cost(85).build());
-    public static final DeferredItem<Item> MAO_YU_SAN_SE_BING_JI_LING = Cuisines.register("mao_yu_san_se_bing_ji_ling",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Western", "Sweet", "Photogenic", "Refreshing", "Dreamy"))
-					.cooktimes(8)
-					.cost(75).build());
-    public static final DeferredItem<Item> MA_PO_DOU_FU = Cuisines.register("ma_po_dou_fu", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Vegetarian", "Chinese", "Hot", "Spicy"))
-					.ntags(List.of("Sweet", "Fruity", "Refreshing"))
-					.cooktimes(6)
-					.cost(32).build());
-    public static final DeferredItem<Item> MA_SHU = Cuisines.register("ma_shu", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Japanese", "Sweet", "Small_Portion"))
-					.ntags(List.of("Meat", "Aquatic", "Salty", "Fresh"))
-					.cooktimes(7)
-					.cost(30).build());
-    public static final DeferredItem<Item> MEI_ZI_CHA_PAO_FAN = Cuisines.register("mei_zi_cha_pao_fan", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(5).saturationModifier(1.2f).build()))
-					.tags(List.of("Homecooking", "Japanese"))
-					.cooktimes(4)
-					.cost(32).build());
-    public static final DeferredItem<Item> MI_QIAN_LI_ZI = Cuisines.register("mi_qian_li_zi",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Small_Portion", "Specialty", "Sweet"))
-					.cooktimes(6)
-					.cost(30).build());
-    public static final DeferredItem<Item> MI_TAO_HONG_SHAO_ROU = Cuisines.register("mi_tao_hong_shao_rou", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Meat", "Good_With_Alcohol", "Wonderful", "Fruity"))
-					.cooktimes(8)
-					.cost(42).build());
-    public static final DeferredItem<Item> MI_ZHI_CHA_SHAO = Cuisines.register("mi_zhi_cha_shao",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Meat", "Greasy", "Chinese", "Sweet", "Wonderful"))
-					.cooktimes(7)
-					.cost(70).build());
-    public static final DeferredItem<Item> MI_ZHI_XIAN_JUN_BAO = Cuisines.register("mi_zhi_xian_jun_bao", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Fungus", "Japanese", "Fresh", "Specialty"))
-					.cooktimes(9)
-					.cost(62).build());
-    public static final DeferredItem<Item> MI_ZHI_XIAO_YU_GAN = Cuisines.register("mi_zhi_xiao_yu_gan",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Salty", "Fresh", "Small_Portion"))
-					.cooktimes(8)
-					.cost(30).build());
-    public static final DeferredItem<Item> MO_GU_ROU_PIAN = Cuisines.register("mo_gu_rou_pian", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Meat", "Homecooking", "Greasy", "Fungus"))
-					.cooktimes(6)
-					.cost(20).build());
-    public static final DeferredItem<Item> MO_NV_DE_WU_TA_HUI = Cuisines.register("mo_nv_de_wu_ta_hui", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(15).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Expensive", "Fungus", "Greasy", "Hot", "Photogenic", "Salty", "Fresh", "Spicy"))
-					.cooktimes(14)
-					.cost(112).build());
-    public static final DeferredItem<Item> NAI_XIANG_MO_GU_TANG = Cuisines.register("nai_xiang_mo_gu_tang", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Fungus", "Homecooking", "Photogenic"))
-					.cooktimes(8)
-					.cost(28).build());
-    public static final DeferredItem<Item> NAI_YOU_JU_XIE = Cuisines.register("nai_you_ju_xie",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Good_With_Alcohol", "Premium", "Photogenic", "Fresh", "Sea_Delicacy", "Signature"))
-					.cooktimes(12)
-					.cost(88).build());
-    public static final DeferredItem<Item> NAI_YOU_TUN_CAI = Cuisines.register("nai_you_tun_cai", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build()))
-					.tags(List.of("Vegetarian", "Western", "Fungus", "Soup"))
-					.cooktimes(9)
-					.cost(20).build());
-    public static final DeferredItem<Item> NAN_GUA_XIA_ZHONG = Cuisines.register("nan_gua_xia_zhong",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Filling", "Mild", "Photogenic", "Fresh", "Specialty", "Sweet"))
-					.cooktimes(9)
-					.cost(55).build());
-    public static final DeferredItem<Item> NENG_LIANG_CHUAN = Cuisines.register("neng_liang_chuan", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Meat", "Filling", "Grilled"))
-					.cooktimes(12)
-					.cost(50).build());
-    public static final DeferredItem<Item> NIU_ROU_GAI_JIAO_FAN = Cuisines.register("niu_rou_gai_jiao_fan",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Meat", "Homecooking", "Filling"))
-					.cooktimes(7)
-					.cost(20).build());
-    public static final DeferredItem<Item> NIU_ROU_YUAN_YANG_HUO_GUO = Cuisines.register("niu_rou_yuan_yang_huo_guo", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Meat", "Homecooking", "Mountain_Delicacy", "Chinese", "Hot",
-							"Strength_Boosting", "Fungus", "Spicy"))
-					.ntags(List.of("Refreshing", "Dreamy"))
-					.cooktimes(5)
-					.cost(188).build());
-    public static final DeferredItem<Item> NI_JIU_ZI_YU = Cuisines.register("ni_jiu_zi_yu", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Dreamy", "Expensive", "Good_With_Alcohol", "Hot", "Legendary", "Small_Portion",
-							"Peculiar"))
-					.cooktimes(12)
-					.cost(120).build());
-    public static final DeferredItem<Item> NI_ZHUAN_TIAN_DI = Cuisines.register("ni_zhuan_tian_di", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Mountain_Delicacy", "Refreshing", "Peculiar", "Fungus", "Wonderful", "Dreamy", "Aura_Bursting"))
-					.cooktimes(12)
-					.cost(124).build());
-    public static final DeferredItem<Item> PENG_LAI_YU_ZHI = Cuisines.register("peng_lai_yu_zhi", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(14).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Meat", "Premium", "Legendary", "Cultural_Heritage", "Grilled"))
-					.cooktimes(13)
-					.cost(124).build());
-    public static final DeferredItem<Item> PU_TONG_XIA_DAN_GAO = Cuisines.register("pu_tong_xia_dan_gao", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Cultural_Heritage", "Fruity", "Photogenic", "Premium", "Sweet"))
-					.cooktimes(8)
-					.cost(56).build());
-    public static final DeferredItem<Item> QI_SHE_YANG_GENG = Cuisines.register("qi_she_yang_geng",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Cultural_Heritage", "Dreamy", "Expensive", "Fruity", "Photogenic", "Premium", "Sweet",
-							"Wonderful"))
-					.cooktimes(8)
-					.cost(92).build());
-    public static final DeferredItem<Item> QUAN_ROU_SHENG_YAN = Cuisines.register("quan_rou_sheng_yan", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(15).saturationModifier(1.2f).build()))
-					.tags(List.of("Cultural_Heritage", "Dreamy", "Expensive", "Fruity", "Photogenic", "Premium", "Sweet",
-							"Wonderful"))
-					.cooktimes(14)
-					.cost(115).build());
-    public static final DeferredItem<Item> RAN_JING_BU_DING = Cuisines.register("ran_jing_bu_ding", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Refreshing", "Dreamy", "Expensive", "Fruity", "Signature", "Small_Portion", "Sour",
-							"Strength_Boosting", "Sweet"))
-					.ntags(List.of("Greasy", "Salty"))
-					.cooktimes(8)
-					.cost(73).build());
-    public static final DeferredItem<Item> RE_SONG_BING = Cuisines.register("re_song_bing",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build()))
-					.tags(List.of("Filling", "Western", "Sweet"))
-					.cooktimes(9)
-					.cost(22).build());
-    public static final DeferredItem<Item> SAI_XIONG_ZHANG = Cuisines.register("sai_xiong_zhang", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Meat", "Aquatic", "Premium", "Mountain_Delicacy", "Strength_Boosting", "Wonderful"))
-					.cooktimes(12)
-					.cost(70).build());
-    public static final DeferredItem<Item> SAN_WEN_YU_TIAN_FU_LUO = Cuisines.register("san_wen_yu_tian_fu_luo",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Greasy", "Premium", "Fresh", "Small_Portion"))
-					.cooktimes(8)
-					.cost(44).build());
-    public static final DeferredItem<Item> SHANG_QI_ZHI_SHI_TIAO = Cuisines.register("shang_qi_zhi_shi_tiao", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Good_With_Alcohol", "Salty", "Fresh", "Specialty"))
-					.cooktimes(6)
-					.cost(25).build());
-    public static final DeferredItem<Item> SHENG_BAI_LIAN_ZI_GAO = Cuisines.register("sheng_bai_lian_zi_gao", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(11).saturationModifier(1.2f).build()))
-					.tags(List.of("Mild", "Photogenic", "Small_Portion", "Specialty", "Vegetarian"))
-					.ntags(List.of("Spicy"))
-					.cooktimes(10)
-					.cost(56).build());
-    public static final DeferredItem<Item> SHENG_MING_ZHI_YUAN = Cuisines.register("sheng_ming_zhi_yuan",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(14).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Premium", "Legendary", "Mild", "Raw", "Fungus", "Wonderful", "Soup"))
-					.ntags(List.of("Mountain_Delicacy"))
-					.cooktimes(13)
-					.cost(124).build());
-    public static final DeferredItem<Item> SHI_GUO_ZHU_SUN_DUN_ROU = Cuisines.register("shi_guo_zhu_sun_dun_rou", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Meat", "Homecooking", "Filling"))
-					.cooktimes(7)
-					.cost(42).build());
-    public static final DeferredItem<Item> SHI_JIN_TIAN_FU_LUO = Cuisines.register("shi_jin_tian_fu_luo",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Meat", "Fungus", "Good_With_Alcohol", "Greasy", "Homecooking", "Japanese",
-							"Signature", "Strength_Boosting"))
-					.cooktimes(7)
-					.cost(72).build());
-    public static final DeferredItem<Item> SHI_LI_YIN_XING = Cuisines.register("shi_li_yin_xing",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Vegetarian", "Chinese", "Sweet", "Cultural_Heritage"))
-					.ntags(List.of("Salty"))
-					.cooktimes(8)
-					.cost(60).build());
-    public static final DeferredItem<Item> SHI_ZI_TOU = Cuisines.register("shi_zi_tou", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Good_With_Alcohol", "Meat", "Fresh", "Signature", "Specialty"))
-					.ntags(List.of("Aquatic", "Filling"))
-					.cooktimes(7)
-					.cost(28).build());
-    public static final DeferredItem<Item> SHUI_JIAO = Cuisines.register("shui_jiao", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-					.tags(List.of("Vegetarian", "Homecooking", "Chinese", "Cultural_Heritage"))
-					.cooktimes(5)
-					.cost(35).build());
-    public static final DeferredItem<Item> SHUI_ZHU_YU = Cuisines.register("shui_zhu_yu",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Aquatic", "Chinese", "Hot", "Spicy", "Aura_Bursting"))
-					.ntags(List.of("Sweet", "Fruity", "Refreshing", "Meat"))
-					.cooktimes(8)
-					.cost(68).build());
-    public static final DeferredItem<Item> SHU_CAI_ZHUAN_JI = Cuisines.register("shu_cai_zhuan_ji", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-					.tags(List.of("Vegetarian", "Mild", "Raw", "Refreshing"))
-					.ntags(List.of("Meat", "Aquatic", "Hot"))
-					.cooktimes(5)
-					.cost(56).build());
-    public static final DeferredItem<Item> SI_KANG_BING = Cuisines.register("si_kang_bing", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Economical", "Filling", "Western"))
-					.cooktimes(7)
-					.cost(8).build());
-    public static final DeferredItem<Item> SONG_ZI_GAO = Cuisines.register("song_zi_gao",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Mild", "Specialty"))
-					.cooktimes(8)
-					.cost(46).build());
-    public static final DeferredItem<Item> SOU_MA_TUAN_ZI = Cuisines.register("sou_ma_tuan_zi", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build()))
-					.tags(List.of("Cultural_Heritage", "Filling", "Photogenic", "Peculiar"))
-					.ntags(List.of("Meat"))
-					.cooktimes(9)
-					.cost(45).build());
-    public static final DeferredItem<Item> TAI_JI_BA_GUA_YU_DU = Cuisines.register("tai_ji_ba_gua_yu_du",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(15).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Refreshing", "Cultural_Heritage", "Expensive", "Mild", "Premium", "Fresh"))
-					.cooktimes(14)
-					.cost(136).build());
-    public static final DeferredItem<Item> TANG_YUAN = Cuisines.register("tang_yuan", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-					.tags(List.of("Vegetarian", "Homecooking", "Chinese", "Cultural_Heritage"))
-					.cooktimes(5)
-					.cost(35).build());
-    public static final DeferredItem<Item> TAO_HUA_GENG = Cuisines.register("tao_hua_geng", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Vegetarian", "Sweet", "Photogenic", "Refreshing", "Fruity", "Soup"))
-					.cooktimes(7)
-					.cost(55).build());
-    public static final DeferredItem<Item> TAO_HUA_LIU_LI_JUAN = Cuisines.register("tao_hua_liu_li_juan",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Premium", "Japanese", "Sweet", "Photogenic", "Small_Portion", "Dreamy", "Specialty"))
-					.ntags(List.of("Meat", "Peculiar", "Filling", "Fungus"))
-					.cooktimes(8)
-					.cost(60).build());
-    public static final DeferredItem<Item> TIAN_SHI_BAN_LI_MENG_GU = Cuisines.register("tian_shi_ban_li_meng_gu", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Chinese", "Fungus", "Homecooking", "Specialty", "Vegetarian"))
-					.cooktimes(8)
-					.cost(55).build());
-    public static final DeferredItem<Item> TI_SHEN_BU_DING = Cuisines.register("ti_shen_bu_ding", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Refreshing", "Fruity", "Small_Portion", "Sour", "Strength_Boosting", "Sweet"))
-					.tags(List.of("Greasy", "Salty"))
-					.cooktimes(8)
-					.cost(42).build());
-    public static final DeferredItem<Item> TONG_LUO_SHAO = Cuisines.register("tong_luo_shao", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Vegetarian", "Japanese", "Sweet", "Specialty"))
-					.tags(List.of("Meat"))
-					.cooktimes(6)
-					.cost(40).build());
-    public static final DeferredItem<Item> TUN_GU_LA_MIAN = Cuisines.register("tun_gu_la_mian",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Meat", "Homecooking", "Filling", "Salty"))
-					.cooktimes(8)
-					.cost(60).build());
-    public static final DeferredItem<Item> TU_DOU_KE_LE_BING = Cuisines.register("tu_dou_ke_le_bing", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Vegetarian", "Homecooking", "Greasy"))
-					.tags(List.of("Refreshing"))
-					.cooktimes(6)
-					.cost(22).build());
-    public static final DeferredItem<Item> WEN_NUAN_FAN_TUAN = Cuisines.register("wen_nuan_fan_tuan",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Vegetarian", "Homecooking", "Filling", "Japanese", "Hot"))
-					.cooktimes(8)
-					.cost(30).build());
-    public static final DeferredItem<Item> WU_YI_SHI_YAO_GUAI_MU_SI = Cuisines.register("wu_yi_shi_yao_guai_mu_si", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Premium", "Western", "Sweet", "Photogenic", "Dreamy"))
-					.cooktimes(8)
-					.cost(60).build());
-    public static final DeferredItem<Item> XIANG_CHUN_JIAN_BING = Cuisines.register("xiang_chun_jian_bing", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Signature", "Specialty"))
-					.cooktimes(6)
-					.cost(30).build());
-    public static final DeferredItem<Item> XIANG_JIAN_SAN_WEN_YU = Cuisines.register("xiang_jian_san_wen_yu", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(11).saturationModifier(1.2f).build()))
-					.tags(List.of("Meat", "Western", "Fresh"))
-					.cooktimes(10)
-					.cost(58).build());
-    public static final DeferredItem<Item> XIANG_JIAN_SHUANG_GU_ROU_JUAN = Cuisines.register("xiang_jian_shuang_gu_rou_juan",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Fungus", "Good_With_Alcohol", "Greasy", "Homecooking", "Hot", "Meat",
-							"Signature"))
-					.ntags(List.of("Refreshing"))
-					.cooktimes(9)
-					.cost(63).build());
-    public static final DeferredItem<Item> XIANG_ZHA_CHAN_SHUI = Cuisines.register("xiang_zha_chan_shui",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Economical", "Greasy", "Peculiar"))
-					.cooktimes(8)
-					.cost(19).build());
-    public static final DeferredItem<Item> XIAO_XIAO_DE_TIAN_MI_DU_YAO = Cuisines.register("xiao_xiao_de_tian_mi_du_yao", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(17).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Premium", "Sweet", "Photogenic", "Small_Portion", "Dreamy"))
-					.ntags(List.of("Meat"))
-					.cooktimes(16)
-					.cost(87).build());
-    public static final DeferredItem<Item> XING_HONG_E_MO_DAN_GAO = Cuisines.register("xing_hong_e_mo_dan_gao", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Western", "Sweet", "Photogenic", "Peculiar", "Dreamy"))
-					.cooktimes(8)
-					.cost(60).build());
-    public static final DeferredItem<Item> YANG_WANG_TIAN_HUA_BAN_PAI = Cuisines.register("yang_wang_tian_hua_ban_pai", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Good_With_Alcohol", "Photogenic", "Sea_Delicacy", "Signature", "Specialty", "Peculiar"))
-					.ntags(List.of("Meat"))
-					.cooktimes(9)
-					.cost(66).build());
-    public static final DeferredItem<Item> YANG_XIN_ZHOU = Cuisines.register("yang_xin_zhou",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-					.tags(List.of("Mild", "Sweet", "Specialty"))
-					.cooktimes(5)
-					.cost(35).build());
-    public static final DeferredItem<Item> YAN_HUANG_GUA = Cuisines.register("yan_huang_gua", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Economical", "Good_With_Alcohol", "Salty", "Small_Portion", "Vegetarian"))
-					.cooktimes(6)
-					.cost(16).build());
-    public static final DeferredItem<Item> YAN_JIANG = Cuisines.register("yan_jiang", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Meat", "Aquatic", "Premium", "Filling", "Hot", "Strength_Boosting", "Fungus"))
-					.ntags(List.of("Refreshing"))
-					.cooktimes(8)
-					.cost(125).build());
-    public static final DeferredItem<Item> YE_WEI_JIA_NONG = Cuisines.register("ye_wei_jia_nong", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Meat", "Greasy", "Filling", "Mountain_Delicacy", "Hot"))
-					.cooktimes(8)
-					.cost(66).build());
-    public static final DeferredItem<Item> YING_LUO_XUE = Cuisines.register("ying_luo_xue",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Premium", "Sea_Delicacy", "Japanese", "Raw", "Photogenic", "Small_Portion"))
-					.ntags(List.of("Greasy"))
-					.cooktimes(12)
-					.cost(50).build());
-    public static final DeferredItem<Item> YIN_HUA_BU_DING = Cuisines.register("yin_hua_bu_ding", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Refreshing", "Fruity", "Photogenic", "Small_Portion", "Specialty", "Sweet"))
-					.ntags(List.of("Greasy", "Salty"))
-					.cooktimes(6)
-					.cost(32).build());
-    public static final DeferredItem<Item> YIN_YU_SHUI_GUO_PAI = Cuisines.register("yin_yu_shui_guo_pai",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Fruity", "Salty", "Fresh", "Sour", "Specialty"))
-					.cooktimes(8)
-					.cost(36).build());
-    public static final DeferredItem<Item> YI_JI_BI_SHA = Cuisines.register("yi_ji_bi_sha", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build()))
-					.tags(List.of("Grilled", "Expensive", "Filling", "Greasy", "Meat", "Mountain_Delicacy",
-							"Strength_Boosting"))
-					.cooktimes(9)
-					.cost(62).build());
-    public static final DeferredItem<Item> YI_SHI_HUI_FAN = Cuisines.register("yi_shi_hui_fan", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Filling", "Western", "Fresh", "Fungus"))
-					.ntags(List.of("Sweet"))
-					.cooktimes(6)
-					.cost(70).build());
-    public static final DeferredItem<Item> YOU_DOU_FU = Cuisines.register("you_dou_fu",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Economical", "Vegetarian", "Homecooking", "Greasy", "Japanese"))
-					.cooktimes(7)
-					.cost(16).build());
-    public static final DeferredItem<Item> YOU_MENG = Cuisines.register("you_meng", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Premium", "Mild", "Western", "Sweet", "Photogenic", "Refreshing", "Dreamy"))
-					.ntags(List.of("Meat", "Good_With_Alcohol", "Aquatic"))
-					.cooktimes(12)
-					.cost(133).build());
-    public static final DeferredItem<Item> YUE_BING = Cuisines.register("yue_bing", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Filling", "Chinese", "Sweet", "Cultural_Heritage", "Wonderful", "Small_Portion"))
-					.cooktimes(10)
-					.cost(20).build());
-    public static final DeferredItem<Item> YUE_GUANG_TUAN_ZI = Cuisines.register("yue_guang_tuan_zi", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Japanese", "Sweet", "Wonderful", "Specialty"))
-					.ntags(List.of("Meat", "Fresh", "Salty", "Aquatic"))
-					.cooktimes(8)
-					.cost(80).build());
-    public static final DeferredItem<Item> YUE_ZHI_LIAN_REN = Cuisines.register("yue_zhi_lian_ren",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(11).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Sweet", "Photogenic", "Small_Portion", "Specialty"))
-					.ntags(List.of("Meat", "Aquatic", "Vegetarian"))
-					.cooktimes(10)
-					.cost(66).build());
-    public static final DeferredItem<Item> YUN_SHAN_MIAO_HUA_TANG = Cuisines.register("yun_shan_miao_hua_tang",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Fruity", "Specialty", "Sweet", "Wonderful"))
-					.ntags(List.of("Meat", "Salty"))
-					.cooktimes(8)
-					.cost(20).build());
-    public static final DeferredItem<Item> YU_YUE_LONG_MEN = Cuisines.register("yu_yue_long_men",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Chinese", "Cultural_Heritage", "Dreamy", "Expensive", "Fungus",
-							"Large_Portion", "Meat", "Premium", "Fresh", "Sea_Delicacy", "Sweet"))
-					.cooktimes(12)
-					.cost(142).build());
-    public static final DeferredItem<Item> ZA_CHUI = Cuisines.register("za_chui",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-					.tags(List.of("Meat", "Homecooking", "Fresh", "Hot"))
-					.cooktimes(5)
-					.cost(40).build());
-    public static final DeferredItem<Item> ZHANG_YU_SHAO = Cuisines.register("zhang_yu_shao",() ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Filling", "Photogenic", "Small_Portion", "Signature"))
-					.cooktimes(8)
-					.cost(36).build());
-    public static final DeferredItem<Item> ZHA_BA_MU_MAN = Cuisines.register("zha_ba_mu_man",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Greasy", "Signature"))
-					.ntags(List.of("Refreshing"))
-					.cooktimes(7)
-					.cost(27).build());
-    public static final DeferredItem<Item> ZHA_FAN_QIE_TIAO = Cuisines.register("zha_fan_qie_tiao",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Peculiar", "Wonderful", "Small_Portion"))
-					.ntags(List.of("Aquatic"))
-					.cooktimes(6)
-					.cost(26).build());
-    public static final DeferredItem<Item> ZHA_XIA_TIAN_FU_LUO = Cuisines.register("zha_xia_tian_fu_luo", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Good_With_Alcohol", "Greasy"))
-					.ntags(List.of("Mild"))
-					.cooktimes(6)
-					.cost(22).build());
-    public static final DeferredItem<Item> ZHA_ZHU_ROU_PAI = Cuisines.register("zha_zhu_rou_pai", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Meat", "Homecooking", "Greasy", "Filling"))
-					.cooktimes(7)
-					.cost(25).build());
-    public static final DeferredItem<Item> ZHEN_HAI_XIAN_WEI_CHENG_TANG = Cuisines.register("zhen_hai_xian_wei_cheng_tang", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Homecooking", "Greasy", "Filling"))
-					.cooktimes(8)
-					.cost(55).build());
-    public static final DeferredItem<Item> ZHI_SHI_DAN = Cuisines.register("zhi_shi_dan", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Greasy", "Raw", "Salty", "Fresh"))
-					.ntags(List.of("Meat"))
-					.cooktimes(6)
-					.cost(16).build());
-    public static final DeferredItem<Item> ZHI_ZHUNG_HAI_XIAN_MIAN = Cuisines.register("zhi_zhung_hai_xian_mian", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC)
-					.food(new FoodProperties.Builder().nutrition(11).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Aquatic", "Homecooking", "Premium", "Filling", "Sea_Delicacy", "Fresh"))
-					.cooktimes(10)
-					.cost(135).build());
-    public static final DeferredItem<Item> ZHI_ZHU_ROU_FAN_TUAN = Cuisines.register("zhi_zhu_rou_fan_tuan",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Economical", "Meat", "Homecooking", "Filling", "Japanese"))
-					.cooktimes(6)
-					.cost(14).build());
-    public static final DeferredItem<Item> ZHU_DOU_FU = Cuisines.register("zhu_dou_fu", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Vegetarian", "Homecooking", "Mild"))
-					.cooktimes(7)
-					.cost(22).build());
-    public static final DeferredItem<Item> ZHU_LU_DIE = Cuisines.register("zhu_lu_die",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Meat", "Premium", "Cultural_Heritage"))
-					.cooktimes(8)
-					.cost(78).build());
-    public static final DeferredItem<Item> ZHU_QU_JI = Cuisines.register("zhu_qu_ji",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Meat", "Premium", "Legendary", "Japanese", "Photogenic", "Cultural_Heritage", "Specialty"))
-					.cooktimes(12)
-					.cost(65).build());
-    public static final DeferredItem<Item> ZHU_ROU_GAI_JIAO_FAN = Cuisines.register("zhu_rou_gai_jiao_fan", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Meat", "Homecooking", "Filling"))
-					.cooktimes(7)
-					.cost(20).build());
-    public static final DeferredItem<Item> ZHU_ROU_ZUN_YU_XUN = Cuisines.register("zhu_rou_zun_yu_xun",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build()))
-					.tags(List.of("Meat", "Aquatic", "Homecooking", "Grilled"))
-					.cooktimes(7)
-					.cost(26).build());
-    public static final DeferredItem<Item> ZHU_SUN_CHAO_ROU = Cuisines.register("zhu_sun_chao_rou",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(11).saturationModifier(1.2f).build()))
-					.tags(List.of("Meat", "Homecooking", "Good_With_Alcohol"))
-					.cooktimes(10)
-					.cost(25).build());
-    public static final DeferredItem<Item> ZHU_TONG_FEN_ZHENG_DAN = Cuisines.register("zhu_tong_fen_zheng_dan", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build()))
-					.tags(List.of("Expensive", "Meat", "Homecooking", "Mountain_Delicacy"))
-					.ntags(List.of("Raw"))
-					.cooktimes(9)
-					.cost(72).build());
-    public static final DeferredItem<Item> ZHU_TONG_SHAO_ZUI_XIA = Cuisines.register("zhu_tong_shao_zui_xia", () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE)
-					.food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build()))
-					.tags(List.of("Aquatic", "Fresh", "Raw", "Peculiar"))
-					.ntags(List.of("Filling"))
-					.cooktimes(5)
-					.cost(60).build());
-    public static final DeferredItem<Item> ZHU_TONG_ZHENG_DAN = Cuisines.register("zhu_tong_zheng_dan",  () ->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build()))
-					.tags(List.of("Homecooking", "Mild", "Fungi"))
-					.cooktimes(6)
-					.cost(40).build());
+    public static final DeferredItem<Item> BAI_GUO_LUO_BU_PAI_GU_TANG = Cuisines.register("bai_guo_luo_bu_pai_gu_tang", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Chinese", "Hot", "Soup")).cooktimes(6).cost(65).build());
+    public static final DeferredItem<Item> BAI_LU_ZHEN_SONG = Cuisines.register("bai_lu_zhen_song", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Chinese", "Hot", "Soup")).ntags(List.of("Sour")).cooktimes(12).cost(72).build());
+    public static final DeferredItem<Item> BAI_TAO_SHENG_BA_QIAO = Cuisines.register("bai_tao_sheng_ba_qiao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Japanese", "Sweet", "Fruity")).ntags(List.of("Meat", "Aquatic", "Salty", "Fresh")).cooktimes(12).cost(72).build());
+    public static final DeferredItem<Item> BAI_XUE = Cuisines.register("bai_xue", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Aquatic", "Premium", "Japanese", "Cultural_Heritage")).cooktimes(12).cost(98).build());
+    public static final DeferredItem<Item> BAN_NI_DI_KE_DAN = Cuisines.register("ban_ni_di_ke_dan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Filling", "Western", "Raw", "Small_Portion")).ntags(List.of("Sweet", "Fruity")).cooktimes(7).cost(98).build());
+    public static final DeferredItem<Item> BA_SI_DI_GUA = Cuisines.register("ba_si_di_gua", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Filling", "Homecooking", "Sweet", "Vegetarian")).ntags(List.of("Raw")).cooktimes(6).cost(30).build());
+    public static final DeferredItem<Item> BEI_JI_TIAN_XIA_MI_TAO_SE_LA = Cuisines.register("bei_ji_tian_xia_mi_tao_se_la", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(11).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Vegetarian", "Mild", "Sweet", "Photogenic", "Wonderful", "Fruity")).ntags(List.of("Salty", "Meat")).cooktimes(10).cost(25).build());
+    public static final DeferredItem<Item> BI_SI_KAI_WAN_BING_GAN = Cuisines.register("bi_si_kai_wan_bing_gan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Filling", "Hot", "Salty")).ntags(List.of("Sour")).cooktimes(5).cost(26).build());
+    public static final DeferredItem<Item> BU_SI_NIAO = Cuisines.register("bu_si_niao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Premium", "Legendary", "Western", "Photogenic", "Grilled", "Aura_Bursting")).cooktimes(12).cost(65).build());
+    public static final DeferredItem<Item> CHANG_FA_GONG_ZHU = Cuisines.register("chang_fa_gong_zhu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Filling", "Photogenic")).ntags(List.of("Peculiar")).cooktimes(5).cost(36).build());
+    public static final DeferredItem<Item> CHAO_ROU_SI = Cuisines.register("chao_rou_si", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Economical", "Meat", "Homecooking", "Greasy", "Good_With_Alcohol", "Chinese")).cooktimes(8).cost(15).build());
+    public static final DeferredItem<Item> CHOU_DOU_FU = Cuisines.register("chou_dou_fu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Vegetarian", "Chinese", "Peculiar", "Spicy")).ntags(List.of("Sweet", "Fruity")).cooktimes(5).cost(24).build());
+    public static final DeferredItem<Item> CHUI_XUAN_FENG = Cuisines.register("chui_xuan_feng", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Filling", "Raw", "Specialty", "Peculiar")).cooktimes(5).cost(42).build());
+    public static final DeferredItem<Item> CHUI_ZHU_YIN_CHUN = Cuisines.register("chui_zhu_yin_chun", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(15).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Premium", "Mountain_Delicacy", "Signature", "Photogenic", "Cultural_Heritage")).ntags(List.of("Peculiar", "Fungus")).cooktimes(14).cost(99).build());
+    public static final DeferredItem<Item> CI_SHEN_PIN_PAN = Cuisines.register("ci_shen_pin_pan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Aquatic", "Premium", "Japanese", "Raw", "Photogenic")).ntags(List.of("Hot")).cooktimes(5).cost(88).build());
+    public static final DeferredItem<Item> DA_BAN_SHAO = Cuisines.register("da_ban_shao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Japanese", "Signature", "Photogenic", "Small_Portion")).cooktimes(6).cost(24).build());
+    public static final DeferredItem<Item> DA_JIANG_HU_CHUAN_JI = Cuisines.register("da_jiang_hu_chuan_ji", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(25).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Cultural_Heritage", "Expensive", "Good_With_Alcohol", "Japanese", "Legendary", "Photogenic", "Premium", "Raw", "Fresh", "Sea_Delicacy", "Signature")).cooktimes(24).cost(206).build());
+    public static final DeferredItem<Item> DA_SHE_YAN = Cuisines.register("da_she_yan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(11).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Aquatic", "Premium", "Filling", "Mountain_Delicacy")).ntags(List.of("Homecooking", "Economical")).cooktimes(10).cost(105).build());
+    public static final DeferredItem<Item> DI_YU_JI_XIN_JIN_GAO = Cuisines.register("di_yu_ji_xin_jin_gao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Expenisve", "Greasy", "Hot", "Meat", "Photogenic", "Salty", "Spicy", "Peculiar", "Strength_Boosting")).ntags(List.of("Mild", "Vegetarian")).cooktimes(12).cost(108).build());
+    public static final DeferredItem<Item> DOU_FU_GUO = Cuisines.register("dou_fu_guo", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Economical", "Vegetarian", "Mild", "Japanese", "Hot")).ntags(List.of("Photogenic")).cooktimes(5).cost(19).build());
+    public static final DeferredItem<Item> DOU_FU_WEI_CHENG = Cuisines.register("dou_fu_wei_cheng", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Vegetarian", "Homecooking", "Mild", "Japanese", "Soup")).ntags(List.of("Greasy")).cooktimes(7).cost(21).build());
+    public static final DeferredItem<Item> DOU_JIA_ZHENG_GAO = Cuisines.register("dou_jia_zheng_gao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Filling", "Photogenic", "Premium", "Raw", "Fresh", "Signature", "Peculiar", "Strength_Boosting", "Specialty")).cooktimes(12).cost(105).build());
+    public static final DeferredItem<Item> DU_ZHANG_HUA_YUAN = Cuisines.register("du_zhang_hua_yuan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Signature", "Peculiar", "Poison")).cooktimes(8).cost(58).build());
+    public static final DeferredItem<Item> ER_TIAN_LIU = Cuisines.register("er_tian_liu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(19).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Premium", "Mountain_Delicacy", "Cultural_Heritage", "Grilled", "Aura_Bursting")).ntags(List.of("Homecooking")).cooktimes(18).cost(90).build());
+    public static final DeferredItem<Item> FAN_TUAN = Cuisines.register("fan_tuan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Economical", "Vegetarian", "Homecooking", "Filling", "Japanese")).cooktimes(5).cost(6).build());
+    public static final DeferredItem<Item> FENG_MAO_ZI_CHA_HUI = Cuisines.register("feng_mao_zi_cha_hui", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(16).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Western", "Sweet", "Photogenic", "Fungus", "Wonderful", "Dreamy", "Specialty")).ntags(List.of("Greasy")).cooktimes(15).cost(188).build());
+    public static final DeferredItem<Item> FENG_ZI_DAN = Cuisines.register("feng_zi_dan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Vegetarian", "Premium", "Mild", "Sweet", "Wonderful", "Small_Portion")).ntags(List.of("Mountain_Delicacy")).cooktimes(7).cost(80).build());
+    public static final DeferredItem<Item> HAI_DAN_CI_SHEN = Cuisines.register("hai_dan_ci_shen", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Premium", "Sea_Delicacy", "Small_Portion", "Specialty", "Sweet", "Wonderful")).cooktimes(8).cost(108).build());
+    public static final DeferredItem<Item> HAI_DAN_XIN_XUAN_BING = Cuisines.register("hai_dan_xin_xuan_bing", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Western", "Sweet", "Photogenic", "Fungus", "Wonderful", "Dreamy", "Specialty")).ntags(List.of("Greasy")).cooktimes(12).cost(128).build());
+    public static final DeferredItem<Item> HAI_DAN_ZHENG_DAN = Cuisines.register("hai_dan_zheng_dan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Sea_Delicacy", "Fresh", "Photogenic")).ntags(List.of("Mountain_Delicacy")).cooktimes(7).cost(112).build());
+    public static final DeferredItem<Item> HAI_DAO_XUN_ROU = Cuisines.register("hai_dao_xun_rou", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build())).tags(List.of("Large_Portion", "Legendary", "Meat", "Specialty", "Strength_Boosting")).ntags(List.of("Sour")).cooktimes(9).cost(58).build());
+    public static final DeferredItem<Item> HAI_XIAN_WEI_CHENG_TANG = Cuisines.register("hai_xian_wei_cheng_tang", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Economical", "Vegetarian", "Homecooking", "Soup")).ntags(List.of("Greasy")).cooktimes(6).cost(8).build());
+    public static final DeferredItem<Item> HAN_GONG_CHANG_JIAO = Cuisines.register("han_gong_chang_jiao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Aquatic", "Premium", "Legendary", "Chinese", "Peculiar", "Cultural_Heritage", "Soup")).ntags(List.of("Greasy")).cooktimes(12).cost(115).build());
+    public static final DeferredItem<Item> HE_HUA_YU_MI_ZHAN = Cuisines.register("he_hua_yu_mi_zhan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(12).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Chinese", "Cultural_Heritage", "Dreamy", "Expensive", "Legendary", "Mild", "Wonderful")).cooktimes(11).cost(94).build());
+    public static final DeferredItem<Item> HE_TANG_YUE_SHE = Cuisines.register("he_tang_yue_she", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Premium", "Mild", "Chinese", "Sweet", "Photogenic", "Refreshing", "Cultural_Heritage")).ntags(List.of("Meat", "Good_With_Alcohol", "Hot")).cooktimes(12).cost(128).build());
+    public static final DeferredItem<Item> HONG_DOU_DA_FU = Cuisines.register("hong_dou_da_fu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Japanese", "Sweet", "Small_Portion")).cooktimes(7).cost(28).build());
+    public static final DeferredItem<Item> HONG_SHAO_MAN_YU = Cuisines.register("hong_shao_man_yu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Vegetarian", "Greasy", "Fresh", "Signature")).cooktimes(8).cost(42).build());
+    public static final DeferredItem<Item> HUANG_YOU_NIU_PAI = Cuisines.register("huang_you_niu_pai", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Meat", "Greasy", "Filling", "Western")).ntags(List.of("Sweet", "Refreshing")).cooktimes(7).cost(60).build());
+    public static final DeferredItem<Item> HUAN_JIN_SHU_YU_BIN = Cuisines.register("huan_jin_shu_yu_bin", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Good_With_Alcohol", "Greasy", "Strength_Boosting")).cooktimes(9).cost(40).build());
+    public static final DeferredItem<Item> HUAN_TAN_HUA_GAO = Cuisines.register("huan_tan_hua_gao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Premium", "Legendary", "Sweet", "Photogenic", "Dreamy")).ntags(List.of("Meat", "Aquatic")).cooktimes(7).cost(78).build());
+    public static final DeferredItem<Item> HUAN_XIANG_FENG_MI = Cuisines.register("huan_xiang_feng_mi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(19).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Greasy", "Filling", "Raw", "Signature", "Photogenic", "Strength_Boosting")).ntags(List.of("Refreshing", "Mild")).cooktimes(18).cost(185).build());
+    public static final DeferredItem<Item> HUAN_XIANG_FOU_TIAO_QIANG = Cuisines.register("huan_xiang_fou_tiao_qiang", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(19).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Chinese", "Cultural_Heritage", "Expensive", "Fungus", "Legendary", "Meat", "Mountain_Delicacy", "Photogenic", "Premium", "Specialty", "Strength_Boosting")).cooktimes(18).cost(160).build());
+    public static final DeferredItem<Item> HUAN_XIANG_XING_LIAN_CHUAN = Cuisines.register("huan_xiang_xing_lian_chuan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(14).saturationModifier(1.2f).build())).tags(List.of("Refreshing", "Dreamy", "Expensive", "Photogenic", "Premium", "Raw", "Fresh", "Signature", "Specialty", "Wonderful")).ntags(List.of("Peculiar")).cooktimes(13).cost(132).build());
+    public static final DeferredItem<Item> HUA_GUANG_YU_JIAN_BAO = Cuisines.register("hua_guang_yu_jian_bao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Premium", "Legendary", "Chinese", "Fungus", "Dreamy")).cooktimes(8).cost(128).build());
+    public static final DeferredItem<Item> HUA_NIAO_FENG_YUE = Cuisines.register("hua_niao_feng_yue", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Premium", "Wonderful", "Dreamy", "Specialty")).ntags(List.of("Hot", "Greasy")).cooktimes(9).cost(78).build());
+    public static final DeferredItem<Item> HUI_LING_DUN_NIU_PAI = Cuisines.register("hui_ling_dun_niu_pai", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(15).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Premium", "Legendary", "Mountain_Delicacy", "Western")).ntags(List.of("Sweet", "Refreshing")).cooktimes(14).cost(150).build());
+    public static final DeferredItem<Item> HUO_XING = Cuisines.register("huo_xing", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(25).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Aquatic", "Premium", "Legendary", "Sea_Delicacy", "Photogenic", "Cultural_Heritage", "Wonderful", "Fruity")).ntags(List.of("Mountain_Delicacy")).cooktimes(24).cost(198).build());
+    public static final DeferredItem<Item> HU_LA_TANG = Cuisines.register("hu_la_tang", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Homecooking", "Chinese", "Hot", "Soup", "Spicy", "Aura_Bursting")).cooktimes(8).cost(60).build());
+    public static final DeferredItem<Item> JIN_XIA_DA_MAO_XIAN = Cuisines.register("jin_xia_da_mao_xian", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Dreamy", "Expensive", "Photogenic", "Specialty", "Peculiar", "Strength_Boosting", "Wonderful")).ntags(List.of("Homecooking")).cooktimes(12).cost(90).build());
+    public static final DeferredItem<Item> JUE_JIAO_GUAN_DOU_ZHU = Cuisines.register("jue_jiao_guan_dou_zhu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Filling", "Hot", "Large_Portion", "Meat", "Premium", "Fresh", "Specialty", "Spicy", "Strength_Boosting")).cooktimes(12).cost(92).build());
+    public static final DeferredItem<Item> JU_REN_YU_ZI_SHAO = Cuisines.register("ju_ren_yu_zi_shao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Filling", "Japanese", "Premium", "Strength_Boosting", "Sweet")).ntags(List.of("Good_With_Alcohol")).cooktimes(12).cost(60).build());
+    public static final DeferredItem<Item> KAO_BA_MU_MAN = Cuisines.register("kao_ba_mu_man", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Signature", "Grilled")).ntags(List.of("Meat", "Vegetarian")).cooktimes(7).cost(22).build());
+    public static final DeferredItem<Item> KAO_DI_GUA = Cuisines.register("kao_di_gua", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Economical", "Filling", "Homecooking", "Sweet")).ntags(List.of("Good_With_Alcohol")).cooktimes(5).cost(25).build());
+    public static final DeferredItem<Item> KAO_MO_GU = Cuisines.register("kao_mo_gu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Economical", "Vegetarian", "Salty", "Hot", "Fungus", "Grilled")).cooktimes(6).cost(18).build());
+    public static final DeferredItem<Item> LENG_DOU_FU = Cuisines.register("leng_dou_fu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Economical", "Vegetarian", "Salty", "Hot", "Fungus", "Grilled")).cooktimes(6).cost(18).build());
+    public static final DeferredItem<Item> LIANG_CAI_DIAO_HUA = Cuisines.register("liang_cai_diao_hua", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Vegetarian", "Mild", "Photogenic", "Refreshing")).ntags(List.of("Meat", "Hot")).cooktimes(5).cost(20).build());
+    public static final DeferredItem<Item> LIU_SHUI_SU_MIAN = Cuisines.register("liu_shui_su_mian", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Vegetarian", "Mild", "Refreshing", "Wonderful")).ntags(List.of("Greasy")).cooktimes(7).cost(40).build());
+    public static final DeferredItem<Item> LI_LIANG_TANG = Cuisines.register("li_liang_tang", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Meat", "Mountain_Delicacy", "Hot", "Strength_Boosting", "Soup")).ntags(List.of("Small_Portion", "Refreshing")).cooktimes(12).cost(34).build());
+    public static final DeferredItem<Item> LONG_YIN_TAO_ZI = Cuisines.register("long_yin_tao_zi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(19).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Premium", "Legendary", "Mild", "Sweet", "Refreshing", "Wonderful", "Specialty", "Fruity")).ntags(List.of("Fungus", "Meat", "Sea_Delicacy", "Peculiar", "Raw")).cooktimes(18).cost(199).build());
+    public static final DeferredItem<Item> LUO_HAN_SHANG_SU = Cuisines.register("luo_han_shang_su", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Refreshing", "Cultural_Heritage", "Dreamy", "Expensive", "Mild", "Premium", "Fresh", "Specialty", "Vegetarian")).ntags(List.of("Meat", "Spicy")).cooktimes(12).cost(97).build());
+    public static final DeferredItem<Item> LU_SHUI_ZHU_DAN = Cuisines.register("lu_shui_zhu_dan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(1.2f).build())).tags(List.of("Economical", "Mild", "Raw")).ntags(List.of("Meat", "Aquatic", "Greasy")).cooktimes(3).cost(18).build());
+    public static final DeferredItem<Item> LV_YE_XIAN_GU = Cuisines.register("lv_ye_xian_gu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Mild", "Cultural_Heritage", "Fungus", "Specialty")).cooktimes(6).cost(24).build());
+    public static final DeferredItem<Item> MAN_YU_NENG_DAN_JING = Cuisines.register("man_yu_neng_dan_jing", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Raw", "Signature")).cooktimes(5).cost(45).build());
+    public static final DeferredItem<Item> MAO_FAN = Cuisines.register("mao_fan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Fresh", "Small_Portion")).ntags(List.of("Greasy")).cooktimes(5).cost(26).build());
+    public static final DeferredItem<Item> MAO_MI_KE_LU_LI = Cuisines.register("mao_mi_ke_lu_li", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Filling", "Sweet", "Photogenic")).ntags(List.of("Peculiar")).cooktimes(7).cost(45).build());
+    public static final DeferredItem<Item> MAO_MI_PI_SHA = Cuisines.register("mao_mi_pi_sha", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(11).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Filling", "Western", "Photogenic", "Fungus")).ntags(List.of("Refreshing")).cooktimes(10).cost(75).build());
+    public static final DeferredItem<Item> MAO_MI_XI_SHUI = Cuisines.register("mao_mi_xi_shui", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Vegetarian", "Sweet", "Photogenic", "Refreshing", "Wonderful", "Dreamy")).ntags(List.of("Good_With_Alcohol", "Hot")).cooktimes(12).cost(120).build());
+    public static final DeferredItem<Item> MAO_YU_RONG_YAN_DOU_FU = Cuisines.register("mao_yu_rong_yan_dou_fu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Vegetarian", "Chinese", "Fresh", "Photogenic", "Wonderful")).cooktimes(8).cost(85).build());
+    public static final DeferredItem<Item> MAO_YU_SAN_SE_BING_JI_LING = Cuisines.register("mao_yu_san_se_bing_ji_ling", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Western", "Sweet", "Photogenic", "Refreshing", "Dreamy")).cooktimes(8).cost(75).build());
+    public static final DeferredItem<Item> MA_PO_DOU_FU = Cuisines.register("ma_po_dou_fu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Vegetarian", "Chinese", "Hot", "Spicy")).ntags(List.of("Sweet", "Fruity", "Refreshing")).cooktimes(6).cost(32).build());
+    public static final DeferredItem<Item> MA_SHU = Cuisines.register("ma_shu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Japanese", "Sweet", "Small_Portion")).ntags(List.of("Meat", "Aquatic", "Salty", "Fresh")).cooktimes(7).cost(30).build());
+    public static final DeferredItem<Item> MEI_ZI_CHA_PAO_FAN = Cuisines.register("mei_zi_cha_pao_fan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(5).saturationModifier(1.2f).build())).tags(List.of("Homecooking", "Japanese")).cooktimes(4).cost(32).build());
+    public static final DeferredItem<Item> MI_QIAN_LI_ZI = Cuisines.register("mi_qian_li_zi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Small_Portion", "Specialty", "Sweet")).cooktimes(6).cost(30).build());
+    public static final DeferredItem<Item> MI_TAO_HONG_SHAO_ROU = Cuisines.register("mi_tao_hong_shao_rou", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Meat", "Good_With_Alcohol", "Wonderful", "Fruity")).cooktimes(8).cost(42).build());
+    public static final DeferredItem<Item> MI_ZHI_CHA_SHAO = Cuisines.register("mi_zhi_cha_shao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Greasy", "Chinese", "Sweet", "Wonderful")).cooktimes(7).cost(70).build());
+    public static final DeferredItem<Item> MI_ZHI_XIAN_JUN_BAO = Cuisines.register("mi_zhi_xian_jun_bao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Fungus", "Japanese", "Fresh", "Specialty")).cooktimes(9).cost(62).build());
+    public static final DeferredItem<Item> MI_ZHI_XIAO_YU_GAN = Cuisines.register("mi_zhi_xiao_yu_gan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Salty", "Fresh", "Small_Portion")).cooktimes(8).cost(30).build());
+    public static final DeferredItem<Item> MO_GU_ROU_PIAN = Cuisines.register("mo_gu_rou_pian", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Meat", "Homecooking", "Greasy", "Fungus")).cooktimes(6).cost(20).build());
+    public static final DeferredItem<Item> MO_NV_DE_WU_TA_HUI = Cuisines.register("mo_nv_de_wu_ta_hui", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(15).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Expensive", "Fungus", "Greasy", "Hot", "Photogenic", "Salty", "Fresh", "Spicy")).cooktimes(14).cost(112).build());
+    public static final DeferredItem<Item> NAI_XIANG_MO_GU_TANG = Cuisines.register("nai_xiang_mo_gu_tang", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Fungus", "Homecooking", "Photogenic")).cooktimes(8).cost(28).build());
+    public static final DeferredItem<Item> NAI_YOU_JU_XIE = Cuisines.register("nai_you_ju_xie", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Good_With_Alcohol", "Premium", "Photogenic", "Fresh", "Sea_Delicacy", "Signature")).cooktimes(12).cost(88).build());
+    public static final DeferredItem<Item> NAI_YOU_TUN_CAI = Cuisines.register("nai_you_tun_cai", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build())).tags(List.of("Vegetarian", "Western", "Fungus", "Soup")).cooktimes(9).cost(20).build());
+    public static final DeferredItem<Item> NAN_GUA_XIA_ZHONG = Cuisines.register("nan_gua_xia_zhong", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Filling", "Mild", "Photogenic", "Fresh", "Specialty", "Sweet")).cooktimes(9).cost(55).build());
+    public static final DeferredItem<Item> NENG_LIANG_CHUAN = Cuisines.register("neng_liang_chuan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Meat", "Filling", "Grilled")).cooktimes(12).cost(50).build());
+    public static final DeferredItem<Item> NIU_ROU_GAI_JIAO_FAN = Cuisines.register("niu_rou_gai_jiao_fan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Meat", "Homecooking", "Filling")).cooktimes(7).cost(20).build());
+    public static final DeferredItem<Item> NIU_ROU_YUAN_YANG_HUO_GUO = Cuisines.register("niu_rou_yuan_yang_huo_guo", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Homecooking", "Mountain_Delicacy", "Chinese", "Hot", "Strength_Boosting", "Fungus", "Spicy")).ntags(List.of("Refreshing", "Dreamy")).cooktimes(5).cost(188).build());
+    public static final DeferredItem<Item> NI_JIU_ZI_YU = Cuisines.register("ni_jiu_zi_yu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Dreamy", "Expensive", "Good_With_Alcohol", "Hot", "Legendary", "Small_Portion", "Peculiar")).cooktimes(12).cost(120).build());
+    public static final DeferredItem<Item> NI_ZHUAN_TIAN_DI = Cuisines.register("ni_zhuan_tian_di", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Mountain_Delicacy", "Refreshing", "Peculiar", "Fungus", "Wonderful", "Dreamy", "Aura_Bursting")).cooktimes(12).cost(124).build());
+    public static final DeferredItem<Item> PENG_LAI_YU_ZHI = Cuisines.register("peng_lai_yu_zhi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(14).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Premium", "Legendary", "Cultural_Heritage", "Grilled")).cooktimes(13).cost(124).build());
+    public static final DeferredItem<Item> PU_TONG_XIA_DAN_GAO = Cuisines.register("pu_tong_xia_dan_gao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Cultural_Heritage", "Fruity", "Photogenic", "Premium", "Sweet")).cooktimes(8).cost(56).build());
+    public static final DeferredItem<Item> QI_SHE_YANG_GENG = Cuisines.register("qi_she_yang_geng", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Cultural_Heritage", "Dreamy", "Expensive", "Fruity", "Photogenic", "Premium", "Sweet", "Wonderful")).cooktimes(8).cost(92).build());
+    public static final DeferredItem<Item> QUAN_ROU_SHENG_YAN = Cuisines.register("quan_rou_sheng_yan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(15).saturationModifier(1.2f).build())).tags(List.of("Cultural_Heritage", "Dreamy", "Expensive", "Fruity", "Photogenic", "Premium", "Sweet", "Wonderful")).cooktimes(14).cost(115).build());
+    public static final DeferredItem<Item> RAN_JING_BU_DING = Cuisines.register("ran_jing_bu_ding", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Refreshing", "Dreamy", "Expensive", "Fruity", "Signature", "Small_Portion", "Sour", "Strength_Boosting", "Sweet")).ntags(List.of("Greasy", "Salty")).cooktimes(8).cost(73).build());
+    public static final DeferredItem<Item> RE_SONG_BING = Cuisines.register("re_song_bing", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build())).tags(List.of("Filling", "Western", "Sweet")).cooktimes(9).cost(22).build());
+    public static final DeferredItem<Item> SAI_XIONG_ZHANG = Cuisines.register("sai_xiong_zhang", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Aquatic", "Premium", "Mountain_Delicacy", "Strength_Boosting", "Wonderful")).cooktimes(12).cost(70).build());
+    public static final DeferredItem<Item> SAN_WEN_YU_TIAN_FU_LUO = Cuisines.register("san_wen_yu_tian_fu_luo", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Greasy", "Premium", "Fresh", "Small_Portion")).cooktimes(8).cost(44).build());
+    public static final DeferredItem<Item> SHANG_QI_ZHI_SHI_TIAO = Cuisines.register("shang_qi_zhi_shi_tiao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Good_With_Alcohol", "Salty", "Fresh", "Specialty")).cooktimes(6).cost(25).build());
+    public static final DeferredItem<Item> SHENG_BAI_LIAN_ZI_GAO = Cuisines.register("sheng_bai_lian_zi_gao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(11).saturationModifier(1.2f).build())).tags(List.of("Mild", "Photogenic", "Small_Portion", "Specialty", "Vegetarian")).ntags(List.of("Spicy")).cooktimes(10).cost(56).build());
+    public static final DeferredItem<Item> SHENG_MING_ZHI_YUAN = Cuisines.register("sheng_ming_zhi_yuan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(14).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Premium", "Legendary", "Mild", "Raw", "Fungus", "Wonderful", "Soup")).ntags(List.of("Mountain_Delicacy")).cooktimes(13).cost(124).build());
+    public static final DeferredItem<Item> SHI_GUO_ZHU_SUN_DUN_ROU = Cuisines.register("shi_guo_zhu_sun_dun_rou", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Meat", "Homecooking", "Filling")).cooktimes(7).cost(42).build());
+    public static final DeferredItem<Item> SHI_JIN_TIAN_FU_LUO = Cuisines.register("shi_jin_tian_fu_luo", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Fungus", "Good_With_Alcohol", "Greasy", "Homecooking", "Japanese", "Signature", "Strength_Boosting")).cooktimes(7).cost(72).build());
+    public static final DeferredItem<Item> SHI_LI_YIN_XING = Cuisines.register("shi_li_yin_xing", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Vegetarian", "Chinese", "Sweet", "Cultural_Heritage")).ntags(List.of("Salty")).cooktimes(8).cost(60).build());
+    public static final DeferredItem<Item> SHI_ZI_TOU = Cuisines.register("shi_zi_tou", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Good_With_Alcohol", "Meat", "Fresh", "Signature", "Specialty")).ntags(List.of("Aquatic", "Filling")).cooktimes(7).cost(28).build());
+    public static final DeferredItem<Item> SHUI_JIAO = Cuisines.register("shui_jiao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Vegetarian", "Homecooking", "Chinese", "Cultural_Heritage")).cooktimes(5).cost(35).build());
+    public static final DeferredItem<Item> SHUI_ZHU_YU = Cuisines.register("shui_zhu_yu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Aquatic", "Chinese", "Hot", "Spicy", "Aura_Bursting")).ntags(List.of("Sweet", "Fruity", "Refreshing", "Meat")).cooktimes(8).cost(68).build());
+    public static final DeferredItem<Item> SHU_CAI_ZHUAN_JI = Cuisines.register("shu_cai_zhuan_ji", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Vegetarian", "Mild", "Raw", "Refreshing")).ntags(List.of("Meat", "Aquatic", "Hot")).cooktimes(5).cost(56).build());
+    public static final DeferredItem<Item> SI_KANG_BING = Cuisines.register("si_kang_bing", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Economical", "Filling", "Western")).cooktimes(7).cost(8).build());
+    public static final DeferredItem<Item> SONG_ZI_GAO = Cuisines.register("song_zi_gao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Mild", "Specialty")).cooktimes(8).cost(46).build());
+    public static final DeferredItem<Item> SOU_MA_TUAN_ZI = Cuisines.register("sou_ma_tuan_zi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build())).tags(List.of("Cultural_Heritage", "Filling", "Photogenic", "Peculiar")).ntags(List.of("Meat")).cooktimes(9).cost(45).build());
+    public static final DeferredItem<Item> TAI_JI_BA_GUA_YU_DU = Cuisines.register("tai_ji_ba_gua_yu_du", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(15).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Refreshing", "Cultural_Heritage", "Expensive", "Mild", "Premium", "Fresh")).cooktimes(14).cost(136).build());
+    public static final DeferredItem<Item> TANG_YUAN = Cuisines.register("tang_yuan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Vegetarian", "Homecooking", "Chinese", "Cultural_Heritage")).cooktimes(5).cost(35).build());
+    public static final DeferredItem<Item> TAO_HUA_GENG = Cuisines.register("tao_hua_geng", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Vegetarian", "Sweet", "Photogenic", "Refreshing", "Fruity", "Soup")).cooktimes(7).cost(55).build());
+    public static final DeferredItem<Item> TAO_HUA_LIU_LI_JUAN = Cuisines.register("tao_hua_liu_li_juan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Premium", "Japanese", "Sweet", "Photogenic", "Small_Portion", "Dreamy", "Specialty")).ntags(List.of("Meat", "Peculiar", "Filling", "Fungus")).cooktimes(8).cost(60).build());
+    public static final DeferredItem<Item> TIAN_SHI_BAN_LI_MENG_GU = Cuisines.register("tian_shi_ban_li_meng_gu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Chinese", "Fungus", "Homecooking", "Specialty", "Vegetarian")).cooktimes(8).cost(55).build());
+    public static final DeferredItem<Item> TI_SHEN_BU_DING = Cuisines.register("ti_shen_bu_ding", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Refreshing", "Fruity", "Small_Portion", "Sour", "Strength_Boosting", "Sweet")).tags(List.of("Greasy", "Salty")).cooktimes(8).cost(42).build());
+    public static final DeferredItem<Item> TONG_LUO_SHAO = Cuisines.register("tong_luo_shao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Vegetarian", "Japanese", "Sweet", "Specialty")).tags(List.of("Meat")).cooktimes(6).cost(40).build());
+    public static final DeferredItem<Item> TUN_GU_LA_MIAN = Cuisines.register("tun_gu_la_mian", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Meat", "Homecooking", "Filling", "Salty")).cooktimes(8).cost(60).build());
+    public static final DeferredItem<Item> TU_DOU_KE_LE_BING = Cuisines.register("tu_dou_ke_le_bing", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Vegetarian", "Homecooking", "Greasy")).tags(List.of("Refreshing")).cooktimes(6).cost(22).build());
+    public static final DeferredItem<Item> WEN_NUAN_FAN_TUAN = Cuisines.register("wen_nuan_fan_tuan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Vegetarian", "Homecooking", "Filling", "Japanese", "Hot")).cooktimes(8).cost(30).build());
+    public static final DeferredItem<Item> WU_YI_SHI_YAO_GUAI_MU_SI = Cuisines.register("wu_yi_shi_yao_guai_mu_si", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Premium", "Western", "Sweet", "Photogenic", "Dreamy")).cooktimes(8).cost(60).build());
+    public static final DeferredItem<Item> XIANG_CHUN_JIAN_BING = Cuisines.register("xiang_chun_jian_bing", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Signature", "Specialty")).cooktimes(6).cost(30).build());
+    public static final DeferredItem<Item> XIANG_JIAN_SAN_WEN_YU = Cuisines.register("xiang_jian_san_wen_yu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(11).saturationModifier(1.2f).build())).tags(List.of("Meat", "Western", "Fresh")).cooktimes(10).cost(58).build());
+    public static final DeferredItem<Item> XIANG_JIAN_SHUANG_GU_ROU_JUAN = Cuisines.register("xiang_jian_shuang_gu_rou_juan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Fungus", "Good_With_Alcohol", "Greasy", "Homecooking", "Hot", "Meat", "Signature")).ntags(List.of("Refreshing")).cooktimes(9).cost(63).build());
+    public static final DeferredItem<Item> XIANG_ZHA_CHAN_SHUI = Cuisines.register("xiang_zha_chan_shui", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Economical", "Greasy", "Peculiar")).cooktimes(8).cost(19).build());
+    public static final DeferredItem<Item> XIAO_XIAO_DE_TIAN_MI_DU_YAO = Cuisines.register("xiao_xiao_de_tian_mi_du_yao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(17).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Premium", "Sweet", "Photogenic", "Small_Portion", "Dreamy")).ntags(List.of("Meat")).cooktimes(16).cost(87).build());
+    public static final DeferredItem<Item> XING_HONG_E_MO_DAN_GAO = Cuisines.register("xing_hong_e_mo_dan_gao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Western", "Sweet", "Photogenic", "Peculiar", "Dreamy")).cooktimes(8).cost(60).build());
+    public static final DeferredItem<Item> YANG_WANG_TIAN_HUA_BAN_PAI = Cuisines.register("yang_wang_tian_hua_ban_pai", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Good_With_Alcohol", "Photogenic", "Sea_Delicacy", "Signature", "Specialty", "Peculiar")).ntags(List.of("Meat")).cooktimes(9).cost(66).build());
+    public static final DeferredItem<Item> YANG_XIN_ZHOU = Cuisines.register("yang_xin_zhou", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Mild", "Sweet", "Specialty")).cooktimes(5).cost(35).build());
+    public static final DeferredItem<Item> YAN_HUANG_GUA = Cuisines.register("yan_huang_gua", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Economical", "Good_With_Alcohol", "Salty", "Small_Portion", "Vegetarian")).cooktimes(6).cost(16).build());
+    public static final DeferredItem<Item> YAN_JIANG = Cuisines.register("yan_jiang", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Aquatic", "Premium", "Filling", "Hot", "Strength_Boosting", "Fungus")).ntags(List.of("Refreshing")).cooktimes(8).cost(125).build());
+    public static final DeferredItem<Item> YE_WEI_JIA_NONG = Cuisines.register("ye_wei_jia_nong", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Greasy", "Filling", "Mountain_Delicacy", "Hot")).cooktimes(8).cost(66).build());
+    public static final DeferredItem<Item> YING_LUO_XUE = Cuisines.register("ying_luo_xue", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Premium", "Sea_Delicacy", "Japanese", "Raw", "Photogenic", "Small_Portion")).ntags(List.of("Greasy")).cooktimes(12).cost(50).build());
+    public static final DeferredItem<Item> YIN_HUA_BU_DING = Cuisines.register("yin_hua_bu_ding", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Refreshing", "Fruity", "Photogenic", "Small_Portion", "Specialty", "Sweet")).ntags(List.of("Greasy", "Salty")).cooktimes(6).cost(32).build());
+    public static final DeferredItem<Item> YIN_YU_SHUI_GUO_PAI = Cuisines.register("yin_yu_shui_guo_pai", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Fruity", "Salty", "Fresh", "Sour", "Specialty")).cooktimes(8).cost(36).build());
+    public static final DeferredItem<Item> YI_JI_BI_SHA = Cuisines.register("yi_ji_bi_sha", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build())).tags(List.of("Grilled", "Expensive", "Filling", "Greasy", "Meat", "Mountain_Delicacy", "Strength_Boosting")).cooktimes(9).cost(62).build());
+    public static final DeferredItem<Item> YI_SHI_HUI_FAN = Cuisines.register("yi_shi_hui_fan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Filling", "Western", "Fresh", "Fungus")).ntags(List.of("Sweet")).cooktimes(6).cost(70).build());
+    public static final DeferredItem<Item> YOU_DOU_FU = Cuisines.register("you_dou_fu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Economical", "Vegetarian", "Homecooking", "Greasy", "Japanese")).cooktimes(7).cost(16).build());
+    public static final DeferredItem<Item> YOU_MENG = Cuisines.register("you_meng", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Premium", "Mild", "Western", "Sweet", "Photogenic", "Refreshing", "Dreamy")).ntags(List.of("Meat", "Good_With_Alcohol", "Aquatic")).cooktimes(12).cost(133).build());
+    public static final DeferredItem<Item> YUE_BING = Cuisines.register("yue_bing", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Filling", "Chinese", "Sweet", "Cultural_Heritage", "Wonderful", "Small_Portion")).cooktimes(10).cost(20).build());
+    public static final DeferredItem<Item> YUE_GUANG_TUAN_ZI = Cuisines.register("yue_guang_tuan_zi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Japanese", "Sweet", "Wonderful", "Specialty")).ntags(List.of("Meat", "Fresh", "Salty", "Aquatic")).cooktimes(8).cost(80).build());
+    public static final DeferredItem<Item> YUE_ZHI_LIAN_REN = Cuisines.register("yue_zhi_lian_ren", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(11).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Sweet", "Photogenic", "Small_Portion", "Specialty")).ntags(List.of("Meat", "Aquatic", "Vegetarian")).cooktimes(10).cost(66).build());
+    public static final DeferredItem<Item> YUN_SHAN_MIAO_HUA_TANG = Cuisines.register("yun_shan_miao_hua_tang", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Fruity", "Specialty", "Sweet", "Wonderful")).ntags(List.of("Meat", "Salty")).cooktimes(8).cost(20).build());
+    public static final DeferredItem<Item> YU_YUE_LONG_MEN = Cuisines.register("yu_yue_long_men", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Chinese", "Cultural_Heritage", "Dreamy", "Expensive", "Fungus", "Large_Portion", "Meat", "Premium", "Fresh", "Sea_Delicacy", "Sweet")).cooktimes(12).cost(142).build());
+    public static final DeferredItem<Item> ZA_CHUI = Cuisines.register("za_chui", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Meat", "Homecooking", "Fresh", "Hot")).cooktimes(5).cost(40).build());
+    public static final DeferredItem<Item> ZHANG_YU_SHAO = Cuisines.register("zhang_yu_shao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Filling", "Photogenic", "Small_Portion", "Signature")).cooktimes(8).cost(36).build());
+    public static final DeferredItem<Item> ZHA_BA_MU_MAN = Cuisines.register("zha_ba_mu_man", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Greasy", "Signature")).ntags(List.of("Refreshing")).cooktimes(7).cost(27).build());
+    public static final DeferredItem<Item> ZHA_FAN_QIE_TIAO = Cuisines.register("zha_fan_qie_tiao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Peculiar", "Wonderful", "Small_Portion")).ntags(List.of("Aquatic")).cooktimes(6).cost(26).build());
+    public static final DeferredItem<Item> ZHA_XIA_TIAN_FU_LUO = Cuisines.register("zha_xia_tian_fu_luo", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Good_With_Alcohol", "Greasy")).ntags(List.of("Mild")).cooktimes(6).cost(22).build());
+    public static final DeferredItem<Item> ZHA_ZHU_ROU_PAI = Cuisines.register("zha_zhu_rou_pai", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Meat", "Homecooking", "Greasy", "Filling")).cooktimes(7).cost(25).build());
+    public static final DeferredItem<Item> ZHEN_HAI_XIAN_WEI_CHENG_TANG = Cuisines.register("zhen_hai_xian_wei_cheng_tang", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Homecooking", "Greasy", "Filling")).cooktimes(8).cost(55).build());
+    public static final DeferredItem<Item> ZHI_SHI_DAN = Cuisines.register("zhi_shi_dan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Greasy", "Raw", "Salty", "Fresh")).ntags(List.of("Meat")).cooktimes(6).cost(16).build());
+    public static final DeferredItem<Item> ZHI_ZHUNG_HAI_XIAN_MIAN = Cuisines.register("zhi_zhung_hai_xian_mian", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.EPIC).food(new FoodProperties.Builder().nutrition(11).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Aquatic", "Homecooking", "Premium", "Filling", "Sea_Delicacy", "Fresh")).cooktimes(10).cost(135).build());
+    public static final DeferredItem<Item> ZHI_ZHU_ROU_FAN_TUAN = Cuisines.register("zhi_zhu_rou_fan_tuan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Economical", "Meat", "Homecooking", "Filling", "Japanese")).cooktimes(6).cost(14).build());
+    public static final DeferredItem<Item> ZHU_DOU_FU = Cuisines.register("zhu_dou_fu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Vegetarian", "Homecooking", "Mild")).cooktimes(7).cost(22).build());
+    public static final DeferredItem<Item> ZHU_LU_DIE = Cuisines.register("zhu_lu_die", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(9).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Premium", "Cultural_Heritage")).cooktimes(8).cost(78).build());
+    public static final DeferredItem<Item> ZHU_QU_JI = Cuisines.register("zhu_qu_ji", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(13).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Premium", "Legendary", "Japanese", "Photogenic", "Cultural_Heritage", "Specialty")).cooktimes(12).cost(65).build());
+    public static final DeferredItem<Item> ZHU_ROU_GAI_JIAO_FAN = Cuisines.register("zhu_rou_gai_jiao_fan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Meat", "Homecooking", "Filling")).cooktimes(7).cost(20).build());
+    public static final DeferredItem<Item> ZHU_ROU_ZUN_YU_XUN = Cuisines.register("zhu_rou_zun_yu_xun", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(1.2f).build())).tags(List.of("Meat", "Aquatic", "Homecooking", "Grilled")).cooktimes(7).cost(26).build());
+    public static final DeferredItem<Item> ZHU_SUN_CHAO_ROU = Cuisines.register("zhu_sun_chao_rou", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(11).saturationModifier(1.2f).build())).tags(List.of("Meat", "Homecooking", "Good_With_Alcohol")).cooktimes(10).cost(25).build());
+    public static final DeferredItem<Item> ZHU_TONG_FEN_ZHENG_DAN = Cuisines.register("zhu_tong_fen_zheng_dan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(10).saturationModifier(1.2f).build())).tags(List.of("Expensive", "Meat", "Homecooking", "Mountain_Delicacy")).ntags(List.of("Raw")).cooktimes(9).cost(72).build());
+    public static final DeferredItem<Item> ZHU_TONG_SHAO_ZUI_XIA = Cuisines.register("zhu_tong_shao_zui_xia", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).build())).tags(List.of("Aquatic", "Fresh", "Raw", "Peculiar")).ntags(List.of("Filling")).cooktimes(5).cost(60).build());
+    public static final DeferredItem<Item> ZHU_TONG_ZHENG_DAN = Cuisines.register("zhu_tong_zheng_dan", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.UNCOMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(1.2f).build())).tags(List.of("Homecooking", "Mild", "Fungi")).cooktimes(6).cost(40).build());
 
 
     public static final DeferredRegister.Items Beverages = DeferredRegister.createItems(MystiasIzakaya.MODID);
     //beverages
-    public static final DeferredItem<Item> A_FU_JIA_DUO = Beverages.register("a_fu_jia_duo", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("chillable", "stimulating", "sweet", "bitter")).drink().beverages().cost(35).build());
-    public static final DeferredItem<Item> BING_SHAN_MAO_YU_DONG_NING = Beverages.register("bing_shan_mao_yu_dong_ning", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("no_alcohol", "chillable", "soda", "stimulating", "fruity", "neat", "sweet")).drink().beverages().cost(45).build());
-    public static final DeferredItem<Item> BO_ZI_QI_SHUI = Beverages.register("bo_zi_qi_shui", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("no_alcohol", "soda", "modern")).drink().beverages().cost(30).build());
-    public static final DeferredItem<Item> CHAO_ZUN_PI_JIU = Beverages.register("chao_zun_pi_jiu", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("low_alcohol", "chillable", "beer", "bitter")).drink().beverages().cost(18).build());
-    public static final DeferredItem<Item> DA_BING_GUN_ER = Beverages.register("da_bing_gun_er", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("no_alcohol", "stimulating", "modern", "sweet")).beverages().cost(35).build());
-    public static final DeferredItem<Item> DA_YIN_NIANG = Beverages.register("da_yin_niang", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(7).saturationModifier(0.8f).build()))
-                    .tags(List.of("mid_alcohol", "sake", "vintage", "chillable", "fruity", "neat", "sweet")).drink().beverages().cost(210).build());
-    public static final DeferredItem<Item> DONG_NIANG = Beverages.register("dong_niang", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("low_alcohol", "chillable", "heatable", "vintage", "sweet")).drink().beverages().cost(60).build());;
-    public static final DeferredItem<Item> FENG_ZHU = Beverages.register("feng_zhu", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.8f).build()))
-                    .tags(List.of("mid_alcohol", "chillable", "cocktail", "modern", "sweet")).drink().beverages().cost(130).build());
-    public static final DeferredItem<Item> GUI_SHA = Beverages.register("gui_sha", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.8f).build()))
-                    .tags(List.of("high_alcohol", "chillable", "shochu", "dry", "vintage")).drink().beverages().cost(320).build());
-    public static final DeferredItem<Item> GUO_WEI_HIGH_BALL = Beverages.register("guo_wei_high_ball", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
-                    .tags(List.of("low_alcohol", "chillable", "western", "cocktail", "fruity", "sweet", "bitter")).drink().beverages().cost(12).build());
-    public static final DeferredItem<Item> GUO_WEI_SOUR = Beverages.register("guo_wei_sour", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
-                    .tags(List.of("low_alcohol", "chillable", "shochu", "cocktail", "fruity", "sweet", "bitter")).drink().beverages().cost(12).build());
-    public static final DeferredItem<Item> GU_FA_NAI_YOU_BING_SHA = Beverages.register("gu_fa_nai_you_bing_sha", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("no_alcohol", "sweet", "chillable", "vintage")).drink().beverages().cost(42).build());
-    public static final DeferredItem<Item> GU_MING_DI_BING_JI_LING = Beverages.register("gu_ming_di_bing_ji_ling", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("no_alcohol", "sweet", "fruity", "modern")).drink().beverages().cost(35).build());
-    public static final DeferredItem<Item> HAI_DE_NV_ER = Beverages.register("hai_de_nv_er", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("no_alcohol", "sweet", "fruity", "modern")).drink().beverages().cost(80).build());
-    public static final DeferredItem<Item> HONG_MO_GUAN_HONG_CHA = Beverages.register("hong_mo_guan_hong_cha", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
-                    .tags(List.of("no_alcohol", "heatable", "stimulating", "fruity")).drink().beverages().cost(25).build());
-    public static final DeferredItem<Item> HONG_WU = Beverages.register("hong_wu", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).build()))
-                    .tags(List.of("mid_alcohol", "heatable", "western")).drink().beverages().cost(75).build());
-    public static final DeferredItem<Item> HONG_YOU_GUO_ZHI = Beverages.register("hong_you_guo_zhi", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
-                    .tags(List.of("no_alcohol", "fruity")).drink().beverages().cost(24).build());
-    public static final DeferredItem<Item> HUO_SHU_QIU = Beverages.register("huo_shu_qiu", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.8f).build()))
-                    .tags(List.of("high_alcohol", "heatable", "shochu", "dry")).drink().beverages().cost(420).build());
-    public static final DeferredItem<Item> JIAO_FU = Beverages.register("jiao_fu", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(7).saturationModifier(0.8f).build()))
-                    .tags(List.of("high_alcohol", "chillable", "western", "cocktail", "vintage", "bitter")).drink().beverages().cost(180).build());
-    public static final DeferredItem<Item> KA_PEI = Beverages.register("ka_pei", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).build()))
-                    .tags(List.of("no_alcohol", "bitter", "modern", "heatable", "chillable", "stimulating")).drink().beverages().cost(62).build());
-    public static final DeferredItem<Item> LIN_REN_ZHUI = Beverages.register("lin_ren_zhui", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("low_alcohol", "neat", "fruity", "vintage", "sweet")).drink().beverages().cost(100).build());
-    public static final DeferredItem<Item> LU_CHA = Beverages.register("lu_cha", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build()))
-                    .tags(List.of("no_alcohol")).drink().beverages().cost(1).build());
-    public static final DeferredItem<Item> MEI_JIU = Beverages.register("mei_jiu", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("mid_alcohol", "chillable", "heatable", "liquor", "fruity")).drink().beverages().cost(32).build());
-    public static final DeferredItem<Item> MO_JIE_KA_PEI = Beverages.register("mo_jie_ka_pei", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("high_alcohol", "stimulating", "heatable", "western")).drink().beverages().cost(210).build());
-    public static final DeferredItem<Item> MO_JI_TUO_BAO_JIANG_QIU = Beverages.register("mo_ji_tuo_bao_jiang_qiu", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("low_alcohol", "soda", "modern", "cocktail")).drink().beverages().cost(300).build());
-    public static final DeferredItem<Item> NIU_NAI = Beverages.register("niu_nai", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
-                    .tags(List.of("no_alcohol", "neat")).drink().beverages().cost(16).build());
-    public static final DeferredItem<Item> NI_GE_LUO_NI = Beverages.register("ni_ge_luo_ni", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.8f).build()))
-                    .tags(List.of("mid_alcohol", "chillable", "western", "cocktail", "fruity", "bitter")).drink().beverages().cost(100).build());
-    public static final DeferredItem<Item> PU_TONG_JIAN_SHEN_CHA = Beverages.register("pu_tong_jian_shen_cha", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build()))
-                    .tags(List.of("mid_alcohol", "bitter", "soda", "liquor")).drink().beverages().cost(32).build());
-    public static final DeferredItem<Item> QI = Beverages.register("qi", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("low_alcohol", "chillable", "sake", "cocktail", "soda", "sweet", "dry", "bitter")).drink().beverages().cost(18).build());
-    public static final DeferredItem<Item> QI_BAO_JIAN = Beverages.register("qi_bao_jian", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("no_alcohol", "sweet", "neat", "stimulating")).drink().beverages().cost(45).build());
-    public static final DeferredItem<Item> QI_LIN = Beverages.register("qi_lin", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(7).saturationModifier(0.8f).build()))
-                    .tags(List.of("mid_alcohol", "beer", "neat")).drink().beverages().cost(180).build());
-    public static final DeferredItem<Item> QUE_JIU = Beverages.register("que_jiu", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("mid_alcohol", "chillable", "heatable", "sake", "dry")).drink().beverages().cost(50).build());
-    public static final DeferredItem<Item> RI_YUE_XING = Beverages.register("ri_yue_xing", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("mid_alcohol", "chillable", "heatable", "sake", "neat")).drink().beverages().cost(34).build());
-    public static final DeferredItem<Item> SHEN_ZHI_MAI = Beverages.register("shen_zhi_mai", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("mid_Alcohol", "chillable", "heatable", "shochu", "neat")).drink().beverages().cost(45).build());
-    public static final DeferredItem<Item> SHI_SI_YE = Beverages.register("shi_si_ye", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.8f).build()))
-                    .tags(List.of("mid_alcohol", "chillable", "heatable", "sake", "vintage", "sweet")).drink().beverages().cost(440).build());
-    public static final DeferredItem<Item> SHUI_TA_JI = Beverages.register("shui_ta_ji", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.8f).build()))
-                    .tags(List.of("mid_alcohol", "chillable", "heatable", "sake", "neat")).drink().beverages().cost(130).build());
-    public static final DeferredItem<Item> TAI_KONG_PI_JIU = Beverages.register("tai_kong_pi_jiu", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("mid_alcohol","modern", "fruity", "beer")).drink().beverages().cost(42).build());
-    public static final DeferredItem<Item> TIAN_DI_WU_YON = Beverages.register("tian_di_wu_yon", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("high_alcohol", "shochu")).drink().beverages().cost(150).build());
-    public static final DeferredItem<Item> TIAN_GOU_YONG = Beverages.register("tian_gou_yong", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).build()))
-                    .tags(List.of("high_alcohol", "chillable", "heatable", "sake", "neat")).drink().beverages().cost(70).build());
-    public static final DeferredItem<Item> WEI_XIN_BING_KA_PEI = Beverages.register("wei_xin_bing_ka_pei", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("no_alcohol", "modern", "stimulating", "bitter")).drink().beverages().cost(70).build());
-    public static final DeferredItem<Item> XIAO = Beverages.register("xiao", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.8f).build()))
-                    .tags(List.of("high_alcohol", "chillable", "western", "neat")).drink().beverages().cost(400).build());
-    public static final DeferredItem<Item> XING_HONG_E_MO = Beverages.register("xing_hong_e_mo", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("low_alcohol", "chillable", "cocktail")).drink().beverages().cost(45).build());
-    public static final DeferredItem<Item> YANG_ZHI_GAN_LU = Beverages.register("yang_zhi_gan_lu", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("no_alcohol", "chillable", "fruity")).drink().beverages().cost(50).build());
-    public static final DeferredItem<Item> YAO_JING_YU_LU = Beverages.register("yao_jing_yu_lu", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).build()))
-                    .tags(List.of("no_alcohol", "sweet", "chillable")).drink().beverages().cost(80).build());
-    public static final DeferredItem<Item> YUE_MIAN_HUO_JIAN = Beverages.register("yue_mian_huo_jian", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("no_alcohol", "sweet", "chillable")).drink().beverages().cost(45).build());
-    public static final DeferredItem<Item> YU_LU_CHA = Beverages.register("yu_lu_cha", ()->
-            new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build()))
-                    .tags(List.of("no_alcohol", "heatable", "vintage")).drink().beverages().cost(50).build());
+    public static final DeferredItem<Item> A_FU_JIA_DUO = Beverages.register("a_fu_jia_duo", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("chillable", "stimulating", "sweet", "bitter")).drink().beverages().cost(35).build());
+    public static final DeferredItem<Item> BING_SHAN_MAO_YU_DONG_NING = Beverages.register("bing_shan_mao_yu_dong_ning", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("no_alcohol", "chillable", "soda", "stimulating", "fruity", "neat", "sweet")).drink().beverages().cost(45).build());
+    public static final DeferredItem<Item> BO_ZI_QI_SHUI = Beverages.register("bo_zi_qi_shui", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("no_alcohol", "soda", "modern")).drink().beverages().cost(30).build());
+    public static final DeferredItem<Item> CHAO_ZUN_PI_JIU = Beverages.register("chao_zun_pi_jiu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("low_alcohol", "chillable", "beer", "bitter")).drink().beverages().cost(18).build());
+    public static final DeferredItem<Item> DA_BING_GUN_ER = Beverages.register("da_bing_gun_er", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("no_alcohol", "stimulating", "modern", "sweet")).beverages().cost(35).build());
+    public static final DeferredItem<Item> DA_YIN_NIANG = Beverages.register("da_yin_niang", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(0.8f).build())).tags(List.of("mid_alcohol", "sake", "vintage", "chillable", "fruity", "neat", "sweet")).drink().beverages().cost(210).build());
+    public static final DeferredItem<Item> DONG_NIANG = Beverages.register("dong_niang", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("low_alcohol", "chillable", "heatable", "vintage", "sweet")).drink().beverages().cost(60).build());
+    ;
+    public static final DeferredItem<Item> FENG_ZHU = Beverages.register("feng_zhu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.8f).build())).tags(List.of("mid_alcohol", "chillable", "cocktail", "modern", "sweet")).drink().beverages().cost(130).build());
+    public static final DeferredItem<Item> GUI_SHA = Beverages.register("gui_sha", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.8f).build())).tags(List.of("high_alcohol", "chillable", "shochu", "dry", "vintage")).drink().beverages().cost(320).build());
+    public static final DeferredItem<Item> GUO_WEI_HIGH_BALL = Beverages.register("guo_wei_high_ball", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build())).tags(List.of("low_alcohol", "chillable", "western", "cocktail", "fruity", "sweet", "bitter")).drink().beverages().cost(12).build());
+    public static final DeferredItem<Item> GUO_WEI_SOUR = Beverages.register("guo_wei_sour", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build())).tags(List.of("low_alcohol", "chillable", "shochu", "cocktail", "fruity", "sweet", "bitter")).drink().beverages().cost(12).build());
+    public static final DeferredItem<Item> GU_FA_NAI_YOU_BING_SHA = Beverages.register("gu_fa_nai_you_bing_sha", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("no_alcohol", "sweet", "chillable", "vintage")).drink().beverages().cost(42).build());
+    public static final DeferredItem<Item> GU_MING_DI_BING_JI_LING = Beverages.register("gu_ming_di_bing_ji_ling", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("no_alcohol", "sweet", "fruity", "modern")).drink().beverages().cost(35).build());
+    public static final DeferredItem<Item> HAI_DE_NV_ER = Beverages.register("hai_de_nv_er", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("no_alcohol", "sweet", "fruity", "modern")).drink().beverages().cost(80).build());
+    public static final DeferredItem<Item> HONG_MO_GUAN_HONG_CHA = Beverages.register("hong_mo_guan_hong_cha", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build())).tags(List.of("no_alcohol", "heatable", "stimulating", "fruity")).drink().beverages().cost(25).build());
+    public static final DeferredItem<Item> HONG_WU = Beverages.register("hong_wu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).build())).tags(List.of("mid_alcohol", "heatable", "western")).drink().beverages().cost(75).build());
+    public static final DeferredItem<Item> HONG_YOU_GUO_ZHI = Beverages.register("hong_you_guo_zhi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build())).tags(List.of("no_alcohol", "fruity")).drink().beverages().cost(24).build());
+    public static final DeferredItem<Item> HUO_SHU_QIU = Beverages.register("huo_shu_qiu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.8f).build())).tags(List.of("high_alcohol", "heatable", "shochu", "dry")).drink().beverages().cost(420).build());
+    public static final DeferredItem<Item> JIAO_FU = Beverages.register("jiao_fu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(0.8f).build())).tags(List.of("high_alcohol", "chillable", "western", "cocktail", "vintage", "bitter")).drink().beverages().cost(180).build());
+    public static final DeferredItem<Item> KA_PEI = Beverages.register("ka_pei", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).build())).tags(List.of("no_alcohol", "bitter", "modern", "heatable", "chillable", "stimulating")).drink().beverages().cost(62).build());
+    public static final DeferredItem<Item> LIN_REN_ZHUI = Beverages.register("lin_ren_zhui", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("low_alcohol", "neat", "fruity", "vintage", "sweet")).drink().beverages().cost(100).build());
+    public static final DeferredItem<Item> LU_CHA = Beverages.register("lu_cha", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8f).build())).tags(List.of("no_alcohol")).drink().beverages().cost(1).build());
+    public static final DeferredItem<Item> MEI_JIU = Beverages.register("mei_jiu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("mid_alcohol", "chillable", "heatable", "liquor", "fruity")).drink().beverages().cost(32).build());
+    public static final DeferredItem<Item> MO_JIE_KA_PEI = Beverages.register("mo_jie_ka_pei", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("high_alcohol", "stimulating", "heatable", "western")).drink().beverages().cost(210).build());
+    public static final DeferredItem<Item> MO_JI_TUO_BAO_JIANG_QIU = Beverages.register("mo_ji_tuo_bao_jiang_qiu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("low_alcohol", "soda", "modern", "cocktail")).drink().beverages().cost(300).build());
+    public static final DeferredItem<Item> NIU_NAI = Beverages.register("niu_nai", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build())).tags(List.of("no_alcohol", "neat")).drink().beverages().cost(16).build());
+    public static final DeferredItem<Item> NI_GE_LUO_NI = Beverages.register("ni_ge_luo_ni", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.8f).build())).tags(List.of("mid_alcohol", "chillable", "western", "cocktail", "fruity", "bitter")).drink().beverages().cost(100).build());
+    public static final DeferredItem<Item> PU_TONG_JIAN_SHEN_CHA = Beverages.register("pu_tong_jian_shen_cha", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.8f).build())).tags(List.of("mid_alcohol", "bitter", "soda", "liquor")).drink().beverages().cost(32).build());
+    public static final DeferredItem<Item> QI = Beverages.register("qi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("low_alcohol", "chillable", "sake", "cocktail", "soda", "sweet", "dry", "bitter")).drink().beverages().cost(18).build());
+    public static final DeferredItem<Item> QI_BAO_JIAN = Beverages.register("qi_bao_jian", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("no_alcohol", "sweet", "neat", "stimulating")).drink().beverages().cost(45).build());
+    public static final DeferredItem<Item> QI_LIN = Beverages.register("qi_lin", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(0.8f).build())).tags(List.of("mid_alcohol", "beer", "neat")).drink().beverages().cost(180).build());
+    public static final DeferredItem<Item> QUE_JIU = Beverages.register("que_jiu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("mid_alcohol", "chillable", "heatable", "sake", "dry")).drink().beverages().cost(50).build());
+    public static final DeferredItem<Item> RI_YUE_XING = Beverages.register("ri_yue_xing", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("mid_alcohol", "chillable", "heatable", "sake", "neat")).drink().beverages().cost(34).build());
+    public static final DeferredItem<Item> SHEN_ZHI_MAI = Beverages.register("shen_zhi_mai", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("mid_Alcohol", "chillable", "heatable", "shochu", "neat")).drink().beverages().cost(45).build());
+    public static final DeferredItem<Item> SHI_SI_YE = Beverages.register("shi_si_ye", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.8f).build())).tags(List.of("mid_alcohol", "chillable", "heatable", "sake", "vintage", "sweet")).drink().beverages().cost(440).build());
+    public static final DeferredItem<Item> SHUI_TA_JI = Beverages.register("shui_ta_ji", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.8f).build())).tags(List.of("mid_alcohol", "chillable", "heatable", "sake", "neat")).drink().beverages().cost(130).build());
+    public static final DeferredItem<Item> TAI_KONG_PI_JIU = Beverages.register("tai_kong_pi_jiu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("mid_alcohol", "modern", "fruity", "beer")).drink().beverages().cost(42).build());
+    public static final DeferredItem<Item> TIAN_DI_WU_YON = Beverages.register("tian_di_wu_yon", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("high_alcohol", "shochu")).drink().beverages().cost(150).build());
+    public static final DeferredItem<Item> TIAN_GOU_YONG = Beverages.register("tian_gou_yong", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).build())).tags(List.of("high_alcohol", "chillable", "heatable", "sake", "neat")).drink().beverages().cost(70).build());
+    public static final DeferredItem<Item> WEI_XIN_BING_KA_PEI = Beverages.register("wei_xin_bing_ka_pei", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("no_alcohol", "modern", "stimulating", "bitter")).drink().beverages().cost(70).build());
+    public static final DeferredItem<Item> XIAO = Beverages.register("xiao", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.8f).build())).tags(List.of("high_alcohol", "chillable", "western", "neat")).drink().beverages().cost(400).build());
+    public static final DeferredItem<Item> XING_HONG_E_MO = Beverages.register("xing_hong_e_mo", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("low_alcohol", "chillable", "cocktail")).drink().beverages().cost(45).build());
+    public static final DeferredItem<Item> YANG_ZHI_GAN_LU = Beverages.register("yang_zhi_gan_lu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("no_alcohol", "chillable", "fruity")).drink().beverages().cost(50).build());
+    public static final DeferredItem<Item> YAO_JING_YU_LU = Beverages.register("yao_jing_yu_lu", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).build())).tags(List.of("no_alcohol", "sweet", "chillable")).drink().beverages().cost(80).build());
+    public static final DeferredItem<Item> YUE_MIAN_HUO_JIAN = Beverages.register("yue_mian_huo_jian", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("no_alcohol", "sweet", "chillable")).drink().beverages().cost(45).build());
+    public static final DeferredItem<Item> YU_LU_CHA = Beverages.register("yu_lu_cha", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8f).build())).tags(List.of("no_alcohol", "heatable", "vintage")).drink().beverages().cost(50).build());
 
 
     public static final DeferredRegister.Items Others = DeferredRegister.createItems(MystiasIzakaya.MODID);
     //others
-    public static final DeferredItem<Item> HEI_AN_WU_ZHI = Others.register("hei_an_wu_zhi", ()->
-			new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)
-					.food(new FoodProperties.Builder().nutrition(7).saturationModifier(0.4f).build()))
-					.build());
-
-
+    public static final DeferredItem<Item> HEI_AN_WU_ZHI = Others.register("hei_an_wu_zhi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(0.4f).build())).build());
     public static final DeferredItem<Item> ICON = Others.register("icon", IconItem::new);
-    public static final DeferredItem<Item> REISEN = Others.register("reisen", LingXianItem::new);
+    public static final DeferredItem<Item> REISEN = Others.register("reisen", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)).tags(List.of("Photogenic", "Signature", "Specialty", "Wonderful")).cost(530000).build());
     public static final DeferredItem<Item> EN_1 = Others.register("en_1", En1Item::new);
     public static final DeferredItem<Item> EN_5 = Others.register("en_5", En5Item::new);
     public static final DeferredItem<Item> EN_10 = Others.register("en_10", En10Item::new);
