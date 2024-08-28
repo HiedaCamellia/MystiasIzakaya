@@ -41,7 +41,7 @@ public class KitchenwaresUiMenu extends AbstractContainerMenu implements Supplie
 	private BlockEntity boundBlockEntity = null;
 
 	public KitchenwaresUiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(MIMenu.COOKING_RANGE_UI.get(), id);
+		super(MIMenu.KITCHENWARES_UI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStackHandler(12);
@@ -82,9 +82,9 @@ public class KitchenwaresUiMenu extends AbstractContainerMenu implements Supplie
 			}
 		}
 
-		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 203, 62) {
-			private final int slot = 0;
-		}));
+//		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 203, 62) {
+//			private final int slot = 0;
+//		}));
 		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 95, 26) {
 			private final int slot = 1;
 

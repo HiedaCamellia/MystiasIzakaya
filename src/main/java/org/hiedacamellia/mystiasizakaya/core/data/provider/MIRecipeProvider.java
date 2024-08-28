@@ -14,7 +14,7 @@ public class MIRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes(RecipeOutput output) {
-        // Add your recipes here.
+        // Add your recipe here.
 
     }
 }

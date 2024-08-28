@@ -40,15 +40,19 @@ public class Confirm {
 				BlockPos _bp = pos;
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
+				BlockState _bsb = world.getBlockState(_bp.below());
+
 
 				int cooktime = target.getOrDefault(MIDatacomponet.MI_COOKTIME.get(), new MICooktime(0)).cooktime();
 
-				if(_bs.getBlock()== MIBlock.COOKING_RANGE.get()){
+				if(_bs.getBlock()== MIBlock.COOKING_RANGE.get()||_bsb.getBlock()== MIBlock.COOKING_RANGE.get()){
 					cooktime = (int) (cooktime * 0.6);
 				}
 
-				if (_blockEntity != null)
+				if (_blockEntity != null) {
+					_blockEntity.getPersistentData().putDouble("totaltime", cooktime);
 					_blockEntity.getPersistentData().putDouble("timeleft", cooktime);
+				}
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
