@@ -5,20 +5,20 @@
       "item": "mystias_izakaya:ji_shang_jin_qiang_yu"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:ying_luo_xue",
+    "id": "mystias_izakaya:ying_luo_xue",
     "count": 1
   }
 }

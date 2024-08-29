@@ -18,7 +18,7 @@
     }
   ],
   "output": {
-    "item": "mystias_izakaya:you_meng",
+    "id": "mystias_izakaya:you_meng",
     "count": 1
   }
 }

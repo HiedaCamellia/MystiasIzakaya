@@ -5,20 +5,20 @@
       "item": "mystias_izakaya:niu_rou"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:shi_zi_tou",
+    "id": "mystias_izakaya:shi_zi_tou",
     "count": 1
   }
 }

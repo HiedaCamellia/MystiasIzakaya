@@ -11,14 +11,14 @@
       "item": "mystias_izakaya:feng_mi"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:huan_jin_shu_yu_bin",
+    "id": "mystias_izakaya:huan_jin_shu_yu_bin",
     "count": 1
   }
 }

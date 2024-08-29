@@ -5,20 +5,20 @@
       "item": "mystias_izakaya:dou_fu"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:dou_fu_guo",
+    "id": "mystias_izakaya:dou_fu_guo",
     "count": 1
   }
 }

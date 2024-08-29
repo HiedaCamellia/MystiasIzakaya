@@ -8,17 +8,17 @@
       "item": "mystias_izakaya:ye_zhu_rou"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:er_tian_liu",
+    "id": "mystias_izakaya:er_tian_liu",
     "count": 1
   }
 }

@@ -14,11 +14,11 @@
       "item": "mystias_izakaya:chan_shui"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:dou_jia_zheng_gao",
+    "id": "mystias_izakaya:dou_jia_zheng_gao",
     "count": 1
   }
 }

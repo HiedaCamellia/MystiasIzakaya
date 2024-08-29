@@ -8,17 +8,17 @@
       "item": "mystias_izakaya:ji_dan"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:man_yu_neng_dan_jing",
+    "id": "mystias_izakaya:man_yu_neng_dan_jing",
     "count": 1
   }
 }

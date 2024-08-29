@@ -11,14 +11,14 @@
       "item": "mystias_izakaya:nai_you"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:feng_zi_dan",
+    "id": "mystias_izakaya:feng_zi_dan",
     "count": 1
   }
 }

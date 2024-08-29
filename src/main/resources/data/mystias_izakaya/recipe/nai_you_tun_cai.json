@@ -11,14 +11,14 @@
       "item": "mystias_izakaya:huang_you"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:nai_you_tun_cai",
+    "id": "mystias_izakaya:nai_you_tun_cai",
     "count": 1
   }
 }

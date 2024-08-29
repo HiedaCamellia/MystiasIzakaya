@@ -14,11 +14,11 @@
       "item": "mystias_izakaya:yin_er"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:he_tang_yue_she",
+    "id": "mystias_izakaya:he_tang_yue_she",
     "count": 1
   }
 }

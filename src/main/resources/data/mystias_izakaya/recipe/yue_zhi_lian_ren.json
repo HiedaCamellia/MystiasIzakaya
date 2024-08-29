@@ -14,11 +14,11 @@
       "item": "mystias_izakaya:yue_guang_cao"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:yue_zhi_lian_ren",
+    "id": "mystias_izakaya:yue_zhi_lian_ren",
     "count": 1
   }
 }

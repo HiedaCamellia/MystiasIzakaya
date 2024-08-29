@@ -8,17 +8,17 @@
       "item": "mystias_izakaya:nuo_mi"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:yue_guang_tuan_zi",
+    "id": "mystias_izakaya:yue_guang_tuan_zi",
     "count": 1
   }
 }

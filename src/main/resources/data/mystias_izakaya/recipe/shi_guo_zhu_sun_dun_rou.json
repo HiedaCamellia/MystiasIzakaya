@@ -11,14 +11,14 @@
       "item": "mystias_izakaya:niu_rou"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:shi_guo_zhu_sun_dun_rou",
+    "id": "mystias_izakaya:shi_guo_zhu_sun_dun_rou",
     "count": 1
   }
 }

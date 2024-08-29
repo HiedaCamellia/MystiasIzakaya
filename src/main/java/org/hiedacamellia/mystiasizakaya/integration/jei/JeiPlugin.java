@@ -12,6 +12,7 @@ import net.minecraft.world.item.crafting.RecipeManager;
 import org.hiedacamellia.mystiasizakaya.integration.jei.categories.*;
 import org.hiedacamellia.mystiasizakaya.integration.jei.recipes.*;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlock;
+import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 
 import java.util.List;
 import java.util.Objects;
@@ -58,9 +59,14 @@ public class JeiPlugin implements IModPlugin {
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
 		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), BoilingPotType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIItem.BOILING_POT.get()), BoilingPotType_Type);
 		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), CuttingBoardType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIItem.CUTTING_BOARD.get()), CuttingBoardType_Type);
 		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), FryingPanType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIItem.FRYING_PAN.get()), FryingPanType_Type);
 		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), GrillType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIItem.GRILL.get()), GrillType_Type);
 		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), StreamerType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIItem.STEAMER.get()), StreamerType_Type);
 	}
 }

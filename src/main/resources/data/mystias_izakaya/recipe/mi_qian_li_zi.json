@@ -8,17 +8,17 @@
       "item": "mystias_izakaya:ban_li"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:mi_qian_li_zi",
+    "id": "mystias_izakaya:mi_qian_li_zi",
     "count": 1
   }
 }

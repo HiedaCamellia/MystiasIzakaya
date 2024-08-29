@@ -11,14 +11,14 @@
       "item": "mystias_izakaya:bai_guo"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:bai_lu_zhen_song",
+    "id": "mystias_izakaya:bai_lu_zhen_song",
     "count": 1
   }
 }

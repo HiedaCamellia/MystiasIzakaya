@@ -14,11 +14,11 @@
       "item": "mystias_izakaya:bai_guo"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:xiao_xiao_de_tian_mi_du_yao",
+    "id": "mystias_izakaya:xiao_xiao_de_tian_mi_du_yao",
     "count": 1
   }
 }

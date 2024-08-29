@@ -8,17 +8,17 @@
       "item": "mystias_izakaya:di_gua"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:ba_si_di_gua",
+    "id": "mystias_izakaya:ba_si_di_gua",
     "count": 1
   }
 }

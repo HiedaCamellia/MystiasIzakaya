@@ -11,14 +11,14 @@
       "item": "mystias_izakaya:zhu_sun"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:sai_xiong_zhang",
+    "id": "mystias_izakaya:sai_xiong_zhang",
     "count": 1
   }
 }

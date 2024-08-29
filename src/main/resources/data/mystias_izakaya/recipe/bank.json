@@ -6,11 +6,14 @@
       "item": "mystias_izakaya:iron_knife"
     },
     {
-      "tag": "minecraft:wool"
+      "tag": "minecraft:planks"
+    },
+    {
+      "tag": "minecraft:planks"
     }
   ],
   "result": {
-    "item": "mystias_izakaya:bank",
+    "id": "mystias_izakaya:donation",
     "count": 1
   }
 }

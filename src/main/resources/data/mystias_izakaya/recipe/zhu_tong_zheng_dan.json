@@ -14,11 +14,11 @@
       "item": "mystias_izakaya:mo_gu"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:zhu_tong_zheng_dan",
+    "id": "mystias_izakaya:zhu_tong_zheng_dan",
     "count": 1
   }
 }

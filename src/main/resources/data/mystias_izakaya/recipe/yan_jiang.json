@@ -14,11 +14,11 @@
       "item": "mystias_izakaya:niu_rou"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:yan_jiang",
+    "id": "mystias_izakaya:yan_jiang",
     "count": 1
   }
 }

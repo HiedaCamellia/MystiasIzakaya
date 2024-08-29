@@ -8,17 +8,17 @@
       "item": "mystias_izakaya:zhu_zi"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:liu_shui_su_mian",
+    "id": "mystias_izakaya:liu_shui_su_mian",
     "count": 1
   }
 }

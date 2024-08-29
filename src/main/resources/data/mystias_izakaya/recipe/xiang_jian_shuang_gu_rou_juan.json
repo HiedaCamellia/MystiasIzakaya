@@ -11,14 +11,14 @@
       "item": "mystias_izakaya:zhu_rou"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:xiang_jian_shuang_gu_rou_juan",
+    "id": "mystias_izakaya:xiang_jian_shuang_gu_rou_juan",
     "count": 1
   }
 }

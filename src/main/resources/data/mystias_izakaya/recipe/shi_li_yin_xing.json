@@ -8,17 +8,17 @@
       "item": "mystias_izakaya:feng_mi"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:shi_li_yin_xing",
+    "id": "mystias_izakaya:shi_li_yin_xing",
     "count": 1
   }
 }

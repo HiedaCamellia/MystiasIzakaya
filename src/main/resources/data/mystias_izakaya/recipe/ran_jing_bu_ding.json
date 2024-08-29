@@ -14,11 +14,11 @@
       "item": "mystias_izakaya:ning_meng"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:ran_jing_bu_ding",
+    "id": "mystias_izakaya:ran_jing_bu_ding",
     "count": 1
   }
 }

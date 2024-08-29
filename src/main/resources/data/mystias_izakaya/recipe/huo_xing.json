@@ -14,11 +14,11 @@
       "item": "mystias_izakaya:lu_shui"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:huo_xing",
+    "id": "mystias_izakaya:huo_xing",
     "count": 1
   }
 }

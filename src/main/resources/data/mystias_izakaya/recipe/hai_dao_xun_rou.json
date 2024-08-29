@@ -14,11 +14,11 @@
       "item": "mystias_izakaya:feng_mi"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:hai_dao_xun_rou",
+    "id": "mystias_izakaya:hai_dao_xun_rou",
     "count": 1
   }
 }

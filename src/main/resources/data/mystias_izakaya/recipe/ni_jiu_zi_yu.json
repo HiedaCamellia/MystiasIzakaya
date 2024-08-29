@@ -11,14 +11,14 @@
       "item": "mystias_izakaya:chan_shui"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:ni_jiu_zi_yu",
+    "id": "mystias_izakaya:ni_jiu_zi_yu",
     "count": 1
   }
 }

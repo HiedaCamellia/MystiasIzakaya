@@ -11,14 +11,14 @@
       "item": "mystias_izakaya:yue_guang_cao"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:zhu_lu_die",
+    "id": "mystias_izakaya:zhu_lu_die",
     "count": 1
   }
 }

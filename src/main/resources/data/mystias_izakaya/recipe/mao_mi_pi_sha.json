@@ -14,11 +14,11 @@
       "item": "mystias_izakaya:ye_zhu_rou"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:mao_mi_pi_sha",
+    "id": "mystias_izakaya:mao_mi_pi_sha",
     "count": 1
   }
 }

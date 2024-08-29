@@ -8,17 +8,17 @@
       "item": "mystias_izakaya:zhi_shi"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:zhi_shi_dan",
+    "id": "mystias_izakaya:zhi_shi_dan",
     "count": 1
   }
 }

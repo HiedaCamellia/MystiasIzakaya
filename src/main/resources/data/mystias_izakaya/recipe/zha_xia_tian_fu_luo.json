@@ -8,17 +8,17 @@
       "item": "mystias_izakaya:mian_fen"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:zha_xia_tian_fu_luo",
+    "id": "mystias_izakaya:zha_xia_tian_fu_luo",
     "count": 1
   }
 }

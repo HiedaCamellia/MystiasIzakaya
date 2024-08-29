@@ -8,17 +8,17 @@
       "item": "mystias_izakaya:zhu_rou"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:zhu_sun_chao_rou",
+    "id": "mystias_izakaya:zhu_sun_chao_rou",
     "count": 1
   }
 }

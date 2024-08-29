@@ -14,11 +14,11 @@
       "item": "mystias_izakaya:huan_tan_hua"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:qi_she_yang_geng",
+    "id": "mystias_izakaya:qi_she_yang_geng",
     "count": 1
   }
 }

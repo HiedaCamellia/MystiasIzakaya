@@ -18,7 +18,7 @@ import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 
 public class StreamerTypeRecipeCategory implements IRecipeCategory<StreamerTypeRecipe> {
 	public final static ResourceLocation UID = ResourceLocation.fromNamespaceAndPath("mystias_izakaya", "streamer_type");
-	public final static ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("mystias_izakaya", "textures/overlay/recipe_gui.png");
+	public final static ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("mystias_izakaya", "textures/screens/recipe_gui.png");
 	private final IDrawable background;
 	private final IDrawable icon;
 

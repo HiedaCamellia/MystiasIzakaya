@@ -14,11 +14,11 @@
       "item": "mystias_izakaya:mian_fen"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:san_wen_yu_tian_fu_luo",
+    "id": "mystias_izakaya:san_wen_yu_tian_fu_luo",
     "count": 1
   }
 }

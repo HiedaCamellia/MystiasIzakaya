@@ -14,11 +14,11 @@
       "item": "mystias_izakaya:huang_you"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:yi_shi_hui_fan",
+    "id": "mystias_izakaya:yi_shi_hui_fan",
     "count": 1
   }
 }

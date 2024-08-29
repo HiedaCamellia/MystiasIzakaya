@@ -11,14 +11,14 @@
       "item": "mystias_izakaya:xi_lan_hua"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:zhu_tong_shao_zui_xia",
+    "id": "mystias_izakaya:zhu_tong_shao_zui_xia",
     "count": 1
   }
 }

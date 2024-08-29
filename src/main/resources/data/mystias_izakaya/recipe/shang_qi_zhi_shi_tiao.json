@@ -11,14 +11,14 @@
       "item": "mystias_izakaya:bai_guo"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:shang_qi_zhi_shi_tiao",
+    "id": "mystias_izakaya:shang_qi_zhi_shi_tiao",
     "count": 1
   }
 }

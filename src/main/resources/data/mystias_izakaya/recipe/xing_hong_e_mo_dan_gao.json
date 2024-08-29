@@ -14,11 +14,11 @@
       "item": "mystias_izakaya:feng_mi"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:xing_hong_e_mo_dan_gao",
+    "id": "mystias_izakaya:xing_hong_e_mo_dan_gao",
     "count": 1
   }
 }

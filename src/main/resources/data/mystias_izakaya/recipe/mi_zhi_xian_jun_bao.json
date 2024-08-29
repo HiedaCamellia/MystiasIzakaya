@@ -11,14 +11,14 @@
       "item": "mystias_izakaya:lu_shui"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:mi_zhi_xian_jun_bao",
+    "id": "mystias_izakaya:mi_zhi_xian_jun_bao",
     "count": 1
   }
 }

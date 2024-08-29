@@ -14,11 +14,11 @@
       "item": "mystias_izakaya:la_jiao"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:mo_nv_de_wu_ta_hui",
+    "id": "mystias_izakaya:mo_nv_de_wu_ta_hui",
     "count": 1
   }
 }

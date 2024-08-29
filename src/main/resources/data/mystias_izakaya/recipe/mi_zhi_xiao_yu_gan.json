@@ -5,20 +5,20 @@
       "item": "mystias_izakaya:zun_yu"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:mi_zhi_xiao_yu_gan",
+    "id": "mystias_izakaya:mi_zhi_xiao_yu_gan",
     "count": 1
   }
 }

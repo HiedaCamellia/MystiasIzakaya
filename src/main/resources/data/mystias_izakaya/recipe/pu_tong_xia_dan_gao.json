@@ -11,14 +11,14 @@
       "item": "mystias_izakaya:nai_you"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:pu_tong_xia_dan_gao",
+    "id": "mystias_izakaya:pu_tong_xia_dan_gao",
     "count": 1
   }
 }

@@ -8,17 +8,17 @@
       "item": "mystias_izakaya:jin_qiang_yu"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:ci_shen_pin_pan",
+    "id": "mystias_izakaya:ci_shen_pin_pan",
     "count": 1
   }
 }

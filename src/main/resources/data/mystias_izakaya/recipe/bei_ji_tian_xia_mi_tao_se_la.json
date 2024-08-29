@@ -11,14 +11,14 @@
       "item": "mystias_izakaya:bing_kuai"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:bei_ji_tian_xia_mi_tao_se_la",
+    "id": "mystias_izakaya:bei_ji_tian_xia_mi_tao_se_la",
     "count": 1
   }
 }

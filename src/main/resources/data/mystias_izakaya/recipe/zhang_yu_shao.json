@@ -11,14 +11,14 @@
       "item": "mystias_izakaya:zhang_yu"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:zhang_yu_shao",
+    "id": "mystias_izakaya:zhang_yu_shao",
     "count": 1
   }
 }

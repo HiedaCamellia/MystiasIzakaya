@@ -14,11 +14,11 @@
       "item": "mystias_izakaya:huang_you"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:wu_yi_shi_yao_guai_mu_si",
+    "id": "mystias_izakaya:wu_yi_shi_yao_guai_mu_si",
     "count": 1
   }
 }

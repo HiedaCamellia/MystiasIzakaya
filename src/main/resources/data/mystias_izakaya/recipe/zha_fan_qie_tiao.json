@@ -8,17 +8,17 @@
       "item": "mystias_izakaya:tu_dou"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:zha_fan_qie_tiao",
+    "id": "mystias_izakaya:zha_fan_qie_tiao",
     "count": 1
   }
 }

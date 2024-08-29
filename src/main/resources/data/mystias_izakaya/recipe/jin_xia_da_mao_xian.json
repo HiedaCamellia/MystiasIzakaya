@@ -14,11 +14,11 @@
       "item": "mystias_izakaya:nai_you"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:jin_xia_da_mao_xian",
+    "id": "mystias_izakaya:jin_xia_da_mao_xian",
     "count": 1
   }
 }

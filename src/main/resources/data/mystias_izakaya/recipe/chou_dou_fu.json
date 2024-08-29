@@ -8,17 +8,17 @@
       "item": "mystias_izakaya:la_jiao"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     },
     {
-      "tag": "mystias_izakaya:emptytag"
+      "tag": "mystias_izakaya:ingredients"
     }
   ],
   "output": {
-    "item": "mystias_izakaya:chou_dou_fu",
+    "id": "mystias_izakaya:chou_dou_fu",
     "count": 1
   }
 }
