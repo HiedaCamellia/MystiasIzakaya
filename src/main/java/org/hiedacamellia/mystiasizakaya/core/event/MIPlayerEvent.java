@@ -25,6 +25,7 @@ import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber
@@ -35,27 +36,45 @@ public class MIPlayerEvent {
     }
 
     public static void setBalance(Player player, double balance) {
-        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> variables.balance = balance);
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            variables.balance = balance;
+            variables.syncPlayerVariables(player);
+        });
     }
 
     public static void changeBalance(Player player, double balance) {
-        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> variables.balance += balance);
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            variables.balance += balance;
+            variables.syncPlayerVariables(player);
+        });
     }
 
     public static void addOrder(Player player, String order) {
-        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> variables.orders.add(order));
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            variables.orders.add(order);
+            variables.syncPlayerVariables(player);
+        });
     }
 
     public static void addOrderBeverages(Player player, String order) {
-        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> variables.ordersbeverages.add(order));
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            variables.ordersbeverages.add(order);
+            variables.syncPlayerVariables(player);
+        });
     }
 
     public static void addTurnoverPre(Player player, String turnover) {
-        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> variables.turnover_pre.add(turnover));
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            variables.turnover_pre.add(turnover);
+            variables.syncPlayerVariables(player);
+        });
     }
 
     public static void addTurnoverCha(Player player, int turnover) {
-        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> variables.trunover_cha.add(turnover));
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            variables.trunover_cha.add(turnover);
+            variables.syncPlayerVariables(player);
+        });
     }
 
     public static void addTurnover(Player player, String turnover, int turnover_cha) {
@@ -70,7 +89,10 @@ public class MIPlayerEvent {
     }
 
     public static void setOrders(Player player, List<String> orders) {
-        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> variables.orders = orders);
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            variables.orders = orders;
+            variables.syncPlayerVariables(player);
+        });
     }
 
     public static List<String> getOrdersBeverages(Player player) {
@@ -78,7 +100,11 @@ public class MIPlayerEvent {
     }
 
     public static void setOrdersBeverages(Player player, List<String> ordersbeverages) {
-        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> variables.ordersbeverages = ordersbeverages);
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(
+                variables -> {
+                    variables.ordersbeverages = ordersbeverages;
+                    variables.syncPlayerVariables(player);
+                });
     }
 
     public static List<String> getTurnoverPre(Player player) {
@@ -90,7 +116,9 @@ public class MIPlayerEvent {
     }
 
     public static void syncPlayerVariables(Player player) {
-        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()).syncPlayerVariables(player);
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(
+                variables -> variables.syncPlayerVariables(player)
+        );
     }
 
     public static void deleteOverTurnover(Player player) {
@@ -116,20 +144,20 @@ public class MIPlayerEvent {
     public static class EventBusVariableHandlers {
         @SubscribeEvent
         public static void onPlayerLoggedInSyncPlayerVariables(PlayerEvent.PlayerLoggedInEvent event) {
-            if (!event.getEntity().level().isClientSide())
-                event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()).syncPlayerVariables(event.getEntity());
+            if (event.getEntity() instanceof ServerPlayer serverPlayer)
+                serverPlayer.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()).syncPlayerVariables(serverPlayer);
         }
 
         @SubscribeEvent
         public static void onPlayerRespawnedSyncPlayerVariables(PlayerEvent.PlayerRespawnEvent event) {
-            if (!event.getEntity().level().isClientSide())
-                event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()).syncPlayerVariables(event.getEntity());
+            if (event.getEntity() instanceof ServerPlayer serverPlayer)
+                syncPlayerVariables(serverPlayer);
         }
 
         @SubscribeEvent
         public static void onPlayerChangedDimensionSyncPlayerVariables(PlayerEvent.PlayerChangedDimensionEvent event) {
-            if (!event.getEntity().level().isClientSide())
-                event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()).syncPlayerVariables(event.getEntity());
+            if (event.getEntity() instanceof ServerPlayer serverPlayer)
+                syncPlayerVariables(serverPlayer);
         }
 
         @SubscribeEvent
@@ -146,7 +174,7 @@ public class MIPlayerEvent {
     }
 
 
-    public static final Capability<PlayerVariables> PLAYER_VARIABLES_CAPABILITY = CapabilityManager.get(new CapabilityToken<PlayerVariables>() {
+    public static final Capability<PlayerVariables> PLAYER_VARIABLES_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {
     });
 
     @Mod.EventBusSubscriber
@@ -172,7 +200,7 @@ public class MIPlayerEvent {
 
         @Override
         public void deserializeNBT(Tag nbt) {
-            playerVariables.readNBT(nbt);
+            playerVariables.readNBT((CompoundTag) nbt);
         }
     }
 
@@ -188,7 +216,7 @@ public class MIPlayerEvent {
                 MystiasIzakaya.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> serverPlayer), new PlayerVariablesSyncMessage(this));
         }
 
-        public Tag writeNBT() {
+        public CompoundTag writeNBT() {
             CompoundTag nbt = new CompoundTag();
             nbt.putDouble("balance", balance);
             String orders_string = String.join(",", orders);
@@ -201,16 +229,15 @@ public class MIPlayerEvent {
             return nbt;
         }
 
-        public void readNBT(Tag Tag) {
-            CompoundTag nbt = (CompoundTag) Tag;
-            balance = nbt.getDouble("balance");
-            String orders_string = nbt.getString("orders");
-            String ordersbeverages_string = nbt.getString("ordersbeverages");
+        public void readNBT(CompoundTag Tag) {
+            balance = Tag.getDouble("balance");
+            String orders_string = Tag.getString("orders");
+            String ordersbeverages_string = Tag.getString("ordersbeverages");
             orders = new ArrayList<>(List.of(orders_string.split(",")));
             ordersbeverages = new ArrayList<>(List.of(ordersbeverages_string.split(",")));
-            String turnover_pre_string = nbt.getString("turnover_pre");
+            String turnover_pre_string = Tag.getString("turnover_pre");
             turnover_pre = new ArrayList<>(List.of(turnover_pre_string.split(",")));
-            trunover_cha = Arrays.stream(nbt.getIntArray("turnover_cha")).boxed().toList();
+            trunover_cha = Arrays.stream(Tag.getIntArray("turnover_cha")).boxed().toList();
         }
     }
 
@@ -219,7 +246,7 @@ public class MIPlayerEvent {
 
         public PlayerVariablesSyncMessage(FriendlyByteBuf buffer) {
             this.data = new PlayerVariables();
-            this.data.readNBT(buffer.readNbt());
+            this.data.readNBT(Objects.requireNonNull(buffer.readNbt()));
         }
 
         public PlayerVariablesSyncMessage(PlayerVariables data) {
@@ -227,19 +254,22 @@ public class MIPlayerEvent {
         }
 
         public static void buffer(PlayerVariablesSyncMessage message, FriendlyByteBuf buffer) {
-            buffer.writeNbt((CompoundTag) message.data.writeNBT());
+            buffer.writeNbt(message.data.writeNBT());
         }
 
         public static void handler(PlayerVariablesSyncMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
             NetworkEvent.Context context = contextSupplier.get();
             context.enqueueWork(() -> {
                 if (!context.getDirection().getReceptionSide().isServer()) {
-                    PlayerVariables variables = Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables());
-                    variables.balance = message.data.balance;
-                    variables.orders = message.data.orders;
-                    variables.ordersbeverages = message.data.ordersbeverages;
-                    variables.turnover_pre = message.data.turnover_pre;
-                    variables.trunover_cha = message.data.trunover_cha;
+                    PlayerVariables variables;
+                    if (Minecraft.getInstance().player != null) {
+                        variables = Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables());
+                        variables.balance = message.data.balance;
+                        variables.orders = message.data.orders;
+                        variables.ordersbeverages = message.data.ordersbeverages;
+                        variables.turnover_pre = message.data.turnover_pre;
+                        variables.trunover_cha = message.data.trunover_cha;
+                    }
                 }
             });
             context.setPacketHandled(true);

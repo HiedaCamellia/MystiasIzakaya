@@ -25,7 +25,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-@Mod("mystias_izakaya")
+@Mod(MystiasIzakaya.MODID)
 public class MystiasIzakaya {
 	public static final String MODID = "mystias_izakaya";
 
@@ -36,16 +36,15 @@ public class MystiasIzakaya {
 		MIBlock.BLOCKS.register(bus);
 		MIBlockEntitiy.REGISTRY.register(bus);
 		MIItem.register(bus);
-
 		MITab.REGISTRY.register(bus);
-
 		MIProfessions.PROFESSIONS.register(bus);
 		MIMenu.REGISTRY.register(bus);
+		MIRecipeType.SERIALIZERS.register(bus);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 	}
 
 	private static final String PROTOCOL_VERSION = "1";
-	public static final SimpleChannel PACKET_HANDLER = NetworkRegistry.newSimpleChannel(new ResourceLocation(MODID, MODID), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
+	public static final SimpleChannel PACKET_HANDLER = NetworkRegistry.newSimpleChannel(new ResourceLocation(MODID, "channel"), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
 	private static int messageID = 0;
 
 	public static <T> void addNetworkMessage(Class<T> messageType, BiConsumer<T, FriendlyByteBuf> encoder, Function<FriendlyByteBuf, T> decoder, BiConsumer<T, Supplier<NetworkEvent.Context>> messageConsumer) {
