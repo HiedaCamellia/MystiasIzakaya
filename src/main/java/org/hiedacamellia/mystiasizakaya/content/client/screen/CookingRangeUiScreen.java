@@ -1,4 +1,4 @@
-package org.hiedacamellia.mystiasizakaya.functionals.client.gui;
+package org.hiedacamellia.mystiasizakaya.content.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
@@ -11,10 +11,10 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.content.cooking.ui.Lefttime;
-import org.hiedacamellia.mystiasizakaya.content.cooking.ui.Status;
-import org.hiedacamellia.mystiasizakaya.functionals.inventory.CookingRangeUiMenu;
-import org.hiedacamellia.mystiasizakaya.functionals.network.CookingRangeUiButton;
+import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingRangeUiMenu;
+import org.hiedacamellia.mystiasizakaya.core.cooking.ui.Lefttime;
+import org.hiedacamellia.mystiasizakaya.core.cooking.ui.Status;
+import org.hiedacamellia.mystiasizakaya.core.network.CookingRangeUiButton;
 import org.hiedacamellia.mystiasizakaya.util.ButtunShow;
 import org.hiedacamellia.mystiasizakaya.util.TargetsText;
 import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
@@ -85,13 +85,13 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
 
 	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 7), 44, 29, -1, false);
-		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 8), 44, 56, -1, false);
-		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 9), 44, 83, -1, false);
-		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 10), 44, 110, -1, false);
-		guiGraphics.drawString(this.font, TargetsText.get(world, x, y, z, 11), 44, 137, -1, false);
-		guiGraphics.drawString(this.font, Status.execute(world, x, y, z), 233, 26, -1, false);
-		guiGraphics.drawString(this.font, Lefttime.execute(world, x, y, z), 238, 65, -1, false);
+		guiGraphics.drawString(this.font, TargetsText.get(world, pos, 7), 44, 29, -1, false);
+		guiGraphics.drawString(this.font, TargetsText.get(world, pos, 8), 44, 56, -1, false);
+		guiGraphics.drawString(this.font, TargetsText.get(world,pos, 9), 44, 83, -1, false);
+		guiGraphics.drawString(this.font, TargetsText.get(world,pos, 10), 44, 110, -1, false);
+		guiGraphics.drawString(this.font, TargetsText.get(world,pos, 11), 44, 137, -1, false);
+		guiGraphics.drawString(this.font, Status.execute(world,pos), 233, 26, -1, false);
+		guiGraphics.drawString(this.font, Lefttime.execute(world,pos), 238, 65, -1, false);
 	}
 
 	@Override

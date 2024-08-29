@@ -7,19 +7,24 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
+import net.minecraftforge.registries.ForgeRegistries;
+import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 
 import java.util.List;
+import java.util.Objects;
 
 public class GetBeveragesTexture {
-	public static String execute(double id, Player player) {
-		List<String> orders_list = player.getData(MIAttachment.MI_ORDERS).beverages();
-		if(orders_list.size()<=id) return "";
+	public static ItemStack execute(double id, Player player) {
+		List<String> orders_list = MIPlayerEvent.getOrdersBeverages(player);
+		if(orders_list.size()<=id)
+			return ItemStack.EMPTY;
+
 		String order = orders_list.get((int) id);
-		TagKey<Item> tag = ItemTags.create(ResourceLocation.parse("mystias_izakaya:beverages"));
-		if (!new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(order))).is(tag)) {
-			return "";
-		}
-		return order.split(":")[1]+ "_";
+		TagKey<Item> tag = ItemTags.create(new ResourceLocation("mystias_izakaya:beverages"));
+		ItemStack now = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(order))));
+		if (now.is(tag))
+			return now;
+		else
+			return ItemStack.EMPTY;
 	}
 }

@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -26,6 +27,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRange;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.*;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.KitchenwaresUiMenu;
@@ -59,27 +61,27 @@ public class Kitchenwares extends RotatedPillarBlock implements EntityBlock {
     }
 
     @Override
-    public @NotNull InteractionResult useWithoutItem(@NotNull BlockState blockstate, @NotNull Level world, @NotNull BlockPos pos, @NotNull Player entity, @NotNull BlockHitResult hit) {
-        super.useWithoutItem(blockstate, world, pos, entity, hit);
-        if (entity instanceof ServerPlayer player) {
-            player.openMenu(new MenuProvider() {
+    public @NotNull InteractionResult use(BlockState blockstate, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        super.use(blockstate, level, pos, player,hand, hit);
+        if (player instanceof ServerPlayer serverPlayer) {
+            NetworkHooks.openScreen(serverPlayer, new MenuProvider() {
                 @Override
-                public @NotNull Component getDisplayName() {
+                public Component getDisplayName() {
                     return Component.literal("Kitchenware");
                 }
 
                 @Override
-                public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
+                public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
                     return new KitchenwaresUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
                 }
             }, pos);
         }
-        if (!world.isClientSide()) {
-            BlockEntity _blockEntity = world.getBlockEntity(pos);
-            BlockState _bs = world.getBlockState(pos);
+        if (!level.isClientSide()) {
+            BlockEntity _blockEntity = level.getBlockEntity(pos);
+            BlockState _bs = level.getBlockState(pos);
             if (_blockEntity != null)
                 _blockEntity.getPersistentData().putBoolean("breaking", false);
-            world.sendBlockUpdated(pos, _bs, _bs, 3);
+            level.sendBlockUpdated(pos, _bs, _bs, 3);
         }
         return InteractionResult.SUCCESS;
     }

@@ -16,6 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.network.NetworkHooks;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.DonationUiMenu;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.LedgerUiMenu;
 import org.jetbrains.annotations.NotNull;
@@ -28,8 +29,8 @@ public class LedgerItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, context, list, flag);
+    public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(itemstack, world, list, flag);
         list.add(Component.literal("§7§o" + Component.translatable("tooltip.mystias_izakaya.ledger").getString() + "§r"));
     }
 
@@ -40,7 +41,7 @@ public class LedgerItem extends Item {
         BlockPos pos = entity.getOnPos();
 
         if (entity instanceof ServerPlayer player) {
-            player.openMenu(new MenuProvider() {
+            NetworkHooks.openScreen(player,new MenuProvider() {
                 @Override
                 public @NotNull Component getDisplayName() {
                     return Component.literal("Account Book");

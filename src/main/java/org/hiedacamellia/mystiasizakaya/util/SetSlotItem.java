@@ -68,6 +68,12 @@ public class SetSlotItem {
             setEmptySlot(_ent, slotid);
         }
     }
+    public static void setEmptySlot(LevelAccessor world, BlockPos pos, int[] slotid) {
+        BlockEntity _ent = world.getBlockEntity(pos);
+        if (_ent != null) {
+            setEmptySlot(_ent, slotid);
+        }
+    }
     public static void setEmptySlot(BlockEntity be, int slotid) {
         if (be != null) {
             be.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {

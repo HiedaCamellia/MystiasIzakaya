@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.network.PacketDistributor;
+import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.KitchenwaresUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.cooking.ui.Lefttime;
 import org.hiedacamellia.mystiasizakaya.core.cooking.ui.Status;
@@ -49,12 +49,12 @@ public class KitchenwaresUiScreen extends AbstractContainerScreen<KitchenwaresUi
 		this.imageHeight = 166;
 	}
 
-	private static final ResourceLocation texture =ResourceLocation.parse(
+	private static final ResourceLocation texture = new ResourceLocation(
 			"mystias_izakaya:textures/screens/kitchenwares_ui.png");
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-		this.renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
+		this.renderBackground(guiGraphics);
 		super.render(guiGraphics, mouseX, mouseY, partialTicks);
 		this.renderTooltip(guiGraphics, mouseX, mouseY);
 	}
@@ -104,7 +104,7 @@ public class KitchenwaresUiScreen extends AbstractContainerScreen<KitchenwaresUi
 		super.init();
 		button_confirm = Button
 				.builder(Component.translatable("gui.mystias_izakaya.cooking_range_ui.button_confirm"), e -> {
-					PacketDistributor.sendToServer(new CookingRangeUiButton(0, pos));
+					MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(0, pos));
 					CookingRangeUiButton.handleButtonAction(entity, 0, pos);
 					onClose();
 				}).bounds(this.leftPos + 94, this.topPos + 60, 90, 20).build();
@@ -112,7 +112,7 @@ public class KitchenwaresUiScreen extends AbstractContainerScreen<KitchenwaresUi
 
 		button_select = Button.builder(Component.literal(""), e -> {
 			if (ButtunShow.get(entity, 7)) {
-				PacketDistributor.sendToServer(new CookingRangeUiButton(1, pos));
+				MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(1, pos));
 				CookingRangeUiButton.handleButtonAction(entity, 1, pos);
 			}
 		}).bounds(this.leftPos + 40, this.topPos + 24, 45, 20).build(builder -> new Button(builder) {
@@ -124,7 +124,7 @@ public class KitchenwaresUiScreen extends AbstractContainerScreen<KitchenwaresUi
 		});
 		button_select1 = Button.builder(Component.literal(""), e -> {
 			if (ButtunShow.get(entity, 8)) {
-				PacketDistributor.sendToServer(new CookingRangeUiButton(2, pos));
+				MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(2,pos));
 				CookingRangeUiButton.handleButtonAction(entity, 2, pos);
 			}
 		}).bounds(this.leftPos + 40, this.topPos + 51, 45, 20).build(builder -> new Button(builder) {
@@ -136,7 +136,7 @@ public class KitchenwaresUiScreen extends AbstractContainerScreen<KitchenwaresUi
 		});
 		button_select2 = Button.builder(Component.literal(""), e -> {
 			if (ButtunShow.get(entity, 9)) {
-				PacketDistributor.sendToServer(new CookingRangeUiButton(3, pos));
+				MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(3,pos));
 				CookingRangeUiButton.handleButtonAction(entity, 3, pos);
 			}
 		}).bounds(this.leftPos + 40, this.topPos + 78, 45, 20).build(builder -> new Button(builder) {
@@ -148,7 +148,7 @@ public class KitchenwaresUiScreen extends AbstractContainerScreen<KitchenwaresUi
 		});
 		button_select3 = Button.builder(Component.literal(""), e -> {
 			if (ButtunShow.get(entity, 10)) {
-				PacketDistributor.sendToServer(new CookingRangeUiButton(4, pos));
+				MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(4,pos));
 				CookingRangeUiButton.handleButtonAction(entity, 4, pos);
 			}
 		}).bounds(this.leftPos + 40, this.topPos + 105, 45, 20).build(builder -> new Button(builder) {
@@ -160,7 +160,7 @@ public class KitchenwaresUiScreen extends AbstractContainerScreen<KitchenwaresUi
 		});
 		button_select4 = Button.builder(Component.literal(""), e -> {
 			if (ButtunShow.get(entity, 11)) {
-				PacketDistributor.sendToServer(new CookingRangeUiButton(5, pos));
+				MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(5,pos));
 				CookingRangeUiButton.handleButtonAction(entity, 5, pos);
 			}
 		}).bounds(this.leftPos + 40, this.topPos + 132, 45, 20).build(builder -> new Button(builder) {
@@ -172,12 +172,12 @@ public class KitchenwaresUiScreen extends AbstractContainerScreen<KitchenwaresUi
 		});
 
 		button_next = Button.builder(Component.translatable("gui.mystias_izakaya.cooking_range_ui.button_next"), e -> {
-			PacketDistributor.sendToServer(new CookingRangeUiButton(6, pos));
+			MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(6,pos));
 			CookingRangeUiButton.handleButtonAction(entity, 6, pos);
 
 		}).bounds(this.leftPos + 26, this.topPos + 5, 15, 15).build();
 		button_back = Button.builder(Component.translatable("gui.mystias_izakaya.cooking_range_ui.button_back"), e -> {
-			PacketDistributor.sendToServer(new CookingRangeUiButton(7, pos));
+			MystiasIzakaya.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(7,pos));
 			CookingRangeUiButton.handleButtonAction(entity, 7, pos);
 
 		}).bounds(this.leftPos + 10, this.topPos + 5, 15, 15).build();

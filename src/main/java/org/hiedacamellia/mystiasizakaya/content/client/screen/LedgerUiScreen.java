@@ -2,24 +2,17 @@ package org.hiedacamellia.mystiasizakaya.content.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.LedgerUiMenu;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.LedgerUiMenu;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
-import org.hiedacamellia.mystiasizakaya.core.network.DonationUiButton;
-import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
+import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class LedgerUiScreen extends AbstractContainerScreen<LedgerUiMenu> {
     private final static HashMap<String, Object> guistate = LedgerUiMenu.guistate;
@@ -38,11 +31,11 @@ public class LedgerUiScreen extends AbstractContainerScreen<LedgerUiMenu> {
         this.imageHeight = 166;
     }
 
-    private static final ResourceLocation texture = ResourceLocation.parse("mystias_izakaya:textures/screens/donation_ui.png");
+    private static final ResourceLocation texture = new ResourceLocation("mystias_izakaya:textures/screens/donation_ui.png");
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
+        this.renderBackground(guiGraphics);
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
     }
@@ -72,14 +65,13 @@ public class LedgerUiScreen extends AbstractContainerScreen<LedgerUiMenu> {
         guiGraphics.drawString(this.font, title, 88- font.width(title) / 2, 12, -12829636,false);
 
         String text = Component.translatable("gui.mystias_izakaya.balance").getString() + new java.text.DecimalFormat("#######")
-                .format(entity.getData(MIAttachment.MI_BALANCE).balance()) + " \u5186";
+                .format(MIPlayerEvent.getBalance(entity)) + " \u5186";
 
         guiGraphics.drawString(this.font,
                 text, 88 - font.width(text) / 2, 25, -12829636,false);
 
-        MITurnover miTurnover = entity.getData(MIAttachment.MI_TURNOVER);
-        List<String> k = miTurnover.k();
-        List<Double> v = miTurnover.v();
+        List<String> k = MIPlayerEvent.getTurnoverPre(entity);
+        List<Integer> v = MIPlayerEvent.getTurnoverCha(entity);
         for(int i = 0; i < k.size(); i++){
             String key = Component.translatable("gui.mystias_izakaya.ledger_ui."+ k.get(i)).getString();
             String value = String.valueOf(Math.abs(v.get(i)));

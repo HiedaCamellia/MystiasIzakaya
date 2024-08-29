@@ -2,11 +2,7 @@ package org.hiedacamellia.mystiasizakaya.core.entry.builder;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.UseAnim;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MICooktime;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MICost;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
 import org.hiedacamellia.mystiasizakaya.core.entry.MIItem;
-import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +21,7 @@ public class BaseItemBuilder {
     }
 
     public Item build(){
-        return new MIItem(properties
-                .component(MIDatacomponet.MI_TAGS.get(), new MITags(tags, ntags))
-                .component(MIDatacomponet.MI_COOKTIME.get(), new MICooktime(cooktime))
-                .component(MIDatacomponet.MI_COST.get(), new MICost(cost))
-                ,useAnimation, tagprefix);
+        return new MIItem(properties,useAnimation, tagprefix,tags,ntags,cost,cooktime);
     }
 
     public BaseItemBuilder tags(String[] tags){

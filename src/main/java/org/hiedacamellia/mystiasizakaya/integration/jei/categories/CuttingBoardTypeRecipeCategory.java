@@ -17,8 +17,8 @@ import org.hiedacamellia.mystiasizakaya.integration.jei.recipes.CuttingBoardType
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 
 public class CuttingBoardTypeRecipeCategory implements IRecipeCategory<CuttingBoardTypeRecipe> {
-	public final static ResourceLocation UID = ResourceLocation.fromNamespaceAndPath("mystias_izakaya", "cutting_board_type");
-	public final static ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("mystias_izakaya", "textures/overlay/recipe_gui.png");
+	public final static ResourceLocation UID = new ResourceLocation("mystias_izakaya", "cutting_board_type");
+	public final static ResourceLocation TEXTURE = new ResourceLocation("mystias_izakaya", "textures/screens/recipe_gui.png");
 	private final IDrawable background;
 	private final IDrawable icon;
 

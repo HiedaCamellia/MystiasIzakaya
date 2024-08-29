@@ -8,9 +8,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
-import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
+import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 
 import java.util.List;
 
@@ -25,8 +23,8 @@ public class En5Item extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, context, list, flag);
+	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, world, list, flag);
 		if (!Screen.hasShiftDown()) {
 			list.add(Component.literal(
 					"§7§o" + Component.translatable("tooltip.mystias_izakaya.press_shift").getString() + "§r"));
@@ -41,13 +39,11 @@ public class En5Item extends Item {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		MIBalance miBalance = entity.getData(MIAttachment.MI_BALANCE.get());
-		entity.setData(MIAttachment.MI_BALANCE.get(), new MIBalance(miBalance.balance() + 5 * ar.getObject().getCount()));
 
-		MITurnover miTurnover = entity.getData(MIAttachment.MI_TURNOVER);
-		miTurnover = miTurnover.addTurnover("from_currency", (double)5*ar.getObject().getCount());
-		miTurnover = miTurnover.deleteOverStack();
-		entity.setData(MIAttachment.MI_TURNOVER, miTurnover);
+		MIPlayerEvent.changeBalance(entity, 5 * ar.getObject().getCount());
+		MIPlayerEvent.addTurnover(entity, "from_currency", 5 * ar.getObject().getCount());
+		MIPlayerEvent.deleteOverTurnover(entity);
+		MIPlayerEvent.syncPlayerVariables(entity);
 
 		ar.getObject().shrink(ar.getObject().getCount());
 		ar.getObject().setCount(0);

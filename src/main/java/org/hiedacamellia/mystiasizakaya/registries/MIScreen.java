@@ -1,21 +1,24 @@
 package org.hiedacamellia.mystiasizakaya.registries;
 
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.hiedacamellia.mystiasizakaya.content.client.screen.DonationUiScreen;
 import org.hiedacamellia.mystiasizakaya.content.client.screen.CookingRangeUiScreen;
 import org.hiedacamellia.mystiasizakaya.content.client.screen.KitchenwaresUiScreen;
 import org.hiedacamellia.mystiasizakaya.content.client.screen.LedgerUiScreen;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class MIScreen {
 	@SubscribeEvent
-	public static void clientLoad(RegisterMenuScreensEvent event) {
-		event.register(MIMenu.COOKING_RANGE_UI.get(), CookingRangeUiScreen::new);
-		event.register(MIMenu.KITCHENWARES_UI.get(), KitchenwaresUiScreen::new);
-		event.register(MIMenu.Donation_UI.get(), DonationUiScreen::new);
-		event.register(MIMenu.LEDGER_UI.get(), LedgerUiScreen::new);
+	public static void clientLoad(FMLClientSetupEvent event) {
+		event.enqueueWork(() -> {
+			MenuScreens.register(MIMenu.COOKING_RANGE_UI.get(), CookingRangeUiScreen::new);
+			MenuScreens.register(MIMenu.KITCHENWARES_UI.get(), KitchenwaresUiScreen::new);
+			MenuScreens.register(MIMenu.Donation_UI.get(), DonationUiScreen::new);
+			MenuScreens.register(MIMenu.LEDGER_UI.get(), LedgerUiScreen::new);
+		});
 	}
 }

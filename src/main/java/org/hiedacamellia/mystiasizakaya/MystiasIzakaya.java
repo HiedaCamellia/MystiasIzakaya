@@ -7,19 +7,14 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.hiedacamellia.mystiasizakaya.content.block.BlockEntities;
-import org.hiedacamellia.mystiasizakaya.content.block.ModBlocks;
-import org.hiedacamellia.mystiasizakaya.content.item.ItemRegistery;
-import org.hiedacamellia.mystiasizakaya.content.item.ModTab;
-import org.hiedacamellia.mystiasizakaya.content.trades.Professions;
-import org.hiedacamellia.mystiasizakaya.functionals.Menus;
+import org.hiedacamellia.mystiasizakaya.registries.*;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
@@ -32,21 +27,21 @@ import java.util.function.Supplier;
 
 @Mod("mystias_izakaya")
 public class MystiasIzakaya {
-	public static final Logger LOGGER = LogManager.getLogger(MystiasIzakaya.class);
 	public static final String MODID = "mystias_izakaya";
 
 	public MystiasIzakaya() {
 		MinecraftForge.EVENT_BUS.register(this);
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-		ModBlocks.REGISTRY.register(bus);
-		BlockEntities.REGISTRY.register(bus);
-		ItemRegistery.REGISTRY.register(bus);
+		MIBlock.BLOCKS.register(bus);
+		MIBlockEntitiy.REGISTRY.register(bus);
+		MIItem.register(bus);
 
-		ModTab.REGISTRY.register(bus);
+		MITab.REGISTRY.register(bus);
 
-		Professions.PROFESSIONS.register(bus);
-		Menus.REGISTRY.register(bus);
+		MIProfessions.PROFESSIONS.register(bus);
+		MIMenu.REGISTRY.register(bus);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 	}
 
 	private static final String PROTOCOL_VERSION = "1";

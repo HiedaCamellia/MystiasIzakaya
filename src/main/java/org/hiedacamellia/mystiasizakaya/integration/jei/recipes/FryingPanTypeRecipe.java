@@ -1,24 +1,37 @@
 package org.hiedacamellia.mystiasizakaya.integration.jei.recipes;
 
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderLookup;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import net.minecraft.core.NonNullList;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
-public class FryingPanTypeRecipe implements Recipe<RecipeInput> {
+import javax.annotation.Nullable;
 
+public class FryingPanTypeRecipe implements Recipe<SimpleContainer> {
+	private final ResourceLocation id;
 	private final ItemStack output;
 	private final NonNullList<Ingredient> recipeItems;
 
-	public FryingPanTypeRecipe(ItemStack output, NonNullList<Ingredient> recipeItems) {
+	public FryingPanTypeRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> recipeItems) {
+		this.id = id;
 		this.output = output;
 		this.recipeItems = recipeItems;
+	}
+
+	@Override
+	public boolean matches(SimpleContainer pContainer, Level pLevel) {
+		if (pLevel.isClientSide()) {
+			return false;
+		}
+		return false;
+		//return recipeItems.get(0).test(pContainer.getItem(1));
 	}
 
 	@Override
@@ -27,13 +40,8 @@ public class FryingPanTypeRecipe implements Recipe<RecipeInput> {
 	}
 
 	@Override
-	public boolean matches(RecipeInput recipeInput, Level level) {
-		return false;
-	}
-
-	@Override
-	public ItemStack assemble(RecipeInput recipeInput, HolderLookup.Provider provider) {
-		return null;
+	public ItemStack assemble(SimpleContainer pContainer, RegistryAccess access) {
+		return output;
 	}
 
 	@Override
@@ -42,8 +50,13 @@ public class FryingPanTypeRecipe implements Recipe<RecipeInput> {
 	}
 
 	@Override
-	public ItemStack getResultItem(HolderLookup.Provider provider) {
+	public ItemStack getResultItem(RegistryAccess access) {
 		return output.copy();
+	}
+
+	@Override
+	public ResourceLocation getId() {
+		return id;
 	}
 
 	@Override
@@ -66,40 +79,36 @@ public class FryingPanTypeRecipe implements Recipe<RecipeInput> {
 
 	public static class Serializer implements RecipeSerializer<FryingPanTypeRecipe> {
 		public static final Serializer INSTANCE = new Serializer();
-		private static final MapCodec<FryingPanTypeRecipe> CODEC = RecordCodecBuilder
-				.mapCodec(builder -> builder.group(ItemStack.STRICT_CODEC.fieldOf("output").forGetter(recipe -> recipe.output), Ingredient.CODEC_NONEMPTY.listOf().fieldOf("ingredients").flatXmap(ingredients -> {
-					Ingredient[] aingredient = ingredients.toArray(Ingredient[]::new); // Skip the empty check and create the array.
-					if (aingredient.length == 0) {
-						return DataResult.error(() -> "No ingredients found in custom recipe");
-					} else {
-						return DataResult.success(NonNullList.of(Ingredient.EMPTY, aingredient));
-					}
-				}, DataResult::success).forGetter(recipe -> recipe.recipeItems)).apply(builder, FryingPanTypeRecipe::new));
-		public static final StreamCodec<RegistryFriendlyByteBuf, FryingPanTypeRecipe> STREAM_CODEC = StreamCodec.of(Serializer::toNetwork, Serializer::fromNetwork);
+		public static final ResourceLocation ID = new ResourceLocation("mystias_izakaya", "frying_pan_type");
 
 		@Override
-		public MapCodec<FryingPanTypeRecipe> codec() {
-			return CODEC;
-		}
-
-		@Override
-		public StreamCodec<RegistryFriendlyByteBuf, FryingPanTypeRecipe> streamCodec() {
-			return STREAM_CODEC;
-		}
-
-		private static FryingPanTypeRecipe fromNetwork(RegistryFriendlyByteBuf buf) {
-			NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readVarInt(), Ingredient.EMPTY);
-			inputs.replaceAll(ingredients -> Ingredient.CONTENTS_STREAM_CODEC.decode(buf));
-			return new FryingPanTypeRecipe(ItemStack.STREAM_CODEC.decode(buf), inputs);
-		}
-
-		private static void toNetwork(RegistryFriendlyByteBuf buf, FryingPanTypeRecipe recipe) {
-			buf.writeVarInt(recipe.getIngredients().size());
-			for (Ingredient ing : recipe.getIngredients()) {
-				Ingredient.CONTENTS_STREAM_CODEC.encode(buf, ing);
+		public FryingPanTypeRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
+			ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "output"));
+			JsonArray ingredients = GsonHelper.getAsJsonArray(pSerializedRecipe, "ingredients");
+			NonNullList<Ingredient> inputs = NonNullList.withSize(5, Ingredient.EMPTY);
+			for (int i = 0; i < inputs.size(); i++) {
+				inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
 			}
-			ItemStack.STREAM_CODEC.encode(buf, recipe.getResultItem(null));
+			return new FryingPanTypeRecipe(pRecipeId, output, inputs);
+		}
+
+		@Override
+		public @Nullable FryingPanTypeRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+			NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
+			for (int i = 0; i < inputs.size(); i++) {
+				inputs.set(i, Ingredient.fromNetwork(buf));
+			}
+			ItemStack output = buf.readItem();
+			return new FryingPanTypeRecipe(id, output, inputs);
+		}
+
+		@Override
+		public void toNetwork(FriendlyByteBuf buf, FryingPanTypeRecipe recipe) {
+			buf.writeInt(recipe.getIngredients().size());
+			for (Ingredient ing : recipe.getIngredients()) {
+				ing.toNetwork(buf);
+			}
+			buf.writeItemStack(recipe.getResultItem(null), false);
 		}
 	}
-
 }

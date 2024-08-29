@@ -2,14 +2,14 @@ package org.hiedacamellia.mystiasizakaya.content.trades;
 
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.common.BasicItemListing;
-import net.neoforged.neoforge.event.village.VillagerTradesEvent;
+import net.minecraftforge.common.BasicItemListing;
+import net.minecraftforge.event.village.VillagerTradesEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.hiedacamellia.mystiasizakaya.registries.MIProfessions;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Trades {
 	@SubscribeEvent
 	public static void registerTrades(VillagerTradesEvent event) {

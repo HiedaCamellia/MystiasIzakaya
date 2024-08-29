@@ -17,7 +17,7 @@ import java.util.List;
 public class BrewingRecipes implements IModPlugin {
 	@Override
 	public ResourceLocation getPluginUid() {
-		return ResourceLocation.parse("mystias_izakaya:brewing_recipes");
+		return new ResourceLocation("mystias_izakaya:brewing_recipes");
 	}
 
 	@Override

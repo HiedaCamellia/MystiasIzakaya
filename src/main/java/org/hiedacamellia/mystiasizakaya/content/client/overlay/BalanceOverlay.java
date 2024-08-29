@@ -4,15 +4,15 @@ package org.hiedacamellia.mystiasizakaya.content.client.overlay;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.EventPriority;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.RenderGuiEvent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RenderGuiEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import org.hiedacamellia.mystiasizakaya.Config;
-import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
+import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 
-@EventBusSubscriber({ Dist.CLIENT })
+@Mod.EventBusSubscriber({ Dist.CLIENT })
 public class BalanceOverlay {
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public static void eventHandler(RenderGuiEvent.Pre event) {
@@ -22,7 +22,8 @@ public class BalanceOverlay {
 		Player entity = Minecraft.getInstance().player;
         assert entity != null;
         String text = Component.translatable("gui.mystias_izakaya.balance").getString() + new java.text.DecimalFormat("#######")
-						.format(entity.getData(MIAttachment.MI_BALANCE).balance()) + "\u5186";
+						.format((entity.getCapability(MIPlayerEvent.PLAYER_VARIABLES_CAPABILITY, null)
+								.orElse(new MIPlayerEvent.PlayerVariables())).balance) + "\u5186";
 		int strlength = Minecraft.getInstance().font.width(text);
 
 		if (Config.SHOW_BALANCE.get())

@@ -1,7 +1,7 @@
 package org.hiedacamellia.mystiasizakaya.core.data.lang;
 
 import net.minecraft.data.PackOutput;
-import net.neoforged.neoforge.common.data.LanguageProvider;
+import net.minecraftforge.common.data.LanguageProvider;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 
 public class ChineseLanguageProvider extends LanguageProvider {

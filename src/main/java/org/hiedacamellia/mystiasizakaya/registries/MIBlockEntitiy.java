@@ -3,24 +3,24 @@ package org.hiedacamellia.mystiasizakaya.registries;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.client.blockentityrender.ProcessRender;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.*;
 
 import java.util.function.Supplier;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class MIBlockEntitiy {
-	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, MystiasIzakaya.MODID);
-	public static final DeferredHolder<BlockEntityType<?>,BlockEntityType<?>> COOKING_RANGE = register("cooking_range", MIBlock.COOKING_RANGE, CookingRange::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> DONATION = register("donation", MIBlock.DONATION, Donation::new);
+	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MystiasIzakaya.MODID);
+	public static final RegistryObject<BlockEntityType<?>> COOKING_RANGE = register("cooking_range", MIBlock.COOKING_RANGE, CookingRange::new);
+	public static final RegistryObject<BlockEntityType<?>> DONATION = register("donation", MIBlock.DONATION, Donation::new);
 
 	public static final Supplier<BlockEntityType<CuttingBoard>> CUTTING_BOARD = REGISTRY.register("cutting_board", () -> BlockEntityType.Builder.of(CuttingBoard::new, MIBlock.CUTTING_BOARD.get()).build(null));
 	public static final Supplier<BlockEntityType<BoilingPot>> BOILING_POT = REGISTRY.register("boiling_pot", () -> BlockEntityType.Builder.of(BoilingPot::new, MIBlock.BOILING_POT.get()).build(null));
@@ -29,18 +29,8 @@ public class MIBlockEntitiy {
 	public static final Supplier<BlockEntityType<Grill>> GRILL = REGISTRY.register("grill", () -> BlockEntityType.Builder.of(Grill::new, MIBlock.GRILL.get()).build(null));
 
 
-	private static DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> register(String registryname, DeferredHolder<Block,? extends Block> block, BlockEntityType.BlockEntitySupplier<?> supplier) {
+	private static RegistryObject<BlockEntityType<?>> register(String registryname, RegistryObject<? extends Block> block, BlockEntityType.BlockEntitySupplier<?> supplier) {
 		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));
-	}
-
-	@SubscribeEvent
-	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, COOKING_RANGE.get(), (blockEntity, side) -> ((CookingRange ) blockEntity).getItemHandler());
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CUTTING_BOARD.get(), (blockEntity, side) -> blockEntity.getItemHandler());
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, BOILING_POT.get(), (blockEntity, side) -> blockEntity.getItemHandler());
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, FRYING_PAN.get(), (blockEntity, side) -> blockEntity.getItemHandler());
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, STEAMER.get(), (blockEntity, side) -> blockEntity.getItemHandler());
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, GRILL.get(), (blockEntity, side) -> blockEntity.getItemHandler());
 	}
 	
 	@SubscribeEvent

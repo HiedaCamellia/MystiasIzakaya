@@ -2,12 +2,10 @@ package org.hiedacamellia.mystiasizakaya.core.cooking;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIIngredient;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
 import org.hiedacamellia.mystiasizakaya.core.cooking.get.GetTagFromItemStacks;
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
-import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.jetbrains.annotations.NotNull;
 
@@ -19,15 +17,12 @@ public class BuildTags {
         try {
             target.inventoryTick(null, null, 0, false);
         } catch (Exception e) {
-            MystiasIzakaya.LOGGER.atTrace().log("Failed to execute inventoryTick for {}", Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(target.getItem())));
-            MystiasIzakaya.LOGGER.atTrace().log(e);
+            Debug.getLogger().atTrace().log("Failed to execute inventoryTick for {}", Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(target.getItem())));
         }
 
         List<String> rawtags = GetTagFromItemStacks.get(target, ingredients);
+        List<String> targettags = target.getOrCreateTag().getString("tags").isEmpty() ? new ArrayList<>() : Arrays.asList(target.getOrCreateTag().getString("tags").split(","));
 
-        MITags miTags = target.getOrDefault(MIDatacomponet.MI_TAGS.get(),new MITags(new ArrayList<>(),new ArrayList<>()));
-
-        List<String> targettags = miTags.tags();
         //List<String> targetntags = target.getOrCreateTag().getString("ntags").isEmpty() ? new ArrayList<>() : Arrays.asList(target.getOrCreateTag().getString("ntags").split(","));
 
         //Debug.send(target.toString());
@@ -35,16 +30,13 @@ public class BuildTags {
         try {
             targettags.sort(Comparator.naturalOrder());
         }catch (Exception e){
-            MystiasIzakaya.LOGGER.atTrace().log("Failed to sort targettags for {}", Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(target.getItem())));
-            MystiasIzakaya.LOGGER.atTrace().log(e);
+            Debug.getLogger().atTrace().log("Failed to sort targettags for {}", Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(target.getItem())));
         }
         //烧香！本来这是有问题的，但是改了后再回滚，它就好了
         set.addAll(targettags);
         ArrayList<String> resultList = getStrings(ingredients, set);
 
-        MITags kitchenware = Kitchenware.getOrDefault(MIDatacomponet.MI_TAGS.get(), new MITags(new ArrayList<>(),new ArrayList<>()));
-
-        resultList.addAll(kitchenware.tags());
+        resultList.addAll(Kitchenware.getOrCreateTag().getString("tags").isEmpty() ? new ArrayList<>() : List.of(Kitchenware.getOrCreateTag().getString("tags").split(",")));
 
         ArrayList<String> rawslist = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
@@ -52,11 +44,9 @@ public class BuildTags {
         }
         rawslist.sort(Comparator.naturalOrder());
 
-        target.set(MIDatacomponet.MI_TAGS.get(), new MITags(resultList, miTags.ntags()));
-
+        target.getOrCreateTag().putString("tags", String.join(",", resultList));
         //target.getOrCreateTag().putString("ntags", String.join(",", targetntags));
-
-        target.set(MIDatacomponet.MI_INGREDIENT.get(),new MIIngredient(rawslist));
+        target.getOrCreateTag().putString("ingredients", String.join(",", rawslist));
 
         return target;
     }
@@ -85,15 +75,11 @@ public class BuildTags {
     }
 
     public static ItemStack check(ItemStack cuisine){
-
-        MITags miTags = cuisine.getOrDefault(MIDatacomponet.MI_TAGS.get(),new MITags(new ArrayList<>(),new ArrayList<>()));
-
-        List<String> tags = miTags.tags();
-        List<String> ntags = miTags.ntags();
-
-        Set<String> seti = new HashSet<>(tags);
+        String[] tags = cuisine.getOrCreateTag().getString("tags").split(",");
+        String[] ntags = cuisine.getOrCreateTag().getString("ntags").split(",");
+        Set<String> seti = new HashSet<>(List.of(tags));
         for (String str : ntags) {
-            if (seti.contains(str) && !Objects.equals(str, "")) {
+            if (seti.contains(str)&& !Objects.equals(str, "")) {
                 return new ItemStack(MIItem.HEI_AN_WU_ZHI.get());
             }
         }

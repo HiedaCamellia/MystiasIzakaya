@@ -131,7 +131,7 @@ public class GiveEffectFromCuisines {
 				entity.hurt(new DamageSource(
 						world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(
 								ResourceKey.create(Registries.DAMAGE_TYPE,
-										ResourceLocation.parse("mystias_izakaya:chili")))),
+                                        new ResourceLocation("mystias_izakaya:chili")))),
 						2);
 				break;
 			case "mystias_izakaya:xing_hong_e_mo_dan_gao":

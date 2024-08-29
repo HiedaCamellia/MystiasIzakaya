@@ -10,10 +10,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.network.PacketDistributor;
+import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.DonationUiMenu;
+import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 import org.hiedacamellia.mystiasizakaya.core.network.DonationUiButton;
-import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
+import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 import java.util.HashMap;
 
@@ -36,11 +37,11 @@ public class DonationUiScreen extends AbstractContainerScreen<DonationUiMenu> {
         this.imageHeight = 166;
     }
 
-    private static final ResourceLocation texture = ResourceLocation.parse("mystias_izakaya:textures/screens/donation_ui.png");
+    private static final ResourceLocation texture = new ResourceLocation("mystias_izakaya:textures/screens/donation_ui.png");
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
+        this.renderBackground(guiGraphics);
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
         input.render(guiGraphics, mouseX, mouseY, partialTicks);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
@@ -73,7 +74,7 @@ public class DonationUiScreen extends AbstractContainerScreen<DonationUiMenu> {
         guiGraphics.drawString(this.font, title, 88- font.width(title) / 2, 24, -12829636,false);
 
         String text = Component.translatable("gui.mystias_izakaya.balance").getString() + new java.text.DecimalFormat("#######")
-                .format(entity.getData(MIAttachment.MI_BALANCE).balance()) + " \u5186";
+                .format(MIPlayerEvent.getBalance(entity)) + " \u5186";
 
         guiGraphics.drawString(this.font,
                 text, 88 - font.width(text) / 2, 42, -12829636,false);
@@ -96,15 +97,6 @@ public class DonationUiScreen extends AbstractContainerScreen<DonationUiMenu> {
                 else
                     setSuggestion(null);
             }
-
-            @Override
-            public void moveCursorTo(int pos, boolean selected) {
-                super.moveCursorTo(pos, selected);
-                if (getValue().isEmpty())
-                    setSuggestion(Component.translatable("gui.mystias_izakaya.donation_ui.input").getString());
-                else
-                    setSuggestion(null);
-            }
         };
         input.setSuggestion(Component.translatable("gui.mystias_izakaya.donation_ui.input").getString());
         input.setMaxLength(32767);
@@ -112,8 +104,8 @@ public class DonationUiScreen extends AbstractContainerScreen<DonationUiMenu> {
         this.addWidget(this.input);
 
         button_take_out = Button.builder(Component.translatable("gui.mystias_izakaya.donation_ui.button_take_out"), e -> {
-            PacketDistributor.sendToServer(new DonationUiButton(0, x, y, z));
-            DonationUiButton.handleButtonAction(entity, 0, x, y, z);
+            MystiasIzakaya.PACKET_HANDLER.sendToServer(new DonationUiButton(0, x, y, z));
+            DonationUiButton.handleButtonAction(entity, 0, Pos.get(x, y, z));
 
         }).bounds(this.leftPos + 33, this.topPos + 100, 110, 20).build();
         guistate.put("button:button_take_out", button_take_out);

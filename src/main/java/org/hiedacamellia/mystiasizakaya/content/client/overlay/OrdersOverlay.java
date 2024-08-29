@@ -7,15 +7,16 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.EventPriority;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.RenderGuiEvent;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RenderGuiEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import org.hiedacamellia.mystiasizakaya.content.orders.GetBeveragesTexture;
 import org.hiedacamellia.mystiasizakaya.content.orders.GetCuisinesTexture;
 
-@EventBusSubscriber({ Dist.CLIENT })
+@Mod.EventBusSubscriber({ Dist.CLIENT })
 public class OrdersOverlay {
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public static void eventHandler(RenderGuiEvent.Pre event) {
@@ -29,26 +30,26 @@ public class OrdersOverlay {
 				GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
 				GlStateManager.DestFactor.ZERO);
 		RenderSystem.setShaderColor(1, 1, 1, 1);
-		String fm = "";
-		String fmb = "";
+		ItemStack fm = ItemStack.EMPTY;
+		ItemStack fmb = ItemStack.EMPTY;
 		int reali = 0;
 		for (int i = 0; i < 7; i++) {
 			fm = GetCuisinesTexture.execute(i, entity);
 			fmb = GetBeveragesTexture.execute(i, entity);
-			if (fm != "" || fmb != "") {
+			if (!fm.isEmpty() || !fmb.isEmpty()) {
 
-				event.getGuiGraphics().blit(ResourceLocation.parse("mystias_izakaya:textures/overlay/page.png"),
+				event.getGuiGraphics().blit(new ResourceLocation("mystias_izakaya:textures/overlay/page.png"),
 						0 + reali * 34,
 						h - 32, 0, 0, 36, 32, 36, 32);
-				if (fm != "") {
-					event.getGuiGraphics().blit(ResourceLocation.parse("mystias_izakaya:textures/item/" + fm + ".png"),
+				if (!fm.isEmpty()) {
+					event.getGuiGraphics().renderItem(fm,
 							2 + reali * 34,
-							h - 30, 0, 0, 16, 16, 16, 16);
+							h - 30, 0, 0);
 				}
-				if (fmb != "") {
-					event.getGuiGraphics().blit(ResourceLocation.parse("mystias_izakaya:textures/item/" + fmb + ".png"),
+				if (!fmb.isEmpty()) {
+					event.getGuiGraphics().renderItem(fmb,
 							18 + reali * 34,
-							h - 30, 0, 0, 16, 16, 16, 16);
+							h - 30, 0, 0);
 				}
 				event.getGuiGraphics().drawString(Minecraft.getInstance().font,
 						new java.text.DecimalFormat("#######").format(i) + "\u53f7\u684c", 8 + reali * 34, h - 10,
@@ -57,7 +58,7 @@ public class OrdersOverlay {
 
 				reali++;
 			}
-			fm = "";
+
 
 		}
 		RenderSystem.depthMask(true);

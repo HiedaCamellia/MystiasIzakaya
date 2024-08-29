@@ -1,5 +1,5 @@
 
-package org.hiedacamellia.mystiasizakaya.content.block.blocks;
+package org.hiedacamellia.mystiasizakaya.content.common.block.blocks;
 
 import io.netty.buffer.Unpooled;
 import net.minecraft.client.gui.screens.Screen;
@@ -39,9 +39,9 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
-import org.hiedacamellia.mystiasizakaya.content.cooking.Init;
-import org.hiedacamellia.mystiasizakaya.content.cooking.Main;
-import org.hiedacamellia.mystiasizakaya.functionals.inventory.CookingRangeUiMenu;
+import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingRangeUiMenu;
+import org.hiedacamellia.mystiasizakaya.core.cooking.Init;
+import org.hiedacamellia.mystiasizakaya.core.cooking.Main;
 import org.hiedacamellia.mystiasizakaya.util.SetSlotItem;
 import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
@@ -103,7 +103,7 @@ public class CookingRange extends Block implements EntityBlock {
 	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
 		super.tick(blockstate, world, pos, random);
 		//blockstate.tick(world, pos, random);
-		Main.execute(world, pos);
+		Main.execute(world, pos, blockstate);
 		world.scheduleTick(pos, this, 1);
 	}
 
@@ -168,7 +168,7 @@ public class CookingRange extends Block implements EntityBlock {
 
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return new org.hiedacamellia.mystiasizakaya.content.block.entities.CookingRange(pos, state);
+		return new org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRange(pos, state);
 	}
 
 	@Override
@@ -182,7 +182,7 @@ public class CookingRange extends Block implements EntityBlock {
 	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
 		if (state.getBlock() != newState.getBlock()) {
 			BlockEntity blockEntity = world.getBlockEntity(pos);
-			if (blockEntity instanceof org.hiedacamellia.mystiasizakaya.content.block.entities.CookingRange be) {
+			if (blockEntity instanceof org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRange be) {
 				Containers.dropContents(world, pos, be);
 				world.updateNeighbourForOutputSignal(pos, this);
 			}

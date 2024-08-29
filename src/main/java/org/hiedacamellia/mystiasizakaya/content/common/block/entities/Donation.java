@@ -20,8 +20,8 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
-import org.hiedacamellia.mystiasizakaya.content.block.BlockEntities;
-import org.hiedacamellia.mystiasizakaya.functionals.inventory.CookingRangeUiMenu;
+import org.hiedacamellia.mystiasizakaya.content.common.inventory.DonationUiMenu;
+import org.hiedacamellia.mystiasizakaya.registries.MIBlockEntitiy;
 
 import javax.annotation.Nullable;
 import java.util.stream.IntStream;

@@ -7,16 +7,15 @@ import net.minecraft.commands.arguments.item.ItemArgument;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.RegisterCommandsEvent;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
-import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
+import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 
 import java.util.List;
 import java.util.Objects;
 
-@EventBusSubscriber
+@Mod.EventBusSubscriber
 public class MIDebug {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
@@ -30,10 +29,10 @@ public class MIDebug {
 							Player player = arguments.getSource().getPlayer();
                             List<String> orders_list;
                             if (player != null) {
-                                MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                orders_list = miOrders.orders();
+                                orders_list = MIPlayerEvent.getOrders(player);
                                 orders_list.set(id, order);
-                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(orders_list, miOrders.beverages()));
+                                MIPlayerEvent.setOrders(player, orders_list);
+                                MIPlayerEvent.syncPlayerVariables(player);
                             }
                             return 0;
 						}))).then(Commands.literal("clean").executes(arguments -> {
@@ -41,10 +40,10 @@ public class MIDebug {
 							Player player = arguments.getSource().getPlayer();
                             List<String> orders_list;
                             if (player != null) {
-                                MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                orders_list = miOrders.orders();
+                                orders_list = MIPlayerEvent.getOrders(player);
                                 orders_list.set(id, "minecraft:air");
-                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(orders_list, miOrders.beverages()));
+                                MIPlayerEvent.setOrders(player, orders_list);
+                                MIPlayerEvent.syncPlayerVariables(player);
                             }
                             return 0;
 						}))).then(Commands.literal("beverages").then(Commands.literal("replace").then(Commands.argument("beverages", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
@@ -54,10 +53,10 @@ public class MIDebug {
 							Player player = arguments.getSource().getPlayer();
                             List<String> ordersbeverages_list;
                             if (player != null) {
-                                MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                ordersbeverages_list = miOrders.beverages();
+                                ordersbeverages_list = MIPlayerEvent.getOrdersBeverages(player);
                                 ordersbeverages_list.set(id, order);
-                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.orders(), ordersbeverages_list));
+                                MIPlayerEvent.setOrdersBeverages(player, ordersbeverages_list);
+                                MIPlayerEvent.syncPlayerVariables(player);
                             }
                             return 0;
 						}))).then(Commands.literal("clean").executes(arguments -> {
@@ -65,10 +64,10 @@ public class MIDebug {
 							Player player = arguments.getSource().getPlayer();
                             List<String> ordersbeverages_list;
                             if (player != null) {
-                                MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                ordersbeverages_list = miOrders.beverages();
+                                ordersbeverages_list = MIPlayerEvent.getOrdersBeverages(player);
                                 ordersbeverages_list.set(id, "minecraft:air");
-                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.orders(), ordersbeverages_list));
+                                MIPlayerEvent.setOrdersBeverages(player, ordersbeverages_list);
+                                MIPlayerEvent.syncPlayerVariables(player);
                             }
                             return 0;
 						})))))));

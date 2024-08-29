@@ -12,8 +12,6 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.ItemStackHandler;
 import org.hiedacamellia.mystiasizakaya.registries.MIMenu;
 
 import java.util.HashMap;
@@ -26,7 +24,6 @@ public class DonationUiMenu extends AbstractContainerMenu implements Supplier<Ma
 	public final Player entity;
 	public int x, y, z;
 	private ContainerLevelAccess access = ContainerLevelAccess.NULL;
-	private IItemHandler internal;
 	private final Map<Integer, Slot> customSlots = new HashMap<>();
 	private boolean bound = false;
 	private Supplier<Boolean> boundItemMatcher = null;
@@ -37,7 +34,6 @@ public class DonationUiMenu extends AbstractContainerMenu implements Supplier<Ma
 		super(MIMenu.Donation_UI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
-		this.internal = new ItemStackHandler(0);
 		BlockPos pos = null;
 		if (extraData != null) {
 			pos = extraData.readBlockPos();

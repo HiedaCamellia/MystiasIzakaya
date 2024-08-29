@@ -146,7 +146,7 @@ public class Main {
 
             for (int i = 0; i < 5; i++) {
                 if (i < targets.size()) {
-                    ItemStack taget = new ItemStack(Objects.requireNonNull(BuiltInRegistries.ITEM.get(ResourceLocation.parse(((targets.get(i + page))).toLowerCase(Locale.ENGLISH)))));
+                    ItemStack taget = new ItemStack(Objects.requireNonNull(BuiltInRegistries.ITEM.get(new ResourceLocation(((targets.get(i + page))).toLowerCase(Locale.ENGLISH)))));
                     SetSlotItem.setSlotItem(world, pos, BuildTags.execute(taget, util, ingredients), 7 + i, 1);
                 } else {
                     SetSlotItem.setEmptySlot(world, pos, 7 + i);

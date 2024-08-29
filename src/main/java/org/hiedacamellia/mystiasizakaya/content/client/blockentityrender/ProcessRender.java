@@ -14,15 +14,16 @@ import net.minecraft.world.item.ItemDisplayContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.KitchenwaresEntity;
 import org.hiedacamellia.mystiasizakaya.core.entry.MIItem;
-import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
+
+import java.nio.ByteBuffer;
 
 //感谢https://github.com/Crystal1921/mystias_izakaya
 
 public class ProcessRender implements BlockEntityRenderer<KitchenwaresEntity> {
     private final ItemRenderer itemRenderer;
     private final EntityRenderDispatcher entityRenderDispatcher;
-    private static final ResourceLocation TEXTURE_IN = ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "textures/entity/process_inside.png");
-    private static final ResourceLocation TEXTURE_OUT = ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "textures/entity/process_side.png");
+    private static final ResourceLocation TEXTURE_IN = new ResourceLocation(MystiasIzakaya.MODID, "textures/entity/process_inside.png");
+    private static final ResourceLocation TEXTURE_OUT = new ResourceLocation(MystiasIzakaya.MODID, "textures/entity/process_side.png");
     private static final RenderType RENDER_TYPE_IN = RenderType.entityCutoutNoCull(TEXTURE_IN);
     private static final RenderType RENDER_TYPE_OUT = RenderType.entityCutoutNoCull(TEXTURE_OUT);
 
@@ -72,11 +73,10 @@ public class ProcessRender implements BlockEntityRenderer<KitchenwaresEntity> {
     }
 
     private static void vertex(VertexConsumer pConsumer, PoseStack.Pose pPose, int pPackedLight, float pX, float pY, float pU, float pV) {
-        pConsumer.addVertex(pPose, pX - 0.5F, pY - 0.25F, 0.0F)
-                .setColor(-1)
-                .setUv(pU, pV)
-                .setOverlay(OverlayTexture.NO_OVERLAY)
-                .setLight(pPackedLight)
-                .setNormal(pPose, 0.0F, 1.0F, 0.0F);
+        pConsumer.vertex(pPose.pose(), pX - 0.5F, pY - 0.25F, 0.0F)
+                .color(-1)
+                .uv(pU, pV)
+                .overlayCoords(OverlayTexture.NO_OVERLAY)
+                .normal(pPose.normal(), 0.0F, 1.0F, 0.0F);
     }
 }

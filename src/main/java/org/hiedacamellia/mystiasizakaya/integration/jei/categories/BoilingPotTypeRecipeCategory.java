@@ -17,8 +17,8 @@ import org.hiedacamellia.mystiasizakaya.integration.jei.recipes.BoilingPotTypeRe
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 
 public class BoilingPotTypeRecipeCategory implements IRecipeCategory<BoilingPotTypeRecipe> {
-	public final static ResourceLocation UID = ResourceLocation.fromNamespaceAndPath("mystias_izakaya", "boiling_pot_type");
-	public final static ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("mystias_izakaya", "textures/overlay/recipe_gui.png");
+	public final static ResourceLocation UID = new ResourceLocation("mystias_izakaya", "boiling_pot_type");
+	public final static ResourceLocation TEXTURE = new ResourceLocation("mystias_izakaya", "textures/screens/recipe_gui.png");
 	private final IDrawable background;
 	private final IDrawable icon;
 

@@ -10,16 +10,14 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIIngredient;
-import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GiveEffectFromIngredientsProcedure {
+public class GiveEffectFromIngredients {
 	public static void execute(LevelAccessor world, ItemStack itemstack, LivingEntity entity) {
 
-		List<String> ingredient = itemstack.getOrDefault(MIDatacomponet.MI_INGREDIENT.get(),new MIIngredient(new ArrayList<>())).ingredient();
+		List<String> ingredient = itemstack.getOrCreateTag().getString("ingredients").isEmpty() ? new ArrayList<>() : List.of(itemstack.getOrCreateTag().getString("ingredients").split(","));
 
 		if (ingredient.isEmpty()) {
 			ingredient.add(BuiltInRegistries.ITEM.getKey(itemstack.getItem()).toString());
@@ -94,7 +92,7 @@ public class GiveEffectFromIngredientsProcedure {
                 case "mystias_izakaya:la_jiao":
                     entity.hurt(new DamageSource(
                                     world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey
-                                            .create(Registries.DAMAGE_TYPE, ResourceLocation.parse("mystias_izakaya:chili")))),
+                                            .create(Registries.DAMAGE_TYPE, new ResourceLocation("mystias_izakaya:chili")))),
                             2);
 
                     entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 600, 0));

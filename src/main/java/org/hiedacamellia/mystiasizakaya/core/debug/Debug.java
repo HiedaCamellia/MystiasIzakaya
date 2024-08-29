@@ -5,7 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.neoforged.fml.loading.FMLEnvironment;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.hiedacamellia.mystiasizakaya.Config;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.slf4j.Logger;
