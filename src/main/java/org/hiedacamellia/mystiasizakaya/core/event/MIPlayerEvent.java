@@ -21,6 +21,7 @@ import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.Config;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
+import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +29,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class MIPlayerEvent {
 
     public static double getBalance(Player player) {
@@ -206,12 +207,18 @@ public class MIPlayerEvent {
 
     public static class PlayerVariables {
         public double balance = 0;
-        public List<String> orders = new ArrayList<>(10);
-        public List<String> ordersbeverages = new ArrayList<>(10);
-        public List<String> turnover_pre = new ArrayList<>(10);
-        public List<Integer> trunover_cha = new ArrayList<>(10);
+        public List<String> orders = List.of("minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air","minecraft:air");
+        public List<String> ordersbeverages = List.of("minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air","minecraft:air");
+        public List<String> turnover_pre = List.of();
+        public List<Integer> trunover_cha =List.of();
 
         public void syncPlayerVariables(Entity entity) {
+            Debug.getLogger().debug("syncPlayerVariables");
+            Debug.getLogger().debug("balance: " + balance);
+            Debug.getLogger().debug("orders: " + orders);
+            Debug.getLogger().debug("ordersbeverages: " + ordersbeverages);
+            Debug.getLogger().debug("turnover_pre: " + turnover_pre);
+            Debug.getLogger().debug("turnover_cha: " + trunover_cha);
             if (entity instanceof ServerPlayer serverPlayer)
                 MystiasIzakaya.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> serverPlayer), new PlayerVariablesSyncMessage(this));
         }

@@ -11,6 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -19,9 +20,9 @@ import java.util.List;
 public class MIItem extends Item {
 
     private final UseAnim useAnimation;
-    private List<String> tags = new ArrayList<>();
-    private List<String> ntags = new ArrayList<>();
-    private String tagprefix;
+    private final List<String> tags;
+    private final List<String> ntags;
+    private final String tagprefix;
     private int cooktime=0;
     private int cost=0;
 
@@ -64,7 +65,7 @@ public class MIItem extends Item {
     @Override
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, world, list, flag);
-        ResourceLocation key = BuiltInRegistries.ITEM.getKey(itemstack.getItem());
+        ResourceLocation key = ForgeRegistries.ITEMS.getKey(itemstack.getItem());
         if (!Screen.hasShiftDown()) {
             List<String> tags = itemstack.getOrCreateTag().getString("tags").isEmpty() ? new ArrayList<>() : List.of(itemstack.getOrCreateTag().getString("tags").split(","));
             List<String> ntags = itemstack.getOrCreateTag().getString("ntags").isEmpty() ? new ArrayList<>() : List.of(itemstack.getOrCreateTag().getString("ntags").split(","));
@@ -76,8 +77,8 @@ public class MIItem extends Item {
                 list.add(Component.literal("- ").append(Component.translatable(tagprefix+tag)).withStyle(ChatFormatting.RED));
             }
 
-            int cost = itemstack.getOrCreateTag().getInt("cost");
-            list.add(Component.translatable("tooltip.mystias_izakaya.cost").append(String.valueOf(cost)).withStyle(ChatFormatting.YELLOW));
+            //int cost = itemstack.getOrCreateTag().getInt("cost");
+            list.add(Component.translatable("tooltip.mystias_izakaya.cost").append(String.valueOf(this.cost)).withStyle(ChatFormatting.YELLOW));
 
             list.add(Component.translatable("tooltip.mystias_izakaya.press_shift").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
         } else {

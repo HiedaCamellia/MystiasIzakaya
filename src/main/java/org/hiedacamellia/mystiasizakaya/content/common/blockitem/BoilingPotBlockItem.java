@@ -49,9 +49,6 @@ public class BoilingPotBlockItem extends BlockItem {
                 list.add(Component.literal("- ").append(Component.translatable(tagprefix+tag)).withStyle(ChatFormatting.RED));
             }
 
-            int cost = itemstack.getOrCreateTag().getInt("cost");
-            list.add(Component.translatable("tooltip.mystias_izakaya.cost").append(String.valueOf(cost)).withStyle(ChatFormatting.YELLOW));
-
             list.add(Component.translatable("tooltip.mystias_izakaya.press_shift").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
         } else {
             String[] description = Component.translatable("tooltip.mystias_izakaya.zhu_guo").getString().split("§n");
