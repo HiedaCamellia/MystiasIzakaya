@@ -6,6 +6,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlock;
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 import org.hiedacamellia.mystiasizakaya.util.GetValue;
@@ -25,20 +26,23 @@ public class Confirm {
 				&& !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, pos, 12).getItem())
 				&& time == 0) {
 
-
-
-			//Debug.getLogger().debug("Get data");
-
 			target = GetItemStack.getItemStack(world, pos, 12);
 
-			if (!world.isClientSide()) {
-				BlockPos _bp = pos;
-				BlockEntity _blockEntity = world.getBlockEntity(_bp);
-				BlockState _bs = world.getBlockState(_bp);
-				BlockState _bsb = world.getBlockState(_bp.below());
+			try{
+				target.inventoryTick(null, null,  0, false);
+			}catch (Exception e){
+				return;
+			}
+			//Debug.getLogger().debug("Get data");
 
+
+			if (!world.isClientSide()) {
+                BlockEntity _blockEntity = world.getBlockEntity(pos);
+				BlockState _bs = world.getBlockState(pos);
+				BlockState _bsb = world.getBlockState(pos.below());
 
 				int cooktime = target.getOrCreateTag().getInt("cooktime");
+				Debug.debug("Getted cooktime", cooktime);
 
 				if(_bs.getBlock()== MIBlock.COOKING_RANGE.get()||_bsb.getBlock()== MIBlock.COOKING_RANGE.get()){
 					cooktime = (int) (cooktime * 0.6);
@@ -47,9 +51,12 @@ public class Confirm {
 				if (_blockEntity != null) {
 					_blockEntity.getPersistentData().putDouble("totaltime", cooktime);
 					_blockEntity.getPersistentData().putDouble("timeleft", cooktime);
+					Debug.debug("Getted cooktime", _blockEntity.getPersistentData().getDouble("totaltime"));
 				}
+
+
 				if (world instanceof Level _level)
-					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
+					_level.sendBlockUpdated(pos, _bs, _bs, 3);
 			}
 
 			//Debug.getLogger().debug("Get data");
