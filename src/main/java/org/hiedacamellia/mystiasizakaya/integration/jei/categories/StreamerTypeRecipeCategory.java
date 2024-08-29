@@ -12,20 +12,20 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import org.hiedacamellia.mystiasizakaya.content.item.ItemRegistery;
 import org.hiedacamellia.mystiasizakaya.integration.jei.JeiPlugin;
 import org.hiedacamellia.mystiasizakaya.integration.jei.recipes.StreamerTypeRecipe;
+import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 
 public class StreamerTypeRecipeCategory implements IRecipeCategory<StreamerTypeRecipe> {
-	public final static ResourceLocation UID = new ResourceLocation("mystias_izakaya", "streamer_type");
-	public final static ResourceLocation TEXTURE = new ResourceLocation("mystias_izakaya", "textures/screens/recipe_gui.png");
+	public final static ResourceLocation UID = ResourceLocation.fromNamespaceAndPath("mystias_izakaya", "streamer_type");
+	public final static ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("mystias_izakaya", "textures/overlay/recipe_gui.png");
 	private final IDrawable background;
 	private final IDrawable icon;
 
 	public StreamerTypeRecipeCategory(IGuiHelper helper) {
 		IDrawableBuilder drawableBuilder = helper.drawableBuilder(TEXTURE, 0, 0, 176, 87).setTextureSize(176, 87);
 		this.background = drawableBuilder.build();
-		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ItemRegistery.ZHENG_GUO.get()));
+		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(MIItem.STEAMER.get()));
 	}
 
 	@Override

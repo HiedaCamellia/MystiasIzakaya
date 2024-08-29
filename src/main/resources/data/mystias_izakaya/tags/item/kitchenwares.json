@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "mystias_izakaya:cutting_board",
+    "mystias_izakaya:boiling_pot",
+    "mystias_izakaya:frying_pan",
+    "mystias_izakaya:steamer",
+    "mystias_izakaya:grill"
+  ]
+}
