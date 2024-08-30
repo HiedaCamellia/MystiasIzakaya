@@ -12,14 +12,15 @@ import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import java.util.List;
 
 public class GetBeveragesTexture {
-	public static String execute(double id, Player player) {
+	public static ItemStack execute(double id, Player player) {
 		List<String> orders_list = player.getData(MIAttachment.MI_ORDERS).beverages();
-		if(orders_list.size()<=id) return "";
+		if(orders_list.size()<=id) return ItemStack.EMPTY;
 		String order = orders_list.get((int) id);
 		TagKey<Item> tag = ItemTags.create(ResourceLocation.parse("mystias_izakaya:beverages"));
-		if (!new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(order))).is(tag)) {
-			return "";
-		}
-		return order.split(":")[1]+ "_";
+		ItemStack now = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(order)));
+		if (!now.is(tag))
+			return ItemStack.EMPTY;
+		else
+			return now;
 	}
 }

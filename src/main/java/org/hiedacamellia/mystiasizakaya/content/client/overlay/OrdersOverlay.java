@@ -7,6 +7,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -29,36 +30,30 @@ public class OrdersOverlay {
 				GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
 				GlStateManager.DestFactor.ZERO);
 		RenderSystem.setShaderColor(1, 1, 1, 1);
-		String fm = "";
-		String fmb = "";
+		ItemStack cuisines;
+		ItemStack beverages;
 		int reali = 0;
 		for (int i = 0; i < 7; i++) {
-			fm = GetCuisinesTexture.execute(i, entity);
-			fmb = GetBeveragesTexture.execute(i, entity);
-			if (fm != "" || fmb != "") {
-
+			cuisines = GetCuisinesTexture.execute(i, entity);
+			beverages = GetBeveragesTexture.execute(i, entity);
+			if (!cuisines.isEmpty() || !beverages.isEmpty()) {
 				event.getGuiGraphics().blit(ResourceLocation.parse("mystias_izakaya:textures/overlay/page.png"),
 						0 + reali * 34,
 						h - 32, 0, 0, 36, 32, 36, 32);
-				if (fm != "") {
-					event.getGuiGraphics().blit(ResourceLocation.parse("mystias_izakaya:textures/item/" + fm + ".png"),
-							2 + reali * 34,
-							h - 30, 0, 0, 16, 16, 16, 16);
+				if (!cuisines.isEmpty()) {
+					event.getGuiGraphics().renderItem(cuisines,
+							2 + reali * 34, h - 30, 0, 0);
 				}
-				if (fmb != "") {
-					event.getGuiGraphics().blit(ResourceLocation.parse("mystias_izakaya:textures/item/" + fmb + ".png"),
-							18 + reali * 34,
-							h - 30, 0, 0, 16, 16, 16, 16);
+				if (!beverages.isEmpty()) {
+					event.getGuiGraphics().renderItem(beverages,
+							18 + reali * 34, h - 30, 0, 0);
 				}
 				event.getGuiGraphics().drawString(Minecraft.getInstance().font,
 						new java.text.DecimalFormat("#######").format(i) + "\u53f7\u684c", 8 + reali * 34, h - 10,
 						-16777216,
 						false);
-
 				reali++;
 			}
-			fm = "";
-
 		}
 		RenderSystem.depthMask(true);
 		RenderSystem.defaultBlendFunc();
