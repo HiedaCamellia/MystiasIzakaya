@@ -52,28 +52,36 @@ public class MIPlayerEvent {
 
     public static void addOrder(Player player, String order) {
         player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
-            variables.orders.add(order);
+            List<String> orders = new ArrayList<>(variables.orders);
+            orders.add(order);
+            variables.orders = orders;
             variables.syncPlayerVariables(player);
         });
     }
 
     public static void addOrderBeverages(Player player, String order) {
         player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
-            variables.ordersbeverages.add(order);
+            List<String> orders = new ArrayList<>(variables.ordersbeverages);
+            orders.add(order);
+            variables.ordersbeverages = orders;
             variables.syncPlayerVariables(player);
         });
     }
 
     public static void addTurnoverPre(Player player, String turnover) {
         player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
-            variables.turnover_pre.add(turnover);
+            List<String> turnover_pre = new ArrayList<>(variables.turnover_pre);
+            turnover_pre.add(turnover);
+            variables.turnover_pre = turnover_pre;
             variables.syncPlayerVariables(player);
         });
     }
 
     public static void addTurnoverCha(Player player, int turnover) {
         player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
-            variables.trunover_cha.add(turnover);
+            List<Integer> turnover_cha = new ArrayList<>(variables.trunover_cha);
+            turnover_cha.add(turnover);
+            variables.trunover_cha = turnover_cha;
             variables.syncPlayerVariables(player);
         });
     }

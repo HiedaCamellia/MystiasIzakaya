@@ -692,6 +692,6 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.yue_bing", "Moon Cake");
         add("tooltip.mystias_izakaya.yue_bing","Ei??Why you got it....Have fun with the game!");
         add("item.mystias_izakaya.ledger", "Ledger");
-        add("tooltip.mystias_izakaya.ledger","You can use this item open the Donation");
+        add("tooltip.mystias_izakaya.ledger","You can use this item overview turnover");
     }
 }
