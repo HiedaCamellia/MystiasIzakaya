@@ -13,6 +13,7 @@ import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -21,7 +22,6 @@ public class MIDebug {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("mystiasizakaya").then(Commands.literal("debug")
-
 				.then(Commands.literal("orders").then(
 						Commands.argument("id", DoubleArgumentType.doubleArg()).then(Commands.literal("cuisines").then(Commands.literal("replace").then(Commands.argument("cuisines", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
 							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
@@ -31,7 +31,10 @@ public class MIDebug {
                             List<String> orders_list;
                             if (player != null) {
                                 MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                orders_list = miOrders.orders();
+                                orders_list = new ArrayList<>(miOrders.orders());
+                                while (orders_list.size() < id+1) {
+                                    orders_list.add("");
+                                }
                                 orders_list.set(id, order);
                                 player.setData(MIAttachment.MI_ORDERS, new MIOrders(orders_list, miOrders.beverages()));
                             }
@@ -42,8 +45,11 @@ public class MIDebug {
                             List<String> orders_list;
                             if (player != null) {
                                 MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                orders_list = miOrders.orders();
-                                orders_list.set(id, "minecraft:air");
+                                orders_list = new ArrayList<>(miOrders.orders());
+                                while (orders_list.size() < id+1) {
+                                    orders_list.add("");
+                                }
+                                orders_list.set(id, "");
                                 player.setData(MIAttachment.MI_ORDERS, new MIOrders(orders_list, miOrders.beverages()));
                             }
                             return 0;
@@ -55,7 +61,10 @@ public class MIDebug {
                             List<String> ordersbeverages_list;
                             if (player != null) {
                                 MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                ordersbeverages_list = miOrders.beverages();
+                                ordersbeverages_list = new ArrayList<>(miOrders.beverages());
+                                while (ordersbeverages_list.size() < id+1) {
+                                    ordersbeverages_list.add("");
+                                }
                                 ordersbeverages_list.set(id, order);
                                 player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.orders(), ordersbeverages_list));
                             }
@@ -66,8 +75,11 @@ public class MIDebug {
                             List<String> ordersbeverages_list;
                             if (player != null) {
                                 MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                ordersbeverages_list = miOrders.beverages();
-                                ordersbeverages_list.set(id, "minecraft:air");
+                                ordersbeverages_list = new ArrayList<>(miOrders.beverages());
+                                while (ordersbeverages_list.size() < id+1) {
+                                    ordersbeverages_list.add("");
+                                }
+                                ordersbeverages_list.set(id, "");
                                 player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.orders(), ordersbeverages_list));
                             }
                             return 0;

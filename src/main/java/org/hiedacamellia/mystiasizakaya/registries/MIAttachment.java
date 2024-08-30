@@ -18,12 +18,12 @@ public class MIAttachment {
     public static final DeferredRegister<AttachmentType<?>> ATTACHMENTS = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, MystiasIzakaya.MODID);
 
 
-    public static final Supplier<AttachmentType<MITags>> MI_TAGS = ATTACHMENTS.register(
-            "mi_tags", () -> AttachmentType.builder(() -> new MITags(new ArrayList<>(), new ArrayList<>())).serialize(MICodec.MI_TAGS_CODEC).build()
-    );
+//    public static final Supplier<AttachmentType<MITags>> MI_TAGS = ATTACHMENTS.register(
+//            "mi_tags", () -> AttachmentType.builder(() -> new MITags(new ArrayList<>(), new ArrayList<>())).serialize(MICodec.MI_TAGS_CODEC).build()
+//    );
 
     public static final Supplier<AttachmentType<MIOrders>> MI_ORDERS = ATTACHMENTS.register(
-            "mi_orders", () -> AttachmentType.builder(() -> new MIOrders(new ArrayList<>(), new ArrayList<>())).serialize(MICodec.MI_ORDERS_CODEC).build()
+            "mi_orders", () -> AttachmentType.builder(() -> new MIOrders(new ArrayList<>(8), new ArrayList<>(8))).serialize(MICodec.MI_ORDERS_CODEC).build()
     );
 
     public static final Supplier<AttachmentType<MIBalance>> MI_BALANCE = ATTACHMENTS.register(

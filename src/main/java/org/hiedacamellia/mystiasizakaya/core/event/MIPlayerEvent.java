@@ -43,7 +43,7 @@ public class MIPlayerEvent {
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         Player player = event.getEntity();
         if (!event.getEntity().hasData(MIAttachment.MI_ORDERS)) {
-            event.getEntity().setData(MIAttachment.MI_ORDERS, new MIOrders(new ArrayList<>(10),new ArrayList<>(10)));
+            event.getEntity().setData(MIAttachment.MI_ORDERS, new MIOrders(new ArrayList<>(10), new ArrayList<>(10)));
         }
         if (!event.getEntity().hasData(MIAttachment.MI_BALANCE)) {
             event.getEntity().setData(MIAttachment.MI_BALANCE, new MIBalance(0));

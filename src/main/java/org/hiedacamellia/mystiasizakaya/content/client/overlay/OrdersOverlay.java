@@ -9,15 +9,15 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
-import org.hiedacamellia.mystiasizakaya.content.orders.GetBeveragesTexture;
-import org.hiedacamellia.mystiasizakaya.content.orders.GetCuisinesTexture;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
+import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.ArrayList;
@@ -28,7 +28,12 @@ import java.util.stream.IntStream;
 @EventBusSubscriber({ Dist.CLIENT })
 public class OrdersOverlay {
 
-	private static List<Boolean> last_orders;
+	private static List<Boolean> last_orders = new ArrayList<>(8);
+	private static int tick;
+	private static boolean statical;
+    private static int flag;
+
+	private final static int x_mid = 20 + 34 * 4;
 
 
 	@SubscribeEvent(priority = EventPriority.NORMAL)
@@ -46,34 +51,59 @@ public class OrdersOverlay {
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		ItemStack cuisines;
 		ItemStack beverages;
-		int reali = 0;
         MIOrders miOrders = null;
         if (entity != null) {
-            miOrders = entity.getData(MIAttachment.MI_ORDERS);
+			miOrders = entity.getData(MIAttachment.MI_ORDERS);
 			List<ItemStack> cuisinesorders_list = getStacks(miOrders.orders());
 			List<ItemStack> beveragesorders_list = getStacks(miOrders.beverages());
-
-
-			for(int i: IntStream.range(0, 7).toArray()){ {
-				if(cuisinesorders_list.isEmpty()&&(!last_orders.get(i)))
-					continue;
-				else {
-					last_orders.set(i, true);
-					break;
-				}
+			if(last_orders.size()<8){
+				last_orders.clear();
+				IntStream.range(0, 8).forEach(i -> last_orders.add(false));
 			}
 
 
+            int now_orders = 0;
+			if(statical){
+				for (int i = 0; i < 7; i++) {
+					if (cuisinesorders_list.get(i).isEmpty() && (!last_orders.get(i)))
+						continue;
+					else {
+						last_orders.set(i, true);
+						statical = false;
+						flag = i;
+					}
+					if (!cuisinesorders_list.get(i).isEmpty()) {
+						now_orders++;
+					}
+				}
+			}
+
+			if(!statical){
+				if(tick>=16){
+					tick=0;
+					statical=true;
+				}
 
 
 
-//			for (int i = 0; i < 7; i++) {
-//				cuisines = GetCuisinesTexture.execute(i, entity);
-//				beverages = GetBeveragesTexture.execute(i, entity);
-//				if (!cuisines.isEmpty() || !beverages.isEmpty()) {
-//					renderPart(guiGraphics, reali * 34,h - 30,i,cuisines,beverages);
-//					reali++;
-//				}
+
+				tick++;
+			}
+
+
+			if(statical){
+				int reali = 0;
+				int start_x = x_mid - now_orders * 18;
+
+
+				for (int i = 0; i < 7; i++) {
+					cuisines = cuisinesorders_list.get(i);
+					beverages = beveragesorders_list.get(i);
+					if (!cuisines.isEmpty() || !beverages.isEmpty()) {
+						renderPart(guiGraphics, start_x + reali * 34, h - 30, i, cuisines, beverages);
+						reali++;
+					}
+				}
 			}
         }
 
@@ -106,7 +136,15 @@ public class OrdersOverlay {
 	private static List<ItemStack> getStacks(List<String> orders_list) {
 		List<ItemStack> stacks = new ArrayList<>();
 		for (String order : orders_list) {
-			stacks.add(new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(order))));
+			if(order.isEmpty())
+				stacks.add(ItemStack.EMPTY);
+			else
+				stacks.add(new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(order))));
+		}
+		if(stacks.size()<8){
+			for(int i = stacks.size();i<8;i++){
+				stacks.add(ItemStack.EMPTY);
+			}
 		}
 		return stacks;
 	}
