@@ -5,11 +5,13 @@ import com.mojang.brigadier.arguments.DoubleArgumentType;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.item.ItemArgument;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
@@ -27,7 +29,7 @@ public class MIDebug {
 							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
 							ItemStack cuisines = ItemArgument.getItem(arguments, "cuisines").getItem().getDefaultInstance();
 							String order = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(cuisines.getItem())).toString();
-							Player player = arguments.getSource().getPlayer();
+                            ServerPlayer player = arguments.getSource().getPlayer();
                             List<String> orders_list;
                             if (player != null) {
                                 MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
@@ -37,11 +39,12 @@ public class MIDebug {
                                 }
                                 orders_list.set(id, order);
                                 player.setData(MIAttachment.MI_ORDERS, new MIOrders(orders_list, miOrders.beverages()));
+                                PacketDistributor.sendToPlayer(player, new MIOrders(orders_list, miOrders.beverages()));
                             }
                             return 0;
 						}))).then(Commands.literal("clean").executes(arguments -> {
 							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
-							Player player = arguments.getSource().getPlayer();
+                            ServerPlayer player = arguments.getSource().getPlayer();
                             List<String> orders_list;
                             if (player != null) {
                                 MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
@@ -51,13 +54,14 @@ public class MIDebug {
                                 }
                                 orders_list.set(id, "");
                                 player.setData(MIAttachment.MI_ORDERS, new MIOrders(orders_list, miOrders.beverages()));
+                                PacketDistributor.sendToPlayer(player, new MIOrders(orders_list, miOrders.beverages()));
                             }
                             return 0;
 						}))).then(Commands.literal("beverages").then(Commands.literal("replace").then(Commands.argument("beverages", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
 							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
 							ItemStack beverages = ItemArgument.getItem(arguments, "beverages").getItem().getDefaultInstance();
 							String order = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(beverages.getItem())).toString();
-							Player player = arguments.getSource().getPlayer();
+                            ServerPlayer player = arguments.getSource().getPlayer();
                             List<String> ordersbeverages_list;
                             if (player != null) {
                                 MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
@@ -67,11 +71,12 @@ public class MIDebug {
                                 }
                                 ordersbeverages_list.set(id, order);
                                 player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.orders(), ordersbeverages_list));
+                                PacketDistributor.sendToPlayer(player, new MIOrders(miOrders.orders(), ordersbeverages_list));
                             }
                             return 0;
 						}))).then(Commands.literal("clean").executes(arguments -> {
 							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
-							Player player = arguments.getSource().getPlayer();
+                            ServerPlayer player = arguments.getSource().getPlayer();
                             List<String> ordersbeverages_list;
                             if (player != null) {
                                 MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
@@ -81,6 +86,7 @@ public class MIDebug {
                                 }
                                 ordersbeverages_list.set(id, "");
                                 player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.orders(), ordersbeverages_list));
+                                PacketDistributor.sendToPlayer(player, new MIOrders(miOrders.orders(), ordersbeverages_list));
                             }
                             return 0;
 						})))))));

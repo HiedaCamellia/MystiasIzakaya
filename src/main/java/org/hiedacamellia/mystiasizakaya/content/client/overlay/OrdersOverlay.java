@@ -32,6 +32,7 @@ public class OrdersOverlay {
 	private static int tick;
 	private static boolean statical;
     private static int flag;
+	private static int now_orders;
 
 	private final static int x_mid = 20 + 34 * 4;
 
@@ -62,9 +63,9 @@ public class OrdersOverlay {
 			}
 
 
-            int now_orders = 0;
 			if(statical){
-				for (int i = 0; i < 7; i++) {
+				now_orders = 0;
+				for (int i = 0; i < 8; i++) {
 					if (cuisinesorders_list.get(i).isEmpty() && (!last_orders.get(i)))
 						continue;
 					else {
@@ -82,6 +83,7 @@ public class OrdersOverlay {
 				if(tick>=16){
 					tick=0;
 					statical=true;
+					last_orders.set(flag, false);
 				}
 
 
@@ -91,12 +93,12 @@ public class OrdersOverlay {
 			}
 
 
-			if(statical){
+			if(true){
 				int reali = 0;
 				int start_x = x_mid - now_orders * 18;
 
 
-				for (int i = 0; i < 7; i++) {
+				for (int i = 0; i < 8; i++) {
 					cuisines = cuisinesorders_list.get(i);
 					beverages = beveragesorders_list.get(i);
 					if (!cuisines.isEmpty() || !beverages.isEmpty()) {
@@ -115,7 +117,7 @@ public class OrdersOverlay {
 	}
 
 	private static void renderPart(GuiGraphics guiGraphics,int x,int y,int i,ItemStack cuisine,ItemStack beverage){
-		guiGraphics.blit(ResourceLocation.parse("mystias_izakaya:textures/overlay/page.png"),
+		guiGraphics.blit(ResourceLocation.parse("mystias_izakaya:textures/screens/page.png"),
 				x,
 				y, 0, 0, 36, 32, 36, 32);
 		if (!cuisine.isEmpty()) {
