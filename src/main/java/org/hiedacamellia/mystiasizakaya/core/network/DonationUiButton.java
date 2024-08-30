@@ -6,9 +6,12 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.network.NetworkEvent;
+import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.DonationUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
@@ -102,6 +105,10 @@ public class DonationUiButton  {
                 }
             }
         }
+    }
+    @SubscribeEvent
+    public static void registerMessage(FMLCommonSetupEvent event) {
+        MystiasIzakaya.addNetworkMessage(DonationUiButton.class, DonationUiButton::buffer, DonationUiButton::new, DonationUiButton::handler);
     }
 
 }
