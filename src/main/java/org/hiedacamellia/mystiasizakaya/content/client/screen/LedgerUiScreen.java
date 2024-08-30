@@ -9,6 +9,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.LedgerUiMenu;
+import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 
 import java.util.HashMap;
@@ -72,22 +73,25 @@ public class LedgerUiScreen extends AbstractContainerScreen<LedgerUiMenu> {
 
         List<String> k = MIPlayerEvent.getTurnoverPre(entity);
         List<Integer> v = MIPlayerEvent.getTurnoverCha(entity);
-        for(int i = 0; i < k.size(); i++){
-            String key = Component.translatable("gui.mystias_izakaya.ledger_ui."+ k.get(i)).getString();
-            String value = String.valueOf(Math.abs(v.get(i)));
-            double vi = v.get(i);
-            String op = Component.translatable("gui.mystias_izakaya.ledger_ui.outcome").getString();
-            if(vi>0){
-                op = Component.translatable("gui.mystias_izakaya.ledger_ui.income").getString();
+        try {
+            for (int i = 0; i < k.size(); i++) {
+                String key = Component.translatable("gui.mystias_izakaya.ledger_ui." + k.get(i)).getString();
+                String value = String.valueOf(Math.abs(v.get(i)));
+                double vi = v.get(i);
+                String op = Component.translatable("gui.mystias_izakaya.ledger_ui.outcome").getString();
+                if (vi > 0) {
+                    op = Component.translatable("gui.mystias_izakaya.ledger_ui.income").getString();
+                }
+                guiGraphics.drawString(this.font,
+                        op, 10, 40 + i * 10, -12829636, false);
+                guiGraphics.drawString(this.font,
+                        key, 40, 40 + i * 10, -12829636, false);
+                guiGraphics.drawString(this.font,
+                        value, 176 - 10 - font.width(value), 40 + i * 10, -12829636, false);
             }
-            guiGraphics.drawString(this.font,
-                    op, 10, 40 + i * 10, -12829636,false);
-            guiGraphics.drawString(this.font,
-                    key, 40, 40 + i * 10, -12829636,false);
-            guiGraphics.drawString(this.font,
-                    value, 176 - 10 - font.width(value) , 40 + i * 10, -12829636,false);
+        }catch (Exception e){
+            Debug.getLogger().trace(String.valueOf(e));
         }
-
 
     }
 
