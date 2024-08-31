@@ -39,6 +39,11 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
     private Button refresh;
     private Button confirm;
 
+    private int mode;
+
+    private MIImageButton mode_i;
+    private MIImageButton mode_b;
+
     private List<ItemStack> out;
 
 
@@ -129,6 +134,24 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
         }
         refreshItems();
 
+        mode_i = new MIImageButton.builder(Component.empty(), e -> {
+            mode = 1;
+            mode_i.disableRender();
+            mode_b.disableRender();
+            refreshItems();
+        }).pos(leftPos + 10, topPos + 30).itemStack(RandomItems.getRandomItems(MIItem.Ingredients.getEntries(), 1).getFirst())
+                .tooltip(Tooltip.create(Component.translatable("gui.mystias_izakaya.telephone_ui.mode_i.desc"))).build();
+
+        mode_b = new MIImageButton.builder(Component.empty(), e -> {
+            mode = 2;
+            mode_i.disableRender();
+            mode_b.disableRender();
+            refreshItems();
+        }).pos(leftPos + 10, topPos + 50).itemStack(RandomItems.getRandomItems(MIItem.Beverages.getEntries(), 1).getFirst())
+                .tooltip(Tooltip.create(Component.translatable("gui.mystias_izakaya.telephone_ui.mode_b.desc"))).build();
+
+
+
         refresh = new Button.Builder(Component.translatable("gui.mystias_izakaya.telephone_ui.refresh"), e -> {
             refreshItems();
             refreshOut();
@@ -163,6 +186,8 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
 
         this.addRenderableWidget(refresh);
         this.addRenderableWidget(confirm);
+        this.addRenderableWidget(mode_i);
+        this.addRenderableWidget(mode_b);
 
         int size = selected.size();
         for (int i = 0; i < size; i++) {
@@ -175,11 +200,19 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
     }
 
     private void refreshItems() {
-        List<ItemStack> itemStacksIn = RandomItems.getRandomItems(MIItem.Ingredients.getEntries(), 12);
+        List<ItemStack> itemStacksIn = new ArrayList<>();
+        switch (mode){
+            case 1 -> itemStacksIn = RandomItems.getRandomItems(MIItem.Ingredients.getEntries(), 12);
+            case 2 -> itemStacksIn = RandomItems.getRandomItems(MIItem.Beverages.getEntries(), 6);
+        }
         for (int i = 0; i < itemStacksIn.size(); i++) {
             select.get(i).setItemStack(itemStacksIn.get(i));
             select.get(i).setTooltip(Tooltip.create(Component.literal(itemStacksIn.get(i).getHoverName().getString() + "\n" + itemStacksIn.get(i).getCount() + "個")));
-            //select.get(i).enableRender();
+            select.get(i).enableRender();
+        }
+        for (int i = itemStacksIn.size(); i < 12; i++) {
+            select.get(i).setItemStack(ItemStack.EMPTY);
+            select.get(i).disableRender();
         }
         out.clear();
     }

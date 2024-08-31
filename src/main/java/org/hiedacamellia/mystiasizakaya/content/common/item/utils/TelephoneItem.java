@@ -1,6 +1,7 @@
 package org.hiedacamellia.mystiasizakaya.content.common.item.utils;
 
 import io.netty.buffer.Unpooled;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -18,6 +19,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.LedgerUiMenu;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.TelephoneUiMenu;
+import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -38,6 +40,14 @@ public class TelephoneItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
         InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
         BlockPos pos = entity.getOnPos();
+
+        int tick = entity.getData(MIAttachment.MI_TELE_COLDDOWN).tick();
+        if(tick>0){
+            entity.sendSystemMessage(Component.translatable("message.mystiasizakaya.telephone.colddown",tick/20).withStyle(ChatFormatting.RED));
+            return ar;
+        }
+
+
 
         if (entity instanceof ServerPlayer player) {
             player.openMenu(new MenuProvider() {

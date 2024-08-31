@@ -87,4 +87,14 @@ public class MICodec {
             ByteBufCodecs.INT, MICost::cost,
             MICost::new
     );
+
+    public static final Codec<MITeleColddown> MI_TELE_COLDDOWN_CODEC = RecordCodecBuilder.create(instance ->
+            instance.group(
+                    Codec.INT.fieldOf("cost").forGetter(MITeleColddown::tick)
+            ).apply(instance, MITeleColddown::new)
+    );
+    public static final StreamCodec<ByteBuf, MITeleColddown> MI_TELE_COLDDOWN_STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.INT, MITeleColddown::tick,
+            MITeleColddown::new
+    );
 }

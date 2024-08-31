@@ -16,9 +16,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
+import org.hiedacamellia.mystiasizakaya.Config;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MICost;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MITeleColddown;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
@@ -73,6 +75,9 @@ public record TelephoneUiButton(List<ItemStack> out, BlockPos pos) implements Cu
 				ItemHandlerHelper.giveItemToPlayer(entity, itemStack);
 			}
 			entity.sendSystemMessage(Component.translatable("message.mystiasizakaya.checkout.success").withStyle(ChatFormatting.GREEN));
+
+			entity.setData(MIAttachment.MI_TELE_COLDDOWN,new MITeleColddown(Config.TELE_COOLDOWN.get()));
+
 		}
 	}
 }

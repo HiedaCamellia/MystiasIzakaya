@@ -8,6 +8,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MITeleColddown;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
@@ -68,6 +69,10 @@ public class MIPlayerEvent {
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
+        Player player = event.getEntity();
+        int tick = player.getData(MIAttachment.MI_TELE_COLDDOWN).tick();
+        if(tick>0)
+            player.setData(MIAttachment.MI_TELE_COLDDOWN,new MITeleColddown(tick-1));
     }
 
 }

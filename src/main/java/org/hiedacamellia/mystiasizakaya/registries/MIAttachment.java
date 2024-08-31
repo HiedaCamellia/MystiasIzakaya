@@ -5,10 +5,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.core.codec.MICodec;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,5 +29,9 @@ public class MIAttachment {
 
     public static final Supplier<AttachmentType<MITurnover>> MI_TURNOVER = ATTACHMENTS.register(
             "mi_turnover", () -> AttachmentType.builder(() -> new MITurnover(new ArrayList<>(),new ArrayList<>())).serialize(MICodec.MI_TURNOVER_CODEC).build()
+    );
+
+    public static final Supplier<AttachmentType<MITeleColddown>> MI_TELE_COLDDOWN = ATTACHMENTS.register(
+            "mi_telecolddown", () -> AttachmentType.builder(() -> new MITeleColddown(0)).serialize(MICodec.MI_TELE_COLDDOWN_CODEC).build()
     );
 }
