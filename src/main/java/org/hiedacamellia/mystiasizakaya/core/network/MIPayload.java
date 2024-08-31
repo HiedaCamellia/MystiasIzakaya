@@ -54,6 +54,15 @@ public class MIPayload {
                         MITurnover::handleData
                 )
         );
+        registrar.playBidirectional(
+                TelephoneUiButton.TYPE,
+                TelephoneUiButton.STREAM_CODEC,
+                new DirectionalPayloadHandler<>(
+                        TelephoneUiButton::handleData,
+                        TelephoneUiButton::handleData
+                )
+        );
+
 
 
     }

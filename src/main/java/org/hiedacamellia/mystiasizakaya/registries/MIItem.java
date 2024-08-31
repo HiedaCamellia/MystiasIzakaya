@@ -30,6 +30,7 @@ public class MIItem {
 
     //Util
     public static final DeferredItem<Item> LEDGER = REGISTRY.register("ledger", LedgerItem::new);
+    public static final DeferredItem<Item> TELEPHONE = REGISTRY.register("telephone", TelephoneItem::new);
 
     public static final DeferredRegister.Items Ingredients = DeferredRegister.createItems(MystiasIzakaya.MODID);
     //ingredients

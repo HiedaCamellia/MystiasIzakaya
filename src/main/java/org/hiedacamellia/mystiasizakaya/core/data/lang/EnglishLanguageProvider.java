@@ -16,11 +16,26 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.ledger_ui.outcome","Outcome");
         add("gui.mystias_izakaya.ledger_ui.income","Income");
         add("gui.mystias_izakaya.ledger_ui.to_donation","Donation");
+        add("gui.mystias_izakaya.ledger_ui.to_telephone","Telephone");
         add("gui.mystias_izakaya.ledger_ui.from_command","Command");
         add("gui.mystias_izakaya.ledger_ui.from_currency","Currency");
 
         add("gui.mystias_izakaya.ledger_ui.ledger","Ledger");
         add("tooltip.mystias_izakaya.cost","Cost: ");
+
+        add("gui.mystias_izakaya.telephone_ui.telephone","Telephone");
+        add("gui.mystias_izakaya.telephone_ui.select","");
+        add("gui.mystias_izakaya.telephone_ui.select.desc","");
+        add("gui.mystias_izakaya.telephone_ui.refresh","Refresh");
+        add("gui.mystias_izakaya.telephone_ui.refresh.desc","Click to refresh the list");
+        add("gui.mystias_izakaya.telephone_ui.confirm","Confirm");
+        add("gui.mystias_izakaya.telephone_ui.confirm.desc","Click to check out");
+        add("gui.mystias_izakaya.telephone_ui.cost","Cost: ");
+
+        add("message.mystiasizakaya.checkout.fail", "Insufficient balance");
+        add("message.mystiasizakaya.checkout.success", "Checkout success");
+
+
 
         add("gui.mystias_izakaya.cooking_range_ui.button_back", "<");
         add("gui.mystias_izakaya.cooking_range_ui.button_next", ">");
@@ -692,6 +707,9 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.yue_bing", "Moon Cake");
         add("tooltip.mystias_izakaya.yue_bing","Ei??Why you got it....Have fun with the game!");
         add("item.mystias_izakaya.ledger", "Ledger");
-        add("tooltip.mystias_izakaya.ledger","You can use this item open the Donation");
+        add("tooltip.mystias_izakaya.ledger","You can use this item overview your turnover");
+        add("item.mystias_izakaya.telephone", "Telephone");
+        add("tooltip.mystias_izakaya.telephone","You can use this item to buy any things you want");
+
     }
 }
