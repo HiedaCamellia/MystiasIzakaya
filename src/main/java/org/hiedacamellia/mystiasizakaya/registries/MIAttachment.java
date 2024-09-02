@@ -26,6 +26,10 @@ public class MIAttachment {
             "mi_orders", () -> AttachmentType.builder(() -> new MIOrders(new ArrayList<>(8), new ArrayList<>(8),new ArrayList<>(8))).serialize(MICodec.MI_ORDERS_CODEC).build()
     );
 
+    public static final Supplier<AttachmentType<MIOrders>> MI_BAR = ATTACHMENTS.register(
+            "mi_bar", () -> AttachmentType.builder(() -> new MIOrders(new ArrayList<>(8), new ArrayList<>(8),new ArrayList<>(8))).serialize(MICodec.MI_ORDERS_CODEC).build()
+    );
+
     public static final Supplier<AttachmentType<MIBalance>> MI_BALANCE = ATTACHMENTS.register(
             "mi_balance", () -> AttachmentType.builder(() -> new MIBalance(0)).serialize(MICodec.MI_BALANCE_CODEC).build()
     );
