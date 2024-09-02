@@ -99,7 +99,7 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
             cost_all += itemStack.getCount() * itemStack.getOrDefault(MIDatacomponet.MI_COST, new MICost(0)).cost();
         }
 
-        Component cost = Component.translatable("gui.mystias_izakaya.telephone_ui.cost").append(String.valueOf(cost_all)).append(" \u5186");
+        Component cost = Component.translatable("gui.mystias_izakaya.telephone_ui.cost").append(String.valueOf((int)(cost_all*0.8))).append(" \u5186");
 
         guiGraphics.drawString(this.font, cost.getString(), 10, 140, -12829636, false);
 
