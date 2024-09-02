@@ -11,10 +11,12 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
+import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.Config;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
@@ -78,6 +80,10 @@ public record TelephoneUiButton(List<ItemStack> out, BlockPos pos) implements Cu
 
 			entity.setData(MIAttachment.MI_TELE_COLDDOWN,new MITeleColddown(Config.TELE_COOLDOWN.get()));
 
+		}
+		if(entity instanceof ServerPlayer player) {
+			PacketDistributor.sendToPlayer(player, player.getData(MIAttachment.MI_BALANCE));
+			PacketDistributor.sendToPlayer(player, player.getData(MIAttachment.MI_TURNOVER));
 		}
 	}
 }

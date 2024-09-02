@@ -205,6 +205,15 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
             case 1 -> itemStacksIn = RandomItems.getRandomItems(MIItem.Ingredients.getEntries(), 12);
             case 2 -> itemStacksIn = RandomItems.getRandomItems(MIItem.Beverages.getEntries(), 6);
         }
+        if(mode==1){
+            //有1.6%的概率
+            if(Math.random()<1){
+                itemStacksIn.set((int)(Math.random()*12),new ItemStack(MIItem.REISEN.get()));
+            }
+        }
+
+
+
         for (int i = 0; i < itemStacksIn.size(); i++) {
             select.get(i).setItemStack(itemStacksIn.get(i));
             select.get(i).setTooltip(Tooltip.create(Component.literal(itemStacksIn.get(i).getHoverName().getString() + "\n" + itemStacksIn.get(i).getCount() + "個")));

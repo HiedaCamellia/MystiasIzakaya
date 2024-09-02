@@ -13,6 +13,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MITeleColddown;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.ArrayList;
@@ -89,6 +90,14 @@ public class MIDebug {
                                 PacketDistributor.sendToPlayer(player, new MIOrders(miOrders.orders(), ordersbeverages_list));
                             }
                             return 0;
-						})))))));
+						}))))
+                ).then(Commands.literal("telephone").then(Commands.literal("reset").executes(arguments -> {
+                    ServerPlayer player = arguments.getSource().getPlayer();
+                    if (player != null) {
+                        player.setData(MIAttachment.MI_TELE_COLDDOWN, new MITeleColddown(0));
+                    }
+                    return 0;
+                })))
+        ));
 	}
 }
