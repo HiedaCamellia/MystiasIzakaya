@@ -324,6 +324,7 @@
   "jei.mystias_izakaya.Frying_Pan": "Frying Pan",
   "jei.mystias_izakaya.Grill": "Grill",
   "jei.mystias_izakaya.Streamer": "Streamer",
+  "message.mystiasizakaya.checkout.cheat": "Cheating is not allowed",
   "message.mystiasizakaya.checkout.fail": "Insufficient balance",
   "message.mystiasizakaya.checkout.success": "Checkout success",
   "message.mystiasizakaya.telephone.colddown": "Please wait %s seconds",

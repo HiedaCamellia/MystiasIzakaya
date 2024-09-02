@@ -1,33 +1,20 @@
 package org.hiedacamellia.mystiasizakaya.core.entry;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import org.hiedacamellia.mystiasizakaya.util.ItemStackHolder;
 
 import javax.annotation.Nullable;
 
 @OnlyIn(Dist.CLIENT)
-public class MIImageButton extends Button {
+public class MIImageButton extends MIButton {
 
-    private final ItemStackHolder itemStack= new ItemStackHolder();
-    private final int x;
-    private final int y;
 
     protected MIImageButton(int x, int y, Component message, OnPress onPress,ItemStack itemStack, @Nullable Tooltip tooltip) {
-        super(x, y, 16, 16, message, onPress, Button.DEFAULT_NARRATION);
-        this.x = x;
-        this.y = y;
-        this.setTooltip(tooltip);
-        this.itemStack.set(itemStack);
+        super(x, y,  message, onPress, itemStack, tooltip);
     }
 
     public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
@@ -44,27 +31,7 @@ public class MIImageButton extends Button {
 
         guiGraphics.renderItem(this.itemStack.get(),this.x, this.y);
 
-        //guiGraphics.drawString(Minecraft.getInstance().font, String.valueOf(this.itemStack.get().getCount()), this.x+10, this.y+10, 0xFFFFFF,false);
-        //guiGraphics.drawString(Minecraft.getInstance().font, FormattedCharSequence.forward(String.valueOf(this.itemStack.get().getCount()), Style.EMPTY), this.x+10, this.y+10, 0xFFFFFF);
-
     }
-
-    public ItemStack getItemStack() {
-        return this.itemStack.get();
-    }
-
-    public void setItemStack(ItemStack itemStack) {
-        this.itemStack.set(itemStack);
-    }
-
-    public void enableRender(){
-        this.visible=true;
-    }
-
-    public void disableRender(){
-        this.visible=false;
-    }
-
     public static class builder {
         private ItemStack itemStack=ItemStack.EMPTY;
         private int x;
@@ -78,18 +45,18 @@ public class MIImageButton extends Button {
             this.onPress = onPress;
         }
 
-        public builder pos(int x, int y) {
+        public MIImageButton.builder pos(int x, int y) {
             this.x = x;
             this.y = y;
             return this;
         }
 
-        public builder itemStack(ItemStack itemStack) {
+        public MIImageButton.builder itemStack(ItemStack itemStack) {
             this.itemStack = itemStack;
             return this;
         }
 
-        public builder tooltip(@Nullable Tooltip tooltip) {
+        public MIImageButton.builder tooltip(@Nullable Tooltip tooltip) {
             this.tooltip = tooltip;
             return this;
         }
@@ -98,4 +65,5 @@ public class MIImageButton extends Button {
             return new MIImageButton(this.x, this.y, this.message, this.onPress, this.itemStack,this.tooltip);
         }
     }
+
 }

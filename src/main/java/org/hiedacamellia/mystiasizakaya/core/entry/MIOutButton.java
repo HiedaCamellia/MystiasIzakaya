@@ -1,29 +1,20 @@
 package org.hiedacamellia.mystiasizakaya.core.entry;
 
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import org.hiedacamellia.mystiasizakaya.util.ItemStackHolder;
 
 import javax.annotation.Nullable;
 
 @OnlyIn(Dist.CLIENT)
-public class MIOutButton extends Button {
+public class MIOutButton extends MIButton {
 
-    private final ItemStackHolder itemStack= new ItemStackHolder();
-    private final int x;
-    private final int y;
 
     protected MIOutButton(int x, int y, Component message, OnPress onPress, ItemStack itemStack, @Nullable Tooltip tooltip) {
-        super(x, y, 16, 16, message, onPress, Button.DEFAULT_NARRATION);
-        this.x = x;
-        this.y = y;
-        this.setTooltip(tooltip);
-        this.itemStack.set(itemStack);
+        super(x, y,  message, onPress, itemStack, tooltip);
     }
 
     public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
@@ -33,21 +24,6 @@ public class MIOutButton extends Button {
         }
     }
 
-    public ItemStack getItemStack() {
-        return this.itemStack.get();
-    }
-
-    public void setItemStack(ItemStack itemStack) {
-        this.itemStack.set(itemStack);
-    }
-
-    public void enableRender(){
-        this.visible=true;
-    }
-
-    public void disableRender(){
-        this.visible=false;
-    }
 
     public static class builder {
         private ItemStack itemStack=ItemStack.EMPTY;

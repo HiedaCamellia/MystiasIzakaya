@@ -45,6 +45,8 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
     private MIImageButton mode_b;
 
     private List<ItemStack> out;
+    private List<Double> rate;
+    private int cost;
 
 
     public TelephoneUiScreen(TelephoneUiMenu container, Inventory inventory, Component text) {
@@ -96,10 +98,11 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
 
         int cost_all = 0;
         for (ItemStack itemStack : out) {
-            cost_all += itemStack.getCount() * itemStack.getOrDefault(MIDatacomponet.MI_COST, new MICost(0)).cost();
+            cost_all += (int) (itemStack.getCount() * itemStack.getOrDefault(MIDatacomponet.MI_COST, new MICost(0)).cost() * rate.get(out.indexOf(itemStack)));
         }
+        cost = cost_all;
 
-        Component cost = Component.translatable("gui.mystias_izakaya.telephone_ui.cost").append(String.valueOf((int)(cost_all*0.8))).append(" \u5186");
+        Component cost = Component.translatable("gui.mystias_izakaya.telephone_ui.cost").append(String.valueOf(cost_all)).append(" \u5186");
 
         guiGraphics.drawString(this.font, cost.getString(), 10, 140, -12829636, false);
 
@@ -118,16 +121,21 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
         out = new ArrayList<>();
         select = new ArrayList<>();
         selected = new ArrayList<>();
+        rate = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 4; j++) {
                 int finala = j + i * 4;
                 select.add(new MIImageButton.builder(Component.translatable("gui.mystias_izakaya.telephone_ui.select"), e -> {
                     ItemStack itemStack = select.get(finala).getItemStack();
-                    addToOut(itemStack);
+                    addToOut(itemStack,select.get(finala).getRate());
                     itemStack.setCount(itemStack.getCount() - 1);
                     select.get(finala).setItemStack(itemStack);
-                    select.get(finala).setTooltip(Tooltip.create(Component.literal(itemStack.getHoverName().getString() + "\n" + itemStack.getCount() + "個")));
+                    int cost = (int) (itemStack.getOrDefault(MIDatacomponet.MI_COST, new MICost(0)).cost()*select.get(finala).getRate());
+                    if(!itemStack.isEmpty())
+                        select.get(finala).setTooltip(Tooltip.create(Component.literal(itemStack.getHoverName().getString() + "\n" + itemStack.getCount() + "個\n" + cost+" \u5186")));
+                    else
+                        select.get(finala).setTooltip(null);
                     refreshOut();
                 }).pos(leftPos + 10 + 20 * j, topPos + 30 + 20 * i).build());
             }
@@ -159,7 +167,7 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
                 .tooltip(Tooltip.create(Component.translatable("gui.mystias_izakaya.telephone_ui.refresh.desc"))).build();
 
         confirm = new Button.Builder(Component.translatable("gui.mystias_izakaya.telephone_ui.confirm"), e -> {
-            PacketDistributor.sendToServer(new TelephoneUiButton(new ArrayList<>(out), new BlockPos(x, y, z)));
+            PacketDistributor.sendToServer(new TelephoneUiButton(new ArrayList<>(out), new BlockPos(x, y, z),cost));
             //Debug.send(out.toString());
             out.clear();
             refreshOut();
@@ -172,7 +180,7 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
                 int finala = j + i * 5;
                 selected.add(new MIOutButton.builder(Component.translatable("gui.mystias_izakaya.telephone_ui.select"), e -> {
                     ItemStack itemStack = selected.get(finala).getItemStack().copy();
-                    addToSelct(itemStack);
+                    addToSelct(itemStack,selected.get(finala).getRate());
                     deleteFromOut(itemStack);
                     refreshOut();
                 }).pos(leftPos + imageWidth - 20 - 16 * j, topPos + imageHeight - 20 - 20 * i).build());
@@ -194,9 +202,6 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
             this.addRenderableWidget(selected.get(size - i - 1));
         }
 
-//        for (Button button : selected) {
-//            this.addRenderableWidget(button);
-//        }
     }
 
     private void refreshItems() {
@@ -207,16 +212,16 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
         }
         if(mode==1){
             //有1.6%的概率
-            if(Math.random()<1){
+            if(Math.random()<0.016){
                 itemStacksIn.set((int)(Math.random()*12),new ItemStack(MIItem.REISEN.get()));
             }
         }
 
-
-
         for (int i = 0; i < itemStacksIn.size(); i++) {
             select.get(i).setItemStack(itemStacksIn.get(i));
-            select.get(i).setTooltip(Tooltip.create(Component.literal(itemStacksIn.get(i).getHoverName().getString() + "\n" + itemStacksIn.get(i).getCount() + "個")));
+            select.get(i).setRate(0.6+0.4*Math.random());
+            int cost = (int) (itemStacksIn.get(i).getOrDefault(MIDatacomponet.MI_COST, new MICost(0)).cost()*select.get(i).getRate());
+            select.get(i).setTooltip(Tooltip.create(Component.literal(itemStacksIn.get(i).getHoverName().getString() + "\n" + itemStacksIn.get(i).getCount() + "個\n" + cost+" \u5186")));
             select.get(i).enableRender();
         }
         for (int i = itemStacksIn.size(); i < 12; i++) {
@@ -227,11 +232,13 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
     }
 
     private void refreshOut() {
-        //List<ItemStack> itemStacksIn = RandomItems.getRandomItems(MIItem.Ingredients.getEntries(), 20);
         List<ItemStack> itemStacksIn = out;
+        List<Double> rate = this.rate;
         for (int i = 0; i < itemStacksIn.size(); i++) {
             selected.get(i).setItemStack(itemStacksIn.get(i));
-            selected.get(i).setTooltip(Tooltip.create(Component.literal(itemStacksIn.get(i).getHoverName().getString() + "\n" + itemStacksIn.get(i).getCount() + "個")));
+            selected.get(i).setRate(rate.get(i));
+            int cost = (int) (itemStacksIn.get(i).getOrDefault(MIDatacomponet.MI_COST, new MICost(0)).cost()*selected.get(i).getRate());
+            selected.get(i).setTooltip(Tooltip.create(Component.literal(itemStacksIn.get(i).getHoverName().getString() + "\n" + itemStacksIn.get(i).getCount() + "個\n" + cost+" \u5186")));
             selected.get(i).enableRender();
         }
         for (int i = itemStacksIn.size(); i < 20; i++) {
@@ -240,13 +247,14 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
         }
     }
 
-    private void addToSelct(ItemStack stack) {
+    private void addToSelct(ItemStack stack,double rate) {
         if (ItemStack.isSameItem(stack, ItemStack.EMPTY))
             return;
         for (MIImageButton button : select) {
             if (button.getItemStack().getItem().equals(stack.getItem())) {
                 button.getItemStack().setCount(button.getItemStack().getCount() + 1);
-                button.setTooltip(Tooltip.create(Component.literal(button.getItemStack().getHoverName().getString() + "\n" + button.getItemStack().getCount() + "個")));
+                int cost = (int) (stack.getOrDefault(MIDatacomponet.MI_COST, new MICost(0)).cost() *button.getRate());
+                button.setTooltip(Tooltip.create(Component.literal(button.getItemStack().getHoverName().getString() + "\n" + button.getItemStack().getCount() + "個\n" + cost+" \u5186")));
                 return;
             }
         }
@@ -254,13 +262,15 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
             if (button.getItemStack().isEmpty()) {
                 button.setItemStack(stack);
                 button.getItemStack().setCount(1);
-                button.setTooltip(Tooltip.create(Component.literal(button.getItemStack().getHoverName().getString() + "\n" + button.getItemStack().getCount() + "個")));
+                button.setRate(rate);
+                int cost = (int) (stack.getOrDefault(MIDatacomponet.MI_COST, new MICost(0)).cost() *button.getRate());
+                button.setTooltip(Tooltip.create(Component.literal(button.getItemStack().getHoverName().getString() + "\n" + button.getItemStack().getCount() + "個\n" + cost+" \u5186")));
                 return;
             }
         }
     }
 
-    private void addToOut(ItemStack stack) {
+    private void addToOut(ItemStack stack, double r) {
         if (ItemStack.isSameItem(stack, ItemStack.EMPTY))
             return;
         for (ItemStack itemStack : out) {
@@ -272,6 +282,7 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
         ItemStack itemStack = stack.copy();
         itemStack.setCount(1);
         out.add(itemStack);
+        rate.add(r);
     }
 
     private void deleteFromOut(ItemStack stack) {
@@ -279,6 +290,7 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
             if (itemStack.getItem().equals(stack.getItem())) {
                 itemStack.setCount(itemStack.getCount() - 1);
                 if (itemStack.getCount() <= 0) {
+                    rate.remove(out.indexOf(itemStack));
                     out.remove(itemStack);
                 }
                 return;

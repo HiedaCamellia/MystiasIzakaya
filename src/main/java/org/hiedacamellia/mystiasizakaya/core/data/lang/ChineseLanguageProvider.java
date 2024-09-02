@@ -35,6 +35,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.telephone_ui.mode_i.desc","购买食材");
         add("gui.mystias_izakaya.telephone_ui.mode_b.desc","购买酒水");
 
+        add("message.mystiasizakaya.checkout.cheat","请不要作弊");
         add("message.mystiasizakaya.checkout.fail", "余额不足");
         add("message.mystiasizakaya.checkout.success", "购买成功");
         add("message.mystiasizakaya.telephone.colddown","冷却中: %s秒");

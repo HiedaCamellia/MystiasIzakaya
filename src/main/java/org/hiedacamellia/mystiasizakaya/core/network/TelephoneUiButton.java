@@ -29,12 +29,13 @@ import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 import java.util.List;
 
 
-public record TelephoneUiButton(List<ItemStack> out, BlockPos pos) implements CustomPacketPayload {
+public record TelephoneUiButton(List<ItemStack> out, BlockPos pos,int cost) implements CustomPacketPayload {
 
     public static final Type<TelephoneUiButton> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "telephone_ui_button"));
     public static final StreamCodec<RegistryFriendlyByteBuf, TelephoneUiButton> STREAM_CODEC = StreamCodec.composite(
             ByteBufCodecs.fromCodec(Codec.list(ItemStack.CODEC)), TelephoneUiButton::out,
             BlockPos.STREAM_CODEC, TelephoneUiButton::pos,
+            ByteBufCodecs.INT, TelephoneUiButton::cost,
             TelephoneUiButton::new
     );
 
@@ -46,7 +47,7 @@ public record TelephoneUiButton(List<ItemStack> out, BlockPos pos) implements Cu
     public static void handleData(final TelephoneUiButton message, final IPayloadContext context) {
         if (context.flow() == PacketFlow.SERVERBOUND) {
             context.enqueueWork(() -> {
-                handleButtonAction(context.player(), message.pos(), message.out());
+                handleButtonAction(context.player(), message.pos(), message.out(), message.cost());
             }).exceptionally(e -> {
                 context.connection().disconnect(Component.literal(e.getMessage()));
                 return null;
@@ -54,21 +55,24 @@ public record TelephoneUiButton(List<ItemStack> out, BlockPos pos) implements Cu
         }
     }
 
-    public static void handleButtonAction(Player entity, BlockPos pos, List<ItemStack> out) {
+    public static void handleButtonAction(Player entity, BlockPos pos, List<ItemStack> out,int cost) {
         int cost_all = 0;
         for (ItemStack itemStack : out) {
             cost_all += itemStack.getCount() * itemStack.getOrDefault(MIDatacomponet.MI_COST, new MICost(0)).cost();
         }
-        cost_all = (int) (0.8 * cost_all);
+        if((double) cost /cost_all<0.6){
+            entity.sendSystemMessage(Component.translatable("message.mystiasizakaya.checkout.cheat").withStyle(ChatFormatting.RED));
+            return;
+        }
 
         int balance = entity.getData(MIAttachment.MI_BALANCE).balance();
-        if (balance < cost_all) {
+        if (balance < cost) {
             entity.sendSystemMessage(Component.translatable("message.mystiasizakaya.checkout.fail").withStyle(ChatFormatting.RED));
         } else {
             MITurnover turnover = entity.getData(MIAttachment.MI_TURNOVER);
-            turnover = turnover.addTurnover("to_telephone", (double) -cost_all);
+            turnover = turnover.addTurnover("to_telephone", (double) -cost);
             turnover = turnover.deleteOverStack();
-            entity.setData(MIAttachment.MI_BALANCE, new MIBalance(balance - cost_all));
+            entity.setData(MIAttachment.MI_BALANCE, new MIBalance(balance - cost));
             entity.setData(MIAttachment.MI_TURNOVER, turnover);
             for (ItemStack itemStack : out) {
                 ItemHandlerHelper.giveItemToPlayer(entity, itemStack);

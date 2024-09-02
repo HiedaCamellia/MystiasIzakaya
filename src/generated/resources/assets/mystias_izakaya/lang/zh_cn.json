@@ -322,6 +322,7 @@
   "jei.mystias_izakaya.Frying_Pan": "油锅",
   "jei.mystias_izakaya.Grill": "烧烤架",
   "jei.mystias_izakaya.Streamer": "蒸锅",
+  "message.mystiasizakaya.checkout.cheat": "请不要作弊",
   "message.mystiasizakaya.checkout.fail": "余额不足",
   "message.mystiasizakaya.checkout.success": "购买成功",
   "message.mystiasizakaya.telephone.colddown": "冷却中: %s秒",

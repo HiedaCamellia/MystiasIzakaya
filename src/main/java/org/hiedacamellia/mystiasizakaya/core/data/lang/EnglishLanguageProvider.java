@@ -35,6 +35,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.telephone_ui.mode_i.desc","Buy Ingredients");
         add("gui.mystias_izakaya.telephone_ui.mode_b.desc","Buy Beverages");
 
+        add("message.mystiasizakaya.checkout.cheat","Cheating is not allowed");
         add("message.mystiasizakaya.checkout.fail", "Insufficient balance");
         add("message.mystiasizakaya.checkout.success", "Checkout success");
         add("message.mystiasizakaya.telephone.colddown","Please wait %s seconds");
