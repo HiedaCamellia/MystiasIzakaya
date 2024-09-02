@@ -19,8 +19,10 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.ledger_ui.to_telephone","电话");
         add("gui.mystias_izakaya.ledger_ui.from_command","命令");
         add("gui.mystias_izakaya.ledger_ui.from_currency","货币");
-
         add("gui.mystias_izakaya.ledger_ui.ledger","账本");
+        add("gui.mystias_izakaya.ledger_ui.close","暂停营业");
+        add("gui.mystias_izakaya.ledger_ui.open","正在营业");
+        add("gui.mystias_izakaya.ledger_ui.on_open","点击切换营业状态");
         add("tooltip.mystias_izakaya.cost","价格: ");
 
         add("gui.mystias_izakaya.telephone_ui.telephone","电话");
@@ -50,6 +52,9 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("block.mystias_izakaya.frying_pan", "油锅");
         add("block.mystias_izakaya.steamer", "蒸锅");
         add("block.mystias_izakaya.grill", "烧烤架");
+
+        add("block.mystias_izakaya.table", "餐桌");
+        add("tooltip.mystias_izakaya.table", "一个普通的餐桌");
 
         add("death.attack.chili", "%1$s 被辣死了");
         add("death.attack.chili.item", "%1$s 被 %2$s 用 %3$s 辣死了");

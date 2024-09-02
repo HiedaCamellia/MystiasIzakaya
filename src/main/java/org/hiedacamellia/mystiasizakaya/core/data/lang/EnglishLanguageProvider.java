@@ -19,8 +19,11 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.ledger_ui.to_telephone","Telephone");
         add("gui.mystias_izakaya.ledger_ui.from_command","Command");
         add("gui.mystias_izakaya.ledger_ui.from_currency","Currency");
-
         add("gui.mystias_izakaya.ledger_ui.ledger","Ledger");
+        add("gui.mystias_izakaya.ledger_ui.close","Close");
+        add("gui.mystias_izakaya.ledger_ui.open","Open");
+        add("gui.mystias_izakaya.ledger_ui.on_open","Click to change the status");
+
         add("tooltip.mystias_izakaya.cost","Cost: ");
 
         add("gui.mystias_izakaya.telephone_ui.telephone","Telephone");
@@ -31,9 +34,9 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.telephone_ui.confirm","Confirm");
         add("gui.mystias_izakaya.telephone_ui.confirm.desc","Click to check out");
         add("gui.mystias_izakaya.telephone_ui.cost","Cost: ");
-
         add("gui.mystias_izakaya.telephone_ui.mode_i.desc","Buy Ingredients");
         add("gui.mystias_izakaya.telephone_ui.mode_b.desc","Buy Beverages");
+
 
         add("message.mystiasizakaya.checkout.cheat","Cheating is not allowed");
         add("message.mystiasizakaya.checkout.fail", "Insufficient balance");
@@ -53,6 +56,9 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("block.mystias_izakaya.frying_pan", "Frying Pan");
         add("block.mystias_izakaya.steamer", "Steamer");
         add("block.mystias_izakaya.grill", "Grill");
+
+        add("block.mystias_izakaya.table", "Table");
+        add("tooltip.mystias_izakaya.table", "A table for feed customers");
 
         add("death.attack.chili", "%1$s Killed by the spiciness");
         add("death.attack.chili.item", "%1$s was killed by %2$s using %3$s ");

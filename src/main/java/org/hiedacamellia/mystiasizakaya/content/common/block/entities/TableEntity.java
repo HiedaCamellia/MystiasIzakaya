@@ -18,22 +18,23 @@ import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingRangeUiMenu;
+import org.hiedacamellia.mystiasizakaya.content.common.inventory.TableUiMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlockEntitiy;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.util.stream.IntStream;
 
-public class CookingRange extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(13, ItemStack.EMPTY);
+public class TableEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
+	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(2, ItemStack.EMPTY);
 	private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
 
-	public CookingRange(BlockPos position, BlockState state) {
+	public TableEntity(BlockPos position, BlockState state) {
 		super(MIBlockEntitiy.COOKING_RANGE.get(), position, state);
 	}
 
 	@Override
-	public void loadAdditional(CompoundTag compound, HolderLookup.Provider lookupProvider) {
+	public void loadAdditional(@NotNull CompoundTag compound, HolderLookup.@NotNull Provider lookupProvider) {
 		super.loadAdditional(compound, lookupProvider);
 		if (!this.tryLoadLootTable(compound))
 			this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
@@ -41,7 +42,7 @@ public class CookingRange extends RandomizableContainerBlockEntity implements Wo
 	}
 
 	@Override
-	public void saveAdditional(CompoundTag compound, HolderLookup.Provider lookupProvider) {
+	public void saveAdditional(@NotNull CompoundTag compound, HolderLookup.@NotNull Provider lookupProvider) {
 		super.saveAdditional(compound, lookupProvider);
 		if (!this.trySaveLootTable(compound)) {
 			ContainerHelper.saveAllItems(compound, this.stacks, lookupProvider);
@@ -55,7 +56,7 @@ public class CookingRange extends RandomizableContainerBlockEntity implements Wo
 	}
 
 	@Override
-	public CompoundTag getUpdateTag(HolderLookup.Provider lookupProvider) {
+	public @NotNull CompoundTag getUpdateTag(HolderLookup.@NotNull Provider lookupProvider) {
 		return this.saveWithFullMetadata(lookupProvider);
 	}
 
@@ -75,7 +76,7 @@ public class CookingRange extends RandomizableContainerBlockEntity implements Wo
 
 	@Override
 	public @NotNull Component getDefaultName() {
-		return Component.literal("cooking_range");
+		return Component.literal("table");
 	}
 
 	@Override
@@ -85,16 +86,16 @@ public class CookingRange extends RandomizableContainerBlockEntity implements Wo
 
 	@Override
 	public @NotNull AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory) {
-		return new CookingRangeUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
+		return new TableUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
 	}
 
 	@Override
 	public @NotNull Component getDisplayName() {
-		return Component.literal("Cooking Range");
+		return Component.literal("Table");
 	}
 
 	@Override
-	protected @NotNull NonNullList<ItemStack> getItems() {
+	public @NotNull NonNullList<ItemStack> getItems() {
 		return this.stacks;
 	}
 
@@ -103,41 +104,23 @@ public class CookingRange extends RandomizableContainerBlockEntity implements Wo
 		this.stacks = stacks;
 	}
 
-	@Override
-	public boolean canPlaceItem(int index, @NotNull ItemStack stack) {
-		return switch (index) {
-			case 6, 7, 8, 9, 10, 11, 12 -> false;
-			default -> true;
-		};
-		//return true;
-	}
-
-	@Override
-	public int @NotNull [] getSlotsForFace(@NotNull Direction side) {
-//		if (side == Direction.DOWN)
-//			return new int[]{6};
-//		if (side == Direction.UP)
-//			return new int[]{1, 2, 3, 4, 5};
-		return IntStream.range(0, this.getContainerSize()).toArray();
-	}
-
-	@Override
-	public boolean canPlaceItemThroughFace(int index, @NotNull ItemStack stack, @Nullable Direction side) {
-		//if(side!=Direction.DOWN)
-			return this.canPlaceItem(index, stack);
-		//return false;
-	}
-
-	@Override
-	public boolean canTakeItemThroughFace(int index, @NotNull ItemStack stack, @NotNull Direction direction) {
-        return switch (index) {
-            case 7, 8, 9, 10, 11, 12 -> false;
-            default -> true;
-        };
-	}
-
 
 	public SidedInvWrapper getItemHandler() {
 		return handler;
+	}
+
+	@Override
+	public int[] getSlotsForFace(Direction direction) {
+		return new int[]{0, 1};
+	}
+
+	@Override
+	public boolean canPlaceItemThroughFace(int i, ItemStack itemStack, @Nullable Direction direction) {
+		return true;
+	}
+
+	@Override
+	public boolean canTakeItemThroughFace(int i, ItemStack itemStack, Direction direction) {
+		return true;
 	}
 }

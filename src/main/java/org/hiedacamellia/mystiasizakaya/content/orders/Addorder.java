@@ -19,6 +19,6 @@ public class Addorder {
 		orders.set((int) id, BuiltInRegistries.ITEM.getKey(cuisines.getItem()).toString());
 		ordersbeverages.set((int) id, BuiltInRegistries.ITEM.getKey(beverages.getItem()).toString());
 
-		player.setData(MIAttachment.MI_ORDERS.get(), new MIOrders(orders, ordersbeverages));
+		player.setData(MIAttachment.MI_ORDERS.get(), new MIOrders(orders, ordersbeverages,miOrders.blockPos()));
 	}
 }

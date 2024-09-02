@@ -12,6 +12,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.client.blockentityrender.ProcessRender;
+import org.hiedacamellia.mystiasizakaya.content.client.blockentityrender.TableRender;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.*;
 
 import java.util.function.Supplier;
@@ -19,7 +20,9 @@ import java.util.function.Supplier;
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class MIBlockEntitiy {
 	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, MystiasIzakaya.MODID);
-	public static final DeferredHolder<BlockEntityType<?>,BlockEntityType<?>> COOKING_RANGE = register("cooking_range", MIBlock.COOKING_RANGE, CookingRange::new);
+
+	public static final Supplier<BlockEntityType<CookingRangeEntity>> COOKING_RANGE = REGISTRY.register("cooking_range", () -> BlockEntityType.Builder.of(CookingRangeEntity::new, MIBlock.COOKING_RANGE.get()).build(null));
+	public static final Supplier<BlockEntityType<TableEntity>> TABLE = REGISTRY.register("table", () -> BlockEntityType.Builder.of(TableEntity::new, MIBlock.TABLE.get()).build(null));
 
 	public static final Supplier<BlockEntityType<CuttingBoard>> CUTTING_BOARD = REGISTRY.register("cutting_board", () -> BlockEntityType.Builder.of(CuttingBoard::new, MIBlock.CUTTING_BOARD.get()).build(null));
 	public static final Supplier<BlockEntityType<BoilingPot>> BOILING_POT = REGISTRY.register("boiling_pot", () -> BlockEntityType.Builder.of(BoilingPot::new, MIBlock.BOILING_POT.get()).build(null));
@@ -34,7 +37,8 @@ public class MIBlockEntitiy {
 
 	@SubscribeEvent
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, COOKING_RANGE.get(), (blockEntity, side) -> ((CookingRange ) blockEntity).getItemHandler());
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, COOKING_RANGE.get(), (blockEntity, side) -> blockEntity.getItemHandler());
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TABLE.get(), (blockEntity, side) -> blockEntity.getItemHandler());
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CUTTING_BOARD.get(), (blockEntity, side) -> blockEntity.getItemHandler());
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, BOILING_POT.get(), (blockEntity, side) -> blockEntity.getItemHandler());
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, FRYING_PAN.get(), (blockEntity, side) -> blockEntity.getItemHandler());
@@ -49,5 +53,6 @@ public class MIBlockEntitiy {
 		event.registerBlockEntityRenderer(CUTTING_BOARD.get(), ProcessRender::new);
 		event.registerBlockEntityRenderer(FRYING_PAN.get(), ProcessRender::new);
 		event.registerBlockEntityRenderer(STEAMER.get(), ProcessRender::new);
+		event.registerBlockEntityRenderer(TABLE.get(), TableRender::new);
 	}
 }

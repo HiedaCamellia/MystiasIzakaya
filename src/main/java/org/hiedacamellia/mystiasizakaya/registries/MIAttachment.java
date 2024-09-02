@@ -1,5 +1,6 @@
 package org.hiedacamellia.mystiasizakaya.registries;
 
+import com.mojang.serialization.Codec;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
@@ -22,7 +23,7 @@ public class MIAttachment {
 //    );
 
     public static final Supplier<AttachmentType<MIOrders>> MI_ORDERS = ATTACHMENTS.register(
-            "mi_orders", () -> AttachmentType.builder(() -> new MIOrders(new ArrayList<>(8), new ArrayList<>(8))).serialize(MICodec.MI_ORDERS_CODEC).build()
+            "mi_orders", () -> AttachmentType.builder(() -> new MIOrders(new ArrayList<>(8), new ArrayList<>(8),new ArrayList<>(8))).serialize(MICodec.MI_ORDERS_CODEC).build()
     );
 
     public static final Supplier<AttachmentType<MIBalance>> MI_BALANCE = ATTACHMENTS.register(
@@ -35,5 +36,9 @@ public class MIAttachment {
 
     public static final Supplier<AttachmentType<MITeleColddown>> MI_TELE_COLDDOWN = ATTACHMENTS.register(
             "mi_telecolddown", () -> AttachmentType.builder(() -> new MITeleColddown(0)).serialize(MICodec.MI_TELE_COLDDOWN_CODEC).build()
+    );
+
+    public static final Supplier<AttachmentType<Boolean>> MI_ON_OPEN = ATTACHMENTS.register(
+            "mi_on_open", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).build()
     );
 }

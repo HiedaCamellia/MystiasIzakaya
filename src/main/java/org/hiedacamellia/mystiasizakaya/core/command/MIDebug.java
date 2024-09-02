@@ -38,8 +38,8 @@ public class MIDebug {
                                     orders_list.add("");
                                 }
                                 orders_list.set(id, order);
-                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(orders_list, miOrders.beverages()));
-                                PacketDistributor.sendToPlayer(player, new MIOrders(orders_list, miOrders.beverages()));
+                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(orders_list, miOrders.beverages(), miOrders.blockPos()));
+                                PacketDistributor.sendToPlayer(player, new MIOrders(orders_list, miOrders.beverages(), miOrders.blockPos()));
                             }
                             return 0;
 						}))).then(Commands.literal("clean").executes(arguments -> {
@@ -53,8 +53,8 @@ public class MIDebug {
                                     orders_list.add("");
                                 }
                                 orders_list.set(id, "");
-                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(orders_list, miOrders.beverages()));
-                                PacketDistributor.sendToPlayer(player, new MIOrders(orders_list, miOrders.beverages()));
+                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(orders_list, miOrders.beverages(), miOrders.blockPos()));
+                                PacketDistributor.sendToPlayer(player, new MIOrders(orders_list, miOrders.beverages(), miOrders.blockPos()));
                             }
                             return 0;
 						}))).then(Commands.literal("beverages").then(Commands.literal("replace").then(Commands.argument("beverages", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
@@ -70,8 +70,8 @@ public class MIDebug {
                                     ordersbeverages_list.add("");
                                 }
                                 ordersbeverages_list.set(id, order);
-                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.orders(), ordersbeverages_list));
-                                PacketDistributor.sendToPlayer(player, new MIOrders(miOrders.orders(), ordersbeverages_list));
+                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.orders(), ordersbeverages_list, miOrders.blockPos()));
+                                PacketDistributor.sendToPlayer(player, new MIOrders(miOrders.orders(), ordersbeverages_list, miOrders.blockPos()));
                             }
                             return 0;
 						}))).then(Commands.literal("clean").executes(arguments -> {
@@ -85,8 +85,8 @@ public class MIDebug {
                                     ordersbeverages_list.add("");
                                 }
                                 ordersbeverages_list.set(id, "");
-                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.orders(), ordersbeverages_list));
-                                PacketDistributor.sendToPlayer(player, new MIOrders(miOrders.orders(), ordersbeverages_list));
+                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.orders(), ordersbeverages_list, miOrders.blockPos()));
+                                PacketDistributor.sendToPlayer(player, new MIOrders(miOrders.orders(), ordersbeverages_list, miOrders.blockPos()));
                             }
                             return 0;
 						}))))

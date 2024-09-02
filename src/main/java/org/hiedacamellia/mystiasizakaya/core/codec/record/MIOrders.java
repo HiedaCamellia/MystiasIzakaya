@@ -2,6 +2,7 @@ package org.hiedacamellia.mystiasizakaya.core.codec.record;
 
 import com.mojang.serialization.Codec;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -14,13 +15,14 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.jetbrains.annotations.NotNull;
+import org.openjdk.nashorn.internal.ir.Block;
 
 import java.util.List;
 
-public record MIOrders(List<String> orders,List<String> beverages)implements CustomPacketPayload  {
+public record MIOrders(List<String> orders, List<String> beverages, List<BlockPos> blockPos)implements CustomPacketPayload  {
     public void sync(Player player){
         if (player instanceof ServerPlayer serverPlayer)
-            PacketDistributor.sendToPlayer(serverPlayer, new MIOrders(this.orders, this.beverages));
+            PacketDistributor.sendToPlayer(serverPlayer, new MIOrders(this.orders, this.beverages, this.blockPos));
     }
 
     public static final CustomPacketPayload.Type<MIOrders> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "mi_orders"));
@@ -30,6 +32,8 @@ public record MIOrders(List<String> orders,List<String> beverages)implements Cus
             MIOrders::orders,
             ByteBufCodecs.fromCodec(Codec.list(Codec.STRING)),
             MIOrders::beverages,
+            ByteBufCodecs.fromCodec(Codec.list(BlockPos.CODEC)),
+            MIOrders::blockPos,
             MIOrders::new
     );
 

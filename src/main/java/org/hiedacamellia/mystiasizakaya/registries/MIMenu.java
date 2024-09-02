@@ -15,4 +15,5 @@ public class MIMenu {
 	public static final DeferredHolder<MenuType<?>,MenuType<DonationUiMenu>> Donation_UI = REGISTRY.register("donation_ui", () -> IMenuTypeExtension.create(DonationUiMenu::new));
 	public static final DeferredHolder<MenuType<?>,MenuType<LedgerUiMenu>> LEDGER_UI = REGISTRY.register("ledger_ui", () -> IMenuTypeExtension.create(LedgerUiMenu::new));
 	public static final DeferredHolder<MenuType<?>,MenuType<TelephoneUiMenu>> Telephone_UI = REGISTRY.register("telephone_ui", () -> IMenuTypeExtension.create(TelephoneUiMenu::new));
+	public static final DeferredHolder<MenuType<?>,MenuType<TableUiMenu>> TABLE_UI = REGISTRY.register("table_ui", () -> IMenuTypeExtension.create(TableUiMenu::new));
 }

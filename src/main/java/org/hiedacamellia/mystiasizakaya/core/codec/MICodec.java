@@ -3,6 +3,7 @@ package org.hiedacamellia.mystiasizakaya.core.codec;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.*;
@@ -24,12 +25,14 @@ public class MICodec {
     public static final Codec<MIOrders> MI_ORDERS_CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
                     Codec.list(Codec.STRING).fieldOf("orders").forGetter(MIOrders::orders),
-                    Codec.list(Codec.STRING).fieldOf("beverages").forGetter(MIOrders::beverages)
+                    Codec.list(Codec.STRING).fieldOf("beverages").forGetter(MIOrders::beverages),
+                    Codec.list(BlockPos.CODEC).fieldOf("blockpos").forGetter(MIOrders::blockPos)
             ).apply(instance, MIOrders::new)
     );
     public static final StreamCodec<ByteBuf, MIOrders> MI_ORDERS_STREAM_CODEC = StreamCodec.composite(
             ByteBufCodecs.fromCodec(Codec.list(Codec.STRING)), MIOrders::orders,
             ByteBufCodecs.fromCodec(Codec.list(Codec.STRING)), MIOrders::beverages,
+            ByteBufCodecs.fromCodec(Codec.list(BlockPos.CODEC)), MIOrders::blockPos,
             MIOrders::new
     );
 

@@ -2,6 +2,8 @@ package org.hiedacamellia.mystiasizakaya.content.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -63,13 +65,13 @@ public class LedgerUiScreen extends AbstractContainerScreen<LedgerUiMenu> {
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         String title = Component.translatable("gui.mystias_izakaya.ledger_ui.ledger").getString();
 
-        guiGraphics.drawString(this.font, title, 88- font.width(title) / 2, 12, -12829636,false);
+        guiGraphics.drawString(this.font, title, 166 - font.width(title), 12, -12829636,false);
 
         String text = Component.translatable("gui.mystias_izakaya.balance").getString() + new java.text.DecimalFormat("#######")
                 .format(entity.getData(MIAttachment.MI_BALANCE).balance()) + " \u5186";
 
         guiGraphics.drawString(this.font,
-                text, 88 - font.width(text) / 2, 25, -12829636,false);
+                text, 166 - font.width(text) , 25, -12829636,false);
 
         MITurnover miTurnover = entity.getData(MIAttachment.MI_TURNOVER);
         List<String> k = miTurnover.k();
@@ -101,5 +103,21 @@ public class LedgerUiScreen extends AbstractContainerScreen<LedgerUiMenu> {
     @Override
     public void init() {
         super.init();
+
+
+        Button on_open = new Button.Builder(getComponent(),e ->{
+            entity.setData(MIAttachment.MI_ON_OPEN,!entity.getData(MIAttachment.MI_ON_OPEN));
+            e.setMessage(getComponent());
+        }).pos(this.leftPos+10,this.topPos+10).size(40,20).build();
+        on_open.setTooltip(Tooltip.create(Component.translatable("gui.mystias_izakaya.ledger_ui.on_open")));
+
+        this.addRenderableWidget(on_open);
+    }
+
+    private Component getComponent(){
+        if(entity.getData(MIAttachment.MI_ON_OPEN))
+            return Component.translatable("gui.mystias_izakaya.ledger_ui.close");
+        else
+            return Component.translatable("gui.mystias_izakaya.ledger_ui.open");
     }
 }

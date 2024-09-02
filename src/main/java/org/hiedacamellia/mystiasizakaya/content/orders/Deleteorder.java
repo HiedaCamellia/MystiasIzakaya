@@ -17,6 +17,6 @@ public class Deleteorder {
 		orders.set((int) id, "minecraft:air");
 		ordersbeverages.set((int) id, "minecraft:air");
 
-		player.setData(MIAttachment.MI_ORDERS.get(), new MIOrders(orders, ordersbeverages));
+		player.setData(MIAttachment.MI_ORDERS.get(), new MIOrders(orders, ordersbeverages,miOrders.blockPos()));
 	}
 }
