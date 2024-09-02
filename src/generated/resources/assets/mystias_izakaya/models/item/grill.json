@@ -1,3 +1,6 @@
 {
-  "parent": "mystias_izakaya:item/shao_kao_jia"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mystias_izakaya:item/shao_kao_jia"
+  }
 }

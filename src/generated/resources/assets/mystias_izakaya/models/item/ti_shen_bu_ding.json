@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mystias_izakaya:item/ti_shen_bu_ding"
+  }
+}

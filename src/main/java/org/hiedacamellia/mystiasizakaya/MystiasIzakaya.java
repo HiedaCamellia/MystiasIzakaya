@@ -33,7 +33,6 @@ public class MystiasIzakaya {
 		MIBlockEntitiy.REGISTRY.register(modEventBus);
 		MIItem.register(modEventBus);
 		MITab.REGISTRY.register(modEventBus);
-		MIProfessions.PROFESSIONS.register(modEventBus);
 		MIMenu.REGISTRY.register(modEventBus);
 		MIRecipeType.SERIALIZERS.register(modEventBus);
 		MIAttachment.ATTACHMENTS.register(modEventBus);

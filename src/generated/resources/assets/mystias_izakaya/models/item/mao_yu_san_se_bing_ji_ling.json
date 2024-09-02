@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mystias_izakaya:item/mao_yu_san_se_bing_ji_ling"
+  }
+}

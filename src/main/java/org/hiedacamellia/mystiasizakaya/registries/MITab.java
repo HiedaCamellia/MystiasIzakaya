@@ -31,7 +31,6 @@ public class MITab {
                         tabData.accept(MIItem.EN_1.get());
                         tabData.accept(MIItem.EN_5.get());
                         tabData.accept(MIItem.EN_10.get());
-                        tabData.accept(MIItem.EN_10K.get());
                         tabData.accept(MIItem.IRON_KNIFE.get());
                     })
                     .build());

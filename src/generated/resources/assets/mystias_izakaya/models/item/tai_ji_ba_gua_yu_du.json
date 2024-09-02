@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mystias_izakaya:item/tai_ji_ba_gua_yu_du"
+  }
+}
