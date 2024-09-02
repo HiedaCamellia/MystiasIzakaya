@@ -24,5 +24,7 @@ public class StateProvider extends BlockStateProvider {
         simpleBlockItem(MIBlock.STEAMER.get(),models().getExistingFile(modLoc("item/zheng_guo")));
         simpleBlock(MIBlock.FRYING_PAN.get(),models().getExistingFile(modLoc("block/frying_pan")));
         simpleBlockItem(MIBlock.FRYING_PAN.get(),models().getExistingFile(modLoc("item/you_guo")));
+
+        simpleBlockWithItem(MIBlock.TELEPHONE.get(),models().getExistingFile(modLoc("block/telephone")));
     }
 }

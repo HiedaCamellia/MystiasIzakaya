@@ -16,4 +16,6 @@ public class MIBlock {
 	public static final DeferredBlock<Kitchenwares> FRYING_PAN = BLOCKS.register("frying_pan", Kitchenwares::new);
 	public static final DeferredBlock<Kitchenwares> STEAMER = BLOCKS.register("steamer", Kitchenwares::new);
 	public static final DeferredBlock<Kitchenwares> GRILL = BLOCKS.register("grill", Kitchenwares::new);
+
+	public static final DeferredBlock<Block> TELEPHONE = BLOCKS.register("telephone", Telephone::new);
 }

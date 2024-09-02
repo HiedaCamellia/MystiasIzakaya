@@ -708,7 +708,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("tooltip.mystias_izakaya.yue_bing","诶 ?! 这是什么?你为什么会获得这个?嗯。。。祝你玩得愉快");
         add("item.mystias_izakaya.ledger", "账本");
         add("tooltip.mystias_izakaya.ledger","你可以使用这个物品查看你的流水");
-        add("item.mystias_izakaya.telephone", "电话");
+        add("block.mystias_izakaya.telephone", "电话");
         add("tooltip.mystias_izakaya.telephone","你可以使用这个物品购买你想要的任何东西");
 
 

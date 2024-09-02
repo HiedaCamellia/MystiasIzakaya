@@ -1,11 +1,13 @@
-// 1.21	2024-08-23T11:52:53.3090057	Block States: mystias_izakaya
+// 1.21	2024-09-02T14:55:41.7163956	Block States: mystias_izakaya
 942cf07c95d461a9cbcd4ae9f7a53fe222c490c8 assets/mystias_izakaya/blockstates/boiling_pot.json
 dc562cb249ccb18854fc89c4c9ec3dc7e0665e98 assets/mystias_izakaya/blockstates/cutting_board.json
 08d228d0dd919e8a3b9d07ebc1e4682e0cba2aee assets/mystias_izakaya/blockstates/frying_pan.json
 65573655c0c9851b5e7106c1cab4e11423f9cfdc assets/mystias_izakaya/blockstates/grill.json
 bdda2b8489142aefc0ffed437f0b009c1ab1afdc assets/mystias_izakaya/blockstates/steamer.json
+07c4e1597ace61fafbbff2cfb5b45e3aa3fe4162 assets/mystias_izakaya/blockstates/telephone.json
 2b1801db5fe5d4230e70d4fd6309aad28a58797d assets/mystias_izakaya/models/item/boiling_pot.json
 43b69a301000a301460daad8235d67e283c37ca7 assets/mystias_izakaya/models/item/cutting_board.json
 51ac5b23d4e16dd4b0a3def4bd3310809c5618ca assets/mystias_izakaya/models/item/frying_pan.json
 ecd2a334222c92705d0d490f4d3816a189ad7be4 assets/mystias_izakaya/models/item/grill.json
 f8ce8a2e7f5dfbf7244de3f8fd2ca6e3c51ab76e assets/mystias_izakaya/models/item/steamer.json
+cfbf1523dcf0673f0385b4cc4064df7cb49b2b9c assets/mystias_izakaya/models/item/telephone.json

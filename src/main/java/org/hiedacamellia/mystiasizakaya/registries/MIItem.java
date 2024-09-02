@@ -29,8 +29,8 @@ public class MIItem {
     public static final DeferredItem<BlockItem> GRILL = REGISTRY.register("grill", GrillBlockItem::new);
 
     //Util
+    public static final DeferredItem<BlockItem> TELEPHONE = REGISTRY.registerSimpleBlockItem("telephone", MIBlock.TELEPHONE);
     public static final DeferredItem<Item> LEDGER = REGISTRY.register("ledger", LedgerItem::new);
-    public static final DeferredItem<Item> TELEPHONE = REGISTRY.register("telephone", TelephoneItem::new);
 
     public static final DeferredRegister.Items Ingredients = DeferredRegister.createItems(MystiasIzakaya.MODID);
     //ingredients

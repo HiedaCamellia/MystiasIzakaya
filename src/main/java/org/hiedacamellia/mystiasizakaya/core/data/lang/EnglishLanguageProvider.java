@@ -711,7 +711,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.mystias_izakaya.yue_bing","Ei??Why you got it....Have fun with the game!");
         add("item.mystias_izakaya.ledger", "Ledger");
         add("tooltip.mystias_izakaya.ledger","You can use this item overview your turnover");
-        add("item.mystias_izakaya.telephone", "Telephone");
+        add("block.mystias_izakaya.telephone", "Telephone");
         add("tooltip.mystias_izakaya.telephone","You can use this item to buy any things you want");
 
     }
