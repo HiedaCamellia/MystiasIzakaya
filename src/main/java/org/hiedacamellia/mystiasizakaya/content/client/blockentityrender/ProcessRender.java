@@ -14,7 +14,6 @@ import net.minecraft.world.item.ItemDisplayContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.KitchenwaresEntity;
 import org.hiedacamellia.mystiasizakaya.core.entry.MIItem;
-import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 
 //感谢https://github.com/Crystal1921/mystias_izakaya
 

@@ -15,7 +15,6 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.TelephoneUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MICost;
-import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.core.entry.MIImageButton;
 import org.hiedacamellia.mystiasizakaya.core.entry.MIOutButton;
 import org.hiedacamellia.mystiasizakaya.core.network.TelephoneUiButton;

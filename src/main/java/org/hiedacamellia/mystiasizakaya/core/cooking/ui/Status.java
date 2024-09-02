@@ -5,7 +5,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.LevelAccessor;
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 import org.hiedacamellia.mystiasizakaya.util.GetValue;
-import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 public class Status {
 	public static String execute(LevelAccessor world, BlockPos pos) {

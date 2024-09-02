@@ -2,7 +2,6 @@ package org.hiedacamellia.mystiasizakaya.util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
-import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 public class SelectTarget {

@@ -4,7 +4,10 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.content.common.block.blocks.*;
+import org.hiedacamellia.mystiasizakaya.content.common.block.blocks.CookingRange;
+import org.hiedacamellia.mystiasizakaya.content.common.block.blocks.Donation;
+import org.hiedacamellia.mystiasizakaya.content.common.block.blocks.Kitchenwares;
+import org.hiedacamellia.mystiasizakaya.content.common.block.blocks.Telephone;
 
 public class MIBlock {
 	public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MystiasIzakaya.MODID);

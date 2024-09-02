@@ -5,10 +5,12 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.core.codec.MICodec;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.*;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MITeleColddown;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.function.Supplier;
 
 public class MIAttachment {

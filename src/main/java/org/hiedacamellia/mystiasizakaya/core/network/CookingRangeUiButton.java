@@ -12,16 +12,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingRangeUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.cooking.Confirm;
-import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
-import org.hiedacamellia.mystiasizakaya.util.SelectTarget;
 import org.hiedacamellia.mystiasizakaya.util.GetValue;
-
-import java.util.HashMap;
+import org.hiedacamellia.mystiasizakaya.util.SelectTarget;
 
 
 public record CookingRangeUiButton (int buttonID, BlockPos pos) implements CustomPacketPayload {

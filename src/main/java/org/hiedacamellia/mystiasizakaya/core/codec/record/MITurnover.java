@@ -17,9 +17,7 @@ import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public record MITurnover(List<String> k, List<Double> v) implements CustomPacketPayload {
 

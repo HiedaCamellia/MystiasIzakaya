@@ -6,15 +6,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import org.hiedacamellia.mystiasizakaya.content.common.block.blocks.CookingRange;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MICooktime;
-import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlock;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 import org.hiedacamellia.mystiasizakaya.util.GetValue;
 import org.hiedacamellia.mystiasizakaya.util.SetSlotItem;
-import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 public class Confirm {
 	public static void execute(LevelAccessor world, BlockPos pos) {

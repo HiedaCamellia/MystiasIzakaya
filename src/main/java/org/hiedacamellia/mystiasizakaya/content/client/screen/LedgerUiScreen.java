@@ -2,24 +2,18 @@ package org.hiedacamellia.mystiasizakaya.content.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.network.PacketDistributor;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.LedgerUiMenu;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.LedgerUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
-import org.hiedacamellia.mystiasizakaya.core.network.DonationUiButton;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class LedgerUiScreen extends AbstractContainerScreen<LedgerUiMenu> {
     private final static HashMap<String, Object> guistate = LedgerUiMenu.guistate;

@@ -3,7 +3,6 @@ package org.hiedacamellia.mystiasizakaya.util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
-import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 public class TargetsText {
 	public static String get(LevelAccessor world, BlockPos pos, int slotid) {

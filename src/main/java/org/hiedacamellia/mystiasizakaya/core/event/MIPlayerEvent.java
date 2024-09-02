@@ -13,8 +13,6 @@ import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 @EventBusSubscriber
 public class MIPlayerEvent {
