@@ -75,18 +75,54 @@ public class OrdersOverlay {
             if (!statical) {
                 int reali;
                 int start_x;
-                int axis = 0;
+                int axis;
                 if (tick >= 16) {
                     tick = 0;
                     statical = true;
                 }else {
+                    boolean left=false;
+                    boolean right=false;
+                    boolean middle=false;
+                    refreshNowOrders(cuisinesorders_list);
+                    for (int i = 0; i < 8; i++) {
+                        if(!cuisinesorders_list.get(i).isEmpty()||!beveragesorders_list.get(i).isEmpty()){
+                            if(i<flag)
+                                right = true;
+                            if(i>flag)
+                                left = true;
+                        }
+                        if(left&&right){
+                            middle = true;
+                            left = false;
+                            right = false;
+                            break;
+                        }
+                    }
                     reali = 0;
+                    //Debug.getLogger().debug(String.valueOf(now_orders));
                     if (add) {
                         axis = 16 - tick;
-                        start_x = x_mid - now_orders * 17 - 17;
+                        if(now_orders==1) {
+                            //Debug.getLogger().debug("1");
+                            start_x = x_mid - 17;
+                        }else {
+                            if (middle) {
+                                start_x = x_mid - now_orders * 17 - 17;
+                            }else {
+                                start_x = x_mid - now_orders * 17;
+                            }
+                        }
                     } else {
                         axis = tick;
-                        start_x = x_mid - now_orders * 17 - 34;
+                        if(now_orders==0) {
+                            start_x = x_mid - 17;
+                        }else {
+                            if (middle) {
+                                start_x = x_mid - now_orders * 17 - 34;
+                            }else {
+                                start_x = x_mid - now_orders * 17 - 17;
+                            }
+                        }
                     }
                     for (int i = 0; i < flag; i++) {
                         cuisines = cuisinesorders_list.get(i);
@@ -119,21 +155,18 @@ public class OrdersOverlay {
                 }
             }
             if (statical) {
-                now_orders = 0;
+                refreshNowOrders(cuisinesorders_list);
                 for (int i = 0; i < 8; i++) {
-                    if (!cuisinesorders_list.get(i).isEmpty()) {
-                        now_orders++;
-                    }
                     if (!(ItemStack.isSameItem(cuisinesorders_list.get(i), last_orders.get(i)))) {
                         if (last_orders.get(i).isEmpty()) {
-                            Debug.getLogger().debug("add");
+                            //Debug.getLogger().debug("add");
                             flag_cuisine = last_orders.get(i);
                             flag_beverage = last_beverage.get(i);
                             add = true;
                         } else {
                             flag_cuisine = last_orders.get(i);
                             flag_beverage = last_beverage.get(i);
-                            Debug.getLogger().debug("delete");
+                            //Debug.getLogger().debug("delete");
                             add = false;
                         }
                         last_beverage.set(i, beveragesorders_list.get(i));
@@ -223,5 +256,14 @@ public class OrdersOverlay {
         if (last_beverage == null)
             return new ArrayList<>(List.of(ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY));
         return last_beverage;
+    }
+
+    private static void refreshNowOrders(List<ItemStack> list) {
+        now_orders = 0;
+        for (int i = 0; i < 8; i++) {
+            if (!list.get(i).isEmpty()) {
+                now_orders++;
+            }
+        }
     }
 }
