@@ -20,7 +20,6 @@ import java.util.function.Supplier;
 public class MIBlockEntitiy {
 	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, MystiasIzakaya.MODID);
 	public static final DeferredHolder<BlockEntityType<?>,BlockEntityType<?>> COOKING_RANGE = register("cooking_range", MIBlock.COOKING_RANGE, CookingRange::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> DONATION = register("donation", MIBlock.DONATION, Donation::new);
 
 	public static final Supplier<BlockEntityType<CuttingBoard>> CUTTING_BOARD = REGISTRY.register("cutting_board", () -> BlockEntityType.Builder.of(CuttingBoard::new, MIBlock.CUTTING_BOARD.get()).build(null));
 	public static final Supplier<BlockEntityType<BoilingPot>> BOILING_POT = REGISTRY.register("boiling_pot", () -> BlockEntityType.Builder.of(BoilingPot::new, MIBlock.BOILING_POT.get()).build(null));
