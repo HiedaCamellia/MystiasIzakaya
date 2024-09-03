@@ -103,29 +103,31 @@ public class MIPlayerEvent {
         //TODO：未完成的食堂事件
         if(player instanceof ServerPlayer serverPlayer)
         {
-            MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
+            MIOrders miOrders = serverPlayer.getData(MIAttachment.MI_ORDERS);
             List<BlockPos> tables = new ArrayList<>(miOrders.blockPos());
             List<String> cuisineList = new ArrayList<>(miOrders.orders());
             List<String> beverageList = new ArrayList<>(miOrders.beverages());
-            if(tables.size()<8){
-                for(int i=tables.size();i<8;i++){
-                    tables.add(new BlockPos(-1,-1,-1));
+            if(tables.size()<8||cuisineList.size()<8||beverageList.size()<8){
+                if(tables.size()<8){
+                    for(int i=tables.size();i<8;i++){
+                        tables.add(new BlockPos(-1,-1,-1));
+                    }
                 }
-            }
-            if(cuisineList.size()<8){
-                for(int i=cuisineList.size();i<8;i++){
-                    cuisineList.add("minecraft:air");
+                if(cuisineList.size()<8){
+                    for(int i=cuisineList.size();i<8;i++){
+                        cuisineList.add("minecraft:air");
+                    }
                 }
-            }
-            if(beverageList.size()<8){
-                for(int i=beverageList.size();i<8;i++){
-                    beverageList.add("minecraft:air");
+                if(beverageList.size()<8){
+                    for(int i=beverageList.size();i<8;i++){
+                        beverageList.add("minecraft:air");
+                    }
                 }
+                MIOrders miOrders1 = new MIOrders(cuisineList,beverageList,tables);
+                serverPlayer.setData(MIAttachment.MI_ORDERS,miOrders1);
+                PacketDistributor.sendToPlayer(serverPlayer,miOrders1);
             }
 
-            MIOrders miOrders1 = new MIOrders(cuisineList,beverageList,tables);
-            serverPlayer.setData(MIAttachment.MI_ORDERS,miOrders1);
-            PacketDistributor.sendToPlayer(serverPlayer,miOrders1);
 //
 //            Debug.getLogger().debug(player.getData(MIAttachment.MI_ON_OPEN).toString());
 //            Debug.getLogger().debug(tables.toString());
