@@ -46,7 +46,7 @@ public class TableBlock extends Block implements EntityBlock {
 
 
 	public TableBlock() {
-		super(Properties.of().mapColor(MapColor.METAL).sound(SoundType.METAL).strength(1f, 10f).requiresCorrectToolForDrops().pushReaction(PushReaction.IGNORE));
+		super(Properties.of().mapColor(MapColor.METAL).sound(SoundType.METAL).strength(1f, 10f).requiresCorrectToolForDrops().noOcclusion());
 	}
 
 	@Override

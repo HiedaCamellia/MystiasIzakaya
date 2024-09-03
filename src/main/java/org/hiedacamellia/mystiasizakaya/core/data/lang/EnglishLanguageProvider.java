@@ -19,6 +19,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.ledger_ui.to_telephone","Telephone");
         add("gui.mystias_izakaya.ledger_ui.from_command","Command");
         add("gui.mystias_izakaya.ledger_ui.from_currency","Currency");
+        add("gui.mystias_izakaya.ledger_ui.from_table","Table");
         add("gui.mystias_izakaya.ledger_ui.ledger","Ledger");
         add("gui.mystias_izakaya.ledger_ui.close","Close");
         add("gui.mystias_izakaya.ledger_ui.open","Open");
@@ -44,6 +45,10 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("message.mystiasizakaya.telephone.colddown","Please wait %s seconds");
         add("message.mystias_izakaya.table.bound","Table %d in %d %d %d is already bound");
         add("message.mystias_izakaya.table.unbound","Table %d in %d %d %d is unbound");
+        add("message.mystias_izakaya.menu.bound","Menu %d in %d %d %d is already bound");
+        add("message.mystias_izakaya.menu.unbound","Menu %d in %d %d %d is unbound");
+        add("message.mystias_izakaya.menu.cuisine","Cuisine %s has added to menu %d");
+        add("message.mystias_izakaya.menu.beverage","Beverage %s has added to menu %d");
 
 
         add("gui.mystias_izakaya.cooking_range_ui.button_back", "<");
@@ -719,7 +724,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.yue_bing", "Moon Cake");
         add("tooltip.mystias_izakaya.yue_bing","Ei??Why you got it....Have fun with the game!");
         add("item.mystias_izakaya.ledger", "Ledger");
-        add("tooltip.mystias_izakaya.ledger","You can use this item overview your turnover");
+        add("tooltip.mystias_izakaya.ledger","You can use this item overview your turnover§nRight click table to bound tables§nRight click Item Frame to bound Menu");
         add("block.mystias_izakaya.telephone", "Telephone");
         add("tooltip.mystias_izakaya.telephone","You can use this item to buy any things you want");
 

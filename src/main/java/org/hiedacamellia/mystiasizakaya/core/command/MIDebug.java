@@ -125,8 +125,7 @@ public class MIDebug {
                 })).then(Commands.literal("reset").executes(arguments -> {
                     ServerPlayer player = arguments.getSource().getPlayer();
                     if (player != null) {
-                        MIMenu miMenu = player.getData(MIAttachment.MI_MENU);
-                        player.setData(MIAttachment.MI_MENU, new MIMenu(new ArrayList<>(), new ArrayList<>(), miMenu.blockPos()));
+                        player.setData(MIAttachment.MI_MENU, new MIMenu(new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
                     }
                     return 0;
                 }))).then(Commands.literal("order").then(Commands.literal("dump").executes(arguments -> {

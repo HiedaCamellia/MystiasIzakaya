@@ -19,6 +19,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.ledger_ui.to_telephone","电话");
         add("gui.mystias_izakaya.ledger_ui.from_command","命令");
         add("gui.mystias_izakaya.ledger_ui.from_currency","货币");
+        add("gui.mystias_izakaya.ledger_ui.from_table","餐桌");
         add("gui.mystias_izakaya.ledger_ui.ledger","账本");
         add("gui.mystias_izakaya.ledger_ui.close","暂停营业");
         add("gui.mystias_izakaya.ledger_ui.open","正在营业");
@@ -43,6 +44,10 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("message.mystiasizakaya.telephone.colddown","冷却中: %s秒");
         add("message.mystias_izakaya.table.bound","餐桌%d 在 %d %d %d 已完成绑定");
         add("message.mystias_izakaya.table.unbound","餐桌%d 在 %d %d %d 已解除绑定");
+        add("message.mystias_izakaya.menu.bound","菜单%d 在 %d %d %d 已完成绑定");
+        add("message.mystias_izakaya.menu.unbound","菜单%d 在 %d %d %d 已解除绑定");
+        add("message.mystias_izakaya.menu.cuisine","菜品 %s 已添加到菜单 %d");
+        add("message.mystias_izakaya.menu.beverage","酒水 %s 已添加到菜单 %d");
 
 
         add("network.mystiasizakaya.failed", "无法处理网络数据: %s");
@@ -715,7 +720,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.yue_bing", "月饼");
         add("tooltip.mystias_izakaya.yue_bing","诶 ?! 这是什么?你为什么会获得这个?嗯。。。祝你玩得愉快");
         add("item.mystias_izakaya.ledger", "账本");
-        add("tooltip.mystias_izakaya.ledger","你可以使用这个物品查看你的流水");
+        add("tooltip.mystias_izakaya.ledger","你可以使用这个物品查看你的流水§n右键餐桌以绑定餐桌§n右键展示框以绑定菜单");
         add("block.mystias_izakaya.telephone", "电话");
         add("tooltip.mystias_izakaya.telephone","你可以使用这个物品购买你想要的任何东西");
 

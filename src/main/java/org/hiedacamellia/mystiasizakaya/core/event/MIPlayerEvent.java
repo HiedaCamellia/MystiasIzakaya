@@ -2,6 +2,7 @@ package org.hiedacamellia.mystiasizakaya.core.event;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
@@ -97,9 +98,6 @@ public class MIPlayerEvent {
         if(tick>0)
             player.setData(MIAttachment.MI_TELE_COLDDOWN,new MITeleColddown(tick-1));
 
-
-
-        //TODO：未完成的食堂事件
         if(player instanceof ServerPlayer serverPlayer)
         {
             MIOrders miOrders = serverPlayer.getData(MIAttachment.MI_ORDERS);
@@ -153,12 +151,12 @@ public class MIPlayerEvent {
                     if(pos.equals(new BlockPos(-1,-1,-1))){
                         continue;
                     }
-                    if(Math.random()<0.0029){
+                    if(Math.random()<0.0102){
                         if(beverageList.get(tables.indexOf(pos)).equals("minecraft:air")&&cuisineList.get(tables.indexOf(pos)).equals("minecraft:air")){
                             ItemStack beverage = beverageslist.get((int) (Math.random() * beverages.size()));
                             ItemStack cuisine = cuisineslist.get((int) (Math.random() * cuisines.size()));
                             if(beverage.isEmpty()||cuisine.isEmpty()){
-                                return;
+                                break;
                             }
                             Addorder.execute(beverage, cuisine, tables.indexOf(pos), serverPlayer);
                         }
@@ -175,19 +173,22 @@ public class MIPlayerEvent {
                 ItemStack cuisine = BuiltInRegistries.ITEM.get(ResourceLocation.parse((cuisineList.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
                 ItemStack beverage = BuiltInRegistries.ITEM.get(ResourceLocation.parse((beverageList.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
                 Level level = serverPlayer.level();
+
+
+//                Debug.getLogger().debug(cuisine.toString());
+//                Debug.getLogger().debug(beverage.toString());
+
                 if(beverage.isEmpty()||cuisine.isEmpty()){
-                    return;
+                    continue;
                 }
                 BlockEntity blockEntity =  level.getBlockEntity(tables.get(i));
                 if (blockEntity != null) {
-                    Debug.getLogger().debug(blockEntity.toString());
+//                    Debug.getLogger().debug(blockEntity.toString());
                 }
 
                 if(blockEntity instanceof TableEntity tableEntity){
                     List<ItemStack> itemStacks= tableEntity.getItems();
-                    Debug.getLogger().debug(itemStacks.toString());
-                    Debug.getLogger().debug(cuisine.toString());
-                    Debug.getLogger().debug(beverage.toString());
+//                    Debug.getLogger().debug(itemStacks.toString());
 
                     if(ItemStack.isSameItem(itemStacks.get(0),cuisine)&&ItemStack.isSameItem(itemStacks.get(1),beverage)){
                         Deleteorder.execute(i,serverPlayer);
@@ -197,7 +198,12 @@ public class MIPlayerEvent {
                         serverPlayer.closeContainer();
                         int cost = cuisine.getOrDefault(MIDatacomponet.MI_COST,new MICost(0)).cost()+beverage.getOrDefault(MIDatacomponet.MI_COST,new MICost(0)).cost();
                         MIBalance miBalance = new MIBalance(serverPlayer.getData(MIAttachment.MI_BALANCE).balance()+cost);
+                        MITurnover miTurnover = serverPlayer.getData(MIAttachment.MI_TURNOVER);
+                        miTurnover = miTurnover.addTurnover("from_table", (double)cost);
+                        miTurnover = miTurnover.deleteOverStack();
+                        serverPlayer.setData(MIAttachment.MI_TURNOVER, miTurnover);
                         serverPlayer.setData(MIAttachment.MI_BALANCE,miBalance);
+                        PacketDistributor.sendToPlayer(serverPlayer, miTurnover);
                         PacketDistributor.sendToPlayer(serverPlayer,miBalance);
                     }
                 }
@@ -213,17 +219,12 @@ public class MIPlayerEvent {
 
         if(player instanceof ServerPlayer serverPlayer && entity instanceof ItemFrame itemFrame){
 
-//            Debug.getLogger().debug("PlayerEntityInteract");
-//            Debug.getLogger().debug(player.toString());
-//            Debug.getLogger().debug(entity.toString());
 
             BlockPos blockPos = itemFrame.getPos();
             ItemStack itemStack = itemFrame.getItem();
-//            Debug.getLogger().debug(itemStack.toString());
 
             if(itemStack.getItem() instanceof MIItem miItem) {
                 ResourceLocation key = BuiltInRegistries.ITEM.getKey(miItem);
-//                Debug.getLogger().debug(key.toString());
 
                 MIMenu miOrders = serverPlayer.getData(MIAttachment.MI_MENU);
                 List<BlockPos> blockPosList = new ArrayList<>(miOrders.blockPos());
@@ -242,25 +243,27 @@ public class MIPlayerEvent {
 
                 for (int i=0;i<blockPosList.size();i++){
                     BlockPos pos = blockPosList.get(i);
-//                    Debug.getLogger().debug(pos.toString());
-//                    Debug.getLogger().debug(pos.above().toString());
-//                    Debug.getLogger().debug(pos.below().toString());
-//                    Debug.getLogger().debug("blockPos{}", blockPos);
                     if ((pos.equals(blockPos)||pos.above().equals(blockPos)||pos.below().equals(blockPos)) && serverPlayer.isShiftKeyDown()) {
                         blockPosList.set(i,new BlockPos(-1, -1, -1));
                         cuisineList.set(i,"minecraft:air");
                         beverageList.set(i,"minecraft:air");
+                        serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.unbound",i,blockPos.getX(),blockPos.getY(),blockPos.getZ()));
                         break;
                     }
                     if ((pos.equals(blockPos)||pos.above().equals(blockPos)||pos.below().equals(blockPos)) && !serverPlayer.isShiftKeyDown()) {
-                        if(itemStack.is(MITag.cuisinesKey)&&!cuisineList.contains(key.toString()))
+                        if(itemStack.is(MITag.cuisinesKey)&&!cuisineList.contains(key.toString())) {
+                            serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.cuisine",itemStack.getDisplayName().getString(),i));
                             cuisineList.set(i, key.toString());
-                        if(itemStack.is(MITag.beveragesKey)&&!beverageList.contains(key.toString()))
-                            beverageList.set(i,key.toString());
+                        }
+                        if(itemStack.is(MITag.beveragesKey)&&!beverageList.contains(key.toString())) {
+                            serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.beverage",itemStack.getDisplayName().getString(),i));
+                            beverageList.set(i, key.toString());
+                        }
                         break;
                     }
                     if (Objects.equals(pos, new BlockPos(-1, -1, -1)) && !serverPlayer.isShiftKeyDown()) {
                         blockPosList.set(i,blockPos);
+                        serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.bound",i,blockPos.getX(),blockPos.getY(),blockPos.getZ()));
                         break;
                     }
                 }
