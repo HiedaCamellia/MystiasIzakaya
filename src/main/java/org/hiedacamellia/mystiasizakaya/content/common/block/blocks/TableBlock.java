@@ -122,10 +122,12 @@ public class TableBlock extends Block implements EntityBlock {
 					BlockPos pos = blockPosList.get(i);
 					if (pos.equals(blockPos)) {
 						blockPosList.set(i, new BlockPos(-1, -1, -1));
+						serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.table.unbound",i,blockPos.getX(),blockPos.getY(),blockPos.getZ()));
 						break;
 					}
 					if (pos.equals(new BlockPos(-1, -1, -1))) {
 						blockPosList.set(i, blockPos);
+						serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.table.bound",i,blockPos.getX(),blockPos.getY(),blockPos.getZ()));
 						break;
 					}
 				}
@@ -133,7 +135,7 @@ public class TableBlock extends Block implements EntityBlock {
 				serverPlayer.setData(MIAttachment.MI_ORDERS, miOrders1);
 				PacketDistributor.sendToPlayer(serverPlayer, miOrders1);
 
-				Debug.getLogger().debug("Table: " + blockPosList);
+				//Debug.getLogger().debug("Table: " + blockPosList);
 
 				return ItemInteractionResult.SUCCESS;
 			}

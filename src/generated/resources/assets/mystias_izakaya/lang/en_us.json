@@ -328,6 +328,8 @@
   "jei.mystias_izakaya.Frying_Pan": "Frying Pan",
   "jei.mystias_izakaya.Grill": "Grill",
   "jei.mystias_izakaya.Streamer": "Streamer",
+  "message.mystias_izakaya.table.bound": "Table %d in %d %d %d is already bound",
+  "message.mystias_izakaya.table.unbound": "Table %d in %d %d %d is unbound",
   "message.mystiasizakaya.checkout.cheat": "Cheating is not allowed",
   "message.mystiasizakaya.checkout.fail": "Insufficient balance",
   "message.mystiasizakaya.checkout.success": "Checkout success",

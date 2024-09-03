@@ -41,6 +41,8 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("message.mystiasizakaya.checkout.fail", "余额不足");
         add("message.mystiasizakaya.checkout.success", "购买成功");
         add("message.mystiasizakaya.telephone.colddown","冷却中: %s秒");
+        add("message.mystias_izakaya.table.bound","餐桌%d 在 %d %d %d 已完成绑定");
+        add("message.mystias_izakaya.table.unbound","餐桌%d 在 %d %d %d 已解除绑定");
 
 
         add("network.mystiasizakaya.failed", "无法处理网络数据: %s");

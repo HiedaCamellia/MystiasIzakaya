@@ -326,6 +326,8 @@
   "jei.mystias_izakaya.Frying_Pan": "油锅",
   "jei.mystias_izakaya.Grill": "烧烤架",
   "jei.mystias_izakaya.Streamer": "蒸锅",
+  "message.mystias_izakaya.table.bound": "餐桌%d 在 %d %d %d 已完成绑定",
+  "message.mystias_izakaya.table.unbound": "餐桌%d 在 %d %d %d 已解除绑定",
   "message.mystiasizakaya.checkout.cheat": "请不要作弊",
   "message.mystiasizakaya.checkout.fail": "余额不足",
   "message.mystiasizakaya.checkout.success": "购买成功",

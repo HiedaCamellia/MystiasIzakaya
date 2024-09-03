@@ -42,6 +42,8 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("message.mystiasizakaya.checkout.fail", "Insufficient balance");
         add("message.mystiasizakaya.checkout.success", "Checkout success");
         add("message.mystiasizakaya.telephone.colddown","Please wait %s seconds");
+        add("message.mystias_izakaya.table.bound","Table %d in %d %d %d is already bound");
+        add("message.mystias_izakaya.table.unbound","Table %d in %d %d %d is unbound");
 
 
         add("gui.mystias_izakaya.cooking_range_ui.button_back", "<");
