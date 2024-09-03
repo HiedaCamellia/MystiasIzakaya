@@ -9,7 +9,6 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.item.ItemDisplayContext;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.TableEntity;
-import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.core.entry.MIItem;
 
 public class TableRender implements BlockEntityRenderer<TableEntity> {

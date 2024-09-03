@@ -15,7 +15,6 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.jetbrains.annotations.NotNull;
-import org.openjdk.nashorn.internal.ir.Block;
 
 import java.util.List;
 

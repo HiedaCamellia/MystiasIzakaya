@@ -1,13 +1,12 @@
 package org.hiedacamellia.mystiasizakaya.registries;
 
-import com.mojang.serialization.Codec;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.core.codec.MICodec;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.*;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIMenu;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.*;
 
 import java.util.ArrayList;
 import java.util.function.Supplier;

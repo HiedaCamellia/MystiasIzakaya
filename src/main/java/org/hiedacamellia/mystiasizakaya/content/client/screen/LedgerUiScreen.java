@@ -15,7 +15,6 @@ import org.hiedacamellia.mystiasizakaya.content.common.inventory.LedgerUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOnOpen;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
-import org.hiedacamellia.mystiasizakaya.core.network.MIPayload;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.HashMap;
