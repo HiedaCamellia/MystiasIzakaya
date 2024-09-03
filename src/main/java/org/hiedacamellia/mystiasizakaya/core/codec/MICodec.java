@@ -21,6 +21,19 @@ public class MICodec {
             MITags::new
     );
 
+    public static final Codec<MIMenu> MI_MENU_CODEC = RecordCodecBuilder.create(instance ->
+            instance.group(
+                    Codec.list(Codec.STRING).fieldOf("orders").forGetter(MIMenu::orders),
+                    Codec.list(Codec.STRING).fieldOf("beverages").forGetter(MIMenu::beverages),
+                    Codec.list(BlockPos.CODEC).fieldOf("blockpos").forGetter(MIMenu::blockPos)
+            ).apply(instance, MIMenu::new)
+    );
+    public static final StreamCodec<ByteBuf, MIMenu> MI_MENU_STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.fromCodec(Codec.list(Codec.STRING)), MIMenu::orders,
+            ByteBufCodecs.fromCodec(Codec.list(Codec.STRING)), MIMenu::beverages,
+            ByteBufCodecs.fromCodec(Codec.list(BlockPos.CODEC)), MIMenu::blockPos,
+            MIMenu::new
+    );
 
     public static final Codec<MIOrders> MI_ORDERS_CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
@@ -93,11 +106,21 @@ public class MICodec {
 
     public static final Codec<MITeleColddown> MI_TELE_COLDDOWN_CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
-                    Codec.INT.fieldOf("cost").forGetter(MITeleColddown::tick)
+                    Codec.INT.fieldOf("tick").forGetter(MITeleColddown::tick)
             ).apply(instance, MITeleColddown::new)
     );
     public static final StreamCodec<ByteBuf, MITeleColddown> MI_TELE_COLDDOWN_STREAM_CODEC = StreamCodec.composite(
             ByteBufCodecs.INT, MITeleColddown::tick,
             MITeleColddown::new
+    );
+
+    public static final Codec<MIOnOpen> MI_ON_OPEN_CODEC = RecordCodecBuilder.create(instance ->
+            instance.group(
+                    Codec.BOOL.fieldOf("open").forGetter(MIOnOpen::open)
+            ).apply(instance, MIOnOpen::new)
+    );
+    public static final StreamCodec<ByteBuf, MIOnOpen> MI_ON_OPEN_STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.BOOL, MIOnOpen::open,
+            MIOnOpen::new
     );
 }

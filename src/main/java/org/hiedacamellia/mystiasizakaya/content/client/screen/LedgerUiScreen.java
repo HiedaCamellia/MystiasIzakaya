@@ -10,8 +10,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.LedgerUiMenu;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOnOpen;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
+import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
+import org.hiedacamellia.mystiasizakaya.core.network.MIPayload;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.HashMap;
@@ -105,19 +109,22 @@ public class LedgerUiScreen extends AbstractContainerScreen<LedgerUiMenu> {
         super.init();
 
 
-        Button on_open = new Button.Builder(getComponent(),e ->{
-            entity.setData(MIAttachment.MI_ON_OPEN,!entity.getData(MIAttachment.MI_ON_OPEN));
-            e.setMessage(getComponent());
+        Button on_open = new Button.Builder(getComponent(entity.getData(MIAttachment.MI_ON_OPEN).open()),e ->{
+            boolean open = entity.getData(MIAttachment.MI_ON_OPEN).open();
+            Debug.getLogger().debug("on_open: "+!open);
+            entity.setData(MIAttachment.MI_ON_OPEN,new MIOnOpen(!open));
+            PacketDistributor.sendToServer(new MIOnOpen(!open));
+            e.setMessage(getComponent(!open));
         }).pos(this.leftPos+10,this.topPos+10).size(40,20).build();
         on_open.setTooltip(Tooltip.create(Component.translatable("gui.mystias_izakaya.ledger_ui.on_open")));
 
         this.addRenderableWidget(on_open);
     }
 
-    private Component getComponent(){
-        if(entity.getData(MIAttachment.MI_ON_OPEN))
-            return Component.translatable("gui.mystias_izakaya.ledger_ui.close");
-        else
+    private Component getComponent(boolean open){
+        if(open)
             return Component.translatable("gui.mystias_izakaya.ledger_ui.open");
+        else
+            return Component.translatable("gui.mystias_izakaya.ledger_ui.close");
     }
 }

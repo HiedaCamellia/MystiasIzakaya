@@ -6,10 +6,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.core.codec.MICodec;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITeleColddown;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.*;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MIMenu;
 
 import java.util.ArrayList;
 import java.util.function.Supplier;
@@ -26,8 +24,8 @@ public class MIAttachment {
             "mi_orders", () -> AttachmentType.builder(() -> new MIOrders(new ArrayList<>(8), new ArrayList<>(8),new ArrayList<>(8))).serialize(MICodec.MI_ORDERS_CODEC).build()
     );
 
-    public static final Supplier<AttachmentType<MIOrders>> MI_BAR = ATTACHMENTS.register(
-            "mi_bar", () -> AttachmentType.builder(() -> new MIOrders(new ArrayList<>(8), new ArrayList<>(8),new ArrayList<>(8))).serialize(MICodec.MI_ORDERS_CODEC).build()
+    public static final Supplier<AttachmentType<MIMenu>> MI_MENU = ATTACHMENTS.register(
+            "mi_menu", () -> AttachmentType.builder(() -> new MIMenu(new ArrayList<>(8), new ArrayList<>(8),new ArrayList<>(8))).serialize(MICodec.MI_MENU_CODEC).build()
     );
 
     public static final Supplier<AttachmentType<MIBalance>> MI_BALANCE = ATTACHMENTS.register(
@@ -42,7 +40,7 @@ public class MIAttachment {
             "mi_telecolddown", () -> AttachmentType.builder(() -> new MITeleColddown(0)).serialize(MICodec.MI_TELE_COLDDOWN_CODEC).build()
     );
 
-    public static final Supplier<AttachmentType<Boolean>> MI_ON_OPEN = ATTACHMENTS.register(
-            "mi_on_open", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).build()
+    public static final Supplier<AttachmentType<MIOnOpen>> MI_ON_OPEN = ATTACHMENTS.register(
+            "mi_on_open", () -> AttachmentType.builder(() -> new MIOnOpen(false)).serialize(MICodec.MI_ON_OPEN_CODEC).build()
     );
 }

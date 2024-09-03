@@ -30,7 +30,7 @@ public class TableEntity extends RandomizableContainerBlockEntity implements Wor
 	private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
 
 	public TableEntity(BlockPos position, BlockState state) {
-		super(MIBlockEntitiy.COOKING_RANGE.get(), position, state);
+		super(MIBlockEntitiy.TABLE.get(), position, state);
 	}
 
 	@Override

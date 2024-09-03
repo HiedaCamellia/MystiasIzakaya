@@ -22,6 +22,7 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 import net.neoforged.neoforge.items.wrapper.InvWrapper;
 import org.hiedacamellia.mystiasizakaya.registries.MIMenu;
+import org.hiedacamellia.mystiasizakaya.registries.MITag;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -87,7 +88,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(ResourceLocation.parse("mystias_izakaya:kitchenwares")));
+				return stack.is(MITag.kitchenwaresKey);
 			}
 		}));
 		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 95, 26) {
@@ -95,13 +96,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(ItemTags.create(ResourceLocation.parse("mystias_izakaya:ingredients")))){
-					return true;
-				}else if(stack.is(ItemTags.create(ResourceLocation.parse("mystias_izakaya:bridge_yhc")))){
-					return true;
-				}else{
-					return false;
-				}
+                return stack.is(MITag.ingredientsKey);
 			}
 		}));
 		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 122, 26) {
@@ -109,13 +104,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(ItemTags.create(ResourceLocation.parse("mystias_izakaya:ingredients")))){
-					return true;
-				}else if(stack.is(ItemTags.create(ResourceLocation.parse("mystias_izakaya:bridge_yhc")))){
-					return true;
-				}else{
-					return false;
-				}
+				return stack.is(MITag.ingredientsKey);
 			}
 
 		}));
@@ -124,13 +113,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(ItemTags.create(ResourceLocation.parse("mystias_izakaya:ingredients")))){
-					return true;
-				}else if(stack.is(ItemTags.create(ResourceLocation.parse("mystias_izakaya:bridge_yhc")))){
-					return true;
-				}else{
-					return false;
-				}
+				return stack.is(MITag.ingredientsKey);
 			}
 
 		}));
@@ -139,13 +122,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(ItemTags.create(ResourceLocation.parse("mystias_izakaya:ingredients")))){
-					return true;
-				}else if(stack.is(ItemTags.create(ResourceLocation.parse("mystias_izakaya:bridge_yhc")))){
-					return true;
-				}else{
-					return false;
-				}
+				return stack.is(MITag.ingredientsKey);
 			}
 
 		}));
@@ -154,13 +131,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(ItemTags.create(ResourceLocation.parse("mystias_izakaya:ingredients")))){
-					return true;
-				}else if(stack.is(ItemTags.create(ResourceLocation.parse("mystias_izakaya:bridge_yhc")))){
-					return true;
-				}else{
-					return false;
-				}
+				return stack.is(MITag.ingredientsKey);
 			}
 
 		}));

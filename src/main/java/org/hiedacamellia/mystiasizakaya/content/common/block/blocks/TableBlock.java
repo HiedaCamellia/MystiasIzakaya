@@ -9,9 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -34,15 +32,21 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRangeEntity;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.TableEntity;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingRangeUiMenu;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.TableUiMenu;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
 import org.hiedacamellia.mystiasizakaya.core.cooking.Init;
 import org.hiedacamellia.mystiasizakaya.core.cooking.Main;
+import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
+import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
+import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -85,33 +89,56 @@ public class TableBlock extends Block implements EntityBlock {
 	public @NotNull InteractionResult useWithoutItem(@NotNull BlockState blockstate, @NotNull Level world, @NotNull BlockPos pos, @NotNull Player entity, @NotNull BlockHitResult hit) {
 		super.useWithoutItem(blockstate, world, pos, entity, hit);
 		if (entity instanceof ServerPlayer player) {
-			player.openMenu(new MenuProvider() {
-				@Override
-				public @NotNull Component getDisplayName() {
-					return Component.literal("Cooking Range");
-				}
+			if(!ItemStack.isSameItem(player.getMainHandItem(),MIItem.LEDGER.get().getDefaultInstance())) {
+				player.openMenu(new MenuProvider() {
+					@Override
+					public @NotNull Component getDisplayName() {
+						return Component.literal("Table");
+					}
 
-				@Override
-				public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
-					return new TableUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-				}
-			}, pos);
-		}
-		if (!world.isClientSide()) {
-			BlockEntity _blockEntity = world.getBlockEntity(pos);
-			BlockState _bs = world.getBlockState(pos);
-			if (_blockEntity != null)
-				_blockEntity.getPersistentData().putBoolean("breaking", false);
-			world.sendBlockUpdated(pos, _bs, _bs, 3);
+					@Override
+					public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
+						return new TableUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+					}
+				}, pos);
+			}
 		}
 		return InteractionResult.SUCCESS;
 	}
 
-
 	@Override
-	public MenuProvider getMenuProvider(@NotNull BlockState state, Level worldIn, @NotNull BlockPos pos) {
-		BlockEntity tileEntity = worldIn.getBlockEntity(pos);
-		return tileEntity instanceof MenuProvider menuProvider ? menuProvider : null;
+	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+
+		//Debug.getLogger().debug("Use on");
+		if (player instanceof ServerPlayer serverPlayer) {
+			if(ItemStack.isSameItem(serverPlayer.getMainHandItem(),MIItem.LEDGER.get().getDefaultInstance())) {
+				MIOrders miOrders = serverPlayer.getData(MIAttachment.MI_ORDERS);
+				List<BlockPos> blockPosList = new ArrayList<>(miOrders.blockPos());
+				if (blockPosList.size() < 8) {
+					blockPosList.add(new BlockPos(-1, -1, -1));
+				}
+
+				for (int i = 0; i < blockPosList.size(); i++) {
+					BlockPos pos = blockPosList.get(i);
+					if (pos.equals(blockPos)) {
+						blockPosList.set(i, new BlockPos(-1, -1, -1));
+						break;
+					}
+					if (pos.equals(new BlockPos(-1, -1, -1))) {
+						blockPosList.set(i, blockPos);
+						break;
+					}
+				}
+				MIOrders miOrders1 = new MIOrders(miOrders.orders(), miOrders.beverages(), blockPosList);
+				serverPlayer.setData(MIAttachment.MI_ORDERS, miOrders1);
+				PacketDistributor.sendToPlayer(serverPlayer, miOrders1);
+
+				Debug.getLogger().debug("Table: " + blockPosList);
+
+				return ItemInteractionResult.SUCCESS;
+			}
+		}
+		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 	}
 
 	@Override

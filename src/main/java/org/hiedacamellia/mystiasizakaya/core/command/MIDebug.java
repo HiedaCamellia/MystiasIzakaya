@@ -2,21 +2,29 @@
 package org.hiedacamellia.mystiasizakaya.core.command;
 
 import com.mojang.brigadier.arguments.DoubleArgumentType;
+import net.minecraft.ChatFormatting;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.item.ItemArgument;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.HoverEvent;
+import net.minecraft.network.chat.Style;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MIMenu;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITeleColddown;
+import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 @EventBusSubscriber
@@ -96,7 +104,51 @@ public class MIDebug {
                         player.setData(MIAttachment.MI_TELE_COLDDOWN, new MITeleColddown(0));
                     }
                     return 0;
-                })))
-        ));
+                }))).then(Commands.literal("menu").then(Commands.literal("dump").executes(arguments -> {
+                    ServerPlayer player = arguments.getSource().getPlayer();
+                    if (player != null) {
+                        MIMenu miMenu = player.getData(MIAttachment.MI_MENU);
+                        for(int i=0;i<miMenu.orders().size();i++){
+                            ItemStack cuisine = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.orders().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                            ItemStack beverage = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.beverages().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                            Component component = Component.empty().append(cuisine.getDisplayName()).append(" ").append(beverage.getDisplayName());
+                            player.sendSystemMessage(Component.literal("Menu: "+i).withStyle(style -> style
+                                    .withColor(ChatFormatting.GREEN)
+                                    .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, component))));
+                        }
+
+                        Debug.getLogger().debug(miMenu.toString());
+                    }
+                    return 0;
+                })).then(Commands.literal("reset").executes(arguments -> {
+                    ServerPlayer player = arguments.getSource().getPlayer();
+                    if (player != null) {
+                        player.setData(MIAttachment.MI_MENU, new MIMenu(new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+                    }
+                    return 0;
+                }))).then(Commands.literal("order").then(Commands.literal("dump").executes(arguments -> {
+                    ServerPlayer player = arguments.getSource().getPlayer();
+                    if (player != null) {
+                        MIOrders miMenu = player.getData(MIAttachment.MI_ORDERS);
+                        for(int i=0;i<miMenu.orders().size();i++){
+                            ItemStack cuisine = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.orders().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                            ItemStack beverage = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.beverages().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                            Component component = Component.empty().append(cuisine.getDisplayName()).append(" ").append(beverage.getDisplayName());
+                            player.sendSystemMessage(Component.literal("Order: "+i).withStyle(style -> style
+                                    .withColor(ChatFormatting.GREEN)
+                                    .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, component))));
+                        }
+
+                        Debug.getLogger().debug(miMenu.toString());
+                    }
+                    return 0;
+                })).then(Commands.literal("reset").executes(arguments -> {
+                    ServerPlayer player = arguments.getSource().getPlayer();
+                    if (player != null) {
+                        player.setData(MIAttachment.MI_ORDERS, new MIOrders(new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+                    }
+                    return 0;
+                }))))
+        );
 	}
 }
