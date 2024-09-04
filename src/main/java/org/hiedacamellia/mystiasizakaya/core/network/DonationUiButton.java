@@ -85,13 +85,6 @@ public class DonationUiButton  {
                     //Debug.getLogger().debug("Balance: " + player.getData(MIAttachment.MI_BALANCE).balance());
                     MIPlayerEvent.setBalance(player, MIPlayerEvent.getBalance(player) - i);
                     //Debug.getLogger().debug("NowBalance: " + player.getData(MIAttachment.MI_BALANCE).balance());
-                    if (i >= 10000) {
-                        j = i / 10000;
-                        i = i - j * 10000;
-                        ItemStack _setstack = new ItemStack(MIItem.EN_10K.get());
-                        _setstack.setCount((int) j);
-                        ItemHandlerHelper.giveItemToPlayer(player, _setstack);
-                    }
                     j = i / 10;
                     i = i - j * 10;
                     ItemStack _setstack = new ItemStack(MIItem.EN_10.get());

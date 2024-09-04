@@ -5,10 +5,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import org.hiedacamellia.mystiasizakaya.content.client.screen.DonationUiScreen;
-import org.hiedacamellia.mystiasizakaya.content.client.screen.CookingRangeUiScreen;
-import org.hiedacamellia.mystiasizakaya.content.client.screen.KitchenwaresUiScreen;
-import org.hiedacamellia.mystiasizakaya.content.client.screen.LedgerUiScreen;
+import org.hiedacamellia.mystiasizakaya.content.client.screen.*;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class MIScreen {
@@ -19,6 +16,7 @@ public class MIScreen {
 			MenuScreens.register(MIMenu.KITCHENWARES_UI.get(), KitchenwaresUiScreen::new);
 			MenuScreens.register(MIMenu.Donation_UI.get(), DonationUiScreen::new);
 			MenuScreens.register(MIMenu.LEDGER_UI.get(), LedgerUiScreen::new);
+			MenuScreens.register(MIMenu.Telephone_UI.get(), TelephoneUiScreen::new);
 		});
 	}
 }

@@ -17,4 +17,7 @@ public class MIBlock {
 	public static final RegistryObject<Kitchenwares> FRYING_PAN = BLOCKS.register("frying_pan", Kitchenwares::new);
 	public static final RegistryObject<Kitchenwares> STEAMER = BLOCKS.register("steamer", Kitchenwares::new);
 	public static final RegistryObject<Kitchenwares> GRILL = BLOCKS.register("grill", Kitchenwares::new);
+
+	public static final RegistryObject<Block> TELEPHONE = BLOCKS.register("telephone", Telephone::new);
+
 }

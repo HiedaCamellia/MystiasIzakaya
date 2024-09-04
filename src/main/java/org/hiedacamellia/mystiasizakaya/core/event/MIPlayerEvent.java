@@ -42,6 +42,16 @@ public class MIPlayerEvent {
             variables.syncPlayerVariables(player);
         });
     }
+    public static int getTelecolddown(Player player) {
+        return player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()).telecolddown;
+    }
+
+    public static void setTelecolddown(Player player, int telecolddown) {
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            variables.telecolddown = telecolddown;
+            variables.syncPlayerVariables(player);
+        });
+    }
 
     public static void changeBalance(Player player, double balance) {
         player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
@@ -215,18 +225,19 @@ public class MIPlayerEvent {
 
     public static class PlayerVariables {
         public double balance = 0;
+        public int telecolddown =0;
         public List<String> orders = List.of("minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air","minecraft:air");
         public List<String> ordersbeverages = List.of("minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air","minecraft:air");
         public List<String> turnover_pre = List.of();
         public List<Integer> trunover_cha =List.of();
 
         public void syncPlayerVariables(Entity entity) {
-            Debug.getLogger().debug("syncPlayerVariables");
-            Debug.getLogger().debug("balance: " + balance);
-            Debug.getLogger().debug("orders: " + orders);
-            Debug.getLogger().debug("ordersbeverages: " + ordersbeverages);
-            Debug.getLogger().debug("turnover_pre: " + turnover_pre);
-            Debug.getLogger().debug("turnover_cha: " + trunover_cha);
+//            Debug.getLogger().debug("syncPlayerVariables");
+//            Debug.getLogger().debug("balance: " + balance);
+//            Debug.getLogger().debug("orders: " + orders);
+//            Debug.getLogger().debug("ordersbeverages: " + ordersbeverages);
+//            Debug.getLogger().debug("turnover_pre: " + turnover_pre);
+//            Debug.getLogger().debug("turnover_cha: " + trunover_cha);
             if (entity instanceof ServerPlayer serverPlayer)
                 MystiasIzakaya.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> serverPlayer), new PlayerVariablesSyncMessage(this));
         }
@@ -234,6 +245,7 @@ public class MIPlayerEvent {
         public CompoundTag writeNBT() {
             CompoundTag nbt = new CompoundTag();
             nbt.putDouble("balance", balance);
+            nbt.putInt("telecolddown", telecolddown);
             String orders_string = String.join(",", orders);
             String ordersbeverages_string = String.join(",", ordersbeverages);
             nbt.putString("orders", orders_string);
@@ -246,6 +258,7 @@ public class MIPlayerEvent {
 
         public void readNBT(CompoundTag Tag) {
             balance = Tag.getDouble("balance");
+            telecolddown = Tag.getInt("telecolddown");
             String orders_string = Tag.getString("orders");
             String ordersbeverages_string = Tag.getString("ordersbeverages");
             orders = new ArrayList<>(List.of(orders_string.split(",")));
@@ -280,6 +293,7 @@ public class MIPlayerEvent {
                     if (Minecraft.getInstance().player != null) {
                         variables = Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables());
                         variables.balance = message.data.balance;
+                        variables.telecolddown = message.data.telecolddown;
                         variables.orders = message.data.orders;
                         variables.ordersbeverages = message.data.ordersbeverages;
                         variables.turnover_pre = message.data.turnover_pre;

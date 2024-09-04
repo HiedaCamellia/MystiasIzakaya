@@ -30,6 +30,7 @@ public class MIItem {
     public static final RegistryObject<BlockItem> GRILL = REGISTRY.register("grill", GrillBlockItem::new);
 
     //Util
+    public static final RegistryObject<BlockItem> TELEPHONE = REGISTRY.register("telephone",() -> new BlockItem(MIBlock.TELEPHONE.get(), new Item.Properties()));
     public static final RegistryObject<Item> LEDGER = REGISTRY.register("ledger", LedgerItem::new);
 
     public static final DeferredRegister<Item> Ingredients = DeferredRegister.create(ForgeRegistries.ITEMS, MystiasIzakaya.MODID);
@@ -321,7 +322,6 @@ public class MIItem {
     public static final RegistryObject<Item> EN_1 = Others.register("en_1", En1Item::new);
     public static final RegistryObject<Item> EN_5 = Others.register("en_5", En5Item::new);
     public static final RegistryObject<Item> EN_10 = Others.register("en_10", En10Item::new);
-    public static final RegistryObject<Item> EN_10K = Others.register("en_10k", En10kItem::new);
     public static final RegistryObject<Item> IRON_KNIFE = Others.register("iron_knife", IronKnifeItem::new);
 
     public static void register(IEventBus eventBus) {

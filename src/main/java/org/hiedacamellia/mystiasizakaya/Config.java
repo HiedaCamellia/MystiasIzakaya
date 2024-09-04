@@ -26,6 +26,11 @@ public class Config
             .comment("要存储的最大流水次数")
             .defineInRange("max_overturn", 10, 0, Integer.MAX_VALUE);
 
+    public static final ForgeConfigSpec.IntValue TELE_COOLDOWN = BUILDER
+            .comment("The cooldown time for the telephone(tick)")
+            .comment("电话的冷却时间(刻)")
+            .defineInRange("tele_cooldown", 12000, 0, Integer.MAX_VALUE);
+
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     public static boolean debug;

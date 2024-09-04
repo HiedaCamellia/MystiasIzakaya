@@ -37,7 +37,6 @@ public class MystiasIzakaya {
 		MIBlockEntitiy.REGISTRY.register(bus);
 		MIItem.register(bus);
 		MITab.REGISTRY.register(bus);
-		MIProfessions.PROFESSIONS.register(bus);
 		MIMenu.REGISTRY.register(bus);
 		MIRecipeType.SERIALIZERS.register(bus);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
