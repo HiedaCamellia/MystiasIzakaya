@@ -1,1 +1,7 @@
-// 1.21	2024-08-09T13:49:15.8340778	Recipes
+// 1.21	2024-09-03T23:08:01.8956433	Recipes
+f307dff121b57b2b5ce436eb1a1e43ca18de9eff data/mystias_izakaya/advancement/recipes/misc/ledger.json
+7d6cd3611622f3838b59e5c68562e02525a9d48e data/mystias_izakaya/advancement/recipes/misc/table.json
+a34eead4a248f3e49ea8a5090c30886a22f2f402 data/mystias_izakaya/advancement/recipes/misc/telephone.json
+be66c2c22346e0725c74697626324428e2ebc840 data/mystias_izakaya/recipe/ledger.json
+9ac5dc3be766df848e46eb64c603771b28ea986f data/mystias_izakaya/recipe/table.json
+ea2127d49310b3ff0d9ac53615ad93828d2a2fa5 data/mystias_izakaya/recipe/telephone.json
