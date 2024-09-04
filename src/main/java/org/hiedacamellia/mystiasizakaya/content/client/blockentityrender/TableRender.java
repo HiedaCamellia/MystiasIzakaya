@@ -40,6 +40,7 @@ public class TableRender implements BlockEntityRenderer<TableEntity> {
                             pBlockEntity.getLevel(),
                             (int) pBlockEntity.getBlockPos().asLong()
                     );
+            pPoseStack.popPose();
         }
         if (pBlockEntity.getItems().get(1).getItem() instanceof MIItem cookedMealItem) {
             pPoseStack.pushPose();
@@ -57,6 +58,7 @@ public class TableRender implements BlockEntityRenderer<TableEntity> {
                             pBlockEntity.getLevel(),
                             (int) pBlockEntity.getBlockPos().asLong()
                     );
+            pPoseStack.popPose();
         }
     }
 

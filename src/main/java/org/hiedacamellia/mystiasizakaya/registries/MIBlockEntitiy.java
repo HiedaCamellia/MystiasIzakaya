@@ -53,6 +53,6 @@ public class MIBlockEntitiy {
 		event.registerBlockEntityRenderer(CUTTING_BOARD.get(), ProcessRender::new);
 		event.registerBlockEntityRenderer(FRYING_PAN.get(), ProcessRender::new);
 		event.registerBlockEntityRenderer(STEAMER.get(), ProcessRender::new);
-		event.registerBlockEntityRenderer(TABLE.get(), TableRender::new);
+		//event.registerBlockEntityRenderer(TABLE.get(), TableRender::new);
 	}
 }
