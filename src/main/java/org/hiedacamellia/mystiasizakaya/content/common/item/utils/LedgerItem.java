@@ -29,7 +29,10 @@ public class LedgerItem extends Item {
     @Override
     public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, context, list, flag);
-        list.add(Component.literal("§7§o" + Component.translatable("tooltip.mystias_izakaya.ledger").getString() + "§r"));
+        String[] description = Component.translatable("tooltip.mystias_izakaya.ledger").getString().split("§n");
+        for (String line : description) {
+            list.add(Component.literal(line));
+        }
     }
 
 
@@ -43,7 +46,7 @@ public class LedgerItem extends Item {
             player.openMenu(new MenuProvider() {
                 @Override
                 public @NotNull Component getDisplayName() {
-                    return Component.literal("Account Book");
+                    return Component.literal("Ledger");
                 }
 
                 @Override

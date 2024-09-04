@@ -113,7 +113,7 @@ public class MIDebug {
                             ItemStack cuisine = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.orders().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
                             ItemStack beverage = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.beverages().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
                             Component component1 = Component.empty().append(cuisine.getDisplayName()).append(" ").append(beverage.getDisplayName());
-                            component = Component.empty().append(component).append(Component.literal(i+" ").withStyle(style -> style
+                            component = Component.empty().append(component).append(Component.literal((i+1)+" ").withStyle(style -> style
                                     .withColor(ChatFormatting.GREEN)
                                     .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, component1))));
                         }
@@ -137,7 +137,7 @@ public class MIDebug {
                             ItemStack cuisine = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.orders().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
                             ItemStack beverage = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.beverages().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
                             Component component1 = Component.empty().append(cuisine.getDisplayName()).append(" ").append(beverage.getDisplayName());
-                            component = Component.empty().append(component).append(Component.literal(i+" ").withStyle(style -> style
+                            component = Component.empty().append(component).append(Component.literal((i+1)+" ").withStyle(style -> style
                                     .withColor(ChatFormatting.GREEN)
                                     .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, component1))));
                         }
@@ -160,7 +160,7 @@ public class MIDebug {
                                 for(int i=0;i<8;i++){
                                     BlockPos blockPos = miMenu.blockPos().get(i);
                                     Component component1 = Component.empty().append(blockPos.toShortString());
-                                    component = Component.empty().append(component).append(Component.literal(i+" ").withStyle(style -> style
+                                    component = Component.empty().append(component).append(Component.literal((i+1)+" ").withStyle(style -> style
                                             .withColor(ChatFormatting.GREEN)
                                             .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, component1))));
                                 }

@@ -247,23 +247,23 @@ public class MIPlayerEvent {
                         blockPosList.set(i,new BlockPos(-1, -1, -1));
                         cuisineList.set(i,"minecraft:air");
                         beverageList.set(i,"minecraft:air");
-                        serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.unbound",i,blockPos.getX(),blockPos.getY(),blockPos.getZ()));
+                        serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.unbound",i+1,blockPos.getX(),blockPos.getY(),blockPos.getZ()));
                         break;
                     }
                     if ((pos.equals(blockPos)||pos.above().equals(blockPos)||pos.below().equals(blockPos)) && !serverPlayer.isShiftKeyDown()) {
                         if(itemStack.is(MITag.cuisinesKey)&&!cuisineList.contains(key.toString())) {
-                            serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.cuisine",itemStack.getDisplayName().getString(),i));
+                            serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.cuisine",itemStack.getDisplayName().getString(),i+1));
                             cuisineList.set(i, key.toString());
                         }
                         if(itemStack.is(MITag.beveragesKey)&&!beverageList.contains(key.toString())) {
-                            serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.beverage",itemStack.getDisplayName().getString(),i));
+                            serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.beverage",itemStack.getDisplayName().getString(),i+1));
                             beverageList.set(i, key.toString());
                         }
                         break;
                     }
                     if (Objects.equals(pos, new BlockPos(-1, -1, -1)) && !serverPlayer.isShiftKeyDown()) {
                         blockPosList.set(i,blockPos);
-                        serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.bound",i,blockPos.getX(),blockPos.getY(),blockPos.getZ()));
+                        serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.bound",i+1,blockPos.getX(),blockPos.getY(),blockPos.getZ()));
                         break;
                     }
                 }

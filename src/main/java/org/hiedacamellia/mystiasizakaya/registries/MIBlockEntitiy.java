@@ -1,18 +1,15 @@
 package org.hiedacamellia.mystiasizakaya.registries;
 
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.client.blockentityrender.ProcessRender;
-import org.hiedacamellia.mystiasizakaya.content.client.blockentityrender.TableRender;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.*;
 
 import java.util.function.Supplier;
@@ -30,10 +27,6 @@ public class MIBlockEntitiy {
 	public static final Supplier<BlockEntityType<Steamer>> STEAMER = REGISTRY.register("steamer", () -> BlockEntityType.Builder.of(Steamer::new, MIBlock.STEAMER.get()).build(null));
 	public static final Supplier<BlockEntityType<Grill>> GRILL = REGISTRY.register("grill", () -> BlockEntityType.Builder.of(Grill::new, MIBlock.GRILL.get()).build(null));
 
-
-	private static DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> register(String registryname, DeferredHolder<Block,? extends Block> block, BlockEntityType.BlockEntitySupplier<?> supplier) {
-		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));
-	}
 
 	@SubscribeEvent
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {

@@ -211,7 +211,7 @@ public class OrdersOverlay {
                     x + 18, y + 2, 0, 0);
         }
         guiGraphics.drawString(Minecraft.getInstance().font,
-                new java.text.DecimalFormat("#######").format(i) + "\u53f7\u684c", x + 8, y + 22,
+                new java.text.DecimalFormat("#######").format(i+1) + "\u53f7\u684c", x + 8, y + 22,
                 -16777216,
                 false);
 
