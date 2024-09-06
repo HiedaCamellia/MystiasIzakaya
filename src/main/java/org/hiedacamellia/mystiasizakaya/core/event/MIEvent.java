@@ -10,7 +10,7 @@ import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 public class MIEvent {
 
     @SubscribeEvent
-    public void onCommonSetup(final FMLCommonSetupEvent event) {
+    public static void onCommonSetup(final FMLCommonSetupEvent event) {
         Debug.getLogger().debug("Ciallo～(∠・ω< )⌒★");
     }
 }
