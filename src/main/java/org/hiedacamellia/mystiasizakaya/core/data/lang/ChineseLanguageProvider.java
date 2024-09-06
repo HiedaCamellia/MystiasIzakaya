@@ -724,6 +724,19 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("block.mystias_izakaya.telephone", "电话");
         add("tooltip.mystias_izakaya.telephone","你可以使用这个物品购买你想要的任何东西");
 
+        add("mystias_izakaya.configuration.debug", "调试模式");
+        add("mystias_izakaya.configuration.max_overturn", "最大流水数");
+        add("mystias_izakaya.configuration.show_balance", "显示余额");
+        add("mystias_izakaya.configuration.tele_cooldown", "电话冷却时间");
+        add("mystias_izakaya.configuration.section.mystias.izakaya.common.toml", "通用配置");
+        add("mystias_izakaya.configuration.show_balance.tooltip", "设置为true以在hud中显示余额");
+        add("mystias_izakaya.configuration.title", "夜雀食堂 配置");
+        add("mystias_izakaya.configuration.section.mystias.izakaya.common.toml.title", "夜雀食堂 通用配置");
+        add("mystias_izakaya.configuration.max_overturn.tooltip", "要存储的最大流水次数");
+        add("mystias_izakaya.configuration.tele_cooldown.tooltip", "电话的冷却时间(刻)");
+        add("mystias_izakaya.configuration.debug.tooltip", "设置为true以启用调试信息");
+        add("mystias_izakaya.configuration.section.mystias.izakaya.client.toml","客户端配置");
+        add("mystias_izakaya.configuration.section.mystias.izakaya.client.toml.title", "夜雀食堂 客户端配置");
 
     }
 }

@@ -726,7 +726,22 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.ledger", "Ledger");
         add("tooltip.mystias_izakaya.ledger","You can use this item overview your turnover§nRight click table to bound tables§nRight click Item Frame to bound Menu");
         add("block.mystias_izakaya.telephone", "Telephone");
-        add("tooltip.mystias_izakaya.telephone","You can use this item to buy any things you want");
+        add("tooltip.mystias_izakaya.telephone", "You can use this item to buy any things you want");
+
+        add("mystias_izakaya.configuration.debug", "Debug Mode");
+        add("mystias_izakaya.configuration.max_overturn", "Maximum Overturn");
+        add("mystias_izakaya.configuration.show_balance", "Show Balance");
+        add("mystias_izakaya.configuration.tele_cooldown", "Telephone Cooldown");
+        add("mystias_izakaya.configuration.section.mystias.izakaya.common.toml", "Common Configuration");
+        add("mystias_izakaya.configuration.show_balance.tooltip", "Set to true to display balance in the HUD");
+        add("mystias_izakaya.configuration.title", "Mystia's Izakaya Configuration");
+        add("mystias_izakaya.configuration.section.mystias.izakaya.common.toml.title", "Mystia's Izakaya Common Configuration");
+        add("mystias_izakaya.configuration.max_overturn.tooltip", "The maximum number of turnovers to store");
+        add("mystias_izakaya.configuration.tele_cooldown.tooltip", "The cooldown time for the telephone(tick)");
+        add("mystias_izakaya.configuration.debug.tooltip", "Set to true to enable debug info");
+        add("mystias_izakaya.configuration.section.mystias.izakaya.client.toml","Client Configuration");
+        add("mystias_izakaya.configuration.section.mystias.izakaya.client.toml.title", "Mysita's Izakaya Client Configuration");
+
 
     }
 }

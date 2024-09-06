@@ -9,7 +9,8 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
-import org.hiedacamellia.mystiasizakaya.Config;
+import org.hiedacamellia.mystiasizakaya.core.config.ClientConfig;
+import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 @EventBusSubscriber({ Dist.CLIENT })
@@ -25,7 +26,7 @@ public class BalanceOverlay {
 						.format(entity.getData(MIAttachment.MI_BALANCE).balance()) + "\u5186";
 		int strlength = Minecraft.getInstance().font.width(text);
 
-		if (Config.SHOW_BALANCE.get())
+		if (ClientConfig.SHOW_BALANCE.get())
 			event.getGuiGraphics().drawString(Minecraft.getInstance().font, text, w - 20 - strlength, h - 11, -1,
 					false);
 

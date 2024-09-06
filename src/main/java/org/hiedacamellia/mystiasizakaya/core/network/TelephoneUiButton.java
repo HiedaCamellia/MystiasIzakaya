@@ -17,7 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
-import org.hiedacamellia.mystiasizakaya.Config;
+import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MICost;
@@ -79,7 +79,7 @@ public record TelephoneUiButton(List<ItemStack> out, BlockPos pos,int cost) impl
             }
             entity.sendSystemMessage(Component.translatable("message.mystiasizakaya.checkout.success").withStyle(ChatFormatting.GREEN));
 
-            entity.setData(MIAttachment.MI_TELE_COLDDOWN, new MITeleColddown(Config.TELE_COOLDOWN.get()));
+            entity.setData(MIAttachment.MI_TELE_COLDDOWN, new MITeleColddown(CommonConfig.TELE_COOLDOWN.get()));
 
         }
         if (entity instanceof ServerPlayer player) {
