@@ -17,25 +17,6 @@ public class Debug {
     private static Boolean debugConfig = Config.debug;
     private static Logger logger = LoggerFactory.getLogger(MystiasIzakaya.MODID);
 
-
-    public Debug(){
-    }
-
-    public static void debug(String message){
-        if(debugConfig)
-            logger.debug(message);
-    }
-
-    public static void debug(String message, Throwable t){
-        if(debugConfig)
-            logger.debug(message,t);
-    }
-
-    public static void debug(String format, Object arg) {
-        if(debugConfig)
-            logger.debug(format, arg);
-    }
-
     public static Logger getLogger(){
         return logger;
     }
