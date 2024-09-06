@@ -19,7 +19,6 @@ public class MystiasIzakaya {
 	public MystiasIzakaya(IEventBus modEventBus, ModContainer modContainer)
 	{
 		modEventBus.addListener(Data::onGatherData);
-		NeoForge.EVENT_BUS.register(this);
 
 		MIBlock.BLOCKS.register(modEventBus);
 		MIBlockEntitiy.REGISTRY.register(modEventBus);
