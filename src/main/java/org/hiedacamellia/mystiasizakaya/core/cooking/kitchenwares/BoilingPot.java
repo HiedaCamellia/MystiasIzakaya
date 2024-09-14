@@ -53,7 +53,7 @@ public class BoilingPot {
         }
         if (raws.contains("mystias_izakaya:he_niu")
                 && raws.contains("mystias_izakaya:he_tun")
-                && raws.contains("mystias_izakaya:song_zi")
+                && raws.contains("mystias_izakaya:song_lu")
                 && raws.contains("mystias_izakaya:niu_rou")) {
             cuisines.add("mystias_izakaya:yan_jiang");
         }
@@ -159,7 +159,7 @@ public class BoilingPot {
                 && raws.contains("mystias_izakaya:mei_zi")) {
             cuisines.add("mystias_izakaya:mei_zi_cha_pao_fan");
         }
-        if (raws.contains("mystias_izakaya:chun_chun.json")
+        if (raws.contains("mystias_izakaya:chun_chun")
                 && raws.contains("mystias_izakaya:mo_gu")) {
             cuisines.add("mystias_izakaya:lv_ye_xian_gu");
         }

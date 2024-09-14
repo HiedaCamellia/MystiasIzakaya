@@ -35,7 +35,10 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.network.NetworkHooks;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.TableEntity;
+import org.hiedacamellia.mystiasizakaya.content.common.inventory.TableUiMenu;
+import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.jetbrains.annotations.NotNull;
 
@@ -47,7 +50,7 @@ public class TableBlock extends Block implements EntityBlock {
 
 
 	public TableBlock() {
-		super(Properties.of().mapColor(MapColor.METAL).sound(SoundType.METAL).strength(1f, 10f).requiresCorrectToolForDrops().pushReaction(PushReaction.IGNORE));
+		super(Properties.of().mapColor(MapColor.METAL).sound(SoundType.METAL).strength(1f, 10f).requiresCorrectToolForDrops().pushReaction(PushReaction.IGNORE).noOcclusion());
 	}
 
 	@Override
@@ -79,11 +82,11 @@ public class TableBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
-		super.use(blockstate, world, pos, entity,hand, hit);
+	public InteractionResult use(BlockState blockstate, Level world, BlockPos blockPos, Player entity, InteractionHand hand, BlockHitResult hit) {
+		super.use(blockstate, world, blockPos, entity,hand, hit);
 		if (entity instanceof ServerPlayer player) {
 			if(!ItemStack.isSameItem(player.getMainHandItem(), MIItem.LEDGER.get().getDefaultInstance())) {
-				player.openMenu(new MenuProvider() {
+				NetworkHooks.openScreen(player,new MenuProvider() {
 					@Override
 					public @NotNull Component getDisplayName() {
 						return Component.literal("Table");
@@ -91,22 +94,12 @@ public class TableBlock extends Block implements EntityBlock {
 
 					@Override
 					public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
-						return new TableUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+						return new TableUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(blockPos));
 					}
-				}, pos);
+				}, blockPos);
 			}
-		}
-		return InteractionResult.SUCCESS;
-	}
-
-	@Override
-	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-
-		//Debug.getLogger().debug("Use on");
-		if (player instanceof ServerPlayer serverPlayer) {
-			if(ItemStack.isSameItem(serverPlayer.getMainHandItem(),MIItem.LEDGER.get().getDefaultInstance())) {
-				MIOrders miOrders = serverPlayer.getData(MIAttachment.MI_ORDERS);
-				List<BlockPos> blockPosList = new ArrayList<>(miOrders.blockPos());
+			if(ItemStack.isSameItem(player.getMainHandItem(),MIItem.LEDGER.get().getDefaultInstance())) {
+				List<BlockPos> blockPosList = new ArrayList<>(MIPlayerEvent.getTables(player));
 				if (blockPosList.size() < 8) {
 					blockPosList.add(new BlockPos(-1, -1, -1));
 				}
@@ -115,26 +108,26 @@ public class TableBlock extends Block implements EntityBlock {
 					BlockPos pos = blockPosList.get(i);
 					if (pos.equals(blockPos)) {
 						blockPosList.set(i, new BlockPos(-1, -1, -1));
-						serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.table.unbound",i,blockPos.getX(),blockPos.getY(),blockPos.getZ()));
+						player.sendSystemMessage(Component.translatable("message.mystias_izakaya.table.unbound",i+1,blockPos.getX(),blockPos.getY(),blockPos.getZ()));
 						break;
 					}
 					if (pos.equals(new BlockPos(-1, -1, -1))) {
 						blockPosList.set(i, blockPos);
-						serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.table.bound",i,blockPos.getX(),blockPos.getY(),blockPos.getZ()));
+						player.sendSystemMessage(Component.translatable("message.mystias_izakaya.table.bound",i+1,blockPos.getX(),blockPos.getY(),blockPos.getZ()));
 						break;
 					}
 				}
-				MIOrders miOrders1 = new MIOrders(miOrders.orders(), miOrders.beverages(), blockPosList);
-				serverPlayer.setData(MIAttachment.MI_ORDERS, miOrders1);
-				PacketDistributor.sendToPlayer(serverPlayer, miOrders1);
+
+				MIPlayerEvent.setTables(player, blockPosList);
 
 				//Debug.getLogger().debug("Table: " + blockPosList);
 
-				return ItemInteractionResult.SUCCESS;
+				return InteractionResult.SUCCESS;
 			}
 		}
-		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+		return InteractionResult.SUCCESS;
 	}
+
 
 
 	@Override

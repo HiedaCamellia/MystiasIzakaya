@@ -6,15 +6,15 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.fml.loading.FMLEnvironment;
-import org.hiedacamellia.mystiasizakaya.Config;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
+import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Debug {
 
     private static String prefix = "[§a夜雀食堂§r]";
-    private static Boolean debugConfig = Config.debug;
+    private static Boolean debugConfig = CommonConfig.DEBUG.get();
     private static Logger logger = LoggerFactory.getLogger(MystiasIzakaya.MODID);
 
 

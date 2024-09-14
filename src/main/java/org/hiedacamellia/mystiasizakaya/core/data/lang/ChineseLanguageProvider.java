@@ -16,12 +16,38 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.ledger_ui.outcome","支出");
         add("gui.mystias_izakaya.ledger_ui.income","收入");
         add("gui.mystias_izakaya.ledger_ui.to_donation","赛钱箱");
+        add("gui.mystias_izakaya.ledger_ui.to_telephone","电话");
         add("gui.mystias_izakaya.ledger_ui.from_command","命令");
         add("gui.mystias_izakaya.ledger_ui.from_currency","货币");
-
+        add("gui.mystias_izakaya.ledger_ui.from_table","餐桌");
         add("gui.mystias_izakaya.ledger_ui.ledger","账本");
+        add("gui.mystias_izakaya.ledger_ui.close","暂停营业");
+        add("gui.mystias_izakaya.ledger_ui.open","正在营业");
+        add("gui.mystias_izakaya.ledger_ui.on_open","点击切换营业状态");
         add("tooltip.mystias_izakaya.cost","价格: ");
 
+        add("gui.mystias_izakaya.telephone_ui.telephone","电话");
+        add("gui.mystias_izakaya.telephone_ui.select","");
+        add("gui.mystias_izakaya.telephone_ui.select.desc","");
+        add("gui.mystias_izakaya.telephone_ui.refresh","刷新");
+        add("gui.mystias_izakaya.telephone_ui.refresh.desc","点击刷新列表");
+        add("gui.mystias_izakaya.telephone_ui.confirm","确认");
+        add("gui.mystias_izakaya.telephone_ui.confirm.desc","点击确认订单");
+        add("gui.mystias_izakaya.telephone_ui.cost","总价: ");
+
+        add("gui.mystias_izakaya.telephone_ui.mode_i.desc","购买食材");
+        add("gui.mystias_izakaya.telephone_ui.mode_b.desc","购买酒水");
+
+        add("message.mystiasizakaya.checkout.cheat","请不要作弊");
+        add("message.mystiasizakaya.checkout.fail", "余额不足");
+        add("message.mystiasizakaya.checkout.success", "购买成功");
+        add("message.mystiasizakaya.telephone.colddown","冷却中: %s秒");
+        add("message.mystias_izakaya.table.bound","餐桌%d 在 %d %d %d 已完成绑定");
+        add("message.mystias_izakaya.table.unbound","餐桌%d 在 %d %d %d 已解除绑定");
+        add("message.mystias_izakaya.menu.bound","菜单%d 在 %d %d %d 已完成绑定");
+        add("message.mystias_izakaya.menu.unbound","菜单%d 在 %d %d %d 已解除绑定");
+        add("message.mystias_izakaya.menu.cuisine","菜品 %s 已添加到菜单 %d");
+        add("message.mystias_izakaya.menu.beverage","酒水 %s 已添加到菜单 %d");
 
 
         add("network.mystiasizakaya.failed", "无法处理网络数据: %s");
@@ -33,6 +59,9 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("block.mystias_izakaya.frying_pan", "油锅");
         add("block.mystias_izakaya.steamer", "蒸锅");
         add("block.mystias_izakaya.grill", "烧烤架");
+
+        add("block.mystias_izakaya.table", "餐桌");
+        add("tooltip.mystias_izakaya.table", "一个普通的餐桌");
 
         add("death.attack.chili", "%1$s 被辣死了");
         add("death.attack.chili.item", "%1$s 被 %2$s 用 %3$s 辣死了");
@@ -691,7 +720,9 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.yue_bing", "月饼");
         add("tooltip.mystias_izakaya.yue_bing","诶 ?! 这是什么?你为什么会获得这个?嗯。。。祝你玩得愉快");
         add("item.mystias_izakaya.ledger", "账本");
-        add("tooltip.mystias_izakaya.ledger","你可以使用这个物品查看你的账单");
+        add("tooltip.mystias_izakaya.ledger","你可以使用这个物品查看你的流水§n右键餐桌以绑定餐桌§n右键展示框以绑定菜单");
+        add("block.mystias_izakaya.telephone", "电话");
+        add("tooltip.mystias_izakaya.telephone","你可以使用这个物品购买你想要的任何东西");
 
 
     }

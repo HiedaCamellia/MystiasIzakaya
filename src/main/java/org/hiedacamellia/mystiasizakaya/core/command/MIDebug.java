@@ -84,17 +84,18 @@ public class MIDebug {
                 ).then(Commands.literal("telephone").then(Commands.literal("reset").executes(arguments -> {
                                     ServerPlayer player = arguments.getSource().getPlayer();
                                     if (player != null) {
-                                        player.setData(MIAttachment.MI_TELE_COLDDOWN, new MITeleColddown(0));
+                                        MIPlayerEvent.setTelecolddown(player, 0);
                                     }
                                     return 0;
                                 }))).then(Commands.literal("menu").then(Commands.literal("dump").executes(arguments -> {
                                     ServerPlayer player = arguments.getSource().getPlayer();
                                     if (player != null) {
-                                        MIMenu miMenu = player.getData(MIAttachment.MI_MENU);
+                                        List<String> menu = MIPlayerEvent.getMenus(player);
+                                        List<String> menusBeverages =MIPlayerEvent.getMenusBeverages(player);
                                         Component component = Component.empty().append("Menu:[ ");
                                         for(int i=0;i<8;i++){
-                                            ItemStack cuisine = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.orders().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
-                                            ItemStack beverage = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.beverages().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                                            ItemStack cuisine = ForgeRegistries.ITEMS.getValue(new ResourceLocation((menu.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                                            ItemStack beverage = ForgeRegistries.ITEMS.getValue(new ResourceLocation((menusBeverages.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
                                             Component component1 = Component.empty().append(cuisine.getDisplayName()).append(" ").append(beverage.getDisplayName());
                                             component = Component.empty().append(component).append(Component.literal(i+" ").withStyle(style -> style
                                                     .withColor(ChatFormatting.GREEN)
@@ -102,60 +103,63 @@ public class MIDebug {
                                         }
                                         player.sendSystemMessage(Component.empty().append(component).append("]"));
 
-                                        Debug.getLogger().debug(miMenu.toString());
+                                        Debug.getLogger().debug(menu.toString());
+                                        Debug.getLogger().debug(menusBeverages.toString());
                                     }
                                     return 0;
                                 })).then(Commands.literal("reset").executes(arguments -> {
                                     ServerPlayer player = arguments.getSource().getPlayer();
                                     if (player != null) {
-                                        player.setData(MIAttachment.MI_MENU, new MIMenu(new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+                                        MIPlayerEvent.setMenus(player, new ArrayList<>());
+                                        MIPlayerEvent.setMenusBeverages(player, new ArrayList<>());
                                     }
                                     return 0;
                                 }))).then(Commands.literal("order").then(Commands.literal("dump").executes(arguments -> {
                                     ServerPlayer player = arguments.getSource().getPlayer();
                                     if (player != null) {
-                                        MIOrders miMenu = player.getData(MIAttachment.MI_ORDERS);
+                                        List<String> orders = MIPlayerEvent.getOrders(player);
+                                        List<String> ordersBeverages =MIPlayerEvent.getOrdersBeverages(player);
                                         Component component = Component.empty().append("Order:[ ");
-                                        for(int i=0;i<miMenu.orders().size();i++){
-                                            ItemStack cuisine = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.orders().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
-                                            ItemStack beverage = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.beverages().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                                        for(int i=0;i<orders.size();i++){
+                                            ItemStack cuisine = ForgeRegistries.ITEMS.getValue(new ResourceLocation((orders.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                                            ItemStack beverage = ForgeRegistries.ITEMS.getValue(new ResourceLocation((ordersBeverages.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
                                             Component component1 = Component.empty().append(cuisine.getDisplayName()).append(" ").append(beverage.getDisplayName());
                                             component = Component.empty().append(component).append(Component.literal(i+" ").withStyle(style -> style
                                                     .withColor(ChatFormatting.GREEN)
                                                     .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, component1))));
                                         }
                                         player.sendSystemMessage(Component.empty().append(component).append("]"));
-                                        Debug.getLogger().debug(miMenu.toString());
+                                        Debug.getLogger().debug(orders.toString());
+                                        Debug.getLogger().debug(ordersBeverages.toString());
                                     }
                                     return 0;
                                 })).then(Commands.literal("reset").executes(arguments -> {
                                     ServerPlayer player = arguments.getSource().getPlayer();
                                     if (player != null) {
-                                        MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                        player.setData(MIAttachment.MI_ORDERS, new MIOrders(new ArrayList<>(), new ArrayList<>(), miOrders.blockPos()));
+                                        MIPlayerEvent.setOrders(player, new ArrayList<>());
+                                        MIPlayerEvent.setOrdersBeverages(player, new ArrayList<>());
                                     }
                                     return 0;
                                 }))).then(Commands.literal("table").then(Commands.literal("dump").executes(arguments -> {
                                     ServerPlayer player = arguments.getSource().getPlayer();
                                     if (player != null) {
-                                        MIOrders miMenu = player.getData(MIAttachment.MI_ORDERS);
+                                        List<BlockPos> blockPosList = MIPlayerEvent.getTables(player);
                                         Component component = Component.empty().append("Table:[ ");
                                         for(int i=0;i<8;i++){
-                                            BlockPos blockPos = miMenu.blockPos().get(i);
+                                            BlockPos blockPos = blockPosList.get(i);
                                             Component component1 = Component.empty().append(blockPos.toShortString());
                                             component = Component.empty().append(component).append(Component.literal(i+" ").withStyle(style -> style
                                                     .withColor(ChatFormatting.GREEN)
                                                     .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, component1))));
                                         }
                                         player.sendSystemMessage(Component.empty().append(component).append("]"));
-                                        Debug.getLogger().debug(miMenu.toString());
+                                        Debug.getLogger().debug(blockPosList.toString());
                                     }
                                     return 0;
                                 })).then(Commands.literal("reset").executes(arguments -> {
                                     ServerPlayer player = arguments.getSource().getPlayer();
                                     if (player != null) {
-                                        MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                        player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.orders(), miOrders.beverages(), new ArrayList<>()));
+                                        MIPlayerEvent.setTables(player, new ArrayList<>());
                                     }
                                     return 0;
                                 })))

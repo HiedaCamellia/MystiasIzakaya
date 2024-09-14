@@ -11,8 +11,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.network.NetworkEvent;
-import org.hiedacamellia.mystiasizakaya.Config;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
+import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
 import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 import org.hiedacamellia.mystiasizakaya.util.ItemUtil;
 
@@ -78,12 +78,12 @@ public class TelephoneUiButton {
             }
             entity.sendSystemMessage(Component.translatable("message.mystiasizakaya.checkout.success").withStyle(ChatFormatting.GREEN));
 
-            MIPlayerEvent.setTelecolddown(entity, Config.TELE_COOLDOWN.get());
+            MIPlayerEvent.setTelecolddown(entity, CommonConfig.TELE_COOLDOWN.get());
 
         }
     }
     @SubscribeEvent
     public static void registerMessage(FMLCommonSetupEvent event) {
-        MystiasIzakaya.addNetworkMessage(TelephoneUiButton.class, TelephoneUiButton::buffer, TelephoneUiButton::new, TelephoneUiButton::handler);
+        MINetWork.addNetworkMessage(TelephoneUiButton.class, TelephoneUiButton::buffer, TelephoneUiButton::new, TelephoneUiButton::handler);
     }
 }

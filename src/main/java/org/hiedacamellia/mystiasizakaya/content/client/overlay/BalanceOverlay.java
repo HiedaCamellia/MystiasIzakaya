@@ -9,7 +9,7 @@ import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.hiedacamellia.mystiasizakaya.Config;
+import org.hiedacamellia.mystiasizakaya.core.config.ClientConfig;
 import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 
 @Mod.EventBusSubscriber({ Dist.CLIENT })
@@ -26,7 +26,7 @@ public class BalanceOverlay {
 								.orElse(new MIPlayerEvent.PlayerVariables())).balance) + "\u5186";
 		int strlength = Minecraft.getInstance().font.width(text);
 
-		if (Config.SHOW_BALANCE.get())
+		if (ClientConfig.SHOW_BALANCE.get())
 			event.getGuiGraphics().drawString(Minecraft.getInstance().font, text, w - 20 - strlength, h - 11, -1,
 					false);
 

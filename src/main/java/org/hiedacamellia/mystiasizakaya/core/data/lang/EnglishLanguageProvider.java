@@ -16,11 +16,40 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.ledger_ui.outcome","Outcome");
         add("gui.mystias_izakaya.ledger_ui.income","Income");
         add("gui.mystias_izakaya.ledger_ui.to_donation","Donation");
+        add("gui.mystias_izakaya.ledger_ui.to_telephone","Telephone");
         add("gui.mystias_izakaya.ledger_ui.from_command","Command");
         add("gui.mystias_izakaya.ledger_ui.from_currency","Currency");
-
+        add("gui.mystias_izakaya.ledger_ui.from_table","Table");
         add("gui.mystias_izakaya.ledger_ui.ledger","Ledger");
+        add("gui.mystias_izakaya.ledger_ui.close","Close");
+        add("gui.mystias_izakaya.ledger_ui.open","Open");
+        add("gui.mystias_izakaya.ledger_ui.on_open","Click to change the status");
+
         add("tooltip.mystias_izakaya.cost","Cost: ");
+
+        add("gui.mystias_izakaya.telephone_ui.telephone","Telephone");
+        add("gui.mystias_izakaya.telephone_ui.select","");
+        add("gui.mystias_izakaya.telephone_ui.select.desc","");
+        add("gui.mystias_izakaya.telephone_ui.refresh","Refresh");
+        add("gui.mystias_izakaya.telephone_ui.refresh.desc","Click to refresh the list");
+        add("gui.mystias_izakaya.telephone_ui.confirm","Confirm");
+        add("gui.mystias_izakaya.telephone_ui.confirm.desc","Click to check out");
+        add("gui.mystias_izakaya.telephone_ui.cost","Cost: ");
+        add("gui.mystias_izakaya.telephone_ui.mode_i.desc","Buy Ingredients");
+        add("gui.mystias_izakaya.telephone_ui.mode_b.desc","Buy Beverages");
+
+
+        add("message.mystiasizakaya.checkout.cheat","Cheating is not allowed");
+        add("message.mystiasizakaya.checkout.fail", "Insufficient balance");
+        add("message.mystiasizakaya.checkout.success", "Checkout success");
+        add("message.mystiasizakaya.telephone.colddown","Please wait %s seconds");
+        add("message.mystias_izakaya.table.bound","Table %d in %d %d %d is already bound");
+        add("message.mystias_izakaya.table.unbound","Table %d in %d %d %d is unbound");
+        add("message.mystias_izakaya.menu.bound","Menu %d in %d %d %d is already bound");
+        add("message.mystias_izakaya.menu.unbound","Menu %d in %d %d %d is unbound");
+        add("message.mystias_izakaya.menu.cuisine","Cuisine %s has added to menu %d");
+        add("message.mystias_izakaya.menu.beverage","Beverage %s has added to menu %d");
+
 
         add("gui.mystias_izakaya.cooking_range_ui.button_back", "<");
         add("gui.mystias_izakaya.cooking_range_ui.button_next", ">");
@@ -34,6 +63,9 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("block.mystias_izakaya.frying_pan", "Frying Pan");
         add("block.mystias_izakaya.steamer", "Steamer");
         add("block.mystias_izakaya.grill", "Grill");
+
+        add("block.mystias_izakaya.table", "Table");
+        add("tooltip.mystias_izakaya.table", "A table for feed customers");
 
         add("death.attack.chili", "%1$s Killed by the spiciness");
         add("death.attack.chili.item", "%1$s was killed by %2$s using %3$s ");
@@ -692,6 +724,9 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.yue_bing", "Moon Cake");
         add("tooltip.mystias_izakaya.yue_bing","Ei??Why you got it....Have fun with the game!");
         add("item.mystias_izakaya.ledger", "Ledger");
-        add("tooltip.mystias_izakaya.ledger","You can use this item overview turnover");
+        add("tooltip.mystias_izakaya.ledger","You can use this item overview your turnover§nRight click table to bound tables§nRight click Item Frame to bound Menu");
+        add("block.mystias_izakaya.telephone", "Telephone");
+        add("tooltip.mystias_izakaya.telephone","You can use this item to buy any things you want");
+
     }
 }

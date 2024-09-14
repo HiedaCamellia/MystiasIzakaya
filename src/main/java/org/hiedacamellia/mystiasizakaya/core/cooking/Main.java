@@ -9,6 +9,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.hiedacamellia.mystiasizakaya.core.cooking.get.GetTargets;
 import org.hiedacamellia.mystiasizakaya.integration.youkaihomecoming.IngredientsCompact;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
@@ -124,7 +125,7 @@ public class Main {
                     ItemStack raw = GetItemStack.getItemStack(world, pos, i);
                     raw = IngredientsCompact.execute(raw);
                     ingredients.add(raw);
-                    raws.add((Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(raw.getItem())).toString()));
+                    raws.add((Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(raw.getItem())).toString()));
                 } else {
                     ingredients.add(ItemStack.EMPTY);
                 }
@@ -146,7 +147,7 @@ public class Main {
 
             for (int i = 0; i < 5; i++) {
                 if (i < targets.size()) {
-                    ItemStack taget = new ItemStack(Objects.requireNonNull(BuiltInRegistries.ITEM.get(new ResourceLocation(((targets.get(i + page))).toLowerCase(Locale.ENGLISH)))));
+                    ItemStack taget = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(((targets.get(i + page))).toLowerCase(Locale.ENGLISH)))));
                     SetSlotItem.setSlotItem(world, pos, BuildTags.execute(taget, util, ingredients), 7 + i, 1);
                 } else {
                     SetSlotItem.setEmptySlot(world, pos, 7 + i);

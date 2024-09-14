@@ -17,6 +17,7 @@ import org.hiedacamellia.mystiasizakaya.content.common.inventory.TelephoneUiMenu
 import org.hiedacamellia.mystiasizakaya.core.entry.MIImageButton;
 import org.hiedacamellia.mystiasizakaya.core.entry.MIOutButton;
 import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
+import org.hiedacamellia.mystiasizakaya.core.network.MINetWork;
 import org.hiedacamellia.mystiasizakaya.core.network.TelephoneUiButton;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.hiedacamellia.mystiasizakaya.util.ItemUtil;
@@ -165,7 +166,7 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
                 .tooltip(Tooltip.create(Component.translatable("gui.mystias_izakaya.telephone_ui.refresh.desc"))).build();
 
         confirm = new Button.Builder(Component.translatable("gui.mystias_izakaya.telephone_ui.confirm"), e -> {
-            MystiasIzakaya.PACKET_HANDLER.sendToServer(new TelephoneUiButton(ItemUtil.fromStacks(out), new BlockPos(x, y, z),cost));
+            MINetWork.PACKET_HANDLER.sendToServer(new TelephoneUiButton(ItemUtil.fromStacks(out), new BlockPos(x, y, z),cost));
             //Debug.send(out.toString());
             out.clear();
             refreshOut();

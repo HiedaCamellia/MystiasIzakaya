@@ -21,6 +21,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import org.hiedacamellia.mystiasizakaya.registries.MIMenu;
+import org.hiedacamellia.mystiasizakaya.registries.MITag;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -83,7 +84,7 @@ public class KitchenwaresUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:ingredients")))){
+				if (stack.is(MITag.ingredientsKey)){
 					return true;
 				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
 					return true;
@@ -97,7 +98,7 @@ public class KitchenwaresUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:ingredients")))){
+				if (stack.is(MITag.ingredientsKey)){
 					return true;
 				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
 					return true;
@@ -112,7 +113,7 @@ public class KitchenwaresUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:ingredients")))){
+				if (stack.is(MITag.ingredientsKey)){
 					return true;
 				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
 					return true;
@@ -127,7 +128,7 @@ public class KitchenwaresUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:ingredients")))){
+				if (stack.is(MITag.ingredientsKey)){
 					return true;
 				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
 					return true;
@@ -142,7 +143,7 @@ public class KitchenwaresUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:ingredients")))){
+				if (stack.is(MITag.ingredientsKey)){
 					return true;
 				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
 					return true;

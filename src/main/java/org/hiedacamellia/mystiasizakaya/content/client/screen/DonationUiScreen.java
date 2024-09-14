@@ -14,6 +14,7 @@ import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.DonationUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 import org.hiedacamellia.mystiasizakaya.core.network.DonationUiButton;
+import org.hiedacamellia.mystiasizakaya.core.network.MINetWork;
 import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 import java.util.HashMap;
@@ -104,7 +105,7 @@ public class DonationUiScreen extends AbstractContainerScreen<DonationUiMenu> {
         this.addWidget(this.input);
 
         button_take_out = Button.builder(Component.translatable("gui.mystias_izakaya.donation_ui.button_take_out"), e -> {
-            MystiasIzakaya.PACKET_HANDLER.sendToServer(new DonationUiButton(0, x, y, z));
+            MINetWork.PACKET_HANDLER.sendToServer(new DonationUiButton(0, x, y, z));
             DonationUiButton.handleButtonAction(entity, 0, Pos.get(x, y, z));
 
         }).bounds(this.leftPos + 33, this.topPos + 100, 110, 20).build();

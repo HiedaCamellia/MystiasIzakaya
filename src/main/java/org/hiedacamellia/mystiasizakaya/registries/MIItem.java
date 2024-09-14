@@ -31,6 +31,7 @@ public class MIItem {
 
     //Util
     public static final RegistryObject<BlockItem> TELEPHONE = REGISTRY.register("telephone",() -> new BlockItem(MIBlock.TELEPHONE.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> TABLE = REGISTRY.register("table",() -> new BlockItem(MIBlock.TABLE.get(), new Item.Properties()));
     public static final RegistryObject<Item> LEDGER = REGISTRY.register("ledger", LedgerItem::new);
 
     public static final DeferredRegister<Item> Ingredients = DeferredRegister.create(ForgeRegistries.ITEMS, MystiasIzakaya.MODID);

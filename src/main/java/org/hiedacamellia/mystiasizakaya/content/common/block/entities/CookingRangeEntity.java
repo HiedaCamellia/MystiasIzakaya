@@ -26,11 +26,11 @@ import org.hiedacamellia.mystiasizakaya.registries.MIBlockEntitiy;
 import javax.annotation.Nullable;
 import java.util.stream.IntStream;
 
-public class CookingRange extends RandomizableContainerBlockEntity implements WorldlyContainer {
+public class CookingRangeEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
 	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(13, ItemStack.EMPTY);
 	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
 
-	public CookingRange(BlockPos position, BlockState state) {
+	public CookingRangeEntity(BlockPos position, BlockState state) {
 		super(MIBlockEntitiy.COOKING_RANGE.get(), position, state);
 	}
 

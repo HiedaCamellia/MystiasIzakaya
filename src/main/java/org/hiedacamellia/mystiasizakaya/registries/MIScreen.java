@@ -16,6 +16,7 @@ public class MIScreen {
 			MenuScreens.register(MIMenu.KITCHENWARES_UI.get(), KitchenwaresUiScreen::new);
 			MenuScreens.register(MIMenu.Donation_UI.get(), DonationUiScreen::new);
 			MenuScreens.register(MIMenu.LEDGER_UI.get(), LedgerUiScreen::new);
+			MenuScreens.register(MIMenu.TABLE_UI.get(), TableUiScreen::new);
 			MenuScreens.register(MIMenu.Telephone_UI.get(), TelephoneUiScreen::new);
 		});
 	}

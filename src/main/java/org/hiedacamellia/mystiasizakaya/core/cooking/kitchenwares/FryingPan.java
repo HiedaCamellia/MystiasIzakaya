@@ -155,7 +155,7 @@ public class FryingPan {
                 && raws.contains("mystias_izakaya:mian_fen")) {
             cuisines.add("mystias_izakaya:tong_luo_shao");
         }
-        if (raws.contains("mystias_izakaya:chun_chun.json")
+        if (raws.contains("mystias_izakaya:chun_chun")
                 && raws.contains("mystias_izakaya:ji_dan")) {
             cuisines.add("mystias_izakaya:xiang_chun_jian_bing");
         }

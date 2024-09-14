@@ -28,7 +28,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
-import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRange;
+import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRangeEntity;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.*;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.KitchenwaresUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.cooking.Init;
@@ -49,7 +49,7 @@ public class Kitchenwares extends RotatedPillarBlock implements EntityBlock {
             case "block.mystias_izakaya.frying_pan" -> new FryingPan(pos, state);
             case "block.mystias_izakaya.steamer" -> new Steamer(pos, state);
             case "block.mystias_izakaya.grill" -> new Grill(pos, state);
-            default -> new CookingRange(pos, state);
+            default -> new CookingRangeEntity(pos, state);
         };
     }
 

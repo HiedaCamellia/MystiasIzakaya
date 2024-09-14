@@ -10,10 +10,11 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class GiveEffectFromCuisines {
 	public static void execute(LevelAccessor world, ItemStack itemstack, LivingEntity entity) {
-		String s = BuiltInRegistries.ITEM.getKey(itemstack.getItem()).toString();
+		String s = ForgeRegistries.ITEMS.getKey(itemstack.getItem()).toString();
 		switch (s) {
 			case "mystias_izakaya:bai_guo_luo_bu_pai_gu_tang":
 				break;

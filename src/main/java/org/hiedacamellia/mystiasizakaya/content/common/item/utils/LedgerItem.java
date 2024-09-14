@@ -6,6 +6,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -15,9 +16,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkHooks;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.DonationUiMenu;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.LedgerUiMenu;
 import org.jetbrains.annotations.NotNull;
 
@@ -31,20 +32,23 @@ public class LedgerItem extends Item {
     @Override
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, world, list, flag);
-        list.add(Component.literal("§7§o" + Component.translatable("tooltip.mystias_izakaya.ledger").getString() + "§r"));
+        String[] description = Component.translatable("tooltip.mystias_izakaya.ledger").getString().split("§n");
+        for (String line : description) {
+            list.add(Component.literal(line));
+        }
     }
 
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
         InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
         BlockPos pos = entity.getOnPos();
 
-        if (entity instanceof ServerPlayer player) {
+        if (entity.isShiftKeyDown()&&entity instanceof ServerPlayer player) {
             NetworkHooks.openScreen(player,new MenuProvider() {
                 @Override
                 public @NotNull Component getDisplayName() {
-                    return Component.literal("Account Book");
+                    return Component.literal("Ledger");
                 }
 
                 @Override
@@ -58,4 +62,10 @@ public class LedgerItem extends Item {
 
         return ar;
     }
+
+    @Override
+    public InteractionResult useOn(UseOnContext p_41427_) {
+        return InteractionResult.PASS;
+    }
+
 }

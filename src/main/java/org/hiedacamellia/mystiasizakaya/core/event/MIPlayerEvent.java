@@ -1,32 +1,46 @@
 package org.hiedacamellia.mystiasizakaya.core.event;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.*;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.PacketDistributor;
-import org.hiedacamellia.mystiasizakaya.Config;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
+import org.hiedacamellia.mystiasizakaya.content.common.block.entities.TableEntity;
+import org.hiedacamellia.mystiasizakaya.content.orders.Addorder;
+import org.hiedacamellia.mystiasizakaya.content.orders.Deleteorder;
+import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
+import org.hiedacamellia.mystiasizakaya.core.entry.MIItem;
+import org.hiedacamellia.mystiasizakaya.core.network.MINetWork;
+import org.hiedacamellia.mystiasizakaya.registries.MITag;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -143,15 +157,145 @@ public class MIPlayerEvent {
     public static void deleteOverTurnover(Player player) {
         List<String> turnover_pre = getTurnoverPre(player);
         List<Integer> turnover_cha = getTurnoverCha(player);
-        while (turnover_pre.size() > Config.MAX_OVERTURN.get()) {
+        while (turnover_pre.size() > CommonConfig.MAX_OVERTURN.get()) {
             turnover_pre.remove(0);
             turnover_cha.remove(0);
         }
     }
 
+    public static void addTable(Player player, BlockPos pos) {
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            List<BlockPos> tables = new ArrayList<>(variables.tables);
+            tables.add(pos);
+            variables.tables = tables;
+            variables.syncPlayerVariables(player);
+        });
+    }
+
+    public static void removeTable(Player player, BlockPos pos) {
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            List<BlockPos> tables = new ArrayList<>(variables.tables);
+            tables.remove(pos);
+            variables.tables = tables;
+            variables.syncPlayerVariables(player);
+        });
+    }
+
+    public static List<BlockPos> getTables(Player player) {
+        return player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()).tables;
+    }
+
+    public static void setTables(Player player, List<BlockPos> tables) {
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            variables.tables = tables;
+            variables.syncPlayerVariables(player);
+        });
+    }
+
+
+    public static void addMenu(Player player, BlockPos pos) {
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            List<BlockPos> menus = new ArrayList<>(variables.menus);
+            menus.add(pos);
+            variables.menus = menus;
+            variables.syncPlayerVariables(player);
+        });
+    }
+
+    public static void removeMenu(Player player, BlockPos pos) {
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            List<BlockPos> menus = new ArrayList<>(variables.menus);
+            menus.remove(pos);
+            variables.menus = menus;
+            variables.syncPlayerVariables(player);
+        });
+    }
+
+    public static List<BlockPos> getMenuBlockPos(Player player) {
+        return player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()).menus;
+    }
+
+    public static void setMenuBlockPos(Player player, List<BlockPos> menus) {
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            variables.menus = menus;
+            variables.syncPlayerVariables(player);
+        });
+    }
+
+    public static void addMenu(Player player, String menu) {
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            List<String> menus = new ArrayList<>(variables.menu);
+            menus.add(menu);
+            variables.menu = menus;
+            variables.syncPlayerVariables(player);
+        });
+    }
+
+    public static void removeMenu(Player player, String menu) {
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            List<String> menus = new ArrayList<>(variables.menu);
+            menus.remove(menu);
+            variables.menu = menus;
+            variables.syncPlayerVariables(player);
+        });
+    }
+
+    public static List<String> getMenus(Player player) {
+        return player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()).menu;
+    }
+
+    public static void setMenus(Player player, List<String> menus) {
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            variables.menu = menus;
+            variables.syncPlayerVariables(player);
+        });
+    }
+
+    public static void addMenuBeverages(Player player, String menu) {
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            List<String> menus = new ArrayList<>(variables.menubeverages);
+            menus.add(menu);
+            variables.menubeverages = menus;
+            variables.syncPlayerVariables(player);
+        });
+    }
+
+    public static void removeMenuBeverages(Player player, String menu) {
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            List<String> menus = new ArrayList<>(variables.menubeverages);
+            menus.remove(menu);
+            variables.menubeverages = menus;
+            variables.syncPlayerVariables(player);
+        });
+    }
+
+    public static List<String> getMenusBeverages(Player player) {
+        return player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()).menubeverages;
+    }
+
+    public static void setMenusBeverages(Player player, List<String> menus) {
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            variables.menubeverages = menus;
+            variables.syncPlayerVariables(player);
+        });
+    }
+
+    public static void setOnOpen(Player player, boolean on_open) {
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            variables.on_open = on_open;
+            variables.syncPlayerVariables(player);
+        });
+    }
+
+    public static boolean getOnOpen(Player player) {
+        return player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()).on_open;
+    }
+
+
+
     @SubscribeEvent
     public static void init(FMLCommonSetupEvent event) {
-        MystiasIzakaya.addNetworkMessage(PlayerVariablesSyncMessage.class, PlayerVariablesSyncMessage::buffer, PlayerVariablesSyncMessage::new, PlayerVariablesSyncMessage::handler);
+        MINetWork.addNetworkMessage(PlayerVariablesSyncMessage.class, PlayerVariablesSyncMessage::buffer, PlayerVariablesSyncMessage::new, PlayerVariablesSyncMessage::handler);
     }
 
     @SubscribeEvent
@@ -189,6 +333,194 @@ public class MIPlayerEvent {
             clone.ordersbeverages = original.ordersbeverages;
             clone.turnover_pre = original.turnover_pre;
             clone.trunover_cha = original.trunover_cha;
+            clone.tables = original.tables;
+            clone.menu = original.menu;
+            clone.menubeverages = original.menubeverages;
+            clone.menus = original.menus;
+            clone.on_open = original.on_open;
+        }
+
+        @SubscribeEvent
+        public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+            Player player = event.player;
+            if (event.phase == TickEvent.Phase.END) {
+                if (player instanceof ServerPlayer serverPlayer) {
+                    int telecolddown = getTelecolddown(serverPlayer);
+                    if (telecolddown > 0) {
+                        setTelecolddown(serverPlayer, telecolddown - 1);
+                    }
+                }
+            }
+            //
+            if(player instanceof ServerPlayer serverPlayer)
+            {
+
+                List<BlockPos> tables = getTables(serverPlayer);
+                List<String> cuisineList = getOrders(serverPlayer);
+                List<String> beverageList = getOrdersBeverages(serverPlayer);
+                if(tables.size()<8||cuisineList.size()<8||beverageList.size()<8){
+                    if(tables.size()<8){
+                        for(int i=tables.size();i<8;i++){
+                            tables.add(new BlockPos(-1,-1,-1));
+                        }
+                    }
+                    if(cuisineList.size()<8){
+                        for(int i=cuisineList.size();i<8;i++){
+                            cuisineList.add("minecraft:air");
+                        }
+                    }
+                    if(beverageList.size()<8){
+                        for(int i=beverageList.size();i<8;i++){
+                            beverageList.add("minecraft:air");
+                        }
+                    }
+                    setTables(serverPlayer,tables);
+                    setOrders(serverPlayer,cuisineList);
+                    setOrdersBeverages(serverPlayer,beverageList);
+                }
+
+//
+//            Debug.getLogger().debug(player.getData(MIAttachment.MI_ON_OPEN).toString());
+//            Debug.getLogger().debug(tables.toString());
+
+                if(getOnOpen(serverPlayer)){
+
+                    Set<ItemStack> beverages = new LinkedHashSet<>();
+                    Set<ItemStack> cuisines = new LinkedHashSet<>();
+                    getMenus(serverPlayer).forEach(s -> beverages.add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(s)).getDefaultInstance()));
+                    getMenusBeverages(serverPlayer).forEach(s -> cuisines.add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(s)).getDefaultInstance()));
+                    beverages.remove(ItemStack.EMPTY);
+                    cuisines.remove(ItemStack.EMPTY);
+                    if(beverages.isEmpty()||cuisines.isEmpty()){
+                        return;
+                    }
+
+                    List<ItemStack> beverageslist = new ArrayList<>(beverages);
+                    List<ItemStack> cuisineslist = new ArrayList<>(cuisines);
+//
+//                Debug.getLogger().debug(beveragesList.toString());
+//                Debug.getLogger().debug(cuisinesList.toString());
+
+                    for(BlockPos pos : tables){
+                        if(pos.equals(new BlockPos(-1,-1,-1))){
+                            continue;
+                        }
+                        if(Math.random()<0.0029){
+                            if(beverageList.get(tables.indexOf(pos)).equals("minecraft:air")&&cuisineList.get(tables.indexOf(pos)).equals("minecraft:air")){
+                                ItemStack beverage = beverageslist.get((int) (Math.random() * beverages.size()));
+                                ItemStack cuisine = cuisineslist.get((int) (Math.random() * cuisines.size()));
+                                if(beverage.isEmpty()||cuisine.isEmpty()){
+                                    return;
+                                }
+                                Addorder.execute(beverage, cuisine, tables.indexOf(pos), serverPlayer);
+                            }
+                            break;
+                        }
+                    }
+                }
+                for(int i = 0; i < tables.size();i++){
+                    if(tables.get(i).equals(new BlockPos(-1,-1,-1))){
+                        continue;
+                    }
+//                Debug.getLogger().debug(tables.get(i).toString());
+
+                    ItemStack cuisine = ForgeRegistries.ITEMS.getValue(new ResourceLocation((cuisineList.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                    ItemStack beverage = ForgeRegistries.ITEMS.getValue(new ResourceLocation((beverageList.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                    Level level = serverPlayer.level();
+                    if(beverage.isEmpty()||cuisine.isEmpty()){
+                        continue;
+                    }
+                    BlockEntity blockEntity =  level.getBlockEntity(tables.get(i));
+                    if (blockEntity != null) {
+                        Debug.getLogger().debug(blockEntity.toString());
+                    }
+
+                    if(blockEntity instanceof TableEntity tableEntity){
+                        List<ItemStack> itemStacks= tableEntity.getItems();
+                        Debug.getLogger().debug(itemStacks.toString());
+                        Debug.getLogger().debug(cuisine.toString());
+                        Debug.getLogger().debug(beverage.toString());
+
+                        if(ItemStack.isSameItem(itemStacks.get(0),cuisine)&&ItemStack.isSameItem(itemStacks.get(1),beverage)){
+                            Deleteorder.execute(i,serverPlayer);
+                            tableEntity.clearContent();
+                            level.setBlockEntity(tableEntity);
+//                          level.sendBlockUpdated(tables.get(i),level.getBlockState(tables.get(i)),level.getBlockState(tables.get(i)),3);
+                            serverPlayer.closeContainer();
+                            int cost = cuisine.getOrCreateTag().getInt("cost")+beverage.getOrCreateTag().getInt("cost");
+                            setBalance(serverPlayer,getBalance(serverPlayer)+cost);
+                            addTurnover(serverPlayer,"from_table",cost);
+                        }
+                    }
+                }
+            }
+
+        }
+
+        @SubscribeEvent
+        public static void onPlayerEntityInteract(PlayerInteractEvent.EntityInteractSpecific event) {
+            Player player = event.getEntity();
+            Entity entity = event.getTarget();
+
+
+            if (player instanceof ServerPlayer serverPlayer && entity instanceof ItemFrame itemFrame) {
+
+
+                BlockPos blockPos = itemFrame.getPos();
+                ItemStack itemStack = itemFrame.getItem();
+
+                if (itemStack.getItem() instanceof MIItem miItem) {
+                    ResourceLocation key = ForgeRegistries.ITEMS.getKey(miItem);
+
+                    List<BlockPos> blockPosList = getMenuBlockPos(serverPlayer);
+                    List<String> cuisineList = getMenus(serverPlayer);
+                    List<String> beverageList = getMenusBeverages(serverPlayer);
+                    if (blockPosList.size() < 8) {
+                        for (int i = blockPosList.size() - 1; i < 8; i++) {
+                            blockPosList.add(new BlockPos(-1, -1, -1));
+                            cuisineList.add("minecraft:air");
+                            beverageList.add("minecraft:air");
+                        }
+                    }
+
+
+                    for (int i = 0; i < blockPosList.size(); i++) {
+                        BlockPos pos = blockPosList.get(i);
+                        if ((pos.equals(blockPos) || pos.above().equals(blockPos) || pos.below().equals(blockPos)) && serverPlayer.isShiftKeyDown()) {
+                            blockPosList.set(i, new BlockPos(-1, -1, -1));
+                            cuisineList.set(i, "minecraft:air");
+                            beverageList.set(i, "minecraft:air");
+                            serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.unbound", i + 1, blockPos.getX(), blockPos.getY(), blockPos.getZ()));
+                            break;
+                        }
+                        if ((pos.equals(blockPos) || pos.above().equals(blockPos) || pos.below().equals(blockPos)) && !serverPlayer.isShiftKeyDown()) {
+                            if (itemStack.is(MITag.cuisinesKey) && !cuisineList.contains(key.toString())) {
+                                serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.cuisine", itemStack.getDisplayName().getString(), i + 1));
+                                cuisineList.set(i, key.toString());
+                            }
+                            if (itemStack.is(MITag.beveragesKey) && !beverageList.contains(key.toString())) {
+                                serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.beverage", itemStack.getDisplayName().getString(), i + 1));
+                                beverageList.set(i, key.toString());
+                            }
+                            break;
+                        }
+                        if (Objects.equals(pos, new BlockPos(-1, -1, -1)) && !serverPlayer.isShiftKeyDown()) {
+                            blockPosList.set(i, blockPos);
+                            serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.bound", i + 1, blockPos.getX(), blockPos.getY(), blockPos.getZ()));
+                            break;
+                        }
+                    }
+                    setMenuBlockPos(serverPlayer, blockPosList);
+                    setMenus(serverPlayer, cuisineList);
+                    setMenusBeverages(serverPlayer, beverageList);
+
+                    Debug.getLogger().debug(blockPosList.toString());
+                    Debug.getLogger().debug(cuisineList.toString());
+                    Debug.getLogger().debug(beverageList.toString());
+
+                    event.setCancellationResult(InteractionResult.SUCCESS);
+                }
+            }
         }
     }
 
@@ -226,8 +558,13 @@ public class MIPlayerEvent {
     public static class PlayerVariables {
         public double balance = 0;
         public int telecolddown =0;
+        public boolean on_open = false;
         public List<String> orders = List.of("minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air","minecraft:air");
         public List<String> ordersbeverages = List.of("minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air","minecraft:air");
+        public List<BlockPos> tables = new ArrayList<>();
+        public List<String> menu = List.of("minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air","minecraft:air");
+        public List<String> menubeverages = List.of("minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air", "minecraft:air","minecraft:air");
+        public List<BlockPos> menus = new ArrayList<>();
         public List<String> turnover_pre = List.of();
         public List<Integer> trunover_cha =List.of();
 
@@ -239,7 +576,7 @@ public class MIPlayerEvent {
 //            Debug.getLogger().debug("turnover_pre: " + turnover_pre);
 //            Debug.getLogger().debug("turnover_cha: " + trunover_cha);
             if (entity instanceof ServerPlayer serverPlayer)
-                MystiasIzakaya.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> serverPlayer), new PlayerVariablesSyncMessage(this));
+                MINetWork.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> serverPlayer), new PlayerVariablesSyncMessage(this));
         }
 
         public CompoundTag writeNBT() {
@@ -253,6 +590,11 @@ public class MIPlayerEvent {
             String turnover_pre_string = String.join(",", turnover_pre);
             nbt.putString("turnover_pre", turnover_pre_string);
             nbt.putIntArray("turnover_cha", trunover_cha);
+            nbt.putString("tables", BlockPos2String(tables));
+            nbt.putString("menu", String.join(",", menu));
+            nbt.putString("menubeverages", String.join(",", menubeverages));
+            nbt.putString("menus", BlockPos2String(menus));
+            nbt.putBoolean("on_open", on_open);
             return nbt;
         }
 
@@ -266,6 +608,11 @@ public class MIPlayerEvent {
             String turnover_pre_string = Tag.getString("turnover_pre");
             turnover_pre = new ArrayList<>(List.of(turnover_pre_string.split(",")));
             trunover_cha = Arrays.stream(Tag.getIntArray("turnover_cha")).boxed().toList();
+            tables = String2BlockPosList(Tag.getString("tables"));
+            menu = new ArrayList<>(List.of(Tag.getString("menu").split(",")));
+            menubeverages = new ArrayList<>(List.of(Tag.getString("menubeverages").split(",")));
+            menus = String2BlockPosList(Tag.getString("menus"));
+            on_open = Tag.getBoolean("on_open");
         }
     }
 
@@ -298,10 +645,43 @@ public class MIPlayerEvent {
                         variables.ordersbeverages = message.data.ordersbeverages;
                         variables.turnover_pre = message.data.turnover_pre;
                         variables.trunover_cha = message.data.trunover_cha;
+                        variables.tables = message.data.tables;
+                        variables.menu = message.data.menu;
+                        variables.menubeverages = message.data.menubeverages;
+                        variables.menus = message.data.menus;
+                        variables.on_open = message.data.on_open;
                     }
                 }
             });
             context.setPacketHandled(true);
         }
+    }
+
+    private static String BlockPos2String(BlockPos pos){
+        return pos.getX() + "," + pos.getY() + "," + pos.getZ();
+    }
+    private static String BlockPos2String(List<BlockPos> pos){
+        if(pos.isEmpty())
+            return "";
+        StringBuilder sb = new StringBuilder();
+        for (BlockPos p : pos){
+            sb.append(BlockPos2String(p));
+            sb.append(";");
+        }
+        return sb.toString();
+    }
+    private static BlockPos String2BlockPos(String str){
+        String[] pos = str.split(",");
+        return new BlockPos(Integer.parseInt(pos[0]), Integer.parseInt(pos[1]), Integer.parseInt(pos[2]));
+    }
+    private static List<BlockPos> String2BlockPosList(String str){
+        if(str.isEmpty())
+            return new ArrayList<>();
+        List<BlockPos> pos = new ArrayList<>();
+        String[] posList = str.split(";");
+        for (String p : posList){
+            pos.add(String2BlockPos(p));
+        }
+        return pos;
     }
 }

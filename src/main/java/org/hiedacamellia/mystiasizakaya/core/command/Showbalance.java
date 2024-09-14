@@ -10,7 +10,7 @@ import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.hiedacamellia.mystiasizakaya.Config;
+import org.hiedacamellia.mystiasizakaya.core.config.ClientConfig;
 
 @Mod.EventBusSubscriber
 public class Showbalance {
@@ -28,7 +28,7 @@ public class Showbalance {
 					{
 						boolean set = BoolArgumentType.getBool(arguments, "logic");
 
-						Config.SHOW_BALANCE.set(set);
+						ClientConfig.SHOW_BALANCE.set(set);
 
 					}
 					return 0;

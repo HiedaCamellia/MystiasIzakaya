@@ -14,5 +14,6 @@ public class MIMenu {
 	public static final RegistryObject<MenuType<KitchenwaresUiMenu>> KITCHENWARES_UI = REGISTRY.register("kitchenwares_ui", () -> IForgeMenuType.create(KitchenwaresUiMenu::new));
 	public static final RegistryObject<MenuType<DonationUiMenu>> Donation_UI = REGISTRY.register("donation_ui", () -> IForgeMenuType.create(DonationUiMenu::new));
 	public static final RegistryObject<MenuType<LedgerUiMenu>> LEDGER_UI = REGISTRY.register("ledger_ui", () -> IForgeMenuType.create(LedgerUiMenu::new));
+	public static final RegistryObject<MenuType<TableUiMenu>> TABLE_UI = REGISTRY.register("table_ui", () -> IForgeMenuType.create(TableUiMenu::new));
 	public static final RegistryObject<MenuType<TelephoneUiMenu>> Telephone_UI = REGISTRY.register("telephone_ui", () -> IForgeMenuType.create(TelephoneUiMenu::new));
 }

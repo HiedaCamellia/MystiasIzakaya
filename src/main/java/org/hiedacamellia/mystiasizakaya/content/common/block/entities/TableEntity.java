@@ -16,7 +16,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
+import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingRangeUiMenu;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.TableUiMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlockEntitiy;
@@ -30,22 +30,22 @@ public class TableEntity extends RandomizableContainerBlockEntity implements Wor
 	private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
 
 	public TableEntity(BlockPos position, BlockState state) {
-		super(MIBlockEntitiy.COOKING_RANGE.get(), position, state);
+		super(MIBlockEntitiy.TABLE.get(), position, state);
 	}
 
 	@Override
-	public void loadAdditional(@NotNull CompoundTag compound, HolderLookup.@NotNull Provider lookupProvider) {
-		super.loadAdditional(compound, lookupProvider);
+	public void load(CompoundTag compound) {
+		super.load(compound);
 		if (!this.tryLoadLootTable(compound))
 			this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-		ContainerHelper.loadAllItems(compound, this.stacks, lookupProvider);
+		ContainerHelper.loadAllItems(compound, this.stacks);
 	}
 
 	@Override
-	public void saveAdditional(@NotNull CompoundTag compound, HolderLookup.@NotNull Provider lookupProvider) {
-		super.saveAdditional(compound, lookupProvider);
+	public void saveAdditional(CompoundTag compound) {
+		super.saveAdditional(compound);
 		if (!this.trySaveLootTable(compound)) {
-			ContainerHelper.saveAllItems(compound, this.stacks, lookupProvider);
+			ContainerHelper.saveAllItems(compound, this.stacks);
 		}
 	}
 
@@ -56,9 +56,10 @@ public class TableEntity extends RandomizableContainerBlockEntity implements Wor
 	}
 
 	@Override
-	public @NotNull CompoundTag getUpdateTag(HolderLookup.@NotNull Provider lookupProvider) {
-		return this.saveWithFullMetadata(lookupProvider);
+	public CompoundTag getUpdateTag() {
+		return this.saveWithFullMetadata();
 	}
+
 
 	@Override
 	public int getContainerSize() {

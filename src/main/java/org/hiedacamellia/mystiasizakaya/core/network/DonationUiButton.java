@@ -101,7 +101,7 @@ public class DonationUiButton  {
     }
     @SubscribeEvent
     public static void registerMessage(FMLCommonSetupEvent event) {
-        MystiasIzakaya.addNetworkMessage(DonationUiButton.class, DonationUiButton::buffer, DonationUiButton::new, DonationUiButton::handler);
+        MINetWork.addNetworkMessage(DonationUiButton.class, DonationUiButton::buffer, DonationUiButton::new, DonationUiButton::handler);
     }
 
 }

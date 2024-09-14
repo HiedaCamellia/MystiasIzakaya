@@ -3,9 +3,11 @@ package org.hiedacamellia.mystiasizakaya.util;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ItemUtil {
     public static List<ItemStack> getStacks(List<String> orders_list) {
@@ -14,7 +16,7 @@ public class ItemUtil {
             if (order.isEmpty())
                 stacks.add(ItemStack.EMPTY);
             else
-                stacks.add(new ItemStack(BuiltInRegistries.ITEM.get(new ResourceLocation(order))));
+                stacks.add(new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(order)))));
         }
         if (stacks.size() < 8) {
             for (int i = stacks.size(); i < 8; i++) {

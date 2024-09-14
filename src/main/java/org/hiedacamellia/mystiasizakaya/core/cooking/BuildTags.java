@@ -30,7 +30,7 @@ public class BuildTags {
         try {
             targettags.sort(Comparator.naturalOrder());
         }catch (Exception e){
-            Debug.getLogger().atTrace().log("Failed to sort targettags for {}", Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(target.getItem())));
+            Debug.getLogger().atTrace().log("Failed to sort targettags for {}", Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(target.getItem())));
         }
         //烧香！本来这是有问题的，但是改了后再回滚，它就好了
         set.addAll(targettags);
@@ -40,7 +40,7 @@ public class BuildTags {
 
         ArrayList<String> rawslist = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            rawslist.add(Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(ingredients.get(i).getItem())).toString());
+            rawslist.add(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(ingredients.get(i).getItem())).toString());
         }
         rawslist.sort(Comparator.naturalOrder());
 

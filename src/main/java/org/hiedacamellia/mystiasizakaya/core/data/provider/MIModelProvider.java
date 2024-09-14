@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
@@ -28,19 +29,19 @@ public class MIModelProvider extends ItemModelProvider {
         singleTexture("frying_pan",this.mcLoc("item/generated"), "layer0",modLoc("item/you_guo"));
 
         getKnownIngredients().forEach(item -> {
-            String path = BuiltInRegistries.ITEM.getKey(item).getPath();
+            String path = ForgeRegistries.ITEMS.getKey(item).getPath();
             this.singleTexture(path, this.mcLoc("item/generated"), "layer0", this.modLoc("item/" + path));
         });
         getKnownCuisines().forEach(item -> {
-            String path = BuiltInRegistries.ITEM.getKey(item).getPath();
+            String path = ForgeRegistries.ITEMS.getKey(item).getPath();
             this.singleTexture(path, this.mcLoc("item/generated"), "layer0", this.modLoc("item/" + path));
         });
         getKnownBeverages().forEach(item -> {
-            String path = BuiltInRegistries.ITEM.getKey(item).getPath();
+            String path = ForgeRegistries.ITEMS.getKey(item).getPath();
             this.singleTexture(path, this.mcLoc("item/generated"), "layer0", this.modLoc("item/" + path));
         });
         getKnownOthers().forEach(item -> {
-            String path = BuiltInRegistries.ITEM.getKey(item).getPath();
+            String path = ForgeRegistries.ITEMS.getKey(item).getPath();
             this.singleTexture(path, this.mcLoc("item/generated"), "layer0", this.modLoc("item/" + path));
         });
 
