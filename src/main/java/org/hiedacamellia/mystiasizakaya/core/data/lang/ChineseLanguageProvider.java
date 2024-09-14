@@ -429,7 +429,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("tooltip.mystias_izakaya.liang_cai_diao_hua", "将鲜果蔬菜雕刻成鲜花的模样，虽然材料简单，但却非常考验刀工。");
         add("tooltip.mystias_izakaya.liao_li_tai", "冷盘子的首选！生鱼、生肉或沙拉的方便工具。它可以保持原料的“原汁原味”。");
         add("tooltip.mystias_izakaya.lin_ren_zhui", "桃花酿的酒。妖精之间有着饮一壶桃花酒,醉卧花间,就会遇到桃花仙的传说。这怎么看都是喝醉了吧?");
-        add("tooltip.mystias_izakaya.ling_xian", "我是谁…我为什么在这里。。。？");
+        add("tooltip.mystias_izakaya.reisen", "我是谁…我为什么在这里。。。？");
         add("tooltip.mystias_izakaya.liu_shui_su_mian", "比起好吃，流水素面更多的是好玩。");
         add("tooltip.mystias_izakaya.lu_cha", "最普通的饮料，给一滴酒都不能沾的弱小妖怪准备的。");
         add("tooltip.mystias_izakaya.lu_rou", "猎人们在山间猎回来的鹿肉，有点珍贵");
