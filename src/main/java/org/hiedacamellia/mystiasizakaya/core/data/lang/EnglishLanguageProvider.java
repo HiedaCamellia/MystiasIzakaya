@@ -197,7 +197,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.qiang_xiao_la_jiao_su", "Strong Capsaicin");
         add("item.mystias_izakaya.que_jiu", "Sparrow Sake");
         add("item.mystias_izakaya.re_song_bing", "Pancakes with Syrup");
-        add("item.mystias_izakaya.reisen", "Ling Xian");
+        add("item.mystias_izakaya.reisen", "Reisen");
         add("item.mystias_izakaya.ri_yue_xing", "Sangetsusei");
         add("item.mystias_izakaya.sai_xiong_zhang", "Imitation Bear Paw");
         add("item.mystias_izakaya.san_wen_yu", "Salmon");
@@ -433,7 +433,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.mystias_izakaya.liang_cai_diao_hua", "Fresh fruits and vegetables carved into the shape of a rose. What makes this dish difficult is not the ingredients, but the requisite knife skills.");
         add("tooltip.mystias_izakaya.liao_li_tai", "The go-to choice for cold plates! Handy tool for raw fish, raw meat, or salad. It can preserve the ingredients' \"original\" taste.");
         add("tooltip.mystias_izakaya.lin_ren_zhui", "Alcohol brewed with peach blossoms. There's a rumor amongst the fairies that if you drink a cup of peach blossom wine and fall asleep in the flowers, you'll encounter a saint of peach blossoms. Though, I'm pretty sure that's just them being drunk.");
-        add("tooltip.mystias_izakaya.ling_xian", "Who am I... Why am I here...?");
+        add("tooltip.mystias_izakaya.reisen", "Who am I... Why am I here...?");
         add("tooltip.mystias_izakaya.liu_shui_su_mian", "Rather than being tasty, these noodles are more about being fun.");
         add("tooltip.mystias_izakaya.lu_cha", "The most common drink for the weak youkai who can't even take a single drop of alcohol.");
         add("tooltip.mystias_izakaya.lu_rou", "Venison hunted from the mountains. Somewhat rare.");
