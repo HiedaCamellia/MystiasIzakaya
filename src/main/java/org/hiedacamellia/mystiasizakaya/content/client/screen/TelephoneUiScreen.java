@@ -14,6 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.TelephoneUiMenu;
+import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.core.entry.MIImageButton;
 import org.hiedacamellia.mystiasizakaya.core.entry.MIOutButton;
 import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
@@ -22,6 +23,7 @@ import org.hiedacamellia.mystiasizakaya.core.network.TelephoneUiButton;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.hiedacamellia.mystiasizakaya.util.ItemUtil;
 import org.hiedacamellia.mystiasizakaya.util.RandomItems;
+import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -166,7 +168,16 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
                 .tooltip(Tooltip.create(Component.translatable("gui.mystias_izakaya.telephone_ui.refresh.desc"))).build();
 
         confirm = new Button.Builder(Component.translatable("gui.mystias_izakaya.telephone_ui.confirm"), e -> {
-            MINetWork.PACKET_HANDLER.sendToServer(new TelephoneUiButton(ItemUtil.fromStacks(out), new BlockPos(x, y, z),cost));
+            Debug.getLogger().debug(out.toString());
+            Debug.getLogger().debug(ItemUtil.fromStacks(out).toString());
+            Debug.getLogger().debug(Pos.get(x, y, z).toString());
+            Debug.getLogger().debug(String.valueOf(cost));
+            try{
+                MINetWork.PACKET_HANDLER.sendToServer(new TelephoneUiButton(ItemUtil.mapFromStacks(out), Pos.get(x, y, z),cost));
+                TelephoneUiButton.handleButtonAction(entity, new BlockPos(x, y, z), out, cost);
+            }catch (Exception exception){
+                Debug.getLogger().trace(String.valueOf(exception));
+            }
             //Debug.send(out.toString());
             out.clear();
             refreshOut();
@@ -217,6 +228,7 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
         }
 
         for (int i = 0; i < itemStacksIn.size(); i++) {
+            itemStacksIn.get(i).inventoryTick(world, entity, 0,  false);
             select.get(i).setItemStack(itemStacksIn.get(i));
             select.get(i).setRate(0.6+0.4*Math.random());
             int cost = (int) (itemStacksIn.get(i).getOrCreateTag().getInt("cost")*select.get(i).getRate());

@@ -80,13 +80,13 @@ public class Telephone extends Block {
 		super.use(blockstate, world, pos, entity,hand, hit);
 
 
-		int tick = MIPlayerEvent.getTelecolddown(entity);
-		if(tick>0){
-			entity.sendSystemMessage(Component.translatable("message.mystiasizakaya.telephone.colddown",tick/20).withStyle(ChatFormatting.RED));
-			return InteractionResult.FAIL;
-		}
-
 		if (entity instanceof ServerPlayer player) {
+			int tick = MIPlayerEvent.getTelecolddown(player);
+			if(tick>0){
+				player.sendSystemMessage(Component.translatable("message.mystiasizakaya.telephone.colddown",tick/20).withStyle(ChatFormatting.RED));
+				return InteractionResult.FAIL;
+			}
+
 			NetworkHooks.openScreen(player, new MenuProvider() {
 				@Override
 				public @NotNull Component getDisplayName() {
