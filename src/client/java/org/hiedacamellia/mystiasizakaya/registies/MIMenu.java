@@ -3,7 +3,6 @@ package org.hiedacamellia.mystiasizakaya.registies;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.inventory.MenuType;
-import org.hiedacamellia.mystiasizakaya.client.inventory.*;
 import org.hiedacamellia.mystiasizakaya.client.screen.*;
 import org.hiedacamellia.mystiasizakaya.content.inventory.*;
 

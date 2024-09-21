@@ -11,7 +11,7 @@ public class MystiasIzakaya implements ModInitializer {
 
 	public MystiasIzakaya() {
 
-		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);
+		//ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);
 	}
 
 	@Override
