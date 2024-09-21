@@ -1,4 +1,4 @@
-package org.hiedacamellia.mystiasizakaya.content.client.screen;
+package org.hiedacamellia.mystiasizakaya.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;

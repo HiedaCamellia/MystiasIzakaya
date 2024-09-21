@@ -1,4 +1,4 @@
-package org.hiedacamellia.mystiasizakaya.content.client.blockentityrender;
+package org.hiedacamellia.mystiasizakaya.client.blockentityrender;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

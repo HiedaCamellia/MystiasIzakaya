@@ -1,24 +1,28 @@
 package org.hiedacamellia.mystiasizakaya.registries;
 
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.common.block.blocks.*;
 
 public class MIBlock {
-	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,MystiasIzakaya.MODID);
-	public static final RegistryObject<Block> COOKING_RANGE = BLOCKS.register("cooking_range", CookingRange::new);
-	public static final RegistryObject<Block> DONATION = BLOCKS.register("donation", Donation::new);
 
-	public static final RegistryObject<Kitchenwares> CUTTING_BOARD = BLOCKS.register("cutting_board", Kitchenwares::new);
-	public static final RegistryObject<Kitchenwares> BOILING_POT = BLOCKS.register("boiling_pot", Kitchenwares::new);
-	public static final RegistryObject<Kitchenwares> FRYING_PAN = BLOCKS.register("frying_pan", Kitchenwares::new);
-	public static final RegistryObject<Kitchenwares> STEAMER = BLOCKS.register("steamer", Kitchenwares::new);
-	public static final RegistryObject<Kitchenwares> GRILL = BLOCKS.register("grill", Kitchenwares::new);
+	public static final Block COOKING_RANGE = Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(MystiasIzakaya.MODID, "cooking_range"), new CookingRange());
+	public static final Block DONATION = Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(MystiasIzakaya.MODID, "donation"), new Donation());
 
-	public static final RegistryObject<Block> TELEPHONE = BLOCKS.register("telephone", Telephone::new);
-	public static final RegistryObject<Block> TABLE = BLOCKS.register("table", TableBlock::new);
+	public static final Kitchenwares CUTTING_BOARD = Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(MystiasIzakaya.MODID, "cutting_board"), new Kitchenwares());
+	public static final Kitchenwares BOILING_POT = Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(MystiasIzakaya.MODID, "boiling_pot"), new Kitchenwares());
+	public static final Kitchenwares FRYING_PAN = Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(MystiasIzakaya.MODID, "frying_pan"), new Kitchenwares());
+	public static final Kitchenwares STEAMER = Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(MystiasIzakaya.MODID, "steamer"), new Kitchenwares());
+	public static final Kitchenwares GRILL = Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(MystiasIzakaya.MODID, "grill"), new Kitchenwares());
 
+	public static final Block TELEPHONE = Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(MystiasIzakaya.MODID, "telephone"), new Telephone());
+	public static final Block TABLE = Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(MystiasIzakaya.MODID, "table"), new TableBlock());
+
+	public static void register(){
+
+	}
 }

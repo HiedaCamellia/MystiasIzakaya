@@ -1,5 +1,5 @@
 
-package org.hiedacamellia.mystiasizakaya.content.common.inventory;
+package org.hiedacamellia.mystiasizakaya.client.inventory;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class TelephoneUiMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
+public class LedgerUiMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
 	public final static HashMap<String, Object> guistate = new HashMap<>();
 	public final Level world;
 	public final Player entity;
@@ -33,8 +33,8 @@ public class TelephoneUiMenu extends AbstractContainerMenu implements Supplier<M
 	private Entity boundEntity = null;
 	private BlockEntity boundBlockEntity = null;
 
-	public TelephoneUiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(MIMenu.Telephone_UI.get(), id);
+	public LedgerUiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+		super(MIMenu.LEDGER_UI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStackHandler(0);

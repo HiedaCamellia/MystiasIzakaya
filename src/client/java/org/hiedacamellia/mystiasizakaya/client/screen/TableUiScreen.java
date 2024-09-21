@@ -1,23 +1,16 @@
-package org.hiedacamellia.mystiasizakaya.content.client.screen;
+package org.hiedacamellia.mystiasizakaya.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.level.Level;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.TableUiMenu;
-import org.hiedacamellia.mystiasizakaya.core.cooking.ui.Lefttime;
-import org.hiedacamellia.mystiasizakaya.core.cooking.ui.Status;
 import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
-import org.hiedacamellia.mystiasizakaya.core.network.CookingRangeUiButton;
-import org.hiedacamellia.mystiasizakaya.util.ButtunShow;
-import org.hiedacamellia.mystiasizakaya.util.TargetsText;
 import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 import java.util.HashMap;

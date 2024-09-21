@@ -1,7 +1,6 @@
 package org.hiedacamellia.mystiasizakaya.core.config;
 
 
-import net.minecraftforge.common.ForgeConfigSpec;
 
 public class CommonConfig
 {

@@ -1,5 +1,5 @@
 
-package org.hiedacamellia.mystiasizakaya.content.client.overlay;
+package org.hiedacamellia.mystiasizakaya.client.overlay;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;

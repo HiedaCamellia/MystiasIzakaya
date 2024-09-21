@@ -1,9 +1,8 @@
 {
 	"required": true,
-	"package": "com.example.mixin.client",
+	"package": "org.hiedacamellia.mystiasizakaya.core.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"client": [
-		"ExampleClientMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

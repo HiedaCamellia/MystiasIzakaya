@@ -3,7 +3,6 @@ package org.hiedacamellia.mystiasizakaya.content.common.block.entities;
 import io.netty.buffer.Unpooled;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
@@ -22,8 +21,6 @@ import org.hiedacamellia.mystiasizakaya.content.common.inventory.TableUiMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlockEntitiy;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.stream.IntStream;
 
 public class TableEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
 	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(2, ItemStack.EMPTY);

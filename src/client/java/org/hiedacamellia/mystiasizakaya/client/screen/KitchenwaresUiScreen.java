@@ -1,4 +1,4 @@
-package org.hiedacamellia.mystiasizakaya.content.client.screen;
+package org.hiedacamellia.mystiasizakaya.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
@@ -10,7 +10,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.KitchenwaresUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.cooking.ui.Lefttime;
 import org.hiedacamellia.mystiasizakaya.core.cooking.ui.Status;

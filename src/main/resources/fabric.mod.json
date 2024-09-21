@@ -23,9 +23,9 @@
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
+      "mystias_izakaya.mixins.json",
 		{
-			"config": "modid.client.mixins.json",
+			"config": "mystias_izakaya.client.mixins.json",
 			"environment": "client"
 		}
 	],

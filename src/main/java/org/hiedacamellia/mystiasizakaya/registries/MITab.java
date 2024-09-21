@@ -1,37 +1,43 @@
 package org.hiedacamellia.mystiasizakaya.registries;
 
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 
 public class MITab {
-    public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MystiasIzakaya.MODID);
 
-    public static final RegistryObject<CreativeModeTab> MYSTIASS_IZAKAYA = REGISTRY.register("mystiass_izakaya",
-            () -> CreativeModeTab.builder().title(Component.translatable("item_group.mystias_izakaya.mystiass_izakaya")).icon(() -> new ItemStack(MIItem.ICON.get())).displayItems((parameters, tabData) -> {
-                        for (RegistryObject<? extends Item> item: MIItem.REGISTRY.getEntries()){
-                            tabData.accept(item.get());
+    public static final CreativeModeTab MYSTIASS_IZAKAYA = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,"mystiass_izakaya",
+             CreativeModeTab.builder(CreativeModeTab.Row.TOP,9).title(Component.translatable("item_group.mystias_izakaya.mystiass_izakaya")).icon(() -> new ItemStack(MIItem.ICON)).displayItems((parameters, tabData) -> {
+                        for (Item item: MIItem.common){
+                            tabData.accept(item);
                         }
-                        for (RegistryObject<? extends Item> item: MIItem.Ingredients.getEntries()){
-                            tabData.accept(item.get());
+                        for (Item item: MIItem.ingredients){
+                            tabData.accept(item);
                         }
-                        for (RegistryObject<? extends Item> item: MIItem.Cuisines.getEntries()){
-                            tabData.accept(item.get());
+                        for (Item item: MIItem.cuisines){
+                            tabData.accept(item);
                         }
-                        for (RegistryObject<? extends Item> item: MIItem.Beverages.getEntries()){
-                            tabData.accept(item.get());
+                        for (Item item: MIItem.beverages){
+                            tabData.accept(item);
                         }
-                        tabData.accept(MIItem.HEI_AN_WU_ZHI.get());
-                        tabData.accept(MIItem.REISEN.get());
-                        tabData.accept(MIItem.EN_1.get());
-                        tabData.accept(MIItem.EN_5.get());
-                        tabData.accept(MIItem.EN_10.get());
-                        tabData.accept(MIItem.IRON_KNIFE.get());
+
+
+
+
+                        tabData.accept(MIItem.HEI_AN_WU_ZHI);
+                        tabData.accept(MIItem.REISEN);
+                        tabData.accept(MIItem.EN_1);
+                        tabData.accept(MIItem.EN_5);
+                        tabData.accept(MIItem.EN_10);
+                        tabData.accept(MIItem.IRON_KNIFE);
                     })
                     .build());
+
+    public static void register(){
+    }
 }
