@@ -11,7 +11,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -65,7 +64,7 @@ public class MIItem extends Item {
     @Override
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, world, list, flag);
-        ResourceLocation key = ForgeRegistries.ITEMS.getKey(itemstack.getItem());
+        ResourceLocation key = BuiltInRegistries.ITEM.getKey(itemstack.getItem());
         if (!Screen.hasShiftDown()) {
             List<String> tags = itemstack.getOrCreateTag().getString("tags").isEmpty() ? new ArrayList<>() : List.of(itemstack.getOrCreateTag().getString("tags").split(","));
             List<String> ntags = itemstack.getOrCreateTag().getString("ntags").isEmpty() ? new ArrayList<>() : List.of(itemstack.getOrCreateTag().getString("ntags").split(","));

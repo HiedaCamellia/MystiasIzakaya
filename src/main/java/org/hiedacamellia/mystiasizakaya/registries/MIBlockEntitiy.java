@@ -3,7 +3,6 @@ package org.hiedacamellia.mystiasizakaya.registries;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import org.hiedacamellia.mystiasizakaya.content.client.blockentityrender.ProcessRender;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.*;
 
 public class MIBlockEntitiy {

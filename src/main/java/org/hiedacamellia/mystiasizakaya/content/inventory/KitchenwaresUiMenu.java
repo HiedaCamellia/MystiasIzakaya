@@ -1,5 +1,5 @@
 
-package org.hiedacamellia.mystiasizakaya.client.inventory;
+package org.hiedacamellia.mystiasizakaya.content.inventory;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;

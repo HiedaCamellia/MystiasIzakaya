@@ -15,11 +15,14 @@
 	"icon": "assets/modid/icon.png",
 	"environment": "*",
 	"entrypoints": {
+		"fabric-datagen": [
+			"org.hiedacamellia.mystiasizakaya.data.Data"
+		],
 		"main": [
-			"com.example.ExampleMod"
+			"org.hiedacamellia.mystiasizakaya.MystiasIzakaya"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+			"org.hiedacamellia.mystiasizakaya.MystiasIzakayaClient"
 		]
 	},
 	"mixins": [

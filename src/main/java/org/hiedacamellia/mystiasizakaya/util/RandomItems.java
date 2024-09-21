@@ -5,12 +5,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class RandomItems {
 
-    public static List<ItemStack> getRandomItems(Collection<RegistryObject<Item>> entries, int num) {
+    public static List<ItemStack> getRandomItems(List<Item> entries, int num) {
         List<ItemStack> items = new ArrayList<>();
         List<Integer> indexs = new ArrayList<>();
         for(int i=0;i<num;i++){

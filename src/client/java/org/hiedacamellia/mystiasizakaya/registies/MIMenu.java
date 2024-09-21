@@ -4,8 +4,8 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.inventory.MenuType;
 import org.hiedacamellia.mystiasizakaya.client.inventory.*;
-import org.hiedacamellia.mystiasizakaya.client.screen.CookingRangeUiScreen;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.*;
+import org.hiedacamellia.mystiasizakaya.client.screen.*;
+import org.hiedacamellia.mystiasizakaya.content.inventory.*;
 
 public class MIMenu {
 
@@ -19,10 +19,10 @@ public class MIMenu {
 
 	public static void register(){
 		MenuScreens.register(COOKING_RANGE_UI, CookingRangeUiScreen::new);
-		MenuScreens.register(KITCHENWARES_UI, KitchenwaresUiMenu::new);
-		MenuScreens.register(Donation_UI, DonationUiMenu::new);
-		MenuScreens.register(LEDGER_UI, LedgerUiMenu::new);
-		MenuScreens.register(TABLE_UI, TableUiMenu::new);
-		MenuScreens.register(Telephone_UI, TelephoneUiMenu::new);
+		MenuScreens.register(KITCHENWARES_UI, KitchenwaresUiScreen::new);
+		MenuScreens.register(Donation_UI, DonationUiScreen::new);
+		MenuScreens.register(LEDGER_UI, LedgerUiScreen::new);
+		MenuScreens.register(TABLE_UI, TableUiScreen::new);
+		MenuScreens.register(Telephone_UI, TelephoneUiScreen::new);
 	}
 }

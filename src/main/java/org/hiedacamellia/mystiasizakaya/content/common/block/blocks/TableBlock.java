@@ -2,6 +2,8 @@
 package org.hiedacamellia.mystiasizakaya.content.common.block.blocks;
 
 import io.netty.buffer.Unpooled;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -26,11 +28,8 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.network.NetworkHooks;
+import org.hiedacamellia.mystiasizakaya.content.inventory.TableUiMenu;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.TableEntity;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.TableUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.jetbrains.annotations.NotNull;
@@ -47,7 +46,7 @@ public class TableBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	@OnlyIn(Dist.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void appendHoverText(ItemStack itemstack, BlockGetter world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
 		if (!Screen.hasShiftDown()) {
@@ -78,8 +77,8 @@ public class TableBlock extends Block implements EntityBlock {
 	public InteractionResult use(BlockState blockstate, Level world, BlockPos blockPos, Player entity, InteractionHand hand, BlockHitResult hit) {
 		super.use(blockstate, world, blockPos, entity,hand, hit);
 		if (entity instanceof ServerPlayer player) {
-			if(!ItemStack.isSameItem(player.getMainHandItem(), MIItem.LEDGER.get().getDefaultInstance())) {
-				NetworkHooks.openScreen(player,new MenuProvider() {
+			if(!ItemStack.isSameItem(player.getMainHandItem(), MIItem.LEDGER.getDefaultInstance())) {
+				player.openMenu(new MenuProvider() {
 					@Override
 					public @NotNull Component getDisplayName() {
 						return Component.literal("Table");
@@ -89,9 +88,9 @@ public class TableBlock extends Block implements EntityBlock {
 					public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
 						return new TableUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(blockPos));
 					}
-				}, blockPos);
+				});
 			}
-			if(ItemStack.isSameItem(player.getMainHandItem(),MIItem.LEDGER.get().getDefaultInstance())) {
+			if(ItemStack.isSameItem(player.getMainHandItem(),MIItem.LEDGER.getDefaultInstance())) {
 				List<BlockPos> blockPosList = new ArrayList<>(MIPlayerEvent.getTables(player));
 				if (blockPosList.size() < 8) {
 					blockPosList.add(new BlockPos(-1, -1, -1));

@@ -11,7 +11,6 @@ public class MystiasIzakaya implements ModInitializer {
 
 	public MystiasIzakaya() {
 
-		MIRecipeType.SERIALIZERS.register(bus);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);
 	}
 
@@ -21,6 +20,7 @@ public class MystiasIzakaya implements ModInitializer {
 		MIBlockEntitiy.register();
 		MIItem.register();
 		MITab.register();
+		MIRecipeType.register();
 
 
 	}

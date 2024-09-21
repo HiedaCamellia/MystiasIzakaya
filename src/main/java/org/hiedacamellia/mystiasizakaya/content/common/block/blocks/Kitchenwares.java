@@ -27,10 +27,9 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.network.NetworkHooks;
+import org.hiedacamellia.mystiasizakaya.content.inventory.KitchenwaresUiMenu;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRangeEntity;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.*;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.KitchenwaresUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.cooking.Init;
 import org.hiedacamellia.mystiasizakaya.core.cooking.Main;
 import org.jetbrains.annotations.NotNull;
@@ -64,7 +63,7 @@ public class Kitchenwares extends RotatedPillarBlock implements EntityBlock {
     public @NotNull InteractionResult use(BlockState blockstate, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         super.use(blockstate, level, pos, player,hand, hit);
         if (player instanceof ServerPlayer serverPlayer) {
-            NetworkHooks.openScreen(serverPlayer, new MenuProvider() {
+            serverPlayer.openMenu( new MenuProvider() {
                 @Override
                 public Component getDisplayName() {
                     return Component.literal("Kitchenware");
@@ -74,7 +73,7 @@ public class Kitchenwares extends RotatedPillarBlock implements EntityBlock {
                 public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
                     return new KitchenwaresUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
                 }
-            }, pos);
+            });
         }
         if (!level.isClientSide()) {
             BlockEntity _blockEntity = level.getBlockEntity(pos);

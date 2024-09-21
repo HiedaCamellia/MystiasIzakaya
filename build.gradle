@@ -51,6 +51,7 @@ dependencies {
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation(include("io.github.fabricators_of_create.Porting-Lib:blocks:2.3.4+1.20.1"))
+	modImplementation(include("io.github.fabricators_of_create.Porting-Lib:config:2.3.4+1.20.1"))
 
 	// compile against the JEI API but do not include it at runtime
 	modCompileOnlyApi("mezz.jei:jei-${mc_version}-fabric-api:${jei_version}")
@@ -65,7 +66,9 @@ processResources {
 		expand "version": project.version
 	}
 }
-
+fabricApi {
+	configureDataGeneration()
+}
 tasks.withType(JavaCompile).configureEach {
 	it.options.release = 17
 }

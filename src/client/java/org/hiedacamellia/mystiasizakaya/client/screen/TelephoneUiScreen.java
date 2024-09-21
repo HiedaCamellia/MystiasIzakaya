@@ -12,7 +12,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.TelephoneUiMenu;
+import org.hiedacamellia.mystiasizakaya.content.inventory.TelephoneUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.core.entry.MIImageButton;
 import org.hiedacamellia.mystiasizakaya.core.entry.MIOutButton;
@@ -147,7 +147,7 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
             mode_i.disableRender();
             mode_b.disableRender();
             refreshItems();
-        }).pos(leftPos + 10, topPos + 30).itemStack(RandomItems.getRandomItems(MIItem.Ingredients.getEntries(), 1).get(0))
+        }).pos(leftPos + 10, topPos + 30).itemStack(RandomItems.getRandomItems(MIItem.ingredients, 1).get(0))
                 .tooltip(Tooltip.create(Component.translatable("gui.mystias_izakaya.telephone_ui.mode_i.desc"))).build();
 
         mode_b = new MIImageButton.builder(Component.empty(), e -> {
@@ -216,13 +216,13 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
     private void refreshItems() {
         List<ItemStack> itemStacksIn = new ArrayList<>();
         switch (mode){
-            case 1 -> itemStacksIn = RandomItems.getRandomItems(MIItem.Ingredients.getEntries(), 12);
-            case 2 -> itemStacksIn = RandomItems.getRandomItems(MIItem.Beverages.getEntries(), 6);
+            case 1 -> itemStacksIn = RandomItems.getRandomItems(MIItem.ingredients, 12);
+            case 2 -> itemStacksIn = RandomItems.getRandomItems(MIItem.beverages, 6);
         }
         if(mode==1){
             //有1.6%的概率
             if(Math.random()<0.016){
-                itemStacksIn.set((int)(Math.random()*12),new ItemStack(MIItem.REISEN.get()));
+                itemStacksIn.set((int)(Math.random()*12),new ItemStack(MIItem.REISEN));
             }
         }
 

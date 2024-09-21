@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.LedgerUiMenu;
+import org.hiedacamellia.mystiasizakaya.content.inventory.LedgerUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 

@@ -26,8 +26,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.network.NetworkHooks;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.DonationUiMenu;
+import org.hiedacamellia.mystiasizakaya.content.inventory.DonationUiMenu;
 
 import java.util.Collections;
 import java.util.List;
@@ -67,7 +66,7 @@ public class Donation extends Block  {
 	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
 		super.use(blockstate, world, pos, entity, hand, hit);
 		if (entity instanceof ServerPlayer player) {
-			NetworkHooks.openScreen(player, new MenuProvider() {
+			player.openMenu(new MenuProvider() {
 				@Override
 				public Component getDisplayName() {
 					return Component.literal("Donation");
@@ -77,7 +76,7 @@ public class Donation extends Block  {
 				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
 					return new DonationUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
 				}
-			}, pos);
+			});
 		}
 		return InteractionResult.SUCCESS;
 	}

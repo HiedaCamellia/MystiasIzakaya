@@ -9,7 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.TableUiMenu;
+import org.hiedacamellia.mystiasizakaya.content.inventory.TableUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 

@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingRangeUiMenu;
+import org.hiedacamellia.mystiasizakaya.content.inventory.CookingRangeUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.cooking.ui.Lefttime;
 import org.hiedacamellia.mystiasizakaya.core.cooking.ui.Status;
 import org.hiedacamellia.mystiasizakaya.core.network.CookingRangeUiButton;

@@ -2,6 +2,8 @@
 package org.hiedacamellia.mystiasizakaya.content.common.block.blocks;
 
 import io.netty.buffer.Unpooled;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -28,10 +30,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.network.NetworkHooks;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.TelephoneUiMenu;
+import org.hiedacamellia.mystiasizakaya.content.inventory.TelephoneUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 import org.jetbrains.annotations.NotNull;
 
@@ -44,7 +43,7 @@ public class Telephone extends Block {
 	}
 
 	@Override
-	@OnlyIn(Dist.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void appendHoverText(ItemStack itemstack, BlockGetter world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
 		if (!Screen.hasShiftDown()) {
@@ -83,7 +82,7 @@ public class Telephone extends Block {
 				return InteractionResult.FAIL;
 			}
 
-			NetworkHooks.openScreen(player, new MenuProvider() {
+			player.openMenu( new MenuProvider() {
 				@Override
 				public @NotNull Component getDisplayName() {
 					return Component.literal("Telephone");
@@ -93,7 +92,7 @@ public class Telephone extends Block {
 				public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
 					return new TelephoneUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
 				}
-			}, pos);
+			});
 		}
 		return InteractionResult.SUCCESS;
 	}
