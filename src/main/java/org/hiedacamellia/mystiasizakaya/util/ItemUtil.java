@@ -3,7 +3,6 @@ package org.hiedacamellia.mystiasizakaya.util;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.*;
 
@@ -14,7 +13,7 @@ public class ItemUtil {
             if (order.isEmpty())
                 stacks.add(ItemStack.EMPTY);
             else
-                stacks.add(new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(order)))));
+                stacks.add(new ItemStack(Objects.requireNonNull(BuiltInRegistries.ITEM.get(new ResourceLocation(order)))));
         }
         if (stacks.size() < 8) {
             for (int i = stacks.size(); i < 8; i++) {
@@ -39,7 +38,7 @@ public class ItemUtil {
             if (order.isEmpty())
                 stacks.add(ItemStack.EMPTY);
             else{
-                ItemStack stack = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(order))));
+                ItemStack stack = new ItemStack(Objects.requireNonNull(BuiltInRegistries.ITEM.get(new ResourceLocation(order))));
                 stack.setCount(orders_list.get(order));
                 stacks.add(stack);
             }
