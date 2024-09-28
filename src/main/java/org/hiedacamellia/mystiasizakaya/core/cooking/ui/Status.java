@@ -3,13 +3,20 @@ package org.hiedacamellia.mystiasizakaya.core.cooking.ui;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRangeEntity;
+import org.hiedacamellia.mystiasizakaya.content.common.block.entities.KitchenwaresEntity;
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
-import org.hiedacamellia.mystiasizakaya.util.GetValue;
-import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 public class Status {
 	public static String execute(LevelAccessor world, BlockPos pos) {
-		if (GetValue.getDouble(world, pos, "timeleft") != 0) {
+		BlockEntity blockEntity = world.getBlockEntity(pos);
+		int time=0;
+		if(blockEntity instanceof CookingRangeEntity cookingRangeEntity)
+			time = cookingRangeEntity.timeLeft;
+		if(blockEntity instanceof KitchenwaresEntity kitchenwaresEntity)
+			time = kitchenwaresEntity.timeLeft;
+		if (time != 0) {
 			return Component.translatable("status.mystias_izakaya.working").getString();
 		}
 		if (!GetItemStack.getItemStack(world, pos, 6).isEmpty())

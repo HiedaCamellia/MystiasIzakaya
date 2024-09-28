@@ -4,8 +4,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.items.IItemHandlerModifiable;
+import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRangeEntity;
+import org.hiedacamellia.mystiasizakaya.content.common.block.entities.KitchenwaresEntity;
 import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 import java.util.Arrays;
@@ -26,13 +26,12 @@ public class SetSlotItem {
     }
     public static void setSlotItem(BlockEntity be, ItemStack itemStack, int slotid, int count) {
         if (be != null) {
-            final int _slotid = slotid;
             final ItemStack _setstack = itemStack;
             _setstack.setCount(count);
-            be.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-                if (capability instanceof IItemHandlerModifiable)
-                    ((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack );
-            });
+            if(be instanceof CookingRangeEntity cookingRangeEntity)
+                cookingRangeEntity.stacks.set(slotid, _setstack);
+            if(be instanceof KitchenwaresEntity kitchenwaresEntity)
+                kitchenwaresEntity.stacks.set(slotid, _setstack);
         }
     }
     public static void querySlotItem(LevelAccessor world, double x, double y, double z, int slotid,int count) {
@@ -76,10 +75,10 @@ public class SetSlotItem {
     }
     public static void setEmptySlot(BlockEntity be, int slotid) {
         if (be != null) {
-            be.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-                if (capability instanceof IItemHandlerModifiable)
-                    ((IItemHandlerModifiable) capability).setStackInSlot(slotid, ItemStack.EMPTY);
-            });
+            if(be instanceof CookingRangeEntity cookingRangeEntity)
+                cookingRangeEntity.stacks.set(slotid, ItemStack.EMPTY);
+            if(be instanceof KitchenwaresEntity kitchenwaresEntity)
+                kitchenwaresEntity.stacks.set(slotid, ItemStack.EMPTY);
         }
     }
     public static void setEmptySlot(BlockEntity be, int[] slotid) {

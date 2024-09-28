@@ -15,23 +15,27 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.wrapper.SidedInvWrapper;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.KitchenwaresUiMenu;
-import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nullable;
+import org.hiedacamellia.mystiasizakaya.content.inventory.KitchenwaresUiMenu;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+
 import java.util.stream.IntStream;
 
 public abstract class KitchenwaresEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-    private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(13, ItemStack.EMPTY);
-    private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
+    public NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(13, ItemStack.EMPTY);
+    public int timeLeft ;
+    public int page ;
+    public int targets ;
+    public int totalTime;
 
     public KitchenwaresEntity(BlockEntityType<?> type, BlockPos position, BlockState state) {
         super(type, position, state);
+        timeLeft = 0;
+        page = 0;
+        targets = 0;
+        totalTime = 0;
     }
 
     @Override
@@ -124,17 +128,9 @@ public abstract class KitchenwaresEntity extends RandomizableContainerBlockEntit
     }
 
 
-    @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
-        if (!this.remove && facing != null && capability == ForgeCapabilities.ITEM_HANDLER)
-            return handlers[facing.ordinal()].cast();
-        return super.getCapability(capability, facing);
-    }
 
     @Override
     public void setRemoved() {
         super.setRemoved();
-        for (LazyOptional<? extends IItemHandler> handler : handlers)
-            handler.invalidate();
     }
 }

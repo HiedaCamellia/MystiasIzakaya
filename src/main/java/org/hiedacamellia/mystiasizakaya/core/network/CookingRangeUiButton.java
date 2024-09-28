@@ -7,20 +7,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.network.NetworkEvent;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingRangeUiMenu;
+import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRangeEntity;
+import org.hiedacamellia.mystiasizakaya.content.common.block.entities.KitchenwaresEntity;
+import org.hiedacamellia.mystiasizakaya.content.inventory.CookingRangeUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.cooking.Confirm;
-import org.hiedacamellia.mystiasizakaya.util.GetValue;
 import org.hiedacamellia.mystiasizakaya.util.SelectTarget;
 import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 import java.util.HashMap;
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CookingRangeUiButton {
 	private final int buttonID, x, y, z;
 
@@ -96,14 +92,28 @@ public class CookingRangeUiButton {
 		}
 		if (buttonID == 6) {
 			if (!world.isClientSide()) {
-				BlockPos _bp = pos;
-				BlockEntity _blockEntity = world.getBlockEntity(_bp);
-				BlockState _bs = world.getBlockState(_bp);
-				int page = GetValue.getInt(world, pos, "page");
-				int targets = GetValue.getInt(world, pos, "targets");
+                BlockEntity _blockEntity = world.getBlockEntity(pos);
+				BlockState _bs = world.getBlockState(pos);
+				int page =0;
+				if (_blockEntity instanceof CookingRangeEntity cookingRangeEntity)
+					page = cookingRangeEntity.page;
+				if (_blockEntity instanceof KitchenwaresEntity kitchenwaresEntity)
+					page = kitchenwaresEntity.page;
+
+				int targets = 0;
+				if (_blockEntity instanceof CookingRangeEntity cookingRangeEntity)
+					targets = cookingRangeEntity.targets;
+				if (_blockEntity instanceof KitchenwaresEntity kitchenwaresEntity)
+					targets = kitchenwaresEntity.targets;
+
 				if (_blockEntity != null && page + 5 < targets)
-					_blockEntity.getPersistentData().putInt("page", page + 1);
-				world.sendBlockUpdated(_bp, _bs, _bs, 3);
+				{
+					if(_blockEntity instanceof CookingRangeEntity cookingRangeEntity)
+						cookingRangeEntity.page = page + 1;
+					if(_blockEntity instanceof KitchenwaresEntity kitchenwaresEntity)
+						kitchenwaresEntity.page = page + 1;
+				}
+				world.sendBlockUpdated(pos, _bs, _bs, 3);
 			}
 		}
 		if (buttonID == 7) {
@@ -111,9 +121,17 @@ public class CookingRangeUiButton {
 				BlockPos _bp = pos;
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
-				int page = GetValue.getInt(world, pos, "page");
-				if (_blockEntity != null && page > 0)
-					_blockEntity.getPersistentData().putInt("page", page - 1);
+				int page =0;
+				if (_blockEntity instanceof CookingRangeEntity cookingRangeEntity)
+					page = cookingRangeEntity.page;
+				if (_blockEntity instanceof KitchenwaresEntity kitchenwaresEntity)
+					page = kitchenwaresEntity.page;
+				if (_blockEntity != null && page > 0) {
+					if(_blockEntity instanceof CookingRangeEntity cookingRangeEntity)
+						cookingRangeEntity.page = page - 1;
+					if(_blockEntity instanceof KitchenwaresEntity kitchenwaresEntity)
+						kitchenwaresEntity.page = page - 1;
+				}
 				world.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
 		}
