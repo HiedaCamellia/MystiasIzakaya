@@ -6,7 +6,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ public class GiveEffectFromTags {
 		List<String> ingredient = itemstack.getOrCreateTag().getString("ingredients").isEmpty() ? new ArrayList<>() : List.of(itemstack.getOrCreateTag().getString("ingredients").split(","));
 
 		if (ingredient.isEmpty()) {
-			ingredient.add(ForgeRegistries.ITEMS.getKey(itemstack.getItem()).toString());
+			ingredient.add(BuiltInRegistries.ITEM.getKey(itemstack.getItem()).toString());
 		}
 
         for (String t : ingredient) {
