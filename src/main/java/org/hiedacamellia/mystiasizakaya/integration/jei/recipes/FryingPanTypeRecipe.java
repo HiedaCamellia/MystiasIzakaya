@@ -11,8 +11,8 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 
 public class FryingPanTypeRecipe implements Recipe<SimpleContainer> {
 	private final ResourceLocation id;
@@ -108,7 +108,7 @@ public class FryingPanTypeRecipe implements Recipe<SimpleContainer> {
 			for (Ingredient ing : recipe.getIngredients()) {
 				ing.toNetwork(buf);
 			}
-			buf.writeItemStack(recipe.getResultItem(null), false);
+			buf.writeItem(recipe.getResultItem(null));
 		}
 	}
 }

@@ -25,7 +25,7 @@ public class StreamerTypeRecipeCategory implements IRecipeCategory<StreamerTypeR
 	public StreamerTypeRecipeCategory(IGuiHelper helper) {
 		IDrawableBuilder drawableBuilder = helper.drawableBuilder(TEXTURE, 0, 0, 176, 87).setTextureSize(176, 87);
 		this.background = drawableBuilder.build();
-		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(MIItem.STEAMER.get()));
+		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(MIItem.STEAMER));
 	}
 
 	@Override

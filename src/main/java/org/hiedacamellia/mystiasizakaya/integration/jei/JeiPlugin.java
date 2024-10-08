@@ -55,15 +55,15 @@ public class JeiPlugin implements IModPlugin {
 
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), BoilingPotType_Type);
-		registration.addRecipeCatalyst(new ItemStack(MIItem.BOILING_POT.get()), BoilingPotType_Type);
-		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), CuttingBoardType_Type);
-		registration.addRecipeCatalyst(new ItemStack(MIItem.CUTTING_BOARD.get()), CuttingBoardType_Type);
-		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), FryingPanType_Type);
-		registration.addRecipeCatalyst(new ItemStack(MIItem.FRYING_PAN.get()), FryingPanType_Type);
-		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), GrillType_Type);
-		registration.addRecipeCatalyst(new ItemStack(MIItem.GRILL.get()), GrillType_Type);
-		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), StreamerType_Type);
-		registration.addRecipeCatalyst(new ItemStack(MIItem.STEAMER.get()), StreamerType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.asItem()), BoilingPotType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIItem.BOILING_POT), BoilingPotType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.asItem()), CuttingBoardType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIItem.CUTTING_BOARD), CuttingBoardType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.asItem()), FryingPanType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIItem.FRYING_PAN), FryingPanType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.asItem()), GrillType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIItem.GRILL), GrillType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.asItem()), StreamerType_Type);
+		registration.addRecipeCatalyst(new ItemStack(MIItem.STEAMER), StreamerType_Type);
 	}
 }
