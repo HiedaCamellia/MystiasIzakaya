@@ -3,6 +3,7 @@
 	"package": "org.hiedacamellia.mystiasizakaya.core.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
+		"PlayerMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

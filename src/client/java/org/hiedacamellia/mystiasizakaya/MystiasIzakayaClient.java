@@ -1,15 +1,15 @@
 
 package org.hiedacamellia.mystiasizakaya;
 
-import net.fabricmc.api.ModInitializer;
+import fuzs.forgeconfigapiport.api.config.v2.ForgeConfigRegistry;
+import net.fabricmc.api.ClientModInitializer;
+import net.minecraftforge.fml.config.ModConfig;
 import org.hiedacamellia.mystiasizakaya.core.config.ClientConfig;
-import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
 import org.hiedacamellia.mystiasizakaya.registies.MIBlockEntityRenderer;
 import org.hiedacamellia.mystiasizakaya.registies.MIMenu;
-import org.hiedacamellia.mystiasizakaya.registries.*;
 
 
-public class MystiasIzakayaClient implements ModInitializer {
+public class MystiasIzakayaClient implements ClientModInitializer {
 
 	public MystiasIzakayaClient() {
 
@@ -17,8 +17,9 @@ public class MystiasIzakayaClient implements ModInitializer {
 	}
 
 	@Override
-	public void onInitialize() {
+	public void onInitializeClient() {
 		MIMenu.register();
 		MIBlockEntityRenderer.register();
+		ForgeConfigRegistry.INSTANCE.register(MystiasIzakaya.MODID, ModConfig.Type.CLIENT, ClientConfig.SPEC);
 	}
 }
