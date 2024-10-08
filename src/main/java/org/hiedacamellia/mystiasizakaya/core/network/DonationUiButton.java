@@ -74,7 +74,7 @@ public class DonationUiButton implements C2SPacket {
     }
 
     public static void registerMessage() {
-        MINetWork.addC2SNetworkMessage(DonationUiButton.class, DonationUiButton::decode;
+        MINetWork.addC2SNetworkMessage(DonationUiButton.class, DonationUiButton::decode);
     }
 
     @Override

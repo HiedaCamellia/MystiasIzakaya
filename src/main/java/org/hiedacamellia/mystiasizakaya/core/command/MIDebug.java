@@ -16,7 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
+
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 
@@ -35,7 +35,7 @@ public class MIDebug {
 						Commands.argument("id", DoubleArgumentType.doubleArg()).then(Commands.literal("cuisines").then(Commands.literal("replace").then(Commands.argument("cuisines", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
 							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
 							ItemStack cuisines = ItemArgument.getItem(arguments, "cuisines").getItem().getDefaultInstance();
-							String order = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(cuisines.getItem())).toString();
+							String order = Objects.requireNonNull(BuiltInRegistries.ITEM.get(cuisines.getItem())).toString();
 							Player player = arguments.getSource().getPlayer();
                             List<String> orders_list;
                             if (player != null) {
@@ -59,7 +59,7 @@ public class MIDebug {
 						}))).then(Commands.literal("beverages").then(Commands.literal("replace").then(Commands.argument("beverages", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
 							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
 							ItemStack beverages = ItemArgument.getItem(arguments, "beverages").getItem().getDefaultInstance();
-							String order = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(beverages.getItem())).toString();
+							String order = Objects.requireNonNull(BuiltInRegistries.ITEM.get(beverages.getItem())).toString();
 							Player player = arguments.getSource().getPlayer();
                             List<String> ordersbeverages_list;
                             if (player != null) {

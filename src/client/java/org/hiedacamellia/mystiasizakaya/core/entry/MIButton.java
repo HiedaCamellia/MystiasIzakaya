@@ -6,8 +6,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import org.hiedacamellia.mystiasizakaya.util.ItemStackHolder;
 import org.hiedacamellia.mystiasizakaya.util.RateHolder;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 
 public class MIButton extends Button {
     public final ItemStackHolder itemStack= new ItemStackHolder();
@@ -16,7 +16,7 @@ public class MIButton extends Button {
     public final RateHolder rate;
 
     protected MIButton(int x, int y, Component message, OnPress onPress, ItemStack itemStack, @Nullable Tooltip tooltip) {
-        super(x, y, 16, 16, message, onPress, Button.DEFAULT_NARRATION);
+        super(x, y, 16, 16, message, onPress, DEFAULT_NARRATION);
         this.x = x;
         this.y = y;
         this.setTooltip(tooltip);

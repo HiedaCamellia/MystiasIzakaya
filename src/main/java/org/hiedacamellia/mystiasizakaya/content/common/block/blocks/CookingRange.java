@@ -2,6 +2,8 @@
 package org.hiedacamellia.mystiasizakaya.content.common.block.blocks;
 
 import io.netty.buffer.Unpooled;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -36,9 +38,8 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.network.NetworkHooks;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRangeEntity;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingRangeUiMenu;
+import org.hiedacamellia.mystiasizakaya.content.inventory.CookingRangeUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.cooking.Init;
 import org.hiedacamellia.mystiasizakaya.core.cooking.Main;
 import org.hiedacamellia.mystiasizakaya.util.SetSlotItem;
@@ -51,6 +52,7 @@ public class CookingRange extends Block implements EntityBlock {
 	public CookingRange() {
 		super(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).sound(SoundType.METAL).strength(1f, 10f).requiresCorrectToolForDrops().pushReaction(PushReaction.IGNORE));
 	}
+
 
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter world, List<Component> list, TooltipFlag flag) {
@@ -69,18 +71,6 @@ public class CookingRange extends Block implements EntityBlock {
 	@Override
 	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
 		return 15;
-	}
-
-	@Override
-	public BlockPathTypes getBlockPathType(BlockState state, BlockGetter world, BlockPos pos, Mob entity) {
-		return BlockPathTypes.BLOCKED;
-	}
-
-	@Override
-	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		if (player.getInventory().getSelected().getItem() instanceof PickaxeItem tieredItem)
-			return tieredItem.getTier().getLevel() >= 1;
-		return false;
 	}
 
 	@Override
@@ -107,24 +97,15 @@ public class CookingRange extends Block implements EntityBlock {
 	}
 
 	@Override
-	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
-		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		clean(world, pos.getX(), pos.getY(), pos.getZ());
-		return retval;
-	}
-
-	@Override
 	public void wasExploded(Level world, BlockPos pos, Explosion e) {
 		super.wasExploded(world, pos, e);
 		BlockEntity blockEntity = world.getBlockEntity(pos);
-		clean(world, pos.getX(), pos.getY(), pos.getZ());
 		clean(blockEntity);
 	}
 
 	@Override
 	public void attack(BlockState blockstate, Level world, BlockPos pos, Player entity) {
 		super.attack(blockstate, world, pos, entity);
-		clean(world, pos.getX(), pos.getY(), pos.getZ());
 		BlockEntity blockEntity = world.getBlockEntity(pos);
 		clean(blockEntity);
 	}
@@ -133,7 +114,7 @@ public class CookingRange extends Block implements EntityBlock {
 	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
 		super.use(blockstate, world, pos, entity, hand, hit);
 		if (entity instanceof ServerPlayer player) {
-			NetworkHooks.openScreen(player, new MenuProvider() {
+			player.openMenu(new MenuProvider() {
 				@Override
 				public Component getDisplayName() {
 					return Component.literal("Cooking Range");
@@ -143,18 +124,7 @@ public class CookingRange extends Block implements EntityBlock {
 				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
 					return new CookingRangeUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
 				}
-			}, pos);
-		}
-		int x = pos.getX();
-		int y = pos.getY();
-		int z = pos.getZ();
-		if (!world.isClientSide()) {
-			BlockPos _bp = Pos.get(x, y, z);
-			BlockEntity _blockEntity = world.getBlockEntity(_bp);
-			BlockState _bs = world.getBlockState(_bp);
-			if (_blockEntity != null)
-				_blockEntity.getPersistentData().putBoolean("breaking", false);
-			world.sendBlockUpdated(_bp, _bs, _bs, 3);
+			});
 		}
 		return InteractionResult.SUCCESS;
 	}
@@ -189,17 +159,6 @@ public class CookingRange extends Block implements EntityBlock {
 		}
 	}
 
-	private static void clean(LevelAccessor world, double x, double y, double z){
-		if (!world.isClientSide()) {
-			BlockPos _bp = Pos.get(x, y, z);
-			BlockEntity _blockEntity = world.getBlockEntity(_bp);
-			BlockState _bs = world.getBlockState(_bp);
-			if (_blockEntity != null)
-				_blockEntity.getPersistentData().putBoolean("breaking", true);
-			if (world instanceof Level _level)
-				_level.sendBlockUpdated(_bp, _bs, _bs, 3);
-		}
-	}
 
 	private static void clean(BlockEntity be){
 		SetSlotItem.setEmptySlot(be, 7);

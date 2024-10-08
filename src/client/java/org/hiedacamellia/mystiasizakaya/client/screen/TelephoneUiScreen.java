@@ -155,7 +155,7 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
             mode_i.disableRender();
             mode_b.disableRender();
             refreshItems();
-        }).pos(leftPos + 10, topPos + 50).itemStack(RandomItems.getRandomItems(MIItem.Beverages.getEntries(), 1).get(0))
+        }).pos(leftPos + 10, topPos + 50).itemStack(RandomItems.getRandomItems(MIItem.beverages, 1).get(0))
                 .tooltip(Tooltip.create(Component.translatable("gui.mystias_izakaya.telephone_ui.mode_b.desc"))).build();
 
 

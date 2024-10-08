@@ -2,7 +2,7 @@ package org.hiedacamellia.mystiasizakaya.core.cooking.get;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
+
 import org.hiedacamellia.mystiasizakaya.integration.youkaihomecoming.IngredientsCompact;
 
 import java.util.ArrayList;
@@ -18,8 +18,8 @@ public class GetRawsFromSelectedFood {
             if (!(ingredients.get(i).getItem() == ItemStack.EMPTY.getItem())) {
                 raw = ingredients.get(i);
                 raw = IngredientsCompact.execute(raw);
-                String raws = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(raw.getItem())).toString();
-                String ss = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(target.getItem())).toString();
+                String raws = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(raw.getItem())).toString();
+                String ss = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(target.getItem())).toString();
                 switch (raws) {
                     case "mystias_izakaya:ba_mu_man":
                         if (!(ss.equals("mystias_izakaya:kao_ba_mu_man") || ss.equals("mystias_izakaya:zha_ba_mu_man")
