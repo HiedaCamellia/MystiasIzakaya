@@ -2,7 +2,6 @@ package org.hiedacamellia.mystiasizakaya.core.cooking.get;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
-
 import org.hiedacamellia.mystiasizakaya.integration.youkaihomecoming.IngredientsCompact;
 
 import java.util.ArrayList;

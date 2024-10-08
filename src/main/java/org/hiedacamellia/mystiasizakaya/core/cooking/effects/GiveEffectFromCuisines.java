@@ -11,7 +11,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 
-
 public class GiveEffectFromCuisines {
 	public static void execute(LevelAccessor world, ItemStack itemstack, LivingEntity entity) {
 		String s = BuiltInRegistries.ITEM.getKey(itemstack.getItem()).toString();

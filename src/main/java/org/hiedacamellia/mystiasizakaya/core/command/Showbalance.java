@@ -2,36 +2,39 @@
 package org.hiedacamellia.mystiasizakaya.core.command;
 
 import com.mojang.brigadier.arguments.BoolArgumentType;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.commands.Commands;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.util.FakePlayerFactory;
-import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import org.hiedacamellia.mystiasizakaya.core.config.ClientConfig;
 
-@Mod.EventBusSubscriber
 public class Showbalance {
-	@SubscribeEvent
-	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("mystiasizakaya").then(Commands.literal("showbalance")
+	public static void registerCommands() {
+		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+			dispatcher.register(Commands.literal("mystiasizakaya")
+					.then(Commands.literal("showbalance")
+							.then(Commands.argument("logic", BoolArgumentType.bool())
+									.executes(context -> {
+										Level world = context.getSource().getLevel();
+										Entity entity = context.getSource().getEntity();
 
-				.then(Commands.argument("logic", BoolArgumentType.bool()).executes(arguments -> {
-					Level world = arguments.getSource().getUnsidedLevel();
-					Entity entity = arguments.getSource().getEntity();
-					if (entity == null && world instanceof ServerLevel _servLevel)
-						entity = FakePlayerFactory.getMinecraft(_servLevel);
-					if (entity == null)
-						return 0;
-					{
-						boolean set = BoolArgumentType.getBool(arguments, "logic");
+										if (entity == null && world instanceof ServerLevel _servLevel) {
+											entity = FakePlayerFactory.getMinecraft(_servLevel);
+										}
+										if (entity == null) {
+											return 0;
+										}
 
-						ClientConfig.SHOW_BALANCE.set(set);
+										{
+											boolean set = BoolArgumentType.getBool(context, "logic");
+											ClientConfig.SHOW_BALANCE.set(set);
+										}
 
-					}
-					return 0;
-				}))));
+										return 0; // 命令成功执行
+									}))));
+		});
 	}
 }

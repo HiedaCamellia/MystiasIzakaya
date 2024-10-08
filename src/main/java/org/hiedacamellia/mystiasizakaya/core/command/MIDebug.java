@@ -2,21 +2,22 @@
 package org.hiedacamellia.mystiasizakaya.core.command;
 
 import com.mojang.brigadier.arguments.DoubleArgumentType;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.ChatFormatting;
+import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.item.ItemArgument;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.HoverEvent;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 
@@ -25,17 +26,16 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
-@Mod.EventBusSubscriber
-public class MIDebug {
-	@SubscribeEvent
-	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("mystiasizakaya").then(Commands.literal("debug")
 
+public class MIDebug {
+	public static void registerCommand() {
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+            dispatcher.register(Commands.literal("mystiasizakaya").then(Commands.literal("debug")
 				.then(Commands.literal("orders").then(
 						Commands.argument("id", DoubleArgumentType.doubleArg()).then(Commands.literal("cuisines").then(Commands.literal("replace").then(Commands.argument("cuisines", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
 							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
 							ItemStack cuisines = ItemArgument.getItem(arguments, "cuisines").getItem().getDefaultInstance();
-							String order = Objects.requireNonNull(BuiltInRegistries.ITEM.get(cuisines.getItem())).toString();
+							String order = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(cuisines.getItem())).toString();
 							Player player = arguments.getSource().getPlayer();
                             List<String> orders_list;
                             if (player != null) {
@@ -59,7 +59,7 @@ public class MIDebug {
 						}))).then(Commands.literal("beverages").then(Commands.literal("replace").then(Commands.argument("beverages", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
 							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
 							ItemStack beverages = ItemArgument.getItem(arguments, "beverages").getItem().getDefaultInstance();
-							String order = Objects.requireNonNull(BuiltInRegistries.ITEM.get(beverages.getItem())).toString();
+							String order = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(beverages.getItem())).toString();
 							Player player = arguments.getSource().getPlayer();
                             List<String> ordersbeverages_list;
                             if (player != null) {
@@ -94,8 +94,8 @@ public class MIDebug {
                                         List<String> menusBeverages =MIPlayerEvent.getMenusBeverages(player);
                                         Component component = Component.empty().append("Menu:[ ");
                                         for(int i=0;i<8;i++){
-                                            ItemStack cuisine = ForgeRegistries.ITEMS.getValue(new ResourceLocation((menu.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
-                                            ItemStack beverage = ForgeRegistries.ITEMS.getValue(new ResourceLocation((menusBeverages.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                                            ItemStack cuisine = BuiltInRegistries.ITEM.get(new ResourceLocation((menu.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                                            ItemStack beverage = BuiltInRegistries.ITEM.get(new ResourceLocation((menusBeverages.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
                                             Component component1 = Component.empty().append(cuisine.getDisplayName()).append(" ").append(beverage.getDisplayName());
                                             component = Component.empty().append(component).append(Component.literal(i+" ").withStyle(style -> style
                                                     .withColor(ChatFormatting.GREEN)
@@ -121,8 +121,8 @@ public class MIDebug {
                                         List<String> ordersBeverages =MIPlayerEvent.getOrdersBeverages(player);
                                         Component component = Component.empty().append("Order:[ ");
                                         for(int i=0;i<orders.size();i++){
-                                            ItemStack cuisine = ForgeRegistries.ITEMS.getValue(new ResourceLocation((orders.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
-                                            ItemStack beverage = ForgeRegistries.ITEMS.getValue(new ResourceLocation((ordersBeverages.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                                            ItemStack cuisine = BuiltInRegistries.ITEM.get(new ResourceLocation((orders.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                                            ItemStack beverage = BuiltInRegistries.ITEM.get(new ResourceLocation((ordersBeverages.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
                                             Component component1 = Component.empty().append(cuisine.getDisplayName()).append(" ").append(beverage.getDisplayName());
                                             component = Component.empty().append(component).append(Component.literal(i+" ").withStyle(style -> style
                                                     .withColor(ChatFormatting.GREEN)
@@ -164,6 +164,7 @@ public class MIDebug {
                                     return 0;
                                 })))
                 )
-        );
+            );
+        });
     }
 }

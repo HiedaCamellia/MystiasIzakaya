@@ -2,7 +2,6 @@ package org.hiedacamellia.mystiasizakaya.core.cooking;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
-import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.core.cooking.get.GetTagFromItemStacks;
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
@@ -29,7 +28,7 @@ public class BuildTags {
         try {
             targettags.sort(Comparator.naturalOrder());
         }catch (Exception e){
-            Debug.getLogger().atTrace().log("Failed to sort targettags for {}", Objects.requireNonNull(BuiltInRegistries.ITEM.get(target.getItem())));
+            Debug.getLogger().atTrace().log("Failed to sort targettags for {}", Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(target.getItem())));
         }
         //烧香！本来这是有问题的，但是改了后再回滚，它就好了
         set.addAll(targettags);
@@ -39,7 +38,7 @@ public class BuildTags {
 
         ArrayList<String> rawslist = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            rawslist.add(Objects.requireNonNull(BuiltInRegistries.ITEM.get(ingredients.get(i).getItem())).toString());
+            rawslist.add(Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(ingredients.get(i).getItem())).toString());
         }
         rawslist.sort(Comparator.naturalOrder());
 
@@ -79,7 +78,7 @@ public class BuildTags {
         Set<String> seti = new HashSet<>(List.of(tags));
         for (String str : ntags) {
             if (seti.contains(str)&& !Objects.equals(str, "")) {
-                return new ItemStack(MIItem.HEI_AN_WU_ZHI.get());
+                return new ItemStack(MIItem.HEI_AN_WU_ZHI);
             }
         }
         return cuisine;
