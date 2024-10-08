@@ -2,7 +2,6 @@ package org.hiedacamellia.mystiasizakaya.core.cooking.get;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
-import org.hiedacamellia.mystiasizakaya.integration.youkaihomecoming.IngredientsCompact;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,6 @@ public class GetRawsFromSelectedFood {
         for (int i = 0;i < 5;i++) {
             if (!(ingredients.get(i).getItem() == ItemStack.EMPTY.getItem())) {
                 raw = ingredients.get(i);
-                raw = IngredientsCompact.execute(raw);
                 String raws = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(raw.getItem())).toString();
                 String ss = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(target.getItem())).toString();
                 switch (raws) {
