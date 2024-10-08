@@ -3,7 +3,6 @@ package org.hiedacamellia.mystiasizakaya.content.common.block.blocks;
 
 import io.netty.buffer.Unpooled;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -39,14 +38,11 @@ public class Donation extends Block  {
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		if (!Screen.hasShiftDown()) {
-			list.add(Component.translatable("tooltip.mystias_izakaya.press_shift").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
-		} else {
-			String[] description = Component.translatable("tooltip.mystias_izakaya.donation_block").getString().split("§n");
-			for (String line : description) {
-				list.add(Component.literal(line));
-			}
+		String[] description = Component.translatable("tooltip.mystias_izakaya.donation_block").getString().split("§n");
+		for (String line : description) {
+			list.add(Component.literal(line));
 		}
+
 	}
 
 	@Override

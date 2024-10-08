@@ -4,7 +4,6 @@ package org.hiedacamellia.mystiasizakaya.content.common.block.blocks;
 import io.netty.buffer.Unpooled;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -49,15 +48,11 @@ public class TableBlock extends Block implements EntityBlock {
 	@Environment(EnvType.CLIENT)
 	public void appendHoverText(ItemStack itemstack, BlockGetter world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		if (!Screen.hasShiftDown()) {
-			list.add(Component.literal(
-					"§7§o" + Component.translatable("tooltip.mystias_izakaya.press_shift").getString() + "§r"));
-		} else {
-			String[] description = Component.translatable("tooltip.mystias_izakaya.table").getString().split("§n");
-			for (String line : description) {
-				list.add(Component.literal(line));
-			}
+		String[] description = Component.translatable("tooltip.mystias_izakaya.table").getString().split("§n");
+		for (String line : description) {
+			list.add(Component.literal(line));
 		}
+
 	}
 
 	@Override

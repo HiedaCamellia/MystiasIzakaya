@@ -1,7 +1,6 @@
 package org.hiedacamellia.mystiasizakaya.content.common.blockitem;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.BlockItem;
@@ -17,7 +16,7 @@ import java.util.List;
 
 public class SteamerBlockItem extends BlockItem {
     public SteamerBlockItem() {
-        super(MIBlock.STEAMER.get(), new Properties().stacksTo(1).rarity(Rarity.RARE));
+        super(MIBlock.STEAMER, new Properties().stacksTo(1).rarity(Rarity.RARE));
     }
 
     private String tagprefix = "tag.mystias_izakaya.";
@@ -35,23 +34,20 @@ public class SteamerBlockItem extends BlockItem {
     @Override
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, world, list, flag);
-        if (!Screen.hasShiftDown()) {
-            List<String> tags = itemstack.getOrCreateTag().getString("tags").isEmpty() ? new ArrayList<>() : List.of(itemstack.getOrCreateTag().getString("tags").split(","));
-            List<String> ntags = itemstack.getOrCreateTag().getString("ntags").isEmpty() ? new ArrayList<>() : List.of(itemstack.getOrCreateTag().getString("ntags").split(","));
+        List<String> tags = itemstack.getOrCreateTag().getString("tags").isEmpty() ? new ArrayList<>() : List.of(itemstack.getOrCreateTag().getString("tags").split(","));
+        List<String> ntags = itemstack.getOrCreateTag().getString("ntags").isEmpty() ? new ArrayList<>() : List.of(itemstack.getOrCreateTag().getString("ntags").split(","));
 
-            for (String tag : tags) {
-                list.add(Component.literal("+ ").append(Component.translatable(tagprefix+tag)).withStyle(ChatFormatting.GOLD));
-            }
-            for (String tag : ntags) {
-                list.add(Component.literal("- ").append(Component.translatable(tagprefix+tag)).withStyle(ChatFormatting.RED));
-            }
-
-            list.add(Component.translatable("tooltip.mystias_izakaya.press_shift").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
-        } else {
-            String[] description = Component.translatable("tooltip.mystias_izakaya.zheng_guo").getString().split("§n");
-            for (String line : description) {
-                list.add(Component.literal(line));
-            }
+        for (String tag : tags) {
+            list.add(Component.literal("+ ").append(Component.translatable(tagprefix + tag)).withStyle(ChatFormatting.GOLD));
         }
+        for (String tag : ntags) {
+            list.add(Component.literal("- ").append(Component.translatable(tagprefix + tag)).withStyle(ChatFormatting.RED));
+        }
+
+        String[] description = Component.translatable("tooltip.mystias_izakaya.zheng_guo").getString().split("§n");
+        for (String line : description) {
+            list.add(Component.literal(line));
+        }
+
     }
 }

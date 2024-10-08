@@ -1,7 +1,6 @@
 
 package org.hiedacamellia.mystiasizakaya.content.common.item.currency;
 
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -25,15 +24,11 @@ public class En10kItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		if (!Screen.hasShiftDown()) {
-			list.add(Component.literal(
-					"§7§o" + Component.translatable("tooltip.mystias_izakaya.press_shift").getString() + "§r"));
-		} else {
-			String[] description = Component.translatable("tooltip.mystias_izakaya.en_10k").getString().split("§n");
-			for (String line : description) {
-				list.add(Component.literal(line));
-			}
+		String[] description = Component.translatable("tooltip.mystias_izakaya.en_10k").getString().split("§n");
+		for (String line : description) {
+			list.add(Component.literal(line));
 		}
+
 	}
 
 	@Override
@@ -43,8 +38,6 @@ public class En10kItem extends Item {
 		MIPlayerEvent.changeBalance(entity, 10000 * ar.getObject().getCount());
 		MIPlayerEvent.addTurnover(entity, "from_currency", 10000 * ar.getObject().getCount());
 		MIPlayerEvent.deleteOverTurnover(entity);
-		MIPlayerEvent.syncPlayerVariables(entity);
-
 		ar.getObject().shrink(ar.getObject().getCount());
 		ar.getObject().setCount(0);
 		return ar;
