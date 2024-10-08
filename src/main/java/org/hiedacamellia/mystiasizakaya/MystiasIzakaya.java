@@ -5,6 +5,7 @@ import fuzs.forgeconfigapiport.api.config.v2.ForgeConfigRegistry;
 import net.fabricmc.api.ModInitializer;
 import net.minecraftforge.fml.config.ModConfig;
 import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
+import org.hiedacamellia.mystiasizakaya.core.network.MINetWork;
 import org.hiedacamellia.mystiasizakaya.registries.*;
 
 
@@ -24,6 +25,6 @@ public class MystiasIzakaya implements ModInitializer {
 		MITab.register();
 		MIRecipeType.register();
 		ForgeConfigRegistry.INSTANCE.register(MODID, ModConfig.Type.COMMON, CommonConfig.SPEC);
-
+		MINetWork.register();
 	}
 }

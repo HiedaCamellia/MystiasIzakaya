@@ -1,8 +1,14 @@
 
 package org.hiedacamellia.mystiasizakaya.core.network;
 
+import me.pepperbell.simplenetworking.C2SPacket;
+import me.pepperbell.simplenetworking.SimpleChannel;
+import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -17,15 +23,9 @@ import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 import java.util.HashMap;
 import java.util.function.Supplier;
 
-public class CookingRangeUiButton {
+public class CookingRangeUiButton implements C2SPacket {
 	private final int buttonID, x, y, z;
 
-	public CookingRangeUiButton(FriendlyByteBuf buffer) {
-		this.buttonID = buffer.readInt();
-		this.x = buffer.readInt();
-		this.y = buffer.readInt();
-		this.z = buffer.readInt();
-	}
 
 	public CookingRangeUiButton(int buttonID, int x, int y, int z) {
 		this.buttonID = buttonID;
@@ -41,24 +41,8 @@ public class CookingRangeUiButton {
 		this.z = pos.getZ();
 	}
 
-	public static void buffer(CookingRangeUiButton message, FriendlyByteBuf buffer) {
-		buffer.writeInt(message.buttonID);
-		buffer.writeInt(message.x);
-		buffer.writeInt(message.y);
-		buffer.writeInt(message.z);
-	}
-
-	public static void handler(CookingRangeUiButton message, Supplier<NetworkEvent.Context> contextSupplier) {
-		NetworkEvent.Context context = contextSupplier.get();
-		context.enqueueWork(() -> {
-			Player entity = context.getSender();
-			int buttonID = message.buttonID;
-			int x = message.x;
-			int y = message.y;
-			int z = message.z;
-			handleButtonAction(entity, buttonID, Pos.get(x, y, z));
-		});
-		context.setPacketHandled(true);
+	public static CookingRangeUiButton decode(FriendlyByteBuf buffer) {
+		return new CookingRangeUiButton(buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt());
 	}
 
 	public static void handleButtonAction(Player entity, int buttonID, BlockPos pos) {
@@ -137,9 +121,27 @@ public class CookingRangeUiButton {
 		}
 	}
 
-	@SubscribeEvent
-	public static void registerMessage(FMLCommonSetupEvent event) {
-		MINetWork.addNetworkMessage(CookingRangeUiButton.class, CookingRangeUiButton::buffer,
-				CookingRangeUiButton::new, CookingRangeUiButton::handler);
+	public static void registerMessage() {
+		MINetWork.addC2SNetworkMessage(CookingRangeUiButton.class, CookingRangeUiButton::decode);
+	}
+
+	@Override
+	public void handle(MinecraftServer server, ServerPlayer player, ServerGamePacketListenerImpl listener, PacketSender responseSender, SimpleChannel channel) {
+
+		Player entity = player;
+		int buttonID = this.buttonID;
+		int x = this.x;
+		int y = this.y;
+		int z = this.z;
+		handleButtonAction(entity, buttonID, Pos.get(x, y, z));
+	}
+
+	@Override
+	public void encode(FriendlyByteBuf buffer) {
+
+		buffer.writeInt(buttonID);
+		buffer.writeInt(x);
+		buffer.writeInt(y);
+		buffer.writeInt(z);
 	}
 }
