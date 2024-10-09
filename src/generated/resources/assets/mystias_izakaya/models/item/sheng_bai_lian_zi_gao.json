@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "mystias_izakaya:item/sheng_bai_lian_zi_gao"
-  }
-}

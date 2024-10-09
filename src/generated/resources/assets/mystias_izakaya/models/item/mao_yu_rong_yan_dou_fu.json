@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "mystias_izakaya:item/mao_yu_rong_yan_dou_fu"
-  }
-}

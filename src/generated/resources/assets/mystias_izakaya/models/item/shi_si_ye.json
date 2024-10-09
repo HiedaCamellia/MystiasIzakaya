@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "mystias_izakaya:item/shi_si_ye"
-  }
-}

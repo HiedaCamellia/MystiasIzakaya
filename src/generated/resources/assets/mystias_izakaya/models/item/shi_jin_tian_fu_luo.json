@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "mystias_izakaya:item/shi_jin_tian_fu_luo"
-  }
-}

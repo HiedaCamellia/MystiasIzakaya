@@ -13,15 +13,16 @@ import org.hiedacamellia.mystiasizakaya.content.common.item.utils.*;
 import org.hiedacamellia.mystiasizakaya.content.common.blockitem.*;
 import org.hiedacamellia.mystiasizakaya.core.entry.builder.BaseItemBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MIItem {
 
-    public static List<Item> common;
-    public static List<Item> ingredients;
-    public static List<Item> cuisines;
-    public static List<Item> beverages;
-    public static List<Item> others;
+    public static List<Item> common = new ArrayList<>();
+    public static List<Item> ingredients= new ArrayList<>();
+    public static List<Item> cuisines= new ArrayList<>();
+    public static List<Item> beverages= new ArrayList<>();
+    public static List<Item> others= new ArrayList<>();
 
     public static final BlockItem COOKING_RANGE = Registry.register(BuiltInRegistries.ITEM, "cooking_range", new BlockItem(MIBlock.COOKING_RANGE, new Item.Properties()));
     public static final BlockItem BANK = Registry.register(BuiltInRegistries.ITEM, "donation", new BlockItem(MIBlock.DONATION, new Item.Properties()));

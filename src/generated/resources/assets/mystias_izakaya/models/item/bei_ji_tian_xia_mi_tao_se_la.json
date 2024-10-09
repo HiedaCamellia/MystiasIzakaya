@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "mystias_izakaya:item/bei_ji_tian_xia_mi_tao_se_la"
-  }
-}
