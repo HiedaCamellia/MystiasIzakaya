@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRangeEntity;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.KitchenwaresEntity;
 import org.hiedacamellia.mystiasizakaya.core.cooking.get.GetTargets;
+import org.hiedacamellia.mystiasizakaya.integration.youkaihomecoming.IngredientsCompact;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 import org.hiedacamellia.mystiasizakaya.util.SetSlotItem;
@@ -137,6 +138,7 @@ public class Main {
             for (int i = 1; i <= 5; i++) {
                 if (!(GetItemStack.getItemStack(world, pos, i).getItem() == ItemStack.EMPTY.getItem())) {
                     ItemStack raw = GetItemStack.getItemStack(world, pos, i);
+                    raw = IngredientsCompact.execute(raw);
                     ingredients.add(raw);
                     raws.add((Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(raw.getItem())).toString()));
                 } else {
