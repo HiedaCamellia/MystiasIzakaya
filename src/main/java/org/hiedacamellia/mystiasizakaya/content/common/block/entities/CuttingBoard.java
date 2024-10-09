@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class CuttingBoard extends KitchenwaresEntity{
     public CuttingBoard(BlockPos position, BlockState state) {
-        super(MIBlockEntitiy.CUTTING_BOARD.get(), position, state);
+        super(MIBlockEntitiy.CUTTING_BOARD, position, state);
     }
 
     @Override

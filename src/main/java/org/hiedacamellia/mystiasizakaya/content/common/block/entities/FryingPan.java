@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class FryingPan extends KitchenwaresEntity{
     public FryingPan(BlockPos position, BlockState state) {
-        super(MIBlockEntitiy.FRYING_PAN.get(), position, state);
+        super(MIBlockEntitiy.FRYING_PAN, position, state);
     }
 
     @Override

@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class Grill extends KitchenwaresEntity{
     public Grill(BlockPos position, BlockState state) {
-        super(MIBlockEntitiy.GRILL.get(), position, state);
+        super(MIBlockEntitiy.GRILL, position, state);
     }
 
     @Override

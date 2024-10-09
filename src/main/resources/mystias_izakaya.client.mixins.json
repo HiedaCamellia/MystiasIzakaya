@@ -3,6 +3,7 @@
 	"package": "org.hiedacamellia.mystiasizakaya.core.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"client": [
+		"GuiMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

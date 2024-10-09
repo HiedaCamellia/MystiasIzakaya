@@ -19,7 +19,6 @@ public class Currency {
                                 MIPlayerEvent.setBalance(player, MIPlayerEvent.getBalance(player) + change);
                                 MIPlayerEvent.addTurnover(player, "from_command", change);
                                 MIPlayerEvent.deleteOverTurnover(player);
-                                MIPlayerEvent.syncPlayerVariables(player);
                                 return 0;
                             }))))
                     .then(Commands.literal("query")
@@ -29,7 +28,6 @@ public class Currency {
                                 MIPlayerEvent.setBalance(player, MIPlayerEvent.getBalance(player) - change);
                                 MIPlayerEvent.addTurnover(player, "from_command", -change);
                                 MIPlayerEvent.deleteOverTurnover(player);
-                                MIPlayerEvent.syncPlayerVariables(player);
                                 return 0;
                             }))))
                     .then(Commands.literal("set")
@@ -40,7 +38,6 @@ public class Currency {
                                 MIPlayerEvent.setBalance(player, set);
                                 MIPlayerEvent.addTurnover(player, "from_command", change);
                                 MIPlayerEvent.deleteOverTurnover(player);
-                                MIPlayerEvent.syncPlayerVariables(player);
                                 return 0;
                             }))))));
         });

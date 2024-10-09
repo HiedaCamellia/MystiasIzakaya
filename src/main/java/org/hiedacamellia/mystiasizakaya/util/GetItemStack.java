@@ -4,6 +4,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRangeEntity;
+import org.hiedacamellia.mystiasizakaya.content.common.block.entities.KitchenwaresEntity;
+import org.hiedacamellia.mystiasizakaya.content.common.block.entities.TableEntity;
 
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -16,11 +19,16 @@ public class GetItemStack {
         return _retval.get();
     }
     public static ItemStack getItemStack(BlockEntity be, int slotid) {
-        AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+
         if (be != null) {
-            be.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
-                    .ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+            if(be instanceof CookingRangeEntity entity)
+                return entity.stacks.get(slotid);
+            if(be instanceof KitchenwaresEntity entity)
+                return entity.stacks.get(slotid);
+            if(be instanceof TableEntity entity)
+                return entity.stacks.get(slotid);
+
         }
-        return _retval.get();
+        return ItemStack.EMPTY;
     }
 }

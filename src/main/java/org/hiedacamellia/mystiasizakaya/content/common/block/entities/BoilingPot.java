@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class BoilingPot extends KitchenwaresEntity{
     public BoilingPot(BlockPos position, BlockState state) {
-        super(MIBlockEntitiy.BOILING_POT.get(), position, state);
+        super(MIBlockEntitiy.BOILING_POT, position, state);
     }
 
     @Override

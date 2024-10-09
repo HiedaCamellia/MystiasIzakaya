@@ -39,7 +39,6 @@ public class KitchenwaresUiMenu extends AbstractContainerMenu implements Supplie
 		super(MIMenu.KITCHENWARES_UI, id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
-		this.internal = new Container(12);
 		BlockPos pos = null;
 		if (extraData != null) {
 			pos = extraData.readBlockPos();

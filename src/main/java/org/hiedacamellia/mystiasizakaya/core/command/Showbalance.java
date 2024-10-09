@@ -3,6 +3,7 @@ package org.hiedacamellia.mystiasizakaya.core.command;
 
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.minecraft.client.Minecraft;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -22,7 +23,7 @@ public class Showbalance {
 										Entity entity = context.getSource().getEntity();
 
 										if (entity == null && world instanceof ServerLevel _servLevel) {
-											entity = FakePlayerFactory.getMinecraft(_servLevel);
+											entity = Minecraft.getInstance().player;
 										}
 										if (entity == null) {
 											return 0;

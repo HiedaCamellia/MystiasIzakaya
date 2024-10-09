@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 public class Steamer extends KitchenwaresEntity{
 
     public Steamer(BlockPos position, BlockState state) {
-        super(MIBlockEntitiy.STEAMER.get(), position, state);
+        super(MIBlockEntitiy.STEAMER, position, state);
     }
 
     @Override

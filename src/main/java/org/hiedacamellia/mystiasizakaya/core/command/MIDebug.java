@@ -32,20 +32,22 @@ public class MIDebug {
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             dispatcher.register(Commands.literal("mystiasizakaya").then(Commands.literal("debug")
 				.then(Commands.literal("orders").then(
-						Commands.argument("id", DoubleArgumentType.doubleArg()).then(Commands.literal("cuisines").then(Commands.literal("replace").then(Commands.argument("cuisines", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
-							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
-							ItemStack cuisines = ItemArgument.getItem(arguments, "cuisines").getItem().getDefaultInstance();
-							String order = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(cuisines.getItem())).toString();
-							Player player = arguments.getSource().getPlayer();
-                            List<String> orders_list;
-                            if (player != null) {
-                                orders_list = MIPlayerEvent.getOrders(player);
-                                orders_list.set(id, order);
-                                MIPlayerEvent.setOrders(player, orders_list);
-                                MIPlayerEvent.syncPlayerVariables(player);
-                            }
-                            return 0;
-						}))).then(Commands.literal("clean").executes(arguments -> {
+						Commands.argument("id", DoubleArgumentType.doubleArg()).then(Commands.literal("cuisines")
+//                                .then(Commands.literal("replace")
+//                                        .then(Commands.argument("cuisines", ItemArgument.item()).executes(arguments -> {
+//							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
+//							ItemStack cuisines = ItemArgument.getItem(arguments, "cuisines").getItem().getDefaultInstance();
+//							String order = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(cuisines.getItem())).toString();
+//							Player player = arguments.getSource().getPlayer();
+//                            List<String> orders_list;
+//                            if (player != null) {
+//                                orders_list = MIPlayerEvent.getOrders(player);
+//                                orders_list.set(id, order);
+//                                MIPlayerEvent.setOrders(player, orders_list);
+//                            }
+//                            return 0;
+//						})
+                                        )).then(Commands.literal("clean").executes(arguments -> {
 							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
 							Player player = arguments.getSource().getPlayer();
                             List<String> orders_list;
@@ -53,23 +55,24 @@ public class MIDebug {
                                 orders_list = MIPlayerEvent.getOrders(player);
                                 orders_list.set(id, "minecraft:air");
                                 MIPlayerEvent.setOrders(player, orders_list);
-                                MIPlayerEvent.syncPlayerVariables(player);
                             }
                             return 0;
-						}))).then(Commands.literal("beverages").then(Commands.literal("replace").then(Commands.argument("beverages", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
-							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
-							ItemStack beverages = ItemArgument.getItem(arguments, "beverages").getItem().getDefaultInstance();
-							String order = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(beverages.getItem())).toString();
-							Player player = arguments.getSource().getPlayer();
-                            List<String> ordersbeverages_list;
-                            if (player != null) {
-                                ordersbeverages_list = MIPlayerEvent.getOrdersBeverages(player);
-                                ordersbeverages_list.set(id, order);
-                                MIPlayerEvent.setOrdersBeverages(player, ordersbeverages_list);
-                                MIPlayerEvent.syncPlayerVariables(player);
-                            }
-                            return 0;
-						}))).then(Commands.literal("clean").executes(arguments -> {
+						}))).then(Commands.literal("beverages")
+//                                .then(Commands.literal("replace")
+//                                .then(Commands.argument("beverages", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
+//							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
+//							ItemStack beverages = ItemArgument.getItem(arguments, "beverages").getItem().getDefaultInstance();
+//							String order = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(beverages.getItem())).toString();
+//							Player player = arguments.getSource().getPlayer();
+//                            List<String> ordersbeverages_list;
+//                            if (player != null) {
+//                                ordersbeverages_list = MIPlayerEvent.getOrdersBeverages(player);
+//                                ordersbeverages_list.set(id, order);
+//                                MIPlayerEvent.setOrdersBeverages(player, ordersbeverages_list);
+//                            }
+//                            return 0;
+//						})
+                       ).then(Commands.literal("clean").executes(arguments -> {
 							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
 							Player player = arguments.getSource().getPlayer();
                             List<String> ordersbeverages_list;
@@ -77,10 +80,9 @@ public class MIDebug {
                                 ordersbeverages_list = MIPlayerEvent.getOrdersBeverages(player);
                                 ordersbeverages_list.set(id, "minecraft:air");
                                 MIPlayerEvent.setOrdersBeverages(player, ordersbeverages_list);
-                                MIPlayerEvent.syncPlayerVariables(player);
                             }
                             return 0;
-                        }))))
+                        }))
                 ).then(Commands.literal("telephone").then(Commands.literal("reset").executes(arguments -> {
                                     ServerPlayer player = arguments.getSource().getPlayer();
                                     if (player != null) {
@@ -162,9 +164,9 @@ public class MIDebug {
                                         MIPlayerEvent.setTables(player, new ArrayList<>());
                                     }
                                     return 0;
-                                })))
-                )
-            );
+                                }))))
+
+            ;
         });
     }
 }
