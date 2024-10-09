@@ -69,15 +69,15 @@ public class MIItem extends Item {
             List<String> tags = itemstack.getOrCreateTag().getString("tags").isEmpty() ? new ArrayList<>() : List.of(itemstack.getOrCreateTag().getString("tags").split(","));
             List<String> ntags = itemstack.getOrCreateTag().getString("ntags").isEmpty() ? new ArrayList<>() : List.of(itemstack.getOrCreateTag().getString("ntags").split(","));
 
-            for (String tag : tags) {
-                list.add(Component.literal("+ ").append(Component.translatable(tagprefix+tag)).withStyle(ChatFormatting.GOLD));
-            }
-            for (String tag : ntags) {
-                list.add(Component.literal("- ").append(Component.translatable(tagprefix+tag)).withStyle(ChatFormatting.RED));
-            }
+        for (String tag : tags) {
+            list.add(Component.literal("+ ").append(Component.translatable(tagprefix + tag)).withStyle(ChatFormatting.GOLD));
+        }
+        for (String tag : ntags) {
+            list.add(Component.literal("- ").append(Component.translatable(tagprefix + tag)).withStyle(ChatFormatting.RED));
+        }
 
-            //int cost = itemstack.getOrCreateTag().getInt("cost");
-            list.add(Component.translatable("tooltip.mystias_izakaya.cost").append(String.valueOf(this.cost)).withStyle(ChatFormatting.YELLOW));
+        //int cost = itemstack.getOrCreateTag().getInt("cost");
+        list.add(Component.translatable("tooltip.mystias_izakaya.cost").append(String.valueOf(this.cost)).withStyle(ChatFormatting.YELLOW));
 
             list.add(Component.translatable("tooltip.mystias_izakaya.press_shift").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
         } else {

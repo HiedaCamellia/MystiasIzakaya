@@ -17,7 +17,7 @@ import java.util.List;
 
 public class CuttingBoardBlockItem extends BlockItem {
     public CuttingBoardBlockItem() {
-        super(MIBlock.CUTTING_BOARD.get(), new Properties().stacksTo(1).rarity(Rarity.RARE));
+        super(MIBlock.CUTTING_BOARD, new Properties().stacksTo(1).rarity(Rarity.RARE));
     }
 
     private String tagprefix = "tag.mystias_izakaya.";

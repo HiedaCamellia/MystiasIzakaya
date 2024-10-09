@@ -1,8 +1,7 @@
-package org.hiedacamellia.mystiasizakaya.registies;
+package org.hiedacamellia.mystiasizakaya.registries;
 
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import org.hiedacamellia.mystiasizakaya.client.blockentityrender.ProcessRender;
-import org.hiedacamellia.mystiasizakaya.registries.MIBlockEntitiy;
 
 public class MIBlockEntityRenderer {
 

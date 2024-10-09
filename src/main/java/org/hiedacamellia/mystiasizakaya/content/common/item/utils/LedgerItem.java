@@ -18,8 +18,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.network.NetworkHooks;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.LedgerUiMenu;
+import org.hiedacamellia.mystiasizakaya.content.inventory.LedgerUiMenu;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -45,7 +44,7 @@ public class LedgerItem extends Item {
         BlockPos pos = entity.getOnPos();
 
         if (entity.isShiftKeyDown()&&entity instanceof ServerPlayer player) {
-            NetworkHooks.openScreen(player,new MenuProvider() {
+            player.openMenu(new MenuProvider() {
                 @Override
                 public @NotNull Component getDisplayName() {
                     return Component.literal("Ledger");
@@ -55,7 +54,7 @@ public class LedgerItem extends Item {
                 public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
                     return new LedgerUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
                 }
-            }, pos);
+            });
         }
 
 

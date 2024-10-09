@@ -5,8 +5,8 @@ import fuzs.forgeconfigapiport.api.config.v2.ForgeConfigRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraftforge.fml.config.ModConfig;
 import org.hiedacamellia.mystiasizakaya.core.config.ClientConfig;
-import org.hiedacamellia.mystiasizakaya.registies.MIBlockEntityRenderer;
-import org.hiedacamellia.mystiasizakaya.registies.MIMenu;
+import org.hiedacamellia.mystiasizakaya.registries.MIBlockEntityRenderer;
+import org.hiedacamellia.mystiasizakaya.registries.MIMenu;
 
 
 public class MystiasIzakayaClient implements ClientModInitializer {

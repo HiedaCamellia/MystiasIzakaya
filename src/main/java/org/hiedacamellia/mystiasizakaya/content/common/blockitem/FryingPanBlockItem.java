@@ -17,7 +17,7 @@ import java.util.List;
 
 public class FryingPanBlockItem extends BlockItem {
     public FryingPanBlockItem() {
-        super(MIBlock.FRYING_PAN.get(), new Properties().stacksTo(1).rarity(Rarity.RARE));
+        super(MIBlock.FRYING_PAN, new Properties().stacksTo(1).rarity(Rarity.RARE));
     }
 
     private String tagprefix = "tag.mystias_izakaya.";

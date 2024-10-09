@@ -17,7 +17,7 @@ import java.util.List;
 
 public class SteamerBlockItem extends BlockItem {
     public SteamerBlockItem() {
-        super(MIBlock.STEAMER.get(), new Properties().stacksTo(1).rarity(Rarity.RARE));
+        super(MIBlock.STEAMER, new Properties().stacksTo(1).rarity(Rarity.RARE));
     }
 
     private String tagprefix = "tag.mystias_izakaya.";

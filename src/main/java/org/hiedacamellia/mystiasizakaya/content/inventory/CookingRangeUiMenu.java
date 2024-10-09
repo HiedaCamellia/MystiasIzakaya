@@ -3,9 +3,7 @@ package org.hiedacamellia.mystiasizakaya.content.inventory;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -15,10 +13,8 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.items.SlotItemHandler;
+
+import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRangeEntity;
 import org.hiedacamellia.mystiasizakaya.registries.MIMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
 
@@ -32,7 +28,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 	public final Player entity;
 	public int x, y, z;
 	private ContainerLevelAccess access = ContainerLevelAccess.NULL;
-	private IItemHandler internal;
+	private CookingRangeEntity internal;
 	private final Map<Integer, Slot> customSlots = new HashMap<>();
 	private boolean bound = false;
 	private Supplier<Boolean> boundItemMatcher = null;
@@ -40,10 +36,9 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 	private BlockEntity boundBlockEntity = null;
 
 	public CookingRangeUiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(MIMenu.COOKING_RANGE_UI.get(), id);
+		super(MIMenu.COOKING_RANGE_UI, id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
-		this.internal = new ItemStackHandler(12);
 		BlockPos pos = null;
 		if (extraData != null) {
 			pos = extraData.readBlockPos();
@@ -53,32 +48,11 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 			access = ContainerLevelAccess.create(world, pos);
 		}
 		if (pos != null) {
-			if (extraData.readableBytes() == 1) { // bound to item
-				byte hand = extraData.readByte();
-				ItemStack itemstack = hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem();
-				this.boundItemMatcher = () -> itemstack == (hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem());
-				itemstack.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-					this.internal = capability;
-					this.bound = true;
-				});
-			} else if (extraData.readableBytes() > 1) { // bound to entities
-				extraData.readByte(); // drop padding
-				boundEntity = world.getEntity(extraData.readVarInt());
-				if (boundEntity != null)
-					boundEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-						this.internal = capability;
-						this.bound = true;
-					});
-			} else { // might be bound to block
-				boundBlockEntity = this.world.getBlockEntity(pos);
-				if (boundBlockEntity != null)
-					boundBlockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-						this.internal = capability;
-						this.bound = true;
-					});
-			}
+			boundBlockEntity = this.world.getBlockEntity(pos);
+			if (boundBlockEntity instanceof CookingRangeEntity entity)
+				this.internal = entity;
 		}
-		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 203, 62) {
+		this.customSlots.put(0, this.addSlot(new Slot( internal,0, 203, 62) {
 			private final int slot = 0;
 
 			@Override
@@ -91,81 +65,71 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 				return stack.is(MITag.kitchenwaresKey);
 			}
 		}));
-		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 95, 26) {
+		this.customSlots.put(1, this.addSlot(new Slot(internal, 1, 95, 26) {
 			private final int slot = 1;
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				if (stack.is(MITag.ingredientsKey)){
 					return true;
-				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
-					return true;
-				}else{
+				}else {
 					return false;
 				}
 			}
 		}));
-		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 122, 26) {
+		this.customSlots.put(2, this.addSlot(new Slot(internal, 2, 122, 26) {
 			private final int slot = 2;
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				if (stack.is(MITag.ingredientsKey)){
 					return true;
-				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
-					return true;
-				}else{
+				}else {
 					return false;
 				}
 			}
 
 		}));
-		this.customSlots.put(3, this.addSlot(new SlotItemHandler(internal, 3, 149, 26) {
+		this.customSlots.put(3, this.addSlot(new Slot(internal, 3, 149, 26) {
 			private final int slot = 3;
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				if (stack.is(MITag.ingredientsKey)){
 					return true;
-				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
-					return true;
 				}else{
 					return false;
 				}
 			}
 
 		}));
-		this.customSlots.put(4, this.addSlot(new SlotItemHandler(internal, 4, 176, 26) {
+		this.customSlots.put(4, this.addSlot(new Slot(internal, 4, 176, 26) {
 			private final int slot = 4;
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				if (stack.is(MITag.ingredientsKey)){
 					return true;
-				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
-					return true;
-				}else{
+				}else {
 					return false;
 				}
 			}
 
 		}));
-		this.customSlots.put(5, this.addSlot(new SlotItemHandler(internal, 5, 203, 26) {
+		this.customSlots.put(5, this.addSlot(new Slot(internal, 5, 203, 26) {
 			private final int slot = 5;
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				if (stack.is(MITag.ingredientsKey)){
 					return true;
-				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
-					return true;
-				}else{
+				}else {
 					return false;
 				}
 			}
 
 		}));
-		this.customSlots.put(6, this.addSlot(new SlotItemHandler(internal, 6, 239, 44) {
+		this.customSlots.put(6, this.addSlot(new Slot(internal, 6, 239, 44) {
 			private final int slot = 6;
 
 			@Override
@@ -173,7 +137,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 				return false;
 			}
 		}));
-		this.customSlots.put(7, this.addSlot(new SlotItemHandler(internal, 7, 14, 26) {
+		this.customSlots.put(7, this.addSlot(new Slot(internal, 7, 14, 26) {
 			private final int slot = 7;
 
 			@Override
@@ -186,7 +150,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 				return false;
 			}
 		}));
-		this.customSlots.put(8, this.addSlot(new SlotItemHandler(internal, 8, 14, 53) {
+		this.customSlots.put(8, this.addSlot(new Slot(internal, 8, 14, 53) {
 			private final int slot = 8;
 
 			@Override
@@ -199,7 +163,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 				return false;
 			}
 		}));
-		this.customSlots.put(9, this.addSlot(new SlotItemHandler(internal, 9, 14, 80) {
+		this.customSlots.put(9, this.addSlot(new Slot(internal, 9, 14, 80) {
 			private final int slot = 9;
 
 			@Override
@@ -212,7 +176,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 				return false;
 			}
 		}));
-		this.customSlots.put(10, this.addSlot(new SlotItemHandler(internal, 10, 14, 107) {
+		this.customSlots.put(10, this.addSlot(new Slot(internal, 10, 14, 107) {
 			private final int slot = 10;
 
 			@Override
@@ -225,7 +189,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 				return false;
 			}
 		}));
-		this.customSlots.put(11, this.addSlot(new SlotItemHandler(internal, 11, 14, 134) {
+		this.customSlots.put(11, this.addSlot(new Slot(internal, 11, 14, 134) {
 			private final int slot = 11;
 
 			@Override
@@ -371,7 +335,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 		super.removed(playerIn);
 		if (!bound && playerIn instanceof ServerPlayer serverPlayer) {
 			if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
-				for (int j = 0; j < internal.getSlots(); ++j) {
+				for (int j = 0; j < internal.stacks.size(); ++j) {
 					if (j == 0)
 						continue;
 					if (j == 12)
@@ -386,10 +350,10 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 						continue;
 					if (j == 11)
 						continue;
-					playerIn.drop(internal.extractItem(j, internal.getStackInSlot(j).getCount(), false), false);
+					playerIn.drop(internal.stacks.get(j), false);
 				}
 			} else {
-				for (int i = 0; i < internal.getSlots(); ++i) {
+				for (int i = 0; i < internal.stacks.size(); ++i) {
 					if (i == 0)
 						continue;
 					if (i == 12)
@@ -404,7 +368,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 						continue;
 					if (i == 11)
 						continue;
-					playerIn.getInventory().placeItemBackInInventory(internal.extractItem(i, internal.getStackInSlot(i).getCount(), false));
+					playerIn.drop(internal.stacks.get(i), false);
 				}
 			}
 		}

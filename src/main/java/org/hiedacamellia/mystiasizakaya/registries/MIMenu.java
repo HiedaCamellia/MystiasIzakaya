@@ -1,4 +1,4 @@
-package org.hiedacamellia.mystiasizakaya.registies;
+package org.hiedacamellia.mystiasizakaya.registries;
 
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.flag.FeatureFlagSet;

@@ -13,10 +13,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.items.SlotItemHandler;
+import org.hiedacamellia.mystiasizakaya.content.common.block.entities.TableEntity;
 import org.hiedacamellia.mystiasizakaya.registries.MIMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
 
@@ -30,7 +27,7 @@ public class TableUiMenu extends AbstractContainerMenu implements Supplier<Map<I
 	public final Player entity;
 	public int x, y, z;
 	private ContainerLevelAccess access = ContainerLevelAccess.NULL;
-	private IItemHandler internal;
+	private TableEntity internal;
 	private final Map<Integer, Slot> customSlots = new HashMap<>();
 	private boolean bound = false;
 	private Supplier<Boolean> boundItemMatcher = null;
@@ -38,10 +35,9 @@ public class TableUiMenu extends AbstractContainerMenu implements Supplier<Map<I
 	private BlockEntity boundBlockEntity = null;
 
 	public TableUiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(MIMenu.TABLE_UI.get(), id);
+		super(MIMenu.TABLE_UI, id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
-		this.internal = new ItemStackHandler(12);
 		BlockPos pos = null;
 		if (extraData != null) {
 			pos = extraData.readBlockPos();
@@ -51,33 +47,12 @@ public class TableUiMenu extends AbstractContainerMenu implements Supplier<Map<I
 			access = ContainerLevelAccess.create(world, pos);
 		}
 		if (pos != null) {
-			if (extraData.readableBytes() == 1) { // bound to item
-				byte hand = extraData.readByte();
-				ItemStack itemstack = hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem();
-				this.boundItemMatcher = () -> itemstack == (hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem());
-				itemstack.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-					this.internal = capability;
-					this.bound = true;
-				});
-			} else if (extraData.readableBytes() > 1) { // bound to entities
-				extraData.readByte(); // drop padding
-				boundEntity = world.getEntity(extraData.readVarInt());
-				if (boundEntity != null)
-					boundEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-						this.internal = capability;
-						this.bound = true;
-					});
-			} else { // might be bound to block
-				boundBlockEntity = this.world.getBlockEntity(pos);
-				if (boundBlockEntity != null)
-					boundBlockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-						this.internal = capability;
-						this.bound = true;
-					});
-			}
+			boundBlockEntity = this.world.getBlockEntity(pos);
+			if (boundBlockEntity instanceof TableEntity entity)
+				this.internal = entity;
 		}
 
-		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 70, 30) {
+		this.customSlots.put(0, this.addSlot(new Slot(internal, 0, 70, 30) {
 			private final int slot = 0;
 
 			@Override
@@ -85,7 +60,7 @@ public class TableUiMenu extends AbstractContainerMenu implements Supplier<Map<I
 				return stack.is(MITag.cuisinesKey);
 			}
 		}));
-		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 100, 30) {
+		this.customSlots.put(1, this.addSlot(new Slot(internal, 1, 100, 30) {
 			private final int slot = 1;
 
 			@Override
@@ -211,12 +186,12 @@ public class TableUiMenu extends AbstractContainerMenu implements Supplier<Map<I
 		super.removed(playerIn);
 		if (!bound && playerIn instanceof ServerPlayer serverPlayer) {
 			if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
-				for (int j = 0; j < internal.getSlots(); ++j) {
-					playerIn.drop(internal.extractItem(j, internal.getStackInSlot(j).getCount(), false), false);
+				for (int j = 0; j < internal.stacks.size(); ++j) {
+					playerIn.drop(internal.stacks.get(j), false);
 				}
 			} else {
-				for (int i = 0; i < internal.getSlots(); ++i) {
-					playerIn.getInventory().placeItemBackInInventory(internal.extractItem(i, internal.getStackInSlot(i).getCount(), false));
+				for (int i = 0; i < internal.stacks.size(); ++i) {
+					playerIn.drop(internal.stacks.get(i), false);
 				}
 			}
 		}

@@ -53,10 +53,10 @@ public class ProcessRender implements BlockEntityRenderer<KitchenwaresEntity> {
             pPoseStack.translate(0, 0.8, 0);
             PoseStack.Pose poseStack = pPoseStack.last();
             float process;
-            if(pBlockEntity.getPersistentData().getDouble("timeleft")==0)
+            if(pBlockEntity.timeLeft==0)
                 process = 0;
             else
-                process = (float) (1 -  pBlockEntity.getPersistentData().getDouble("timeleft") / pBlockEntity.getPersistentData().getDouble("totaltime"));
+                process = (float) (1 -  pBlockEntity.timeLeft / pBlockEntity.totalTime);
             VertexConsumer vertexconsumerIn = pBuffer.getBuffer(RENDER_TYPE_IN);
             renderImage(pPackedLight, vertexconsumerIn, poseStack, process);
             VertexConsumer vertexconsumerOut = pBuffer.getBuffer(RENDER_TYPE_OUT);

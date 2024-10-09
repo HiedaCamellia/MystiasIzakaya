@@ -76,10 +76,7 @@ public class Kitchenwares extends RotatedPillarBlock implements EntityBlock {
             });
         }
         if (!level.isClientSide()) {
-            BlockEntity _blockEntity = level.getBlockEntity(pos);
             BlockState _bs = level.getBlockState(pos);
-            if (_blockEntity != null)
-                _blockEntity.getPersistentData().putBoolean("breaking", false);
             level.sendBlockUpdated(pos, _bs, _bs, 3);
         }
         return InteractionResult.SUCCESS;

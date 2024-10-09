@@ -14,7 +14,7 @@ import java.util.List;
 
 public class GrillBlockItem extends BlockItem {
     public GrillBlockItem() {
-        super(MIBlock.GRILL.get(), new Properties().stacksTo(1).rarity(Rarity.RARE));
+        super(MIBlock.GRILL, new Properties().stacksTo(1).rarity(Rarity.RARE));
     }
 
     private String tagprefix = "tag.mystias_izakaya.";

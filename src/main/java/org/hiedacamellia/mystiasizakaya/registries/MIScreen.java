@@ -1,6 +1,4 @@
-package org.hiedacamellia.mystiasizakaya.registies;
-
-import net.minecraft.client.gui.screens.MenuScreens;
+package org.hiedacamellia.mystiasizakaya.registries;
 
 public class MIScreen {
 //	@SubscribeEvent

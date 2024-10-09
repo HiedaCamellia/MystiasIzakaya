@@ -43,7 +43,6 @@ public class En10Item extends Item {
 		MIPlayerEvent.changeBalance(entity, 10 * ar.getObject().getCount());
 		MIPlayerEvent.addTurnover(entity, "from_currency", 10 * ar.getObject().getCount());
 		MIPlayerEvent.deleteOverTurnover(entity);
-		MIPlayerEvent.syncPlayerVariables(entity);
 
 		ar.getObject().shrink(ar.getObject().getCount());
 		ar.getObject().setCount(0);

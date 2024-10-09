@@ -15,19 +15,17 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.items.wrapper.SidedInvWrapper;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingRangeUiMenu;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.TableUiMenu;
+import org.hiedacamellia.mystiasizakaya.content.inventory.TableUiMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlockEntitiy;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class TableEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(2, ItemStack.EMPTY);
-	private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
+	public NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(2, ItemStack.EMPTY);
+
 
 	public TableEntity(BlockPos position, BlockState state) {
-		super(MIBlockEntitiy.TABLE.get(), position, state);
+		super(MIBlockEntitiy.TABLE, position, state);
 	}
 
 	@Override
@@ -100,11 +98,6 @@ public class TableEntity extends RandomizableContainerBlockEntity implements Wor
 	@Override
 	protected void setItems(@NotNull NonNullList<ItemStack> stacks) {
 		this.stacks = stacks;
-	}
-
-
-	public SidedInvWrapper getItemHandler() {
-		return handler;
 	}
 
 	@Override

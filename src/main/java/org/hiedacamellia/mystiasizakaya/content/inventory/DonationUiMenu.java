@@ -31,7 +31,7 @@ public class DonationUiMenu extends AbstractContainerMenu implements Supplier<Ma
 	private BlockEntity boundBlockEntity = null;
 
 	public DonationUiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(MIMenu.Donation_UI.get(), id);
+		super(MIMenu.Donation_UI, id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		BlockPos pos = null;

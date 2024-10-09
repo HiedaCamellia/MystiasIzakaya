@@ -12,8 +12,6 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
 import org.hiedacamellia.mystiasizakaya.registries.MIMenu;
 
 import java.util.HashMap;
@@ -26,7 +24,6 @@ public class TelephoneUiMenu extends AbstractContainerMenu implements Supplier<M
 	public final Player entity;
 	public int x, y, z;
 	private ContainerLevelAccess access = ContainerLevelAccess.NULL;
-	private IItemHandler internal;
 	private final Map<Integer, Slot> customSlots = new HashMap<>();
 	private boolean bound = false;
 	private Supplier<Boolean> boundItemMatcher = null;
@@ -34,10 +31,9 @@ public class TelephoneUiMenu extends AbstractContainerMenu implements Supplier<M
 	private BlockEntity boundBlockEntity = null;
 
 	public TelephoneUiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(MIMenu.Telephone_UI.get(), id);
+		super(MIMenu.Telephone_UI, id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
-		this.internal = new ItemStackHandler(0);
 		BlockPos pos = null;
 		if (extraData != null) {
 			pos = extraData.readBlockPos();

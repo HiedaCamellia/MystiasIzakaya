@@ -19,7 +19,7 @@ import java.util.List;
 
 public class BoilingPotBlockItem extends BlockItem {
     public BoilingPotBlockItem() {
-        super(MIBlock.BOILING_POT.get(),
+        super(MIBlock.BOILING_POT,
                 new Properties().stacksTo(1).rarity(Rarity.RARE));
     }
 
