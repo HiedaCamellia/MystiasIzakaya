@@ -47,8 +47,6 @@ dependencies {
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation(include("io.github.fabricators_of_create.Porting-Lib:networking:2.3.4+1.20.1"))
-    modImplementation(include("io.github.fabricators_of_create.Porting-Lib:extensions:2.3.4+1.20.1"))
-    modImplementation(include("io.github.fabricators_of_create.Porting-Lib:gui_utils:2.3.4+1.20.1"))
     modImplementation(include("io.github.fabricators_of_create.Porting-Lib:core:2.3.4+1.20.1"))
     modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cca_version}"
     modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cca_version}"

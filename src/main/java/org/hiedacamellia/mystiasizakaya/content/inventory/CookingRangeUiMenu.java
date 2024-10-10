@@ -15,6 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRangeEntity;
+import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.registries.MIMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
 
@@ -35,24 +36,19 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 	private Entity boundEntity = null;
 	private BlockEntity boundBlockEntity = null;
 
-	public CookingRangeUiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+	public CookingRangeUiMenu(int id, Inventory inv, BlockPos pos,CookingRangeEntity cookingRange) {
 		super(MIMenu.COOKING_RANGE_UI, id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
-		BlockPos pos = null;
-		if (extraData != null) {
-			pos = extraData.readBlockPos();
-			this.x = pos.getX();
-			this.y = pos.getY();
-			this.z = pos.getZ();
-			access = ContainerLevelAccess.create(world, pos);
+		access = ContainerLevelAccess.create(world, pos);
+		if(pos==null){
+
 		}
-		if (pos != null) {
-			boundBlockEntity = this.world.getBlockEntity(pos);
-			if (boundBlockEntity instanceof CookingRangeEntity entity)
-				this.internal = entity;
-		}
-		this.customSlots.put(0, this.addSlot(new Slot( internal,0, 203, 62) {
+
+		this.internal = cookingRange;
+
+
+        this.customSlots.put(0, this.addSlot(new Slot( internal,0, 203, 62) {
 			private final int slot = 0;
 
 			@Override

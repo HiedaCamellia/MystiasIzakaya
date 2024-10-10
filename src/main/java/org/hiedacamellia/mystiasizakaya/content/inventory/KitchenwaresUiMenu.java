@@ -13,8 +13,10 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.KitchenwaresEntity;
+import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.registries.MIMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
 
@@ -35,24 +37,21 @@ public class KitchenwaresUiMenu extends AbstractContainerMenu implements Supplie
 	private Entity boundEntity = null;
 	private BlockEntity boundBlockEntity = null;
 
-	public KitchenwaresUiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+	public KitchenwaresUiMenu(int id, Inventory inv, BlockPos pos) {
 		super(MIMenu.KITCHENWARES_UI, id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
-		BlockPos pos = null;
-		if (extraData != null) {
-			pos = extraData.readBlockPos();
-			this.x = pos.getX();
-			this.y = pos.getY();
-			this.z = pos.getZ();
-			access = ContainerLevelAccess.create(world, pos);
-		}
-		if (pos != null) {
-			boundBlockEntity = this.world.getBlockEntity(pos);
-			if (boundBlockEntity instanceof KitchenwaresEntity entity)
-				this.internal = entity;
-		}
-		this.customSlots.put(1, this.addSlot(new Slot(internal, 1, 95, 26) {
+		access = ContainerLevelAccess.create(world, pos);
+
+		if(!(entity instanceof ServerPlayer))
+			return;
+
+        boundBlockEntity = this.world.getBlockEntity(pos);
+        if (boundBlockEntity instanceof KitchenwaresEntity entity)
+            this.internal = entity;
+
+
+        this.customSlots.put(1, this.addSlot(new Slot(internal, 1, 95, 26) {
 			private final int slot = 1;
 
 			@Override

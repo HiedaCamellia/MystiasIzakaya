@@ -87,7 +87,7 @@ public abstract class KitchenwaresEntity extends RandomizableContainerBlockEntit
 
     @Override
     public @NotNull AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory) {
-        return new KitchenwaresUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
+        return new KitchenwaresUiMenu(id, inventory, this.worldPosition);
     }
 
     @Override

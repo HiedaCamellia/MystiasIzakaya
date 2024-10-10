@@ -30,8 +30,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.hiedacamellia.mystiasizakaya.content.inventory.KitchenwaresUiMenu;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRangeEntity;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.*;
-import org.hiedacamellia.mystiasizakaya.core.cooking.Init;
 import org.hiedacamellia.mystiasizakaya.core.cooking.Main;
+import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.jetbrains.annotations.NotNull;
 
 public class Kitchenwares extends RotatedPillarBlock implements EntityBlock {
@@ -42,6 +42,8 @@ public class Kitchenwares extends RotatedPillarBlock implements EntityBlock {
 
     @Override
     public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
+        Debug.getLogger().debug("Create Block:{}", state.getBlock().getDescriptionId());
+
         return switch (state.getBlock().getDescriptionId()) {
             case "block.mystias_izakaya.cutting_board" -> new CuttingBoard(pos, state);
             case "block.mystias_izakaya.boiling_pot" -> new BoilingPot(pos, state);
@@ -63,30 +65,21 @@ public class Kitchenwares extends RotatedPillarBlock implements EntityBlock {
     public @NotNull InteractionResult use(BlockState blockstate, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         super.use(blockstate, level, pos, player,hand, hit);
         if (player instanceof ServerPlayer serverPlayer) {
-            serverPlayer.openMenu( new MenuProvider() {
-                @Override
-                public Component getDisplayName() {
-                    return Component.literal("Kitchenware");
-                }
-
-                @Override
-                public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-                    return new KitchenwaresUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-                }
-            });
-        }
-        if (!level.isClientSide()) {
-            BlockState _bs = level.getBlockState(pos);
-            level.sendBlockUpdated(pos, _bs, _bs, 3);
+            serverPlayer.openMenu(getMenuProvider(blockstate,level,pos));
         }
         return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public MenuProvider getMenuProvider(BlockState state, Level worldIn, BlockPos pos) {
+        BlockEntity tileEntity = worldIn.getBlockEntity(pos);
+        return tileEntity instanceof MenuProvider menuProvider ? menuProvider : null;
     }
 
     @Override
     public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
         super.onPlace(blockstate, world, pos, oldState, moving);
         world.scheduleTick(pos, this, 1);
-        Init.execute(world, pos.getX(), pos.getY(), pos.getZ());
     }
 
     @Override

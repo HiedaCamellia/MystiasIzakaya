@@ -87,7 +87,7 @@ public class CookingRangeEntity extends RandomizableContainerBlockEntity impleme
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
-		return new CookingRangeUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
+		return new CookingRangeUiMenu(id, inventory, this.worldPosition, this);
 	}
 
 	@Override

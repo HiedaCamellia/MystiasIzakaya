@@ -5,10 +5,13 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.hiedacamellia.mystiasizakaya.content.inventory.KitchenwaresUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.cooking.ui.Lefttime;
@@ -37,6 +40,7 @@ public class KitchenwaresUiScreen extends AbstractContainerScreen<KitchenwaresUi
     //	List<Button> buttons;
     Button button_next;
     Button button_back;
+    NonNullList<ItemStack> slots;
 
     public KitchenwaresUiScreen(KitchenwaresUiMenu container, Inventory inventory, Component text) {
         super(container, inventory, text);
@@ -48,6 +52,7 @@ public class KitchenwaresUiScreen extends AbstractContainerScreen<KitchenwaresUi
         this.entity = container.entity;
         this.imageWidth = 280;
         this.imageHeight = 166;
+        this.slots= container.getItems();
     }
 
     private static final ResourceLocation texture = new ResourceLocation(
@@ -112,62 +117,62 @@ public class KitchenwaresUiScreen extends AbstractContainerScreen<KitchenwaresUi
 
 
         button_select = new BaseButton(this.leftPos + 40, this.topPos + 24, 45, 20, Component.literal(""), e -> {
-            if (ButtunShow.get(entity, 7)) {
+            if (!slots.get(7).isEmpty()) {
                 MINetWork.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(1, x, y, z));
                 CookingRangeUiButton.handleButtonAction(entity, 1, pos);
             }
         }) {
             @Override
             public void render(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
-                if (ButtunShow.get(entity, 7))
+                if (!slots.get(7).isEmpty())
                     super.render(guiGraphics, gx, gy, ticks);
             }
         };
         button_select1 = new BaseButton(this.leftPos + 40, this.topPos + 51, 45, 20, Component.literal(""), e -> {
-            if (ButtunShow.get(entity, 8)) {
+            if (!slots.get(8).isEmpty()) {
                 MINetWork.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(2, x, y, z));
                 CookingRangeUiButton.handleButtonAction(entity, 2, pos);
             }
         }) {
             @Override
             public void render(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
-                if (ButtunShow.get(entity, 8))
+                if (!slots.get(8).isEmpty())
                     super.render(guiGraphics, gx, gy, ticks);
             }
         };
         button_select2 = new BaseButton(this.leftPos + 40, this.topPos + 78, 45, 20, Component.literal(""), e -> {
-            if (ButtunShow.get(entity, 9)) {
+            if (!slots.get(9).isEmpty()) {
                 MINetWork.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(3, x, y, z));
                 CookingRangeUiButton.handleButtonAction(entity, 3, pos);
             }
         }) {
             @Override
             public void render(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
-                if (ButtunShow.get(entity, 9))
+                if (!slots.get(9).isEmpty())
                     super.render(guiGraphics, gx, gy, ticks);
             }
         };
         button_select3 = new BaseButton(this.leftPos + 40, this.topPos + 105, 45, 20, Component.literal(""), e -> {
-            if (ButtunShow.get(entity, 10)) {
+            if (!slots.get(10).isEmpty()) {
                 MINetWork.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(4, x, y, z));
                 CookingRangeUiButton.handleButtonAction(entity, 4, pos);
             }
         }) {
             @Override
             public void render(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
-                if (ButtunShow.get(entity, 10))
+                if (!slots.get(10).isEmpty())
                     super.render(guiGraphics, gx, gy, ticks);
             }
         };
         button_select4 = new BaseButton(this.leftPos + 40, this.topPos + 132, 45, 20, Component.literal(""), e -> {
-            if (ButtunShow.get(entity, 11)) {
+            if (!slots.get(11).isEmpty()) {
                 MINetWork.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(5, x, y, z));
                 CookingRangeUiButton.handleButtonAction(entity, 5, pos);
             }
         }) {
             @Override
             public void render(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
-                if (ButtunShow.get(entity, 11))
+                if (!slots.get(11).isEmpty())
                     super.render(guiGraphics, gx, gy, ticks);
             }
         };

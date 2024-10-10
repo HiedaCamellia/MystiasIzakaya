@@ -8,7 +8,7 @@ import org.hiedacamellia.mystiasizakaya.content.inventory.*;
 
 public class MIMenu {
 
-	public static final MenuType<CookingRangeUiMenu> COOKING_RANGE_UI = new MenuType<>((syncId, inventory) -> new CookingRangeUiMenu(syncId, inventory, null), FeatureFlagSet.of());
+	public static final MenuType<CookingRangeUiMenu> COOKING_RANGE_UI = new MenuType<>((syncId, inventory) -> new CookingRangeUiMenu(syncId, inventory, null,null), FeatureFlagSet.of());
 
 	public static final MenuType<KitchenwaresUiMenu> KITCHENWARES_UI =  new MenuType<>((syncId, inventory) -> new KitchenwaresUiMenu(syncId, inventory, null), FeatureFlagSet.of());
 	public static final MenuType<DonationUiMenu> Donation_UI = new MenuType<>((syncId, inventory) -> new DonationUiMenu(syncId, inventory, null), FeatureFlagSet.of());

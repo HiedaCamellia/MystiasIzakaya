@@ -4,6 +4,7 @@ import dev.onyxstudios.cca.api.v3.component.ComponentKey;
 import dev.onyxstudios.cca.api.v3.component.ComponentRegistry;
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry;
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer;
+import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy;
 import net.minecraft.resources.ResourceLocation;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.core.event.MIComponent;
@@ -17,7 +18,7 @@ public class MIComponents implements EntityComponentInitializer {
 
     @Override
     public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
-        registry.registerForPlayers(PLAYER_DATA, (player) -> new MIPlayerData());
+        registry.registerForPlayers(PLAYER_DATA, (player) -> new MIPlayerData(), RespawnCopyStrategy.ALWAYS_COPY);
     }
 
 
