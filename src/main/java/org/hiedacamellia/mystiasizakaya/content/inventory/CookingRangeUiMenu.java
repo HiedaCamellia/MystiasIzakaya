@@ -19,18 +19,20 @@ import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.registries.MIMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
+public class CookingRangeUiMenu extends AbstractContainerMenu {
 	public final static HashMap<String, Object> guistate = new HashMap<>();
 	public final Level world;
 	public final Player entity;
 	public int x, y, z;
 	private ContainerLevelAccess access = ContainerLevelAccess.NULL;
-	private CookingRangeEntity internal;
-	private final Map<Integer, Slot> customSlots = new HashMap<>();
+	private CookingRangeEntity inv;
+	public final List<Slot> customSlots = new ArrayList<>();
 	private boolean bound = false;
 	private Supplier<Boolean> boundItemMatcher = null;
 	private Entity boundEntity = null;
@@ -41,14 +43,10 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		access = ContainerLevelAccess.create(world, pos);
-		if(pos==null){
-
-		}
-
-		this.internal = cookingRange;
 
 
-        this.customSlots.put(0, this.addSlot(new Slot( internal,0, 203, 62) {
+
+			this.customSlots.add(0, this.addSlot(new Slot( inv,0, 203, 62) {
 			private final int slot = 0;
 
 			@Override
@@ -61,7 +59,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 				return stack.is(MITag.kitchenwaresKey);
 			}
 		}));
-		this.customSlots.put(1, this.addSlot(new Slot(internal, 1, 95, 26) {
+		this.customSlots.add(1, this.addSlot(new Slot(inv, 1, 95, 26) {
 			private final int slot = 1;
 
 			@Override
@@ -73,7 +71,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 				}
 			}
 		}));
-		this.customSlots.put(2, this.addSlot(new Slot(internal, 2, 122, 26) {
+		this.customSlots.add(this.addSlot(new Slot(inv, 2, 122, 26) {
 			private final int slot = 2;
 
 			@Override
@@ -86,7 +84,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 			}
 
 		}));
-		this.customSlots.put(3, this.addSlot(new Slot(internal, 3, 149, 26) {
+		this.customSlots.add(this.addSlot(new Slot(inv, 3, 149, 26) {
 			private final int slot = 3;
 
 			@Override
@@ -99,7 +97,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 			}
 
 		}));
-		this.customSlots.put(4, this.addSlot(new Slot(internal, 4, 176, 26) {
+		this.customSlots.add(this.addSlot(new Slot(inv, 4, 176, 26) {
 			private final int slot = 4;
 
 			@Override
@@ -112,7 +110,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 			}
 
 		}));
-		this.customSlots.put(5, this.addSlot(new Slot(internal, 5, 203, 26) {
+		this.customSlots.add(this.addSlot(new Slot(inv, 5, 203, 26) {
 			private final int slot = 5;
 
 			@Override
@@ -125,7 +123,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 			}
 
 		}));
-		this.customSlots.put(6, this.addSlot(new Slot(internal, 6, 239, 44) {
+		this.customSlots.add(this.addSlot(new Slot(inv, 6, 239, 44) {
 			private final int slot = 6;
 
 			@Override
@@ -133,7 +131,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 				return false;
 			}
 		}));
-		this.customSlots.put(7, this.addSlot(new Slot(internal, 7, 14, 26) {
+		this.customSlots.add(this.addSlot(new Slot(inv, 7, 14, 26) {
 			private final int slot = 7;
 
 			@Override
@@ -146,7 +144,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 				return false;
 			}
 		}));
-		this.customSlots.put(8, this.addSlot(new Slot(internal, 8, 14, 53) {
+		this.customSlots.add(this.addSlot(new Slot(inv, 8, 14, 53) {
 			private final int slot = 8;
 
 			@Override
@@ -159,7 +157,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 				return false;
 			}
 		}));
-		this.customSlots.put(9, this.addSlot(new Slot(internal, 9, 14, 80) {
+		this.customSlots.add(this.addSlot(new Slot(inv, 9, 14, 80) {
 			private final int slot = 9;
 
 			@Override
@@ -172,7 +170,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 				return false;
 			}
 		}));
-		this.customSlots.put(10, this.addSlot(new Slot(internal, 10, 14, 107) {
+		this.customSlots.add(this.addSlot(new Slot(inv, 10, 14, 107) {
 			private final int slot = 10;
 
 			@Override
@@ -185,7 +183,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 				return false;
 			}
 		}));
-		this.customSlots.put(11, this.addSlot(new Slot(internal, 11, 14, 134) {
+		this.customSlots.add(this.addSlot(new Slot(inv, 11, 14, 134) {
 			private final int slot = 11;
 
 			@Override
@@ -331,7 +329,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 		super.removed(playerIn);
 		if (!bound && playerIn instanceof ServerPlayer serverPlayer) {
 			if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
-				for (int j = 0; j < internal.stacks.size(); ++j) {
+				for (int j = 0; j < inv.stacks.size(); ++j) {
 					if (j == 0)
 						continue;
 					if (j == 12)
@@ -346,10 +344,10 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 						continue;
 					if (j == 11)
 						continue;
-					playerIn.drop(internal.stacks.get(j), false);
+					playerIn.drop(inv.stacks.get(j), false);
 				}
 			} else {
-				for (int i = 0; i < internal.stacks.size(); ++i) {
+				for (int i = 0; i < inv.stacks.size(); ++i) {
 					if (i == 0)
 						continue;
 					if (i == 12)
@@ -364,13 +362,10 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 						continue;
 					if (i == 11)
 						continue;
-					playerIn.drop(internal.stacks.get(i), false);
+					playerIn.drop(inv.stacks.get(i), false);
 				}
 			}
 		}
 	}
 
-	public Map<Integer, Slot> get() {
-		return customSlots;
-	}
 }
