@@ -90,7 +90,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.chao_rou_si", "炒肉丝");
         add("item.mystias_izakaya.chao_zun_pi_jiu", "超ZUN啤酒");
         add("item.mystias_izakaya.chou_dou_fu", "臭豆腐");
-        add("item.mystias_izakaya.chun_chun", "春椿");
+        add("item.mystias_izakaya.chun_chun", "香椿");
         add("item.mystias_izakaya.ci_shen_pin_pan", "刺身拼盘");
         add("item.mystias_izakaya.da_ban_shao", "大阪烧");
         add("item.mystias_izakaya.da_bing_gun_er", "“大冰棍儿！”");
@@ -229,7 +229,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.xiao", "晓");
         add("item.mystias_izakaya.xing_hong_e_mo", "猩红恶魔");
         add("item.mystias_izakaya.xing_hong_e_mo_dan_gao", "猩红恶魔蛋糕");
-        add("item.mystias_izakaya.xu_li", "薛荔");
+        add("item.mystias_izakaya.xu_li", "薜荔");
         add("item.mystias_izakaya.yan_jiang", "岩浆");
         add("item.mystias_izakaya.yang_cong", "洋葱");
         add("item.mystias_izakaya.yang_zhi_gan_lu", "杨枝甘露");
