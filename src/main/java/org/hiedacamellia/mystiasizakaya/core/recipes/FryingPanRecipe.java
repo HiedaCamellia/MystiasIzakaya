@@ -12,10 +12,11 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import org.hiedacamellia.mystiasizakaya.registries.MIRecipeType;
 
 import java.util.List;
 
-public class FryingPanRecipe implements Recipe<RecipeInput> {
+public class FryingPanRecipe implements Recipe<MIRecipeInput> {
 
 	private final ItemStack output;
 	private final List<Ingredient> recipeItems;
@@ -37,15 +38,28 @@ public class FryingPanRecipe implements Recipe<RecipeInput> {
 		return output;
 	}
 	@Override
-	public boolean matches(RecipeInput recipeInput, Level level) {
-		return false;
+	public boolean matches(MIRecipeInput recipeInput, Level level) {
+		for(Ingredient ingredient : recipeItems){
+			if(ingredient.isEmpty()||ingredient==Ingredient.EMPTY)
+				continue;
+			boolean a=false;
+			for(ItemStack itemStack :recipeInput.stack()){
+				if(ingredient.test(itemStack)){
+					a=true;
+					break;
+				}
+			}
+			if(!a){
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override
-	public ItemStack assemble(RecipeInput recipeInput, HolderLookup.Provider provider) {
-		return null;
+	public ItemStack assemble(MIRecipeInput recipeInput, HolderLookup.Provider provider) {
+		return output.copy();
 	}
-
 	@Override
 	public boolean canCraftInDimensions(int pWidth, int pHeight) {
 		return true;
@@ -58,24 +72,14 @@ public class FryingPanRecipe implements Recipe<RecipeInput> {
 
 	@Override
 	public RecipeType<?> getType() {
-		return Type.INSTANCE;
+		return MIRecipeType.FRYING_PAN.get();
 	}
-
 	@Override
 	public RecipeSerializer<?> getSerializer() {
-		return Serializer.INSTANCE;
-	}
-
-	public static class Type implements RecipeType<FryingPanRecipe> {
-		private Type() {
-		}
-
-		public static final Type INSTANCE = new Type();
-		public static final String ID = "frying_pan_type";
+		return MIRecipeType.FRYING_PAN_SERIALIZER.get();
 	}
 
 	public static class Serializer implements RecipeSerializer<FryingPanRecipe> {
-		public static final Serializer INSTANCE = new Serializer();
 		private static final MapCodec<FryingPanRecipe> CODEC = RecordCodecBuilder
 				.mapCodec(builder -> builder.group(
 						ItemStack.CODEC.fieldOf("output").forGetter(FryingPanRecipe::getResult),

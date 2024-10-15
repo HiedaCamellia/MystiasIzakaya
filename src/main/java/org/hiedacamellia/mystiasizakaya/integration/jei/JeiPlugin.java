@@ -13,6 +13,7 @@ import org.hiedacamellia.mystiasizakaya.integration.jei.categories.*;
 import org.hiedacamellia.mystiasizakaya.core.recipes.*;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlock;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
+import org.hiedacamellia.mystiasizakaya.registries.MIRecipeType;
 
 import java.util.List;
 import java.util.Objects;
@@ -24,7 +25,7 @@ public class JeiPlugin implements IModPlugin {
 	public static mezz.jei.api.recipe.RecipeType<CuttingBoardRecipe> CuttingBoardType_Type = new mezz.jei.api.recipe.RecipeType<>(CuttingBoardTypeRecipeCategory.UID, CuttingBoardRecipe.class);
 	public static mezz.jei.api.recipe.RecipeType<FryingPanRecipe> FryingPanType_Type = new mezz.jei.api.recipe.RecipeType<>(FryingPanTypeRecipeCategory.UID, FryingPanRecipe.class);
 	public static mezz.jei.api.recipe.RecipeType<GrillRecipe> GrillType_Type = new mezz.jei.api.recipe.RecipeType<>(GrillTypeRecipeCategory.UID, GrillRecipe.class);
-	public static mezz.jei.api.recipe.RecipeType<StreamerRecipe> StreamerType_Type = new mezz.jei.api.recipe.RecipeType<>(StreamerTypeRecipeCategory.UID, StreamerRecipe.class);
+	public static mezz.jei.api.recipe.RecipeType<SteamerRecipe> StreamerType_Type = new mezz.jei.api.recipe.RecipeType<>(SteamerTypeRecipeCategory.UID, SteamerRecipe.class);
 
 	@Override
 	public ResourceLocation getPluginUid() {
@@ -37,23 +38,23 @@ public class JeiPlugin implements IModPlugin {
 		registration.addRecipeCategories(new CuttingBoardTypeRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new FryingPanTypeRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new GrillTypeRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
-		registration.addRecipeCategories(new StreamerTypeRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new SteamerTypeRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
 	}
 
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) {
 		RecipeManager recipeManager = Objects.requireNonNull(Minecraft.getInstance().level).getRecipeManager();
 
-		List<BoilingPotRecipe> boilingPotRecipes = recipeManager.getAllRecipesFor(BoilingPotRecipe.Type.INSTANCE).stream().map(RecipeHolder::value).collect(Collectors.toList());
+		List<BoilingPotRecipe> boilingPotRecipes = recipeManager.getAllRecipesFor(MIRecipeType.BOILING_POT.get()).stream().map(RecipeHolder::value).collect(Collectors.toList());
 		registration.addRecipes(BoilingPotType_Type, boilingPotRecipes);
-		List<CuttingBoardRecipe> cuttingBoardRecipes = recipeManager.getAllRecipesFor(CuttingBoardRecipe.Type.INSTANCE).stream().map(RecipeHolder::value).collect(Collectors.toList());
+		List<CuttingBoardRecipe> cuttingBoardRecipes = recipeManager.getAllRecipesFor(MIRecipeType.CUTTING_BOARD.get()).stream().map(RecipeHolder::value).collect(Collectors.toList());
 		registration.addRecipes(CuttingBoardType_Type, cuttingBoardRecipes);
-		List<FryingPanRecipe> fryingPanRecipes = recipeManager.getAllRecipesFor(FryingPanRecipe.Type.INSTANCE).stream().map(RecipeHolder::value).collect(Collectors.toList());
+		List<FryingPanRecipe> fryingPanRecipes = recipeManager.getAllRecipesFor(MIRecipeType.FRYING_PAN.get()).stream().map(RecipeHolder::value).collect(Collectors.toList());
 		registration.addRecipes(FryingPanType_Type, fryingPanRecipes);
-		List<GrillRecipe> grillRecipes = recipeManager.getAllRecipesFor(GrillRecipe.Type.INSTANCE).stream().map(RecipeHolder::value).collect(Collectors.toList());
+		List<GrillRecipe> grillRecipes = recipeManager.getAllRecipesFor(MIRecipeType.GRILL.get()).stream().map(RecipeHolder::value).collect(Collectors.toList());
 		registration.addRecipes(GrillType_Type, grillRecipes);
-		List<StreamerRecipe> streamerRecipes = recipeManager.getAllRecipesFor(StreamerRecipe.Type.INSTANCE).stream().map(RecipeHolder::value).collect(Collectors.toList());
-		registration.addRecipes(StreamerType_Type, streamerRecipes);
+		List<SteamerRecipe> steamerRecipes = recipeManager.getAllRecipesFor(MIRecipeType.STEAMER.get()).stream().map(RecipeHolder::value).collect(Collectors.toList());
+		registration.addRecipes(StreamerType_Type, steamerRecipes);
 	}
 
 	@Override

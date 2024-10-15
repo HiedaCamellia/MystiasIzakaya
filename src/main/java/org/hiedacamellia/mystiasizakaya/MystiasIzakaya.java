@@ -31,7 +31,8 @@ public class MystiasIzakaya {
 		MIItem.register(modEventBus);
 		MITab.REGISTRY.register(modEventBus);
 		MIMenu.REGISTRY.register(modEventBus);
-		MIRecipeType.SERIALIZERS.register(modEventBus);
+		MIRecipeType.RECIPE_SERIALIZERS.register(modEventBus);
+		MIRecipeType.RECIPE_TYPES.register(modEventBus);
 		MIAttachment.ATTACHMENTS.register(modEventBus);
 		MIDatacomponet.DATA_COMPONENTS.register(modEventBus);
 

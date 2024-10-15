@@ -60,7 +60,7 @@ public class BuildTags {
         return target;
     }
 
-    private static @NotNull ArrayList<String> getStrings(List<ItemStack> ingredients, Set<String> set) {
+    public static @NotNull ArrayList<String> getStrings(List<ItemStack> ingredients, Set<String> set) {
         ArrayList<String> resultList = new ArrayList<>(set);
 
 

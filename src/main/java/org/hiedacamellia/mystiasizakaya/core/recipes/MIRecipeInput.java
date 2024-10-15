@@ -13,6 +13,6 @@ public record MIRecipeInput(List<ItemStack> stack) implements RecipeInput {
 
     @Override
     public int size() {
-        return 10;
+        return 5;
     }
 }

@@ -6,14 +6,23 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MIIngredient;
+import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
+import org.hiedacamellia.mystiasizakaya.core.cooking.get.GetTagFromItemStacks;
+import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
+import org.hiedacamellia.mystiasizakaya.registries.MIRecipeType;
 
-import java.util.List;
+import java.util.*;
+
+import static org.hiedacamellia.mystiasizakaya.core.cooking.BuildTags.getStrings;
 
 public class BoilingPotRecipe implements Recipe<MIRecipeInput> {
 
@@ -38,13 +47,28 @@ public class BoilingPotRecipe implements Recipe<MIRecipeInput> {
 	}
 	@Override
 	public boolean matches(MIRecipeInput recipeInput, Level level) {
-		return false;
+		for(Ingredient ingredient : recipeItems){
+			if(ingredient.isEmpty()||ingredient==Ingredient.EMPTY)
+				continue;
+			boolean a=false;
+			for(ItemStack itemStack :recipeInput.stack()){
+				if(ingredient.test(itemStack)){
+					a=true;
+					break;
+				}
+			}
+			if(!a){
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override
 	public ItemStack assemble(MIRecipeInput recipeInput, HolderLookup.Provider provider) {
-		return null;
+		return output.copy();
 	}
+
 
 	@Override
 	public boolean canCraftInDimensions(int pWidth, int pHeight) {
@@ -58,24 +82,15 @@ public class BoilingPotRecipe implements Recipe<MIRecipeInput> {
 
 	@Override
 	public RecipeType<?> getType() {
-		return Type.INSTANCE;
+		return MIRecipeType.BOILING_POT.get();
 	}
 
 	@Override
 	public RecipeSerializer<?> getSerializer() {
-		return Serializer.INSTANCE;
-	}
-
-	public static class Type implements RecipeType<BoilingPotRecipe> {
-		private Type() {
-		}
-
-		public static final Type INSTANCE = new Type();
-		public static final String ID = "boiling_pot_type";
+		return MIRecipeType.BOILING_POT_SERIALIZER.get();
 	}
 
 	public static class Serializer implements RecipeSerializer<BoilingPotRecipe> {
-		public static final Serializer INSTANCE = new Serializer();
 		private static final MapCodec<BoilingPotRecipe> CODEC = RecordCodecBuilder
 				.mapCodec(builder -> builder.group(
 						ItemStack.CODEC.fieldOf("output").forGetter(BoilingPotRecipe::getResult),

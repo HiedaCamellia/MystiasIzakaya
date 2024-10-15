@@ -1,7 +1,6 @@
 package org.hiedacamellia.mystiasizakaya.core.recipes;
 
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderLookup;
@@ -16,12 +15,12 @@ import org.hiedacamellia.mystiasizakaya.registries.MIRecipeType;
 
 import java.util.List;
 
-public class GrillRecipe implements Recipe<MIRecipeInput> {
+public class SteamerRecipe implements Recipe<MIRecipeInput> {
 
 	private final ItemStack output;
 	private final List<Ingredient> recipeItems;
 
-	public GrillRecipe(ItemStack output, List<Ingredient> recipeItems) {
+	public SteamerRecipe(ItemStack output, List<Ingredient> recipeItems) {
 		this.output = output;
 		this.recipeItems = recipeItems;
 	}
@@ -72,35 +71,35 @@ public class GrillRecipe implements Recipe<MIRecipeInput> {
 
 	@Override
 	public RecipeType<?> getType() {
-		return MIRecipeType.GRILL.get();
+		return MIRecipeType.STEAMER.get();
 	}
 
 	@Override
 	public RecipeSerializer<?> getSerializer() {
-		return MIRecipeType.GRILL_SERIALIZER.get();
+		return MIRecipeType.STEAMER_SERIALIZER.get();
 	}
 
 
-	public static class Serializer implements RecipeSerializer<GrillRecipe> {
-		private static final MapCodec<GrillRecipe> CODEC = RecordCodecBuilder
+	public static class Serializer implements RecipeSerializer<SteamerRecipe> {
+		private static final MapCodec<SteamerRecipe> CODEC = RecordCodecBuilder
 				.mapCodec(builder -> builder.group(
-						ItemStack.CODEC.fieldOf("output").forGetter(GrillRecipe::getResult),
-						Codec.list(Ingredient.CODEC).fieldOf("ingredients").forGetter(GrillRecipe::getInputItems)
-				).apply(builder, GrillRecipe::new));
-		public static final StreamCodec<RegistryFriendlyByteBuf, GrillRecipe> STREAM_CODEC =
+						ItemStack.CODEC.fieldOf("output").forGetter(SteamerRecipe::getResult),
+						Codec.list(Ingredient.CODEC).fieldOf("ingredients").forGetter(SteamerRecipe::getInputItems)
+				).apply(builder, SteamerRecipe::new));
+		public static final StreamCodec<RegistryFriendlyByteBuf, SteamerRecipe> STREAM_CODEC =
 				StreamCodec.composite(
-						ItemStack.STREAM_CODEC, GrillRecipe::getResult,
-						ByteBufCodecs.fromCodec(Codec.list(Ingredient.CODEC)), GrillRecipe::getInputItems,
-						GrillRecipe::new
+						ItemStack.STREAM_CODEC, SteamerRecipe::getResult,
+						ByteBufCodecs.fromCodec(Codec.list(Ingredient.CODEC)), SteamerRecipe::getInputItems,
+						SteamerRecipe::new
 				);
 
 		@Override
-		public MapCodec<GrillRecipe> codec() {
+		public MapCodec<SteamerRecipe> codec() {
 			return CODEC;
 		}
 
 		@Override
-		public StreamCodec<RegistryFriendlyByteBuf, GrillRecipe> streamCodec() {
+		public StreamCodec<RegistryFriendlyByteBuf, SteamerRecipe> streamCodec() {
 			return STREAM_CODEC;
 		}
 	}
