@@ -7,7 +7,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLConstructModEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.integration.jei.recipes.*;
+import org.hiedacamellia.mystiasizakaya.core.recipes.*;
 
 @EventBusSubscriber(modid = MystiasIzakaya.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class MIRecipeType {
@@ -16,11 +16,11 @@ public class MIRecipeType {
 	@SubscribeEvent
 	public static void register(FMLConstructModEvent event) {
 		event.enqueueWork(() -> {
-			SERIALIZERS.register("boiling_pot_type", () -> BoilingPotTypeRecipe.Serializer.INSTANCE);
-			SERIALIZERS.register("cutting_board_type", () -> CuttingBoardTypeRecipe.Serializer.INSTANCE);
-			SERIALIZERS.register("frying_pan_type", () -> FryingPanTypeRecipe.Serializer.INSTANCE);
-			SERIALIZERS.register("grill_type", () -> GrillTypeRecipe.Serializer.INSTANCE);
-			SERIALIZERS.register("streamer_type", () -> StreamerTypeRecipe.Serializer.INSTANCE);
+			SERIALIZERS.register("boiling_pot_type", () -> BoilingPotRecipe.Serializer.INSTANCE);
+			SERIALIZERS.register("cutting_board_type", () -> CuttingBoardRecipe.Serializer.INSTANCE);
+			SERIALIZERS.register("frying_pan_type", () -> FryingPanRecipe.Serializer.INSTANCE);
+			SERIALIZERS.register("grill_type", () -> GrillRecipe.Serializer.INSTANCE);
+			SERIALIZERS.register("streamer_type", () -> StreamerRecipe.Serializer.INSTANCE);
 		});
 	}
 }

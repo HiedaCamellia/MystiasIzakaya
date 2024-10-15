@@ -13,10 +13,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import org.hiedacamellia.mystiasizakaya.integration.jei.JeiPlugin;
-import org.hiedacamellia.mystiasizakaya.integration.jei.recipes.CuttingBoardTypeRecipe;
+import org.hiedacamellia.mystiasizakaya.core.recipes.CuttingBoardRecipe;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 
-public class CuttingBoardTypeRecipeCategory implements IRecipeCategory<CuttingBoardTypeRecipe> {
+public class CuttingBoardTypeRecipeCategory implements IRecipeCategory<CuttingBoardRecipe> {
 	public final static ResourceLocation UID = ResourceLocation.fromNamespaceAndPath("mystias_izakaya", "cutting_board_type");
 	public final static ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("mystias_izakaya", "textures/screens/recipe_gui.png");
 	private final IDrawable background;
@@ -29,7 +29,7 @@ public class CuttingBoardTypeRecipeCategory implements IRecipeCategory<CuttingBo
 	}
 
 	@Override
-	public mezz.jei.api.recipe.RecipeType<CuttingBoardTypeRecipe> getRecipeType() {
+	public mezz.jei.api.recipe.RecipeType<CuttingBoardRecipe> getRecipeType() {
 		return JeiPlugin.CuttingBoardType_Type;
 	}
 
@@ -49,7 +49,7 @@ public class CuttingBoardTypeRecipeCategory implements IRecipeCategory<CuttingBo
 	}
 
 	@Override
-	public void setRecipe(IRecipeLayoutBuilder builder, CuttingBoardTypeRecipe recipe, IFocusGroup focuses) {
+	public void setRecipe(IRecipeLayoutBuilder builder, CuttingBoardRecipe recipe, IFocusGroup focuses) {
 		builder.addSlot(RecipeIngredientRole.INPUT, 16, 26).addIngredients(recipe.getIngredients().get(0));
 		builder.addSlot(RecipeIngredientRole.INPUT, 43, 26).addIngredients(recipe.getIngredients().get(1));
 		builder.addSlot(RecipeIngredientRole.INPUT, 70, 26).addIngredients(recipe.getIngredients().get(2));
