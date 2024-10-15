@@ -7,13 +7,17 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
-import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 
 import java.util.List;
 
 public class IronKnifeItem extends Item {
 	public IronKnifeItem() {
-		super(new Item.Properties().durability(250).rarity(Rarity.COMMON).craftRemainder(MIItem.IRON_KNIFE.asItem()));
+		super(new Item.Properties().durability(250).rarity(Rarity.COMMON));
+	}
+
+	@Override
+	public boolean hasCraftingRemainingItem() {
+		return true;
 	}
 
 	@Override
