@@ -11,7 +11,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.util.FakePlayerFactory;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import org.hiedacamellia.mystiasizakaya.core.config.ClientConfig;
-import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
 
 @EventBusSubscriber
 public class Showbalance {

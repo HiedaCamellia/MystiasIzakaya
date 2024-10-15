@@ -2,19 +2,13 @@ package org.hiedacamellia.mystiasizakaya.core.cooking;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.common.ItemAbilities;
-import org.hiedacamellia.mystiasizakaya.content.common.blockitem.*;
-import org.hiedacamellia.mystiasizakaya.core.cooking.get.GetTargets;
-import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.core.recipes.MIRecipeInput;
 import org.hiedacamellia.mystiasizakaya.integration.youkaihomecoming.IngredientsCompact;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
@@ -25,9 +19,7 @@ import org.hiedacamellia.mystiasizakaya.util.SetSlotItem;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class Main {
     public static void execute(LevelAccessor world, BlockPos pos, BlockState blockState) {
@@ -134,8 +126,9 @@ public class Main {
                 }
             }
 
+
             RecipeManager recipes = Objects.requireNonNull(world.getServer()).getRecipeManager();
-            MIRecipeInput miRecipeInput = new MIRecipeInput(ingredients);
+            MIRecipeInput miRecipeInput = new MIRecipeInput(new ArrayList<>(ingredients));
 
             List<ItemStack> targetI = new ArrayList<>();
 
@@ -194,17 +187,6 @@ public class Main {
                 }
             }
 
-            if(util.getItem() instanceof BoilingPotBlockItem){
-                var optional = recipes.getRecipeFor(
-                        MIRecipeType.BOILING_POT.get(),
-                        miRecipeInput,
-                        world.getServer().overworld()
-                );
-                targetI = optional.map(RecipeHolder::value)
-                        .map(e -> e.assemble(miRecipeInput, world.getServer().registryAccess()))
-                        .stream().toList();
-            }
-
             if (!world.isClientSide()) {
                 BlockPos _bp = pos;
                 BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -220,7 +202,7 @@ public class Main {
             for (int i = 0; i < 5; i++) {
                 if (i < targetI.size()) {
                     ItemStack taget = targetI.get(i+page);
-                    SetSlotItem.setSlotItem(world, pos, BuildTags.execute(taget, util, ingredients), 7 + i, 1);
+                    SetSlotItem.setSlotItem(world, pos, BuildTags.execute(recipes,taget, util, new ArrayList<>(ingredients)), 7 + i, 1);
                 } else {
                     SetSlotItem.setEmptySlot(world, pos, 7 + i);
                 }

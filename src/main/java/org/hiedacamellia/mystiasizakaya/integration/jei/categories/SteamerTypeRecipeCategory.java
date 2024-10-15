@@ -12,8 +12,8 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import org.hiedacamellia.mystiasizakaya.integration.jei.JeiPlugin;
 import org.hiedacamellia.mystiasizakaya.core.recipes.SteamerRecipe;
+import org.hiedacamellia.mystiasizakaya.integration.jei.JeiPlugin;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 
 public class SteamerTypeRecipeCategory implements IRecipeCategory<SteamerRecipe> {

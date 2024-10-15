@@ -11,8 +11,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
-import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
+import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.jetbrains.annotations.NotNull;
 

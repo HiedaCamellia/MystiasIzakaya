@@ -10,7 +10,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import org.hiedacamellia.mystiasizakaya.core.config.ClientConfig;
-import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 @EventBusSubscriber({ Dist.CLIENT })

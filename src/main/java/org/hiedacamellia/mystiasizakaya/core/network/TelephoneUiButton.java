@@ -17,12 +17,12 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
-import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MICost;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITeleColddown;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
+import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 
