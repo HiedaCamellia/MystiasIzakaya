@@ -2,13 +2,13 @@
   "type": "mystias_izakaya:cutting_board_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:ning_meng"
+      "tag": "mystias_izakaya:ning_meng"
     },
     {
-      "item": "mystias_izakaya:pu_tao"
+      "tag": "mystias_izakaya:pu_tao"
     },
     {
-      "item": "mystias_izakaya:zhi_shi"
+      "tag": "mystias_izakaya:zhi_shi"
     },
     {
       "tag": "mystias_izakaya:ingredients"

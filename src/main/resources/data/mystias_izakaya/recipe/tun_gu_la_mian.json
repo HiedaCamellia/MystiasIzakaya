@@ -2,13 +2,13 @@
   "type": "mystias_izakaya:boiling_pot_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:zhu_rou"
+      "tag": "mystias_izakaya:zhu_rou"
     },
     {
-      "item": "mystias_izakaya:ji_dan"
+      "tag": "mystias_izakaya:ji_dan"
     },
     {
-      "item": "mystias_izakaya:hai_tai"
+      "tag": "mystias_izakaya:hai_tai"
     },
     {
       "tag": "mystias_izakaya:ingredients"

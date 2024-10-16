@@ -2,7 +2,7 @@
   "type": "mystias_izakaya:cutting_board_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:ji_shang_jin_qiang_yu"
+      "tag": "mystias_izakaya:ji_shang_jin_qiang_yu"
     },
     {
       "tag": "mystias_izakaya:ingredients"

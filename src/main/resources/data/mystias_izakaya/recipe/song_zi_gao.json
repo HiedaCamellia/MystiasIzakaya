@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:streamer_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:nuo_mi"
+      "tag": "mystias_izakaya:nuo_mi"
     },
     {
-      "item": "mystias_izakaya:song_zi"
+      "tag": "mystias_izakaya:song_zi"
     },
     {
       "tag": "mystias_izakaya:ingredients"

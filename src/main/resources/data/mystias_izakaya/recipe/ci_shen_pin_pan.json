@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:cutting_board_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:san_wen_yu"
+      "tag": "mystias_izakaya:san_wen_yu"
     },
     {
-      "item": "mystias_izakaya:jin_qiang_yu"
+      "tag": "mystias_izakaya:jin_qiang_yu"
     },
     {
       "tag": "mystias_izakaya:ingredients"

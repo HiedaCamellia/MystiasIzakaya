@@ -3,10 +3,10 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "mystias_izakaya:zhu_rou"
+      "tag": "mystias_izakaya:zhu_rou"
     },
     {
-      "item": "mystias_izakaya:zhu_rou"
+      "tag": "mystias_izakaya:zhu_rou"
     }
   ],
   "result": {

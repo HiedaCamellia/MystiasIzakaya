@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:frying_pan_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:nai_you"
+      "tag": "mystias_izakaya:nai_you"
     },
     {
-      "item": "mystias_izakaya:pang_xie"
+      "tag": "mystias_izakaya:pang_xie"
     },
     {
       "tag": "mystias_izakaya:ingredients"

@@ -2,13 +2,13 @@
   "type": "mystias_izakaya:cutting_board_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:xia"
+      "tag": "mystias_izakaya:xia"
     },
     {
-      "item": "mystias_izakaya:xia"
+      "tag": "mystias_izakaya:xia"
     },
     {
-      "item": "mystias_izakaya:xi_lan_hua"
+      "tag": "mystias_izakaya:xi_lan_hua"
     },
     {
       "tag": "mystias_izakaya:ingredients"

@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:streamer_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:nan_gua"
+      "tag": "mystias_izakaya:nan_gua"
     },
     {
-      "item": "mystias_izakaya:xia"
+      "tag": "mystias_izakaya:xia"
     },
     {
       "tag": "mystias_izakaya:ingredients"

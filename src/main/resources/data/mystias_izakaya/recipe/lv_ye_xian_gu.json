@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:boiling_pot_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:chun_chun"
+      "tag": "mystias_izakaya:chun_chun"
     },
     {
-      "item": "mystias_izakaya:mo_gu"
+      "tag": "mystias_izakaya:mo_gu"
     },
     {
       "tag": "mystias_izakaya:ingredients"

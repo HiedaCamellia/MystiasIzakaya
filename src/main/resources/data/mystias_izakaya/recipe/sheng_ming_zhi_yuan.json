@@ -2,16 +2,16 @@
   "type": "mystias_izakaya:streamer_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:ke_ke_dou"
+      "tag": "mystias_izakaya:ke_ke_dou"
     },
     {
-      "item": "mystias_izakaya:yin_er"
+      "tag": "mystias_izakaya:yin_er"
     },
     {
-      "item": "mystias_izakaya:nan_gua"
+      "tag": "mystias_izakaya:nan_gua"
     },
     {
-      "item": "mystias_izakaya:lu_shui"
+      "tag": "mystias_izakaya:lu_shui"
     },
     {
       "tag": "mystias_izakaya:ingredients"

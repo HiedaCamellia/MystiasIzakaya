@@ -2,16 +2,16 @@
   "type": "mystias_izakaya:cutting_board_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:lu_shui"
+      "tag": "mystias_izakaya:lu_shui"
     },
     {
-      "item": "mystias_izakaya:feng_mi"
+      "tag": "mystias_izakaya:feng_mi"
     },
     {
-      "item": "mystias_izakaya:dou_fu"
+      "tag": "mystias_izakaya:dou_fu"
     },
     {
-      "item": "mystias_izakaya:ji_dan"
+      "tag": "mystias_izakaya:ji_dan"
     },
     {
       "tag": "mystias_izakaya:ingredients"

@@ -3,6 +3,9 @@
   "category": "misc",
   "ingredients": [
     {
+      "item": "mystias_izakaya:iron_knife"
+    },
+    {
       "tag": "minecraft:small_flowers"
     }
   ],

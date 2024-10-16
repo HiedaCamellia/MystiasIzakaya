@@ -3,10 +3,10 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "mystias_izakaya:en_5"
+      "tag": "mystias_izakaya:en_5"
     },
     {
-      "item": "mystias_izakaya:en_5"
+      "tag": "mystias_izakaya:en_5"
     }
   ],
   "result": {

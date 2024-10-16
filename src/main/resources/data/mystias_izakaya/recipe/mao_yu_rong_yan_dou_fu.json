@@ -2,16 +2,16 @@
   "type": "mystias_izakaya:cutting_board_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:dou_fu"
+      "tag": "mystias_izakaya:dou_fu"
     },
     {
-      "item": "mystias_izakaya:niu_rou"
+      "tag": "mystias_izakaya:niu_rou"
     },
     {
-      "item": "mystias_izakaya:yang_cong"
+      "tag": "mystias_izakaya:yang_cong"
     },
     {
-      "item": "mystias_izakaya:la_jiao"
+      "tag": "mystias_izakaya:la_jiao"
     },
     {
       "tag": "mystias_izakaya:ingredients"

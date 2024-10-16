@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:cutting_board_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:luo_bu"
+      "tag": "mystias_izakaya:luo_bu"
     },
     {
-      "item": "mystias_izakaya:dou_fu"
+      "tag": "mystias_izakaya:dou_fu"
     },
     {
       "tag": "mystias_izakaya:ingredients"

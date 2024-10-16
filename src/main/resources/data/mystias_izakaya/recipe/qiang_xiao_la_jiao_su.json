@@ -3,13 +3,13 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "mystias_izakaya:la_jiao"
+      "tag": "mystias_izakaya:la_jiao"
     },
     {
-      "item": "mystias_izakaya:la_jiao"
+      "tag": "mystias_izakaya:la_jiao"
     },
     {
-      "item": "mystias_izakaya:la_jiao"
+      "tag": "mystias_izakaya:la_jiao"
     }
   ],
   "result": {

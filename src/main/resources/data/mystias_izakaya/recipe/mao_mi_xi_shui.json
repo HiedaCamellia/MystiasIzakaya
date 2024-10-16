@@ -2,19 +2,19 @@
   "type": "mystias_izakaya:cutting_board_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:tao_zi"
+      "tag": "mystias_izakaya:tao_zi"
     },
     {
-      "item": "mystias_izakaya:xu_li"
+      "tag": "mystias_izakaya:xu_li"
     },
     {
-      "item": "mystias_izakaya:nai_you"
+      "tag": "mystias_izakaya:nai_you"
     },
     {
-      "item": "mystias_izakaya:ke_ke_dou"
+      "tag": "mystias_izakaya:ke_ke_dou"
     },
     {
-      "item": "mystias_izakaya:mian_fen"
+      "tag": "mystias_izakaya:mian_fen"
     }
   ],
   "output": {

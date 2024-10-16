@@ -2,13 +2,13 @@
   "type": "mystias_izakaya:streamer_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:xian_hua"
+      "tag": "mystias_izakaya:xian_hua"
     },
     {
-      "item": "mystias_izakaya:yue_guang_cao"
+      "tag": "mystias_izakaya:yue_guang_cao"
     },
     {
-      "item": "mystias_izakaya:nai_you"
+      "tag": "mystias_izakaya:nai_you"
     },
     {
       "tag": "mystias_izakaya:ingredients"

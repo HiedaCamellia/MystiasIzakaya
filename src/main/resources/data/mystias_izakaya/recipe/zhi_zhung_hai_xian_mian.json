@@ -2,19 +2,19 @@
   "type": "mystias_izakaya:boiling_pot_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:ji_shang_jin_qiang_yu"
+      "tag": "mystias_izakaya:ji_shang_jin_qiang_yu"
     },
     {
-      "item": "mystias_izakaya:hai_tai"
+      "tag": "mystias_izakaya:hai_tai"
     },
     {
-      "item": "mystias_izakaya:zhang_yu"
+      "tag": "mystias_izakaya:zhang_yu"
     },
     {
-      "item": "mystias_izakaya:pang_xie"
+      "tag": "mystias_izakaya:pang_xie"
     },
     {
-      "item": "mystias_izakaya:xia"
+      "tag": "mystias_izakaya:xia"
     }
   ],
   "output": {

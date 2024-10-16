@@ -2,16 +2,16 @@
   "type": "mystias_izakaya:streamer_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:mo_gu"
+      "tag": "mystias_izakaya:mo_gu"
     },
     {
-      "item": "mystias_izakaya:huan_tan_hua"
+      "tag": "mystias_izakaya:huan_tan_hua"
     },
     {
-      "item": "mystias_izakaya:feng_mi"
+      "tag": "mystias_izakaya:feng_mi"
     },
     {
-      "item": "mystias_izakaya:nai_you"
+      "tag": "mystias_izakaya:nai_you"
     },
     {
       "tag": "mystias_izakaya:ingredients"

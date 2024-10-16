@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:cutting_board_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:yue_guang_cao"
+      "tag": "mystias_izakaya:yue_guang_cao"
     },
     {
-      "item": "mystias_izakaya:nuo_mi"
+      "tag": "mystias_izakaya:nuo_mi"
     },
     {
       "tag": "mystias_izakaya:ingredients"

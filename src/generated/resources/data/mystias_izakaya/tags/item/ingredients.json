@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "mystias_izakaya:ba_mu_man",
     "mystias_izakaya:bai_guo",
@@ -61,7 +60,6 @@
     "mystias_izakaya:zhu_rou",
     "mystias_izakaya:zhu_sun",
     "mystias_izakaya:zhu_zi",
-    "mystias_izakaya:zun_yu",
-    "minecraft:air"
+    "mystias_izakaya:zun_yu"
   ]
 }

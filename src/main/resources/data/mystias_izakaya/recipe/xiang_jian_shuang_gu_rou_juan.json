@@ -2,13 +2,13 @@
   "type": "mystias_izakaya:frying_pan_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:mo_gu"
+      "tag": "mystias_izakaya:mo_gu"
     },
     {
-      "item": "mystias_izakaya:song_lu"
+      "tag": "mystias_izakaya:song_lu"
     },
     {
-      "item": "mystias_izakaya:zhu_rou"
+      "tag": "mystias_izakaya:zhu_rou"
     },
     {
       "tag": "mystias_izakaya:ingredients"

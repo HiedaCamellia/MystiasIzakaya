@@ -2,19 +2,19 @@
   "type": "mystias_izakaya:boiling_pot_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:la_jiao"
+      "tag": "mystias_izakaya:la_jiao"
     },
     {
-      "item": "mystias_izakaya:luo_bu"
+      "tag": "mystias_izakaya:luo_bu"
     },
     {
-      "item": "mystias_izakaya:song_lu"
+      "tag": "mystias_izakaya:song_lu"
     },
     {
-      "item": "mystias_izakaya:niu_rou"
+      "tag": "mystias_izakaya:niu_rou"
     },
     {
-      "item": "mystias_izakaya:he_niu"
+      "tag": "mystias_izakaya:he_niu"
     }
   ],
   "output": {

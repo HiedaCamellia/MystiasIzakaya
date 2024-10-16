@@ -2,19 +2,19 @@
   "type": "mystias_izakaya:streamer_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:huang_gua"
+      "tag": "mystias_izakaya:huang_gua"
     },
     {
-      "item": "mystias_izakaya:ji_dan"
+      "tag": "mystias_izakaya:ji_dan"
     },
     {
-      "item": "mystias_izakaya:luo_bu"
+      "tag": "mystias_izakaya:luo_bu"
     },
     {
-      "item": "mystias_izakaya:lu_rou"
+      "tag": "mystias_izakaya:lu_rou"
     },
     {
-      "item": "mystias_izakaya:yue_guang_cao"
+      "tag": "mystias_izakaya:yue_guang_cao"
     }
   ],
   "output": {

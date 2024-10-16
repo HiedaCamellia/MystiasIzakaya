@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:streamer_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:feng_mi"
+      "tag": "mystias_izakaya:feng_mi"
     },
     {
-      "item": "mystias_izakaya:tao_zi"
+      "tag": "mystias_izakaya:tao_zi"
     },
     {
       "tag": "mystias_izakaya:ingredients"

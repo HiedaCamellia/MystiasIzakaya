@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:grill_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:mian_fen"
+      "tag": "mystias_izakaya:mian_fen"
     },
     {
-      "item": "mystias_izakaya:zhi_shi"
+      "tag": "mystias_izakaya:zhi_shi"
     },
     {
       "tag": "mystias_izakaya:ingredients"

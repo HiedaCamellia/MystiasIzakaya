@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:streamer_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:huan_tan_hua"
+      "tag": "mystias_izakaya:huan_tan_hua"
     },
     {
-      "item": "mystias_izakaya:lu_shui"
+      "tag": "mystias_izakaya:lu_shui"
     },
     {
       "tag": "mystias_izakaya:ingredients"

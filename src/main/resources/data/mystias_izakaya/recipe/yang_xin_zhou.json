@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:boiling_pot_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:yin_er"
+      "tag": "mystias_izakaya:yin_er"
     },
     {
-      "item": "mystias_izakaya:lian_zi"
+      "tag": "mystias_izakaya:lian_zi"
     },
     {
       "tag": "mystias_izakaya:ingredients"

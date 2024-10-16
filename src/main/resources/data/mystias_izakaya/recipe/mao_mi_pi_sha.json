@@ -2,16 +2,16 @@
   "type": "mystias_izakaya:grill_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:mo_gu"
+      "tag": "mystias_izakaya:mo_gu"
     },
     {
-      "item": "mystias_izakaya:yang_cong"
+      "tag": "mystias_izakaya:yang_cong"
     },
     {
-      "item": "mystias_izakaya:xi_lan_hua"
+      "tag": "mystias_izakaya:xi_lan_hua"
     },
     {
-      "item": "mystias_izakaya:ye_zhu_rou"
+      "tag": "mystias_izakaya:ye_zhu_rou"
     },
     {
       "tag": "mystias_izakaya:ingredients"
