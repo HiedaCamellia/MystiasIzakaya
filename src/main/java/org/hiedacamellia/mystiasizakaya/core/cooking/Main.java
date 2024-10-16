@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.hiedacamellia.mystiasizakaya.core.recipes.MIRecipeInput;
-import org.hiedacamellia.mystiasizakaya.integration.youkaihomecoming.IngredientsCompact;
+import org.hiedacamellia.mystiasizakaya.integration.compact.IngredientsCompact;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.hiedacamellia.mystiasizakaya.registries.MIRecipeType;
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;

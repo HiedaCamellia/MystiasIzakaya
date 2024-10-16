@@ -21,14 +21,14 @@ public class MITag {
     public static TagKey<Item> ingredientsKey = ItemTags.create(ResourceLocation.parse("mystias_izakaya:ingredients"));
     public static TagKey<Item> kitchenwaresKey = ItemTags.create(ResourceLocation.parse("mystias_izakaya:kitchenwares"));
 
-    public static Map<String,TagKey<Item>> ingredients = getKnownIngredients().stream().collect(Collectors.toMap(s->s,s-> ItemTags.create(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID,s))));
+    public static Map<String,TagKey<Item>> ingredients = getKnownIngredients();
 
-    public static List<String> getKnownIngredients(){
+    public static Map<String,TagKey<Item>> getKnownIngredients(){
         Collection<DeferredHolder<Item, ? extends Item>> knownIngredients = MIItem.Ingredients.getEntries();
         List<String> regs =new ArrayList<>();
         for(DeferredHolder<Item, ? extends Item> item: knownIngredients){
             regs.add(BuiltInRegistries.ITEM.getKey(item.get()).getPath());
         }
-        return regs;
+        return regs.stream().collect(Collectors.toMap(s->s,s-> ItemTags.create(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID,s))));
     }
 }
