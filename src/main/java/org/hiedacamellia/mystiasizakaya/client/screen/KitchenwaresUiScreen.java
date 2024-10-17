@@ -123,13 +123,8 @@ public class KitchenwaresUiScreen extends AbstractContainerScreen<KitchenwaresUi
                     MINetWork.PACKET_HANDLER.sendToServer(new CookingRangeUiButton(finalI+1, x, y, z));
                     CookingRangeUiButton.handleButtonAction(entity, finalI+1, pos);
 
-            }) {
-                @Override
-                public void render(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
-                    //if (slots.get(7+finalI).hasItem())
-                        super.render(guiGraphics, gx, gy, ticks);
-                }
-            });
+            }));
+            selects.get(i).visible=false;
         }
 
         button_next = Button.builder(Component.translatable("gui.mystias_izakaya.cooking_range_ui.button_next"), e -> {

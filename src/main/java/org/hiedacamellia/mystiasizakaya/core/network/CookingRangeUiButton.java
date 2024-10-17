@@ -17,6 +17,7 @@ import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRan
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.KitchenwaresEntity;
 import org.hiedacamellia.mystiasizakaya.content.inventory.CookingRangeUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.cooking.Confirm;
+import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.util.SelectTarget;
 import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
@@ -47,10 +48,8 @@ public class CookingRangeUiButton implements C2SPacket {
 
 	public static void handleButtonAction(Player entity, int buttonID, BlockPos pos) {
 		Level world = entity.level();
-		HashMap guistate = CookingRangeUiMenu.guistate;
-		// security measure to prevent arbitrary chunk generation
-		if (!world.hasChunkAt(pos))
-			return;
+		Debug.getLogger().debug("Button{}",buttonID);
+
 		if (buttonID == 0) {
 
 			Confirm.execute(world, pos);

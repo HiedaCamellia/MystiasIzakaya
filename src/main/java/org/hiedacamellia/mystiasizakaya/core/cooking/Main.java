@@ -69,45 +69,9 @@ public class Main {
             SetSlotItem.setEmptySlot(world, pos, 12);
         } else {
 
-            if (ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 4)
-                    && !(ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 5))) {
-                SetSlotItem.setSlotItem(world, pos, GetItemStack.getItemStack(world, pos, 5), 4, 1);
-                SetSlotItem.setEmptySlot(world, pos, 5);
-                resetpage(world, pos);
-                SetSlotItem.setEmptySlot(world, pos, new int[]{7, 8, 9, 10, 11, 12});
-            }
-            if (ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 3)
-                    && !(ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 4))) {
-                SetSlotItem.setSlotItem(world, pos, GetItemStack.getItemStack(world, pos, 4), 3, 1);
-                SetSlotItem.setEmptySlot(world, pos, 4);
-                resetpage(world, pos);
-                SetSlotItem.setEmptySlot(world, pos, new int[]{7, 8, 9, 10, 11, 12});
-            }
-            if (ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 2)
-                    && !(ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 3))) {
-                SetSlotItem.setSlotItem(world, pos, GetItemStack.getItemStack(world, pos, 3), 2, 1);
-                SetSlotItem.setEmptySlot(world, pos, 3);
-                resetpage(world, pos);
-                SetSlotItem.setEmptySlot(world, pos, new int[]{7, 8, 9, 10, 11, 12});
-            }
-            if (ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 1)
-                    && !(ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 2))) {
-                SetSlotItem.setSlotItem(world, pos, GetItemStack.getItemStack(world, pos, 2), 1, 1);
-                SetSlotItem.setEmptySlot(world, pos, 2);
-                resetpage(world, pos);
-                SetSlotItem.setEmptySlot(world, pos, new int[]{7, 8, 9, 10, 11, 12});
-            }
-
-            if (ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 1)) {
-                SetSlotItem.setEmptySlot(world, pos, new int[]{7, 8, 9, 10, 11, 12});
-            }
 
             util = GetItemStack.getItemStack(world, pos, 0);
-//            Debug.send(GetItemStack.getItemStack(world, pos, 1).getDescriptionId());
-//            Debug.send(GetItemStack.getItemStack(world, pos, 2).getDescriptionId());
-//            Debug.send(GetItemStack.getItemStack(world, pos, 3).getDescriptionId());
-//            Debug.send(GetItemStack.getItemStack(world, pos, 4).getDescriptionId());
-//            Debug.send(GetItemStack.getItemStack(world, pos, 5).getDescriptionId());
+
 
             if (util == ItemStack.EMPTY) {
                 Block utilblcok = world.getBlockState(pos).getBlock();
