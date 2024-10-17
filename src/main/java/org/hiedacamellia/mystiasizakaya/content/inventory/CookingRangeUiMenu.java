@@ -4,6 +4,8 @@ package org.hiedacamellia.mystiasizakaya.content.inventory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -31,22 +33,31 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 	public final Player entity;
 	public int x, y, z;
 	private ContainerLevelAccess access = ContainerLevelAccess.NULL;
-	private CookingRangeEntity inv;
+	private Container inv;
 	public final List<Slot> customSlots = new ArrayList<>();
 	private boolean bound = false;
 	private Supplier<Boolean> boundItemMatcher = null;
 	private Entity boundEntity = null;
 	private BlockEntity boundBlockEntity = null;
 
-	public CookingRangeUiMenu(int id, Inventory inv, BlockPos pos,CookingRangeEntity cookingRange) {
+	public CookingRangeUiMenu(int id, Inventory inv, BlockPos pos ) {
+		this(id, inv, pos, new SimpleContainer(12));
+	}
+	public CookingRangeUiMenu(int id, Inventory inv, BlockPos pos, Container inventory ) {
 		super(MIMenu.COOKING_RANGE_UI, id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		access = ContainerLevelAccess.create(world, pos);
+		if(inventory==null){
+			this.inv =  new SimpleContainer(12);
+		}else {
+			this.inv = inventory;
+		}
+
+		this.inv.startOpen(inv.player);
 
 
-
-			this.customSlots.add(0, this.addSlot(new Slot( inv,0, 203, 62) {
+		this.customSlots.add(0, this.addSlot(new Slot(this.inv, 0, 203, 62) {
 			private final int slot = 0;
 
 			@Override
@@ -58,8 +69,9 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 			public boolean mayPlace(ItemStack stack) {
 				return stack.is(MITag.kitchenwaresKey);
 			}
+
 		}));
-		this.customSlots.add(1, this.addSlot(new Slot(inv, 1, 95, 26) {
+		this.customSlots.add(1, this.addSlot(new Slot(this.inv, 1, 95, 26) {
 			private final int slot = 1;
 
 			@Override
@@ -71,7 +83,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 				}
 			}
 		}));
-		this.customSlots.add(this.addSlot(new Slot(inv, 2, 122, 26) {
+		this.customSlots.add(this.addSlot(new Slot(this.inv, 2, 122, 26) {
 			private final int slot = 2;
 
 			@Override
@@ -84,7 +96,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 			}
 
 		}));
-		this.customSlots.add(this.addSlot(new Slot(inv, 3, 149, 26) {
+		this.customSlots.add(this.addSlot(new Slot(this.inv, 3, 149, 26) {
 			private final int slot = 3;
 
 			@Override
@@ -97,7 +109,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 			}
 
 		}));
-		this.customSlots.add(this.addSlot(new Slot(inv, 4, 176, 26) {
+		this.customSlots.add(this.addSlot(new Slot(this.inv, 4, 176, 26) {
 			private final int slot = 4;
 
 			@Override
@@ -110,7 +122,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 			}
 
 		}));
-		this.customSlots.add(this.addSlot(new Slot(inv, 5, 203, 26) {
+		this.customSlots.add(this.addSlot(new Slot(this.inv, 5, 203, 26) {
 			private final int slot = 5;
 
 			@Override
@@ -123,7 +135,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 			}
 
 		}));
-		this.customSlots.add(this.addSlot(new Slot(inv, 6, 239, 44) {
+		this.customSlots.add(this.addSlot(new Slot(this.inv, 6, 239, 44) {
 			private final int slot = 6;
 
 			@Override
@@ -131,7 +143,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 				return false;
 			}
 		}));
-		this.customSlots.add(this.addSlot(new Slot(inv, 7, 14, 26) {
+		this.customSlots.add(this.addSlot(new Slot(this.inv, 7, 14, 26) {
 			private final int slot = 7;
 
 			@Override
@@ -144,7 +156,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 				return false;
 			}
 		}));
-		this.customSlots.add(this.addSlot(new Slot(inv, 8, 14, 53) {
+		this.customSlots.add(this.addSlot(new Slot(this.inv, 8, 14, 53) {
 			private final int slot = 8;
 
 			@Override
@@ -157,7 +169,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 				return false;
 			}
 		}));
-		this.customSlots.add(this.addSlot(new Slot(inv, 9, 14, 80) {
+		this.customSlots.add(this.addSlot(new Slot(this.inv, 9, 14, 80) {
 			private final int slot = 9;
 
 			@Override
@@ -170,7 +182,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 				return false;
 			}
 		}));
-		this.customSlots.add(this.addSlot(new Slot(inv, 10, 14, 107) {
+		this.customSlots.add(this.addSlot(new Slot(this.inv, 10, 14, 107) {
 			private final int slot = 10;
 
 			@Override
@@ -183,7 +195,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 				return false;
 			}
 		}));
-		this.customSlots.add(this.addSlot(new Slot(inv, 11, 14, 134) {
+		this.customSlots.add(this.addSlot(new Slot(this.inv, 11, 14, 134) {
 			private final int slot = 11;
 
 			@Override
@@ -329,7 +341,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 		super.removed(playerIn);
 		if (!bound && playerIn instanceof ServerPlayer serverPlayer) {
 			if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
-				for (int j = 0; j < inv.stacks.size(); ++j) {
+				for (int j = 0; j < inv.getContainerSize(); ++j) {
 					if (j == 0)
 						continue;
 					if (j == 12)
@@ -344,10 +356,10 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 						continue;
 					if (j == 11)
 						continue;
-					playerIn.drop(inv.stacks.get(j), false);
+					playerIn.drop(inv.getItem(j), false);
 				}
 			} else {
-				for (int i = 0; i < inv.stacks.size(); ++i) {
+				for (int i = 0; i < inv.getContainerSize(); ++i) {
 					if (i == 0)
 						continue;
 					if (i == 12)
@@ -362,7 +374,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 						continue;
 					if (i == 11)
 						continue;
-					playerIn.drop(inv.stacks.get(i), false);
+					playerIn.drop(inv.getItem(i), false);
 				}
 			}
 		}

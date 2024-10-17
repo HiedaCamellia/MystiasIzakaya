@@ -84,6 +84,9 @@ public class KitchenwaresUiScreen extends AbstractContainerScreen<KitchenwaresUi
     @Override
     public void containerTick() {
         super.containerTick();
+        for(int i=0;i<5;i++){
+            selects.get(i).visible = slots.get(7 + i).hasItem();
+        }
     }
 
     @Override

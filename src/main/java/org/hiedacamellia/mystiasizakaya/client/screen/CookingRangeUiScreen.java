@@ -88,6 +88,9 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
     @Override
     public void containerTick() {
         super.containerTick();
+        for(int i=0;i<5;i++){
+            selects.get(i).visible = slots.get(7 + i).hasItem();
+        }
     }
 
     @Override
@@ -106,10 +109,12 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
         super.onClose();
     }
 
+
+
     @Override
     public void init() {
         super.init();
-
+        selects = new ArrayList<>();
         button_confirm = Button
                 .builder(Component.translatable("gui.mystias_izakaya.cooking_range_ui.button_confirm"), e -> {
                     if (true) {
