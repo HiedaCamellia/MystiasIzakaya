@@ -17,7 +17,10 @@ public class Confirm {
 	public static void execute(LevelAccessor world, BlockPos pos) {
         double time = 0;
 
+		Debug.getLogger().error("conform");
+
 		BlockEntity blockEntity = world.getBlockEntity(pos);
+		Debug.getLogger().error(blockEntity.toString());
 		if(blockEntity instanceof CookingRangeEntity cookingRangeEntity)
 			time = cookingRangeEntity.timeLeft;
 		if(blockEntity instanceof KitchenwaresEntity kitchenwaresEntity)
@@ -26,8 +29,9 @@ public class Confirm {
 		ItemStack target;
 
 		if(ItemStack.EMPTY == GetItemStack.getItemStack(world, pos, 1)){
-			return;
+			//return;
 		}
+		Debug.getLogger().error(GetItemStack.getItemStack(world, pos, 12).getDescriptionId());
 
         if ((ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, pos, 6).getItem())
 				&& !(ItemStack.EMPTY.getItem() == GetItemStack.getItemStack(world, pos, 12).getItem())

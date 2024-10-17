@@ -24,8 +24,8 @@ public class MIItem {
     public static List<Item> beverages= new ArrayList<>();
     public static List<Item> others= new ArrayList<>();
 
-    public static final BlockItem COOKING_RANGE = Registry.register(BuiltInRegistries.ITEM, "cooking_range", new BlockItem(MIBlock.COOKING_RANGE, new Item.Properties()));
-    public static final BlockItem BANK = Registry.register(BuiltInRegistries.ITEM, "donation", new BlockItem(MIBlock.DONATION, new Item.Properties()));
+    public static final BlockItem COOKING_RANGE = RegCommonBlockItem( "cooking_range", new BlockItem(MIBlock.COOKING_RANGE, new Item.Properties()));
+    public static final BlockItem BANK =RegCommonBlockItem( "donation", new BlockItem(MIBlock.DONATION, new Item.Properties()));
 
     //kictenwires
     public static final BlockItem CUTTING_BOARD = RegCommonBlockItem("cutting_board", new CuttingBoardBlockItem());

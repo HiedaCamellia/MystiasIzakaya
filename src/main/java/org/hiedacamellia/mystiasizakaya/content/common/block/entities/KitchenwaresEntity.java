@@ -7,6 +7,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -17,6 +18,7 @@ import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 import org.hiedacamellia.mystiasizakaya.content.inventory.KitchenwaresUiMenu;
+import org.hiedacamellia.mystiasizakaya.core.cooking.Main;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,9 +40,24 @@ public abstract class KitchenwaresEntity extends RandomizableContainerBlockEntit
         totalTime = 0;
     }
 
+    public void tick(ServerLevel world){
+        Main.execute(world, this.worldPosition);
+        if(timeLeft>1)
+            timeLeft--;
+        if(timeLeft==1){
+            timeLeft=0;
+            stacks.set(6,stacks.get(12));
+            stacks.set(12,ItemStack.EMPTY);
+        }
+    }
+
     @Override
     public void load(CompoundTag compound) {
         super.load(compound);
+        timeLeft = compound.getInt("timeLeft");
+        page = compound.getInt("page");
+        targets = compound.getInt("targets");
+        totalTime = compound.getInt("totalTime");
         if (!this.tryLoadLootTable(compound))
             this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         ContainerHelper.loadAllItems(compound, this.stacks);
@@ -49,6 +66,10 @@ public abstract class KitchenwaresEntity extends RandomizableContainerBlockEntit
     @Override
     public void saveAdditional(CompoundTag compound) {
         super.saveAdditional(compound);
+        compound.putInt("timeLeft", timeLeft);
+        compound.putInt("page", page);
+        compound.putInt("targets", targets);
+        compound.putInt("totalTime", totalTime);
         if (!this.trySaveLootTable(compound)) {
             ContainerHelper.saveAllItems(compound, this.stacks);
         }

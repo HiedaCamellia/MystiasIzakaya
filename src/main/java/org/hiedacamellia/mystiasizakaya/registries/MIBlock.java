@@ -10,7 +10,7 @@ import org.hiedacamellia.mystiasizakaya.content.common.block.blocks.*;
 
 public class MIBlock {
 
-	public static final Block COOKING_RANGE = Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(MystiasIzakaya.MODID, "cooking_range"), new CookingRange());
+	public static final CookingRange COOKING_RANGE = Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(MystiasIzakaya.MODID, "cooking_range"), new CookingRange());
 	public static final Block DONATION = Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(MystiasIzakaya.MODID, "donation"), new Donation());
 
 	public static final Kitchenwares CUTTING_BOARD = Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(MystiasIzakaya.MODID, "cutting_board"), new Kitchenwares());

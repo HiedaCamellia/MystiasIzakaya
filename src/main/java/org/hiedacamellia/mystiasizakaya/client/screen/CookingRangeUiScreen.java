@@ -89,17 +89,13 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
     public void containerTick() {
         super.containerTick();
         for(int i=0;i<5;i++){
+            selects.get(i).setMessage(Component.literal(slots.get(7 + i).getItem().getDisplayName().getString()));
             selects.get(i).visible = slots.get(7 + i).hasItem();
         }
     }
 
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        guiGraphics.drawString(this.font, TargetsText.get(world, pos, 7), 44, 29, -1, false);
-        guiGraphics.drawString(this.font, TargetsText.get(world, pos, 8), 44, 56, -1, false);
-        guiGraphics.drawString(this.font, TargetsText.get(world, pos, 9), 44, 83, -1, false);
-        guiGraphics.drawString(this.font, TargetsText.get(world, pos, 10), 44, 110, -1, false);
-        guiGraphics.drawString(this.font, TargetsText.get(world, pos, 11), 44, 137, -1, false);
         guiGraphics.drawString(this.font, Status.execute(world, pos), 233, 26, -1, false);
         guiGraphics.drawString(this.font, Lefttime.execute(world, pos), 238, 65, -1, false);
     }

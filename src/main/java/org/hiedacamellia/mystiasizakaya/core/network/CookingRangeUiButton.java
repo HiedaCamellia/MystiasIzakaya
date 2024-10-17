@@ -48,7 +48,7 @@ public class CookingRangeUiButton implements C2SPacket {
 
 	public static void handleButtonAction(Player entity, int buttonID, BlockPos pos) {
 		Level world = entity.level();
-		Debug.getLogger().debug("Button{}",buttonID);
+		Debug.getLogger().error("Button{}",buttonID);
 
 		if (buttonID == 0) {
 

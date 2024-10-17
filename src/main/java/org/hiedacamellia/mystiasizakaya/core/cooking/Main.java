@@ -7,11 +7,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRangeEntity;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.KitchenwaresEntity;
 import org.hiedacamellia.mystiasizakaya.core.cooking.get.GetTargets;
+import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 import org.hiedacamellia.mystiasizakaya.util.SetSlotItem;
@@ -22,79 +24,31 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class Main {
-    public static void execute(LevelAccessor world, BlockPos pos, BlockState blockState) {
-        double time=0;
+    public static void execute(LevelAccessor world, BlockPos pos) {
         ItemStack util;
-        ItemStack target;
-        BlockEntity be = world.getBlockEntity(pos);
-        if(be instanceof CookingRangeEntity cookingRangeEntity)
-            time = cookingRangeEntity.timeLeft;
-        if(be instanceof KitchenwaresEntity kitchenwaresEntity)
-            time = kitchenwaresEntity.timeLeft;
-
-        //time = GetValue.getDouble(world, pos, "timeleft");
-        if (time > 1) {
-            if (!world.isClientSide()) {
-                BlockEntity _blockEntity = world.getBlockEntity(pos);
-                BlockState _bs = world.getBlockState(pos);
-                if (_blockEntity != null) {
-                    if (be instanceof CookingRangeEntity cookingRangeEntity)
-                        cookingRangeEntity.timeLeft = (int) (time - 1);
-                    if (be instanceof KitchenwaresEntity kitchenwaresEntity)
-                        kitchenwaresEntity.timeLeft = (int) (time - 1);
-                }
-                    //_blockEntity.getPersistentData().putDouble("timeleft", (time - 1));
-                if (world instanceof Level _level)
-                    _level.sendBlockUpdated(pos, _bs, _bs, 3);
-            }
-        } else if (time == 1) {
-            if (!world.isClientSide()) {
-                BlockEntity _blockEntity = world.getBlockEntity(pos);
-                BlockState _bs = world.getBlockState(pos);
-                if (_blockEntity != null) {
-                    if (be instanceof CookingRangeEntity cookingRangeEntity)
-                        cookingRangeEntity.timeLeft = 0;
-                    if (be instanceof KitchenwaresEntity kitchenwaresEntity)
-                        kitchenwaresEntity.timeLeft = 0;
-                }
-                if (world instanceof Level _level)
-                    _level.sendBlockUpdated(pos, _bs, _bs, 3);
-            }
-            target = GetItemStack.getItemStack(world, pos, 12);
-            SetSlotItem.setSlotItem(world, pos, target, 6, 1);
-
-//            MITags miTags = GetItemStack.getItemStack(world,pos, 12).get(MIDatacomponet.MI_TAGS.get());
-//            target.set(MIDatacomponet.MI_TAGS.get(), miTags);
-
-            SetSlotItem.setEmptySlot(world, pos, 12);
-        } else {
-
-
+        //Debug.getLogger().error("execute");
+        {
             util = GetItemStack.getItemStack(world, pos, 0);
 
-
-            if (util == ItemStack.EMPTY) {
-                Block utilblcok = world.getBlockState(pos).getBlock();
-                //Debug.send(utilblcok.getDescriptionId());
-                switch (utilblcok.getDescriptionId()) {
-                    case "block.mystias_izakaya.cutting_board":
-                        util = MIItem.CUTTING_BOARD.getDefaultInstance();
-                        break;
-                    case "block.mystias_izakaya.boiling_pot":
-                        util = MIItem.BOILING_POT.getDefaultInstance();
-                        break;
-                    case "block.mystias_izakaya.frying_pan":
-                        util = MIItem.FRYING_PAN.getDefaultInstance();
-                        break;
-                    case "block.mystias_izakaya.steamer":
-                        util = MIItem.STEAMER.getDefaultInstance();
-                        break;
-                    case "block.mystias_izakaya.grill":
-                        util = new ItemStack(MIItem.GRILL);
-                        break;
+            //Debug.getLogger().error(util.getDescriptionId());
+            if (ItemStack.isSameItem(util,ItemStack.EMPTY)||util.isEmpty()) {
+                if(ItemStack.isSameItem(util,MIItem.CUTTING_BOARD.getDefaultInstance())){
+                    util = MIItem.CUTTING_BOARD.getDefaultInstance();
+                }
+                if(ItemStack.isSameItem(util,MIItem.BOILING_POT.getDefaultInstance())){
+                    util = MIItem.BOILING_POT.getDefaultInstance();
+                }
+                if(ItemStack.isSameItem(util,MIItem.FRYING_PAN.getDefaultInstance())){
+                    util = MIItem.FRYING_PAN.getDefaultInstance();
+                }
+                if(ItemStack.isSameItem(util,MIItem.STEAMER.getDefaultInstance())){
+                    util = MIItem.STEAMER.getDefaultInstance();
+                }
+                if(ItemStack.isSameItem(util,new ItemStack(MIItem.GRILL))){
+                    util = new ItemStack(MIItem.GRILL);
                 }
             }
-            //Debug.send(util.getDescriptionId());
+            //Debug.getLogger().error(util.getDescriptionId());
 
             List<String> raws = new ArrayList<>();
             List<ItemStack> ingredients = new ArrayList<>();
@@ -109,7 +63,7 @@ public class Main {
             }
 
             List<String> targets = GetTargets.getTargets(raws, util);
-
+//            Debug.getLogger().error(targets.toString());
             if (!world.isClientSide()) {
                 BlockPos _bp = pos;
                 BlockEntity _blockEntity = world.getBlockEntity(_bp);

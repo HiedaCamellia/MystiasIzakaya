@@ -23,4 +23,12 @@ public class Status {
 			return Component.translatable("status.mystias_izakaya.outputblocked").getString();
 		return Component.translatable("status.mystias_izakaya.free").getString();
 	}
+	public static String execute(int time,boolean blocked) {
+		if (time != 0) {
+			return Component.translatable("status.mystias_izakaya.working").getString();
+		}
+		if (blocked)
+			return Component.translatable("status.mystias_izakaya.outputblocked").getString();
+		return Component.translatable("status.mystias_izakaya.free").getString();
+	}
 }

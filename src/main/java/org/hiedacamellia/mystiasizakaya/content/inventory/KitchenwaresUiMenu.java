@@ -44,7 +44,7 @@ public class KitchenwaresUiMenu extends AbstractContainerMenu {
 		this(id, inv, pos, new SimpleContainer(12));
 	}
 	public KitchenwaresUiMenu(int id, Inventory inv, BlockPos pos, Container inventory ) {
-		super(MIMenu.COOKING_RANGE_UI, id);
+		super(MIMenu.KITCHENWARES_UI, id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		access = ContainerLevelAccess.create(world, pos);

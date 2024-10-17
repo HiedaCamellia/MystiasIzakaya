@@ -10,9 +10,11 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.EntityBlock;
@@ -33,6 +35,7 @@ import org.hiedacamellia.mystiasizakaya.content.common.block.entities.*;
 import org.hiedacamellia.mystiasizakaya.core.cooking.Main;
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class Kitchenwares extends RotatedPillarBlock implements EntityBlock {
     public Kitchenwares() {
@@ -42,7 +45,6 @@ public class Kitchenwares extends RotatedPillarBlock implements EntityBlock {
 
     @Override
     public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
-        Debug.getLogger().debug("Create Block:{}", state.getBlock().getDescriptionId());
 
         return switch (state.getBlock().getDescriptionId()) {
             case "block.mystias_izakaya.cutting_board" -> new CuttingBoard(pos, state);
@@ -96,7 +98,10 @@ public class Kitchenwares extends RotatedPillarBlock implements EntityBlock {
     @Override
     public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
         super.tick(blockstate, world, pos, random);
-        Main.execute(world, pos,blockstate);
+        //Debug.getLogger().error("Tick Block:{}", blockstate.getBlock().getDescriptionId());
+        if (world.getBlockEntity(pos) instanceof KitchenwaresEntity kitchenwaresEntity) {
+            kitchenwaresEntity.tick(world);
+        }
         world.scheduleTick(pos, this, 1);
     }
 
