@@ -11,6 +11,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
@@ -42,6 +43,7 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
     Button button_next;
     Button button_back;
     List<Slot> slots;
+    int time;
 
     public CookingRangeUiScreen(CookingRangeUiMenu container, Inventory inventory, Component text) {
         super(container, inventory, text);
@@ -54,6 +56,7 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
         this.imageWidth = 280;
         this.imageHeight = 166;
         this.slots= container.customSlots;
+        this.time = container.time;
     }
 
     private static final ResourceLocation texture = new ResourceLocation(
@@ -89,15 +92,16 @@ public class CookingRangeUiScreen extends AbstractContainerScreen<CookingRangeUi
     public void containerTick() {
         super.containerTick();
         for(int i=0;i<5;i++){
-            selects.get(i).setMessage(Component.literal(slots.get(7 + i).getItem().getDisplayName().getString()));
+            selects.get(i).setMessage(slots.get(7 + i).getItem().getDisplayName());
             selects.get(i).visible = slots.get(7 + i).hasItem();
         }
     }
 
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        guiGraphics.drawString(this.font, Status.execute(world, pos), 233, 26, -1, false);
-        guiGraphics.drawString(this.font, Lefttime.execute(world, pos), 238, 65, -1, false);
+
+        guiGraphics.drawString(this.font, Status.execute(time, slots.get(12).hasItem()), 233, 26, -1, false);
+        guiGraphics.drawString(this.font, Lefttime.execute(time), 238, 65, -1, false);
     }
 
     @Override

@@ -15,4 +15,7 @@ public class Lefttime {
 			return new java.text.DecimalFormat("#.#").format((kitchenwaresEntity.timeLeft) / 20) + "s";
 		return "";
 	}
+	public static String execute(int time) {
+		return new java.text.DecimalFormat("#.#").format(time / 20) + "s";
+	}
 }

@@ -24,7 +24,7 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class Main {
-    public static void execute(LevelAccessor world, BlockPos pos) {
+    public static void execute(Level world, BlockPos pos) {
         ItemStack util;
         //Debug.getLogger().error("execute");
         {
@@ -74,8 +74,7 @@ public class Main {
                     if (_blockEntity instanceof KitchenwaresEntity kitchenwaresEntity)
                         kitchenwaresEntity.targets = targets.size();
                 }
-                if (world instanceof Level _level)
-                    _level.sendBlockUpdated(_bp, _bs, _bs, 3);
+                world.sendBlockUpdated(_bp, _bs, _bs, 3);
             }
             int page =0;
 

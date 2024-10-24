@@ -2,6 +2,7 @@ package org.hiedacamellia.mystiasizakaya.util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRangeEntity;
@@ -12,13 +13,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SetSlotItem {
-    public static void setSlotItem(LevelAccessor world, double x, double y, double z, ItemStack itemStack, int slotid, int count) {
+    public static void setSlotItem(Level world, double x, double y, double z, ItemStack itemStack, int slotid, int count) {
         BlockEntity _ent = world.getBlockEntity(Pos.get(x, y, z));
         if (_ent != null) {
             setSlotItem(_ent, itemStack, slotid, count);
         }
     }
-    public static void setSlotItem(LevelAccessor world, BlockPos pos, ItemStack itemStack, int slotid, int count) {
+    public static void setSlotItem(Level world, BlockPos pos, ItemStack itemStack, int slotid, int count) {
         BlockEntity _ent = world.getBlockEntity(pos);
         if (_ent != null) {
             setSlotItem(_ent, itemStack, slotid, count);
@@ -34,7 +35,7 @@ public class SetSlotItem {
                 kitchenwaresEntity.stacks.set(slotid, _setstack);
         }
     }
-    public static void querySlotItem(LevelAccessor world, double x, double y, double z, int slotid,int count) {
+    public static void querySlotItem(Level world, double x, double y, double z, int slotid,int count) {
         BlockEntity _ent = world.getBlockEntity(Pos.get(x, y, z));
         if (_ent != null) {
             querySlotItem(_ent, slotid, count);
@@ -55,19 +56,19 @@ public class SetSlotItem {
     }
 
 
-    public static void setEmptySlot(LevelAccessor world, double x, double y, double z, int slotid) {
+    public static void setEmptySlot(Level world, double x, double y, double z, int slotid) {
         BlockEntity _ent = world.getBlockEntity(Pos.get(x, y, z));
         if (_ent != null) {
             setEmptySlot(_ent, slotid);
         }
     }
-    public static void setEmptySlot(LevelAccessor world, BlockPos pos, int slotid) {
+    public static void setEmptySlot(Level world, BlockPos pos, int slotid) {
         BlockEntity _ent = world.getBlockEntity(pos);
         if (_ent != null) {
             setEmptySlot(_ent, slotid);
         }
     }
-    public static void setEmptySlot(LevelAccessor world, BlockPos pos, int[] slotid) {
+    public static void setEmptySlot(Level world, BlockPos pos, int[] slotid) {
         BlockEntity _ent = world.getBlockEntity(pos);
         if (_ent != null) {
             setEmptySlot(_ent, slotid);

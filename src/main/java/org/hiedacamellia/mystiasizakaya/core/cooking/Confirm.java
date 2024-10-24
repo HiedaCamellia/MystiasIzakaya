@@ -14,13 +14,13 @@ import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 import org.hiedacamellia.mystiasizakaya.util.SetSlotItem;
 
 public class Confirm {
-	public static void execute(LevelAccessor world, BlockPos pos) {
+	public static void execute(Level world, BlockPos pos) {
         double time = 0;
+		if(world.isClientSide()) return;
 
 		Debug.getLogger().error("conform");
 
 		BlockEntity blockEntity = world.getBlockEntity(pos);
-		Debug.getLogger().error(blockEntity.toString());
 		if(blockEntity instanceof CookingRangeEntity cookingRangeEntity)
 			time = cookingRangeEntity.timeLeft;
 		if(blockEntity instanceof KitchenwaresEntity kitchenwaresEntity)
@@ -75,8 +75,7 @@ public class Confirm {
 				}
 
 
-				if (world instanceof Level _level)
-					_level.sendBlockUpdated(pos, _bs, _bs, 3);
+				world.sendBlockUpdated(pos, _bs, _bs, 3);
 			}
 
 			//Debug.getLogger().debug("Get data");
@@ -94,7 +93,7 @@ public class Confirm {
 						kitchenwaresEntity.page = 0;
 					}
 				}
-				if (world instanceof Level _level) _level.sendBlockUpdated(pos, _bs, _bs, 3);
+				world.sendBlockUpdated(pos, _bs, _bs, 3);
 			}
 
 		}

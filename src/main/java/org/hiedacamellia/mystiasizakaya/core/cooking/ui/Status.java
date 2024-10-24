@@ -2,6 +2,7 @@ package org.hiedacamellia.mystiasizakaya.core.cooking.ui;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRangeEntity;
@@ -9,7 +10,7 @@ import org.hiedacamellia.mystiasizakaya.content.common.block.entities.Kitchenwar
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
 
 public class Status {
-	public static String execute(LevelAccessor world, BlockPos pos) {
+	public static String execute(Level world, BlockPos pos) {
 		BlockEntity blockEntity = world.getBlockEntity(pos);
 		int time=0;
 		if(blockEntity instanceof CookingRangeEntity cookingRangeEntity)

@@ -38,6 +38,7 @@ public class MINetWork {
         TelephoneUiButton.registerMessage();
         CookingRangeUiButton.registerMessage();
         DonationUiButton.registerMessage();
+        CookTimeSyncMsg.registerMessage();
     }
 
 }

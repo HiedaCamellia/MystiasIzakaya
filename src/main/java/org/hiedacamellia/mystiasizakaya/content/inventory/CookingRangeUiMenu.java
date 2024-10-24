@@ -39,9 +39,10 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 	private Supplier<Boolean> boundItemMatcher = null;
 	private Entity boundEntity = null;
 	private BlockEntity boundBlockEntity = null;
+	public int time;
 
 	public CookingRangeUiMenu(int id, Inventory inv, BlockPos pos ) {
-		this(id, inv, pos, new SimpleContainer(12));
+		this(id, inv, pos, new SimpleContainer(13));
 	}
 	public CookingRangeUiMenu(int id, Inventory inv, BlockPos pos, Container inventory ) {
 		super(MIMenu.COOKING_RANGE_UI, id);
@@ -49,10 +50,21 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 		this.world = inv.player.level();
 		access = ContainerLevelAccess.create(world, pos);
 		if(inventory==null){
-			this.inv =  new SimpleContainer(12);
+			this.inv =  new SimpleContainer(13);
 		}else {
 			this.inv = inventory;
 		}
+		if(pos != null){
+			if(world.getBlockEntity(pos) instanceof CookingRangeEntity blockEntity){
+//            Debug.getLogger().debug("Tick:{}", blockEntity.getTickCount());
+				time = blockEntity.timeLeft;
+			}else {
+				time = 0;
+			}
+		}else {
+			time=0;
+		}
+
 
 		this.inv.startOpen(inv.player);
 
@@ -197,6 +209,19 @@ public class CookingRangeUiMenu extends AbstractContainerMenu {
 		}));
 		this.customSlots.add(this.addSlot(new Slot(this.inv, 11, 14, 134) {
 			private final int slot = 11;
+
+			@Override
+			public boolean mayPickup(Player entity) {
+				return false;
+			}
+
+			@Override
+			public boolean mayPlace(ItemStack itemstack) {
+				return false;
+			}
+		}));
+		this.customSlots.add(this.addSlot(new Slot(this.inv, 12, -500, -500) {
+			private final int slot = 12;
 
 			@Override
 			public boolean mayPickup(Player entity) {

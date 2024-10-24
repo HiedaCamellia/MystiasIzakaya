@@ -2,6 +2,7 @@ package org.hiedacamellia.mystiasizakaya.util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRangeEntity;
@@ -11,7 +12,7 @@ import org.hiedacamellia.mystiasizakaya.content.common.block.entities.TableEntit
 import java.util.concurrent.atomic.AtomicReference;
 
 public class GetItemStack {
-    public static ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
+    public static ItemStack getItemStack(Level world, BlockPos pos, int slotid) {
         AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
         BlockEntity _ent = world.getBlockEntity(pos);
         if (_ent != null)
