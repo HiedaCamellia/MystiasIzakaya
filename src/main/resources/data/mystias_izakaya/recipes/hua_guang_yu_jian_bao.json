@@ -2,7 +2,7 @@
   "type": "mystias_izakaya:frying_pan_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:mo_gu"
+      "tag": "forge:mushrooms"
     },
     {
       "item": "mystias_izakaya:hei_mao_zhu_rou"

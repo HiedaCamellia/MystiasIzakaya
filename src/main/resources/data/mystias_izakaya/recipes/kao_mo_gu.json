@@ -2,7 +2,7 @@
   "type": "mystias_izakaya:grill_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:mo_gu"
+      "tag": "forge:mushrooms"
     },
     {
       "tag": "mystias_izakaya:ingredients"

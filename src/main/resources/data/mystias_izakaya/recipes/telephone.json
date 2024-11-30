@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "S": {
+      "item": "minecraft:iron_ingot"
+    },
+    "X": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "pattern": [
+    "SXS",
+    "###"
+  ],
+  "result": {
+    "item": "mystias_izakaya:telephone"
+  },
+  "show_notification": true
+}

@@ -2,13 +2,13 @@
   "type": "mystias_izakaya:streamer_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:ning_meng"
+      "tag": "forge:fruits/lemon"
     },
     {
-      "item": "mystias_izakaya:pu_tao"
+      "tag": "forge:fruits/grape"
     },
     {
-      "item": "mystias_izakaya:pu_tao"
+      "tag": "forge:fruits/grape"
     },
     {
       "tag": "mystias_izakaya:ingredients"

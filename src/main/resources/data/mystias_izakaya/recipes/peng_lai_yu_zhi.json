@@ -11,10 +11,10 @@
       "item": "mystias_izakaya:zhu_rou"
     },
     {
-      "item": "mystias_izakaya:lu_rou"
+      "tag": "mystias_izakaya:venison"
     },
     {
-      "item": "mystias_izakaya:zhu_zi"
+      "tag": "mystias_izakaya:bamboo"
     }
   ],
   "output": {

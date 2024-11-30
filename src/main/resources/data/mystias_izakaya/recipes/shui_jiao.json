@@ -2,7 +2,7 @@
   "type": "mystias_izakaya:boiling_pot_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:mian_fen"
+      "tag": "forge:flour"
     },
     {
       "tag": "mystias_izakaya:ingredients"

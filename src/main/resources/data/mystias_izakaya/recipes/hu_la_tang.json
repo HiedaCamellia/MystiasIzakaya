@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:frying_pan_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:la_jiao"
+      "tag": "forge:crops/chile_pepper"
     },
     {
-      "item": "mystias_izakaya:niu_rou"
+      "tag": "forge:raw_beef"
     },
     {
       "item": "mystias_izakaya:dou_fu"

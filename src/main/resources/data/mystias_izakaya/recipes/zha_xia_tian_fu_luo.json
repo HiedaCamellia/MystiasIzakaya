@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:frying_pan_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:xia"
+      "tag": "forge:shrimp"
     },
     {
-      "item": "mystias_izakaya:mian_fen"
+      "tag": "forge:flour"
     },
     {
       "tag": "mystias_izakaya:ingredients"

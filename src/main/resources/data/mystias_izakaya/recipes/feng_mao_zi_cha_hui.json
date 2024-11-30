@@ -2,19 +2,19 @@
   "type": "mystias_izakaya:streamer_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:ke_ke_dou"
+      "tag": "mystias_izakaya:cocoa_beans"
     },
     {
-      "item": "mystias_izakaya:nai_you"
+      "tag": "mystias_izakaya:cream"
     },
     {
-      "item": "mystias_izakaya:mian_fen"
+      "tag": "forge:flour"
     },
     {
-      "item": "mystias_izakaya:mo_gu"
+      "tag": "forge:mushrooms"
     },
     {
-      "item": "mystias_izakaya:xi_lan_hua"
+      "tag": "forge:vegetables/broccoli"
     }
   ],
   "output": {

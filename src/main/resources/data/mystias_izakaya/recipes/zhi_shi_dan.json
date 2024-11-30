@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:frying_pan_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:ji_dan"
+      "tag": "forge:eggs"
     },
     {
-      "item": "mystias_izakaya:zhi_shi"
+      "tag": "forge:cheeses"
     },
     {
       "tag": "mystias_izakaya:ingredients"

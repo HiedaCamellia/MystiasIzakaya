@@ -2,7 +2,7 @@
   "type": "mystias_izakaya:streamer_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:xian_hua"
+      "tag": "minecraft:small_flowers"
     },
     {
       "item": "mystias_izakaya:huan_tan_hua"
@@ -11,7 +11,7 @@
       "item": "mystias_izakaya:lu_shui"
     },
     {
-      "item": "mystias_izakaya:nai_you"
+      "tag": "mystias_izakaya:cream"
     },
     {
       "item": "mystias_izakaya:yue_guang_cao"

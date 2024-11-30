@@ -2,13 +2,13 @@
   "type": "mystias_izakaya:grill_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:niu_rou"
+      "tag": "forge:raw_beef"
     },
     {
-      "item": "mystias_izakaya:hei_yan"
+      "tag": "forge:salt"
     },
     {
-      "item": "mystias_izakaya:la_jiao"
+      "tag": "forge:crops/chile_pepper"
     },
     {
       "item": "mystias_izakaya:feng_mi"

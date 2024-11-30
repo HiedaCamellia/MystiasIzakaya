@@ -5,10 +5,10 @@
       "item": "mystias_izakaya:zun_yu"
     },
     {
-      "item": "mystias_izakaya:mian_fen"
+      "tag": "forge:flour"
     },
     {
-      "item": "mystias_izakaya:tao_zi"
+      "tag": "forge:crops/peach"
     },
     {
       "tag": "mystias_izakaya:ingredients"

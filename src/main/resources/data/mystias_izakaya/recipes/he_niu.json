@@ -14,7 +14,7 @@
       "item": "minecraft:gold_nugget"
     },
     "c": {
-      "item": "mystias_izakaya:niu_rou"
+      "tag": "forge:raw_beef"
     }
   },
   "result": {

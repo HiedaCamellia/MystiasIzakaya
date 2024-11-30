@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:cutting_board_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:zhu_zi"
+      "tag": "mystias_izakaya:bamboo"
     },
     {
-      "item": "mystias_izakaya:xian_hua"
+      "tag": "minecraft:small_flowers"
     },
     {
       "item": "mystias_izakaya:mei_zi"

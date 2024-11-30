@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:streamer_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:huang_you"
+      "tag": "forge:butters"
     },
     {
-      "item": "mystias_izakaya:mian_fen"
+      "tag": "forge:flour"
     },
     {
       "tag": "mystias_izakaya:ingredients"

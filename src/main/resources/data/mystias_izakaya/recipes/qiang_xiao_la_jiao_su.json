@@ -3,13 +3,13 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "mystias_izakaya:la_jiao"
+      "tag": "forge:crops/chile_pepper"
     },
     {
-      "item": "mystias_izakaya:la_jiao"
+      "tag": "forge:crops/chile_pepper"
     },
     {
-      "item": "mystias_izakaya:la_jiao"
+      "tag": "forge:crops/chile_pepper"
     }
   ],
   "result": {

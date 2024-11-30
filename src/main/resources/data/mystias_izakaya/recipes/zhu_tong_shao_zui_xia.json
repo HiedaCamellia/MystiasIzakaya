@@ -2,13 +2,13 @@
   "type": "mystias_izakaya:cutting_board_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:xia"
+      "tag": "forge:shrimp"
     },
     {
-      "item": "mystias_izakaya:xia"
+      "tag": "forge:shrimp"
     },
     {
-      "item": "mystias_izakaya:xi_lan_hua"
+      "tag": "forge:vegetables/broccoli"
     },
     {
       "tag": "mystias_izakaya:ingredients"

@@ -2,7 +2,7 @@
   "type": "mystias_izakaya:cutting_board_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:yang_cong"
+      "tag": "forge:crops/onion"
     },
     {
       "item": "mystias_izakaya:zun_yu"

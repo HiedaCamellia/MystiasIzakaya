@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:grill_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:mian_fen"
+      "tag": "forge:flour"
     },
     {
-      "item": "mystias_izakaya:zhi_shi"
+      "tag": "forge:cheeses"
     },
     {
       "tag": "mystias_izakaya:ingredients"

@@ -2,19 +2,19 @@
   "type": "mystias_izakaya:cutting_board_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:ke_ke_dou"
+      "tag": "mystias_izakaya:cocoa_beans"
     },
     {
-      "item": "mystias_izakaya:tao_zi"
+      "tag": "forge:crops/peach"
     },
     {
-      "item": "mystias_izakaya:tao_zi"
+      "tag": "forge:crops/peach"
     },
     {
-      "item": "mystias_izakaya:tao_zi"
+      "tag": "forge:crops/peach"
     },
     {
-      "item": "mystias_izakaya:tao_zi"
+      "tag": "forge:crops/peach"
     }
   ],
   "output": {

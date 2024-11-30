@@ -8,10 +8,10 @@
       "item": "mystias_izakaya:lian_zi"
     },
     {
-      "item": "mystias_izakaya:mian_fen"
+      "tag": "forge:flour"
     },
     {
-      "item": "mystias_izakaya:huang_you"
+      "tag": "forge:butters"
     },
     {
       "tag": "mystias_izakaya:ingredients"

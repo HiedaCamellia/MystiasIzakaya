@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:streamer_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:tao_zi"
+      "tag": "forge:crops/peach"
     },
     {
-      "item": "mystias_izakaya:hong_dou"
+      "tag": "mystias_izakaya:redbean"
     },
     {
       "item": "mystias_izakaya:xu_li"

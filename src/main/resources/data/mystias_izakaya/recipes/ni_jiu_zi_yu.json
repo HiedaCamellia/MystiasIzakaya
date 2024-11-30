@@ -2,7 +2,7 @@
   "type": "mystias_izakaya:boiling_pot_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:lu_rou"
+      "tag": "mystias_izakaya:venison"
     },
     {
       "item": "mystias_izakaya:song_lu"

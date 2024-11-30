@@ -11,10 +11,10 @@
       "item": "mystias_izakaya:zhang_yu"
     },
     {
-      "item": "mystias_izakaya:pang_xie"
+      "tag": "forge:crabs"
     },
     {
-      "item": "mystias_izakaya:xia"
+      "tag": "forge:shrimp"
     }
   ],
   "output": {

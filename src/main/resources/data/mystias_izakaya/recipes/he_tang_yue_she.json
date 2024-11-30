@@ -2,13 +2,13 @@
   "type": "mystias_izakaya:cutting_board_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:pu_tao"
+      "tag": "forge:fruits/grape"
     },
     {
       "item": "mystias_izakaya:xu_li"
     },
     {
-      "item": "mystias_izakaya:nai_you"
+      "tag": "mystias_izakaya:cream"
     },
     {
       "item": "mystias_izakaya:yin_er"

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "X": {
+      "tag": "minecraft:wooden_fences"
+    }
+  },
+  "pattern": [
+    "#",
+    "X"
+  ],
+  "result": {
+    "item": "mystias_izakaya:table"
+  },
+  "show_notification": true
+}

@@ -2,13 +2,13 @@
   "type": "mystias_izakaya:streamer_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:mo_gu"
+      "tag": "forge:mushrooms"
     },
     {
-      "item": "mystias_izakaya:yang_cong"
+      "tag": "forge:crops/onion"
     },
     {
-      "item": "mystias_izakaya:huang_you"
+      "tag": "forge:butters"
     },
     {
       "tag": "mystias_izakaya:ingredients"

@@ -2,7 +2,7 @@
   "type": "mystias_izakaya:grill_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:mian_fen"
+      "tag": "forge:flour"
     },
     {
       "item": "mystias_izakaya:feng_mi"
@@ -14,7 +14,7 @@
       "item": "mystias_izakaya:luo_bu"
     },
     {
-      "item": "mystias_izakaya:yang_cong"
+      "tag": "forge:crops/onion"
     }
   ],
   "output": {

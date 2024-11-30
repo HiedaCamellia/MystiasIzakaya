@@ -2,10 +2,10 @@
   "type": "mystias_izakaya:streamer_type",
   "ingredients": [
     {
-      "item": "mystias_izakaya:lu_rou"
+      "tag": "mystias_izakaya:venison"
     },
     {
-      "item": "mystias_izakaya:song_zi"
+      "tag": "mystias_izakaya:pine_nuts"
     },
     {
       "item": "mystias_izakaya:bai_guo"

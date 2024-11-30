@@ -5,13 +5,13 @@
       "item": "mystias_izakaya:he_niu"
     },
     {
-      "item": "mystias_izakaya:mian_fen"
+      "tag": "forge:flour"
     },
     {
-      "item": "mystias_izakaya:ji_dan"
+      "tag": "forge:eggs"
     },
     {
-      "item": "mystias_izakaya:huang_you"
+      "tag": "forge:butters"
     },
     {
       "item": "mystias_izakaya:song_lu"
