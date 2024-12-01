@@ -40,6 +40,7 @@ public class MystiasIzakaya {
 		MIItem.register(bus);
 		MITab.REGISTRY.register(bus);
 		MIMenu.REGISTRY.register(bus);
+		MIRecipeType.RECIPE_TYPES.register(bus);
 		MIRecipeType.SERIALIZERS.register(bus);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ClientConfig.SPEC);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);

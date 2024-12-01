@@ -2,6 +2,7 @@ package org.hiedacamellia.mystiasizakaya.core.cooking;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.core.cooking.get.GetTagFromItemStacks;
@@ -12,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 public class BuildTags {
-    public static ItemStack execute(ItemStack target, ItemStack Kitchenware, List<ItemStack> ingredients) {
+    public static ItemStack execute(RecipeManager recipeManager, ItemStack target, ItemStack Kitchenware, List<ItemStack> ingredients) {
 
         try {
             target.inventoryTick(null, null, 0, false);
@@ -20,7 +21,7 @@ public class BuildTags {
             Debug.getLogger().atTrace().log("Failed to execute inventoryTick for {}", Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(target.getItem())));
         }
 
-        List<String> rawtags = GetTagFromItemStacks.get(target, ingredients);
+        List<String> rawtags = GetTagFromItemStacks.get(recipeManager,target, ingredients,Kitchenware);
         List<String> targettags = target.getOrCreateTag().getString("tags").isEmpty() ? new ArrayList<>() : Arrays.asList(target.getOrCreateTag().getString("tags").split(","));
 
         //List<String> targetntags = target.getOrCreateTag().getString("ntags").isEmpty() ? new ArrayList<>() : Arrays.asList(target.getOrCreateTag().getString("ntags").split(","));

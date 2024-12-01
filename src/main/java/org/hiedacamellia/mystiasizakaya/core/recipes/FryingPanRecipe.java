@@ -1,57 +1,23 @@
-package org.hiedacamellia.mystiasizakaya.integration.jei.recipes;
+package org.hiedacamellia.mystiasizakaya.core.recipes;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
-import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 
-public class FryingPanTypeRecipe implements Recipe<SimpleContainer> {
+public class FryingPanRecipe extends MIRecipe {
 	private final ResourceLocation id;
-	private final ItemStack output;
-	private final NonNullList<Ingredient> recipeItems;
 
-	public FryingPanTypeRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> recipeItems) {
-		this.id = id;
-		this.output = output;
-		this.recipeItems = recipeItems;
-	}
 
-	@Override
-	public boolean matches(SimpleContainer pContainer, Level pLevel) {
-		if (pLevel.isClientSide()) {
-			return false;
-		}
-		return false;
-		//return recipeItems.get(0).test(pContainer.getItem(1));
-	}
-
-	@Override
-	public NonNullList<Ingredient> getIngredients() {
-		return recipeItems;
-	}
-
-	@Override
-	public ItemStack assemble(SimpleContainer pContainer, RegistryAccess access) {
-		return output;
-	}
-
-	@Override
-	public boolean canCraftInDimensions(int pWidth, int pHeight) {
-		return true;
-	}
-
-	@Override
-	public ItemStack getResultItem(RegistryAccess access) {
-		return output.copy();
+	public FryingPanRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> recipeItems) {
+        super(output, recipeItems);
+        this.id = id;
 	}
 
 	@Override
@@ -69,7 +35,7 @@ public class FryingPanTypeRecipe implements Recipe<SimpleContainer> {
 		return Serializer.INSTANCE;
 	}
 
-	public static class Type implements RecipeType<FryingPanTypeRecipe> {
+	public static class Type implements RecipeType<FryingPanRecipe> {
 		private Type() {
 		}
 
@@ -77,33 +43,33 @@ public class FryingPanTypeRecipe implements Recipe<SimpleContainer> {
 		public static final String ID = "frying_pan_type";
 	}
 
-	public static class Serializer implements RecipeSerializer<FryingPanTypeRecipe> {
+	public static class Serializer implements RecipeSerializer<FryingPanRecipe> {
 		public static final Serializer INSTANCE = new Serializer();
 		public static final ResourceLocation ID = new ResourceLocation("mystias_izakaya", "frying_pan_type");
 
 		@Override
-		public FryingPanTypeRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
+		public FryingPanRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
 			ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "output"));
 			JsonArray ingredients = GsonHelper.getAsJsonArray(pSerializedRecipe, "ingredients");
 			NonNullList<Ingredient> inputs = NonNullList.withSize(5, Ingredient.EMPTY);
 			for (int i = 0; i < inputs.size(); i++) {
 				inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
 			}
-			return new FryingPanTypeRecipe(pRecipeId, output, inputs);
+			return new FryingPanRecipe(pRecipeId, output, inputs);
 		}
 
 		@Override
-		public @Nullable FryingPanTypeRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+		public @Nullable FryingPanRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
 			NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
 			for (int i = 0; i < inputs.size(); i++) {
 				inputs.set(i, Ingredient.fromNetwork(buf));
 			}
 			ItemStack output = buf.readItem();
-			return new FryingPanTypeRecipe(id, output, inputs);
+			return new FryingPanRecipe(id, output, inputs);
 		}
 
 		@Override
-		public void toNetwork(FriendlyByteBuf buf, FryingPanTypeRecipe recipe) {
+		public void toNetwork(FriendlyByteBuf buf, FryingPanRecipe recipe) {
 			buf.writeInt(recipe.getIngredients().size());
 			for (Ingredient ing : recipe.getIngredients()) {
 				ing.toNetwork(buf);

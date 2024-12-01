@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -145,10 +146,11 @@ public class Main {
             }
             int page = GetValue.getInt(world, pos, "page");
 
+            RecipeManager recipes = Objects.requireNonNull(world.getServer()).getRecipeManager();
             for (int i = 0; i < 5; i++) {
                 if (i < targets.size()) {
                     ItemStack taget = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(((targets.get(i + page))).toLowerCase(Locale.ENGLISH)))));
-                    SetSlotItem.setSlotItem(world, pos, BuildTags.execute(taget, util, ingredients), 7 + i, 1);
+                    SetSlotItem.setSlotItem(world, pos, BuildTags.execute(recipes,taget, util, ingredients), 7 + i, 1);
                 } else {
                     SetSlotItem.setEmptySlot(world, pos, 7 + i);
                 }

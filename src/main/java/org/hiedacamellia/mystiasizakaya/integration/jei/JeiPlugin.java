@@ -9,7 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
 import org.hiedacamellia.mystiasizakaya.integration.jei.categories.*;
-import org.hiedacamellia.mystiasizakaya.integration.jei.recipes.*;
+import org.hiedacamellia.mystiasizakaya.core.recipes.*;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlock;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 
@@ -18,11 +18,11 @@ import java.util.Objects;
 
 @mezz.jei.api.JeiPlugin
 public class JeiPlugin implements IModPlugin {
-	public static mezz.jei.api.recipe.RecipeType<BoilingPotTypeRecipe> BoilingPotType_Type = new mezz.jei.api.recipe.RecipeType<>(BoilingPotTypeRecipeCategory.UID, BoilingPotTypeRecipe.class);
-	public static mezz.jei.api.recipe.RecipeType<CuttingBoardTypeRecipe> CuttingBoardType_Type = new mezz.jei.api.recipe.RecipeType<>(CuttingBoardTypeRecipeCategory.UID, CuttingBoardTypeRecipe.class);
-	public static mezz.jei.api.recipe.RecipeType<FryingPanTypeRecipe> FryingPanType_Type = new mezz.jei.api.recipe.RecipeType<>(FryingPanTypeRecipeCategory.UID, FryingPanTypeRecipe.class);
-	public static mezz.jei.api.recipe.RecipeType<GrillTypeRecipe> GrillType_Type = new mezz.jei.api.recipe.RecipeType<>(GrillTypeRecipeCategory.UID, GrillTypeRecipe.class);
-	public static mezz.jei.api.recipe.RecipeType<StreamerTypeRecipe> StreamerType_Type = new mezz.jei.api.recipe.RecipeType<>(StreamerTypeRecipeCategory.UID, StreamerTypeRecipe.class);
+	public static mezz.jei.api.recipe.RecipeType<BoilingPotRecipe> BoilingPotType_Type = new mezz.jei.api.recipe.RecipeType<>(BoilingPotTypeRecipeCategory.UID, BoilingPotRecipe.class);
+	public static mezz.jei.api.recipe.RecipeType<CuttingBoardRecipe> CuttingBoardType_Type = new mezz.jei.api.recipe.RecipeType<>(CuttingBoardTypeRecipeCategory.UID, CuttingBoardRecipe.class);
+	public static mezz.jei.api.recipe.RecipeType<FryingPanRecipe> FryingPanType_Type = new mezz.jei.api.recipe.RecipeType<>(FryingPanTypeRecipeCategory.UID, FryingPanRecipe.class);
+	public static mezz.jei.api.recipe.RecipeType<GrillRecipe> GrillType_Type = new mezz.jei.api.recipe.RecipeType<>(GrillTypeRecipeCategory.UID, GrillRecipe.class);
+	public static mezz.jei.api.recipe.RecipeType<SteamerRecipe> StreamerType_Type = new mezz.jei.api.recipe.RecipeType<>(StreamerTypeRecipeCategory.UID, SteamerRecipe.class);
 
 	@Override
 	public ResourceLocation getPluginUid() {
@@ -41,16 +41,16 @@ public class JeiPlugin implements IModPlugin {
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) {
 		RecipeManager recipeManager = Objects.requireNonNull(Minecraft.getInstance().level).getRecipeManager();
-		List<BoilingPotTypeRecipe> BoilingPotTypeRecipes = recipeManager.getAllRecipesFor(BoilingPotTypeRecipe.Type.INSTANCE);
-		registration.addRecipes(BoilingPotType_Type, BoilingPotTypeRecipes);
-		List<CuttingBoardTypeRecipe> CuttingBoardTypeRecipes = recipeManager.getAllRecipesFor(CuttingBoardTypeRecipe.Type.INSTANCE);
-		registration.addRecipes(CuttingBoardType_Type, CuttingBoardTypeRecipes);
-		List<FryingPanTypeRecipe> FryingPanTypeRecipes = recipeManager.getAllRecipesFor(FryingPanTypeRecipe.Type.INSTANCE);
-		registration.addRecipes(FryingPanType_Type, FryingPanTypeRecipes);
-		List<GrillTypeRecipe> GrillTypeRecipes = recipeManager.getAllRecipesFor(GrillTypeRecipe.Type.INSTANCE);
-		registration.addRecipes(GrillType_Type, GrillTypeRecipes);
-		List<StreamerTypeRecipe> StreamerTypeRecipes = recipeManager.getAllRecipesFor(StreamerTypeRecipe.Type.INSTANCE);
-		registration.addRecipes(StreamerType_Type, StreamerTypeRecipes);
+		List<BoilingPotRecipe> boilingPotRecipes = recipeManager.getAllRecipesFor(BoilingPotRecipe.Type.INSTANCE);
+		registration.addRecipes(BoilingPotType_Type, boilingPotRecipes);
+		List<CuttingBoardRecipe> cuttingBoardRecipes = recipeManager.getAllRecipesFor(CuttingBoardRecipe.Type.INSTANCE);
+		registration.addRecipes(CuttingBoardType_Type, cuttingBoardRecipes);
+		List<FryingPanRecipe> fryingPanRecipes = recipeManager.getAllRecipesFor(FryingPanRecipe.Type.INSTANCE);
+		registration.addRecipes(FryingPanType_Type, fryingPanRecipes);
+		List<GrillRecipe> grillRecipes = recipeManager.getAllRecipesFor(GrillRecipe.Type.INSTANCE);
+		registration.addRecipes(GrillType_Type, grillRecipes);
+		List<SteamerRecipe> steamerRecipes = recipeManager.getAllRecipesFor(SteamerRecipe.Type.INSTANCE);
+		registration.addRecipes(StreamerType_Type, steamerRecipes);
 	}
 
 	@Override
