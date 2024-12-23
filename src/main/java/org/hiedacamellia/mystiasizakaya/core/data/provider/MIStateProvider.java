@@ -20,7 +20,7 @@ public class MIStateProvider extends BlockStateProvider {
         simpleBlock(MIBlock.STEAMER.get(),models().getExistingFile(modLoc("block/steamer")));
         simpleBlock(MIBlock.FRYING_PAN.get(),models().getExistingFile(modLoc("block/frying_pan")));
 
-        simpleBlockWithItem(MIBlock.TELEPHONE.get(),models().getExistingFile(modLoc("block/telephone")));
+        horizontalBlock(MIBlock.TELEPHONE.get(),models().getExistingFile(modLoc("block/telephone")));
         simpleBlockWithItem(MIBlock.TABLE.get(),models().getExistingFile(modLoc("block/table")));
     }
 }

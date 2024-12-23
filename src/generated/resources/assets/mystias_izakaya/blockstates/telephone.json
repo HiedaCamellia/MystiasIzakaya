@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "mystias_izakaya:block/telephone",
+      "y": 90
+    },
+    "facing=north": {
       "model": "mystias_izakaya:block/telephone"
+    },
+    "facing=south": {
+      "model": "mystias_izakaya:block/telephone",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mystias_izakaya:block/telephone",
+      "y": 270
     }
   }
 }
