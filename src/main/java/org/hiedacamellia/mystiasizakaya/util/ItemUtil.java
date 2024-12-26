@@ -29,26 +29,19 @@ public class ItemUtil {
             if (stack.isEmpty())
                 orders_list.add("");
             else
-                orders_list.add(stack.getItem().getDescriptionId());
+                orders_list.add(ForgeRegistries.ITEMS.getKey(stack.getItem()).toString());
         }
         return orders_list;
     }
     public static List<ItemStack> mapGetStacks(Map<String,Integer> orders_list) {
         List<ItemStack> stacks = new ArrayList<>();
-        for (String order : orders_list.keySet()) {
-            if (order.isEmpty())
+        orders_list.forEach((k,v)->{
+            if(k.isEmpty())
                 stacks.add(ItemStack.EMPTY);
             else{
-                ItemStack stack = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(order))));
-                stack.setCount(orders_list.get(order));
-                stacks.add(stack);
+                stacks.add(new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(k))),v));
             }
-        }
-        if (stacks.size() < 8) {
-            for (int i = stacks.size(); i < 8; i++) {
-                stacks.add(ItemStack.EMPTY);
-            }
-        }
+        });
         return stacks;
     }
     public static Map<String,Integer> mapFromStacks(List<ItemStack> stacks) {
@@ -57,7 +50,7 @@ public class ItemUtil {
             if (stack.isEmpty())
                 orders_list.put("",0);
             else
-                orders_list.put(stack.getItem().getDescriptionId(),stack.getCount());
+                orders_list.put(ForgeRegistries.ITEMS.getKey(stack.getItem()).toString(),stack.getCount());
         }
         return orders_list;
     }

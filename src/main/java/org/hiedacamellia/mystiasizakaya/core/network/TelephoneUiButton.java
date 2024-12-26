@@ -15,8 +15,10 @@ import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.network.NetworkEvent;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
+import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 import org.hiedacamellia.mystiasizakaya.util.ItemUtil;
+import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 
 import java.util.List;
 import java.util.Map;
@@ -52,6 +54,7 @@ public class TelephoneUiButton {
         NetworkEvent.Context context = contextSupplier.get();
         context.enqueueWork(() -> {
             Player entity = context.getSender();
+            Debug.getLogger().debug(message.out.toString());
             List<ItemStack> out = ItemUtil.mapGetStacks(message.out);
             BlockPos pos = message.pos;
             int cost = message.cost;
@@ -77,17 +80,21 @@ public class TelephoneUiButton {
             if (entity instanceof ServerPlayer player)
                 player.sendSystemMessage(Component.translatable("message.mystiasizakaya.checkout.fail").withStyle(ChatFormatting.RED));
         } else {
-            MIPlayerEvent.addTurnover(entity, "to_telephone", -cost);
-            MIPlayerEvent.deleteOverTurnover(entity);
-            MIPlayerEvent.setBalance(entity, balance - cost);
-            for (ItemStack itemStack : out) {
-                ItemHandlerHelper.giveItemToPlayer(entity, itemStack);
-            }
-            if (entity instanceof ServerPlayer player)
+            if (entity instanceof ServerPlayer player) {
+//                Debug.getLogger().debug(out.toString());
+//                Debug.getLogger().debug(pos.toString());
+//                Debug.getLogger().debug(String.valueOf(cost));
+                MIPlayerEvent.addTurnover(player, "to_telephone", -cost);
+                MIPlayerEvent.deleteOverTurnover(player);
+                MIPlayerEvent.setBalance(player, balance - cost);
                 player.sendSystemMessage(Component.translatable("message.mystiasizakaya.checkout.success").withStyle(ChatFormatting.GREEN));
+                for (ItemStack itemStack : out) {
+                    player.addItem(itemStack);
+                    //ItemHandlerHelper.giveItemToPlayer(entity, itemStack);
+                }
 
+            }
             MIPlayerEvent.setTelecolddown(entity, CommonConfig.TELE_COOLDOWN.get());
-
         }
 
     }
