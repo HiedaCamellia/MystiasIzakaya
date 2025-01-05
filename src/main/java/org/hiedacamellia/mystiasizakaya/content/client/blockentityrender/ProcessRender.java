@@ -22,8 +22,10 @@ public class ProcessRender implements BlockEntityRenderer<KitchenwaresEntity> {
     private final EntityRenderDispatcher entityRenderDispatcher;
     private static final ResourceLocation TEXTURE_IN = ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "textures/entity/process_inside.png");
     private static final ResourceLocation TEXTURE_OUT = ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "textures/entity/process_side.png");
+    private static final ResourceLocation CORRECT = ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "textures/entity/correct.png");
     private static final RenderType RENDER_TYPE_IN = RenderType.entityCutoutNoCull(TEXTURE_IN);
     private static final RenderType RENDER_TYPE_OUT = RenderType.entityCutoutNoCull(TEXTURE_OUT);
+    private static final RenderType RENDER_TYPE_CORRECT = RenderType.entityCutoutNoCull(CORRECT);
 
     public ProcessRender(BlockEntityRendererProvider.Context ctx) {
         this.itemRenderer = ctx.getItemRenderer();
@@ -51,14 +53,42 @@ public class ProcessRender implements BlockEntityRenderer<KitchenwaresEntity> {
             pPoseStack.translate(0, 0.8, 0);
             PoseStack.Pose poseStack = pPoseStack.last();
             float process;
-            if(pBlockEntity.getPersistentData().getDouble("timeleft")==0)
-                process = 0;
+            if(pBlockEntity.getPersistentData().getDouble("timeleft")==0) {
+                pPoseStack.popPose();
+                return;
+            }
             else
                 process = (float) (1 -  pBlockEntity.getPersistentData().getDouble("timeleft") / pBlockEntity.getPersistentData().getDouble("totaltime"));
             VertexConsumer vertexconsumerIn = pBuffer.getBuffer(RENDER_TYPE_IN);
             renderImage(pPackedLight, vertexconsumerIn, poseStack, process);
             VertexConsumer vertexconsumerOut = pBuffer.getBuffer(RENDER_TYPE_OUT);
             renderImage(pPackedLight, vertexconsumerOut, poseStack, 1);
+            pPoseStack.popPose();
+        }
+        if (pBlockEntity.getItems().get(6).getItem() instanceof MIItem cookedMealItem) {
+            pPoseStack.pushPose();
+            pPoseStack.translate(0.5, 0.7, 0.5);
+            pPoseStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
+            pPoseStack.scale(1.2F, 1.2F, 1.2F);
+            this.itemRenderer
+                    .renderStatic(
+                            cookedMealItem.getDefaultInstance(),
+                            ItemDisplayContext.GROUND,
+                            pPackedLight,
+                            OverlayTexture.NO_OVERLAY,
+                            pPoseStack,
+                            pBuffer,
+                            pBlockEntity.getLevel(),
+                            (int) pBlockEntity.getBlockPos().asLong()
+                    );
+            PoseStack.Pose pose = pPoseStack.last();
+            pPoseStack.scale(0.2F, 0.2F, 0.2F);
+            pPoseStack.translate(0.5f, -0.3f, 0.1f);
+            VertexConsumer vertexconsumerIn = pBuffer.getBuffer(RENDER_TYPE_CORRECT);
+            vertex(vertexconsumerIn, pose, pPackedLight, 0.0F, 0, 0, 1);
+            vertex(vertexconsumerIn, pose, pPackedLight, 1, 0, 1, 1);
+            vertex(vertexconsumerIn, pose, pPackedLight, 1, 1, 1, 0);
+            vertex(vertexconsumerIn, pose, pPackedLight, 0.0F, 1, 0, 0);
             pPoseStack.popPose();
         }
     }
