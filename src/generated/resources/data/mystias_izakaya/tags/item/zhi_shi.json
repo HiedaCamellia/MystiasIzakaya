@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:zhi_shi"
+    "mystias_izakaya:zhi_shi",
+    {
+      "id": "mystia_izakaya:cheese",
+      "required": false
+    }
   ]
 }

@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:mei_zi"
+    "mystias_izakaya:mei_zi",
+    {
+      "id": "mystia_izakaya:plum",
+      "required": false
+    }
   ]
 }

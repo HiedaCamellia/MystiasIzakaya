@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:chan_shui"
+    "mystias_izakaya:chan_shui",
+    {
+      "id": "mystia_izakaya:cicada_slough",
+      "required": false
+    }
   ]
 }

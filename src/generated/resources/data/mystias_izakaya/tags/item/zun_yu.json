@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:zun_yu"
+    "mystias_izakaya:zun_yu",
+    {
+      "id": "mystia_izakaya:trout",
+      "required": false
+    }
   ]
 }

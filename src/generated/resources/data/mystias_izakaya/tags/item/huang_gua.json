@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:huang_gua"
+    "mystias_izakaya:huang_gua",
+    {
+      "id": "mystia_izakaya:cucumber",
+      "required": false
+    }
   ]
 }

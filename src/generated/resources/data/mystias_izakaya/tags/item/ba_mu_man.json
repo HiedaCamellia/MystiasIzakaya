@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:ba_mu_man"
+    "mystias_izakaya:ba_mu_man",
+    {
+      "id": "mystia_izakaya:lamprey",
+      "required": false
+    }
   ]
 }

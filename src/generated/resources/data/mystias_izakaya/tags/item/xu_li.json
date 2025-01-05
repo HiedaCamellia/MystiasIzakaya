@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:xu_li"
+    "mystias_izakaya:xu_li",
+    {
+      "id": "mystia_izakaya:creeping_fig",
+      "required": false
+    }
   ]
 }

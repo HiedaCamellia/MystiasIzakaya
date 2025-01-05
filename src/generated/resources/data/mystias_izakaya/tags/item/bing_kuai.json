@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:bing_kuai"
+    "mystias_izakaya:bing_kuai",
+    {
+      "id": "mystia_izakaya:ice_cube",
+      "required": false
+    }
   ]
 }

@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:lian_zi"
+    "mystias_izakaya:lian_zi",
+    {
+      "id": "mystia_izakaya:lotus_seed",
+      "required": false
+    }
   ]
 }

@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:zhu_sun"
+    "mystias_izakaya:zhu_sun",
+    {
+      "id": "mystia_izakaya:bamboo_shoot",
+      "required": false
+    }
   ]
 }

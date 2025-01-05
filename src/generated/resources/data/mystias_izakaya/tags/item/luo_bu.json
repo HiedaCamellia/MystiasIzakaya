@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:luo_bu"
+    "mystias_izakaya:luo_bu",
+    {
+      "id": "mystia_izakaya:radish",
+      "required": false
+    }
   ]
 }

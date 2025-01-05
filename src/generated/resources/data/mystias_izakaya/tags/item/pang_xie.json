@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:pang_xie"
+    "mystias_izakaya:pang_xie",
+    {
+      "id": "mystia_izakaya:crab",
+      "required": false
+    }
   ]
 }

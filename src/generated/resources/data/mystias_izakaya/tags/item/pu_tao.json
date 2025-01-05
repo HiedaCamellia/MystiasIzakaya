@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:pu_tao"
+    "mystias_izakaya:pu_tao",
+    {
+      "id": "mystia_izakaya:grapes",
+      "required": false
+    }
   ]
 }

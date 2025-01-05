@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:song_lu"
+    "mystias_izakaya:song_lu",
+    {
+      "id": "mystia_izakaya:truffle",
+      "required": false
+    }
   ]
 }

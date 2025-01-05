@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:dou_fu"
+    "mystias_izakaya:dou_fu",
+    {
+      "id": "mystia_izakaya:tofu",
+      "required": false
+    }
   ]
 }

@@ -6,9 +6,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.Level;
+import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
+import org.hiedacamellia.mystiasizakaya.registries.MITag;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class MIRecipe implements Recipe<MIRecipeInput> {
 
@@ -21,15 +25,14 @@ public abstract class MIRecipe implements Recipe<MIRecipeInput> {
     }
 
     public List<ItemStack> getRestItem(MIRecipeInput recipeInput){
-        List<ItemStack> restItems = recipeInput.stack();
+        List<ItemStack> restItems = new ArrayList<>(recipeInput.stack());
         try {
             for (ItemStack itemStack : recipeInput.stack()) {
                 for (Ingredient ingredient : recipeItems) {
-                    if (ingredient.isEmpty() || ingredient == Ingredient.EMPTY)
+                    if (ingredient.isEmpty() || ingredient == Ingredient.EMPTY || ingredient.equals(Ingredient.of(MITag.ingredientsKey)))
                         continue;
                     if (ingredient.test(itemStack)) {
                         restItems.remove(itemStack);
-                        break;
                     }
                 }
             }

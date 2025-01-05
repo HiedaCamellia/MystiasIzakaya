@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:san_wen_yu"
+    "mystias_izakaya:san_wen_yu",
+    {
+      "id": "mystia_izakaya:salmon",
+      "required": false
+    }
   ]
 }

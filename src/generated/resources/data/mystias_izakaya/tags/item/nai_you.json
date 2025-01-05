@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:nai_you"
+    "mystias_izakaya:nai_you",
+    {
+      "id": "mystia_izakaya:cream",
+      "required": false
+    }
   ]
 }

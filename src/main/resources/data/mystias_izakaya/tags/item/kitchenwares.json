@@ -5,6 +5,26 @@
     "mystias_izakaya:boiling_pot",
     "mystias_izakaya:frying_pan",
     "mystias_izakaya:steamer",
-    "mystias_izakaya:grill"
+    "mystias_izakaya:grill",
+    {
+      "id": "mystia_izakaya:cutting_board",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:boiling_pot",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:frying_pan",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:steamer",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:grill",
+      "required": false
+    }
   ]
 }

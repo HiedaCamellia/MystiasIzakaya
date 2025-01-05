@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:xia"
+    "mystias_izakaya:xia",
+    {
+      "id": "mystia_izakaya:shrimp",
+      "required": false
+    }
   ]
 }

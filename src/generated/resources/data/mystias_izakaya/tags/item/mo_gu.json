@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:mo_gu"
+    "mystias_izakaya:mo_gu",
+    {
+      "id": "mystia_izakaya:mushroom",
+      "required": false
+    }
   ]
 }

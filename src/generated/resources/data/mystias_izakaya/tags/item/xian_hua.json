@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:xian_hua"
+    "mystias_izakaya:xian_hua",
+    {
+      "id": "mystia_izakaya:flower",
+      "required": false
+    }
   ]
 }

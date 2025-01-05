@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:hai_dan"
+    "mystias_izakaya:hai_dan",
+    {
+      "id": "mystia_izakaya:sea_urchin",
+      "required": false
+    }
   ]
 }

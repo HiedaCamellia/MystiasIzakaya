@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:xi_hong_shi"
+    "mystias_izakaya:xi_hong_shi",
+    {
+      "id": "mystia_izakaya:tomato",
+      "required": false
+    }
   ]
 }

@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:feng_mi"
+    "mystias_izakaya:feng_mi",
+    {
+      "id": "mystia_izakaya:honey",
+      "required": false
+    }
   ]
 }

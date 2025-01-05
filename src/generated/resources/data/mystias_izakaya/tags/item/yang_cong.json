@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:yang_cong"
+    "mystias_izakaya:yang_cong",
+    {
+      "id": "mystia_izakaya:onion",
+      "required": false
+    }
   ]
 }

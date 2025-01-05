@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:niu_rou"
+    "mystias_izakaya:niu_rou",
+    {
+      "id": "mystia_izakaya:beef",
+      "required": false
+    }
   ]
 }

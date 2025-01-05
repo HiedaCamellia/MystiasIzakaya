@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:hei_yan"
+    "mystias_izakaya:hei_yan",
+    {
+      "id": "mystia_izakaya:black_salt",
+      "required": false
+    }
   ]
 }

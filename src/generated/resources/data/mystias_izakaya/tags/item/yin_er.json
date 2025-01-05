@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:yin_er"
+    "mystias_izakaya:yin_er",
+    {
+      "id": "mystia_izakaya:snow_fungus",
+      "required": false
+    }
   ]
 }

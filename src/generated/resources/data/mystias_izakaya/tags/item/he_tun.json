@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:he_tun"
+    "mystias_izakaya:he_tun",
+    {
+      "id": "mystia_izakaya:pufferfish",
+      "required": false
+    }
   ]
 }

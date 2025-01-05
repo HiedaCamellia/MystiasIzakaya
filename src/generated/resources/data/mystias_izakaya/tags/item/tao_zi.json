@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:tao_zi"
+    "mystias_izakaya:tao_zi",
+    {
+      "id": "mystia_izakaya:peach",
+      "required": false
+    }
   ]
 }

@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.hiedacamellia.mystiasizakaya.core.recipes.MIRecipeInput;
-import org.hiedacamellia.mystiasizakaya.integration.compact.IngredientsCompact;
+import org.hiedacamellia.mystiasizakaya.integration.compact.IngredientCompact;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.hiedacamellia.mystiasizakaya.registries.MIRecipeType;
 import org.hiedacamellia.mystiasizakaya.util.GetItemStack;
@@ -119,7 +119,7 @@ public class Main {
             for (int i = 1; i <= 5; i++) {
                 if (!(GetItemStack.getItemStack(world, pos, i).getItem() == ItemStack.EMPTY.getItem())) {
                     ItemStack raw = GetItemStack.getItemStack(world, pos, i);
-                    raw = IngredientsCompact.execute(raw);
+                    raw = IngredientCompact.execute(raw);
                     ingredients.add(raw);
                     raws.add((Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(raw.getItem())).toString()));
                 } else {

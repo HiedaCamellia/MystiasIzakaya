@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:jin_qiang_yu"
+    "mystias_izakaya:jin_qiang_yu",
+    {
+      "id": "mystia_izakaya:tuna",
+      "required": false
+    }
   ]
 }

@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:di_gua"
+    "mystias_izakaya:di_gua",
+    {
+      "id": "mystia_izakaya:sweet_potato",
+      "required": false
+    }
   ]
 }

@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:chun_chun"
+    "mystias_izakaya:chun_chun",
+    {
+      "id": "mystia_izakaya:red_toon",
+      "required": false
+    }
   ]
 }

@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:hai_tai"
+    "mystias_izakaya:hai_tai",
+    {
+      "id": "mystia_izakaya:seaweed",
+      "required": false
+    }
   ]
 }

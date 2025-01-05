@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:song_zi"
+    "mystias_izakaya:song_zi",
+    {
+      "id": "mystia_izakaya:song_zi",
+      "required": false
+    }
   ]
 }

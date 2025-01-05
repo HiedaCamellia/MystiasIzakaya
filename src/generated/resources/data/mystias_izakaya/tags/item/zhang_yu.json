@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:zhang_yu"
+    "mystias_izakaya:zhang_yu",
+    {
+      "id": "mystia_izakaya:octopus",
+      "required": false
+    }
   ]
 }

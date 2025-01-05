@@ -1,5 +1,9 @@
 {
   "values": [
-    "mystias_izakaya:lu_rou"
+    "mystias_izakaya:lu_rou",
+    {
+      "id": "mystia_izakaya:venison",
+      "required": false
+    }
   ]
 }
