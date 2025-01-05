@@ -1,6 +1,7 @@
 
 package org.hiedacamellia.mystiasizakaya.content.common.block.blocks;
 
+import com.mojang.serialization.MapCodec;
 import io.netty.buffer.Unpooled;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -22,10 +23,10 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
@@ -39,19 +40,38 @@ import org.hiedacamellia.mystiasizakaya.content.common.block.entities.CookingRan
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingRangeUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.cooking.Init;
 import org.hiedacamellia.mystiasizakaya.core.cooking.Main;
+import org.hiedacamellia.mystiasizakaya.registries.MIBlockEntitiy;
 import org.hiedacamellia.mystiasizakaya.util.cross.Pos;
 import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 
-public class CookingRange extends Block implements EntityBlock {
+public class CookingRange extends BaseEntityBlock {
 
-	private String regname;
+	public static final MapCodec<CookingRange> CODEC = simpleCodec(CookingRange::new);
 
-	public CookingRange(String regname) {
-		super(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).sound(SoundType.METAL).strength(1f, 10f).requiresCorrectToolForDrops().pushReaction(PushReaction.IGNORE));
-		this.regname = regname;
+	public CookingRange(BlockBehaviour. Properties properties) {
+		super(properties);
+	}
+
+	@Override
+	protected RenderShape getRenderShape(BlockState state) {
+		return RenderShape.MODEL;
+	}
+
+	@Nullable
+	@Override
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+		return createTicker(level, blockEntityType, MIBlockEntitiy.COOKING_RANGE.get());
+	}
+
+	@Nullable
+	protected static <T extends BlockEntity> BlockEntityTicker<T> createTicker(
+			Level level, BlockEntityType<T> serverType, BlockEntityType<? extends CookingRangeEntity> clientType
+	) {
+		return level.isClientSide ? null : createTickerHelper(serverType, clientType, CookingRangeEntity::serverTick);
 	}
 
 	@Override
@@ -62,7 +82,7 @@ public class CookingRange extends Block implements EntityBlock {
 			list.add(Component.literal(
 					"§7§o" + Component.translatable("tooltip.mystias_izakaya.press_shift").getString() + "§r"));
 		} else {
-			String[] description = Component.translatable("tooltip.mystias_izakaya."+this.regname).getString().split("§n");
+			String[] description = Component.translatable("tooltip.mystias_izakaya.cooking_range").getString().split("§n");
 			for (String line : description) {
 				list.add(Component.literal(line));
 			}
@@ -75,49 +95,12 @@ public class CookingRange extends Block implements EntityBlock {
 	}
 
 
-
-
-
 	@Override
 	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
 		List<ItemStack> dropsOriginal = super.getDrops(state, builder);
 		if (!dropsOriginal.isEmpty())
 			return dropsOriginal;
 		return Collections.singletonList(new ItemStack(this, 1));
-	}
-
-	@Override
-	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
-		super.onPlace(blockstate, world, pos, oldState, moving);
-		world.scheduleTick(pos, this, 1);
-		Init.execute(world, pos.getX(), pos.getY(), pos.getZ());
-	}
-
-	@Override
-	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
-		super.tick(blockstate, world, pos, random);
-		Main.execute(world, pos,blockstate);
-		world.scheduleTick(pos, this, 1);
-	}
-
-	@Override
-	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
-		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		clean(world, pos.getX(), pos.getY(), pos.getZ());
-		return retval;
-	}
-
-	@Override
-	public void wasExploded(Level world, BlockPos pos, Explosion e) {
-		super.wasExploded(world, pos, e);
-		clean(world, pos.getX(), pos.getY(), pos.getZ());
-	}
-
-	@Override
-	public void attack(BlockState blockstate, Level world, BlockPos pos, Player entity) {
-		super.attack(blockstate, world, pos, entity);
-		clean(world, pos.getX(), pos.getY(), pos.getZ());
-		BlockEntity blockEntity = world.getBlockEntity(pos);
 	}
 
 	@Override
@@ -136,13 +119,6 @@ public class CookingRange extends Block implements EntityBlock {
 				}
 			}, pos);
 		}
-		if (!world.isClientSide()) {
-			BlockEntity _blockEntity = world.getBlockEntity(pos);
-			BlockState _bs = world.getBlockState(pos);
-			if (_blockEntity != null)
-				_blockEntity.getPersistentData().putBoolean("breaking", false);
-			world.sendBlockUpdated(pos, _bs, _bs, 3);
-		}
 		return InteractionResult.SUCCESS;
 	}
 
@@ -159,6 +135,11 @@ public class CookingRange extends Block implements EntityBlock {
 	}
 
 	@Override
+	protected MapCodec<? extends BaseEntityBlock> codec() {
+		return CODEC;
+	}
+
+	@Override
 	public boolean triggerEvent(BlockState state, Level world, BlockPos pos, int eventID, int eventParam) {
 		super.triggerEvent(state, world, pos, eventID, eventParam);
 		BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -170,22 +151,11 @@ public class CookingRange extends Block implements EntityBlock {
 		if (state.getBlock() != newState.getBlock()) {
 			BlockEntity blockEntity = world.getBlockEntity(pos);
 			if (blockEntity instanceof CookingRangeEntity be) {
-				Containers.dropContents(world, pos, be);
+				be.dropItems();
 				world.updateNeighbourForOutputSignal(pos, this);
 			}
 			super.onRemove(state, world, pos, newState, isMoving);
 		}
 	}
 
-	private static void clean(LevelAccessor world, double x, double y, double z){
-		if (!world.isClientSide()) {
-			BlockPos _bp = Pos.get(x, y, z);
-			BlockEntity _blockEntity = world.getBlockEntity(_bp);
-			BlockState _bs = world.getBlockState(_bp);
-			if (_blockEntity != null)
-				_blockEntity.getPersistentData().putBoolean("breaking", true);
-			if (world instanceof Level _level)
-				_level.sendBlockUpdated(_bp, _bs, _bs, 3);
-		}
-	}
 }

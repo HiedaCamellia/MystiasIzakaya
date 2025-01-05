@@ -9,15 +9,18 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.Containers;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.KitchenwaresUiMenu;
+import org.hiedacamellia.mystiasizakaya.core.cooking.Main;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -47,6 +50,9 @@ public abstract class KitchenwaresEntity extends RandomizableContainerBlockEntit
         }
     }
 
+    public static void serverTick(Level level, BlockPos pos, BlockState state, KitchenwaresEntity blockEntity){
+        Main.execute(level, pos,state, blockEntity);
+    }
 
     @Override
     public ClientboundBlockEntityDataPacket getUpdatePacket() {
@@ -119,6 +125,11 @@ public abstract class KitchenwaresEntity extends RandomizableContainerBlockEntit
         };
     }
 
+    public void dropItems() {
+        for (int i = 1; i < 6; i++) {
+            Containers.dropItemStack(level, worldPosition.getX(), worldPosition.getY(), worldPosition.getZ(), stacks.get(i));
+        }
+    }
 
     public SidedInvWrapper getItemHandler() {
         return handler;

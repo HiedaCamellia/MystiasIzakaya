@@ -8,6 +8,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.hiedacamellia.mystiasizakaya.core.recipes.MIRecipeInput;
 import org.hiedacamellia.mystiasizakaya.integration.compact.IngredientsCompact;
@@ -22,7 +23,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Main {
-    public static void execute(LevelAccessor world, BlockPos pos, BlockState blockState) {
+    public static void execute(LevelAccessor world, BlockPos pos, BlockState blockState, RandomizableContainerBlockEntity entity) {
         double time;
         ItemStack util;
         ItemStack target;

@@ -10,14 +10,18 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.Containers;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingRangeUiMenu;
+import org.hiedacamellia.mystiasizakaya.core.cooking.Main;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlockEntitiy;
 import org.jetbrains.annotations.NotNull;
 
@@ -46,6 +50,10 @@ public class CookingRangeEntity extends RandomizableContainerBlockEntity impleme
 		if (!this.trySaveLootTable(compound)) {
 			ContainerHelper.saveAllItems(compound, this.stacks, lookupProvider);
 		}
+	}
+
+	public static void serverTick(Level level, BlockPos pos, BlockState state, CookingRangeEntity blockEntity){
+		Main.execute(level, pos,state, blockEntity);
 	}
 
 
@@ -136,6 +144,11 @@ public class CookingRangeEntity extends RandomizableContainerBlockEntity impleme
         };
 	}
 
+	public void dropItems() {
+		for (int i = 0; i < 6; i++) {
+			Containers.dropItemStack(level, worldPosition.getX(), worldPosition.getY(), worldPosition.getZ(), stacks.get(i));
+		}
+	}
 
 	public SidedInvWrapper getItemHandler() {
 		return handler;
