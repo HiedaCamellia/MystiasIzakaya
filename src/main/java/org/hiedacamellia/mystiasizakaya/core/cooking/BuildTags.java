@@ -28,9 +28,7 @@ public class BuildTags {
         MITags miTags = target.getOrDefault(MIDatacomponet.MI_TAGS.get(),new MITags(new ArrayList<>(),new ArrayList<>()));
 
         List<String> targettags = miTags.tags();
-        //List<String> targetntags = target.getOrCreateTag().getString("ntags").isEmpty() ? new ArrayList<>() : Arrays.asList(target.getOrCreateTag().getString("ntags").split(","));
 
-        //Debug.send(target.toString());
         Set<String> set = new LinkedHashSet<>(rawtags);
         try {
             targettags.sort(Comparator.naturalOrder());
@@ -53,8 +51,6 @@ public class BuildTags {
         rawslist.sort(Comparator.naturalOrder());
 
         target.set(MIDatacomponet.MI_TAGS.get(), new MITags(resultList, miTags.ntags()));
-
-        //target.getOrCreateTag().putString("ntags", String.join(",", targetntags));
 
         target.set(MIDatacomponet.MI_INGREDIENT.get(),new MIIngredient(rawslist));
 

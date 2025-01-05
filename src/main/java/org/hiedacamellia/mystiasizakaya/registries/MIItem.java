@@ -19,6 +19,7 @@ import org.hiedacamellia.mystiasizakaya.core.entry.builder.BaseItemBuilder;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class MIItem {
     public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems(MystiasIzakaya.MODID);
 

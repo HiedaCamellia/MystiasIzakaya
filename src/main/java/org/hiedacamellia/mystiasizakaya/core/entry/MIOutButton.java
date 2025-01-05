@@ -1,11 +1,13 @@
 package org.hiedacamellia.mystiasizakaya.core.entry;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import org.hiedacamellia.immersiveui.client.graphic.util.RenderUtils;
 
 import javax.annotation.Nullable;
 
@@ -19,9 +21,14 @@ public class MIOutButton extends MIButton {
 
     public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         int size = Math.min(this.itemStack.get().getCount(), 10);
+        guiGraphics.pose().pushPose();
+        RenderSystem.enableBlend();
+        //RenderUtils.fillRoundRect(guiGraphics, this.x ,this.y , 16, 16, 0.05f, 0x50fbefcb);
         for (int i = 0; i < size; i++) {
             guiGraphics.renderItem(this.itemStack.get(), this.x , this.y- 2 * i);
         }
+        RenderSystem.disableBlend();
+        guiGraphics.pose().popPose();
     }
 
 

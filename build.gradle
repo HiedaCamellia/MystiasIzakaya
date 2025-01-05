@@ -33,6 +33,9 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
+    flatDir(
+        dirs: 'libs'
+    )
 }
 
 base {
@@ -145,6 +148,8 @@ dependencies {
     // Example project dependency using a sister or child project:
     // implementation project(":myproject")
 
+    jarJar(group: 'org.hiedacamellia', name: 'immersiveui', version: '[neoforge-1.21.1-0.0.1,)')
+    implementation "org.hiedacamellia:immersiveui:${immersiveui_version}"
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
