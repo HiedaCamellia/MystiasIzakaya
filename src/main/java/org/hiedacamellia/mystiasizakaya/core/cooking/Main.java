@@ -30,21 +30,17 @@ public class Main {
         time = GetValue.getDouble(world, pos, "timeleft");
         if (time > 1) {
             if (!world.isClientSide()) {
-                BlockEntity _blockEntity = world.getBlockEntity(pos);
-                BlockState _bs = world.getBlockState(pos);
-                if (_blockEntity != null)
-                    _blockEntity.getPersistentData().putDouble("timeleft", (time - 1));
+                if (entity != null)
+                    entity.getPersistentData().putDouble("timeleft", (time - 1));
                 if (world instanceof Level _level)
-                    _level.sendBlockUpdated(pos, _bs, _bs, 3);
+                    _level.sendBlockUpdated(pos, blockState, blockState, 3);
             }
         } else if (time == 1) {
             if (!world.isClientSide()) {
-                BlockEntity _blockEntity = world.getBlockEntity(pos);
-                BlockState _bs = world.getBlockState(pos);
-                if (_blockEntity != null)
-                    _blockEntity.getPersistentData().putDouble("timeleft", 0);
+                if (entity != null)
+                    entity.getPersistentData().putDouble("timeleft", 0);
                 if (world instanceof Level _level)
-                    _level.sendBlockUpdated(pos, _bs, _bs, 3);
+                    _level.sendBlockUpdated(pos, blockState, blockState, 3);
             }
             target = GetItemStack.getItemStack(world, pos, 12);
             SetSlotItem.setSlotItem(world, pos, target, 6, 1);
@@ -190,10 +186,9 @@ public class Main {
 
             if (!world.isClientSide()) {
                 BlockPos _bp = pos;
-                BlockEntity _blockEntity = world.getBlockEntity(_bp);
                 BlockState _bs = world.getBlockState(_bp);
-                if (_blockEntity != null) {
-                    _blockEntity.getPersistentData().putDouble("targets", targetI.size());
+                if (entity != null) {
+                    entity.getPersistentData().putDouble("targets", targetI.size());
                 }
                 if (world instanceof Level _level)
                     _level.sendBlockUpdated(_bp, _bs, _bs, 3);
@@ -203,7 +198,7 @@ public class Main {
             for (int i = 0; i < 5; i++) {
                 if (i < targetI.size()) {
                     ItemStack taget = targetI.get(i+page);
-                    SetSlotItem.setSlotItem(world, pos, BuildTags.execute(recipes,taget, util, new ArrayList<>(ingredients)), 7 + i, 1);
+                    SetSlotItem.setSlotItem(world, pos, Util.buildTag(recipes,taget, util, new ArrayList<>(ingredients)), 7 + i, 1);
                 } else {
                     SetSlotItem.setEmptySlot(world, pos, 7 + i);
                 }

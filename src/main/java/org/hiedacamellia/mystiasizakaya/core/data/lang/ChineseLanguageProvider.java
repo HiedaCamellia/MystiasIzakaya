@@ -26,6 +26,10 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.ledger_ui.on_open","点击切换营业状态");
         add("tooltip.mystias_izakaya.cost","价格: ");
 
+        add("gui.mystias_izakaya.cooking_ui.kitchenwares","厨具");
+        add("gui.mystias_izakaya.cooking_ui.output","输出");
+        add("gui.mystias_izakaya.cooking_ui.ingerdients","食材");
+
         add("gui.mystias_izakaya.telephone_ui.telephone","电话");
         add("gui.mystias_izakaya.telephone_ui.select","");
         add("gui.mystias_izakaya.telephone_ui.select.desc","");

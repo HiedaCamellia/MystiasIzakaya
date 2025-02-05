@@ -57,7 +57,7 @@ public class Confirm {
 			//Debug.getLogger().debug("Get data");
 
             SetSlotItem.setEmptySlot(world,pos, new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11});
-			SetSlotItem.setSlotItem(world, pos, BuildTags.check(target), 12, 1);
+			SetSlotItem.setSlotItem(world, pos, Util.check(target), 12, 1);
 			if (!world.isClientSide()) {
 				BlockEntity _blockEntity = world.getBlockEntity(pos);
 				BlockState _bs = world.getBlockState(pos);

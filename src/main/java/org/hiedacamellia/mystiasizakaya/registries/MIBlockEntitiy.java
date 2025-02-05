@@ -1,5 +1,6 @@
 package org.hiedacamellia.mystiasizakaya.registries;
 
+import com.mojang.datafixers.types.Type;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.SubscribeEvent;

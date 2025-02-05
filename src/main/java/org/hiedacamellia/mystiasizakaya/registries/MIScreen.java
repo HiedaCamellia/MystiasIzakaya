@@ -16,5 +16,7 @@ public class MIScreen {
 		event.register(MIMenu.LEDGER_UI.get(), LedgerUiScreen::new);
 		event.register(MIMenu.Telephone_UI.get(), TelephoneUiScreen::new);
 		event.register(MIMenu.TABLE_UI.get(), TableUiScreen::new);
+
+		event.register(MIMenu.COOKING_UI.get(), CookingUiScreen::new);
 	}
 }

@@ -84,7 +84,7 @@ public record MIOnOpen(boolean open) implements CustomPacketPayload {
                     }else {
                         player.setData(MIAttachment.MI_ON_OPEN, data);
                     }
-
+                    player.getData(MIAttachment.MI_TURNOVER).sync(player);
 
 
 

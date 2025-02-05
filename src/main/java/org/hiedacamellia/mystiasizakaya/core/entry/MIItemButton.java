@@ -15,9 +15,17 @@ import javax.annotation.Nullable;
 @OnlyIn(Dist.CLIENT)
 public class MIItemButton extends MIButton {
 
+    private final boolean renderBg;
 
-    protected MIItemButton(int x, int y, Component message, OnPress onPress, ItemStack itemStack, @Nullable Tooltip tooltip) {
+    protected MIItemButton(int x, int y, Component message, OnPress onPress, ItemStack itemStack, @Nullable Tooltip tooltip,boolean renderBg) {
         super(x, y,  message, onPress, itemStack, tooltip);
+        this.renderBg = renderBg;
+    }
+
+    public void renderBg(GuiGraphics guiGraphics){
+        if(!this.renderBg) return;
+        RenderUtils.fillRoundRect(guiGraphics,  - 1,  - 1, 18, 18, 0.05f, 0xFF8B4513);
+        RenderUtils.fillRoundRect(guiGraphics, 0,0 , 16, 16, 0.05f, 0xFFf0e0b0);
     }
 
     public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
@@ -25,22 +33,12 @@ public class MIItemButton extends MIButton {
         pose.pushPose();
         pose.translate(this.x,this.y, 0);
         RenderSystem.enableBlend();
+        renderBg(guiGraphics);
         if(this.isFocused()) {
-            RenderUtils.fillRoundRect(guiGraphics,  - 1,  - 1, 18, 18, 0.05f, 0xFFFFA54F);
-            //guiGraphics.fill( - 1,  - 1,  + 17,  + 17, 0xFFFFA54F);
+            RenderUtils.fillRoundRect(guiGraphics,  - 1,  - 1, 18, 18, 0.05f, 0x40FFA54F);
         }
-        else {
-            RenderUtils.fillRoundRect(guiGraphics,  - 1,  - 1, 18, 18, 0.05f, 0xFF8B4513);
-            //guiGraphics.fill( - 1,  - 1,  + 17,  + 17, 0xFF8B4513);
-        }
-
         if(this.isHovered()) {
-            RenderUtils.fillRoundRect(guiGraphics,0 ,0 , 16, 16, 0.05f, 0xFFfbefcb);
-            //guiGraphics.fill(, ,  + 16,  + 16, 0xFFfbefcb);
-        }
-        else {
-            RenderUtils.fillRoundRect(guiGraphics, 0,0 , 16, 16, 0.05f, 0xFFf0e0b0);
-            //guiGraphics.fill(, ,  + 16,  + 16, 0xFFf0e0b0);
+            RenderUtils.fillRoundRect(guiGraphics,0 ,0 , 16, 16, 0.05f, 0x80fbefcb);
         }
         RenderSystem.disableBlend();
 
@@ -54,6 +52,7 @@ public class MIItemButton extends MIButton {
         private final Component message ;
         private final OnPress onPress ;
         private Tooltip tooltip;
+        private boolean renderBg = true;
 
         public builder(Component message, OnPress onPress) {
             this.message = message;
@@ -76,8 +75,13 @@ public class MIItemButton extends MIButton {
             return this;
         }
 
+        public MIItemButton.builder disableBg(){
+            this.renderBg = false;
+            return this;
+        }
+
         public MIItemButton build(){
-            return new MIItemButton(this.x, this.y, this.message, this.onPress, this.itemStack,this.tooltip);
+            return new MIItemButton(this.x, this.y, this.message, this.onPress, this.itemStack,this.tooltip,this.renderBg);
         }
     }
 

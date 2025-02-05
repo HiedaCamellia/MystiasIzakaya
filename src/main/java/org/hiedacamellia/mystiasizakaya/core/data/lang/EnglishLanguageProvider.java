@@ -25,6 +25,10 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.ledger_ui.open","Open");
         add("gui.mystias_izakaya.ledger_ui.on_open","Click to change the status");
 
+        add("gui.mystias_izakaya.cooking_ui.kitchenwares","Kitchenwares");
+        add("gui.mystias_izakaya.cooking_ui.output","Output");
+        add("gui.mystias_izakaya.cooking_ui.ingerdients","Ingredients");
+
         add("tooltip.mystias_izakaya.cost","Cost: ");
 
         add("gui.mystias_izakaya.telephone_ui.telephone","Telephone");
