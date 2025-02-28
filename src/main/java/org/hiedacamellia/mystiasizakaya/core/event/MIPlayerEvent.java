@@ -472,9 +472,9 @@ public class MIPlayerEvent {
                 if (itemStack.getItem() instanceof MIItem miItem) {
                     ResourceLocation key = ForgeRegistries.ITEMS.getKey(miItem);
 
-                    List<BlockPos> blockPosList = getMenuBlockPos(serverPlayer);
-                    List<String> cuisineList = getMenus(serverPlayer);
-                    List<String> beverageList = getMenusBeverages(serverPlayer);
+                    List<BlockPos> blockPosList = new ArrayList<>(getMenuBlockPos(serverPlayer));
+                    List<String> cuisineList = new ArrayList<>(getMenus(serverPlayer));
+                    List<String> beverageList = new ArrayList<>(getMenusBeverages(serverPlayer));
                     if (blockPosList.size() < 8) {
                         for (int i = blockPosList.size() - 1; i < 8; i++) {
                             blockPosList.add(new BlockPos(-1, -1, -1));
