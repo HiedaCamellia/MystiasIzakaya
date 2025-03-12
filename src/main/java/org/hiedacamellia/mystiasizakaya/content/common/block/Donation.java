@@ -1,17 +1,12 @@
 
 package org.hiedacamellia.mystiasizakaya.content.common.block;
 
-import io.netty.buffer.Unpooled;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -26,7 +21,7 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.DonationUiMenu;
+import org.hiedacamellia.mystiasizakaya.client.gui.screen.DonationScreen;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
@@ -68,18 +63,8 @@ public class Donation extends Block {
 	@Override
 	public @NotNull InteractionResult useWithoutItem(@NotNull BlockState blockstate, @NotNull Level world, @NotNull BlockPos pos, @NotNull Player entity, @NotNull BlockHitResult hit) {
 		super.useWithoutItem(blockstate, world, pos, entity, hit);
-		if (entity instanceof ServerPlayer player) {
-			player.openMenu(new MenuProvider() {
-				@Override
-				public @NotNull Component getDisplayName() {
-					return Component.literal("Bank");
-				}
-
-				@Override
-				public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
-					return new DonationUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-				}
-			}, pos);
+		if (entity.isLocalPlayer()) {
+			Minecraft.getInstance().setScreen(new DonationScreen());
 		}
 		return InteractionResult.SUCCESS;
 	}

@@ -33,7 +33,7 @@ public record MIBalance(int balance) implements CustomPacketPayload {
         return TYPE;
     }
 
-    public static void handleData(final MIBalance data, final IPayloadContext context) {
+    public static void handleClient(final MIBalance data, final IPayloadContext context) {
         context.enqueueWork(() -> {
                     context.player().setData(MIAttachment.MI_BALANCE, data);
                 })
@@ -41,5 +41,9 @@ public record MIBalance(int balance) implements CustomPacketPayload {
                     context.disconnect(Component.translatable("network.mystiasizakaya.failed", e.getMessage()));
                     return null;
                 });
+    }
+
+    public static void handleServer(final MIBalance data, final IPayloadContext context) {
+
     }
 }

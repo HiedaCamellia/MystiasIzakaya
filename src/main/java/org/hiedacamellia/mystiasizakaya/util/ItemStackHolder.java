@@ -1,8 +1,9 @@
 package org.hiedacamellia.mystiasizakaya.util;
 
 import net.minecraft.world.item.ItemStack;
+import org.hiedacamellia.immersiveui.client.util.holder.IValueHolder;
 
-public class ItemStackHolder {
+public class ItemStackHolder implements IValueHolder<ItemStack> {
     private ItemStack itemStack;
 
     public ItemStackHolder(ItemStack itemStack) {

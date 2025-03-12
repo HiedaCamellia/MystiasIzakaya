@@ -1,14 +1,13 @@
 package org.hiedacamellia.mystiasizakaya.content.common.blockentity;
 
-import io.netty.buffer.Unpooled;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -17,14 +16,21 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.TableUiMenu;
+import org.hiedacamellia.mystiasizakaya.client.gui.widget.w2s.CookingProcessW2SWidget;
+import org.hiedacamellia.mystiasizakaya.client.gui.widget.w2s.ExistW2SWidget;
+import org.hiedacamellia.mystiasizakaya.client.gui.widget.w2s.TableW2SWidget;
+import org.hiedacamellia.mystiasizakaya.content.common.inventory.TableMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlockEntitiy;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.UUID;
+
 public class TableEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
+
 	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(2, ItemStack.EMPTY);
 	private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
+	private UUID w2sUUID = UUID.randomUUID();
 
 	public TableEntity(BlockPos position, BlockState state) {
 		super(MIBlockEntitiy.TABLE.get(), position, state);
@@ -46,6 +52,14 @@ public class TableEntity extends RandomizableContainerBlockEntity implements Wor
 		}
 	}
 
+	public void addW2S(ResourceLocation location1, ResourceLocation location2,byte id) {
+		TableW2SWidget widget = new TableW2SWidget(w2sUUID, this,location1,location2,id);
+		ExistW2SWidget.add(w2sUUID,widget);
+	}
+
+	public void removeW2S(){
+		ExistW2SWidget.remove(w2sUUID);
+	}
 
 	@Override
 	public ClientboundBlockEntityDataPacket getUpdatePacket() {
@@ -83,7 +97,7 @@ public class TableEntity extends RandomizableContainerBlockEntity implements Wor
 
 	@Override
 	public @NotNull AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory) {
-		return new TableUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
+		return new TableMenu(id, inventory, null,handler,null,this.worldPosition);
 	}
 
 	@Override

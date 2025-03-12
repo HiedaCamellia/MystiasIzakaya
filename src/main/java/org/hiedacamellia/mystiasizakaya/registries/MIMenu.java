@@ -6,15 +6,11 @@ import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.*;
+import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingMenu;
+import org.hiedacamellia.mystiasizakaya.content.common.inventory.TableMenu;
 
 public class MIMenu {
 	public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(Registries.MENU, MystiasIzakaya.MODID);
-	public static final DeferredHolder<MenuType<?>,MenuType<CookingRangeUiMenu>> COOKING_RANGE_UI = REGISTRY.register("cooking_range_ui", () -> IMenuTypeExtension.create(CookingRangeUiMenu::new));
-	public static final DeferredHolder<MenuType<?>,MenuType<KitchenwaresUiMenu>> KITCHENWARES_UI = REGISTRY.register("kitchenwares_ui", () -> IMenuTypeExtension.create(KitchenwaresUiMenu::new));
-	public static final DeferredHolder<MenuType<?>,MenuType<DonationUiMenu>> Donation_UI = REGISTRY.register("donation_ui", () -> IMenuTypeExtension.create(DonationUiMenu::new));
-	public static final DeferredHolder<MenuType<?>,MenuType<LedgerUiMenu>> LEDGER_UI = REGISTRY.register("ledger_ui", () -> IMenuTypeExtension.create(LedgerUiMenu::new));
-	public static final DeferredHolder<MenuType<?>,MenuType<TelephoneUiMenu>> Telephone_UI = REGISTRY.register("telephone_ui", () -> IMenuTypeExtension.create(TelephoneUiMenu::new));
-	public static final DeferredHolder<MenuType<?>,MenuType<TableUiMenu>> TABLE_UI = REGISTRY.register("table_ui", () -> IMenuTypeExtension.create(TableUiMenu::new));
-	public static final DeferredHolder<MenuType<?>,MenuType<CookingUiMenu>> COOKING_UI = REGISTRY.register("cooking_ui", () -> IMenuTypeExtension.create(CookingUiMenu::new));
+	public static final DeferredHolder<MenuType<?>,MenuType<TableMenu>> TABLE_UI = REGISTRY.register("table_ui", () -> IMenuTypeExtension.create(TableMenu::new));
+	public static final DeferredHolder<MenuType<?>,MenuType<CookingMenu>> COOKING_UI = REGISTRY.register("cooking_ui", () -> IMenuTypeExtension.create(CookingMenu::new));
 }

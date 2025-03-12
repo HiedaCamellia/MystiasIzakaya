@@ -5,10 +5,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import org.hiedacamellia.mystiasizakaya.content.cooking.IKitchenware;
 import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;
+import org.hiedacamellia.mystiasizakaya.registries.MIBlockEntitiy;
 
 public class CookingRangeEntity extends CookingEntity {
 	public CookingRangeEntity(BlockPos position, BlockState state) {
-		super(position, state);
+		super(MIBlockEntitiy.COOKING_RANGE.get(),position, state);
 	}
 
 	@Override

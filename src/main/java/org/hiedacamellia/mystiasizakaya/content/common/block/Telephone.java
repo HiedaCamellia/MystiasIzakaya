@@ -1,17 +1,12 @@
 package org.hiedacamellia.mystiasizakaya.content.common.block;
 
-import io.netty.buffer.Unpooled;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -32,7 +27,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.TelephoneUiMenu;
+import org.hiedacamellia.mystiasizakaya.client.gui.screen.TelephoneScreen;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.jetbrains.annotations.NotNull;
 
@@ -83,18 +78,8 @@ public class Telephone extends Block {
             return InteractionResult.FAIL;
         }
 
-        if (entity instanceof ServerPlayer player) {
-            player.openMenu(new MenuProvider() {
-                @Override
-                public @NotNull Component getDisplayName() {
-                    return Component.literal("Telephone");
-                }
-
-                @Override
-                public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
-                    return new TelephoneUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-                }
-            }, pos);
+        if (entity.isLocalPlayer()) {
+            Minecraft.getInstance().setScreen(new TelephoneScreen(pos));
         }
         return InteractionResult.SUCCESS;
     }

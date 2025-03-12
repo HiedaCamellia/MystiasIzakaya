@@ -9,8 +9,9 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.content.client.blockentityrender.ProcessRender;
-import org.hiedacamellia.mystiasizakaya.content.common.blockentity.*;
+import org.hiedacamellia.mystiasizakaya.content.common.blockentity.CookingRangeEntity;
+import org.hiedacamellia.mystiasizakaya.content.common.blockentity.KitchenwareEntity;
+import org.hiedacamellia.mystiasizakaya.content.common.blockentity.TableEntity;
 
 import java.util.function.Supplier;
 
@@ -21,11 +22,11 @@ public class MIBlockEntitiy {
 	public static final Supplier<BlockEntityType<CookingRangeEntity>> COOKING_RANGE = REGISTRY.register("cooking_range", () -> BlockEntityType.Builder.of(CookingRangeEntity::new, MIBlock.COOKING_RANGE.get()).build(null));
 	public static final Supplier<BlockEntityType<TableEntity>> TABLE = REGISTRY.register("table", () -> BlockEntityType.Builder.of(TableEntity::new, MIBlock.TABLE.get()).build(null));
 
-	public static final Supplier<BlockEntityType<CuttingBoard>> CUTTING_BOARD = REGISTRY.register("cutting_board", () -> BlockEntityType.Builder.of(CuttingBoard::new, MIBlock.CUTTING_BOARD.get()).build(null));
-	public static final Supplier<BlockEntityType<BoilingPot>> BOILING_POT = REGISTRY.register("boiling_pot", () -> BlockEntityType.Builder.of(BoilingPot::new, MIBlock.BOILING_POT.get()).build(null));
-	public static final Supplier<BlockEntityType<FryingPan>> FRYING_PAN = REGISTRY.register("frying_pan", () -> BlockEntityType.Builder.of(FryingPan::new, MIBlock.FRYING_PAN.get()).build(null));
-	public static final Supplier<BlockEntityType<Steamer>> STEAMER = REGISTRY.register("steamer", () -> BlockEntityType.Builder.of(Steamer::new, MIBlock.STEAMER.get()).build(null));
-	public static final Supplier<BlockEntityType<Grill>> GRILL = REGISTRY.register("grill", () -> BlockEntityType.Builder.of(Grill::new, MIBlock.GRILL.get()).build(null));
+	public static final Supplier<BlockEntityType<? extends KitchenwareEntity>> CUTTING_BOARD = REGISTRY.register("cutting_board", () -> BlockEntityType.Builder.of(KitchenwareEntity.CuttingBoard::new, MIBlock.CUTTING_BOARD.get()).build(null));
+	public static final Supplier<BlockEntityType<? extends KitchenwareEntity>> BOILING_POT = REGISTRY.register("boiling_pot", () -> BlockEntityType.Builder.of(KitchenwareEntity.BoilingPot::new, MIBlock.BOILING_POT.get()).build(null));
+	public static final Supplier<BlockEntityType<? extends KitchenwareEntity>> FRYING_PAN = REGISTRY.register("frying_pan", () -> BlockEntityType.Builder.of(KitchenwareEntity.FryingPan::new, MIBlock.FRYING_PAN.get()).build(null));
+	public static final Supplier<BlockEntityType<? extends KitchenwareEntity>> STEAMER = REGISTRY.register("steamer", () -> BlockEntityType.Builder.of(KitchenwareEntity.Steamer::new, MIBlock.STEAMER.get()).build(null));
+	public static final Supplier<BlockEntityType<? extends KitchenwareEntity>> GRILL = REGISTRY.register("grill", () -> BlockEntityType.Builder.of(KitchenwareEntity.Grill::new, MIBlock.GRILL.get()).build(null));
 
 
 	@SubscribeEvent
@@ -41,11 +42,5 @@ public class MIBlockEntitiy {
 	
 	@SubscribeEvent
 	public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-		event.registerBlockEntityRenderer(GRILL.get(), ProcessRender::new);
-		event.registerBlockEntityRenderer(BOILING_POT.get(), ProcessRender::new);
-		event.registerBlockEntityRenderer(CUTTING_BOARD.get(), ProcessRender::new);
-		event.registerBlockEntityRenderer(FRYING_PAN.get(), ProcessRender::new);
-		event.registerBlockEntityRenderer(STEAMER.get(), ProcessRender::new);
-		//event.registerBlockEntityRenderer(TABLE.get(), TableRender::new);
 	}
 }

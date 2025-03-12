@@ -1,19 +1,15 @@
 
 package org.hiedacamellia.mystiasizakaya.content.common.block;
 
-import io.netty.buffer.Unpooled;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -31,7 +27,6 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.content.common.blockentity.TableEntity;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.TableUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
@@ -40,9 +35,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class TableBlock extends Block implements EntityBlock {
-
 
 	public TableBlock() {
 		super(Properties.of().mapColor(MapColor.METAL).sound(SoundType.METAL).strength(1f, 10f).requiresCorrectToolForDrops().noOcclusion());
@@ -77,21 +72,17 @@ public class TableBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public @NotNull InteractionResult useWithoutItem(@NotNull BlockState blockstate, @NotNull Level world, @NotNull BlockPos pos, @NotNull Player entity, @NotNull BlockHitResult hit) {
-		super.useWithoutItem(blockstate, world, pos, entity, hit);
+	public MenuProvider getMenuProvider(@NotNull BlockState state, Level level, @NotNull BlockPos pos) {
+		BlockEntity tileEntity = level.getBlockEntity(pos);
+		return tileEntity instanceof MenuProvider menuProvider ? menuProvider : null;
+	}
+
+	@Override
+	public @NotNull InteractionResult useWithoutItem(@NotNull BlockState blockstate, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player entity, @NotNull BlockHitResult hit) {
+		super.useWithoutItem(blockstate, level, pos, entity, hit);
 		if (entity instanceof ServerPlayer player) {
 			if(!ItemStack.isSameItem(player.getMainHandItem(),MIItem.LEDGER.get().getDefaultInstance())) {
-				player.openMenu(new MenuProvider() {
-					@Override
-					public @NotNull Component getDisplayName() {
-						return Component.literal("Table");
-					}
-
-					@Override
-					public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
-						return new TableUiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-					}
-				}, pos);
+				player.openMenu(Objects.requireNonNull(getMenuProvider(blockstate, level, pos)), pos);
 			}
 		}
 		return InteractionResult.SUCCESS;
@@ -100,7 +91,6 @@ public class TableBlock extends Block implements EntityBlock {
 	@Override
 	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
 
-		//Debug.getLogger().debug("Use on");
 		if (player instanceof ServerPlayer serverPlayer) {
 			if(ItemStack.isSameItem(serverPlayer.getMainHandItem(),MIItem.LEDGER.get().getDefaultInstance())) {
 				MIOrders miOrders = serverPlayer.getData(MIAttachment.MI_ORDERS);
@@ -125,8 +115,6 @@ public class TableBlock extends Block implements EntityBlock {
 				MIOrders miOrders1 = new MIOrders(miOrders.orders(), miOrders.beverages(), blockPosList);
 				serverPlayer.setData(MIAttachment.MI_ORDERS, miOrders1);
 				PacketDistributor.sendToPlayer(serverPlayer, miOrders1);
-
-				//Debug.getLogger().debug("Table: " + blockPosList);
 
 				return ItemInteractionResult.SUCCESS;
 			}

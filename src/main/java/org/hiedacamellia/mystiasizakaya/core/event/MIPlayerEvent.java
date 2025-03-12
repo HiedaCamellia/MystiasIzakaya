@@ -14,20 +14,22 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
+import org.hiedacamellia.mystiasizakaya.api.event.OrderEvent;
 import org.hiedacamellia.mystiasizakaya.content.common.blockentity.TableEntity;
-import org.hiedacamellia.mystiasizakaya.content.orders.Addorder;
-import org.hiedacamellia.mystiasizakaya.content.orders.Deleteorder;
+import org.hiedacamellia.mystiasizakaya.content.common.item.MIBaseItem;
+import org.hiedacamellia.mystiasizakaya.content.order.OrderUtils;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.*;
 import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
-import org.hiedacamellia.mystiasizakaya.content.common.item.MIBaseItem;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
+import org.hiedacamellia.mystiasizakaya.util.IntHolder;
 
 import java.util.*;
 
@@ -159,7 +161,7 @@ public class MIPlayerEvent {
                             if(beverage.isEmpty()||cuisine.isEmpty()){
                                 break;
                             }
-                            Addorder.execute(beverage, cuisine, tables.indexOf(pos), serverPlayer);
+                            OrderUtils.add(beverage, cuisine, tables.indexOf(pos), serverPlayer);
                         }
                         break;
                     }
@@ -192,15 +194,18 @@ public class MIPlayerEvent {
 //                    Debug.getLogger().debug(itemStacks.toString());
 
                     if(ItemStack.isSameItem(itemStacks.get(0),cuisine)&&ItemStack.isSameItem(itemStacks.get(1),beverage)){
-                        Deleteorder.execute(i,serverPlayer);
+                        OrderUtils.remove(i,serverPlayer);
                         tableEntity.clearContent();
                         level.setBlockEntity(tableEntity);
 //                        level.sendBlockUpdated(tables.get(i),level.getBlockState(tables.get(i)),level.getBlockState(tables.get(i)),3);
                         serverPlayer.closeContainer();
                         int cost = cuisine.getOrDefault(MIDatacomponet.MI_COST,new MICost(0)).cost()+beverage.getOrDefault(MIDatacomponet.MI_COST,new MICost(0)).cost();
-                        MIBalance miBalance = new MIBalance(serverPlayer.getData(MIAttachment.MI_BALANCE).balance()+cost);
+                        IntHolder intHolder = new IntHolder(cost);
+                        NeoForge.EVENT_BUS.post(new OrderEvent.Complete(serverPlayer,cuisine,beverage,i, intHolder));
+
+                        MIBalance miBalance = new MIBalance(serverPlayer.getData(MIAttachment.MI_BALANCE).balance()+intHolder.get());
                         MITurnover miTurnover = serverPlayer.getData(MIAttachment.MI_TURNOVER);
-                        miTurnover = miTurnover.addTurnover("from_table", (double)cost);
+                        miTurnover = miTurnover.addTurnover("from_table", (double)intHolder.get());
                         miTurnover = miTurnover.deleteOverStack();
                         serverPlayer.setData(MIAttachment.MI_TURNOVER, miTurnover);
                         serverPlayer.setData(MIAttachment.MI_BALANCE,miBalance);
@@ -272,9 +277,6 @@ public class MIPlayerEvent {
                 serverPlayer.setData(MIAttachment.MI_MENU, miOrders1);
                 PacketDistributor.sendToPlayer(serverPlayer, miOrders1);
 
-                Debug.getLogger().debug(blockPosList.toString());
-                Debug.getLogger().debug(cuisineList.toString());
-                Debug.getLogger().debug(beverageList.toString());
 
                 event.setCancellationResult(InteractionResult.SUCCESS);
             }

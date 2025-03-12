@@ -28,12 +28,6 @@ public class MICodec {
                     Codec.list(BlockPos.CODEC).fieldOf("blockpos").forGetter(MIMenu::blockPos)
             ).apply(instance, MIMenu::new)
     );
-    public static final StreamCodec<ByteBuf, MIMenu> MI_MENU_STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.fromCodec(Codec.list(Codec.STRING)), MIMenu::orders,
-            ByteBufCodecs.fromCodec(Codec.list(Codec.STRING)), MIMenu::beverages,
-            ByteBufCodecs.fromCodec(Codec.list(BlockPos.CODEC)), MIMenu::blockPos,
-            MIMenu::new
-    );
 
     public static final Codec<MIOrders> MI_ORDERS_CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
@@ -42,21 +36,11 @@ public class MICodec {
                     Codec.list(BlockPos.CODEC).fieldOf("blockpos").forGetter(MIOrders::blockPos)
             ).apply(instance, MIOrders::new)
     );
-    public static final StreamCodec<ByteBuf, MIOrders> MI_ORDERS_STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.fromCodec(Codec.list(Codec.STRING)), MIOrders::orders,
-            ByteBufCodecs.fromCodec(Codec.list(Codec.STRING)), MIOrders::beverages,
-            ByteBufCodecs.fromCodec(Codec.list(BlockPos.CODEC)), MIOrders::blockPos,
-            MIOrders::new
-    );
 
     public static final Codec<MIBalance> MI_BALANCE_CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
                     Codec.INT.fieldOf("balance").forGetter(MIBalance::balance)
             ).apply(instance, MIBalance::new)
-    );
-    public static final StreamCodec<ByteBuf, MIBalance> MI_BALANCE_STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.INT, MIBalance::balance,
-            MIBalance::new
     );
 
 
@@ -88,12 +72,6 @@ public class MICodec {
             ).apply(instance, MITurnover::new)
     );
 
-    public static final StreamCodec<ByteBuf, MITurnover> MI_TURNOVER_STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.fromCodec(Codec.list(Codec.STRING)), MITurnover::k,
-            ByteBufCodecs.fromCodec(Codec.list(Codec.DOUBLE)), MITurnover::v,
-            MITurnover::new
-    );
-
     public static final Codec<MICost> MI_COST_CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
                     Codec.INT.fieldOf("cost").forGetter(MICost::cost)
@@ -109,18 +87,10 @@ public class MICodec {
                     Codec.INT.fieldOf("tick").forGetter(MITeleColddown::tick)
             ).apply(instance, MITeleColddown::new)
     );
-    public static final StreamCodec<ByteBuf, MITeleColddown> MI_TELE_COLDDOWN_STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.INT, MITeleColddown::tick,
-            MITeleColddown::new
-    );
 
     public static final Codec<MIOnOpen> MI_ON_OPEN_CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
                     Codec.BOOL.fieldOf("open").forGetter(MIOnOpen::open)
             ).apply(instance, MIOnOpen::new)
-    );
-    public static final StreamCodec<ByteBuf, MIOnOpen> MI_ON_OPEN_STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.BOOL, MIOnOpen::open,
-            MIOnOpen::new
     );
 }

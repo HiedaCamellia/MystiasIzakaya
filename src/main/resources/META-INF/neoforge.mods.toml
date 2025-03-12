@@ -10,6 +10,7 @@ displayURL="https://www.curseforge.com/minecraft/mc-mods/mystias-izakaya"
 credits="modding from 东方夜雀食堂"
 authors="${mod_authors}"
 description=""
+logoFile = "icon.png"
 
 # The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.
 #[[mixins]]

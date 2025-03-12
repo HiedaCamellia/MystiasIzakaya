@@ -7,7 +7,9 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Tag2Item {

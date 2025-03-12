@@ -1,13 +1,15 @@
 package org.hiedacamellia.mystiasizakaya.util;
 
-public class RateHolder {
+import org.hiedacamellia.immersiveui.client.util.holder.IValueHolder;
+
+public class RateHolder implements IValueHolder<Double> {
     private double rate;
 
-    public void setRate(double rate) {
+    public void set(Double rate) {
         this.rate = rate;
     }
 
-    public double getRate() {
+    public Double get() {
         return rate;
     }
 

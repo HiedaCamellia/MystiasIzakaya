@@ -31,7 +31,7 @@ public class Currency {
 
                             return 0;
                         }))))
-                .then(Commands.literal("query")
+                .then(Commands.literal("reduce")
                         .then(Commands.argument("player", EntityArgument.player()).then(Commands.argument("number", IntegerArgumentType.integer(0)).executes(arguments -> {
                             ServerPlayer player = EntityArgument.getPlayer(arguments, "player");
                             int change = IntegerArgumentType.getInteger(arguments, "number");

@@ -8,14 +8,12 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
+import org.hiedacamellia.mystiasizakaya.client.gui.widget.builder.BaseItemBuilder;
 import org.hiedacamellia.mystiasizakaya.content.common.blockitem.*;
-import org.hiedacamellia.mystiasizakaya.content.common.item.currency.En10Item;
-import org.hiedacamellia.mystiasizakaya.content.common.item.currency.En1Item;
-import org.hiedacamellia.mystiasizakaya.content.common.item.currency.En5Item;
+import org.hiedacamellia.mystiasizakaya.content.common.item.CurrencyItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.IconItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.IronKnifeItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.LedgerItem;
-import org.hiedacamellia.mystiasizakaya.content.client.gui.widget.builder.BaseItemBuilder;
 
 import java.util.List;
 
@@ -323,9 +321,9 @@ public class MIItem {
     public static final DeferredItem<Item> HEI_AN_WU_ZHI = Others.register("hei_an_wu_zhi", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON).food(new FoodProperties.Builder().nutrition(7).saturationModifier(0.4f).build())).build());
     public static final DeferredItem<Item> ICON = Others.register("icon", IconItem::new);
     public static final DeferredItem<Item> REISEN = Others.register("reisen", () -> new BaseItemBuilder(new Item.Properties().rarity(Rarity.COMMON)).tags(List.of("Photogenic", "Signature", "Specialty", "Wonderful")).cost(530000).build());
-    public static final DeferredItem<Item> EN_1 = Others.register("en_1", En1Item::new);
-    public static final DeferredItem<Item> EN_5 = Others.register("en_5", En5Item::new);
-    public static final DeferredItem<Item> EN_10 = Others.register("en_10", En10Item::new);
+    public static final DeferredItem<Item> EN_1 = Others.register("en_1", ()->new CurrencyItem(1));
+    public static final DeferredItem<Item> EN_5 = Others.register("en_5", ()->new CurrencyItem(5));
+    public static final DeferredItem<Item> EN_10 = Others.register("en_10",()->new CurrencyItem(10));
     //public static final DeferredItem<Item> EN_10K = Others.register("en_10k", En10kItem::new);
     public static final DeferredItem<Item> IRON_KNIFE = Others.register("iron_knife", IronKnifeItem::new);
 

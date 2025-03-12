@@ -13,7 +13,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hiedacamellia.mystiasizakaya.core.config.MIClientConfig;
 import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
-import org.hiedacamellia.mystiasizakaya.core.data.Data;
 import org.hiedacamellia.mystiasizakaya.core.event.MIEvent;
 import org.hiedacamellia.mystiasizakaya.registries.*;
 
@@ -24,7 +23,6 @@ public class MystiasIzakaya {
 
 	public MystiasIzakaya(IEventBus modEventBus, ModContainer modContainer)
 	{
-		modEventBus.addListener(Data::onGatherData);
 		modEventBus.addListener(MIEvent::onCommonSetup);
 
 		MIBlock.BLOCKS.register(modEventBus);

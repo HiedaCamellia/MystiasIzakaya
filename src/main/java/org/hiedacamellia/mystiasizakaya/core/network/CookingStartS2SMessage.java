@@ -11,7 +11,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
-import org.apache.logging.log4j.Level;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.common.blockentity.CookingEntity;
 
@@ -38,6 +37,7 @@ public record CookingStartS2SMessage(byte id, BlockPos pos) implements CustomPac
                         if (serverLevel.isLoaded(pos1)) {
                             BlockEntity blockEntity = serverLevel.getBlockEntity(pos1);
                             if(blockEntity instanceof CookingEntity cookingEntity){
+                                MystiasIzakaya.LOGGER.debug("Server received cooking start message for cooking entity at {}", pos1);
                                 cookingEntity.applyRecipe(data.id());
                             }
                         }
