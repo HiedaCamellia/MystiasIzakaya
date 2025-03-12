@@ -351,6 +351,9 @@ public class MIPlayerEvent {
                     }
                 }
             }
+
+
+
             //
             if(player instanceof ServerPlayer serverPlayer)
             {
@@ -383,7 +386,7 @@ public class MIPlayerEvent {
 //            Debug.getLogger().debug(player.getData(MIAttachment.MI_ON_OPEN).toString());
 //            Debug.getLogger().debug(tables.toString());
 
-                if(getOnOpen(serverPlayer)){
+                if(getOnOpen(serverPlayer)&&serverPlayer.level().getGameTime()%CommonConfig.ORDER_REFRESH_INTERVAL.get()==0){
 
                     Set<ItemStack> beverages = new LinkedHashSet<>();
                     Set<ItemStack> cuisines = new LinkedHashSet<>();
@@ -405,7 +408,7 @@ public class MIPlayerEvent {
                         if(pos.equals(new BlockPos(-1,-1,-1))){
                             continue;
                         }
-                        if(Math.random()<0.0029){
+                        if(Math.random()<CommonConfig.ORDER_REFRESH_PROBABILITY.get()){
                             if(beverageList.get(tables.indexOf(pos)).equals("minecraft:air")&&cuisineList.get(tables.indexOf(pos)).equals("minecraft:air")){
                                 ItemStack beverage = beverageslist.get((int) (Math.random() * beverages.size()));
                                 ItemStack cuisine = cuisineslist.get((int) (Math.random() * cuisines.size()));
@@ -418,6 +421,8 @@ public class MIPlayerEvent {
                         }
                     }
                 }
+
+                //完成订单
                 for(int i = 0; i < tables.size();i++){
                     if(tables.get(i).equals(new BlockPos(-1,-1,-1))){
                         continue;

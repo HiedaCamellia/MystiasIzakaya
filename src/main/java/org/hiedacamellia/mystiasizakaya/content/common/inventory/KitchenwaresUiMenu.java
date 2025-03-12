@@ -10,7 +10,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
@@ -20,6 +19,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
+import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
 import org.hiedacamellia.mystiasizakaya.registries.MIMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
 
@@ -84,7 +84,7 @@ public class KitchenwaresUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(MITag.ingredientsKey)){
+				if (stack.is(MITag.ingredientsKey)||CommonConfig.ENABLE_ALL_INGREDIENTS.get()){
 					return true;
 				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
 					return true;
@@ -98,7 +98,7 @@ public class KitchenwaresUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(MITag.ingredientsKey)){
+				if (stack.is(MITag.ingredientsKey)||CommonConfig.ENABLE_ALL_INGREDIENTS.get()){
 					return true;
 				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
 					return true;
@@ -113,7 +113,7 @@ public class KitchenwaresUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(MITag.ingredientsKey)){
+				if (stack.is(MITag.ingredientsKey)||CommonConfig.ENABLE_ALL_INGREDIENTS.get()){
 					return true;
 				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
 					return true;
@@ -128,7 +128,7 @@ public class KitchenwaresUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(MITag.ingredientsKey)){
+				if (stack.is(MITag.ingredientsKey)||CommonConfig.ENABLE_ALL_INGREDIENTS.get()){
 					return true;
 				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
 					return true;
@@ -143,7 +143,7 @@ public class KitchenwaresUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				if (stack.is(MITag.ingredientsKey)){
+				if (stack.is(MITag.ingredientsKey)|| CommonConfig.ENABLE_ALL_INGREDIENTS.get()){
 					return true;
 				}else if(stack.is(ItemTags.create(new ResourceLocation("mystias_izakaya:bridge_yhc")))){
 					return true;

@@ -5,14 +5,15 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import org.hiedacamellia.mystiasizakaya.core.event.MIPlayerEvent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Addorder {
 	public static void execute(ItemStack beverages, ItemStack cuisines, int id, ServerPlayer player) {
 
 
-		List<String> orders = MIPlayerEvent.getOrders(player);
-		List<String> ordersbeverages = MIPlayerEvent.getOrdersBeverages(player);
+		List<String> orders = new ArrayList<>(MIPlayerEvent.getOrders(player));
+		List<String> ordersbeverages = new ArrayList<>(MIPlayerEvent.getOrdersBeverages(player));
 
 		orders.set(id, BuiltInRegistries.ITEM.getKey(cuisines.getItem()).toString());
 		ordersbeverages.set(id, BuiltInRegistries.ITEM.getKey(beverages.getItem()).toString());
