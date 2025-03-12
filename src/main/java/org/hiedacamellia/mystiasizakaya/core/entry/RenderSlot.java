@@ -7,7 +7,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
-import org.hiedacamellia.immersiveui.client.graphic.util.RenderUtils;
+import org.hiedacamellia.immersiveui.client.graphic.gui.IUIGuiUtils;
 
 public class RenderSlot extends AbstractWidget {
     private final Component tooltip;
@@ -26,8 +26,8 @@ public class RenderSlot extends AbstractWidget {
     @Override
     protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float v) {
         RenderSystem.enableBlend();
-        RenderUtils.fillRoundRect(guiGraphics,  getX()- 1,  getY()- 1, 18, 18, 0.05f, 0xFF8B4513);
-        RenderUtils.fillRoundRect(guiGraphics, getX(),getY() , 16, 16, 0.05f, 0xFFf0e0b0);
+        IUIGuiUtils.fillRoundRect(guiGraphics,  getX()- 1,  getY()- 1, 18, 18, 0.05f, 0xFF8B4513);
+        IUIGuiUtils.fillRoundRect(guiGraphics, getX(),getY() , 16, 16, 0.05f, 0xFFf0e0b0);
         RenderSystem.disableBlend();
         if(isHovered()&&!tooltip.equals(Component.empty())){
             guiGraphics.drawString(font, tooltip, getX()-font.width(tooltip), getY(), 0xFFFFFF);

@@ -19,6 +19,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 import net.neoforged.neoforge.items.wrapper.InvWrapper;
+import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
 import org.hiedacamellia.mystiasizakaya.registries.MIMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
 
@@ -94,7 +95,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-                return stack.is(MITag.ingredientsKey);
+                return stack.is(MITag.ingredientsKey)|| CommonConfig.ENABLE_ALL_INGREDIENTS.get();
 			}
 		}));
 		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 122, 26) {
@@ -102,7 +103,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(MITag.ingredientsKey);
+				return stack.is(MITag.ingredientsKey)|| CommonConfig.ENABLE_ALL_INGREDIENTS.get();
 			}
 
 		}));
@@ -111,7 +112,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(MITag.ingredientsKey);
+				return stack.is(MITag.ingredientsKey)|| CommonConfig.ENABLE_ALL_INGREDIENTS.get();
 			}
 
 		}));
@@ -120,7 +121,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(MITag.ingredientsKey);
+				return stack.is(MITag.ingredientsKey)|| CommonConfig.ENABLE_ALL_INGREDIENTS.get();
 			}
 
 		}));
@@ -129,7 +130,7 @@ public class CookingRangeUiMenu extends AbstractContainerMenu implements Supplie
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(MITag.ingredientsKey);
+				return stack.is(MITag.ingredientsKey)|| CommonConfig.ENABLE_ALL_INGREDIENTS.get();
 			}
 
 		}));

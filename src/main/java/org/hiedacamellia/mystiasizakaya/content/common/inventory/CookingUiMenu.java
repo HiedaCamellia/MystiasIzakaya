@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
+import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
 import org.hiedacamellia.mystiasizakaya.registries.MIMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
 
@@ -52,27 +53,27 @@ public class CookingUiMenu extends AbstractContainerMenu {
 
         this.customSlots.put(1, this.addSlot(new SlotItemHandler(itemHandler, 1, start_x, start_y - 22){
             @Override public boolean mayPlace(ItemStack stack) {
-                return stack.is(MITag.ingredientsKey);
+                return stack.is(MITag.ingredientsKey)|| CommonConfig.ENABLE_ALL_INGREDIENTS.get();
             }
         }));
         this.customSlots.put(2, this.addSlot(new SlotItemHandler(itemHandler, 2, start_x + 18, start_y - 22){
             @Override public boolean mayPlace(ItemStack stack) {
-                return stack.is(MITag.ingredientsKey);
+                return stack.is(MITag.ingredientsKey)|| CommonConfig.ENABLE_ALL_INGREDIENTS.get();
             }
         }));
         this.customSlots.put(3, this.addSlot(new SlotItemHandler(itemHandler, 3, start_x + 2 * 18, start_y - 22){
             @Override public boolean mayPlace(ItemStack stack) {
-                return stack.is(MITag.ingredientsKey);
+                return stack.is(MITag.ingredientsKey)|| CommonConfig.ENABLE_ALL_INGREDIENTS.get();
             }
         }));
         this.customSlots.put(4, this.addSlot(new SlotItemHandler(itemHandler, 4, start_x + 3 * 18, start_y - 22){
             @Override public boolean mayPlace(ItemStack stack) {
-                return stack.is(MITag.ingredientsKey);
+                return stack.is(MITag.ingredientsKey)|| CommonConfig.ENABLE_ALL_INGREDIENTS.get();
             }
         }));
         this.customSlots.put(5, this.addSlot(new SlotItemHandler(itemHandler, 5, start_x + 4 * 18, start_y - 22){
             @Override public boolean mayPlace(ItemStack stack) {
-                return stack.is(MITag.ingredientsKey);
+                return stack.is(MITag.ingredientsKey)|| CommonConfig.ENABLE_ALL_INGREDIENTS.get();
             }
         }));
 

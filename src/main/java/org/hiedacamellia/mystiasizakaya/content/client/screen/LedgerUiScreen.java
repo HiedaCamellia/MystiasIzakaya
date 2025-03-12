@@ -10,8 +10,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.network.PacketDistributor;
-import org.hiedacamellia.immersiveui.client.graphic.util.RenderUtils;
-import org.hiedacamellia.immersiveui.client.gui.widget.UnderLineComponentWidget;
+
+import org.hiedacamellia.immersiveui.client.graphic.gui.IUIGuiUtils;
+import org.hiedacamellia.immersiveui.client.gui.component.widget.component.UnderLineComponentWidget;
 import org.hiedacamellia.mystiasizakaya.content.client.gui.widget.LedgerItemWidget;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.LedgerUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOnOpen;
@@ -36,9 +37,9 @@ public class LedgerUiScreen extends AbstractContainerScreen<LedgerUiMenu> {
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int gx, int gy) {
         RenderSystem.enableBlend();
-        RenderUtils.fillRoundRect(guiGraphics, this.leftPos-1, this.topPos-1, this.imageWidth, this.imageHeight, 0.05f, 0xFFffffff);
-        RenderUtils.fillRoundRect(guiGraphics, this.leftPos+1, this.topPos+1, this.imageWidth, this.imageHeight, 0.05f, 0xFF555555);
-        RenderUtils.fillRoundRect(guiGraphics, this.leftPos, this.topPos, this.imageWidth, this.imageHeight, 0.05f, 0xFFc6c6c6);
+        IUIGuiUtils.fillRoundRect(guiGraphics, this.leftPos-1, this.topPos-1, this.imageWidth, this.imageHeight, 0.05f, 0xFFffffff);
+        IUIGuiUtils.fillRoundRect(guiGraphics, this.leftPos+1, this.topPos+1, this.imageWidth, this.imageHeight, 0.05f, 0xFF555555);
+        IUIGuiUtils.fillRoundRect(guiGraphics, this.leftPos, this.topPos, this.imageWidth, this.imageHeight, 0.05f, 0xFFc6c6c6);
         RenderSystem.disableBlend();
     }
 

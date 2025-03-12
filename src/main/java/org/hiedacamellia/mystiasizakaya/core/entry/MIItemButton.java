@@ -8,7 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import org.hiedacamellia.immersiveui.client.graphic.util.RenderUtils;
+import org.hiedacamellia.immersiveui.client.graphic.gui.IUIGuiUtils;
 
 import javax.annotation.Nullable;
 
@@ -24,8 +24,8 @@ public class MIItemButton extends MIButton {
 
     public void renderBg(GuiGraphics guiGraphics){
         if(!this.renderBg) return;
-        RenderUtils.fillRoundRect(guiGraphics,  - 1,  - 1, 18, 18, 0.05f, 0xFF8B4513);
-        RenderUtils.fillRoundRect(guiGraphics, 0,0 , 16, 16, 0.05f, 0xFFf0e0b0);
+        IUIGuiUtils.fillRoundRect(guiGraphics,  - 1,  - 1, 18, 18, 0.05f, 0xFF8B4513);
+        IUIGuiUtils.fillRoundRect(guiGraphics, 0,0 , 16, 16, 0.05f, 0xFFf0e0b0);
     }
 
     public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
@@ -35,10 +35,10 @@ public class MIItemButton extends MIButton {
         RenderSystem.enableBlend();
         renderBg(guiGraphics);
         if(this.isFocused()) {
-            RenderUtils.fillRoundRect(guiGraphics,  - 1,  - 1, 18, 18, 0.05f, 0x40FFA54F);
+            IUIGuiUtils.fillRoundRect(guiGraphics,  - 1,  - 1, 18, 18, 0.05f, 0x40FFA54F);
         }
         if(this.isHovered()) {
-            RenderUtils.fillRoundRect(guiGraphics,0 ,0 , 16, 16, 0.05f, 0x80fbefcb);
+            IUIGuiUtils.fillRoundRect(guiGraphics,0 ,0 , 16, 16, 0.05f, 0x80fbefcb);
         }
         RenderSystem.disableBlend();
 

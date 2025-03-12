@@ -10,7 +10,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
-import org.hiedacamellia.immersiveui.client.graphic.util.RenderUtils;
+import org.hiedacamellia.immersiveui.client.graphic.gui.IUIGuiUtils;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MICost;
 import org.hiedacamellia.mystiasizakaya.core.entry.MIItemButton;
@@ -49,10 +49,10 @@ public class CookingUiScreen extends AbstractContainerScreen<CookingUiMenu> {
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1) {
         RenderSystem.enableBlend();
-        RenderUtils.fillRoundRect(guiGraphics,leftPos-1, topPos-1, imageWidth, imageHeight, 0.05f, 0xFF725649);
-        RenderUtils.fillRoundRect(guiGraphics,leftPos+1, topPos+1, imageWidth, imageHeight, 0.05f, 0xFF321609);
-        RenderUtils.fillRoundRect(guiGraphics,leftPos, topPos, imageWidth, imageHeight, 0.05f, 0xFF523629);
-        RenderUtils.fillRoundRect(guiGraphics,leftPos+114, topPos+7, 4*18+4, 3*18+4, 0.05f, 0xFFf0e0b0);
+        IUIGuiUtils.fillRoundRect(guiGraphics,leftPos-1, topPos-1, imageWidth, imageHeight, 0.05f, 0xFF725649);
+        IUIGuiUtils.fillRoundRect(guiGraphics,leftPos+1, topPos+1, imageWidth, imageHeight, 0.05f, 0xFF321609);
+        IUIGuiUtils.fillRoundRect(guiGraphics,leftPos, topPos, imageWidth, imageHeight, 0.05f, 0xFF523629);
+        IUIGuiUtils.fillRoundRect(guiGraphics,leftPos+114, topPos+7, 4*18+4, 3*18+4, 0.05f, 0xFFf0e0b0);
         RenderSystem.disableBlend();
     }
 
@@ -63,8 +63,8 @@ public class CookingUiScreen extends AbstractContainerScreen<CookingUiMenu> {
 
     private void renderSlotBg(GuiGraphics guiGraphics, int x, int y) {
         RenderSystem.enableBlend();
-        RenderUtils.fillRoundRect(guiGraphics,  x- 1,  y- 1, 18, 18, 0.05f, 0xFF8B4513);
-        RenderUtils.fillRoundRect(guiGraphics, x,y , 16, 16, 0.05f, 0xFFf0e0b0);
+        IUIGuiUtils.fillRoundRect(guiGraphics,  x- 1,  y- 1, 18, 18, 0.05f, 0xFF8B4513);
+        IUIGuiUtils.fillRoundRect(guiGraphics, x,y , 16, 16, 0.05f, 0xFFf0e0b0);
         RenderSystem.disableBlend();
     }
 

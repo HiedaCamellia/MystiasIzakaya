@@ -22,6 +22,7 @@ import org.hiedacamellia.mystiasizakaya.content.common.block.entities.TableEntit
 import org.hiedacamellia.mystiasizakaya.content.orders.Addorder;
 import org.hiedacamellia.mystiasizakaya.content.orders.Deleteorder;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.*;
+import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.core.entry.MIItem;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
@@ -129,7 +130,7 @@ public class MIPlayerEvent {
 //            Debug.getLogger().debug(player.getData(MIAttachment.MI_ON_OPEN).toString());
 //            Debug.getLogger().debug(tables.toString());
 
-            if(player.getData(MIAttachment.MI_ON_OPEN).open()){
+            if(player.getData(MIAttachment.MI_ON_OPEN).open()&&serverPlayer.level().getGameTime()% CommonConfig.ORDER_REFRESH_INTERVAL.get()==0){
                 MIMenu miMenu = player.getData(MIAttachment.MI_MENU);
                 Set<ItemStack> beverages = new LinkedHashSet<>();
                 Set<ItemStack> cuisines = new LinkedHashSet<>();
@@ -151,7 +152,7 @@ public class MIPlayerEvent {
                     if(pos.equals(new BlockPos(-1,-1,-1))){
                         continue;
                     }
-                    if(Math.random()<0.0102){
+                    if(Math.random()<CommonConfig.ORDER_REFRESH_PROBABILITY.get()){
                         if(beverageList.get(tables.indexOf(pos)).equals("minecraft:air")&&cuisineList.get(tables.indexOf(pos)).equals("minecraft:air")){
                             ItemStack beverage = beverageslist.get((int) (Math.random() * beverages.size()));
                             ItemStack cuisine = cuisineslist.get((int) (Math.random() * cuisines.size()));

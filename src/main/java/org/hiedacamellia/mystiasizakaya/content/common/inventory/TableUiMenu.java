@@ -19,6 +19,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 import net.neoforged.neoforge.items.wrapper.InvWrapper;
+import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
 import org.hiedacamellia.mystiasizakaya.registries.MIMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
 
@@ -86,7 +87,7 @@ public class TableUiMenu extends AbstractContainerMenu implements Supplier<Map<I
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(MITag.cuisinesKey);
+				return stack.is(MITag.cuisinesKey)|| CommonConfig.ENABLE_ALL_CUISINES.get();
 			}
 		}));
 		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 100, 30) {
@@ -94,7 +95,7 @@ public class TableUiMenu extends AbstractContainerMenu implements Supplier<Map<I
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-                return stack.is(MITag.beveragesKey);
+                return stack.is(MITag.beveragesKey)|| CommonConfig.ENABLE_ALL_BEVERAGES.get();
 			}
 		}));
 

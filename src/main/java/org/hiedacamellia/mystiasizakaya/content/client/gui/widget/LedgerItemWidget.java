@@ -9,8 +9,9 @@ import net.minecraft.client.gui.layouts.LayoutSettings;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
-import org.hiedacamellia.immersiveui.client.graphic.util.RenderUtils;
-import org.hiedacamellia.immersiveui.client.gui.widget.ComponentWidget;
+import org.hiedacamellia.immersiveui.client.graphic.gui.IUIGuiUtils;
+import org.hiedacamellia.immersiveui.client.gui.component.widget.component.ComponentWidget;
+
 
 public class LedgerItemWidget extends AbstractWidget {
 
@@ -40,7 +41,7 @@ public class LedgerItemWidget extends AbstractWidget {
     @Override
     protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float tick) {
         RenderSystem.enableBlend();
-        RenderUtils.fillRoundRect(guiGraphics, this.getX(), this.getY()+this.height-4, this.width, 4, 0.02f, 0xFF523629);
+        IUIGuiUtils.fillRoundRect(guiGraphics, this.getX(), this.getY()+this.height-4, this.width, 4, 0.02f, 0xFF523629);
         this.gridLayout.visitWidgets((widget) -> widget.render(guiGraphics, mouseX, mouseY, tick));
         RenderSystem.disableBlend();
     }

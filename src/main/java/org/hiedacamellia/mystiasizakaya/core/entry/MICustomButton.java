@@ -11,7 +11,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import org.hiedacamellia.immersiveui.client.graphic.util.RenderUtils;
+import org.hiedacamellia.immersiveui.client.graphic.gui.IUIGuiUtils;
 
 import javax.annotation.Nullable;
 
@@ -37,13 +37,13 @@ public class MICustomButton extends Button {
         pose.pushPose();
         pose.translate(this.x,this.y, 0);
         RenderSystem.enableBlend();
-        RenderUtils.fillRoundRect(guiGraphics,  - 1,  - 1, w+1, h+1, 0.05f, 0xFFFEEBD1);
+        IUIGuiUtils.fillRoundRect(guiGraphics,  - 1,  - 1, w+1, h+1, 0.05f, 0xFFFEEBD1);
 
         if(this.isHovered()) {
-            RenderUtils.fillRoundRect(guiGraphics,0 ,0 , w-1, h-1, 0.05f, 0xFFfbefcb);
+            IUIGuiUtils.fillRoundRect(guiGraphics,0 ,0 , w-1, h-1, 0.05f, 0xFFfbefcb);
         }
         else {
-            RenderUtils.fillRoundRect(guiGraphics, 0,0 , w-1, h-1, 0.05f, 0xFFf0e0b0);
+            IUIGuiUtils.fillRoundRect(guiGraphics, 0,0 , w-1, h-1, 0.05f, 0xFFf0e0b0);
         }
         RenderSystem.disableBlend();
         pose.popPose();

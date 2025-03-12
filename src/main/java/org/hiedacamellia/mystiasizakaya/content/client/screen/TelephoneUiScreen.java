@@ -13,7 +13,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.network.PacketDistributor;
-import org.hiedacamellia.immersiveui.client.graphic.util.RenderUtils;
+import org.hiedacamellia.immersiveui.client.graphic.gui.IUIGuiUtils;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.TelephoneUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MICost;
 import org.hiedacamellia.mystiasizakaya.core.entry.MICustomButton;
@@ -75,8 +75,8 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
         RenderSystem.setShaderColor(1, 1, 1, 1);
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
-        RenderUtils.fillRoundRect(guiGraphics, this.leftPos, this.topPos, this.imageWidth, this.imageHeight, 0.02f, 0xD0ffffff);
-        RenderUtils.borderRoundRect(guiGraphics, this.leftPos + this.imageWidth - 86, this.topPos + 87,
+        IUIGuiUtils.fillRoundRect(guiGraphics, this.leftPos, this.topPos, this.imageWidth, this.imageHeight, 0.02f, 0xD0ffffff);
+        IUIGuiUtils.borderRoundRect(guiGraphics, this.leftPos + this.imageWidth - 86, this.topPos + 87,
                 84, this.imageHeight-89, 0.05f, 0xfff0e0b0,0.02f,0x808b4513);
         RenderSystem.disableBlend();
     }
