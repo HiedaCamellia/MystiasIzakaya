@@ -15,7 +15,7 @@ import org.hiedacamellia.mystiasizakaya.content.common.item.currency.En5Item;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.IconItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.IronKnifeItem;
 import org.hiedacamellia.mystiasizakaya.content.common.item.utils.LedgerItem;
-import org.hiedacamellia.mystiasizakaya.core.entry.builder.BaseItemBuilder;
+import org.hiedacamellia.mystiasizakaya.content.client.gui.widget.builder.BaseItemBuilder;
 
 import java.util.List;
 

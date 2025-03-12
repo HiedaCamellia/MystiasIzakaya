@@ -16,9 +16,9 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.immersiveui.client.graphic.gui.IUIGuiUtils;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.TelephoneUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MICost;
-import org.hiedacamellia.mystiasizakaya.core.entry.MICustomButton;
-import org.hiedacamellia.mystiasizakaya.core.entry.MIItemButton;
-import org.hiedacamellia.mystiasizakaya.core.entry.MIOutButton;
+import org.hiedacamellia.mystiasizakaya.content.client.gui.widget.MICustomButton;
+import org.hiedacamellia.mystiasizakaya.content.client.gui.widget.MIItemButton;
+import org.hiedacamellia.mystiasizakaya.content.client.gui.widget.MIOutButton;
 import org.hiedacamellia.mystiasizakaya.core.network.TelephoneUiButton;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
@@ -32,7 +32,7 @@ import java.util.List;
 public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> {
     private final static HashMap<String, Object> guistate = TelephoneUiMenu.guistate;
     private final Level world;
-    private final int x, y, z;
+    private final BlockPos pos;
     private final Player entity;
 
     private List<MIItemButton> select;
@@ -53,9 +53,7 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
     public TelephoneUiScreen(TelephoneUiMenu container, Inventory inventory, Component text) {
         super(container, inventory, text);
         this.world = container.world;
-        this.x = container.x;
-        this.y = container.y;
-        this.z = container.z;
+        this.pos = container.pos;
         this.entity = container.entity;
         this.imageWidth = 176;
         this.imageHeight = 166;
@@ -175,7 +173,7 @@ public class TelephoneUiScreen extends AbstractContainerScreen<TelephoneUiMenu> 
                 .tooltip(Tooltip.create(Component.translatable("gui.mystias_izakaya.telephone_ui.refresh.desc"))).build();
 
         confirm = new MICustomButton.builder(Component.translatable("gui.mystias_izakaya.telephone_ui.confirm"), e -> {
-            PacketDistributor.sendToServer(new TelephoneUiButton(new ArrayList<>(out), new BlockPos(x, y, z),cost));
+            PacketDistributor.sendToServer(new TelephoneUiButton(new ArrayList<>(out), pos,cost));
             //Debug.send(out.toString());
             out.clear();
             refreshOut();

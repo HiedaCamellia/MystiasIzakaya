@@ -4,7 +4,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
@@ -18,11 +17,8 @@ import org.hiedacamellia.mystiasizakaya.content.common.inventory.LedgerUiMenu;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOnOpen;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
-import org.hiedacamellia.mystiasizakaya.core.entry.MICustomButton;
+import org.hiedacamellia.mystiasizakaya.content.client.gui.widget.MICustomButton;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class LedgerUiScreen extends AbstractContainerScreen<LedgerUiMenu> {
     private final Player entity;

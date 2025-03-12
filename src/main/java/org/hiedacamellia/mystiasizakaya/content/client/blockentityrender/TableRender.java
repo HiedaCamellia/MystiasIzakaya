@@ -8,8 +8,8 @@ import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.item.ItemDisplayContext;
-import org.hiedacamellia.mystiasizakaya.content.common.block.entities.TableEntity;
-import org.hiedacamellia.mystiasizakaya.core.entry.MIItem;
+import org.hiedacamellia.mystiasizakaya.content.common.blockentity.TableEntity;
+import org.hiedacamellia.mystiasizakaya.content.common.item.MIBaseItem;
 
 public class TableRender implements BlockEntityRenderer<TableEntity> {
     private final ItemRenderer itemRenderer;
@@ -23,7 +23,7 @@ public class TableRender implements BlockEntityRenderer<TableEntity> {
     @Override
     public void render(TableEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
         //Debug.getLogger().debug("Rendering table block entity");
-        if (pBlockEntity.getItems().get(0).getItem() instanceof MIItem cookedMealItem) {
+        if (pBlockEntity.getItems().get(0).getItem() instanceof MIBaseItem cookedMealItem) {
             //Debug.getLogger().debug("Rendering item: " + cookedMealItem.getDescriptionId());
             pPoseStack.pushPose();
             pPoseStack.translate(0.2, 0.7, 0.5);
@@ -42,7 +42,7 @@ public class TableRender implements BlockEntityRenderer<TableEntity> {
                     );
             pPoseStack.popPose();
         }
-        if (pBlockEntity.getItems().get(1).getItem() instanceof MIItem cookedMealItem) {
+        if (pBlockEntity.getItems().get(1).getItem() instanceof MIBaseItem cookedMealItem) {
             pPoseStack.pushPose();
             pPoseStack.translate(0.8, 0.7, 0.5);
             pPoseStack.mulPose(this.entityRenderDispatcher.cameraOrientation());

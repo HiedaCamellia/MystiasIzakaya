@@ -18,13 +18,13 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
-import org.hiedacamellia.mystiasizakaya.content.common.block.entities.TableEntity;
+import org.hiedacamellia.mystiasizakaya.content.common.blockentity.TableEntity;
 import org.hiedacamellia.mystiasizakaya.content.orders.Addorder;
 import org.hiedacamellia.mystiasizakaya.content.orders.Deleteorder;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.*;
-import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
+import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
-import org.hiedacamellia.mystiasizakaya.core.entry.MIItem;
+import org.hiedacamellia.mystiasizakaya.content.common.item.MIBaseItem;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
@@ -130,7 +130,7 @@ public class MIPlayerEvent {
 //            Debug.getLogger().debug(player.getData(MIAttachment.MI_ON_OPEN).toString());
 //            Debug.getLogger().debug(tables.toString());
 
-            if(player.getData(MIAttachment.MI_ON_OPEN).open()&&serverPlayer.level().getGameTime()% CommonConfig.ORDER_REFRESH_INTERVAL.get()==0){
+            if(player.getData(MIAttachment.MI_ON_OPEN).open()&&serverPlayer.level().getGameTime()% MICommonConfig.ORDER_REFRESH_INTERVAL.get()==0){
                 MIMenu miMenu = player.getData(MIAttachment.MI_MENU);
                 Set<ItemStack> beverages = new LinkedHashSet<>();
                 Set<ItemStack> cuisines = new LinkedHashSet<>();
@@ -152,7 +152,7 @@ public class MIPlayerEvent {
                     if(pos.equals(new BlockPos(-1,-1,-1))){
                         continue;
                     }
-                    if(Math.random()<CommonConfig.ORDER_REFRESH_PROBABILITY.get()){
+                    if(Math.random()< MICommonConfig.ORDER_REFRESH_PROBABILITY.get()){
                         if(beverageList.get(tables.indexOf(pos)).equals("minecraft:air")&&cuisineList.get(tables.indexOf(pos)).equals("minecraft:air")){
                             ItemStack beverage = beverageslist.get((int) (Math.random() * beverages.size()));
                             ItemStack cuisine = cuisineslist.get((int) (Math.random() * cuisines.size()));
@@ -224,7 +224,7 @@ public class MIPlayerEvent {
             BlockPos blockPos = itemFrame.getPos();
             ItemStack itemStack = itemFrame.getItem();
 
-            if(itemStack.getItem() instanceof MIItem miItem) {
+            if(itemStack.getItem() instanceof MIBaseItem miItem) {
                 ResourceLocation key = BuiltInRegistries.ITEM.getKey(miItem);
 
                 MIMenu miOrders = serverPlayer.getData(MIAttachment.MI_MENU);

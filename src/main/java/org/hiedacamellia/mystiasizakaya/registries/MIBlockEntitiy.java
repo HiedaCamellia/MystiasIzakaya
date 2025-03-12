@@ -1,6 +1,5 @@
 package org.hiedacamellia.mystiasizakaya.registries;
 
-import com.mojang.datafixers.types.Type;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -11,7 +10,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.client.blockentityrender.ProcessRender;
-import org.hiedacamellia.mystiasizakaya.content.common.block.entities.*;
+import org.hiedacamellia.mystiasizakaya.content.common.blockentity.*;
 
 import java.util.function.Supplier;
 

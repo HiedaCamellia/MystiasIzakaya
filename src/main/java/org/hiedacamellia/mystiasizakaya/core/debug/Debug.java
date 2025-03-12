@@ -7,14 +7,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.neoforged.fml.loading.FMLEnvironment;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
+import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Debug {
 
     private static String prefix = "[§a夜雀食堂§r]";
-    private static Boolean debugConfig = CommonConfig.DEBUG.get();
+    private static Boolean debugConfig = MICommonConfig.DEBUG.get();
     private static Logger logger = LoggerFactory.getLogger(MystiasIzakaya.MODID);
 
     public static Logger getLogger(){

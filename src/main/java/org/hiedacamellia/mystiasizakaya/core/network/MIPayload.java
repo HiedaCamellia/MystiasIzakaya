@@ -12,6 +12,11 @@ public class MIPayload {
     @SubscribeEvent
     public static void register(final RegisterPayloadHandlersEvent event) {
         final PayloadRegistrar registrar = event.registrar("1.0.0");
+        registrar.playToServer(
+                CookingStartS2SMessage.TYPE,
+                CookingStartS2SMessage.STREAM_CODEC,
+                CookingStartS2SMessage::handleServer
+        );
         registrar.playBidirectional(
                 MIOrders.TYPE,
                 MIOrders.STREAM_CODEC,

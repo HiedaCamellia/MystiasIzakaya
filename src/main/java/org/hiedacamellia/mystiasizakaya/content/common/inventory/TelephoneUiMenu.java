@@ -24,7 +24,7 @@ public class TelephoneUiMenu extends AbstractContainerMenu implements Supplier<M
 	public final static HashMap<String, Object> guistate = new HashMap<>();
 	public final Level world;
 	public final Player entity;
-	public int x, y, z;
+	public final BlockPos pos;
 	private ContainerLevelAccess access = ContainerLevelAccess.NULL;
 	private IItemHandler internal;
 	private final Map<Integer, Slot> customSlots = new HashMap<>();
@@ -38,13 +38,11 @@ public class TelephoneUiMenu extends AbstractContainerMenu implements Supplier<M
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStackHandler(0);
-		BlockPos pos = null;
 		if (extraData != null) {
 			pos = extraData.readBlockPos();
-			this.x = pos.getX();
-			this.y = pos.getY();
-			this.z = pos.getZ();
 			access = ContainerLevelAccess.create(world, pos);
+		}else {
+			pos = null;
 		}
 	}
 

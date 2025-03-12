@@ -22,7 +22,7 @@ import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MICost;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITeleColddown;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
-import org.hiedacamellia.mystiasizakaya.core.config.CommonConfig;
+import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 
@@ -79,7 +79,7 @@ public record TelephoneUiButton(List<ItemStack> out, BlockPos pos,int cost) impl
             }
             entity.sendSystemMessage(Component.translatable("message.mystiasizakaya.checkout.success").withStyle(ChatFormatting.GREEN));
 
-            entity.setData(MIAttachment.MI_TELE_COLDDOWN, new MITeleColddown(CommonConfig.TELE_COOLDOWN.get()));
+            entity.setData(MIAttachment.MI_TELE_COLDDOWN, new MITeleColddown(MICommonConfig.TELE_COOLDOWN.get()));
 
         }
         if (entity instanceof ServerPlayer player) {

@@ -10,7 +10,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.util.FakePlayerFactory;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
-import org.hiedacamellia.mystiasizakaya.core.config.ClientConfig;
+import org.hiedacamellia.mystiasizakaya.core.config.MIClientConfig;
 
 @EventBusSubscriber
 public class Showbalance {
@@ -28,7 +28,7 @@ public class Showbalance {
 					{
 						boolean set = BoolArgumentType.getBool(arguments, "logic");
 
-						ClientConfig.SHOW_BALANCE.set(set);
+						MIClientConfig.SHOW_BALANCE.set(set);
 
 					}
 					return 0;
