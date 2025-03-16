@@ -46,6 +46,11 @@ public record TelephoneConfirmS2SMessage(List<ItemStack> out, BlockPos pos, int 
     public static void handleServer(final TelephoneConfirmS2SMessage message, final IPayloadContext context) {
         context.enqueueWork(() -> {
             Player entity = context.player();
+            int tick = entity.getData(MIAttachment.MI_TELE_COLDDOWN).tick();
+            if(tick > 0){
+                entity.sendSystemMessage(Component.translatable("message.mystiasizakaya.telephone.colddown", tick / 20).withStyle(ChatFormatting.RED));
+                return;
+            }
             List<ItemStack> out = message.out();
             int cost = message.cost();
             int cost_all = 0;
