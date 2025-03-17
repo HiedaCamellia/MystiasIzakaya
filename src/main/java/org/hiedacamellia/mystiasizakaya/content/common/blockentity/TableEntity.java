@@ -15,6 +15,8 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.w2s.CookingProcessW2SWidget;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.w2s.ExistW2SWidget;
@@ -52,6 +54,7 @@ public class TableEntity extends RandomizableContainerBlockEntity implements Wor
 		}
 	}
 
+	@OnlyIn(Dist.CLIENT)
 	public void addW2S(ResourceLocation location1, ResourceLocation location2,byte id) {
 		TableW2SWidget widget = new TableW2SWidget(w2sUUID, this,location1,location2,id);
 		ExistW2SWidget.add(w2sUUID,widget);

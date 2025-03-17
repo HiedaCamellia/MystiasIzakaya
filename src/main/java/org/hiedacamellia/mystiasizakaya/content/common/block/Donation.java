@@ -61,6 +61,7 @@ public class Donation extends Block {
 	}
 
 	@Override
+	@OnlyIn(Dist.CLIENT)
 	public @NotNull InteractionResult useWithoutItem(@NotNull BlockState blockstate, @NotNull Level world, @NotNull BlockPos pos, @NotNull Player entity, @NotNull BlockHitResult hit) {
 		super.useWithoutItem(blockstate, world, pos, entity, hit);
 		if (entity.isLocalPlayer()) {

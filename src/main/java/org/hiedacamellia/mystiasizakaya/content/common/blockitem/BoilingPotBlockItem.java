@@ -5,6 +5,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlock;
@@ -22,6 +24,7 @@ public class BoilingPotBlockItem extends KitchenwareBlockItem {
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack itemstack, @NotNull TooltipContext context, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(itemstack, context, list, flag);
         if (Screen.hasShiftDown()) {

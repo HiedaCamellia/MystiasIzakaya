@@ -10,6 +10,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.hiedacamellia.mystiasizakaya.client.gui.screen.LedgerScreen;
 import org.jetbrains.annotations.NotNull;
 
@@ -31,6 +33,7 @@ public class LedgerItem extends Item {
 
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public @NotNull InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
         InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
         if(entity.isShiftKeyDown()&&entity.isLocalPlayer()) {

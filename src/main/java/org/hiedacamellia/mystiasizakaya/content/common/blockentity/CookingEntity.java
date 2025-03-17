@@ -21,6 +21,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
@@ -118,6 +120,7 @@ public abstract class CookingEntity extends RandomizableContainerBlockEntity imp
         PacketDistributor.sendToAllPlayers(new CookingStartS2CMessage(worldPosition,w2sUUID,BuiltInRegistries.ITEM.getKey(result.getItem())));
     }
 
+    @OnlyIn(Dist.CLIENT)
     public void addW2S(ResourceLocation location){
         CookingProcessW2SWidget widget = new CookingProcessW2SWidget(w2sUUID, this,location);
         ExistW2SWidget.add(w2sUUID,widget);

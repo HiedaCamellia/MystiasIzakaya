@@ -68,16 +68,14 @@ public class Telephone extends Block {
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public @NotNull InteractionResult useWithoutItem(@NotNull BlockState blockstate, @NotNull Level world, @NotNull BlockPos pos, @NotNull Player entity, @NotNull BlockHitResult hit) {
         super.useWithoutItem(blockstate, world, pos, entity, hit);
-
-
         int tick = entity.getData(MIAttachment.MI_TELE_COLDDOWN).tick();
         if (tick > 0) {
             entity.sendSystemMessage(Component.translatable("message.mystiasizakaya.telephone.colddown", tick / 20).withStyle(ChatFormatting.RED));
             return InteractionResult.FAIL;
         }
-
         if (entity.isLocalPlayer()) {
             Minecraft.getInstance().setScreen(new TelephoneScreen(pos));
         }

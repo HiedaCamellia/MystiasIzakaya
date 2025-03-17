@@ -6,6 +6,8 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.hiedacamellia.mystiasizakaya.content.cooking.IKitchenware;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
@@ -20,6 +22,7 @@ public abstract class KitchenwareBlockItem extends BlockItem implements IKitchen
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack itemstack, @NotNull TooltipContext context, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(itemstack, context, list, flag);
         if (!Screen.hasShiftDown()) {
