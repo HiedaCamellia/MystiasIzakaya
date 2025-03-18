@@ -5,6 +5,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.loading.FMLLoader;
+import net.minecraftforge.fml.loading.LoadingModList;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -29,6 +31,7 @@ public class MIBlockEntitiy {
 
 	@SubscribeEvent
 	public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+		if(LoadingModList.get().getModFileById("iris")!= null)return;
 		event.registerBlockEntityRenderer(GRILL.get(), ProcessRender::new);
 		event.registerBlockEntityRenderer(BOILING_POT.get(), ProcessRender::new);
 		event.registerBlockEntityRenderer(CUTTING_BOARD.get(), ProcessRender::new);
