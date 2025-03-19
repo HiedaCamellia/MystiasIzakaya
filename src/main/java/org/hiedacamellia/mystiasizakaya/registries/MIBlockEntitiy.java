@@ -16,7 +16,7 @@ import org.hiedacamellia.mystiasizakaya.content.common.block.entities.*;
 
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+//@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class MIBlockEntitiy {
 	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MystiasIzakaya.MODID);
 	public static final RegistryObject<BlockEntityType<CookingRangeEntity>> COOKING_RANGE = REGISTRY.register("cooking_range",() -> BlockEntityType.Builder.of(CookingRangeEntity::new, MIBlock.COOKING_RANGE.get()).build(null));
@@ -29,7 +29,7 @@ public class MIBlockEntitiy {
 	public static final Supplier<BlockEntityType<Grill>> GRILL = REGISTRY.register("grill", () -> BlockEntityType.Builder.of(Grill::new, MIBlock.GRILL.get()).build(null));
 
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
 		if(LoadingModList.get().getModFileById("iris")!= null)return;
 		event.registerBlockEntityRenderer(GRILL.get(), ProcessRender::new);
