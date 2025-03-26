@@ -29,6 +29,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.cooking_ui.kitchenwares","厨具");
         add("gui.mystias_izakaya.cooking_ui.output","输出");
         add("gui.mystias_izakaya.cooking_ui.ingerdients","食材");
+        add("gui.mystias_izakaya.donation_ui.error_input","请输入正确的金额");
 
         add("gui.mystias_izakaya.telephone_ui.telephone","电话");
         add("gui.mystias_izakaya.telephone_ui.select","");

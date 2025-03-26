@@ -11,12 +11,14 @@ import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.immersiveui.client.graphic.gui.IUIGuiUtils;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MICustomButton;
+import org.hiedacamellia.mystiasizakaya.client.gui.widget.ToastMessageWidget;
 import org.hiedacamellia.mystiasizakaya.core.network.DonationTakeOutS2SMessage;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 public class DonationScreen extends Screen {
-    EditBox input;
-    Button button_take_out;
+    protected EditBox input;
+    protected Button button_take_out;
+    protected ToastMessageWidget toast;
 
     private int leftPos;
     private int topPos;
@@ -113,9 +115,18 @@ public class DonationScreen extends Screen {
         this.addWidget(this.input);
 
         button_take_out = new MICustomButton.builder(Component.translatable("gui.mystias_izakaya.donation_ui.button_take_out"), e -> {
-            if(!input.getValue().isEmpty())
-                PacketDistributor.sendToServer(new DonationTakeOutS2SMessage(Integer.parseInt(input.getValue())));
+            if(!input.getValue().isEmpty()) {
+                try {
+                    PacketDistributor.sendToServer(new DonationTakeOutS2SMessage(Integer.parseInt(input.getValue())));
+                }catch (NumberFormatException ex){
+                    toast.reset(Component.translatable("gui.mystias_izakaya.donation_ui.error_input"));
+                }
+            }
         }).pos(this.leftPos + 33, this.topPos + 100).size( 110, 20).build();
         this.addRenderableWidget(button_take_out);
+
+
+        this.toast = new ToastMessageWidget(this.leftPos + imageWidth/2, this.topPos + 140, 75, 20,20.0f, Component.empty());
+        this.addRenderableWidget(toast);
     }
 }

@@ -19,6 +19,7 @@
   "gui.mystias_izakaya.cooking_ui.output": "输出",
   "gui.mystias_izakaya.donation_ui.button_take_out": "取出",
   "gui.mystias_izakaya.donation_ui.donation": "赛钱箱",
+  "gui.mystias_izakaya.donation_ui.error_input": "请输入正确的金额",
   "gui.mystias_izakaya.donation_ui.input": "10",
   "gui.mystias_izakaya.ledger_ui.close": "暂停营业",
   "gui.mystias_izakaya.ledger_ui.from_command": "命令",

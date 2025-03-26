@@ -19,6 +19,7 @@
   "gui.mystias_izakaya.cooking_ui.output": "Output",
   "gui.mystias_izakaya.donation_ui.button_take_out": "take out",
   "gui.mystias_izakaya.donation_ui.donation": "Donation",
+  "gui.mystias_izakaya.donation_ui.error_input": "Please input a number",
   "gui.mystias_izakaya.donation_ui.input": "10",
   "gui.mystias_izakaya.ledger_ui.close": "Close",
   "gui.mystias_izakaya.ledger_ui.from_command": "Command",

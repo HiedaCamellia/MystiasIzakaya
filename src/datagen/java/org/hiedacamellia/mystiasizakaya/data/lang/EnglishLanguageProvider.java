@@ -28,6 +28,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.cooking_ui.kitchenwares","Kitchenwares");
         add("gui.mystias_izakaya.cooking_ui.output","Output");
         add("gui.mystias_izakaya.cooking_ui.ingerdients","Ingredients");
+        add("gui.mystias_izakaya.donation_ui.error_input","Please input a number");
 
         add("tooltip.mystias_izakaya.cost","Cost: ");
 
