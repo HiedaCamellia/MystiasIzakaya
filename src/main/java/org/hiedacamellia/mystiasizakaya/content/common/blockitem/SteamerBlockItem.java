@@ -36,6 +36,6 @@ public class SteamerBlockItem extends KitchenwareBlockItem {
 
     @Override
     public KitchenwareType getKitchenwareType() {
-        return KitchenwareType.CUTTING_BOARD;
+        return KitchenwareType.STEAMER;
     }
 }

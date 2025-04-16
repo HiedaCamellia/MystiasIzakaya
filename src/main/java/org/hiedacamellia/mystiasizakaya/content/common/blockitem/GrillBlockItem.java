@@ -37,6 +37,6 @@ public class GrillBlockItem extends KitchenwareBlockItem {
 
     @Override
     public KitchenwareType getKitchenwareType() {
-        return KitchenwareType.CUTTING_BOARD;
+        return KitchenwareType.GRILL;
     }
 }

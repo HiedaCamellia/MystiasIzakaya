@@ -37,6 +37,6 @@ public class FryingPanBlockItem extends KitchenwareBlockItem{
 
     @Override
     public KitchenwareType getKitchenwareType() {
-        return KitchenwareType.CUTTING_BOARD;
+        return KitchenwareType.FRYING_PAN;
     }
 }
