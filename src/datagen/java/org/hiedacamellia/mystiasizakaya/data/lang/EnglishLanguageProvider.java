@@ -134,7 +134,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.hai_xian_wei_cheng_tang", "Seafood Miso Soup");
         add("item.mystias_izakaya.he_niu", "Wagyu Beef");
         add("item.mystias_izakaya.he_tun", "Pufferfish");
-        add("item.mystias_izakaya.hei_an_wu_zhi", "Hei An Wu Zhi");
+        add("item.mystias_izakaya.hei_an_wu_zhi", "Dark Matter");
         add("item.mystias_izakaya.hei_mao_zhu_rou", "Iberico Pork");
         add("item.mystias_izakaya.hei_yan", "Black Salt");
         add("item.mystias_izakaya.hong_dou", "Red Bean");
