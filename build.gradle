@@ -12,6 +12,15 @@ base {
     archivesName = "${mod_id}-${mod_loader}-${minecraft_version}"
 }
 
+sourceSets {
+    datagen {
+        java {
+            compileClasspath += main.compileClasspath
+            compileClasspath += main.output
+            runtimeClasspath += main.output
+        }
+    }
+}
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -33,7 +42,8 @@ minecraft {
 
             mods {
                 "${mod_id}" {
-                    source sourceSets.main
+                    source (sourceSets.main)
+                    source (sourceSets.datagen)
                 }
             }
         }

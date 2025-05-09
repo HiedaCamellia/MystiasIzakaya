@@ -110,9 +110,17 @@ public class MIPlayerEvent {
         });
     }
 
-    public static void addTurnover(Player player, String turnover, int turnover_cha) {
-        addTurnoverPre(player, turnover);
-        addTurnoverCha(player, turnover_cha);
+    public static void addTurnover(Player player, String turnover, int turnover_chai) {
+        player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).ifPresent(variables -> {
+            List<String> turnover_pre = new ArrayList<>(variables.turnover_pre);
+            turnover_pre.add(turnover);
+            variables.turnover_pre = turnover_pre;
+            variables.syncPlayerVariables(player);
+            List<Integer> turnover_cha = new ArrayList<>(variables.trunover_cha);
+            turnover_cha.add(turnover_chai);
+            variables.trunover_cha = turnover_cha;
+            variables.syncPlayerVariables(player);
+        });
     }
 
 
@@ -436,23 +444,26 @@ public class MIPlayerEvent {
                         continue;
                     }
                     BlockEntity blockEntity =  level.getBlockEntity(tables.get(i));
-                    if (blockEntity != null) {
-                        Debug.getLogger().debug(blockEntity.toString());
-                    }
 
                     if(blockEntity instanceof TableEntity tableEntity){
                         List<ItemStack> itemStacks= tableEntity.getItems();
-                        Debug.getLogger().debug(itemStacks.toString());
-                        Debug.getLogger().debug(cuisine.toString());
-                        Debug.getLogger().debug(beverage.toString());
 
-                        if(ItemStack.isSameItem(itemStacks.get(0),cuisine)&&ItemStack.isSameItem(itemStacks.get(1),beverage)){
+                        if((ItemStack.isSameItem(itemStacks.get(0),cuisine)&&ItemStack.isSameItem(itemStacks.get(1),beverage))
+                        ||(ItemStack.isSameItem(itemStacks.get(1),cuisine)&&ItemStack.isSameItem(itemStacks.get(0),beverage))){
+                            Debug.getLogger().debug(itemStacks.toString());
+                            Debug.getLogger().debug(cuisine.toString());
+                            Debug.getLogger().debug(beverage.toString());
                             Deleteorder.execute(i,serverPlayer);
                             tableEntity.clearContent();
                             level.setBlockEntity(tableEntity);
 //                          level.sendBlockUpdated(tables.get(i),level.getBlockState(tables.get(i)),level.getBlockState(tables.get(i)),3);
                             serverPlayer.closeContainer();
+                            cuisine.inventoryTick(level,serverPlayer,0,false);
+                            beverage.inventoryTick(level,serverPlayer,0,false);
+                            Debug.getLogger().debug(cuisine.getOrCreateTag().toString());
+                            Debug.getLogger().debug(beverage.getOrCreateTag().toString());
                             int cost = cuisine.getOrCreateTag().getInt("cost")+beverage.getOrCreateTag().getInt("cost");
+                            Debug.getLogger().debug("income: "+cost);
                             setBalance(serverPlayer,getBalance(serverPlayer)+cost);
                             addTurnover(serverPlayer,"from_table",cost);
                         }
