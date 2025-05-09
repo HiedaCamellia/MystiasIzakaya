@@ -34,6 +34,9 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
+    flatDir() {
+        dirs 'libs'
+    }
 }
 
 base {
@@ -147,21 +150,9 @@ dependencies {
     // We add the full version to localRuntime, not runtimeOnly, so that we do not publish a dependency on it
     localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
-    implementation jarJar("org.hiedacamellia:immersiveui:${immersiveui_version}")
-    // Example mod dependency using a mod jar from ./libs with a flat dir repository
-    // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
-    // The group id is ignored when searching -- in this case, it is "blank"
-    // implementation "blank:coolmod-${mc_version}:${coolmod_version}"
+    //implementation jarJar("org.hiedacamellia:immersiveui:${immersiveui_version}")
+    implementation jarJar(files("libs/immersiveui-neoforge-1.21.1-0.0.12.jar"))
 
-    // Example mod dependency using a file as dependency
-    // implementation files("libs/coolmod-${mc_version}-${coolmod_version}.jar")
-
-    // Example project dependency using a sister or child project:
-    // implementation project(":myproject")
-
-    // For more info:
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
     implementation "curse.maven:cloth-config-348521:5424576"
 }

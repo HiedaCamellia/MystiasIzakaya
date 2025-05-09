@@ -23,7 +23,6 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.common.blockentity.CookingEntity;
 import org.hiedacamellia.mystiasizakaya.content.common.blockentity.KitchenwareEntity;
 import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;

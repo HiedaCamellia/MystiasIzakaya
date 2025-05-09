@@ -8,7 +8,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
-import org.hiedacamellia.immersiveui.client.graphic.gui.IUIGuiUtils;
+import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
 
 public class RenderSlot extends AbstractWidget {
     private final Component tooltip;

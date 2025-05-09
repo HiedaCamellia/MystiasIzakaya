@@ -9,16 +9,16 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.network.PacketDistributor;
-import org.hiedacamellia.immersiveui.client.graphic.gui.IUIGuiUtils;
+import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
+import org.hiedacamellia.immersiveui.client.gui.component.widget.toast.ComponentToastWidget;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MICustomButton;
-import org.hiedacamellia.mystiasizakaya.client.gui.widget.ToastMessageWidget;
 import org.hiedacamellia.mystiasizakaya.core.network.DonationTakeOutS2SMessage;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 public class DonationScreen extends Screen {
     protected EditBox input;
     protected Button button_take_out;
-    protected ToastMessageWidget toast;
+    protected ComponentToastWidget toast;
 
     private int leftPos;
     private int topPos;
@@ -126,7 +126,7 @@ public class DonationScreen extends Screen {
         this.addRenderableWidget(button_take_out);
 
 
-        this.toast = new ToastMessageWidget(this.leftPos + imageWidth/2, this.topPos + 140, 75, 20,20.0f, Component.empty());
+        this.toast = new ComponentToastWidget(this.leftPos + imageWidth/2, this.topPos + 140, 75, 20,20.0f, Component.empty());
         this.addRenderableWidget(toast);
     }
 }

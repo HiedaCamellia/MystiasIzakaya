@@ -6,7 +6,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -18,11 +17,11 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.network.PacketDistributor;
-import org.hiedacamellia.immersiveui.client.graphic.gui.IUIGuiUtils;
+import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
+import org.hiedacamellia.immersiveui.client.gui.component.widget.toast.ComponentToastWidget;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIItemButton;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.RenderSlot;
-import org.hiedacamellia.mystiasizakaya.client.gui.widget.ToastMessageWidget;
 import org.hiedacamellia.mystiasizakaya.content.common.blockitem.KitchenwareBlockItem;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingMenu;
 import org.hiedacamellia.mystiasizakaya.content.cooking.CookingUtils;
@@ -41,7 +40,7 @@ public class CookingScreen extends AbstractContainerScreen<CookingMenu> {
     private final BlockPos pos;
 
     protected List<MIItemButton> buttons;
-    protected ToastMessageWidget toast;
+    protected ComponentToastWidget toast;
 
     protected CookingMenu menu;
     protected Inventory playerInventory;
@@ -284,7 +283,7 @@ public class CookingScreen extends AbstractContainerScreen<CookingMenu> {
         this.addRenderableWidget(new RenderSlot(start_x + 3 * 18, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.ingerdients")));
         this.addRenderableWidget(new RenderSlot(start_x + 4 * 18, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.ingerdients")));
 
-        this.toast = new ToastMessageWidget(leftPos+151,topPos+36, 75, 20,20.0f, Component.empty());
+        this.toast = new ComponentToastWidget(leftPos+151,topPos+36, 75, 20,20.0f, Component.empty());
         this.addRenderableWidget(toast);
     }
 }

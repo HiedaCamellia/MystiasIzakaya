@@ -18,7 +18,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
-import org.hiedacamellia.mystiasizakaya.client.gui.widget.w2s.CookingProcessW2SWidget;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.w2s.ExistW2SWidget;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.w2s.TableW2SWidget;
 import org.hiedacamellia.mystiasizakaya.content.common.inventory.TableMenu;

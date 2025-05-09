@@ -11,7 +11,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.PacketDistributor;
-import org.hiedacamellia.immersiveui.client.graphic.gui.IUIGuiUtils;
+import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MICustomButton;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIItemButton;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIOutButton;
