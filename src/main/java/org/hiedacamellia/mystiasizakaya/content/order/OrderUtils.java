@@ -5,7 +5,9 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.network.PacketDistributor;
+import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.api.event.OrderEvent;
+import org.hiedacamellia.mystiasizakaya.api.kubejs.MIEventPoster;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
 import org.hiedacamellia.mystiasizakaya.core.network.OrderAddS2CMessage;
 import org.hiedacamellia.mystiasizakaya.core.network.OrderRemoveS2CMessage;
@@ -22,7 +24,10 @@ public class OrderUtils {
         List<String> orders = new ArrayList<>(miOrders.orders());
         List<String> ordersbeverages = new ArrayList<>(miOrders.beverages());
 
-        NeoForge.EVENT_BUS.post(new OrderEvent.Add(player, cuisines, beverages, id));
+        OrderEvent.Add add = new OrderEvent.Add(player, cuisines, beverages, id);
+        NeoForge.EVENT_BUS.post(add);
+        if(MystiasIzakaya.kubeJsLoaded)
+            MIEventPoster.INSTANCE.post(add);
 
         orders.set(id, BuiltInRegistries.ITEM.getKey(cuisines.getItem()).toString());
         ordersbeverages.set(id, BuiltInRegistries.ITEM.getKey(beverages.getItem()).toString());
@@ -42,7 +47,10 @@ public class OrderUtils {
         List<String> ordersbeverages = new ArrayList<>(miOrders.beverages());
 
         ItemStack beverages= ItemStack.EMPTY, cuisines= ItemStack.EMPTY;
-        NeoForge.EVENT_BUS.post(new OrderEvent.Remove(player, cuisines,beverages,id));
+        OrderEvent.Remove remove = new OrderEvent.Remove(player, cuisines, beverages, id);
+        NeoForge.EVENT_BUS.post(remove);
+        if(MystiasIzakaya.kubeJsLoaded)
+            MIEventPoster.INSTANCE.post(remove);
 
         orders.set(id, "minecraft:air");
         ordersbeverages.set(id, "minecraft:air");

@@ -37,6 +37,22 @@ repositories {
     flatDir() {
         dirs 'libs'
     }
+    maven { url = "https://maven.theillusivec4.top/" }
+    maven { url "https://maven.shedaniel.me/" }
+    maven {
+        url "https://maven.latvian.dev/releases"
+        content {
+            includeGroup "dev.latvian.mods"
+            includeGroup "dev.latvian.apps"
+        }
+    }
+
+    maven {
+        url 'https://jitpack.io'
+        content {
+            includeGroup "com.github.rtyley"
+        }
+    }
 }
 
 base {
@@ -151,10 +167,9 @@ dependencies {
     localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
     implementation jarJar("org.hiedacamellia:immersiveui:${immersiveui_version}")
-    //implementation jarJar(files("libs/immersiveui-neoforge-1.21.1-0.0.12.jar"))
 
-
-    implementation "curse.maven:cloth-config-348521:5424576"
+    compileOnlyApi("dev.latvian.mods:kubejs-neoforge:$kubejs_version")
+    compileOnly("dev.latvian.mods:rhino:$rhino_version")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

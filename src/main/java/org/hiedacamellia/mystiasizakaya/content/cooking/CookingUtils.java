@@ -8,6 +8,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.api.event.CookingCollectCuisineEvent;
 import org.hiedacamellia.mystiasizakaya.api.event.CookingTagEvent;
+import org.hiedacamellia.mystiasizakaya.api.kubejs.MIEventPoster;
 import org.hiedacamellia.mystiasizakaya.content.common.blockentity.CookingEntity;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIIngredient;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
@@ -83,7 +84,10 @@ public class CookingUtils {
                 return targetI;
             }
         }
-        NeoForge.EVENT_BUS.post(new CookingCollectCuisineEvent(entity,level,ingredients,util,targetI));
+        CookingCollectCuisineEvent cookingCollectCuisineEvent = new CookingCollectCuisineEvent(entity, level, ingredients, util, targetI);
+        NeoForge.EVENT_BUS.post(cookingCollectCuisineEvent);
+        if(MystiasIzakaya.kubeJsLoaded)
+            MIEventPoster.INSTANCE.post(cookingCollectCuisineEvent);
 
         return targetI;
     }
@@ -126,7 +130,10 @@ public class CookingUtils {
 
         List<String> ntags = new ArrayList<>(miTags.ntags());
 
-        NeoForge.EVENT_BUS.post(new CookingTagEvent.Build(entity,level,target,Kitchenware,ingredients,resultList, ntags));
+        CookingTagEvent.Build build = new CookingTagEvent.Build(entity, level, target, Kitchenware, ingredients, resultList, ntags);
+        NeoForge.EVENT_BUS.post(build);
+        if(MystiasIzakaya.kubeJsLoaded)
+            MIEventPoster.INSTANCE.post(build);
 
         target.set(MIDatacomponet.MI_TAGS.get(), new MITags(resultList, ntags));
 
@@ -161,7 +168,10 @@ public class CookingUtils {
 
     public static ItemStack check(@Nullable CookingEntity entity, Level level,ItemStack cuisine){
 
-        NeoForge.EVENT_BUS.post(new CookingTagEvent.Check.Pre(entity,level,cuisine));
+        CookingTagEvent.Check.Pre pre = new CookingTagEvent.Check.Pre(entity, level, cuisine);
+        NeoForge.EVENT_BUS.post(pre);
+        if(MystiasIzakaya.kubeJsLoaded)
+            MIEventPoster.INSTANCE.post(pre);
 
         MITags miTags = cuisine.getOrDefault(MIDatacomponet.MI_TAGS.get(),new MITags(new ArrayList<>(),new ArrayList<>()));
 
@@ -175,7 +185,10 @@ public class CookingUtils {
             }
         }
 
-        NeoForge.EVENT_BUS.post(new CookingTagEvent.Check.Post(entity,level,cuisine));
+        CookingTagEvent.Check.Post post = new CookingTagEvent.Check.Post(entity, level, cuisine);
+        NeoForge.EVENT_BUS.post(post);
+        if(MystiasIzakaya.kubeJsLoaded)
+            MIEventPoster.INSTANCE.post(post);
 
         return cuisine;
     }

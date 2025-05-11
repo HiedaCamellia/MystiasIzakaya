@@ -37,7 +37,7 @@ public abstract class CookingTagEvent extends CookingEvent{
             return tags;
         }
 
-        public List<String> getNewTags() {
+        public List<String> getNegativeTags() {
             return ntags;
         }
 

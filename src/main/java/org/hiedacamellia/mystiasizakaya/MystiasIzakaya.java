@@ -4,6 +4,7 @@ package org.hiedacamellia.mystiasizakaya;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.loading.FMLLoader;
@@ -16,10 +17,12 @@ import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
 import org.hiedacamellia.mystiasizakaya.core.event.MIEvent;
 import org.hiedacamellia.mystiasizakaya.registries.*;
 
-@Mod("mystias_izakaya")
+@Mod(MystiasIzakaya.MODID)
 public class MystiasIzakaya {
 	public static final Logger LOGGER = LogManager.getLogger(MystiasIzakaya.class);
 	public static final String MODID = "mystias_izakaya";
+
+	public static final boolean kubeJsLoaded = ModList.get().isLoaded("kubejs");
 
 	public MystiasIzakaya(IEventBus modEventBus, ModContainer modContainer)
 	{

@@ -19,7 +19,9 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
+import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.api.event.OrderEvent;
+import org.hiedacamellia.mystiasizakaya.api.kubejs.MIEventPoster;
 import org.hiedacamellia.mystiasizakaya.content.common.blockentity.TableEntity;
 import org.hiedacamellia.mystiasizakaya.content.common.item.MIBaseItem;
 import org.hiedacamellia.mystiasizakaya.content.order.OrderUtils;
@@ -200,7 +202,10 @@ public class MIPlayerEvent {
                         serverPlayer.closeContainer();
                         int cost = cuisine.getOrDefault(MIDatacomponet.MI_COST,new MICost(0)).cost()+beverage.getOrDefault(MIDatacomponet.MI_COST,new MICost(0)).cost();
                         IntHolder intHolder = new IntHolder(cost);
-                        NeoForge.EVENT_BUS.post(new OrderEvent.Complete(serverPlayer,cuisine,beverage,i, intHolder));
+                        OrderEvent.Complete complete = new OrderEvent.Complete(serverPlayer, cuisine, beverage, i, intHolder);
+                        NeoForge.EVENT_BUS.post(complete);
+                        if(MystiasIzakaya.kubeJsLoaded)
+                            MIEventPoster.INSTANCE.post(complete);
 
                         MIBalance miBalance = new MIBalance(serverPlayer.getData(MIAttachment.MI_BALANCE).balance()+intHolder.get());
                         MITurnover miTurnover = serverPlayer.getData(MIAttachment.MI_TURNOVER);
