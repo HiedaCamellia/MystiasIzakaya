@@ -2,7 +2,6 @@ package org.hiedacamellia.mystiasizakaya.client.gui.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
@@ -13,7 +12,7 @@ import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
 import org.hiedacamellia.immersiveui.client.gui.component.widget.toast.ComponentToastWidget;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MICustomButton;
 import org.hiedacamellia.mystiasizakaya.core.network.DonationTakeOutS2SMessage;
-import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
+import org.hiedacamellia.mystiasizakaya.util.BalanceUtil;
 
 public class DonationScreen extends Screen {
     protected EditBox input;
@@ -70,7 +69,7 @@ public class DonationScreen extends Screen {
         guiGraphics.drawString(this.font, title, 88- font.width(title) / 2, 24, -12829636,false);
 
         String text = Component.translatable("gui.mystias_izakaya.balance").getString() + new java.text.DecimalFormat("#######")
-                .format(Minecraft.getInstance().player.getData(MIAttachment.MI_BALANCE).balance()) + " \u5186";
+                .format(BalanceUtil.getBalance(this.minecraft.player)) + " \u5186";
 
         guiGraphics.drawString(this.font,
                 text, 88 - font.width(text) / 2, 42, -12829636,false);

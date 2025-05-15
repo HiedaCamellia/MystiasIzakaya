@@ -1,5 +1,5 @@
 
-package org.hiedacamellia.mystiasizakaya.content.common.inventory;
+package org.hiedacamellia.mystiasizakaya.content.common.menu;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;

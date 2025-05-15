@@ -10,13 +10,10 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
-import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
-import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
+import org.hiedacamellia.mystiasizakaya.util.BalanceUtil;
 
 
 public record DonationTakeOutS2SMessage(int count) implements CustomPacketPayload {
@@ -35,13 +32,9 @@ public record DonationTakeOutS2SMessage(int count) implements CustomPacketPayloa
             int j;
             int count = message.count();
             if (entity instanceof ServerPlayer player) {
-                MITurnover miTurnover = player.getData(MIAttachment.MI_TURNOVER);
-                miTurnover = miTurnover.addTurnover("to_donation", (double) -count);
-                miTurnover = miTurnover.deleteOverStack();
-                player.setData(MIAttachment.MI_TURNOVER, miTurnover);
-                PacketDistributor.sendToPlayer(player, miTurnover);
-                if (count > 0 && player.getData(MIAttachment.MI_BALANCE).balance() >= count) {
-                    player.setData(MIAttachment.MI_BALANCE, new MIBalance(player.getData(MIAttachment.MI_BALANCE).balance() - count));
+
+                boolean donation = BalanceUtil.donation(player, -count);
+                if (donation && count > 0 && BalanceUtil.getBalance(player) >= count) {
                     j = count / 10;
                     count = count - j * 10;
                     ItemStack _setstack = new ItemStack(MIItem.EN_10.get());
@@ -50,7 +43,6 @@ public record DonationTakeOutS2SMessage(int count) implements CustomPacketPayloa
                     ItemStack setstack = new ItemStack(MIItem.EN_1.get());
                     setstack.setCount(count);
                     ItemHandlerHelper.giveItemToPlayer(player, setstack);
-                    PacketDistributor.sendToPlayer(player, new MIBalance(player.getData(MIAttachment.MI_BALANCE).balance()));
                 }
 
             }

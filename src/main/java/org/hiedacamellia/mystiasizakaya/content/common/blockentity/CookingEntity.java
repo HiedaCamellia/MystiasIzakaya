@@ -27,7 +27,7 @@ import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.w2s.CookingProcessW2SWidget;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.w2s.ExistW2SWidget;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingMenu;
+import org.hiedacamellia.mystiasizakaya.content.common.menu.CookingMenu;
 import org.hiedacamellia.mystiasizakaya.content.cooking.CookingUtils;
 import org.hiedacamellia.mystiasizakaya.content.cooking.IKitchenware;
 import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;

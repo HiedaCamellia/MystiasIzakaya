@@ -30,6 +30,7 @@ import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
+import org.hiedacamellia.mystiasizakaya.util.BalanceUtil;
 import org.hiedacamellia.mystiasizakaya.util.IntHolder;
 
 import java.util.*;
@@ -207,14 +208,8 @@ public class MIPlayerEvent {
                         if(MystiasIzakaya.kubeJsLoaded)
                             MIEventPoster.INSTANCE.post(complete);
 
-                        MIBalance miBalance = new MIBalance(serverPlayer.getData(MIAttachment.MI_BALANCE).balance()+intHolder.get());
-                        MITurnover miTurnover = serverPlayer.getData(MIAttachment.MI_TURNOVER);
-                        miTurnover = miTurnover.addTurnover("from_table", (double)intHolder.get());
-                        miTurnover = miTurnover.deleteOverStack();
-                        serverPlayer.setData(MIAttachment.MI_TURNOVER, miTurnover);
-                        serverPlayer.setData(MIAttachment.MI_BALANCE,miBalance);
-                        PacketDistributor.sendToPlayer(serverPlayer, miTurnover);
-                        PacketDistributor.sendToPlayer(serverPlayer,miBalance);
+                        BalanceUtil.table(player, intHolder.get());
+
                     }
                 }
             }

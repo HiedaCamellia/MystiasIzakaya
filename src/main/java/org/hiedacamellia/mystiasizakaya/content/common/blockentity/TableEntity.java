@@ -20,7 +20,7 @@ import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.w2s.ExistW2SWidget;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.w2s.TableW2SWidget;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.TableMenu;
+import org.hiedacamellia.mystiasizakaya.content.common.menu.TableMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlockEntitiy;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

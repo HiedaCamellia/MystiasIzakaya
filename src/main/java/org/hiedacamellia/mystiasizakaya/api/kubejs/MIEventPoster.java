@@ -4,6 +4,7 @@ package org.hiedacamellia.mystiasizakaya.api.kubejs;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.api.event.CookingCollectCuisineEvent;
 import org.hiedacamellia.mystiasizakaya.api.event.CookingTagEvent;
+import org.hiedacamellia.mystiasizakaya.api.event.CurrencyChangeEvent;
 import org.hiedacamellia.mystiasizakaya.api.event.OrderEvent;
 
 public class MIEventPoster {
@@ -45,6 +46,11 @@ public class MIEventPoster {
             post(new CookingTagEventJS.Check.Post(event));
         }
     }
+    public void post(CurrencyChangeEvent event){
+        if(MystiasIzakaya.kubeJsLoaded) {
+            post(new CurrencyChangeEventJS(event));
+        }
+    }
 
 
 
@@ -68,6 +74,9 @@ public class MIEventPoster {
     }
     public void post(CookingTagEventJS.Check.Post event) {
         MystiasIzakayaJSEvents.COOKING_TAG_CHECK_POST.post(event);
+    }
+    public void post(CurrencyChangeEventJS event) {
+        MystiasIzakayaJSEvents.CURRENCY_CHANGE.post(event);
     }
 
 

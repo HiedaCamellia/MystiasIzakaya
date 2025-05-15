@@ -25,6 +25,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.hiedacamellia.mystiasizakaya.content.common.blockentity.CookingEntity;
 import org.hiedacamellia.mystiasizakaya.content.common.blockentity.KitchenwareEntity;
+import org.hiedacamellia.mystiasizakaya.content.cooking.IKitchenware;
 import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;
 import org.hiedacamellia.mystiasizakaya.util.KitchenwareTypeUtil;
 import org.jetbrains.annotations.NotNull;
@@ -32,14 +33,14 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.Objects;
 
-public class Kitchenware extends BaseEntityBlock {
+public class Kitchenware extends BaseEntityBlock implements IKitchenware {
 
     public static final MapCodec<Kitchenware> CODEC = RecordCodecBuilder.mapCodec(
             (instance) -> instance.group(propertiesCodec(),
-                    KitchenwareType.CODEC.fieldOf("KitchenwareType").forGetter(Kitchenware::getType)
+                    KitchenwareType.CODEC.fieldOf("KitchenwareType").forGetter(Kitchenware::getKitchenwareType)
             ).apply(instance, Kitchenware::new));
 
-    public KitchenwareType getType() {
+    public KitchenwareType getKitchenwareType() {
         return type;
     }
 
@@ -63,7 +64,7 @@ public class Kitchenware extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return createTicker(level, blockEntityType, KitchenwareTypeUtil.type2BE(getType()));
+        return createTicker(level, blockEntityType, KitchenwareTypeUtil.type2BE(getKitchenwareType()));
     }
 
     @Nullable
@@ -76,7 +77,7 @@ public class Kitchenware extends BaseEntityBlock {
 
     @Override
     public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
-        return new KitchenwareEntity(pos,state,getType());
+        return new KitchenwareEntity(pos,state, getKitchenwareType());
     }
 
     @Override
@@ -115,7 +116,7 @@ public class Kitchenware extends BaseEntityBlock {
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         //Debug.send(state.getBlock().getDescriptionId());
-        return switch (getType()) {
+        return switch (getKitchenwareType()) {
             case CUTTING_BOARD -> Shapes.join(box(1,0,3,15,1,13),box(0,0,0,0,0,0),BooleanOp.FIRST);
             case BOILING_POT -> Shapes.join(box(3,0,3,13,6,13),box(0,0,0,0,0,0), BooleanOp.FIRST);
             case FRYING_PAN -> Shapes.join(box(3,0,1,13,2,11),box(7.25,1,11,8.75,2,17), BooleanOp.OR);

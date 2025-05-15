@@ -6,8 +6,8 @@ import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingMenu;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.TableMenu;
+import org.hiedacamellia.mystiasizakaya.content.common.menu.CookingMenu;
+import org.hiedacamellia.mystiasizakaya.content.common.menu.TableMenu;
 
 public class MIMenu {
 	public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(Registries.MENU, MystiasIzakaya.MODID);

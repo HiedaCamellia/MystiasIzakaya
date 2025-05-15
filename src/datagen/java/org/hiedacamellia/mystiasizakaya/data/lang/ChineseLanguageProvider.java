@@ -279,11 +279,11 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.zhu_zi", "竹子");
         add("item.mystias_izakaya.zun_yu", "鳟鱼");
         add("item_group.mystias_izakaya.mystiass_izakaya", "夜雀食堂");
-        add("jei.mystias_izakaya.Boiling_Pot", "煮锅");
-        add("jei.mystias_izakaya.Cutting_Board", "料理台");
-        add("jei.mystias_izakaya.Frying_Pan", "油锅");
-        add("jei.mystias_izakaya.Grill", "烧烤架");
-        add("jei.mystias_izakaya.Streamer", "蒸锅");
+        add("xei.mystias_izakaya.boiling_pot", "煮锅");
+        add("xei.mystias_izakaya.cutting_board", "料理台");
+        add("xei.mystias_izakaya.frying_pan", "油锅");
+        add("xei.mystias_izakaya.grill", "烧烤架");
+        add("xei.mystias_izakaya.steamer", "蒸锅");
         add("status.mystias_izakaya.free", "空闲");
         add("status.mystias_izakaya.outputblocked", "输出受阻");
         add("status.mystias_izakaya.working", "工作中");
@@ -439,7 +439,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("tooltip.mystias_izakaya.li_liang_tang", "荤素搭配的美味汤羹，使用了野猪肉和海带㷛煮而成，能最快捷地补充身体所需能量。");
         add("tooltip.mystias_izakaya.lian_zi", "非常古老的水生植物--莲的种子。莲子的芯特别苦，千万得处理好，别混到料理给客人吃了。");
         add("tooltip.mystias_izakaya.liang_cai_diao_hua", "将鲜果蔬菜雕刻成鲜花的模样，虽然材料简单，但却非常考验刀工。");
-        add("tooltip.mystias_izakaya.liao_li_tai", "冷盘子的首选！生鱼、生肉或沙拉的方便工具。它可以保持原料的“原汁原味”。");
+        add("tooltip.mystias_izakaya.cutting_board", "冷盘子的首选！生鱼、生肉或沙拉的方便工具。它可以保持原料的“原汁原味”。");
         add("tooltip.mystias_izakaya.lin_ren_zhui", "桃花酿的酒。妖精之间有着饮一壶桃花酒,醉卧花间,就会遇到桃花仙的传说。这怎么看都是喝醉了吧?");
         add("tooltip.mystias_izakaya.reisen", "我是谁…我为什么在这里。。。？");
         add("tooltip.mystias_izakaya.liu_shui_su_mian", "比起好吃，流水素面更多的是好玩。");
@@ -486,7 +486,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("tooltip.mystias_izakaya.ri_yue_xing", "纯米酒，有着妖精的祝福。度数不高，口感柔顺，价格平易近人，是居酒屋受欢迎的选择。");
         add("tooltip.mystias_izakaya.sai_xiong_zhang", "黑不溜秋的怪异美食之首！香飘万里，让人回味无穷。因为打不过熊，没法直接用熊掌做，但是比真正的熊掌还要鲜美百倍。");
         add("tooltip.mystias_izakaya.san_wen_yu", "一种高度洄游海鱼但在幻想乡的河流湖泊可见，有点珍贵");
-        add("tooltip.mystias_izakaya.shao_kao_jia", "一种常见的烤架。它的网状表面在点燃时迅速将热量传给食物。现在你可以享受野生的味道了！据说可以让每个爸爸脸上都露出笑容。");
+        add("tooltip.mystias_izakaya.grill", "一种常见的烤架。它的网状表面在点燃时迅速将热量传给食物。现在你可以享受野生的味道了！据说可以让每个爸爸脸上都露出笑容。");
         add("tooltip.mystias_izakaya.shen_zhi_mai", "使用妖怪之山上被秋天的神明们所庇佑的大麦所酿造的大麦烧酒。");
         add("tooltip.mystias_izakaya.shi_li_yin_xing", "以选用孔庙“诗礼堂”前银杏树所结果实烹制而得名，清香甜美，柔韧筋道，可解酒止咳。");
         add("tooltip.mystias_izakaya.shi_si_ye", "比起十五夜的月亮是满月，也许更想留下十四夜时期待的心情。以这样的感觉酿造的高级清酒，也许只有它才配得上迷途竹林所见到的月亮吧。");
@@ -529,7 +529,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("tooltip.mystias_izakaya.yin_er", "一种像花儿一样美丽的菌类。据说历代皇家贵族把银耳看作延年益寿之品,但在月都似乎很常见。这种看起来一尘不染的洁白,和月都的感觉很相衬。");
         add("tooltip.mystias_izakaya.ying_luo_xue", "高级寿司的一种，粉红色的高级生鱼片盖在白米饭上，就如樱花飘落在白雪上，有着不可思议的美感。");
         add("tooltip.mystias_izakaya.you_dou_fu", "常见的家常菜，传说中是稻荷神的狐狸使者最喜欢的食物。");
-        add("tooltip.mystias_izakaya.you_guo", "有了足够的油，这个宝贝可以油炸任何东西！成品总是好吃又脆。不过要注意胆固醇。");
+        add("tooltip.mystias_izakaya.frying_pan", "有了足够的油，这个宝贝可以油炸任何东西！成品总是好吃又脆。不过要注意胆固醇。");
         add("tooltip.mystias_izakaya.yu_lu_cha", "几乎是日本茶中最高级的茶叶，需要用较低的水温来冲泡，甘醇飘香，口感独特。");
         add("tooltip.mystias_izakaya.yue_guang_cao", "永远亭的特产，由满月之夜的月光凝聚，非常珍贵");
         add("tooltip.mystias_izakaya.yue_guang_tuan_zi", "永远亭特产改良的麻薯团子，加入了高级食材月光草，造型可爱的同时，还有“月光一样的口感”。");
@@ -540,11 +540,11 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("tooltip.mystias_izakaya.zha_zhu_rou_pai", "常见的家常菜，以猪肉为主要材料，裹以面粉一炸，邻居家的孩子都馋哭了。");
         add("tooltip.mystias_izakaya.zhang_yu", "鲜嫩可爱的海洋生物，但幻想乡没有海......它的脚是宝贝，有压倒性的肉质感，而且只要用最简单的火烤，就能享受弹牙的美味！");
         add("tooltip.mystias_izakaya.zhen_hai_xian_wei_cheng_tang", "选用新鲜鳟鱼与海带㷛煮而成的味增汤，浓浓的鲜味四处飘荡，鲜而不腥。");
-        add("tooltip.mystias_izakaya.zheng_guo", "蒸汽是一项革命性的技术。它可以烹饪几层食物，同时保持大部分营养！对于那些想要健康的人来说，这是一个绝妙的选择！");
+        add("tooltip.mystias_izakaya.steamer", "蒸汽是一项革命性的技术。它可以烹饪几层食物，同时保持大部分营养！对于那些想要健康的人来说，这是一个绝妙的选择！");
         add("tooltip.mystias_izakaya.zhi_shi", "浓郁的奶油熟成后的珍贵食材，取一片加热融化就能让料理变得奶香浓郁，美味十足。");
         add("tooltip.mystias_izakaya.zhi_zhu_rou_fan_tuan", "常见的平价饭团，在饭团中放入烤制后的猪肉，为其增加了一份香浓的嚼劲。");
         add("tooltip.mystias_izakaya.zhu_dou_fu", "常见的家常菜，但也讲究烧制的火候，才能将豆腐的鲜嫩口感得到最大展现。 ");
-        add("tooltip.mystias_izakaya.zhu_guo", "一个普通的煮锅。它由中国古代陶器制成，能很好地积聚热量和压力，可以有效地炖煮食材。对于所有厨师来说，这是一个非常方便的工具。");
+        add("tooltip.mystias_izakaya.boiling_pot", "一个普通的煮锅。它由中国古代陶器制成，能很好地积聚热量和压力，可以有效地炖煮食材。对于所有厨师来说，这是一个非常方便的工具。");
         add("tooltip.mystias_izakaya.zhu_lu_die", "脱胎于花礼的猪鹿蝶牌型，将猪肉和鹿肉清炖，佐以花朵引出食材本身鲜味的精致料理。");
         add("tooltip.mystias_izakaya.zhu_qu_ji", "在永远亭就地取材，使用新鲜的食材和米饭一起塞进竹筒中蒸熟。饭被竹子的清香充分浸润后，中和了山猪肉带来的油腻。");
         add("tooltip.mystias_izakaya.zhu_rou", "人里圈养的家猪肉，较为常见");

@@ -2,7 +2,6 @@ package org.hiedacamellia.mystiasizakaya.client.gui.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
@@ -17,9 +16,9 @@ import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIItemButton;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIOutButton;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MICost;
 import org.hiedacamellia.mystiasizakaya.core.network.TelephoneConfirmS2SMessage;
-import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
+import org.hiedacamellia.mystiasizakaya.util.BalanceUtil;
 import org.hiedacamellia.mystiasizakaya.util.RandomItems;
 
 import java.util.ArrayList;
@@ -90,7 +89,7 @@ public class TelephoneScreen extends Screen {
         pose.pushPose();
         pose.translate(leftPos, topPos, 0);
         String text = Component.translatable("gui.mystias_izakaya.balance").getString() + new java.text.DecimalFormat("#######")
-                .format(Minecraft.getInstance().player.getData(MIAttachment.MI_BALANCE).balance()) + " \u5186";
+                .format(BalanceUtil.getBalance(this.minecraft.player)) + " \u5186";
 
         guiGraphics.drawString(this.font,
                 text, 88 - font.width(text) / 2, 10, -12829636, false);

@@ -17,6 +17,7 @@ import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOnOpen;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
 import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
+import org.hiedacamellia.mystiasizakaya.util.BalanceUtil;
 
 public class LedgerScreen extends Screen {
 
@@ -66,7 +67,7 @@ public class LedgerScreen extends Screen {
         }
 
         Component component = Component.translatable("gui.mystias_izakaya.balance").append(Component.literal(new java.text.DecimalFormat("#######")
-                .format(player.getData(MIAttachment.MI_BALANCE).balance())).append(Component.literal(" \u5186")));
+                .format(BalanceUtil.getBalance(player))).append(Component.literal(" \u5186")));
         this.addRenderableWidget(new UnderLineComponentWidget(this.leftPos+imageWidth- font.width(component)-10, this.topPos +10, component));
 
         Component title = Component.translatable("gui.mystias_izakaya.ledger_ui.ledger");

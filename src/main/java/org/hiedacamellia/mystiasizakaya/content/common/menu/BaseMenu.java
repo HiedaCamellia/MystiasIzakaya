@@ -1,4 +1,4 @@
-package org.hiedacamellia.mystiasizakaya.content.common.inventory;
+package org.hiedacamellia.mystiasizakaya.content.common.menu;
 
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;

@@ -18,4 +18,5 @@ public interface MystiasIzakayaJSEvents {
     EventHandler COOKING_TAG_CHECK_PRE = EVENT_GROUP.client("checkTagPre", ()->CookingTagEventJS.Check.Pre.class);
     EventHandler COOKING_TAG_CHECK_POST = EVENT_GROUP.client("checkTagPost", ()->CookingTagEventJS.Check.Post.class);
 
+    EventHandler CURRENCY_CHANGE = EVENT_GROUP.client("currencyChange", ()->CurrencyChangeEventJS.class);
 }

@@ -22,8 +22,8 @@ import org.hiedacamellia.immersiveui.client.gui.component.widget.toast.Component
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIItemButton;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.RenderSlot;
-import org.hiedacamellia.mystiasizakaya.content.common.blockitem.KitchenwareBlockItem;
-import org.hiedacamellia.mystiasizakaya.content.common.inventory.CookingMenu;
+import org.hiedacamellia.mystiasizakaya.content.common.item.utils.KitchenwareBlockItem;
+import org.hiedacamellia.mystiasizakaya.content.common.menu.CookingMenu;
 import org.hiedacamellia.mystiasizakaya.content.cooking.CookingUtils;
 import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;

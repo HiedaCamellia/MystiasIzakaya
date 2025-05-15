@@ -1,7 +1,9 @@
-package org.hiedacamellia.mystiasizakaya.content.common.blockitem;
+package org.hiedacamellia.mystiasizakaya.content.common.item.utils;
 
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -9,6 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.hiedacamellia.mystiasizakaya.content.cooking.IKitchenware;
+import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 import org.jetbrains.annotations.NotNull;
@@ -16,9 +19,17 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class KitchenwareBlockItem extends BlockItem implements IKitchenware {
+public class KitchenwareBlockItem extends BlockItem implements IKitchenware {
+
+    private final KitchenwareType type;
+
     public KitchenwareBlockItem(Block block, Properties properties) {
         super(block, properties);
+        if(block instanceof IKitchenware kitchenware){
+            this.type = kitchenware.getKitchenwareType();
+        }else {
+            this.type = KitchenwareType.NONE;
+        }
     }
 
     @Override
@@ -29,7 +40,6 @@ public abstract class KitchenwareBlockItem extends BlockItem implements IKitchen
             MITags mitags = itemstack.getOrDefault(MIDatacomponet.MI_TAGS.get(), new MITags(new ArrayList<>(),new ArrayList<>()) );
             List<String> tags = mitags.tags();
             List<String> ntags = mitags.ntags();
-
             for (String tag : tags) {
                 list.add(Component.literal("§6+ " + Component.translatable(gettagprefix()+tag).getString() + "§r"));
             }
@@ -38,9 +48,21 @@ public abstract class KitchenwareBlockItem extends BlockItem implements IKitchen
             }
             list.add(Component.literal(
                     "§7§o" + Component.translatable("tooltip.mystias_izakaya.press_shift").getString() + "§r"));
+        }else {
+            ResourceLocation key = BuiltInRegistries.ITEM.getKey(itemstack.getItem());
+            String[] description = Component.translatable("tooltip.mystias_izakaya."+key.getPath()).getString().split("§n");
+            for (String line : description) {
+                list.add(Component.literal(line));
+            }
         }
     }
+
     protected String gettagprefix() {
         return "tag.mystias_izakaya.";
+    }
+
+    @Override
+    public KitchenwareType getKitchenwareType() {
+        return type;
     }
 }

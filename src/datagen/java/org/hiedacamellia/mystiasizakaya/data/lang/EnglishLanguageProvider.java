@@ -281,11 +281,11 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.zhu_zi", "Bamboo");
         add("item.mystias_izakaya.zun_yu", "Trout");
         add("item_group.mystias_izakaya.mystiass_izakaya", "Mystias's Izakaya");
-        add("jei.mystias_izakaya.Boiling_Pot", "Boiling Pot");
-        add("jei.mystias_izakaya.Cutting_Board", "Cutting Board");
-        add("jei.mystias_izakaya.Frying_Pan", "Frying Pan");
-        add("jei.mystias_izakaya.Grill", "Grill");
-        add("jei.mystias_izakaya.Streamer", "Streamer");
+        add("xei.mystias_izakaya.boiling_pot", "Boiling Pot");
+        add("xei.mystias_izakaya.cutting_board", "Cutting Board");
+        add("xei.mystias_izakaya.frying_pan", "Frying Pan");
+        add("xei.mystias_izakaya.grill", "Grill");
+        add("xei.mystias_izakaya.steamer", "Streamer");
         add("status.mystias_izakaya.free", "Free");
         add("status.mystias_izakaya.outputblocked", "Output Blocked");
         add("status.mystias_izakaya.working", "Working...");
@@ -441,7 +441,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.mystias_izakaya.li_liang_tang", "A soup with a perfect balance between meat and vegetables and seaweed and boar meat. It can quickly supply your body with all the energy you need.");
         add("tooltip.mystias_izakaya.lian_zi", "The seeds of a very old aquatic plant-the lotus. Lotus seeds have very bitter cores, so accidentally mixing them into a customer's dish must be avoided at all costs. Careful handling is a must.");
         add("tooltip.mystias_izakaya.liang_cai_diao_hua", "Fresh fruits and vegetables carved into the shape of a rose. What makes this dish difficult is not the ingredients, but the requisite knife skills.");
-        add("tooltip.mystias_izakaya.liao_li_tai", "The go-to choice for cold plates! Handy tool for raw fish, raw meat, or salad. It can preserve the ingredients' \"original\" taste.");
+        add("tooltip.mystias_izakaya.cutting_board", "The go-to choice for cold plates! Handy tool for raw fish, raw meat, or salad. It can preserve the ingredients' \"original\" taste.");
         add("tooltip.mystias_izakaya.lin_ren_zhui", "Alcohol brewed with peach blossoms. There's a rumor amongst the fairies that if you drink a cup of peach blossom wine and fall asleep in the flowers, you'll encounter a saint of peach blossoms. Though, I'm pretty sure that's just them being drunk.");
         add("tooltip.mystias_izakaya.reisen", "Who am I... Why am I here...?");
         add("tooltip.mystias_izakaya.liu_shui_su_mian", "Rather than being tasty, these noodles are more about being fun.");
@@ -488,7 +488,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.mystias_izakaya.ri_yue_xing", "With the blessing of the Three Fairies, this sake has become a popular choice at izakayas: mid-alcohol, smooth taste, and affordable price. No wonder why.");
         add("tooltip.mystias_izakaya.sai_xiong_zhang", "The weirdest dish in Gensokyo! Since I can't defeat a bear, it's not made with real bear paws. But with its unforgettable fragrance and delicious taste, it's a hundred times better than the real thing!");
         add("tooltip.mystias_izakaya.san_wen_yu", "A type of highly migratory fish that can somehow be found in the rivers and lakes of Gensokyo. Somewhat rare.  ");
-        add("tooltip.mystias_izakaya.shao_kao_jia", "A common grill. Its meshed surface conducts heat to food quickly when lighted. Now you can enjoy the taste of the wild! Supposedly can put a smile on every dad's face.");
+        add("tooltip.mystias_izakaya.grill", "A common grill. Its meshed surface conducts heat to food quickly when lighted. Now you can enjoy the taste of the wild! Supposedly can put a smile on every dad's face.");
         add("tooltip.mystias_izakaya.shen_zhi_mai", "This shochu is made from barley blessed by the Goddesses of Autumn at the Youkai Mountain.");
         add("tooltip.mystias_izakaya.shi_li_yin_xing", "Named after the ginkgo trees in the Temple of Confucius, they are fragrant, sweet, chewy, and can even cure coughing and hangovers.");
         add("tooltip.mystias_izakaya.shi_si_ye", "Perhaps the anticipation of seeing the full moon during the eve is a stronger feeling than viewing it? This premium sake captured this sensation perfectly. A worthy drink for the moon in the Bamboo Forest of the Lost.");
@@ -531,7 +531,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.mystias_izakaya.yin_er", "A fungus as beautiful as a flower. It is said that royalty through the ages look upon snow fungus as a life-prolonging product, yet it seems very common in Lunar Capital. Its immaculate white fits Lunar Capital well.");
         add("tooltip.mystias_izakaya.ying_luo_xue", "A premium sushi dish. The pink tuna upon the white rice resembles sakura petals on white snow, making this an incredibly beautiful dish.");
         add("tooltip.mystias_izakaya.you_dou_fu", "A common family dish. Supposedly the favorite food of Inari gods and fox youkai.");
-        add("tooltip.mystias_izakaya.you_guo", "With enough oil, this baby can deep fry anything and everything! The finished product is always delicious and crispy. Watch your cholesterol though.");
+        add("tooltip.mystias_izakaya.frying_pan", "With enough oil, this baby can deep fry anything and everything! The finished product is always delicious and crispy. Watch your cholesterol though.");
         add("tooltip.mystias_izakaya.yu_lu_cha", "Almost the best Japanese tea. It needs to be brewed at a lower water temperature, and offers a sweet and fragrant flavor with a distinct taste.");
         add("tooltip.mystias_izakaya.yue_guang_cao", "A specialty of Eientei. A plant that grows under the full moon and absorbs its very essence. Very rare.");
         add("tooltip.mystias_izakaya.yue_guang_tuan_zi", "A special Eientei mochi. They \"taste like moonlight\" because they are made with the rare moonlight grass.");
@@ -542,11 +542,11 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("tooltip.mystias_izakaya.zha_zhu_rou_pai", "A common family dish made by coating pork with flour and deep frying it. Very popular among children.");
         add("tooltip.mystias_izakaya.zhang_yu", "A squishy and lovely sea creature, but there are no seas in Gensokyo... Its tentacles are great ingredients and have an overwhelmingly chewy texture. By simply roasting them on a fire, you can enjoy their tenderness!");
         add("tooltip.mystias_izakaya.zhen_hai_xian_wei_cheng_tang", "Same old miso soup, but with REAL seafood this time! Savory and without the fish stink.");
-        add("tooltip.mystias_izakaya.zheng_guo", "Steaming is a revolutionary technology. It can cook several layers of food while keeping most nutrition! A brilliant choice for those who want to be healthy!");
+        add("tooltip.mystias_izakaya.steamer", "Steaming is a revolutionary technology. It can cook several layers of food while keeping most nutrition! A brilliant choice for those who want to be healthy!");
         add("tooltip.mystias_izakaya.zhi_shi", "A precious ingredient made by fermenting cream. Melt some over a dish to add a creamy and delicious flavor.");
         add("tooltip.mystias_izakaya.zhi_zhu_rou_fan_tuan", "A common and affordable rice ball. By adding grilled pork to the rice, it gains a chewy texture and a delicious new taste.");
         add("tooltip.mystias_izakaya.zhu_dou_fu", "A common family dish. In order to make the tofu as tender as possible, the heat must be carefully controlled when cooking.");
-        add("tooltip.mystias_izakaya.zhu_guo", "A common boiling pot. Made from ancient Chinese pottery, it accumulates heat and pressure well, making it useful for stewing ingredients effectively. A very handy tool for all chefs.");
+        add("tooltip.mystias_izakaya.boiling_pot", "A common boiling pot. Made from ancient Chinese pottery, it accumulates heat and pressure well, making it useful for stewing ingredients effectively. A very handy tool for all chefs.");
         add("tooltip.mystias_izakaya.zhu_lu_die", "Inspired by the hanafuda combo, pork and venison are stewed in clear soup and seasoned with flowers to bring out the freshness of the ingredients.");
         add("tooltip.mystias_izakaya.zhu_qu_ji", "\"The so-called Princess Kaguya is no different from this dish!\" -- Fujiwara no Mokou§nActually, it's just steamed bamboo with sticky rice, meat, and truffle. Surprisingly, the bamboo's fragrance mitigates the greasy meat.");
         add("tooltip.mystias_izakaya.zhu_rou", "Pork from the domestic pigs in the Human Village. Rather common.");
