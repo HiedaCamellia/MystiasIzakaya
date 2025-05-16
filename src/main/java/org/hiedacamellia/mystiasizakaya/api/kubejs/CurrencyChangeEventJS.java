@@ -24,7 +24,7 @@ public class CurrencyChangeEventJS implements KubeEvent {
         this.event.setAmount(amount);
     }
 
-    public String getType() {
+    public String getChangeType() {
         return event.getType();
     }
 
