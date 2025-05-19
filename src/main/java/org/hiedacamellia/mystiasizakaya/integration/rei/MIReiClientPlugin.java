@@ -1,11 +1,16 @@
 package org.hiedacamellia.mystiasizakaya.integration.rei;
 
+import me.shedaniel.math.Rectangle;
 import me.shedaniel.rei.api.client.plugins.REIClientPlugin;
 import me.shedaniel.rei.api.client.registry.category.CategoryRegistry;
 import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
+import me.shedaniel.rei.api.client.registry.screen.ClickArea;
 import me.shedaniel.rei.api.client.registry.screen.ScreenRegistry;
+import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import me.shedaniel.rei.forge.REIPluginClient;
+import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
+import org.hiedacamellia.mystiasizakaya.client.gui.screen.LedgerScreen;
 import org.hiedacamellia.mystiasizakaya.core.recipes.*;
 import org.hiedacamellia.mystiasizakaya.integration.rei.categories.*;
 import org.hiedacamellia.mystiasizakaya.integration.rei.displays.*;
