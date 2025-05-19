@@ -52,6 +52,7 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
     private int tPos;
     private int lPos;
 
+    private LedgerMenu menu;
     //账单page
     private MICustomButton on_open;
     private MICustomButton changePage;
@@ -73,6 +74,7 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
 
     public LedgerScreen(LedgerMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
+        this.menu = menu;
         this.iWidth = 120;
         this.iHeight = 166;
         this.imageWidth = 160;
@@ -206,6 +208,11 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         boolean v = super.mouseClicked(mouseX, mouseY, button);
+
+        ItemStack draggingItem = menu.getCarried();
+        tryAccept(draggingItem.copy());
+
+
         boolean changed = false;
         if(page==Page.MENU){
             for(MIFakeItemSlot fakeItemSlot : fakeCuisinesSlots){
