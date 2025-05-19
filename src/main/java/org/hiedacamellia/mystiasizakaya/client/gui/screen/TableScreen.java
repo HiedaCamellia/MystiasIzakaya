@@ -10,7 +10,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.RenderSlot;
-import org.hiedacamellia.mystiasizakaya.content.common.menu.TableMenu;
+import org.hiedacamellia.mystiasizakaya.common.menu.TableMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.List;

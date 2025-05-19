@@ -2,7 +2,7 @@ package org.hiedacamellia.mystiasizakaya.client.gui.widget.builder;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.UseAnim;
-import org.hiedacamellia.mystiasizakaya.content.common.item.MIBaseItem;
+import org.hiedacamellia.mystiasizakaya.common.item.MIBaseItem;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MICooktime;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MICost;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;

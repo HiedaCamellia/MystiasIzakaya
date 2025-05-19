@@ -1,4 +1,4 @@
-package org.hiedacamellia.mystiasizakaya.content.common.block;
+package org.hiedacamellia.mystiasizakaya.common.block;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;

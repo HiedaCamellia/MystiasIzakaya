@@ -11,7 +11,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
 import org.hiedacamellia.immersiveui.client.gui.component.w2s.World2ScreenWidget;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.content.common.blockentity.CookingEntity;
+import org.hiedacamellia.mystiasizakaya.common.blockentity.CookingEntity;
 import org.hiedacamellia.mystiasizakaya.core.network.CookingGetResultC2SMessage;
 import org.joml.Vector3f;
 

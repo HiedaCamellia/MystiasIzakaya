@@ -1,4 +1,4 @@
-package org.hiedacamellia.mystiasizakaya.content.common.item;
+package org.hiedacamellia.mystiasizakaya.common.item;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;

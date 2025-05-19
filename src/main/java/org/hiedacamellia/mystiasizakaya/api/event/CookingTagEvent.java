@@ -2,7 +2,7 @@ package org.hiedacamellia.mystiasizakaya.api.event;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import org.hiedacamellia.mystiasizakaya.content.common.blockentity.CookingEntity;
+import org.hiedacamellia.mystiasizakaya.common.blockentity.CookingEntity;
 
 import java.util.List;
 

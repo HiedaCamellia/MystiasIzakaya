@@ -1,5 +1,5 @@
 
-package org.hiedacamellia.mystiasizakaya.content.common.block;
+package org.hiedacamellia.mystiasizakaya.common.block;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;

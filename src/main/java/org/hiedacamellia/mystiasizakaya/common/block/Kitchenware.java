@@ -1,4 +1,4 @@
-package org.hiedacamellia.mystiasizakaya.content.common.block;
+package org.hiedacamellia.mystiasizakaya.common.block;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -23,8 +23,8 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.hiedacamellia.mystiasizakaya.content.common.blockentity.CookingEntity;
-import org.hiedacamellia.mystiasizakaya.content.common.blockentity.KitchenwareEntity;
+import org.hiedacamellia.mystiasizakaya.common.blockentity.CookingEntity;
+import org.hiedacamellia.mystiasizakaya.common.blockentity.KitchenwareEntity;
 import org.hiedacamellia.mystiasizakaya.content.cooking.IKitchenware;
 import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;
 import org.hiedacamellia.mystiasizakaya.util.KitchenwareTypeUtil;

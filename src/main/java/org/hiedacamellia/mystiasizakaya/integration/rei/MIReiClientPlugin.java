@@ -3,11 +3,13 @@ package org.hiedacamellia.mystiasizakaya.integration.rei;
 import me.shedaniel.rei.api.client.plugins.REIClientPlugin;
 import me.shedaniel.rei.api.client.registry.category.CategoryRegistry;
 import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
+import me.shedaniel.rei.api.client.registry.screen.ScreenRegistry;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import me.shedaniel.rei.forge.REIPluginClient;
 import org.hiedacamellia.mystiasizakaya.core.recipes.*;
 import org.hiedacamellia.mystiasizakaya.integration.rei.categories.*;
 import org.hiedacamellia.mystiasizakaya.integration.rei.displays.*;
+import org.hiedacamellia.mystiasizakaya.integration.rei.draggable.LedgerScreenDraggableStackVisitor;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlock;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.hiedacamellia.mystiasizakaya.registries.MIRecipeType;
@@ -48,5 +50,10 @@ public class MIReiClientPlugin  implements REIClientPlugin {
         registry.registerRecipeFiller(FryingPanRecipe.class, MIRecipeType.FRYING_PAN.get(), FryingPanDisplay::new);
         registry.registerRecipeFiller(SteamerRecipe.class, MIRecipeType.STEAMER.get(), SteamerDisplay::new);
         registry.registerRecipeFiller(GrillRecipe.class, MIRecipeType.GRILL.get(), GrillDisplay::new);
+    }
+
+    @Override
+    public void registerScreens(ScreenRegistry registry) {
+        registry.registerDraggableStackVisitor(new LedgerScreenDraggableStackVisitor());
     }
 }

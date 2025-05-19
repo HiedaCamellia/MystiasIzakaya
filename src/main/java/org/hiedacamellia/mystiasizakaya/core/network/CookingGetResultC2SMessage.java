@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.content.common.blockentity.CookingEntity;
+import org.hiedacamellia.mystiasizakaya.common.blockentity.CookingEntity;
 
 public record CookingGetResultC2SMessage(BlockPos pos) implements CustomPacketPayload {
 

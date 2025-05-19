@@ -8,7 +8,7 @@ import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.content.common.block.*;
+import org.hiedacamellia.mystiasizakaya.common.block.*;
 import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;
 
 public class MIBlock {

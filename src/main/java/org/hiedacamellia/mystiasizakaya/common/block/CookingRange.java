@@ -1,5 +1,5 @@
 
-package org.hiedacamellia.mystiasizakaya.content.common.block;
+package org.hiedacamellia.mystiasizakaya.common.block;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.client.gui.screens.Screen;
@@ -25,7 +25,7 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import org.hiedacamellia.mystiasizakaya.content.common.blockentity.CookingRangeEntity;
+import org.hiedacamellia.mystiasizakaya.common.blockentity.CookingRangeEntity;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlockEntitiy;
 import org.jetbrains.annotations.NotNull;
 

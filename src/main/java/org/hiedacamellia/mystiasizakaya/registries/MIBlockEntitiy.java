@@ -9,9 +9,9 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.content.common.blockentity.CookingRangeEntity;
-import org.hiedacamellia.mystiasizakaya.content.common.blockentity.KitchenwareEntity;
-import org.hiedacamellia.mystiasizakaya.content.common.blockentity.TableEntity;
+import org.hiedacamellia.mystiasizakaya.common.blockentity.CookingRangeEntity;
+import org.hiedacamellia.mystiasizakaya.common.blockentity.KitchenwareEntity;
+import org.hiedacamellia.mystiasizakaya.common.blockentity.TableEntity;
 
 import java.util.function.Supplier;
 

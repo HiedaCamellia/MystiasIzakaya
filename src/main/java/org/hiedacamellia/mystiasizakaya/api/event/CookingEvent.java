@@ -2,7 +2,7 @@ package org.hiedacamellia.mystiasizakaya.api.event;
 
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.Event;
-import org.hiedacamellia.mystiasizakaya.content.common.blockentity.CookingEntity;
+import org.hiedacamellia.mystiasizakaya.common.blockentity.CookingEntity;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class CookingEvent extends Event {

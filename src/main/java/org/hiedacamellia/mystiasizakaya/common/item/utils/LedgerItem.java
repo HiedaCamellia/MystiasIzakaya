@@ -1,19 +1,20 @@
-package org.hiedacamellia.mystiasizakaya.content.common.item.utils;
+package org.hiedacamellia.mystiasizakaya.common.item.utils;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
-import org.hiedacamellia.mystiasizakaya.client.gui.screen.LedgerScreen;
+import org.hiedacamellia.mystiasizakaya.common.menu.LedgerMenu;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -31,13 +32,21 @@ public class LedgerItem extends Item {
         }
     }
 
-
     @Override
-    @OnlyIn(Dist.CLIENT)
-    public @NotNull InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
-        InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-        if(entity.isShiftKeyDown()&&entity.isLocalPlayer()) {
-            Minecraft.getInstance().setScreen(new LedgerScreen());
+    public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        InteractionResultHolder<ItemStack> ar = super.use(level, player, hand);
+        if(player.isShiftKeyDown()&&!level.isClientSide()) {
+            player.openMenu(new MenuProvider() {
+                @Override
+                public Component getDisplayName() {
+                    return Component.empty();
+                }
+
+                @Override
+                public @Nullable AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
+                    return new LedgerMenu(i,inventory , player);
+                }
+            });
         }
         return ar;
     }

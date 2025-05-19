@@ -9,7 +9,7 @@ import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.api.event.CookingCollectCuisineEvent;
 import org.hiedacamellia.mystiasizakaya.api.event.CookingTagEvent;
 import org.hiedacamellia.mystiasizakaya.api.kubejs.MIEventPoster;
-import org.hiedacamellia.mystiasizakaya.content.common.blockentity.CookingEntity;
+import org.hiedacamellia.mystiasizakaya.common.blockentity.CookingEntity;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIIngredient;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
 import org.hiedacamellia.mystiasizakaya.core.recipes.MIRecipeInput;

@@ -1,4 +1,4 @@
-package org.hiedacamellia.mystiasizakaya.content.common.menu;
+package org.hiedacamellia.mystiasizakaya.common.menu;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -14,8 +14,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
-import org.hiedacamellia.mystiasizakaya.content.common.blockentity.CookingEntity;
-import org.hiedacamellia.mystiasizakaya.content.common.blockentity.CookingRangeEntity;
+import org.hiedacamellia.mystiasizakaya.common.blockentity.CookingEntity;
+import org.hiedacamellia.mystiasizakaya.common.blockentity.CookingRangeEntity;
 import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;
 import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
 import org.hiedacamellia.mystiasizakaya.registries.MIMenu;

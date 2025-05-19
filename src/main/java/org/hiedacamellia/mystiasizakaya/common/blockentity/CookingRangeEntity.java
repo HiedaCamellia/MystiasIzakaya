@@ -1,4 +1,4 @@
-package org.hiedacamellia.mystiasizakaya.content.common.blockentity;
+package org.hiedacamellia.mystiasizakaya.common.blockentity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;

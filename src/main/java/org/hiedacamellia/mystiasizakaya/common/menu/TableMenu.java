@@ -1,5 +1,5 @@
 
-package org.hiedacamellia.mystiasizakaya.content.common.menu;
+package org.hiedacamellia.mystiasizakaya.common.menu;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -22,7 +22,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TableMenu extends BaseMenu {
-	public final static HashMap<String, Object> guistate = new HashMap<>();
 	public final Level world;
 	public final Player entity;
 	public BlockPos pos;
