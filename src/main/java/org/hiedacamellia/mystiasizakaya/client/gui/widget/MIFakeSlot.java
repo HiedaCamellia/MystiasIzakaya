@@ -10,11 +10,11 @@ import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
 import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
 
-public class RenderSlot extends AbstractWidget {
+public class MIFakeSlot extends AbstractWidget {
     private final Component tooltip;
     private static final Font font = Minecraft.getInstance().font;
 
-    public RenderSlot(int x, int y, Component tooltip) {
+    public MIFakeSlot(int x, int y, Component tooltip) {
         super(x, y, 16, 16, tooltip);
         this.tooltip = tooltip;
     }
@@ -26,9 +26,8 @@ public class RenderSlot extends AbstractWidget {
 
     @Override
     protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float v) {
+        renderSlotBackground(guiGraphics, getX(), getY());
         RenderSystem.enableBlend();
-        IUIGuiUtils.fillRoundRect(guiGraphics,  getX()- 1,  getY()- 1, 18, 18, 0.05f, 0xFF8B4513);
-        IUIGuiUtils.fillRoundRect(guiGraphics, getX(),getY() , 16, 16, 0.05f, 0xFFf0e0b0);
         if(isHovered()&&!tooltip.equals(Component.empty())){
             int w = font.width(tooltip);
             int h = font.lineHeight;
@@ -41,6 +40,13 @@ public class RenderSlot extends AbstractWidget {
             guiGraphics.drawString(font, tooltip, x, y, 0xFFFFFF);
             pose.popPose();
         }
+        RenderSystem.disableBlend();
+    }
+
+    public static void renderSlotBackground(GuiGraphics guiGraphics, int x, int y) {
+        RenderSystem.enableBlend();
+        IUIGuiUtils.fillRoundRect(guiGraphics, x - 1, y - 1, 18, 18, 0.05f, 0xFF8B4513);
+        IUIGuiUtils.fillRoundRect(guiGraphics, x, y, 16, 16, 0.05f, 0xFFf0e0b0);
         RenderSystem.disableBlend();
     }
 

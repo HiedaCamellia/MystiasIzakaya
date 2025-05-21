@@ -2,11 +2,11 @@ package org.hiedacamellia.mystiasizakaya.client.gui.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Renderable;
-import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
@@ -15,20 +15,21 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
 import org.hiedacamellia.immersiveui.client.gui.component.widget.component.UnderLineComponentWidget;
-import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
+import org.hiedacamellia.immersiveui.client.gui.component.widget.toast.ComponentToastWidget;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.LedgerItemWidget;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MICustomButton;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIFakeItemSlot;
+import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIFakeSlot;
 import org.hiedacamellia.mystiasizakaya.common.menu.LedgerMenu;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIMenu;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOnOpen;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
 import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
-import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
 import org.hiedacamellia.mystiasizakaya.util.BalanceUtil;
@@ -37,6 +38,7 @@ import org.joml.Quaternionf;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
 
@@ -47,18 +49,15 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
     }
 
     private Page page = Page.LEDGER;
-    private int iWidth;
-    private int iHeight;
-    private int tPos;
-    private int lPos;
+    private int imageWidth;
 
     private LedgerMenu menu;
     //账单page
     private MICustomButton on_open;
-    private MICustomButton changePage;
     private List<LedgerItemWidget> ledgerItemWidgets;
     private UnderLineComponentWidget balance;
     private UnderLineComponentWidget title;
+    private ComponentToastWidget toastWidget;
 
     private List<AbstractWidget> renderables_ledger = new ArrayList<>();
 
@@ -70,17 +69,22 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
 
     private boolean on_change = false;
     private float progress = 0;
-
+    private boolean changed = false;
 
     public LedgerScreen(LedgerMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
         this.menu = menu;
-        this.iWidth = 120;
-        this.iHeight = 166;
-        this.imageWidth = 160;
+        this.imageWidth = 120;
         this.imageHeight = 166;
     }
 
+    @Override
+    public void onClose() {
+        if(changed){
+            setChanged();
+        }
+        super.onClose();
+    }
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
@@ -97,15 +101,15 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
         RenderSystem.disableDepthTest();
         PoseStack pose = guiGraphics.pose();
         pose.pushPose();
-        IUIGuiUtils.fillRoundRect(guiGraphics, this.lPos-1, this.tPos-1, this.iWidth, this.iHeight, 0.05f, 0xFFffffff);
-        IUIGuiUtils.fillRoundRect(guiGraphics, this.lPos+1, this.tPos+1, this.iWidth, this.iHeight, 0.05f, 0xFF555555);
-        IUIGuiUtils.fillRoundRect(guiGraphics, this.lPos, this.tPos, this.iWidth, this.iHeight, 0.05f, 0xFFc6c6c6);
-        pose.translate(this.lPos+ (float) iWidth /2, this.tPos, 0);
+        IUIGuiUtils.fillRoundRect(guiGraphics, this.leftPos-1, this.topPos-1, this.imageWidth, this.imageHeight, 0.05f, 0xFFffffff);
+        IUIGuiUtils.fillRoundRect(guiGraphics, this.leftPos+1, this.topPos+1, this.imageWidth, this.imageHeight, 0.05f, 0xFF555555);
+        IUIGuiUtils.fillRoundRect(guiGraphics, this.leftPos, this.topPos, this.imageWidth, this.imageHeight, 0.05f, 0xFFc6c6c6);
+        pose.translate(this.leftPos+ (float) imageWidth /2, this.topPos, 0);
         pose.mulPose(new Quaternionf().rotationY(Mth.DEG_TO_RAD*180));
-        pose.translate(-this.lPos- (float) iWidth /2, -this.tPos, 0);
-        IUIGuiUtils.fillRoundRect(guiGraphics, this.lPos-1, this.tPos-1, this.iWidth, this.iHeight, 0.05f, 0xFFffffff);
-        IUIGuiUtils.fillRoundRect(guiGraphics, this.lPos+1, this.tPos+1, this.iWidth, this.iHeight, 0.05f, 0xFF555555);
-        IUIGuiUtils.fillRoundRect(guiGraphics, this.lPos, this.tPos, this.iWidth, this.iHeight, 0.05f, 0xFFc6c6c6);
+        pose.translate(-this.leftPos- (float) imageWidth /2, -this.topPos, 0);
+        IUIGuiUtils.fillRoundRect(guiGraphics, this.leftPos-1, this.topPos-1, this.imageWidth, this.imageHeight, 0.05f, 0xFFffffff);
+        IUIGuiUtils.fillRoundRect(guiGraphics, this.leftPos+1, this.topPos+1, this.imageWidth, this.imageHeight, 0.05f, 0xFF555555);
+        IUIGuiUtils.fillRoundRect(guiGraphics, this.leftPos, this.topPos, this.imageWidth, this.imageHeight, 0.05f, 0xFFc6c6c6);
         RenderSystem.disableBlend();
         pose.popPose();
     }
@@ -150,11 +154,16 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        onchange();
 
         super.renderTransparentBackground(guiGraphics);
+
+        this.renderPageBackground(guiGraphics);
+
+        super.render(guiGraphics, mouseX, mouseY, partialTick);
+
         PoseStack pose = guiGraphics.pose();
         pose.pushPose();
-        this.renderPageBackground(guiGraphics);
 
         if(page == Page.MENU || on_change){
             for(Renderable renderable : this.renderables_menu) {
@@ -163,34 +172,48 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
         }
 
         pose.translate(0, 0, 1000);
-        onchange();
         pose.translate(this.leftPos, this.topPos, 0);
         pose.mulPose(new Quaternionf().rotationX(-0.1f*progress/180));
         pose.mulPose(new Quaternionf().rotationY(Mth.DEG_TO_RAD*progress));
         pose.translate(-this.leftPos, -this.topPos, 0);
         this.renderPageBackground(guiGraphics);
 
-        for(Renderable renderable : this.renderables_ledger) {
-            renderable.render(guiGraphics, mouseX, mouseY, partialTick);
-        }
 
-        if(page == Page.LEDGER || on_change)
+        if(page == Page.LEDGER || on_change) {
+            for(Renderable renderable : this.renderables_ledger) {
+                renderable.render(guiGraphics, mouseX, mouseY, partialTick);
+            }
             on_open.render(guiGraphics, mouseX, mouseY, partialTick);
+            toastWidget.render(guiGraphics, mouseX, mouseY, partialTick);
+        }
 
         pose.popPose();
         pose.pushPose();
 
         pose.translate(0, 0, 100);
         title.render(guiGraphics, mouseX, mouseY, partialTick);
-        changePage.render(guiGraphics, mouseX, mouseY, partialTick);
         pose.popPose();
 
-        super.render(guiGraphics, mouseX, mouseY, partialTick);
+    }
+
+    @Override
+    protected void renderSlotHighlight(GuiGraphics guiGraphics, Slot slot, int mouseX, int mouseY, float partialTick) {
+        if (page==Page.MENU&& !on_change&&slot.isHighlightable()) {
+            renderSlotHighlight(guiGraphics, slot.x, slot.y, 0, this.getSlotColor(slot.index));
+        }
+    }
+
+    @Override
+    protected void renderSlot(GuiGraphics guiGraphics, Slot slot) {
+        if(page==Page.MENU || on_change){
+            MIFakeSlot.renderSlotBackground(guiGraphics,slot.x,slot.y);
+            super.renderSlot(guiGraphics, slot);
+        }
     }
 
     private void onchange(){
-        float realtimeDeltaTicks = Minecraft.getInstance().getTimer().getRealtimeDeltaTicks();
         if(on_change){
+            float realtimeDeltaTicks = Minecraft.getInstance().getTimer().getRealtimeDeltaTicks();
             progress+= (page == Page.LEDGER ? realtimeDeltaTicks : -realtimeDeltaTicks)*8;
             if(progress>180 && page == Page.LEDGER){
                 progress = 180;
@@ -201,19 +224,46 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
                 progress = 0;
                 on_change = false;
                 page = Page.LEDGER;
+                if(changed){
+                    setChanged();
+                }
             }
         }
     }
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        if(page==Page.LEDGER){
+            boolean b = on_open.mouseClicked(mouseX, mouseY, button);
+            if(b){
+                return true;
+            }
+            int x1 = leftPos;
+            int x2 = leftPos + imageWidth;
+            int y1 = topPos;
+            int y2 = topPos + imageHeight;
+            if(mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2){
+                on_change = true;
+                return true;
+            }
+        }
+        if(page==Page.MENU){
+            int x1 = leftPos-imageWidth;
+            int x2 = leftPos;
+            int y1 = topPos;
+            int y2 = topPos + imageHeight;
+            if(mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2){
+                on_change = true;
+                return true;
+            }
+        }
+
         boolean v = super.mouseClicked(mouseX, mouseY, button);
 
         ItemStack draggingItem = menu.getCarried();
         tryAccept(draggingItem.copy());
 
 
-        boolean changed = false;
         if(page==Page.MENU){
             for(MIFakeItemSlot fakeItemSlot : fakeCuisinesSlots){
                 boolean b = fakeItemSlot.mouseClicked(mouseX, mouseY, button);
@@ -230,15 +280,7 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
                 v = v || b;
             }
         }
-        if(page==Page.LEDGER){
-            boolean b = on_open.mouseClicked(mouseX, mouseY, button);
-            v = v || b;
-        }
-        boolean b = changePage.mouseClicked(mouseX, mouseY, button);
-        if(changed){
-            setChanged();
-        }
-        return v || b;
+        return v;
     }
 
     @Override
@@ -246,39 +288,44 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
         super.init();
         int centerX = this.width / 2;
         int centerY = this.height / 2;
-        this.lPos = centerX - this.imageWidth / 2;
-        this.tPos = centerY - this.imageHeight / 2;
+        this.leftPos = centerX - this.imageWidth / 2;
+        this.topPos = centerY - this.imageHeight / 2;
         LocalPlayer player = Minecraft.getInstance().player;
 
-        changePage = new MICustomButton.builder(Component.literal("翻页"), e -> {
-            on_change = true;
-        }).pos(this.lPos + iWidth + 10, this.tPos + iHeight - 16 ).size(22, 16).build();
 
         on_open = new MICustomButton.builder(getComponent(player.getData(MIAttachment.MI_ON_OPEN).open()), e ->{
-            MystiasIzakaya.LOGGER.debug("on_open: "+player.getData(MIAttachment.MI_ON_OPEN).open());
             boolean open = player.getData(MIAttachment.MI_ON_OPEN).open();
-            Debug.getLogger().debug("on_open: "+!open);
-            player.setData(MIAttachment.MI_ON_OPEN,new MIOnOpen(!open));
-            PacketDistributor.sendToServer(new MIOnOpen(!open));
-            e.setMessage(getComponent(!open));
-        }).pos(this.lPos+10,this.tPos+4).size(40,16).build();
-        on_open.setTooltip(Tooltip.create(Component.translatable("gui.mystias_izakaya.ledger_ui.on_open")));
+            boolean f=false;
+            if(open){
+                f=true;
+            }
+            if(!open && checkOpen()){
+                f=true;
+            }
+            if(f) {
+                player.setData(MIAttachment.MI_ON_OPEN, new MIOnOpen(!open));
+                PacketDistributor.sendToServer(new MIOnOpen(!open));
+                e.setMessage(getComponent(!open));
+            }
+        }).pos(this.leftPos+10,this.topPos+4).size(40,16).build();
+
+        toastWidget = new ComponentToastWidget(leftPos+imageWidth/2,topPos+imageHeight/2,imageWidth,20,40f,Component.empty());
 
         ledgerItemWidgets = new ArrayList<>();
         MITurnover miTurnover = player.getData(MIAttachment.MI_TURNOVER);
         for(int i = 0; i < miTurnover.k().size(); i++){
-            LedgerItemWidget ledgerItemWidget = new LedgerItemWidget(this.lPos + 10, this.tPos + 20 + 14 * i, miTurnover.k().get(i), miTurnover.v().get(i));
+            LedgerItemWidget ledgerItemWidget = new LedgerItemWidget(this.leftPos + 10, this.topPos + 20 + 14 * i, miTurnover.k().get(i), miTurnover.v().get(i));
             ledgerItemWidgets.add(ledgerItemWidget);
             renderables_ledger.add(ledgerItemWidget);
         }
 
         Component component = Component.translatable("gui.mystias_izakaya.balance").append(Component.literal(new java.text.DecimalFormat("#######")
                 .format(BalanceUtil.getBalance(player))).append(Component.literal(" \u5186")));
-        balance = new UnderLineComponentWidget(this.lPos+iWidth- font.width(component)-10, this.tPos +10, component);
+        balance = new UnderLineComponentWidget(this.leftPos+imageWidth- font.width(component)-10, this.topPos +10, component);
         renderables_ledger.add(balance);
 
         Component titlec = Component.translatable("gui.mystias_izakaya.ledger_ui.ledger");
-        title = new UnderLineComponentWidget(this.lPos + iWidth / 2 - font.width(titlec) / 2, this.tPos - 14, titlec);
+        title = new UnderLineComponentWidget(this.leftPos + imageWidth / 2 - font.width(titlec) / 2, this.topPos - 14, titlec);
 
         MIMenu data = player.getData(MIAttachment.MI_MENU);
         List<String> cuisineList = data.orders();
@@ -287,10 +334,10 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
         for (int i = 0; i < 8; i++) {
             ItemStack cuisine = BuiltInRegistries.ITEM.get(ResourceLocation.parse((cuisineList.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
             ItemStack beverage = BuiltInRegistries.ITEM.get(ResourceLocation.parse((beverageList.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
-            MIFakeItemSlot cuisineSlot = new MIFakeItemSlot(this.lPos + 10 + i * 18, this.tPos + 20, Component.empty());
+            MIFakeItemSlot cuisineSlot = new MIFakeItemSlot(this.leftPos + 79 , this.topPos + 10 + i * 18, Component.translatable("gui.mystias_izakaya.ledger_ui.cuisine",i+1));
             cuisineSlot.setItemStack(cuisine);
             fakeCuisinesSlots.add(cuisineSlot);
-            MIFakeItemSlot beverageSlot = new MIFakeItemSlot(this.lPos + 10 + i * 18, this.tPos + 20 + 18, Component.empty());
+            MIFakeItemSlot beverageSlot = new MIFakeItemSlot(this.leftPos + 79 + 18, this.topPos + 10 + i * 18, Component.translatable("gui.mystias_izakaya.ledger_ui.beverage",i+1));
             beverageSlot.setItemStack(beverage);
             fakeBeveragesSlots.add(beverageSlot);
             renderables_menu.add(cuisineSlot);
@@ -303,5 +350,50 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
             return Component.translatable("gui.mystias_izakaya.ledger_ui.open");
         else
             return Component.translatable("gui.mystias_izakaya.ledger_ui.close");
+    }
+
+    private boolean checkOpen(){
+        LocalPlayer player = Minecraft.getInstance().player;
+        MIMenu data1 = player.getData(MIAttachment.MI_MENU);
+        List<BlockPos> blockPosList = player.getData(MIAttachment.MI_ORDERS).blockPos();
+        boolean flag1 = false;
+        boolean flag2 = false;
+        boolean flag3 = false;
+        for (BlockPos blockPos : blockPosList) {
+            if(!Objects.equals(blockPos, new BlockPos(-1, -1, -1))){
+                flag1 = true;
+                break;
+            }
+        }
+        for(String s:data1.orders()){
+            if(!s.equals("minecraft:air")){
+                flag2 = true;
+                break;
+            }
+        }
+        for(String s:data1.beverages()){
+            if(!s.equals("minecraft:air")){
+                flag3 = true;
+                break;
+            }
+        }
+        if(flag1 && flag2 && flag3){
+            toastWidget.reset(Component.translatable("network.mystiasizakaya.ledger.success").withStyle(ChatFormatting.GREEN));
+            return true;
+        }else {
+            if(!flag1){
+                toastWidget.reset(Component.translatable("network.mystiasizakaya.ledger.failed.table").withStyle(ChatFormatting.GRAY));
+                return false;
+            }
+            if(!flag2){
+                toastWidget.reset(Component.translatable("network.mystiasizakaya.ledger.failed.cuisines").withStyle(ChatFormatting.GRAY));
+                return false;
+            }
+            if(!flag3){
+                toastWidget.reset(Component.translatable("network.mystiasizakaya.ledger.failed.beverages").withStyle(ChatFormatting.GRAY));
+                return false;
+            }
+        }
+        return false;
     }
 }

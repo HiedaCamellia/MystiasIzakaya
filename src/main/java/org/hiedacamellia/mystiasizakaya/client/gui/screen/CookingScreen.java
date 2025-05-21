@@ -20,8 +20,8 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
 import org.hiedacamellia.immersiveui.client.gui.component.widget.toast.ComponentToastWidget;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
+import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIFakeSlot;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIItemButton;
-import org.hiedacamellia.mystiasizakaya.client.gui.widget.RenderSlot;
 import org.hiedacamellia.mystiasizakaya.common.item.utils.KitchenwareBlockItem;
 import org.hiedacamellia.mystiasizakaya.common.menu.CookingMenu;
 import org.hiedacamellia.mystiasizakaya.content.cooking.CookingUtils;
@@ -270,18 +270,18 @@ public class CookingScreen extends AbstractContainerScreen<CookingMenu> {
         int start_y = this.topPos + imageHeight - 80;
         for (int si = 0; si < 3; ++si)
             for (int sj = 0; sj < 9; ++sj)
-                this.addRenderableWidget(new RenderSlot(start_x + sj * 18, start_y + si * 18, Component.empty()));
+                this.addRenderableWidget(new MIFakeSlot(start_x + sj * 18, start_y + si * 18, Component.empty()));
         for (int si = 0; si < 9; ++si)
-            this.addRenderableWidget(new RenderSlot(start_x + si * 18, 2 + start_y + 3 * 18, Component.empty()));
+            this.addRenderableWidget(new MIFakeSlot(start_x + si * 18, 2 + start_y + 3 * 18, Component.empty()));
         if(menu.showKitchenWare())
-            this.addRenderableWidget(new RenderSlot(start_x + 7 * 18, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.kitchenwares")));
-        this.addRenderableWidget(new RenderSlot(start_x + 9 * 18, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.output")));
+            this.addRenderableWidget(new MIFakeSlot(start_x + 7 * 18, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.kitchenwares")));
+        this.addRenderableWidget(new MIFakeSlot(start_x + 9 * 18, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.output")));
 
-        this.addRenderableWidget(new RenderSlot(start_x, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.ingerdients")));
-        this.addRenderableWidget(new RenderSlot(start_x + 18, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.ingerdients")));
-        this.addRenderableWidget(new RenderSlot(start_x + 2 * 18, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.ingerdients")));
-        this.addRenderableWidget(new RenderSlot(start_x + 3 * 18, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.ingerdients")));
-        this.addRenderableWidget(new RenderSlot(start_x + 4 * 18, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.ingerdients")));
+        this.addRenderableWidget(new MIFakeSlot(start_x, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.ingerdients")));
+        this.addRenderableWidget(new MIFakeSlot(start_x + 18, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.ingerdients")));
+        this.addRenderableWidget(new MIFakeSlot(start_x + 2 * 18, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.ingerdients")));
+        this.addRenderableWidget(new MIFakeSlot(start_x + 3 * 18, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.ingerdients")));
+        this.addRenderableWidget(new MIFakeSlot(start_x + 4 * 18, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.ingerdients")));
 
         this.toast = new ComponentToastWidget(leftPos+151,topPos+36, 75, 20,20.0f, Component.empty());
         this.addRenderableWidget(toast);

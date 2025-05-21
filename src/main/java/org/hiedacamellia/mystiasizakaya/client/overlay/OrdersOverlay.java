@@ -1,6 +1,7 @@
 
 package org.hiedacamellia.mystiasizakaya.client.overlay;
 
+import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -13,6 +14,7 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
+import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
@@ -33,7 +35,12 @@ public class OrdersOverlay {
     private static ItemStack flag_beverage;
 
 
-    private final static int x_mid = 20 + 34 * 4;
+
+    private static int getMid(){
+        Window window = Minecraft.getInstance().getWindow();
+        int guiScaledWidth = window.getGuiScaledWidth();
+        return guiScaledWidth/2 - 20*5;
+    }
 
 
     @SubscribeEvent(priority = EventPriority.NORMAL)
@@ -91,23 +98,23 @@ public class OrdersOverlay {
                         axis = 16 - tick;
                         if(now_orders==1) {
                             //Debug.getLogger().debug("1");
-                            start_x = x_mid - 17;
+                            start_x = getMid() - 17;
                         }else {
                             if (middle) {
-                                start_x = x_mid - now_orders * 17 - 17;
+                                start_x = getMid() - now_orders * 17 - 17;
                             }else {
-                                start_x = x_mid - now_orders * 17;
+                                start_x = getMid() - now_orders * 17;
                             }
                         }
                     } else {
                         axis = tick;
                         if(now_orders==0) {
-                            start_x = x_mid - 17;
+                            start_x = getMid() - 17;
                         }else {
                             if (middle) {
-                                start_x = x_mid - now_orders * 17 - 34;
+                                start_x = getMid() - now_orders * 17 - 34;
                             }else {
-                                start_x = x_mid - now_orders * 17 - 17;
+                                start_x = getMid() - now_orders * 17 - 17;
                             }
                         }
                     }
@@ -168,7 +175,7 @@ public class OrdersOverlay {
             }
             if (statical) {
                 int reali = 0;
-                int start_x = x_mid - now_orders * 17;
+                int start_x = getMid() - now_orders * 17;
                 for (int i = 0; i < 8; i++) {
                     cuisines = cuisinesorders_list.get(i);
                     beverages = beveragesorders_list.get(i);
@@ -188,9 +195,11 @@ public class OrdersOverlay {
     }
 
     private static void renderPart(GuiGraphics guiGraphics, int x, int y, int i, ItemStack cuisine, ItemStack beverage) {
-        guiGraphics.blit(ResourceLocation.parse("mystias_izakaya:textures/screens/page.png"),
-                x,
-                y, 0, 0, 36, 32, 36, 32);
+
+        IUIGuiUtils.fillRoundRect(guiGraphics,x,y,36,36,0.05f,0xFF3b2115);
+        IUIGuiUtils.fillRoundRect(guiGraphics,x+2,y+2,32,36,0.05f,0xFF774c32);
+
+
         if (!cuisine.isEmpty()) {
             guiGraphics.renderItem(cuisine,
                     x + 2, y + 2, 0, 0);

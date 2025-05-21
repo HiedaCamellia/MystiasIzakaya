@@ -1,7 +1,6 @@
 package org.hiedacamellia.mystiasizakaya.core.codec.record;
 
 import io.netty.buffer.ByteBuf;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -67,18 +66,18 @@ public record MIOnOpen(boolean open) implements CustomPacketPayload {
                         }
                         if(flag1 && flag2 && flag3){
                             player.setData(MIAttachment.MI_ON_OPEN, data);
-                            player.sendSystemMessage(Component.translatable("network.mystiasizakaya.ledger.success").withStyle(ChatFormatting.GREEN));
+//                            player.sendSystemMessage(Component.translatable("network.mystiasizakaya.ledger.success").withStyle(ChatFormatting.GREEN));
                         }else {
-                            player.sendSystemMessage(Component.translatable("network.mystiasizakaya.ledger.failed").withStyle(ChatFormatting.RED));
-                            if(!flag1){
-                                player.sendSystemMessage(Component.translatable("network.mystiasizakaya.ledger.failed.table").withStyle(ChatFormatting.GRAY));
-                            }
-                            if(!flag2){
-                                player.sendSystemMessage(Component.translatable("network.mystiasizakaya.ledger.failed.cuisines").withStyle(ChatFormatting.GRAY));
-                            }
-                            if(!flag3){
-                                player.sendSystemMessage(Component.translatable("network.mystiasizakaya.ledger.failed.beverages").withStyle(ChatFormatting.GRAY));
-                            }
+//                            player.sendSystemMessage(Component.translatable("network.mystiasizakaya.ledger.failed").withStyle(ChatFormatting.RED));
+//                            if(!flag1){
+//                                player.sendSystemMessage(Component.translatable("network.mystiasizakaya.ledger.failed.table").withStyle(ChatFormatting.GRAY));
+//                            }
+//                            if(!flag2){
+//                                player.sendSystemMessage(Component.translatable("network.mystiasizakaya.ledger.failed.cuisines").withStyle(ChatFormatting.GRAY));
+//                            }
+//                            if(!flag3){
+//                                player.sendSystemMessage(Component.translatable("network.mystiasizakaya.ledger.failed.beverages").withStyle(ChatFormatting.GRAY));
+//                            }
                         }
                     }else {
                         player.setData(MIAttachment.MI_ON_OPEN, data);

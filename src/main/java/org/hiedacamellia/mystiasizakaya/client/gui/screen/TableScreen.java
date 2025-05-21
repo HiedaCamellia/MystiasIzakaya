@@ -9,7 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
-import org.hiedacamellia.mystiasizakaya.client.gui.widget.RenderSlot;
+import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIFakeSlot;
 import org.hiedacamellia.mystiasizakaya.common.menu.TableMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
@@ -59,12 +59,12 @@ public class TableScreen extends AbstractContainerScreen<TableMenu> {
         int start_y = this.topPos + 84;
         for (int si = 0; si < 3; ++si)
             for (int sj = 0; sj < 9; ++sj)
-                this.addRenderableWidget(new RenderSlot(start_x + 8 + sj * 18, 2 + start_y + si * 18, Component.empty()));
+                this.addRenderableWidget(new MIFakeSlot(start_x + 8 + sj * 18, 2 + start_y + si * 18, Component.empty()));
         for (int si = 0; si < 9; ++si)
-            this.addRenderableWidget(new RenderSlot(start_x + 8 + si * 18, 6 + start_y + 3 * 18, Component.empty()));
+            this.addRenderableWidget(new MIFakeSlot(start_x + 8 + si * 18, 6 + start_y + 3 * 18, Component.empty()));
 
-        this.addRenderableWidget(new RenderSlot( this.leftPos + 70, this.topPos + 30, Component.empty()));
-        this.addRenderableWidget(new RenderSlot(this.leftPos + 100, this.topPos + 30, Component.empty()));
+        this.addRenderableWidget(new MIFakeSlot( this.leftPos + 70, this.topPos + 30, Component.empty()));
+        this.addRenderableWidget(new MIFakeSlot(this.leftPos + 100, this.topPos + 30, Component.empty()));
     }
 
 }

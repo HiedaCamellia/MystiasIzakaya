@@ -44,7 +44,7 @@ public class LedgerItem extends Item {
 
                 @Override
                 public @Nullable AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-                    return new LedgerMenu(i,inventory , player);
+                    return new LedgerMenu(i,inventory);
                 }
             });
         }

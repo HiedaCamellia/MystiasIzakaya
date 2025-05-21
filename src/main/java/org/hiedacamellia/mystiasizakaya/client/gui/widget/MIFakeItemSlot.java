@@ -7,7 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import org.hiedacamellia.mystiasizakaya.util.ItemStackHolder;
 import org.lwjgl.glfw.GLFW;
 
-public class MIFakeItemSlot extends RenderSlot {
+public class MIFakeItemSlot extends MIFakeSlot {
 
     private ItemStackHolder holder = new ItemStackHolder();
 
