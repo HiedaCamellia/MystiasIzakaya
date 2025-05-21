@@ -15,11 +15,10 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MICost;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITeleColddown;
 import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
+import org.hiedacamellia.mystiasizakaya.util.MessageUtil;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
-import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 import org.hiedacamellia.mystiasizakaya.util.BalanceUtil;
 
 import java.util.List;
@@ -45,23 +44,16 @@ public record TelephoneConfirmS2SMessage(List<ItemStack> out, BlockPos pos, int 
             Player player = context.player();
             int tick = player.getData(MIAttachment.MI_TELE_COLDDOWN).tick();
             if(tick > 0){
-                player.sendSystemMessage(Component.translatable("message.mystiasizakaya.telephone.colddown", tick / 20).withStyle(ChatFormatting.RED));
+
+                MessageUtil.send(Component.translatable("message.mystiasizakaya.telephone.colddown", tick / 20).withStyle(ChatFormatting.RED),player);
                 return;
             }
             List<ItemStack> out = message.out();
             int cost = message.cost();
-            int cost_all = 0;
-            for (ItemStack itemStack : out) {
-                cost_all += itemStack.getCount() * itemStack.getOrDefault(MIDatacomponet.MI_COST, new MICost(0)).cost();
-            }
-            if ((double) cost / cost_all < 0.6) {
-                player.sendSystemMessage(Component.translatable("message.mystiasizakaya.checkout.cheat").withStyle(ChatFormatting.RED));
-                return;
-            }
 
             int balance = BalanceUtil.getBalance(player);
             if (balance < cost) {
-                player.sendSystemMessage(Component.translatable("message.mystiasizakaya.checkout.fail").withStyle(ChatFormatting.RED));
+                MessageUtil.send(Component.translatable("message.mystiasizakaya.checkout.fail").withStyle(ChatFormatting.RED),player);
             } else {
 
                 BalanceUtil.telephone(player, -cost);
@@ -69,7 +61,7 @@ public record TelephoneConfirmS2SMessage(List<ItemStack> out, BlockPos pos, int 
                 for (ItemStack itemStack : out) {
                     ItemHandlerHelper.giveItemToPlayer(player, itemStack);
                 }
-                player.sendSystemMessage(Component.translatable("message.mystiasizakaya.checkout.success").withStyle(ChatFormatting.GREEN));
+                MessageUtil.send(Component.translatable("message.mystiasizakaya.checkout.success").withStyle(ChatFormatting.GREEN),player);
 
                 player.setData(MIAttachment.MI_TELE_COLDDOWN, new MITeleColddown(MICommonConfig.TELE_COOLDOWN.get()));
 

@@ -4,6 +4,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.network.PacketDistributor;
+import org.hiedacamellia.immersiveui.client.util.holder.IntHolder;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.api.event.CurrencyChangeEvent;
 import org.hiedacamellia.mystiasizakaya.api.kubejs.MIEventPoster;

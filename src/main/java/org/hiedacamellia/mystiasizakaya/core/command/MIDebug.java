@@ -16,10 +16,11 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
+import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIMenu;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MITeleColddown;
-import org.hiedacamellia.mystiasizakaya.core.debug.Debug;
+import org.hiedacamellia.mystiasizakaya.util.MessageUtil;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.ArrayList;
@@ -117,9 +118,8 @@ public class MIDebug {
                                     .withColor(ChatFormatting.GREEN)
                                     .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, component1))));
                         }
-                        player.sendSystemMessage(Component.empty().append(component).append("]"));
-
-                        Debug.getLogger().debug(miMenu.toString());
+                        MessageUtil.sendDebug(Component.empty().append(component).append("]"),player);
+                        MystiasIzakaya.LOGGER.debug(miMenu.toString());
                     }
                     return 0;
                 })).then(Commands.literal("reset").executes(arguments -> {
@@ -141,8 +141,8 @@ public class MIDebug {
                                     .withColor(ChatFormatting.GREEN)
                                     .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, component1))));
                         }
-                        player.sendSystemMessage(Component.empty().append(component).append("]"));
-                        Debug.getLogger().debug(miMenu.toString());
+                        MessageUtil.sendDebug(Component.empty().append(component).append("]"),player);
+                        MystiasIzakaya.LOGGER.debug(miMenu.toString());
                     }
                     return 0;
                 })).then(Commands.literal("reset").executes(arguments -> {
@@ -164,8 +164,8 @@ public class MIDebug {
                                             .withColor(ChatFormatting.GREEN)
                                             .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, component1))));
                                 }
-                                player.sendSystemMessage(Component.empty().append(component).append("]"));
-                                Debug.getLogger().debug(miMenu.toString());
+                                MessageUtil.sendDebug(Component.empty().append(component).append("]"),player);
+                                MystiasIzakaya.LOGGER.debug(miMenu.toString());
                             }
                             return 0;
                         })).then(Commands.literal("reset").executes(arguments -> {

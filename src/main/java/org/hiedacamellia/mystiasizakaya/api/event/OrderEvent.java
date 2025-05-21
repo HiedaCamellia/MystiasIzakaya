@@ -3,7 +3,7 @@ package org.hiedacamellia.mystiasizakaya.api.event;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.Event;
-import org.hiedacamellia.mystiasizakaya.util.IntHolder;
+import org.hiedacamellia.immersiveui.client.util.holder.IntHolder;
 
 public abstract class OrderEvent extends Event {
 

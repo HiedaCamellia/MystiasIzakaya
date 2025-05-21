@@ -28,6 +28,7 @@ import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.common.blockentity.TableEntity;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
+import org.hiedacamellia.mystiasizakaya.util.MessageUtil;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.jetbrains.annotations.NotNull;
@@ -103,12 +104,12 @@ public class TableBlock extends Block implements EntityBlock {
 					BlockPos pos = blockPosList.get(i);
 					if (pos.equals(blockPos)) {
 						blockPosList.set(i, new BlockPos(-1, -1, -1));
-						serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.table.unbound",i+1,blockPos.getX(),blockPos.getY(),blockPos.getZ()));
+						MessageUtil.send(Component.translatable("message.mystias_izakaya.table.unbound",i+1,blockPos.getX(),blockPos.getY(),blockPos.getZ()),player);
 						break;
 					}
 					if (pos.equals(new BlockPos(-1, -1, -1))) {
 						blockPosList.set(i, blockPos);
-						serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.table.bound",i+1,blockPos.getX(),blockPos.getY(),blockPos.getZ()));
+						MessageUtil.send(Component.translatable("message.mystias_izakaya.table.bound",i+1,blockPos.getX(),blockPos.getY(),blockPos.getZ()),player);
 						break;
 					}
 				}

@@ -2,12 +2,8 @@ package org.hiedacamellia.mystiasizakaya.core.event;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -16,31 +12,24 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.api.event.OrderEvent;
 import org.hiedacamellia.mystiasizakaya.api.kubejs.MIEventPoster;
 import org.hiedacamellia.mystiasizakaya.common.blockentity.TableEntity;
-import org.hiedacamellia.mystiasizakaya.common.item.MIBaseItem;
 import org.hiedacamellia.mystiasizakaya.content.order.OrderUtils;
 import org.hiedacamellia.mystiasizakaya.core.codec.record.*;
 import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
-import org.hiedacamellia.mystiasizakaya.registries.MITag;
 import org.hiedacamellia.mystiasizakaya.util.BalanceUtil;
-import org.hiedacamellia.mystiasizakaya.util.IntHolder;
+import org.hiedacamellia.immersiveui.client.util.holder.IntHolder;
 
 import java.util.*;
 
 @EventBusSubscriber
 public class MIPlayerEvent {
-
-    @SubscribeEvent
-    public static void onPlayerRespawned(PlayerEvent.PlayerRespawnEvent event) {
-    }
 
     @SubscribeEvent
     public static void clonePlayer(PlayerEvent.Clone event) {
@@ -93,11 +82,6 @@ public class MIPlayerEvent {
             MIOnOpen miOnOpen = player.getData(MIAttachment.MI_ON_OPEN);
             miOnOpen.sync(player);
         }
-    }
-
-    @SubscribeEvent
-    public static void onPlayerChangedDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
-
     }
 
     @SubscribeEvent
@@ -220,69 +204,4 @@ public class MIPlayerEvent {
         }
     }
 
-    @SubscribeEvent
-    public static void onPlayerEntityInteract(PlayerInteractEvent.EntityInteract event){
-        Player player = event.getEntity();
-        Entity entity = event.getTarget();
-
-
-        if(player instanceof ServerPlayer serverPlayer && entity instanceof ItemFrame itemFrame){
-
-
-            BlockPos blockPos = itemFrame.getPos();
-            ItemStack itemStack = itemFrame.getItem();
-
-            if(itemStack.getItem() instanceof MIBaseItem miItem) {
-                ResourceLocation key = BuiltInRegistries.ITEM.getKey(miItem);
-
-                MIMenu miOrders = serverPlayer.getData(MIAttachment.MI_MENU);
-                List<BlockPos> blockPosList = new ArrayList<>(miOrders.blockPos());
-                List<String> cuisineList = new ArrayList<>(miOrders.cuisines());
-                List<String> beverageList = new ArrayList<>(miOrders.beverages());
-                if(blockPosList.size()<8){
-                    for(int i=blockPosList.size()-1;i<8;i++){
-                        blockPosList.add(new BlockPos(-1,-1,-1));
-                        cuisineList.add("minecraft:air");
-                        beverageList.add("minecraft:air");
-                    }
-                }
-
-
-
-
-                for (int i=0;i<blockPosList.size();i++){
-                    BlockPos pos = blockPosList.get(i);
-                    if ((pos.equals(blockPos)||pos.above().equals(blockPos)||pos.below().equals(blockPos)) && serverPlayer.isShiftKeyDown()) {
-                        blockPosList.set(i,new BlockPos(-1, -1, -1));
-                        cuisineList.set(i,"minecraft:air");
-                        beverageList.set(i,"minecraft:air");
-                        serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.unbound",i+1,blockPos.getX(),blockPos.getY(),blockPos.getZ()));
-                        break;
-                    }
-                    if ((pos.equals(blockPos)||pos.above().equals(blockPos)||pos.below().equals(blockPos)) && !serverPlayer.isShiftKeyDown()) {
-                        if(itemStack.is(MITag.cuisinesKey)&&!cuisineList.contains(key.toString())) {
-                            serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.cuisine",itemStack.getDisplayName().getString(),i+1));
-                            cuisineList.set(i, key.toString());
-                        }
-                        if(itemStack.is(MITag.beveragesKey)&&!beverageList.contains(key.toString())) {
-                            serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.beverage",itemStack.getDisplayName().getString(),i+1));
-                            beverageList.set(i, key.toString());
-                        }
-                        break;
-                    }
-                    if (Objects.equals(pos, new BlockPos(-1, -1, -1)) && !serverPlayer.isShiftKeyDown()) {
-                        blockPosList.set(i,blockPos);
-                        serverPlayer.sendSystemMessage(Component.translatable("message.mystias_izakaya.menu.bound",i+1,blockPos.getX(),blockPos.getY(),blockPos.getZ()));
-                        break;
-                    }
-                }
-                MIMenu miOrders1 = new MIMenu(cuisineList, beverageList, blockPosList);
-                serverPlayer.setData(MIAttachment.MI_MENU, miOrders1);
-                PacketDistributor.sendToPlayer(serverPlayer, miOrders1);
-
-
-                event.setCancellationResult(InteractionResult.SUCCESS);
-            }
-        }
-    }
 }

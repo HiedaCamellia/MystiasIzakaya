@@ -28,6 +28,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.hiedacamellia.mystiasizakaya.client.gui.screen.TelephoneScreen;
+import org.hiedacamellia.mystiasizakaya.util.MessageUtil;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.jetbrains.annotations.NotNull;
 
@@ -73,7 +74,7 @@ public class Telephone extends Block {
         super.useWithoutItem(blockstate, world, pos, entity, hit);
         int tick = entity.getData(MIAttachment.MI_TELE_COLDDOWN).tick();
         if (tick > 0) {
-            entity.sendSystemMessage(Component.translatable("message.mystiasizakaya.telephone.colddown", tick / 20).withStyle(ChatFormatting.RED));
+            MessageUtil.send(Component.translatable("message.mystiasizakaya.telephone.colddown", tick / 20).withStyle(ChatFormatting.RED));
             return InteractionResult.FAIL;
         }
         if (entity.isLocalPlayer()) {
