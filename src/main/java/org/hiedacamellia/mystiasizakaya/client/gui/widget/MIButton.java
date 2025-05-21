@@ -4,8 +4,8 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
+import org.hiedacamellia.immersiveui.client.util.holder.DoubleHolder;
 import org.hiedacamellia.mystiasizakaya.util.ItemStackHolder;
-import org.hiedacamellia.mystiasizakaya.util.DoubleHolder;
 
 import javax.annotation.Nullable;
 
