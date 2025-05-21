@@ -21,7 +21,7 @@ public class OrderUtils {
 
         MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS.get());
 
-        List<String> orders = new ArrayList<>(miOrders.orders());
+        List<String> orders = new ArrayList<>(miOrders.cuisines());
         List<String> ordersbeverages = new ArrayList<>(miOrders.beverages());
 
         OrderEvent.Add add = new OrderEvent.Add(player, cuisines, beverages, id);
@@ -43,7 +43,7 @@ public class OrderUtils {
 
         MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS.get());
 
-        List<String> orders = new ArrayList<>(miOrders.orders());
+        List<String> orders = new ArrayList<>(miOrders.cuisines());
         List<String> ordersbeverages = new ArrayList<>(miOrders.beverages());
 
         ItemStack beverages= ItemStack.EMPTY, cuisines= ItemStack.EMPTY;

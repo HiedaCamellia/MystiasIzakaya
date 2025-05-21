@@ -16,19 +16,20 @@ import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public record MIOrders(List<String> orders, List<String> beverages, List<BlockPos> blockPos)implements CustomPacketPayload  {
+public record MIOrders(List<String> cuisines, List<String> beverages, List<BlockPos> blockPos)implements CustomPacketPayload  {
     public void sync(Player player){
         if (player instanceof ServerPlayer serverPlayer)
-            PacketDistributor.sendToPlayer(serverPlayer, new MIOrders(this.orders, this.beverages, this.blockPos));
+            PacketDistributor.sendToPlayer(serverPlayer, new MIOrders(this.cuisines, this.beverages, this.blockPos));
     }
 
     public static final CustomPacketPayload.Type<MIOrders> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "mi_orders"));
 
     public static final StreamCodec<ByteBuf, MIOrders> STREAM_CODEC = StreamCodec.composite(
             ByteBufCodecs.fromCodec(Codec.list(Codec.STRING)),
-            MIOrders::orders,
+            MIOrders::cuisines,
             ByteBufCodecs.fromCodec(Codec.list(Codec.STRING)),
             MIOrders::beverages,
             ByteBufCodecs.fromCodec(Codec.list(BlockPos.CODEC)),
@@ -36,6 +37,17 @@ public record MIOrders(List<String> orders, List<String> beverages, List<BlockPo
             MIOrders::new
     );
 
+    public static MIOrders init(){
+        List<BlockPos> tables = new ArrayList<>();
+        List<String> cuisineList = new ArrayList<>();
+        List<String> beverageList = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            tables.add(new BlockPos(-1, -1, -1));
+            cuisineList.add("minecraft:air");
+            beverageList.add("minecraft:air");
+        }
+        return new MIOrders(cuisineList,beverageList,tables);
+    }
     @Override
     public CustomPacketPayload.@NotNull Type<? extends CustomPacketPayload> type() {
         return TYPE;

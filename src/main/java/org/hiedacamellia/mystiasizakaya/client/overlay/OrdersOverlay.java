@@ -61,7 +61,7 @@ public class OrdersOverlay {
                 flag_beverage = ItemStack.EMPTY;
 
             miOrders = entity.getData(MIAttachment.MI_ORDERS);
-            List<ItemStack> cuisinesorders_list = getStacks(miOrders.orders());
+            List<ItemStack> cuisinesorders_list = getStacks(miOrders.cuisines());
             List<ItemStack> beveragesorders_list = getStacks(miOrders.beverages());
             List<ItemStack> last_orders = getLast_orders();
             List<ItemStack> last_beverage = getLast_beverage();

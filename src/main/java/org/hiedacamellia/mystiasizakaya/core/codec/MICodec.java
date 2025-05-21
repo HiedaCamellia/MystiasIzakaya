@@ -23,7 +23,7 @@ public class MICodec {
 
     public static final Codec<MIMenu> MI_MENU_CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
-                    Codec.list(Codec.STRING).fieldOf("orders").forGetter(MIMenu::orders),
+                    Codec.list(Codec.STRING).fieldOf("cuisines").forGetter(MIMenu::cuisines),
                     Codec.list(Codec.STRING).fieldOf("beverages").forGetter(MIMenu::beverages),
                     Codec.list(BlockPos.CODEC).fieldOf("blockpos").forGetter(MIMenu::blockPos)
             ).apply(instance, MIMenu::new)
@@ -31,7 +31,7 @@ public class MICodec {
 
     public static final Codec<MIOrders> MI_ORDERS_CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
-                    Codec.list(Codec.STRING).fieldOf("orders").forGetter(MIOrders::orders),
+                    Codec.list(Codec.STRING).fieldOf("cuisines").forGetter(MIOrders::cuisines),
                     Codec.list(Codec.STRING).fieldOf("beverages").forGetter(MIOrders::beverages),
                     Codec.list(BlockPos.CODEC).fieldOf("blockpos").forGetter(MIOrders::blockPos)
             ).apply(instance, MIOrders::new)

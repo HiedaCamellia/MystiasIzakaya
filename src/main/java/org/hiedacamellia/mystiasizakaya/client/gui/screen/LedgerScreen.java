@@ -328,12 +328,12 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
         title = new UnderLineComponentWidget(this.leftPos + imageWidth / 2 - font.width(titlec) / 2, this.topPos - 14, titlec);
 
         MIMenu data = player.getData(MIAttachment.MI_MENU);
-        List<String> cuisineList = data.orders();
+        List<String> cuisineList = data.cuisines();
         List<String> beverageList = data.beverages();
 
-        for (int i = 0; i < 8; i++) {
-            ItemStack cuisine = BuiltInRegistries.ITEM.get(ResourceLocation.parse((cuisineList.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
-            ItemStack beverage = BuiltInRegistries.ITEM.get(ResourceLocation.parse((beverageList.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+        for (int i = 0; i < 8 ; i++) {
+            ItemStack cuisine = i<cuisineList.size()?BuiltInRegistries.ITEM.get(ResourceLocation.parse((cuisineList.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance():ItemStack.EMPTY;
+            ItemStack beverage = i<beverageList.size()?BuiltInRegistries.ITEM.get(ResourceLocation.parse((beverageList.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance():ItemStack.EMPTY;
             MIFakeItemSlot cuisineSlot = new MIFakeItemSlot(this.leftPos + 79 , this.topPos + 10 + i * 18, Component.translatable("gui.mystias_izakaya.ledger_ui.cuisine",i+1));
             cuisineSlot.setItemStack(cuisine);
             fakeCuisinesSlots.add(cuisineSlot);
@@ -365,7 +365,7 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
                 break;
             }
         }
-        for(String s:data1.orders()){
+        for(String s:data1.cuisines()){
             if(!s.equals("minecraft:air")){
                 flag2 = true;
                 break;

@@ -112,7 +112,7 @@ public class TableBlock extends Block implements EntityBlock {
 						break;
 					}
 				}
-				MIOrders miOrders1 = new MIOrders(miOrders.orders(), miOrders.beverages(), blockPosList);
+				MIOrders miOrders1 = new MIOrders(miOrders.cuisines(), miOrders.beverages(), blockPosList);
 				serverPlayer.setData(MIAttachment.MI_ORDERS, miOrders1);
 				PacketDistributor.sendToPlayer(serverPlayer, miOrders1);
 

@@ -32,7 +32,7 @@ public class MIDebug {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("mystiasizakaya").then(Commands.literal("debug")
-				.then(Commands.literal("orders").then(
+				.then(Commands.literal("cuisines").then(
 						Commands.argument("id", DoubleArgumentType.doubleArg()).then(Commands.literal("cuisines").then(Commands.literal("replace").then(Commands.argument("cuisines", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
 							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
 							ItemStack cuisines = ItemArgument.getItem(arguments, "cuisines").getItem().getDefaultInstance();
@@ -41,7 +41,7 @@ public class MIDebug {
                             List<String> orders_list;
                             if (player != null) {
                                 MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                orders_list = new ArrayList<>(miOrders.orders());
+                                orders_list = new ArrayList<>(miOrders.cuisines());
                                 while (orders_list.size() < id+1) {
                                     orders_list.add("");
                                 }
@@ -56,7 +56,7 @@ public class MIDebug {
                             List<String> orders_list;
                             if (player != null) {
                                 MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                orders_list = new ArrayList<>(miOrders.orders());
+                                orders_list = new ArrayList<>(miOrders.cuisines());
                                 while (orders_list.size() < id+1) {
                                     orders_list.add("");
                                 }
@@ -78,8 +78,8 @@ public class MIDebug {
                                     ordersbeverages_list.add("");
                                 }
                                 ordersbeverages_list.set(id, order);
-                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.orders(), ordersbeverages_list, miOrders.blockPos()));
-                                PacketDistributor.sendToPlayer(player, new MIOrders(miOrders.orders(), ordersbeverages_list, miOrders.blockPos()));
+                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.cuisines(), ordersbeverages_list, miOrders.blockPos()));
+                                PacketDistributor.sendToPlayer(player, new MIOrders(miOrders.cuisines(), ordersbeverages_list, miOrders.blockPos()));
                             }
                             return 0;
 						}))).then(Commands.literal("clean").executes(arguments -> {
@@ -93,8 +93,8 @@ public class MIDebug {
                                     ordersbeverages_list.add("");
                                 }
                                 ordersbeverages_list.set(id, "");
-                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.orders(), ordersbeverages_list, miOrders.blockPos()));
-                                PacketDistributor.sendToPlayer(player, new MIOrders(miOrders.orders(), ordersbeverages_list, miOrders.blockPos()));
+                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.cuisines(), ordersbeverages_list, miOrders.blockPos()));
+                                PacketDistributor.sendToPlayer(player, new MIOrders(miOrders.cuisines(), ordersbeverages_list, miOrders.blockPos()));
                             }
                             return 0;
 						}))))
@@ -110,7 +110,7 @@ public class MIDebug {
                         MIMenu miMenu = player.getData(MIAttachment.MI_MENU);
                         Component component = Component.empty().append("Menu:[ ");
                         for(int i=0;i<8;i++){
-                            ItemStack cuisine = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.orders().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                            ItemStack cuisine = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.cuisines().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
                             ItemStack beverage = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.beverages().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
                             Component component1 = Component.empty().append(cuisine.getDisplayName()).append(" ").append(beverage.getDisplayName());
                             component = Component.empty().append(component).append(Component.literal((i+1)+" ").withStyle(style -> style
@@ -133,8 +133,8 @@ public class MIDebug {
                     if (player != null) {
                         MIOrders miMenu = player.getData(MIAttachment.MI_ORDERS);
                         Component component = Component.empty().append("Order:[ ");
-                        for(int i=0;i<miMenu.orders().size();i++){
-                            ItemStack cuisine = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.orders().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                        for(int i = 0; i<miMenu.cuisines().size(); i++){
+                            ItemStack cuisine = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.cuisines().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
                             ItemStack beverage = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.beverages().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
                             Component component1 = Component.empty().append(cuisine.getDisplayName()).append(" ").append(beverage.getDisplayName());
                             component = Component.empty().append(component).append(Component.literal((i+1)+" ").withStyle(style -> style
@@ -172,7 +172,7 @@ public class MIDebug {
                             ServerPlayer player = arguments.getSource().getPlayer();
                             if (player != null) {
                                 MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.orders(), miOrders.beverages(), new ArrayList<>()));
+                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.cuisines(), miOrders.beverages(), new ArrayList<>()));
                             }
                             return 0;
                         })))

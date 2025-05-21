@@ -48,6 +48,10 @@ public class MIPlayerEvent {
             MIOrders miOrders = event.getOriginal().getData(MIAttachment.MI_ORDERS);
             event.getEntity().setData(MIAttachment.MI_ORDERS, miOrders);
         }
+        if (event.getOriginal().hasData(MIAttachment.MI_MENU)) {
+            MIMenu miMenu = event.getOriginal().getData(MIAttachment.MI_MENU);
+            event.getEntity().setData(MIAttachment.MI_MENU, miMenu);
+        }
         if (event.getOriginal().hasData(MIAttachment.MI_BALANCE)) {
             MIBalance miBalance = event.getOriginal().getData(MIAttachment.MI_BALANCE);
             event.getEntity().setData(MIAttachment.MI_BALANCE, miBalance);
@@ -63,10 +67,10 @@ public class MIPlayerEvent {
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         Player player = event.getEntity();
         if (!event.getEntity().hasData(MIAttachment.MI_ORDERS)) {
-            event.getEntity().setData(MIAttachment.MI_ORDERS, new MIOrders(new ArrayList<>(10), new ArrayList<>(10), new ArrayList<>(10)));
+            event.getEntity().setData(MIAttachment.MI_ORDERS, MIOrders.init());
         }
         if (!event.getEntity().hasData(MIAttachment.MI_MENU)) {
-            event.getEntity().setData(MIAttachment.MI_MENU, new MIMenu(new ArrayList<>(10), new ArrayList<>(10), new ArrayList<>(10)));
+            event.getEntity().setData(MIAttachment.MI_MENU, MIMenu.init());
         }
         if (!event.getEntity().hasData(MIAttachment.MI_BALANCE)) {
             event.getEntity().setData(MIAttachment.MI_BALANCE, new MIBalance(0));
@@ -107,7 +111,7 @@ public class MIPlayerEvent {
         {
             MIOrders miOrders = serverPlayer.getData(MIAttachment.MI_ORDERS);
             List<BlockPos> tables = new ArrayList<>(miOrders.blockPos());
-            List<String> cuisineList = new ArrayList<>(miOrders.orders());
+            List<String> cuisineList = new ArrayList<>(miOrders.cuisines());
             List<String> beverageList = new ArrayList<>(miOrders.beverages());
             if(tables.size()<8||cuisineList.size()<8||beverageList.size()<8){
                 if(tables.size()<8){
@@ -139,7 +143,7 @@ public class MIPlayerEvent {
                 Set<ItemStack> beverages = new LinkedHashSet<>();
                 Set<ItemStack> cuisines = new LinkedHashSet<>();
                 miMenu.beverages().forEach(s -> beverages.add(BuiltInRegistries.ITEM.get(ResourceLocation.parse(s)).getDefaultInstance()));
-                miMenu.orders().forEach(s -> cuisines.add(BuiltInRegistries.ITEM.get(ResourceLocation.parse(s)).getDefaultInstance()));
+                miMenu.cuisines().forEach(s -> cuisines.add(BuiltInRegistries.ITEM.get(ResourceLocation.parse(s)).getDefaultInstance()));
                 beverages.remove(ItemStack.EMPTY);
                 cuisines.remove(ItemStack.EMPTY);
                 if(beverages.isEmpty()||cuisines.isEmpty()){
@@ -233,7 +237,7 @@ public class MIPlayerEvent {
 
                 MIMenu miOrders = serverPlayer.getData(MIAttachment.MI_MENU);
                 List<BlockPos> blockPosList = new ArrayList<>(miOrders.blockPos());
-                List<String> cuisineList = new ArrayList<>(miOrders.orders());
+                List<String> cuisineList = new ArrayList<>(miOrders.cuisines());
                 List<String> beverageList = new ArrayList<>(miOrders.beverages());
                 if(blockPosList.size()<8){
                     for(int i=blockPosList.size()-1;i<8;i++){

@@ -20,11 +20,11 @@ public class MIAttachment {
 //    );
 
     public static final Supplier<AttachmentType<MIOrders>> MI_ORDERS = ATTACHMENTS.register(
-            "mi_orders", () -> AttachmentType.builder(() -> new MIOrders(new ArrayList<>(8), new ArrayList<>(8),new ArrayList<>(8))).serialize(MICodec.MI_ORDERS_CODEC).build()
+            "mi_orders", () -> AttachmentType.builder(MIOrders::init).serialize(MICodec.MI_ORDERS_CODEC).build()
     );
 
     public static final Supplier<AttachmentType<MIMenu>> MI_MENU = ATTACHMENTS.register(
-            "mi_menu", () -> AttachmentType.builder(() -> new MIMenu(new ArrayList<>(8), new ArrayList<>(8),new ArrayList<>(8))).serialize(MICodec.MI_MENU_CODEC).build()
+            "mi_menu", () -> AttachmentType.builder(MIMenu::init).serialize(MICodec.MI_MENU_CODEC).build()
     );
 
     public static final Supplier<AttachmentType<MIBalance>> MI_BALANCE = ATTACHMENTS.register(

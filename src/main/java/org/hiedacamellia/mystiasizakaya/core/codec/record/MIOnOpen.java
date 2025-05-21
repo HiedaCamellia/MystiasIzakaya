@@ -52,7 +52,7 @@ public record MIOnOpen(boolean open) implements CustomPacketPayload {
                                 break;
                             }
                         }
-                        for(String s:data1.orders()){
+                        for(String s:data1.cuisines()){
                             if(!s.equals("minecraft:air")){
                                 flag2 = true;
                                 break;

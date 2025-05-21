@@ -16,25 +16,38 @@ import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public record MIMenu(List<String> orders, List<String> beverages, List<BlockPos> blockPos)implements CustomPacketPayload  {
+public record MIMenu(List<String> cuisines, List<String> beverages, List<BlockPos> blockPos)implements CustomPacketPayload  {
     public void sync(Player player){
         if (player instanceof ServerPlayer serverPlayer)
-            PacketDistributor.sendToPlayer(serverPlayer, new MIMenu(this.orders, this.beverages, this.blockPos));
+            PacketDistributor.sendToPlayer(serverPlayer, this);
     }
 
     public static final Type<MIMenu> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "mi_menu"));
 
     public static final StreamCodec<ByteBuf, MIMenu> STREAM_CODEC = StreamCodec.composite(
             ByteBufCodecs.fromCodec(Codec.list(Codec.STRING)),
-            MIMenu::orders,
+            MIMenu::cuisines,
             ByteBufCodecs.fromCodec(Codec.list(Codec.STRING)),
             MIMenu::beverages,
             ByteBufCodecs.fromCodec(Codec.list(BlockPos.CODEC)),
             MIMenu::blockPos,
             MIMenu::new
     );
+
+    public static MIMenu init(){
+        List<BlockPos> tables = new ArrayList<>();
+        List<String> cuisineList = new ArrayList<>();
+        List<String> beverageList = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            tables.add(new BlockPos(-1, -1, -1));
+            cuisineList.add("minecraft:air");
+            beverageList.add("minecraft:air");
+        }
+        return new MIMenu(cuisineList,beverageList,tables);
+    }
 
     @Override
     public @NotNull Type<? extends CustomPacketPayload> type() {
