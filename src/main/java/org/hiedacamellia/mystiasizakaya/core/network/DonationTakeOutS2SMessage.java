@@ -37,12 +37,16 @@ public record DonationTakeOutS2SMessage(int count) implements CustomPacketPayloa
                 if (donation && count > 0 && BalanceUtil.getBalance(player) >= count) {
                     j = count / 10;
                     count = count - j * 10;
-                    ItemStack _setstack = new ItemStack(MIItem.EN_10.get());
-                    _setstack.setCount(j);
-                    ItemHandlerHelper.giveItemToPlayer(player, _setstack);
-                    ItemStack setstack = new ItemStack(MIItem.EN_1.get());
-                    setstack.setCount(count);
-                    ItemHandlerHelper.giveItemToPlayer(player, setstack);
+                    while(j>0){
+                        if(j>64){
+                            j -= 64;
+                            ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(MIItem.EN_10.get(),64));
+                        }else{
+                            ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(MIItem.EN_10.get(),j));
+                            break;
+                        }
+                    }
+                    ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(MIItem.EN_1.get(),count));
                 }
 
             }
