@@ -10,9 +10,8 @@ import org.hiedacamellia.mystiasizakaya.api.event.CookingCollectCuisineEvent;
 import org.hiedacamellia.mystiasizakaya.api.event.CookingTagEvent;
 import org.hiedacamellia.mystiasizakaya.api.kubejs.MIEventPoster;
 import org.hiedacamellia.mystiasizakaya.common.blockentity.CookingEntity;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIIngredient;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
 import org.hiedacamellia.mystiasizakaya.core.recipes.MIRecipeInput;
+import org.hiedacamellia.mystiasizakaya.core.util.MIItemStackUtil;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.hiedacamellia.mystiasizakaya.registries.MIRecipeType;
@@ -92,7 +91,7 @@ public class CookingUtils {
         return targetI;
     }
 
-    public static ItemStack buildTag(@Nullable CookingEntity entity, Level level, ItemStack target, ItemStack Kitchenware, List<ItemStack> ingredients) {
+    public static ItemStack buildTag(@Nullable CookingEntity entity, Level level, ItemStack target, ItemStack kitchenware, List<ItemStack> ingredients) {
 
         try {
             target.inventoryTick(null, null, 0, false);
@@ -101,11 +100,9 @@ public class CookingUtils {
             MystiasIzakaya.LOGGER.atTrace().log(e);
         }
 
-        List<String> rawtags = getTag(level.getRecipeManager(),target, new ArrayList<>(ingredients),Kitchenware);
+        List<String> rawtags = getTag(level.getRecipeManager(),target, new ArrayList<>(ingredients),kitchenware);
 
-        MITags miTags = target.getOrDefault(MIDatacomponet.MI_TAGS.get(),new MITags(new ArrayList<>(),new ArrayList<>()));
-
-        List<String> targettags = miTags.tags();
+        List<String> targettags = MIItemStackUtil.getPositiveTags(target);
 
         Set<String> set = new LinkedHashSet<>(rawtags);
         try {
@@ -118,9 +115,7 @@ public class CookingUtils {
         set.addAll(targettags);
         ArrayList<String> resultList = getStrings(ingredients, set);
 
-        MITags kitchenware = Kitchenware.getOrDefault(MIDatacomponet.MI_TAGS.get(), new MITags(new ArrayList<>(),new ArrayList<>()));
-
-        resultList.addAll(kitchenware.tags());
+        resultList.addAll(MIItemStackUtil.getPositiveTags(kitchenware));
 
         ArrayList<String> rawslist = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
@@ -128,16 +123,15 @@ public class CookingUtils {
         }
         rawslist.sort(Comparator.naturalOrder());
 
-        List<String> ntags = new ArrayList<>(miTags.ntags());
+        List<String> ntags = new ArrayList<>(MIItemStackUtil.getNegativeTags(target));
 
-        CookingTagEvent.Build build = new CookingTagEvent.Build(entity, level, target, Kitchenware, ingredients, resultList, ntags);
+        CookingTagEvent.Build build = new CookingTagEvent.Build(entity, level, target, kitchenware, ingredients, resultList, ntags);
         NeoForge.EVENT_BUS.post(build);
         if(MystiasIzakaya.kubeJsLoaded)
             MIEventPoster.INSTANCE.post(build);
 
-        target.set(MIDatacomponet.MI_TAGS.get(), new MITags(resultList, ntags));
-
-        target.set(MIDatacomponet.MI_INGREDIENT.get(),new MIIngredient(rawslist));
+        MIItemStackUtil.setTags(target,resultList,ntags);
+        MIItemStackUtil.setIngredientOriginal(target,rawslist);
 
         return target;
     }
@@ -173,10 +167,8 @@ public class CookingUtils {
         if(MystiasIzakaya.kubeJsLoaded)
             MIEventPoster.INSTANCE.post(pre);
 
-        MITags miTags = cuisine.getOrDefault(MIDatacomponet.MI_TAGS.get(),new MITags(new ArrayList<>(),new ArrayList<>()));
-
-        List<String> tags = miTags.tags();
-        List<String> ntags = miTags.ntags();
+        List<String> tags = MIItemStackUtil.getPositiveTags(cuisine);
+        List<String> ntags = MIItemStackUtil.getNegativeTags(cuisine);
 
         Set<String> seti = new HashSet<>(tags);
         for (String str : ntags) {
@@ -201,7 +193,7 @@ public class CookingUtils {
 
     public static List<String> collectTags(List<ItemStack> raws) {
         Set<String> set = new HashSet<>();
-        raws.forEach((raw) -> set.addAll(raw.getOrDefault(MIDatacomponet.MI_TAGS.get(),new MITags(new ArrayList<>(),new ArrayList<>())).tags()));
+        raws.forEach((raw) -> set.addAll(raw.getOrDefault(MIDatacomponet.MI_POSITIVE_TAGS.get(),new ArrayList<>())));
         return new ArrayList<>(set);
     }
 

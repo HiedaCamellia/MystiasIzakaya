@@ -17,10 +17,10 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIMenu;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITeleColddown;
-import org.hiedacamellia.mystiasizakaya.util.MessageUtil;
+import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaMenu;
+import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaOrder;
+import org.hiedacamellia.mystiasizakaya.core.util.MIMessageUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.ArrayList;
@@ -41,14 +41,14 @@ public class MIDebug {
                             ServerPlayer player = arguments.getSource().getPlayer();
                             List<String> orders_list;
                             if (player != null) {
-                                MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                orders_list = new ArrayList<>(miOrders.cuisines());
+                                IzakayaOrder izakayaOrder = player.getData(MIAttachment.IZAKAYA_ORDER);
+                                orders_list = new ArrayList<>(izakayaOrder.cuisines());
                                 while (orders_list.size() < id+1) {
                                     orders_list.add("");
                                 }
                                 orders_list.set(id, order);
-                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(orders_list, miOrders.beverages(), miOrders.blockPos()));
-                                PacketDistributor.sendToPlayer(player, new MIOrders(orders_list, miOrders.beverages(), miOrders.blockPos()));
+                                player.setData(MIAttachment.IZAKAYA_ORDER, new IzakayaOrder(orders_list, izakayaOrder.beverages()));
+                                PacketDistributor.sendToPlayer(player, new IzakayaOrder(orders_list, izakayaOrder.beverages()));
                             }
                             return 0;
 						}))).then(Commands.literal("clean").executes(arguments -> {
@@ -56,14 +56,14 @@ public class MIDebug {
                             ServerPlayer player = arguments.getSource().getPlayer();
                             List<String> orders_list;
                             if (player != null) {
-                                MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                orders_list = new ArrayList<>(miOrders.cuisines());
+                                IzakayaOrder izakayaOrder = player.getData(MIAttachment.IZAKAYA_ORDER);
+                                orders_list = new ArrayList<>(izakayaOrder.cuisines());
                                 while (orders_list.size() < id+1) {
                                     orders_list.add("");
                                 }
                                 orders_list.set(id, "");
-                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(orders_list, miOrders.beverages(), miOrders.blockPos()));
-                                PacketDistributor.sendToPlayer(player, new MIOrders(orders_list, miOrders.beverages(), miOrders.blockPos()));
+                                player.setData(MIAttachment.IZAKAYA_ORDER, new IzakayaOrder(orders_list, izakayaOrder.beverages()));
+                                PacketDistributor.sendToPlayer(player, new IzakayaOrder(orders_list, izakayaOrder.beverages()));
                             }
                             return 0;
 						}))).then(Commands.literal("beverages").then(Commands.literal("replace").then(Commands.argument("beverages", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
@@ -73,14 +73,14 @@ public class MIDebug {
                             ServerPlayer player = arguments.getSource().getPlayer();
                             List<String> ordersbeverages_list;
                             if (player != null) {
-                                MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                ordersbeverages_list = new ArrayList<>(miOrders.beverages());
+                                IzakayaOrder izakayaOrder = player.getData(MIAttachment.IZAKAYA_ORDER);
+                                ordersbeverages_list = new ArrayList<>(izakayaOrder.beverages());
                                 while (ordersbeverages_list.size() < id+1) {
                                     ordersbeverages_list.add("");
                                 }
                                 ordersbeverages_list.set(id, order);
-                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.cuisines(), ordersbeverages_list, miOrders.blockPos()));
-                                PacketDistributor.sendToPlayer(player, new MIOrders(miOrders.cuisines(), ordersbeverages_list, miOrders.blockPos()));
+                                player.setData(MIAttachment.IZAKAYA_ORDER, new IzakayaOrder(izakayaOrder.cuisines(), ordersbeverages_list));
+                                PacketDistributor.sendToPlayer(player, new IzakayaOrder(izakayaOrder.cuisines(), ordersbeverages_list));
                             }
                             return 0;
 						}))).then(Commands.literal("clean").executes(arguments -> {
@@ -88,91 +88,95 @@ public class MIDebug {
                             ServerPlayer player = arguments.getSource().getPlayer();
                             List<String> ordersbeverages_list;
                             if (player != null) {
-                                MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                ordersbeverages_list = new ArrayList<>(miOrders.beverages());
+                                IzakayaOrder izakayaOrder = player.getData(MIAttachment.IZAKAYA_ORDER);
+                                ordersbeverages_list = new ArrayList<>(izakayaOrder.beverages());
                                 while (ordersbeverages_list.size() < id+1) {
                                     ordersbeverages_list.add("");
                                 }
                                 ordersbeverages_list.set(id, "");
-                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.cuisines(), ordersbeverages_list, miOrders.blockPos()));
-                                PacketDistributor.sendToPlayer(player, new MIOrders(miOrders.cuisines(), ordersbeverages_list, miOrders.blockPos()));
+                                player.setData(MIAttachment.IZAKAYA_ORDER, new IzakayaOrder(izakayaOrder.cuisines(), ordersbeverages_list));
+                                PacketDistributor.sendToPlayer(player, new IzakayaOrder(izakayaOrder.cuisines(), ordersbeverages_list));
                             }
                             return 0;
 						}))))
                 ).then(Commands.literal("telephone").then(Commands.literal("reset").executes(arguments -> {
                     ServerPlayer player = arguments.getSource().getPlayer();
                     if (player != null) {
-                        player.setData(MIAttachment.MI_TELE_COLDDOWN, new MITeleColddown(0));
+                        MIPlayerUtil.setTeleCooldown(player,-1);
                     }
                     return 0;
                 }))).then(Commands.literal("menu").then(Commands.literal("dump").executes(arguments -> {
                     ServerPlayer player = arguments.getSource().getPlayer();
                     if (player != null) {
-                        MIMenu miMenu = player.getData(MIAttachment.MI_MENU);
+                        IzakayaMenu izakayaMenu = player.getData(MIAttachment.IZAKAYA_MENU);
+                        List<ItemStack> cuisineStacks = izakayaMenu.toCuisineStacks();
+                        List<ItemStack> beverageStacks = izakayaMenu.toBeverageStacks();
                         Component component = Component.empty().append("Menu:[ ");
                         for(int i=0;i<8;i++){
-                            ItemStack cuisine = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.cuisines().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
-                            ItemStack beverage = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.beverages().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                            ItemStack cuisine = cuisineStacks.get(i);
+                            ItemStack beverage = beverageStacks.get(i);
                             Component component1 = Component.empty().append(cuisine.getDisplayName()).append(" ").append(beverage.getDisplayName());
                             component = Component.empty().append(component).append(Component.literal((i+1)+" ").withStyle(style -> style
                                     .withColor(ChatFormatting.GREEN)
                                     .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, component1))));
                         }
-                        MessageUtil.sendDebug(Component.empty().append(component).append("]"),player);
-                        MystiasIzakaya.LOGGER.debug(miMenu.toString());
+                        MIMessageUtil.sendDebug(Component.empty().append(component).append("]"),player);
+                        MystiasIzakaya.LOGGER.debug(izakayaMenu.toString());
                     }
                     return 0;
                 })).then(Commands.literal("reset").executes(arguments -> {
                     ServerPlayer player = arguments.getSource().getPlayer();
                     if (player != null) {
-                        player.setData(MIAttachment.MI_MENU, new MIMenu(new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+                        player.setData(MIAttachment.IZAKAYA_MENU, IzakayaMenu.init());
                     }
                     return 0;
                 }))).then(Commands.literal("order").then(Commands.literal("dump").executes(arguments -> {
                     ServerPlayer player = arguments.getSource().getPlayer();
                     if (player != null) {
-                        MIOrders miMenu = player.getData(MIAttachment.MI_ORDERS);
+                        IzakayaOrder izakayaOrder = player.getData(MIAttachment.IZAKAYA_ORDER);
+                        List<ItemStack> cuisineStacks = izakayaOrder.toCuisineStacks();
+                        List<ItemStack> beverageStacks = izakayaOrder.toBeverageStacks();
                         Component component = Component.empty().append("Order:[ ");
-                        for(int i = 0; i<miMenu.cuisines().size(); i++){
-                            ItemStack cuisine = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.cuisines().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
-                            ItemStack beverage = BuiltInRegistries.ITEM.get(ResourceLocation.parse((miMenu.beverages().get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance();
+                        for(int i = 0; i<izakayaOrder.cuisines().size(); i++){
+                            ItemStack cuisine = cuisineStacks.get(i);
+                            ItemStack beverage = beverageStacks.get(i);
                             Component component1 = Component.empty().append(cuisine.getDisplayName()).append(" ").append(beverage.getDisplayName());
                             component = Component.empty().append(component).append(Component.literal((i+1)+" ").withStyle(style -> style
                                     .withColor(ChatFormatting.GREEN)
                                     .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, component1))));
                         }
-                        MessageUtil.sendDebug(Component.empty().append(component).append("]"),player);
-                        MystiasIzakaya.LOGGER.debug(miMenu.toString());
+                        MIMessageUtil.sendDebug(Component.empty().append(component).append("]"),player);
+                        MystiasIzakaya.LOGGER.debug(izakayaOrder.toString());
                     }
                     return 0;
                 })).then(Commands.literal("reset").executes(arguments -> {
                     ServerPlayer player = arguments.getSource().getPlayer();
                     if (player != null) {
-                        MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                        player.setData(MIAttachment.MI_ORDERS, new MIOrders(new ArrayList<>(), new ArrayList<>(), miOrders.blockPos()));
+                        IzakayaOrder izakayaOrder = player.getData(MIAttachment.IZAKAYA_ORDER);
+                        player.setData(MIAttachment.IZAKAYA_ORDER, new IzakayaOrder(new ArrayList<>(), new ArrayList<>()));
                     }
                     return 0;
                 }))).then(Commands.literal("table").then(Commands.literal("dump").executes(arguments -> {
                             ServerPlayer player = arguments.getSource().getPlayer();
                             if (player != null) {
-                                MIOrders miMenu = player.getData(MIAttachment.MI_ORDERS);
+                                List<BlockPos> tables = MIPlayerUtil.getTables(player);
                                 Component component = Component.empty().append("Table:[ ");
                                 for(int i=0;i<8;i++){
-                                    BlockPos blockPos = miMenu.blockPos().get(i);
+                                    BlockPos blockPos = tables.get(i);
                                     Component component1 = Component.empty().append(blockPos.toShortString());
                                     component = Component.empty().append(component).append(Component.literal((i+1)+" ").withStyle(style -> style
                                             .withColor(ChatFormatting.GREEN)
                                             .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, component1))));
                                 }
-                                MessageUtil.sendDebug(Component.empty().append(component).append("]"),player);
-                                MystiasIzakaya.LOGGER.debug(miMenu.toString());
+                                MIMessageUtil.sendDebug(Component.empty().append(component).append("]"),player);
+                                MystiasIzakaya.LOGGER.debug(tables.toString());
                             }
                             return 0;
                         })).then(Commands.literal("reset").executes(arguments -> {
                             ServerPlayer player = arguments.getSource().getPlayer();
                             if (player != null) {
-                                MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS);
-                                player.setData(MIAttachment.MI_ORDERS, new MIOrders(miOrders.cuisines(), miOrders.beverages(), new ArrayList<>()));
+                                IzakayaOrder izakayaOrder = player.getData(MIAttachment.IZAKAYA_ORDER);
+                                player.setData(MIAttachment.IZAKAYA_ORDER, new IzakayaOrder(izakayaOrder.cuisines(), izakayaOrder.beverages()));
                             }
                             return 0;
                         })))

@@ -2,6 +2,7 @@ package org.hiedacamellia.mystiasizakaya.client.gui.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -26,13 +27,13 @@ import org.hiedacamellia.mystiasizakaya.client.gui.widget.MICustomButton;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIFakeItemSlot;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIFakeSlot;
 import org.hiedacamellia.mystiasizakaya.common.menu.LedgerMenu;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIMenu;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOnOpen;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
+import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaMenu;
 import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
+import org.hiedacamellia.mystiasizakaya.core.network.OpenIzakayaBIMessage;
+import org.hiedacamellia.mystiasizakaya.core.util.MIBalanceUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
-import org.hiedacamellia.mystiasizakaya.util.BalanceUtil;
 import org.joml.Quaternionf;
 
 import java.util.ArrayList;
@@ -140,16 +141,15 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
     }
 
     protected void setChanged(){
-        List<BlockPos> blockPos = this.minecraft.player.getData(MIAttachment.MI_MENU).blockPos();
         List<String> cuisines = new ArrayList<>();
         List<String> beverages = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
             cuisines.add(BuiltInRegistries.ITEM.getKey(fakeCuisinesSlots.get(i).getItemStack().getItem()).toString());
             beverages.add(BuiltInRegistries.ITEM.getKey(fakeBeveragesSlots.get(i).getItemStack().getItem()).toString());
         }
-        MIMenu miMenu = new MIMenu(cuisines, beverages, blockPos);
-        PacketDistributor.sendToServer(miMenu);
-        this.minecraft.player.setData(MIAttachment.MI_MENU, miMenu);
+        IzakayaMenu izakayaMenu = new IzakayaMenu(cuisines, beverages);
+        MIPlayerUtil.setIzakayaMenu(minecraft.player, izakayaMenu);
+        MIPlayerUtil.syncIzakayaMenu(minecraft.player);
     }
 
     @Override
@@ -293,8 +293,8 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
         LocalPlayer player = Minecraft.getInstance().player;
 
 
-        on_open = new MICustomButton.builder(getComponent(player.getData(MIAttachment.MI_ON_OPEN).open()), e ->{
-            boolean open = player.getData(MIAttachment.MI_ON_OPEN).open();
+        on_open = new MICustomButton.builder(getComponent(MIPlayerUtil.getOnOpen(player)), e ->{
+            boolean open = MIPlayerUtil.getOnOpen(player);
             boolean f=false;
             if(open){
                 f=true;
@@ -303,8 +303,8 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
                 f=true;
             }
             if(f) {
-                player.setData(MIAttachment.MI_ON_OPEN, new MIOnOpen(!open));
-                PacketDistributor.sendToServer(new MIOnOpen(!open));
+                MIPlayerUtil.setOnOpen(player, !open);
+                PacketDistributor.sendToServer(new OpenIzakayaBIMessage(!open));
                 e.setMessage(getComponent(!open));
             }
         }).pos(this.leftPos+10,this.topPos+4).size(40,16).build();
@@ -312,22 +312,22 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
         toastWidget = new ComponentToastWidget(leftPos+imageWidth/2,topPos+imageHeight/2,imageWidth,20,40f,Component.empty());
 
         ledgerItemWidgets = new ArrayList<>();
-        MITurnover miTurnover = player.getData(MIAttachment.MI_TURNOVER);
-        for(int i = 0; i < miTurnover.k().size(); i++){
-            LedgerItemWidget ledgerItemWidget = new LedgerItemWidget(this.leftPos + 10, this.topPos + 20 + 14 * i, miTurnover.k().get(i), miTurnover.v().get(i));
+        List<Pair<String, Double>> list = MIPlayerUtil.getTurnover(player);
+        for(int i = 0; i < list.size(); i++){
+            LedgerItemWidget ledgerItemWidget = new LedgerItemWidget(this.leftPos + 10, this.topPos + 20 + 14 * i, list.get(i).getFirst(), list.get(i).getSecond());
             ledgerItemWidgets.add(ledgerItemWidget);
             renderables_ledger.add(ledgerItemWidget);
         }
 
         Component component = Component.translatable("gui.mystias_izakaya.balance").append(Component.literal(new java.text.DecimalFormat("#######")
-                .format(BalanceUtil.getBalance(player))).append(Component.literal(" \u5186")));
+                .format(MIBalanceUtil.getBalance(player))).append(Component.literal(" \u5186")));
         balance = new UnderLineComponentWidget(this.leftPos+imageWidth- font.width(component)-10, this.topPos +10, component);
         renderables_ledger.add(balance);
 
         Component titlec = Component.translatable("gui.mystias_izakaya.ledger_ui.ledger");
         title = new UnderLineComponentWidget(this.leftPos + imageWidth / 2 - font.width(titlec) / 2, this.topPos - 14, titlec);
 
-        MIMenu data = player.getData(MIAttachment.MI_MENU);
+        IzakayaMenu data = player.getData(MIAttachment.IZAKAYA_MENU);
         List<String> cuisineList = data.cuisines();
         List<String> beverageList = data.beverages();
 
@@ -354,8 +354,8 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
 
     private boolean checkOpen(){
         LocalPlayer player = Minecraft.getInstance().player;
-        MIMenu data1 = player.getData(MIAttachment.MI_MENU);
-        List<BlockPos> blockPosList = player.getData(MIAttachment.MI_ORDERS).blockPos();
+        IzakayaMenu data1 = player.getData(MIAttachment.IZAKAYA_MENU);
+        List<BlockPos> blockPosList = MIPlayerUtil.getTables(player);
         boolean flag1 = false;
         boolean flag2 = false;
         boolean flag3 = false;

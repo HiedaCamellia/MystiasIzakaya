@@ -3,8 +3,8 @@ package org.hiedacamellia.mystiasizakaya.api.kubejs;
 import dev.latvian.mods.kubejs.event.KubeEvent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import org.hiedacamellia.mystiasizakaya.api.event.OrderEvent;
 import org.hiedacamellia.immersiveui.client.util.holder.IntHolder;
+import org.hiedacamellia.mystiasizakaya.api.event.OrderEvent;
 
 public abstract class OrderEventJS implements KubeEvent {
 

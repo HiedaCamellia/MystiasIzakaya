@@ -25,15 +25,12 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.common.blockentity.TableEntity;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
-import org.hiedacamellia.mystiasizakaya.util.MessageUtil;
-import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
+import org.hiedacamellia.mystiasizakaya.core.util.MIMessageUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -94,8 +91,7 @@ public class TableBlock extends Block implements EntityBlock {
 
 		if (player instanceof ServerPlayer serverPlayer) {
 			if(ItemStack.isSameItem(serverPlayer.getMainHandItem(),MIItem.LEDGER.get().getDefaultInstance())) {
-				MIOrders miOrders = serverPlayer.getData(MIAttachment.MI_ORDERS);
-				List<BlockPos> blockPosList = new ArrayList<>(miOrders.blockPos());
+				List<BlockPos> blockPosList = MIPlayerUtil.getTables(player);
 				if (blockPosList.size() < 8) {
 					blockPosList.add(new BlockPos(-1, -1, -1));
 				}
@@ -104,18 +100,17 @@ public class TableBlock extends Block implements EntityBlock {
 					BlockPos pos = blockPosList.get(i);
 					if (pos.equals(blockPos)) {
 						blockPosList.set(i, new BlockPos(-1, -1, -1));
-						MessageUtil.send(Component.translatable("message.mystias_izakaya.table.unbound",i+1,blockPos.getX(),blockPos.getY(),blockPos.getZ()),player);
+						MIMessageUtil.send(Component.translatable("message.mystias_izakaya.table.unbound",i+1,blockPos.getX(),blockPos.getY(),blockPos.getZ()),player);
 						break;
 					}
 					if (pos.equals(new BlockPos(-1, -1, -1))) {
 						blockPosList.set(i, blockPos);
-						MessageUtil.send(Component.translatable("message.mystias_izakaya.table.bound",i+1,blockPos.getX(),blockPos.getY(),blockPos.getZ()),player);
+						MIMessageUtil.send(Component.translatable("message.mystias_izakaya.table.bound",i+1,blockPos.getX(),blockPos.getY(),blockPos.getZ()),player);
 						break;
 					}
 				}
-				MIOrders miOrders1 = new MIOrders(miOrders.cuisines(), miOrders.beverages(), blockPosList);
-				serverPlayer.setData(MIAttachment.MI_ORDERS, miOrders1);
-				PacketDistributor.sendToPlayer(serverPlayer, miOrders1);
+				MIPlayerUtil.setTables(player, blockPosList);
+				MIPlayerUtil.syncTables(player);
 
 				return ItemInteractionResult.SUCCESS;
 			}

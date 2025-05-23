@@ -11,7 +11,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import org.hiedacamellia.mystiasizakaya.util.BalanceUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.MIBalanceUtil;
 
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class CurrencyItem extends Item {
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
 
-		boolean currency = BalanceUtil.currency(entity, getWorth() * ar.getObject().getCount());
+		boolean currency = MIBalanceUtil.currency(entity, getWorth() * ar.getObject().getCount());
 		if(currency) {
 			ar.getObject().shrink(ar.getObject().getCount());
 			ar.getObject().setCount(0);

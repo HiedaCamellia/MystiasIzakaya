@@ -1,12 +1,15 @@
 package org.hiedacamellia.mystiasizakaya.registries;
 
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import net.minecraft.core.BlockPos;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.core.codec.MICodec;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIMenu;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.*;
+import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaMenu;
+import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaOrder;
+import org.hiedacamellia.mystiasizakaya.core.util.MICodecUtil;
 
 import java.util.ArrayList;
 import java.util.function.Supplier;
@@ -14,32 +17,31 @@ import java.util.function.Supplier;
 public class MIAttachment {
     public static final DeferredRegister<AttachmentType<?>> ATTACHMENTS = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, MystiasIzakaya.MODID);
 
-
-//    public static final Supplier<AttachmentType<MITags>> MI_TAGS = ATTACHMENTS.register(
-//            "mi_tags", () -> AttachmentType.builder(() -> new MITags(new ArrayList<>(), new ArrayList<>())).serialize(MICodec.MI_TAGS_CODEC).build()
-//    );
-
-    public static final Supplier<AttachmentType<MIOrders>> MI_ORDERS = ATTACHMENTS.register(
-            "mi_orders", () -> AttachmentType.builder(MIOrders::init).serialize(MICodec.MI_ORDERS_CODEC).build()
+    public static final Supplier<AttachmentType<IzakayaOrder>> IZAKAYA_ORDER = ATTACHMENTS.register(
+            "izakaya_order", () -> AttachmentType.builder(IzakayaOrder::init).serialize(IzakayaOrder.CODEC).build()
     );
 
-    public static final Supplier<AttachmentType<MIMenu>> MI_MENU = ATTACHMENTS.register(
-            "mi_menu", () -> AttachmentType.builder(MIMenu::init).serialize(MICodec.MI_MENU_CODEC).build()
+    public static final Supplier<AttachmentType<ArrayList<BlockPos>>> IZAKAYA_TABLE = ATTACHMENTS.register(
+            "izakaya_table", () -> AttachmentType.builder(() -> new ArrayList<BlockPos>()).serialize(MICodecUtil.LIST_BLOCK_POS_CODEC).build()
     );
 
-    public static final Supplier<AttachmentType<MIBalance>> MI_BALANCE = ATTACHMENTS.register(
-            "mi_balance", () -> AttachmentType.builder(() -> new MIBalance(0)).serialize(MICodec.MI_BALANCE_CODEC).build()
+    public static final Supplier<AttachmentType<IzakayaMenu>> IZAKAYA_MENU = ATTACHMENTS.register(
+            "izakaya_menu", () -> AttachmentType.builder(IzakayaMenu::init).serialize(IzakayaMenu.CODEC).build()
     );
 
-    public static final Supplier<AttachmentType<MITurnover>> MI_TURNOVER = ATTACHMENTS.register(
-            "mi_turnover", () -> AttachmentType.builder(() -> new MITurnover(new ArrayList<>(),new ArrayList<>())).serialize(MICodec.MI_TURNOVER_CODEC).build()
+    public static final Supplier<AttachmentType<Integer>> MI_BALANCE = ATTACHMENTS.register(
+            "mi_balance", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
     );
 
-    public static final Supplier<AttachmentType<MITeleColddown>> MI_TELE_COLDDOWN = ATTACHMENTS.register(
-            "mi_telecolddown", () -> AttachmentType.builder(() -> new MITeleColddown(0)).serialize(MICodec.MI_TELE_COLDDOWN_CODEC).build()
+    public static final Supplier<AttachmentType<ArrayList<Pair<String, Double>>>> MI_TURNOVER = ATTACHMENTS.register(
+            "mi_turnover", () -> AttachmentType.builder(() -> new ArrayList<Pair<String,Double>>()).serialize(MICodecUtil.LIST_TURNOVER_CODEC).build()
     );
 
-    public static final Supplier<AttachmentType<MIOnOpen>> MI_ON_OPEN = ATTACHMENTS.register(
-            "mi_on_open", () -> AttachmentType.builder(() -> new MIOnOpen(false)).serialize(MICodec.MI_ON_OPEN_CODEC).build()
+    public static final Supplier<AttachmentType<Integer>> MI_TELE_COOLDOWN = ATTACHMENTS.register(
+            "mi_tele_cooldown", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
+    );
+
+    public static final Supplier<AttachmentType<Boolean>> MI_ON_OPEN = ATTACHMENTS.register(
+            "mi_on_open", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).build()
     );
 }

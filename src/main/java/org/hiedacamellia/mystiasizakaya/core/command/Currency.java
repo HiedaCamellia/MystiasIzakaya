@@ -7,7 +7,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
-import org.hiedacamellia.mystiasizakaya.util.BalanceUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.MIBalanceUtil;
 
 @EventBusSubscriber
 public class Currency {
@@ -18,22 +18,22 @@ public class Currency {
                         .then(Commands.argument("player", EntityArgument.player()).then(Commands.argument("number", IntegerArgumentType.integer(0)).executes(arguments -> {
                             ServerPlayer player = EntityArgument.getPlayer(arguments, "player");
                             int change = IntegerArgumentType.getInteger(arguments, "number");
-                            BalanceUtil.command(player,change);
+                            MIBalanceUtil.command(player,change);
                             return 0;
                         }))))
                 .then(Commands.literal("reduce")
                         .then(Commands.argument("player", EntityArgument.player()).then(Commands.argument("number", IntegerArgumentType.integer(0)).executes(arguments -> {
                             ServerPlayer player = EntityArgument.getPlayer(arguments, "player");
                             int change = -IntegerArgumentType.getInteger(arguments, "number");
-                            BalanceUtil.command(player,change);
+                            MIBalanceUtil.command(player,change);
                              return 0;
                         }))))
                 .then(Commands.literal("set")
                         .then(Commands.argument("player", EntityArgument.player()).then(Commands.argument("number", IntegerArgumentType.integer(0)).executes(arguments -> {
                             ServerPlayer player = EntityArgument.getPlayer(arguments, "player");
                             int set = IntegerArgumentType.getInteger(arguments, "number");
-                            int change = set - BalanceUtil.getBalance(player);
-                            BalanceUtil.command(player,change);
+                            int change = set - MIBalanceUtil.getBalance(player);
+                            MIBalanceUtil.command(player,change);
                             return 0;
                         }))))));
     }

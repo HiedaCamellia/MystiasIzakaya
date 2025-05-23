@@ -1,0 +1,50 @@
+package org.hiedacamellia.mystiasizakaya.core.network;
+
+import io.netty.buffer.ByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
+import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaOrder;
+import org.hiedacamellia.mystiasizakaya.core.util.MICodecUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+
+public record IzakayaOrderSyncBiMessage(List<String> cuisines, List<String> beverages)implements CustomPacketPayload {
+
+    private IzakayaOrder toIzakayaOrder() {
+        return new IzakayaOrder(cuisines, beverages);
+    }
+    public static IzakayaOrderSyncBiMessage fromIzakayaOrder(IzakayaOrder izakayaMenu) {
+        return new IzakayaOrderSyncBiMessage(izakayaMenu.cuisines(), izakayaMenu.beverages());
+    }
+
+    public static final StreamCodec<ByteBuf, IzakayaOrderSyncBiMessage> STREAM_CODEC = StreamCodec.composite(
+            MICodecUtil.LIST_STRING_STREAM_CODEC,
+            IzakayaOrderSyncBiMessage::cuisines,
+            MICodecUtil.LIST_STRING_STREAM_CODEC,
+            IzakayaOrderSyncBiMessage::beverages,
+            IzakayaOrderSyncBiMessage::new
+    );
+
+    public static final Type<IzakayaOrderSyncBiMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "izakaya_menu_sync"));
+
+    @Override
+    public @NotNull Type<? extends CustomPacketPayload> type() {
+        return TYPE;
+    }
+
+    public static void handleClient(final IzakayaOrderSyncBiMessage data, final IPayloadContext context) {
+        context.enqueueWork(() -> {
+                    MIPlayerUtil.setIzakayaOrder(context.player(), data.toIzakayaOrder());
+                })
+                .exceptionally(e -> {
+                    context.disconnect(Component.translatable("network.mystiasizakaya.failed", e.getMessage()));
+                    return null;
+                });
+    }
+}

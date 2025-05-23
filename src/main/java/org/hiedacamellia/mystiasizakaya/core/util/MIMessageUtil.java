@@ -1,4 +1,4 @@
-package org.hiedacamellia.mystiasizakaya.util;
+package org.hiedacamellia.mystiasizakaya.core.util;
 
 
 import net.minecraft.client.Minecraft;
@@ -10,7 +10,7 @@ import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MessageUtil {
+public class MIMessageUtil {
 
     private static String prefix = "[§a夜雀食堂§r]";
     private static Boolean debugConfig = MICommonConfig.DEBUG.get();

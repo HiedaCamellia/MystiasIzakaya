@@ -3,9 +3,6 @@ package org.hiedacamellia.mystiasizakaya.client.gui.widget.builder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.UseAnim;
 import org.hiedacamellia.mystiasizakaya.common.item.MIBaseItem;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MICooktime;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MICost;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 
 import java.util.ArrayList;
@@ -26,9 +23,10 @@ public class BaseItemBuilder {
 
     public Item build(){
         return new MIBaseItem(properties
-                .component(MIDatacomponet.MI_TAGS.get(), new MITags(tags, ntags))
-                .component(MIDatacomponet.MI_COOKTIME.get(), new MICooktime(cooktime))
-                .component(MIDatacomponet.MI_COST.get(), new MICost(cost))
+                .component(MIDatacomponet.MI_POSITIVE_TAGS.get(), tags)
+                .component(MIDatacomponet.MI_NEGATIVE_TAGS.get(), ntags)
+                .component(MIDatacomponet.MI_COOKTIME.get(), cooktime)
+                .component(MIDatacomponet.MI_COST.get(), cost)
                 ,useAnimation, tagprefix);
     }
 

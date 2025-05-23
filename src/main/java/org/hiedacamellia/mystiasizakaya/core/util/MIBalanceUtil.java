@@ -1,21 +1,17 @@
-package org.hiedacamellia.mystiasizakaya.util;
+package org.hiedacamellia.mystiasizakaya.core.util;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.immersiveui.client.util.holder.IntHolder;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.api.event.CurrencyChangeEvent;
 import org.hiedacamellia.mystiasizakaya.api.kubejs.MIEventPoster;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIBalance;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITurnover;
-import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
-public class BalanceUtil {
+public class MIBalanceUtil {
 
     public static int getBalance(Player player){
-        return player.getData(MIAttachment.MI_BALANCE).balance();
+        return MIPlayerUtil.getBalance(player);
     }
 
     public static boolean command(Player player, int change){
@@ -50,16 +46,14 @@ public class BalanceUtil {
             MIEventPoster.INSTANCE.post(event);
 
         if(event.isCanceled())return false;
-        int result = player.getData(MIAttachment.MI_BALANCE).balance() + event.getAmount();
-        player.setData(MIAttachment.MI_BALANCE, new MIBalance(result));
+        int result = MIPlayerUtil.getBalance(player) + event.getAmount();
+        MIPlayerUtil.setBalance(player,result);
 
-        MITurnover miTurnover = player.getData(MIAttachment.MI_TURNOVER);
-        miTurnover = miTurnover.addTurnover(type,change + 0.0);
-        miTurnover = miTurnover.deleteOverStack();
-        player.setData(MIAttachment.MI_TURNOVER, miTurnover);
+
+        MITurnoverUtil.addTurnover(player, type, change + 0.0);
         if(player instanceof ServerPlayer serverPlayer) {
-            PacketDistributor.sendToPlayer(serverPlayer, new MIBalance(player.getData(MIAttachment.MI_BALANCE).balance()));
-            PacketDistributor.sendToPlayer(serverPlayer, miTurnover);
+            MIPlayerUtil.syncBalance(serverPlayer);
+            MIPlayerUtil.syncTurnover(serverPlayer);
         }
         return true;
     }

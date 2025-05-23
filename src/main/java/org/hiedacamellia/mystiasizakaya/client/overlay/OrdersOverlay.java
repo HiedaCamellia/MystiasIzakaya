@@ -15,7 +15,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
+import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaOrder;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.ArrayList;
@@ -52,7 +52,7 @@ public class OrdersOverlay {
         RenderSystem.enableBlend();
         ItemStack cuisines;
         ItemStack beverages;
-        MIOrders miOrders;
+        IzakayaOrder izakayaOrder;
         if (entity != null) {
 
             if(flag_cuisine==null)
@@ -60,9 +60,9 @@ public class OrdersOverlay {
             if(flag_beverage==null)
                 flag_beverage = ItemStack.EMPTY;
 
-            miOrders = entity.getData(MIAttachment.MI_ORDERS);
-            List<ItemStack> cuisinesorders_list = getStacks(miOrders.cuisines());
-            List<ItemStack> beveragesorders_list = getStacks(miOrders.beverages());
+            izakayaOrder = entity.getData(MIAttachment.IZAKAYA_ORDER);
+            List<ItemStack> cuisinesorders_list = getStacks(izakayaOrder.cuisines());
+            List<ItemStack> beveragesorders_list = getStacks(izakayaOrder.beverages());
             List<ItemStack> last_orders = getLast_orders();
             List<ItemStack> last_beverage = getLast_beverage();
 

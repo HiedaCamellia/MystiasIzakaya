@@ -4,9 +4,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import org.hiedacamellia.mystiasizakaya.core.util.Tag2Item;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
-import org.hiedacamellia.mystiasizakaya.util.Tag2Item;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -28,8 +28,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.hiedacamellia.mystiasizakaya.client.gui.screen.TelephoneScreen;
-import org.hiedacamellia.mystiasizakaya.util.MessageUtil;
-import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
+import org.hiedacamellia.mystiasizakaya.core.util.MIMessageUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
@@ -70,14 +70,14 @@ public class Telephone extends Block {
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public @NotNull InteractionResult useWithoutItem(@NotNull BlockState blockstate, @NotNull Level world, @NotNull BlockPos pos, @NotNull Player entity, @NotNull BlockHitResult hit) {
-        super.useWithoutItem(blockstate, world, pos, entity, hit);
-        int tick = entity.getData(MIAttachment.MI_TELE_COLDDOWN).tick();
+    public @NotNull InteractionResult useWithoutItem(@NotNull BlockState blockstate, @NotNull Level world, @NotNull BlockPos pos, @NotNull Player player, @NotNull BlockHitResult hit) {
+        super.useWithoutItem(blockstate, world, pos, player, hit);
+        int tick = MIPlayerUtil.getTeleCooldown(player);
         if (tick > 0) {
-            MessageUtil.send(Component.translatable("message.mystiasizakaya.telephone.colddown", tick / 20).withStyle(ChatFormatting.RED));
+            MIMessageUtil.send(Component.translatable("message.mystiasizakaya.telephone.colddown", tick / 20).withStyle(ChatFormatting.RED));
             return InteractionResult.FAIL;
         }
-        if (entity.isLocalPlayer()) {
+        if (player.isLocalPlayer()) {
             Minecraft.getInstance().setScreen(new TelephoneScreen(pos));
         }
         return InteractionResult.SUCCESS;

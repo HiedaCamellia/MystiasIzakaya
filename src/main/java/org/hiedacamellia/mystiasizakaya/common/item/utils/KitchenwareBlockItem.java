@@ -12,11 +12,9 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.hiedacamellia.mystiasizakaya.content.cooking.IKitchenware;
 import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
-import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
+import org.hiedacamellia.mystiasizakaya.core.util.MIItemStackUtil;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class KitchenwareBlockItem extends BlockItem implements IKitchenware {
@@ -37,9 +35,8 @@ public class KitchenwareBlockItem extends BlockItem implements IKitchenware {
     public void appendHoverText(@NotNull ItemStack itemstack, @NotNull TooltipContext context, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(itemstack, context, list, flag);
         if (!Screen.hasShiftDown()) {
-            MITags mitags = itemstack.getOrDefault(MIDatacomponet.MI_TAGS.get(), new MITags(new ArrayList<>(),new ArrayList<>()) );
-            List<String> tags = mitags.tags();
-            List<String> ntags = mitags.ntags();
+            List<String> tags = MIItemStackUtil.getPositiveTags(itemstack);
+            List<String> ntags = MIItemStackUtil.getNegativeTags(itemstack);
             for (String tag : tags) {
                 list.add(Component.literal("§6+ " + Component.translatable(gettagprefix()+tag).getString() + "§r"));
             }

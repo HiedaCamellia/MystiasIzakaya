@@ -27,7 +27,7 @@ import org.hiedacamellia.mystiasizakaya.common.blockentity.CookingEntity;
 import org.hiedacamellia.mystiasizakaya.common.blockentity.KitchenwareEntity;
 import org.hiedacamellia.mystiasizakaya.content.cooking.IKitchenware;
 import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;
-import org.hiedacamellia.mystiasizakaya.util.KitchenwareTypeUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.KitchenwareTypeUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;

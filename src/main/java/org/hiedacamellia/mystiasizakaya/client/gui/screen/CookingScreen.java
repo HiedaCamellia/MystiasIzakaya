@@ -26,10 +26,9 @@ import org.hiedacamellia.mystiasizakaya.common.item.utils.KitchenwareBlockItem;
 import org.hiedacamellia.mystiasizakaya.common.menu.CookingMenu;
 import org.hiedacamellia.mystiasizakaya.content.cooking.CookingUtils;
 import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
 import org.hiedacamellia.mystiasizakaya.core.network.CookingStartS2SMessage;
-import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
-import org.hiedacamellia.mystiasizakaya.util.KitchenwareTypeUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.KitchenwareTypeUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.MIItemStackUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -114,14 +113,13 @@ public class CookingScreen extends AbstractContainerScreen<CookingMenu> {
         pose.pushPose();
         pose.translate(0,3*font.lineHeight,0);
         pose.scale(0.5f,0.5f,0);
-        MITags mitags = detail.getOrDefault(MIDatacomponet.MI_TAGS.get(), new MITags(new ArrayList<>(),new ArrayList<>()) );
         MutableComponent tagComponent = Component.empty();
         MutableComponent ntagComponent = Component.empty();
         String tagprefix = "tag.mystias_izakaya.";
-        for (String tag : mitags.tags()) {
+        for (String tag : MIItemStackUtil.getPositiveTags(detail)) {
             ntagComponent.append(Component.translatable(tagprefix+tag)).withStyle(ChatFormatting.GOLD).append(" ");
         }
-        for (String tag : mitags.ntags()) {
+        for (String tag : MIItemStackUtil.getNegativeTags(detail)) {
             ntagComponent.append(Component.translatable(tagprefix+tag)).withStyle(ChatFormatting.RED).append(" ");
         }
         List<FormattedCharSequence> list = new ArrayList<>();

@@ -3,7 +3,7 @@ package org.hiedacamellia.mystiasizakaya.common.blockentity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;
-import org.hiedacamellia.mystiasizakaya.util.KitchenwareTypeUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.KitchenwareTypeUtil;
 
 public class KitchenwareEntity extends CookingEntity {
 

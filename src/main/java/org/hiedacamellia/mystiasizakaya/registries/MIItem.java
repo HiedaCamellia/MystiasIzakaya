@@ -14,9 +14,7 @@ import org.hiedacamellia.mystiasizakaya.common.item.utils.IconItem;
 import org.hiedacamellia.mystiasizakaya.common.item.utils.IronKnifeItem;
 import org.hiedacamellia.mystiasizakaya.common.item.utils.KitchenwareBlockItem;
 import org.hiedacamellia.mystiasizakaya.common.item.utils.LedgerItem;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("unused")
@@ -27,11 +25,11 @@ public class MIItem {
     public static final DeferredItem<BlockItem> BANK = REGISTRY.registerSimpleBlockItem("donation", MIBlock.DONATION);
 
     //kictenwires
-    public static final DeferredItem<BlockItem> CUTTING_BOARD = REGISTRY.register("cutting_board", () -> new KitchenwareBlockItem(MIBlock.CUTTING_BOARD.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE).component(MIDatacomponet.MI_TAGS.get(), new MITags(List.of("cutting_board"), new ArrayList<>()))));
-    public static final DeferredItem<BlockItem> BOILING_POT = REGISTRY.register("boiling_pot", () -> new KitchenwareBlockItem(MIBlock.BOILING_POT.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE).component(MIDatacomponet.MI_TAGS.get(), new MITags(List.of("boiling_pot"), new ArrayList<>()))));
-    public static final DeferredItem<BlockItem> FRYING_PAN = REGISTRY.register("frying_pan", () -> new KitchenwareBlockItem(MIBlock.FRYING_PAN.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE).component(MIDatacomponet.MI_TAGS.get(), new MITags(List.of("frying_pan"), new ArrayList<>()))));
-    public static final DeferredItem<BlockItem> STEAMER = REGISTRY.register("steamer", () -> new KitchenwareBlockItem(MIBlock.STEAMER.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE).component(MIDatacomponet.MI_TAGS.get(), new MITags(List.of("streamer"), new ArrayList<>()))));
-    public static final DeferredItem<BlockItem> GRILL = REGISTRY.register("grill", () -> new KitchenwareBlockItem(MIBlock.GRILL.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE).component(MIDatacomponet.MI_TAGS.get(), new MITags(List.of("grill"), new ArrayList<>()))));
+    public static final DeferredItem<BlockItem> CUTTING_BOARD = REGISTRY.register("cutting_board", () -> new KitchenwareBlockItem(MIBlock.CUTTING_BOARD.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE).component(MIDatacomponet.MI_POSITIVE_TAGS.get(), List.of("cutting_board"))));
+    public static final DeferredItem<BlockItem> BOILING_POT = REGISTRY.register("boiling_pot", () -> new KitchenwareBlockItem(MIBlock.BOILING_POT.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE).component(MIDatacomponet.MI_POSITIVE_TAGS.get(), List.of("boiling_pot"))));
+    public static final DeferredItem<BlockItem> FRYING_PAN = REGISTRY.register("frying_pan", () -> new KitchenwareBlockItem(MIBlock.FRYING_PAN.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE).component(MIDatacomponet.MI_POSITIVE_TAGS.get(),List.of("frying_pan"))));
+    public static final DeferredItem<BlockItem> STEAMER = REGISTRY.register("steamer", () -> new KitchenwareBlockItem(MIBlock.STEAMER.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE).component(MIDatacomponet.MI_POSITIVE_TAGS.get(), List.of("streamer"))));
+    public static final DeferredItem<BlockItem> GRILL = REGISTRY.register("grill", () -> new KitchenwareBlockItem(MIBlock.GRILL.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE).component(MIDatacomponet.MI_POSITIVE_TAGS.get(), List.of("grill"))));
 
     //Util
     public static final DeferredItem<BlockItem> TABLE = REGISTRY.registerSimpleBlockItem("table", MIBlock.TABLE);

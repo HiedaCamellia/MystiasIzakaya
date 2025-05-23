@@ -4,7 +4,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
-import org.hiedacamellia.mystiasizakaya.util.ItemStackHolder;
+import org.hiedacamellia.mystiasizakaya.core.util.ItemStackHolder;
 import org.lwjgl.glfw.GLFW;
 
 public class MIFakeItemSlot extends MIFakeSlot {

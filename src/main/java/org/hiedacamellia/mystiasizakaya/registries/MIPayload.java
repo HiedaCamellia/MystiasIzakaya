@@ -5,8 +5,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.handling.DirectionalPayloadHandler;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIMenu;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.*;
 import org.hiedacamellia.mystiasizakaya.core.network.*;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
@@ -54,33 +52,35 @@ public class MIPayload {
                 OrderRemoveS2CMessage.STREAM_CODEC,
                 OrderRemoveS2CMessage::handleClient
         );
-        registrar.playBidirectional(
-                MIOrders.TYPE,
-                MIOrders.STREAM_CODEC,
-                MIOrders::handleData
+        registrar.playToClient(
+                IzakayaOrderSyncBiMessage.TYPE,
+                IzakayaOrderSyncBiMessage.STREAM_CODEC,
+                IzakayaOrderSyncBiMessage::handleClient
         );
         registrar.playBidirectional(
-                org.hiedacamellia.mystiasizakaya.core.codec.record.MIMenu.TYPE,
-                org.hiedacamellia.mystiasizakaya.core.codec.record.MIMenu.STREAM_CODEC,
-                MIMenu::handleData
+                IzakayaMenuSyncBiMessage.TYPE,
+                IzakayaMenuSyncBiMessage.STREAM_CODEC,
+                IzakayaMenuSyncBiMessage::handleData
         );
-        registrar.playBidirectional(
-                MIBalance.TYPE,
-                MIBalance.STREAM_CODEC,
-                new DirectionalPayloadHandler<>(
-                        MIBalance::handleClient,
-                        MIBalance::handleServer
-                )
+        registrar.playToClient(
+                BalanceSyncS2CMessage.TYPE,
+                BalanceSyncS2CMessage.STREAM_CODEC,
+                BalanceSyncS2CMessage::handleClient
+        );
+        registrar.playToClient(
+                TelephoneCooldownSyncS2CMessage.TYPE,
+                TelephoneCooldownSyncS2CMessage.STREAM_CODEC,
+                TelephoneCooldownSyncS2CMessage::handleClient
         );
         registrar.playToServer(
                 DonationTakeOutS2SMessage.TYPE,
                 DonationTakeOutS2SMessage.STREAM_CODEC,
                 DonationTakeOutS2SMessage::handleServer
         );
-        registrar.playBidirectional(
-                MITurnover.TYPE,
-                MITurnover.STREAM_CODEC,
-                MITurnover::handleData
+        registrar.playToClient(
+                TurnoverSyncS2CMessage.TYPE,
+                TurnoverSyncS2CMessage.STREAM_CODEC,
+                TurnoverSyncS2CMessage::handleClient
         );
         registrar.playToServer(
                 TelephoneConfirmS2SMessage.TYPE,
@@ -88,11 +88,11 @@ public class MIPayload {
                 TelephoneConfirmS2SMessage::handleServer
         );
         registrar.playBidirectional(
-                MIOnOpen.TYPE,
-                MIOnOpen.STREAM_CODEC,
+                OpenIzakayaBIMessage.TYPE,
+                OpenIzakayaBIMessage.STREAM_CODEC,
                 new DirectionalPayloadHandler<>(
-                        MIOnOpen::handleClient,
-                        MIOnOpen::handleServer
+                        OpenIzakayaBIMessage::handleClient,
+                        OpenIzakayaBIMessage::handleServer
                 )
         );
 

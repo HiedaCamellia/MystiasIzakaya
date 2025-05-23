@@ -13,8 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.common.blockentity.TableEntity;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
-import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
+import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
 
 public record OrderAddS2CMessage(byte id, ResourceLocation c, ResourceLocation b)implements CustomPacketPayload {
 
@@ -34,8 +33,7 @@ public record OrderAddS2CMessage(byte id, ResourceLocation c, ResourceLocation b
     public static void handleClient(final OrderAddS2CMessage data, final IPayloadContext context) {
         context.enqueueWork(() -> {
                     LocalPlayer player = Minecraft.getInstance().player;
-                    MIOrders miOrders = player.getData(MIAttachment.MI_ORDERS.get());
-                    BlockPos pos = miOrders.blockPos().get(data.id());
+                    BlockPos pos = MIPlayerUtil.getTables(player).get(data.id());
                     ClientLevel clientLevel = player.clientLevel;
                     if (clientLevel.isLoaded(pos)) {
                         if (clientLevel.getBlockEntity(pos) instanceof TableEntity tableEntity) {

@@ -14,12 +14,11 @@ import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MICustomButton;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIItemButton;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIOutButton;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MICost;
 import org.hiedacamellia.mystiasizakaya.core.network.TelephoneConfirmS2SMessage;
-import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
+import org.hiedacamellia.mystiasizakaya.core.util.MIBalanceUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.MIItemStackUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.RandomItems;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
-import org.hiedacamellia.mystiasizakaya.util.BalanceUtil;
-import org.hiedacamellia.mystiasizakaya.util.RandomItems;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,14 +88,14 @@ public class TelephoneScreen extends Screen {
         pose.pushPose();
         pose.translate(leftPos, topPos, 0);
         String text = Component.translatable("gui.mystias_izakaya.balance").getString() + new java.text.DecimalFormat("#######")
-                .format(BalanceUtil.getBalance(this.minecraft.player)) + " \u5186";
+                .format(MIBalanceUtil.getBalance(this.minecraft.player)) + " \u5186";
 
         guiGraphics.drawString(this.font,
                 text, 88 - font.width(text) / 2, 10, -12829636, false);
 
         int cost_all = 0;
         for (ItemStack itemStack : out) {
-            cost_all += (int) (itemStack.getCount() * itemStack.getOrDefault(MIDatacomponet.MI_COST, new MICost(0)).cost() * rate.get(out.indexOf(itemStack)));
+            cost_all += (int) (itemStack.getCount() * MIItemStackUtil.getCost(itemStack) * rate.get(out.indexOf(itemStack)));
         }
         cost = cost_all;
 
@@ -139,7 +138,7 @@ public class TelephoneScreen extends Screen {
                     itemStack.setCount(itemStack.getCount() - copy.getCount());
 
                     select.get(finala).setItemStack(itemStack);
-                    int cost = (int) (itemStack.getOrDefault(MIDatacomponet.MI_COST, new MICost(0)).cost()*select.get(finala).getRate());
+                    int cost = (int) (MIItemStackUtil.getCost(itemStack)*select.get(finala).getRate());
                     if(!itemStack.isEmpty())
                         select.get(finala).setTooltip(Tooltip.create(Component.literal(itemStack.getHoverName().getString() + "\n" + itemStack.getCount() + "個\n" + cost+" \u5186")));
                     else
@@ -235,7 +234,7 @@ public class TelephoneScreen extends Screen {
         for (int i = 0; i < itemStacksIn.size(); i++) {
             select.get(i).setItemStack(itemStacksIn.get(i));
             select.get(i).setRate(0.6+0.4*Math.random());
-            int cost = (int) (itemStacksIn.get(i).getOrDefault(MIDatacomponet.MI_COST, new MICost(0)).cost()*select.get(i).getRate());
+            int cost = (int) (MIItemStackUtil.getCost(itemStacksIn.get(i))*select.get(i).getRate());
             select.get(i).setTooltip(Tooltip.create(Component.literal(itemStacksIn.get(i).getHoverName().getString() + "\n" + itemStacksIn.get(i).getCount() + "個\n" + cost+" \u5186")));
             select.get(i).enableRender();
         }
@@ -252,7 +251,7 @@ public class TelephoneScreen extends Screen {
         for (int i = 0; i < itemStacksIn.size(); i++) {
             selected.get(i).setItemStack(itemStacksIn.get(i));
             selected.get(i).setRate(rate.get(i));
-            int cost = (int) (itemStacksIn.get(i).getOrDefault(MIDatacomponet.MI_COST, new MICost(0)).cost()*selected.get(i).getRate());
+            int cost = (int) (MIItemStackUtil.getCost(itemStacksIn.get(i))*selected.get(i).getRate());
             selected.get(i).setTooltip(Tooltip.create(Component.literal(itemStacksIn.get(i).getHoverName().getString() + "\n" + itemStacksIn.get(i).getCount() + "個\n" + cost+" \u5186")));
             selected.get(i).enableRender();
         }
@@ -268,7 +267,7 @@ public class TelephoneScreen extends Screen {
         for (MIItemButton button : select) {
             if (button.getItemStack().getItem().equals(stack.getItem())) {
                 button.getItemStack().setCount(button.getItemStack().getCount() + stack.getCount());
-                int cost = (int) (stack.getOrDefault(MIDatacomponet.MI_COST, new MICost(0)).cost() *button.getRate());
+                int cost = (int) (MIItemStackUtil.getCost(stack) *button.getRate());
                 button.setTooltip(Tooltip.create(Component.literal(button.getItemStack().getHoverName().getString() + "\n" + button.getItemStack().getCount() + "個\n" + cost+" \u5186")));
                 return;
             }
@@ -277,7 +276,7 @@ public class TelephoneScreen extends Screen {
             if (button.getItemStack().isEmpty()) {
                 button.setItemStack(stack);
                 button.setRate(rate);
-                int cost = (int) (stack.getOrDefault(MIDatacomponet.MI_COST, new MICost(0)).cost() *button.getRate());
+                int cost = (int) (MIItemStackUtil.getCost(stack) *button.getRate());
                 button.setTooltip(Tooltip.create(Component.literal(button.getItemStack().getHoverName().getString() + "\n" + button.getItemStack().getCount() + "個\n" + cost+" \u5186")));
                 return;
             }

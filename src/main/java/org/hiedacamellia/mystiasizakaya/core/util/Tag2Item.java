@@ -1,4 +1,4 @@
-package org.hiedacamellia.mystiasizakaya.util;
+package org.hiedacamellia.mystiasizakaya.core.util;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.TagKey;

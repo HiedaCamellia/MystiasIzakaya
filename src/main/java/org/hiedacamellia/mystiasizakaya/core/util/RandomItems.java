@@ -1,4 +1,4 @@
-package org.hiedacamellia.mystiasizakaya.util;
+package org.hiedacamellia.mystiasizakaya.core.util;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;

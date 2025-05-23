@@ -13,8 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.common.blockentity.TableEntity;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MIOrders;
-import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
+import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
 
 public record OrderFeedC2SMessage(byte id, byte n, ItemStack itemStack)implements CustomPacketPayload {
 
@@ -35,8 +34,7 @@ public record OrderFeedC2SMessage(byte id, byte n, ItemStack itemStack)implement
         context.enqueueWork(() -> {
                     Player player = context.player();
                     if(player instanceof ServerPlayer serverPlayer){
-                        MIOrders miOrders = serverPlayer.getData(MIAttachment.MI_ORDERS.get());
-                        BlockPos pos = miOrders.blockPos().get(data.id());
+                        BlockPos pos = MIPlayerUtil.getTables(player).get(data.id());
                         ServerLevel serverLevel = serverPlayer.serverLevel();
                         if(serverLevel.isLoaded(pos)){
                             if (serverLevel.getBlockEntity(pos) instanceof TableEntity tableEntity){

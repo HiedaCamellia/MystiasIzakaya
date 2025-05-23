@@ -1,7 +1,6 @@
 package org.hiedacamellia.mystiasizakaya.client.gui.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.core.BlockPos;
@@ -11,7 +10,7 @@ import net.minecraft.world.entity.player.Inventory;
 import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIFakeSlot;
 import org.hiedacamellia.mystiasizakaya.common.menu.TableMenu;
-import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
+import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
 
 import java.util.List;
 
@@ -42,7 +41,7 @@ public class TableScreen extends AbstractContainerScreen<TableMenu> {
     }
 
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        List<BlockPos> blockPosList = Minecraft.getInstance().player.getData(MIAttachment.MI_ORDERS).blockPos();
+        List<BlockPos> blockPosList = MIPlayerUtil.getTables(minecraft.player);
         int index = blockPosList.indexOf(pos);
         if (index != -1) {
             MutableComponent component = Component.translatable("gui.mystias_izakaya.table.title", index + 1);

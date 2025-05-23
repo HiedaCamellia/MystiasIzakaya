@@ -10,7 +10,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import org.hiedacamellia.mystiasizakaya.core.config.MIClientConfig;
-import org.hiedacamellia.mystiasizakaya.util.BalanceUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.MIBalanceUtil;
 
 @EventBusSubscriber({ Dist.CLIENT })
 public class BalanceOverlay {
@@ -20,7 +20,7 @@ public class BalanceOverlay {
 		int h = event.getGuiGraphics().guiHeight();
 		Player player = Minecraft.getInstance().player;
         String text = Component.translatable("gui.mystias_izakaya.balance").getString() + new java.text.DecimalFormat("#######")
-						.format(BalanceUtil.getBalance(player)) + "\u5186";
+						.format(MIBalanceUtil.getBalance(player)) + "\u5186";
 		int strlength = Minecraft.getInstance().font.width(text);
 
 		if (MIClientConfig.SHOW_BALANCE.get())

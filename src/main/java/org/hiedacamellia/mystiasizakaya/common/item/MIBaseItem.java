@@ -9,12 +9,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MICost;
-import org.hiedacamellia.mystiasizakaya.core.codec.record.MITags;
-import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
+import org.hiedacamellia.mystiasizakaya.core.util.MIItemStackUtil;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MIBaseItem extends Item {
@@ -39,9 +36,8 @@ public class MIBaseItem extends Item {
         super.appendHoverText(itemstack, context, list, flag);
         ResourceLocation key = BuiltInRegistries.ITEM.getKey(itemstack.getItem());
         if (!Screen.hasShiftDown()) {
-            MITags mitags = itemstack.getOrDefault(MIDatacomponet.MI_TAGS.get(), new MITags(new ArrayList<>(),new ArrayList<>()) );
-            List<String> tags = mitags.tags();
-            List<String> ntags = mitags.ntags();
+            List<String> tags = MIItemStackUtil.getPositiveTags(itemstack);
+            List<String> ntags = MIItemStackUtil.getNegativeTags(itemstack);
 
             for (String tag : tags) {
                 list.add(Component.literal("+ ").append(Component.translatable(tagprefix+tag)).withStyle(ChatFormatting.GOLD));
@@ -49,7 +45,7 @@ public class MIBaseItem extends Item {
             for (String tag : ntags) {
                 list.add(Component.literal("- ").append(Component.translatable(tagprefix+tag)).withStyle(ChatFormatting.RED));
             }
-            list.add(Component.translatable("tooltip.mystias_izakaya.cost").append(String.valueOf(itemstack.getOrDefault(MIDatacomponet.MI_COST.get(), new MICost(0)).cost())).withStyle(ChatFormatting.YELLOW));
+            list.add(Component.translatable("tooltip.mystias_izakaya.cost").append(String.valueOf(MIItemStackUtil.getCost(itemstack))).withStyle(ChatFormatting.YELLOW));
 
             list.add(Component.translatable("tooltip.mystias_izakaya.press_shift").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
         } else {
