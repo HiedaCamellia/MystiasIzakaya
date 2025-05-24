@@ -39,9 +39,7 @@ public record IzakayaMenuSyncBiMessage(List<String> cuisines, List<String> bever
     }
 
     public static void handleData(final IzakayaMenuSyncBiMessage data, final IPayloadContext context) {
-        context.enqueueWork(() -> {
-                    MIPlayerUtil.setIzakayaMenu(context.player(), data.toIzakayaMenu());
-                })
+        context.enqueueWork(() -> MIPlayerUtil.setIzakayaMenu(context.player(), data.toIzakayaMenu()))
                 .exceptionally(e -> {
                     context.disconnect(Component.translatable("network.mystiasizakaya.failed", e.getMessage()));
                     return null;

@@ -9,7 +9,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
+import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
 import org.jetbrains.annotations.NotNull;
 
 public record BalanceSyncS2CMessage(int balance) implements CustomPacketPayload {
@@ -34,7 +34,7 @@ public record BalanceSyncS2CMessage(int balance) implements CustomPacketPayload 
 
     public static void handleClient(final BalanceSyncS2CMessage data, final IPayloadContext context) {
         context.enqueueWork(() -> {
-                    context.player().setData(MIAttachment.MI_BALANCE, data.balance());
+                    MIPlayerUtil.setBalance(context.player(), data.balance());
                 })
                 .exceptionally(e -> {
                     context.disconnect(Component.translatable("network.mystiasizakaya.failed", e.getMessage()));

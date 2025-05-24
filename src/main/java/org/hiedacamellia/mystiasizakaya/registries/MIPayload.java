@@ -53,14 +53,19 @@ public class MIPayload {
                 OrderRemoveS2CMessage::handleClient
         );
         registrar.playToClient(
-                IzakayaOrderSyncBiMessage.TYPE,
-                IzakayaOrderSyncBiMessage.STREAM_CODEC,
-                IzakayaOrderSyncBiMessage::handleClient
+                IzakayaOrderSyncS2CMessage.TYPE,
+                IzakayaOrderSyncS2CMessage.STREAM_CODEC,
+                IzakayaOrderSyncS2CMessage::handleClient
         );
         registrar.playBidirectional(
                 IzakayaMenuSyncBiMessage.TYPE,
                 IzakayaMenuSyncBiMessage.STREAM_CODEC,
                 IzakayaMenuSyncBiMessage::handleData
+        );
+        registrar.playBidirectional(
+                IzakayaTableSyncBiMessage.TYPE,
+                IzakayaTableSyncBiMessage.STREAM_CODEC,
+                IzakayaTableSyncBiMessage::handleData
         );
         registrar.playToClient(
                 BalanceSyncS2CMessage.TYPE,

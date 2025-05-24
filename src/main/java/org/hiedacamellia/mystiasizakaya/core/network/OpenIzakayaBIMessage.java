@@ -81,8 +81,10 @@ public record OpenIzakayaBIMessage(boolean open) implements CustomPacketPayload 
     }
 
     public static void handleClient(final OpenIzakayaBIMessage data, final IPayloadContext context) {
-        context.enqueueWork(() -> {
-            context.player().setData(MIAttachment.MI_ON_OPEN, data.open());
-        });
+        context.enqueueWork(() -> MIPlayerUtil.setOnOpen(context.player(),data.open()))
+                .exceptionally(e -> {
+                    context.disconnect(Component.translatable("network.mystiasizakaya.failed", e.getMessage()));
+                    return null;
+                });
     }
 }

@@ -24,7 +24,10 @@ import org.hiedacamellia.mystiasizakaya.core.util.MIItemStackUtil;
 import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 @EventBusSubscriber
 public class MIPlayerEvent {

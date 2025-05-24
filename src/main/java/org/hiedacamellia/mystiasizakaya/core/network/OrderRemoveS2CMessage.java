@@ -37,8 +37,6 @@ public record OrderRemoveS2CMessage(byte id)implements CustomPacketPayload {
                             tableEntity.removeW2S();
                         }
                     }
-
-
                 })
                 .exceptionally(e -> {
                     context.disconnect(Component.translatable("network.mystiasizakaya.failed", e.getMessage()));

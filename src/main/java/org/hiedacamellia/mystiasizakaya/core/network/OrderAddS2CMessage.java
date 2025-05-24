@@ -40,8 +40,6 @@ public record OrderAddS2CMessage(byte id, ResourceLocation c, ResourceLocation b
                             tableEntity.addW2S(data.c(), data.b(), data.id());
                         }
                     }
-
-
                 })
                 .exceptionally(e -> {
                     context.disconnect(Component.translatable("network.mystiasizakaya.failed", e.getMessage()));

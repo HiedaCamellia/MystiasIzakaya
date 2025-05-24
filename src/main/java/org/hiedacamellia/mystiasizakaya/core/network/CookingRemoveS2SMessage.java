@@ -25,9 +25,7 @@ public record CookingRemoveS2SMessage(UUID uuid) implements CustomPacketPayload 
     }
 
     public static void handleClient(final CookingRemoveS2SMessage data, final IPayloadContext context){
-        context.enqueueWork(() -> {
-                    ExistW2SWidget.remove(data.uuid());
-                })
+        context.enqueueWork(() -> ExistW2SWidget.remove(data.uuid()))
                 .exceptionally(e -> {
                     context.disconnect(Component.translatable("network.mystiasizakaya.failed", e.getMessage()));
                     return null;

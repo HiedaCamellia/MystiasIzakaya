@@ -43,8 +43,6 @@ public record OrderFeedC2SMessage(byte id, byte n, ItemStack itemStack)implement
                             }
                         }
                     }
-
-
                 })
                 .exceptionally(e -> {
                     context.disconnect(Component.translatable("network.mystiasizakaya.failed", e.getMessage()));

@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.core.util.MICodecUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public record IzakayaTableSyncBiMessage(List<BlockPos> blockPos)implements Custo
 
     public static void handleData(final IzakayaTableSyncBiMessage data, final IPayloadContext context) {
         context.enqueueWork(() -> {
-
+                    MIPlayerUtil.setTables(context.player(), data.blockPos());
                 })
                 .exceptionally(e -> {
                     context.disconnect(Component.translatable("network.mystiasizakaya.failed", e.getMessage()));

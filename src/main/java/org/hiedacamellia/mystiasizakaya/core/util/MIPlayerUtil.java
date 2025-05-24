@@ -149,6 +149,6 @@ public class MIPlayerUtil {
     }
     public static void syncIzakayaOrder(Player player){
         if (player instanceof ServerPlayer serverPlayer)
-            PacketDistributor.sendToPlayer(serverPlayer, IzakayaOrderSyncBiMessage.fromIzakayaOrder(MIPlayerUtil.getIzakayaOrder(serverPlayer)));
+            PacketDistributor.sendToPlayer(serverPlayer, IzakayaOrderSyncS2CMessage.fromIzakayaOrder(MIPlayerUtil.getIzakayaOrder(serverPlayer)));
     }
 }

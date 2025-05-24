@@ -14,34 +14,32 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public record IzakayaOrderSyncBiMessage(List<String> cuisines, List<String> beverages)implements CustomPacketPayload {
+public record IzakayaOrderSyncS2CMessage(List<String> cuisines, List<String> beverages)implements CustomPacketPayload {
 
     private IzakayaOrder toIzakayaOrder() {
         return new IzakayaOrder(cuisines, beverages);
     }
-    public static IzakayaOrderSyncBiMessage fromIzakayaOrder(IzakayaOrder izakayaMenu) {
-        return new IzakayaOrderSyncBiMessage(izakayaMenu.cuisines(), izakayaMenu.beverages());
+    public static IzakayaOrderSyncS2CMessage fromIzakayaOrder(IzakayaOrder izakayaMenu) {
+        return new IzakayaOrderSyncS2CMessage(izakayaMenu.cuisines(), izakayaMenu.beverages());
     }
 
-    public static final StreamCodec<ByteBuf, IzakayaOrderSyncBiMessage> STREAM_CODEC = StreamCodec.composite(
+    public static final StreamCodec<ByteBuf, IzakayaOrderSyncS2CMessage> STREAM_CODEC = StreamCodec.composite(
             MICodecUtil.LIST_STRING_STREAM_CODEC,
-            IzakayaOrderSyncBiMessage::cuisines,
+            IzakayaOrderSyncS2CMessage::cuisines,
             MICodecUtil.LIST_STRING_STREAM_CODEC,
-            IzakayaOrderSyncBiMessage::beverages,
-            IzakayaOrderSyncBiMessage::new
+            IzakayaOrderSyncS2CMessage::beverages,
+            IzakayaOrderSyncS2CMessage::new
     );
 
-    public static final Type<IzakayaOrderSyncBiMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "izakaya_menu_sync"));
+    public static final Type<IzakayaOrderSyncS2CMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "izakaya_order_sync"));
 
     @Override
     public @NotNull Type<? extends CustomPacketPayload> type() {
         return TYPE;
     }
 
-    public static void handleClient(final IzakayaOrderSyncBiMessage data, final IPayloadContext context) {
-        context.enqueueWork(() -> {
-                    MIPlayerUtil.setIzakayaOrder(context.player(), data.toIzakayaOrder());
-                })
+    public static void handleClient(final IzakayaOrderSyncS2CMessage data, final IPayloadContext context) {
+        context.enqueueWork(() -> MIPlayerUtil.setIzakayaOrder(context.player(), data.toIzakayaOrder()))
                 .exceptionally(e -> {
                     context.disconnect(Component.translatable("network.mystiasizakaya.failed", e.getMessage()));
                     return null;
