@@ -1,8 +1,6 @@
 package org.hiedacamellia.mystiasizakaya.core.network;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -10,6 +8,8 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.common.blockentity.TableEntity;
@@ -32,9 +32,9 @@ public record OrderAddS2CMessage(byte id, ResourceLocation c, ResourceLocation b
 
     public static void handleClient(final OrderAddS2CMessage data, final IPayloadContext context) {
         context.enqueueWork(() -> {
-                    LocalPlayer player = Minecraft.getInstance().player;
+                    Player player = context.player();
                     BlockPos pos = MIPlayerUtil.getTables(player).get(data.id());
-                    ClientLevel clientLevel = player.clientLevel;
+                    Level clientLevel = player.level();
                     if (clientLevel.isLoaded(pos)) {
                         if (clientLevel.getBlockEntity(pos) instanceof TableEntity tableEntity) {
                             tableEntity.addW2S(data.c(), data.b(), data.id());
