@@ -14,6 +14,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.api.event.OrderEvent;
 import org.hiedacamellia.mystiasizakaya.api.kubejs.MIEventPoster;
+import org.hiedacamellia.mystiasizakaya.core.network.IzakayaOrderSyncS2CMessage;
 import org.hiedacamellia.mystiasizakaya.core.network.OrderAddS2CMessage;
 import org.hiedacamellia.mystiasizakaya.core.network.OrderRemoveS2CMessage;
 import org.hiedacamellia.mystiasizakaya.core.util.MICodecUtil;
@@ -24,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public record IzakayaOrder(List<String> cuisines, List<String> beverages)implements CustomPacketPayload  {
+public record IzakayaOrder(List<String> cuisines, List<String> beverages)  {
 
     public List<ItemStack> toCuisineStacks(){
         return cuisines().stream().map(MIItemStackUtil::fromString).toList();
@@ -33,8 +34,6 @@ public record IzakayaOrder(List<String> cuisines, List<String> beverages)impleme
     public List<ItemStack> toBeverageStacks(){
         return beverages().stream().map(MIItemStackUtil::fromString).toList();
     }
-
-    public static final CustomPacketPayload.Type<IzakayaOrder> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "mi_orders"));
 
     public static final Codec<IzakayaOrder> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
@@ -51,21 +50,6 @@ public record IzakayaOrder(List<String> cuisines, List<String> beverages)impleme
             beverageList.add("minecraft:air");
         }
         return new IzakayaOrder(cuisineList,beverageList);
-    }
-
-    @Override
-    public CustomPacketPayload.@NotNull Type<? extends CustomPacketPayload> type() {
-        return TYPE;
-    }
-
-    public static void handleData(final IzakayaOrder data, final IPayloadContext context) {
-        context.enqueueWork(() -> {
-                    context.player().setData(MIAttachment.IZAKAYA_ORDER, data);
-                })
-                .exceptionally(e -> {
-                    context.disconnect(Component.translatable("network.mystiasizakaya.failed", e.getMessage()));
-                    return null;
-                });
     }
 
 
@@ -86,7 +70,7 @@ public record IzakayaOrder(List<String> cuisines, List<String> beverages)impleme
 
         IzakayaOrder izakayaOrder1 = new IzakayaOrder(cuisineList, beverageList);
         player.setData(MIAttachment.IZAKAYA_ORDER.get(), izakayaOrder1);
-        PacketDistributor.sendToPlayer(player, izakayaOrder1);
+        PacketDistributor.sendToPlayer(player, IzakayaOrderSyncS2CMessage.fromIzakayaOrder(izakayaOrder1));
         PacketDistributor.sendToPlayer(player,new OrderAddS2CMessage((byte) id,
                 BuiltInRegistries.ITEM.getKey(cuisines.getItem()),
                 BuiltInRegistries.ITEM.getKey(beverages.getItem())));
@@ -109,7 +93,7 @@ public record IzakayaOrder(List<String> cuisines, List<String> beverages)impleme
 
         IzakayaOrder izakayaOrder1 = new IzakayaOrder(cuisineList, beverageList);
         player.setData(MIAttachment.IZAKAYA_ORDER.get(), izakayaOrder1);
-        PacketDistributor.sendToPlayer(player, izakayaOrder1);
+        PacketDistributor.sendToPlayer(player, IzakayaOrderSyncS2CMessage.fromIzakayaOrder(izakayaOrder1));
         PacketDistributor.sendToPlayer(player,new OrderRemoveS2CMessage((byte) id));
     }
 }

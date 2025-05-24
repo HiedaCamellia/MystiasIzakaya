@@ -18,6 +18,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaMenu;
 import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaOrder;
+import org.hiedacamellia.mystiasizakaya.core.network.IzakayaOrderSyncS2CMessage;
 import org.hiedacamellia.mystiasizakaya.core.util.MIMessageUtil;
 import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
@@ -31,7 +32,7 @@ public class MIDebug {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("mystiasizakaya").then(Commands.literal("debug")
-				.then(Commands.literal("cuisines").then(
+				.then(Commands.literal("order").then(
 						Commands.argument("id", DoubleArgumentType.doubleArg()).then(Commands.literal("cuisines").then(Commands.literal("replace").then(Commands.argument("cuisines", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
 							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
 							ItemStack cuisines = ItemArgument.getItem(arguments, "cuisines").getItem().getDefaultInstance();
@@ -46,7 +47,7 @@ public class MIDebug {
                                 }
                                 orders_list.set(id, order);
                                 player.setData(MIAttachment.IZAKAYA_ORDER, new IzakayaOrder(orders_list, izakayaOrder.beverages()));
-                                PacketDistributor.sendToPlayer(player, new IzakayaOrder(orders_list, izakayaOrder.beverages()));
+                                PacketDistributor.sendToPlayer(player,new IzakayaOrderSyncS2CMessage(orders_list, izakayaOrder.beverages()));
                             }
                             return 0;
 						}))).then(Commands.literal("clean").executes(arguments -> {
@@ -61,7 +62,7 @@ public class MIDebug {
                                 }
                                 orders_list.set(id, "");
                                 player.setData(MIAttachment.IZAKAYA_ORDER, new IzakayaOrder(orders_list, izakayaOrder.beverages()));
-                                PacketDistributor.sendToPlayer(player, new IzakayaOrder(orders_list, izakayaOrder.beverages()));
+                                PacketDistributor.sendToPlayer(player, new IzakayaOrderSyncS2CMessage(orders_list, izakayaOrder.beverages()));
                             }
                             return 0;
 						}))).then(Commands.literal("beverages").then(Commands.literal("replace").then(Commands.argument("beverages", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
@@ -78,7 +79,7 @@ public class MIDebug {
                                 }
                                 ordersbeverages_list.set(id, order);
                                 player.setData(MIAttachment.IZAKAYA_ORDER, new IzakayaOrder(izakayaOrder.cuisines(), ordersbeverages_list));
-                                PacketDistributor.sendToPlayer(player, new IzakayaOrder(izakayaOrder.cuisines(), ordersbeverages_list));
+                                PacketDistributor.sendToPlayer(player, new IzakayaOrderSyncS2CMessage(izakayaOrder.cuisines(), ordersbeverages_list));
                             }
                             return 0;
 						}))).then(Commands.literal("clean").executes(arguments -> {
@@ -93,7 +94,7 @@ public class MIDebug {
                                 }
                                 ordersbeverages_list.set(id, "");
                                 player.setData(MIAttachment.IZAKAYA_ORDER, new IzakayaOrder(izakayaOrder.cuisines(), ordersbeverages_list));
-                                PacketDistributor.sendToPlayer(player, new IzakayaOrder(izakayaOrder.cuisines(), ordersbeverages_list));
+                                PacketDistributor.sendToPlayer(player, new IzakayaOrderSyncS2CMessage(izakayaOrder.cuisines(), ordersbeverages_list));
                             }
                             return 0;
 						}))))

@@ -34,7 +34,7 @@ import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;
 import org.hiedacamellia.mystiasizakaya.core.network.CookingProgressS2SMessage;
 import org.hiedacamellia.mystiasizakaya.core.network.CookingRemoveS2SMessage;
 import org.hiedacamellia.mystiasizakaya.core.network.CookingStartS2CMessage;
-import org.hiedacamellia.mystiasizakaya.core.util.KitchenwareTypeUtil;
+import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareTypeUtil;
 import org.hiedacamellia.mystiasizakaya.core.util.MIItemStackUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

@@ -14,23 +14,23 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public record IzakayaTableSyncBiMessage(List<BlockPos> blockPos)implements CustomPacketPayload {
+public record IzakayaTableSyncS2CMessage(List<BlockPos> blockPos)implements CustomPacketPayload {
 
 
-    public static final StreamCodec<ByteBuf, IzakayaTableSyncBiMessage> STREAM_CODEC = StreamCodec.composite(
+    public static final StreamCodec<ByteBuf, IzakayaTableSyncS2CMessage> STREAM_CODEC = StreamCodec.composite(
             MICodecUtil.LIST_BLOCK_POS_STREAM_CODEC,
-            IzakayaTableSyncBiMessage::blockPos,
-            IzakayaTableSyncBiMessage::new
+            IzakayaTableSyncS2CMessage::blockPos,
+            IzakayaTableSyncS2CMessage::new
     );
 
-    public static final Type<IzakayaTableSyncBiMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "izakaya_table_sync"));
+    public static final Type<IzakayaTableSyncS2CMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(MystiasIzakaya.MODID, "izakaya_table_sync"));
 
     @Override
     public @NotNull Type<? extends CustomPacketPayload> type() {
         return TYPE;
     }
 
-    public static void handleData(final IzakayaTableSyncBiMessage data, final IPayloadContext context) {
+    public static void handleData(final IzakayaTableSyncS2CMessage data, final IPayloadContext context) {
         context.enqueueWork(() -> {
                     MIPlayerUtil.setTables(context.player(), data.blockPos());
                 })

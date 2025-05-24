@@ -1,9 +1,8 @@
-package org.hiedacamellia.mystiasizakaya.core.util;
+package org.hiedacamellia.mystiasizakaya.content.cooking;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import org.hiedacamellia.mystiasizakaya.common.blockentity.CookingEntity;
-import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlockEntitiy;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 

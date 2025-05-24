@@ -110,7 +110,10 @@ public class MIPlayerEvent {
 //            Debug.getLogger().debug(player.getData(MIAttachment.MI_ON_OPEN).toString());
 //            Debug.getLogger().debug(tables.toString());
 
-            if(player.getData(MIAttachment.MI_ON_OPEN)&&serverPlayer.level().getGameTime()% MICommonConfig.ORDER_REFRESH_INTERVAL.get()==0){
+            if(player.getData(MIAttachment.MI_ON_OPEN)&& (serverPlayer.level().getGameTime()% MICommonConfig.ORDER_REFRESH_INTERVAL.get()==0)){
+
+                //MystiasIzakaya.LOGGER.debug("Try to add order");
+
                 IzakayaMenu izakayaMenu = MIPlayerUtil.getIzakayaMenu(player);
                 Set<ItemStack> beverages = new LinkedHashSet<>(izakayaMenu.toBeverageStacks());
                 Set<ItemStack> cuisines = new LinkedHashSet<>(izakayaMenu.toCuisineStacks());

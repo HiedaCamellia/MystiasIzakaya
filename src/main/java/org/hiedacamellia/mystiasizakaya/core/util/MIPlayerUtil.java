@@ -12,6 +12,7 @@ import org.hiedacamellia.mystiasizakaya.core.network.*;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MIPlayerUtil {
@@ -48,7 +49,7 @@ public class MIPlayerUtil {
         return new ArrayList<>(player.getData(MIAttachment.MI_TURNOVER));
     }
     public static void setTurnover(Player player, List<Pair<String, Double>> turnover){
-        player.setData(MIAttachment.MI_TURNOVER, new ArrayList<>(turnover));
+        player.setData(MIAttachment.MI_TURNOVER, new LinkedList<>(turnover));
     }
     public static void copyTurnover(Player from, Player to){
         to.setData(MIAttachment.MI_TURNOVER, from.getData(MIAttachment.MI_TURNOVER));
@@ -89,6 +90,8 @@ public class MIPlayerUtil {
     public static void syncIzakayaMenu(Player player){
         if (player instanceof ServerPlayer serverPlayer)
             PacketDistributor.sendToPlayer(serverPlayer, IzakayaMenuSyncBiMessage.fromIzakayaMenu(MIPlayerUtil.getIzakayaMenu(serverPlayer)));
+        else
+            PacketDistributor.sendToServer(IzakayaMenuSyncBiMessage.fromIzakayaMenu(MIPlayerUtil.getIzakayaMenu(player)));
     }
 
     public static int getTeleCooldown(Player player){
@@ -116,7 +119,7 @@ public class MIPlayerUtil {
     }
     public static void syncTables(Player player){
         if (player instanceof ServerPlayer serverPlayer)
-            PacketDistributor.sendToPlayer(serverPlayer, new IzakayaTableSyncBiMessage(MIPlayerUtil.getTables(player)));
+            PacketDistributor.sendToPlayer(serverPlayer, new IzakayaTableSyncS2CMessage(MIPlayerUtil.getTables(player)));
     }
 
     public static IzakayaOrder getIzakayaOrder(Player player){

@@ -63,9 +63,9 @@ public class MIPayload {
                 IzakayaMenuSyncBiMessage::handleData
         );
         registrar.playBidirectional(
-                IzakayaTableSyncBiMessage.TYPE,
-                IzakayaTableSyncBiMessage.STREAM_CODEC,
-                IzakayaTableSyncBiMessage::handleData
+                IzakayaTableSyncS2CMessage.TYPE,
+                IzakayaTableSyncS2CMessage.STREAM_CODEC,
+                IzakayaTableSyncS2CMessage::handleData
         );
         registrar.playToClient(
                 BalanceSyncS2CMessage.TYPE,
