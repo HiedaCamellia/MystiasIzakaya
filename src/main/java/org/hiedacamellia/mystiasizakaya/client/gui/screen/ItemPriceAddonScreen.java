@@ -198,8 +198,8 @@ public class ItemPriceAddonScreen extends AbstractContainerScreen<ItemPriceAddon
         int y = topPos+5;
         y+= (pos%3)*25;
 
+        removeWidget(add);
         if(pos>=6){
-            removeWidget(add);
             return;
         }
         add = new MICustomButton.builder(Component.literal("+"), button -> {
