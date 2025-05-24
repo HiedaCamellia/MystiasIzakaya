@@ -45,6 +45,8 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.telephone_ui.mode_i.desc","购买食材");
         add("gui.mystias_izakaya.telephone_ui.mode_b.desc","购买酒水");
 
+        add("gui.mystias_izakaya.price_addon_ui.title","价格调整");
+
         add("message.mystiasizakaya.checkout.cheat","请不要作弊");
         add("message.mystiasizakaya.checkout.fail", "余额不足");
         add("message.mystiasizakaya.checkout.success", "购买成功");
@@ -61,6 +63,8 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("network.mystiasizakaya.ledger.failed.table","餐桌未绑定");
         add("network.mystiasizakaya.ledger.failed.cuisines","菜单中没有料理");
         add("network.mystiasizakaya.ledger.failed.beverages","菜单中没有酒水");
+
+        add("network.mystiasizakaya.item_price_addon.set_success","价格调整成功");
 
         add("network.mystiasizakaya.failed", "无法处理网络数据: %s");
         add("block.mystias_izakaya.donation", "赛钱箱");

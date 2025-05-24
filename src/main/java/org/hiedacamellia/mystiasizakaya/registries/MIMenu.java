@@ -7,6 +7,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.common.menu.CookingMenu;
+import org.hiedacamellia.mystiasizakaya.common.menu.ItemPriceAddonMenu;
 import org.hiedacamellia.mystiasizakaya.common.menu.LedgerMenu;
 import org.hiedacamellia.mystiasizakaya.common.menu.TableMenu;
 
@@ -15,4 +16,5 @@ public class MIMenu {
 	public static final DeferredHolder<MenuType<?>,MenuType<TableMenu>> TABLE_UI = REGISTRY.register("table_ui", () -> IMenuTypeExtension.create(TableMenu::new));
 	public static final DeferredHolder<MenuType<?>,MenuType<LedgerMenu>> LEDGER_UI = REGISTRY.register("ledger_ui", () -> IMenuTypeExtension.create(LedgerMenu::new));
 	public static final DeferredHolder<MenuType<?>,MenuType<CookingMenu>> COOKING_UI = REGISTRY.register("cooking_ui", () -> IMenuTypeExtension.create(CookingMenu::new));
+	public static final DeferredHolder<MenuType<?>,MenuType<ItemPriceAddonMenu>> PRICE_ADDON_UI = REGISTRY.register("price_addon_ui", () -> IMenuTypeExtension.create(ItemPriceAddonMenu::new));
 }

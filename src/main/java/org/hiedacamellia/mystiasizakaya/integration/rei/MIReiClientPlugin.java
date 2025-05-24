@@ -9,6 +9,7 @@ import me.shedaniel.rei.forge.REIPluginClient;
 import org.hiedacamellia.mystiasizakaya.core.recipes.*;
 import org.hiedacamellia.mystiasizakaya.integration.rei.categories.*;
 import org.hiedacamellia.mystiasizakaya.integration.rei.displays.*;
+import org.hiedacamellia.mystiasizakaya.integration.rei.draggable.ItemPriceAddonScreenDraggableStackVisitor;
 import org.hiedacamellia.mystiasizakaya.integration.rei.draggable.LedgerScreenDraggableStackVisitor;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlock;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
@@ -55,5 +56,6 @@ public class MIReiClientPlugin  implements REIClientPlugin {
     @Override
     public void registerScreens(ScreenRegistry registry) {
         registry.registerDraggableStackVisitor(new LedgerScreenDraggableStackVisitor());
+        registry.registerDraggableStackVisitor(new ItemPriceAddonScreenDraggableStackVisitor());
     }
 }

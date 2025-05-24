@@ -45,6 +45,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("gui.mystias_izakaya.telephone_ui.mode_i.desc","Buy Ingredients");
         add("gui.mystias_izakaya.telephone_ui.mode_b.desc","Buy Beverages");
 
+        add("gui.mystias_izakaya.price_addon_ui.title","Price Modifier");
 
         add("message.mystiasizakaya.checkout.cheat","Cheating is not allowed");
         add("message.mystiasizakaya.checkout.fail", "Insufficient balance");
@@ -62,6 +63,8 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("network.mystiasizakaya.ledger.failed.table","Table not bound");
         add("network.mystiasizakaya.ledger.failed.cuisines","No cuisine in the menu");
         add("network.mystiasizakaya.ledger.failed.beverages","No beverage in the menu");
+
+        add("network.mystiasizakaya.item_price_addon.set_success","Price set success");
 
         add("network.mystiasizakaya.failed", "Failed to handle network data: %s");
 

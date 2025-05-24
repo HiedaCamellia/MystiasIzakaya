@@ -100,6 +100,14 @@ public class MIPayload {
                         OpenIzakayaBIMessage::handleServer
                 )
         );
+        registrar.playBidirectional(
+                ItemPriceAddonSyncBiMessage.TYPE,
+                ItemPriceAddonSyncBiMessage.STREAM_CODEC,
+                new DirectionalPayloadHandler<>(
+                        ItemPriceAddonSyncBiMessage::handleClient,
+                        ItemPriceAddonSyncBiMessage::handleServer
+                )
+        );
 
 
 

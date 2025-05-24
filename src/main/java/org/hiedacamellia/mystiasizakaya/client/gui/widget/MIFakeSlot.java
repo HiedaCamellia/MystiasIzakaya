@@ -11,12 +11,10 @@ import net.minecraft.network.chat.Component;
 import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
 
 public class MIFakeSlot extends AbstractWidget {
-    private final Component tooltip;
     private static final Font font = Minecraft.getInstance().font;
 
     public MIFakeSlot(int x, int y, Component tooltip) {
         super(x, y, 16, 16, tooltip);
-        this.tooltip = tooltip;
     }
 
     @Override
@@ -28,8 +26,8 @@ public class MIFakeSlot extends AbstractWidget {
     protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float v) {
         renderSlotBackground(guiGraphics, getX(), getY());
         RenderSystem.enableBlend();
-        if(isHovered()&&!tooltip.equals(Component.empty())){
-            int w = font.width(tooltip);
+        if(isHovered()&&!getMessage().equals(Component.empty())){
+            int w = font.width(getMessage());
             int h = font.lineHeight;
             int x = getX() - w;
             int y = getY() - h;
@@ -37,7 +35,7 @@ public class MIFakeSlot extends AbstractWidget {
             pose.pushPose();
             pose.translate(0,0,500);
             IUIGuiUtils.fillRoundRect(guiGraphics, x - 1, y - 1, w + 1, h + 1, 0.2f, 0x80DDDDDD);
-            guiGraphics.drawString(font, tooltip, x, y, 0xFFFFFF);
+            guiGraphics.drawString(font, getMessage(), x, y, 0xFFFFFF);
             pose.popPose();
         }
         RenderSystem.disableBlend();

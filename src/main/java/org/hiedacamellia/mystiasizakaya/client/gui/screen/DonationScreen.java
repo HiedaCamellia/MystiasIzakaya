@@ -11,11 +11,12 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
 import org.hiedacamellia.immersiveui.client.gui.component.widget.toast.ComponentToastWidget;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MICustomButton;
+import org.hiedacamellia.mystiasizakaya.client.gui.widget.MINumberEditBox;
 import org.hiedacamellia.mystiasizakaya.core.network.DonationTakeOutS2SMessage;
 import org.hiedacamellia.mystiasizakaya.core.util.MIBalanceUtil;
 
 public class DonationScreen extends Screen {
-    protected EditBox input;
+    protected MINumberEditBox input;
     protected Button button_take_out;
     protected ComponentToastWidget toast;
 
@@ -90,7 +91,7 @@ public class DonationScreen extends Screen {
         this.topPos = centerY - this.imageHeight / 2;
 
 
-        input = new EditBox(this.font, this.leftPos + 26, this.topPos + 58, 124, 18, Component.translatable("gui.mystias_izakaya.donation_ui.input")) {
+        input = new MINumberEditBox(this.leftPos + 26, this.topPos + 58, 124, 18, Component.translatable("gui.mystias_izakaya.donation_ui.input")) {
             @Override
             public void insertText(String text) {
                 super.insertText(text);
@@ -115,11 +116,7 @@ public class DonationScreen extends Screen {
 
         button_take_out = new MICustomButton.builder(Component.translatable("gui.mystias_izakaya.donation_ui.button_take_out"), e -> {
             if(!input.getValue().isEmpty()) {
-                try {
-                    PacketDistributor.sendToServer(new DonationTakeOutS2SMessage(Integer.parseInt(input.getValue())));
-                }catch (NumberFormatException ex){
-                    toast.reset(Component.translatable("gui.mystias_izakaya.donation_ui.error_input"));
-                }
+                PacketDistributor.sendToServer(new DonationTakeOutS2SMessage(input.getInt()));
             }
         }).pos(this.leftPos + 33, this.topPos + 100).size( 110, 20).build();
         this.addRenderableWidget(button_take_out);

@@ -19,6 +19,7 @@ import org.hiedacamellia.mystiasizakaya.common.blockentity.TableEntity;
 import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaMenu;
 import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaOrder;
 import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
+import org.hiedacamellia.mystiasizakaya.core.config.json.ItemPriceAddon;
 import org.hiedacamellia.mystiasizakaya.core.util.MIBalanceUtil;
 import org.hiedacamellia.mystiasizakaya.core.util.MIItemStackUtil;
 import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
@@ -63,13 +64,14 @@ public class MIPlayerEvent {
     @SubscribeEvent
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         Player player = event.getEntity();
-        if(player instanceof ServerPlayer){
-            MIPlayerUtil.syncIzakayaMenu(player);
-            MIPlayerUtil.syncBalance(player);
-            MIPlayerUtil.syncIzakayaOrder(player);
-            MIPlayerUtil.syncTurnover(player);
-            MIPlayerUtil.syncOnOpen(player);
-            MIPlayerUtil.syncTables(player);
+        if(player instanceof ServerPlayer serverPlayer){
+            MIPlayerUtil.syncIzakayaMenu(serverPlayer);
+            MIPlayerUtil.syncBalance(serverPlayer);
+            MIPlayerUtil.syncIzakayaOrder(serverPlayer);
+            MIPlayerUtil.syncTurnover(serverPlayer);
+            MIPlayerUtil.syncOnOpen(serverPlayer);
+            MIPlayerUtil.syncTables(serverPlayer);
+            ItemPriceAddon.sync(serverPlayer);
         }
     }
 

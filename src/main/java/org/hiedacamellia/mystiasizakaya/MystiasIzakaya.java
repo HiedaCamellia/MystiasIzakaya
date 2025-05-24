@@ -14,6 +14,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hiedacamellia.mystiasizakaya.core.config.MIClientConfig;
 import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
+import org.hiedacamellia.mystiasizakaya.core.config.json.ItemPriceAddon;
+import org.hiedacamellia.mystiasizakaya.core.config.json.MIJsonHelper;
 import org.hiedacamellia.mystiasizakaya.core.event.MIEvent;
 import org.hiedacamellia.mystiasizakaya.registries.*;
 
@@ -40,6 +42,10 @@ public class MystiasIzakaya {
 
 		modContainer.registerConfig(ModConfig.Type.COMMON, MICommonConfig.SPEC);
 		modContainer.registerConfig(ModConfig.Type.CLIENT, MIClientConfig.SPEC);
+
+		MIJsonHelper.init();
+		ItemPriceAddon.load();
+
 		if(FMLLoader.getDist().isClient())
 			modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
 
