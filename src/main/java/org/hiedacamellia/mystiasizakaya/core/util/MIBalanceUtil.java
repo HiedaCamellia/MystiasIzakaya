@@ -39,7 +39,7 @@ public class MIBalanceUtil {
         return change(player, change, "to_donation");
     }
 
-    private static boolean change(Player player, int change, String type){
+    public static boolean change(Player player, int change, String type){
         CurrencyChangeEvent event = new CurrencyChangeEvent(player, new IntHolder(change), type);
         NeoForge.EVENT_BUS.post(event);
         if(MystiasIzakaya.kubeJsLoaded)
