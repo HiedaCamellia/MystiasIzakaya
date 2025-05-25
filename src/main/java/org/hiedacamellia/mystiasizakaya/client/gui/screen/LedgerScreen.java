@@ -29,6 +29,7 @@ import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIFakeSlot;
 import org.hiedacamellia.mystiasizakaya.common.menu.LedgerMenu;
 import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaMenu;
 import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
+import org.hiedacamellia.mystiasizakaya.core.config.json.ItemPriceAddon;
 import org.hiedacamellia.mystiasizakaya.core.network.OpenIzakayaBIMessage;
 import org.hiedacamellia.mystiasizakaya.core.util.MIBalanceUtil;
 import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
@@ -120,7 +121,7 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
         if(page==Page.MENU){
             for(MIFakeItemSlot fakeItemSlot : fakeCuisinesSlots){
                 if(fakeItemSlot.isHovered()){
-                    if(itemStack.is(MITag.cuisinesKey)|| MICommonConfig.ENABLE_ALL_CUISINES.get()) {
+                    if(itemStack.is(MITag.cuisinesKey)|| MICommonConfig.ENABLE_ALL_CUISINES.get()|| ItemPriceAddon.hasPrice(itemStack)) {
                         fakeItemSlot.setItemStack(itemStack);
                         changed = true;
                     }
@@ -128,7 +129,7 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
             }
             for(MIFakeItemSlot fakeItemSlot : fakeBeveragesSlots){
                 if(fakeItemSlot.isHovered()){
-                    if(itemStack.is(MITag.beveragesKey)|| MICommonConfig.ENABLE_ALL_BEVERAGES.get()) {
+                    if(itemStack.is(MITag.beveragesKey)|| MICommonConfig.ENABLE_ALL_BEVERAGES.get()|| ItemPriceAddon.hasPrice(itemStack)) {
                         fakeItemSlot.setItemStack(itemStack);
                         changed = true;
                     }

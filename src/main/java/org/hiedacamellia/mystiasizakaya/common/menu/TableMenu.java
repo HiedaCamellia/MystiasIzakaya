@@ -15,6 +15,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
+import org.hiedacamellia.mystiasizakaya.core.config.json.ItemPriceAddon;
 import org.hiedacamellia.mystiasizakaya.registries.MIMenu;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
 
@@ -49,13 +50,13 @@ public class TableMenu extends BaseMenu {
 		this.customSlots.put(0, this.addSlot(new SlotItemHandler(itemHandler, 0, 70, 30) {
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(MITag.cuisinesKey)|| MICommonConfig.ENABLE_ALL_CUISINES.get();
+				return stack.is(MITag.cuisinesKey)|| MICommonConfig.ENABLE_ALL_CUISINES.get() || ItemPriceAddon.hasPrice(stack);
 			}
 		}));
 		this.customSlots.put(1, this.addSlot(new SlotItemHandler(itemHandler, 1, 100, 30) {
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-                return stack.is(MITag.beveragesKey)|| MICommonConfig.ENABLE_ALL_BEVERAGES.get();
+                return stack.is(MITag.beveragesKey)|| MICommonConfig.ENABLE_ALL_BEVERAGES.get() || ItemPriceAddon.hasPrice(stack);
 			}
 		}));
 

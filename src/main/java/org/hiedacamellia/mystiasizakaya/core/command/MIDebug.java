@@ -32,7 +32,7 @@ public class MIDebug {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("mystiasizakaya").then(Commands.literal("debug")
-				.then(Commands.literal("order").then(
+				.then(Commands.literal("order_set").then(
 						Commands.argument("id", DoubleArgumentType.doubleArg()).then(Commands.literal("cuisines").then(Commands.literal("replace").then(Commands.argument("cuisines", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
 							int id = (int) DoubleArgumentType.getDouble(arguments, "id");
 							ItemStack cuisines = ItemArgument.getItem(arguments, "cuisines").getItem().getDefaultInstance();

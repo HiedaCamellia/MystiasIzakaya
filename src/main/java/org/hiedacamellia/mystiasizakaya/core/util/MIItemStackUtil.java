@@ -3,6 +3,7 @@ package org.hiedacamellia.mystiasizakaya.core.util;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import org.hiedacamellia.mystiasizakaya.core.config.json.ItemPriceAddon;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 
 import java.util.ArrayList;
@@ -11,7 +12,12 @@ import java.util.List;
 public class MIItemStackUtil {
 
     public static int getCost(ItemStack itemStack){
-        return itemStack.getOrDefault(MIDatacomponet.MI_COST.get(),0);
+        Integer i = itemStack.get(MIDatacomponet.MI_COST.get());
+        if(i!=null)
+            return i;
+        else if(ItemPriceAddon.hasPrice(itemStack)){
+            return ItemPriceAddon.getPrice(itemStack);
+        }else return 0;
     }
 
     public static void setCost(ItemStack itemStack, int cost){

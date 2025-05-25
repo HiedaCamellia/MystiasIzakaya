@@ -48,7 +48,7 @@ public class MIMessageUtil {
     }
     public static void sendDebug(Component string, Player player) {
         if(!player.isLocalPlayer() && debugConfig) {
-            player.sendSystemMessage(Component.literal(prefix  + string));
+            player.sendSystemMessage(Component.literal(prefix).append(string));
         }
     }
     public static void send(String string, Player player) {

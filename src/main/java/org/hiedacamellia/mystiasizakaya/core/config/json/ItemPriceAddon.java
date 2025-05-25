@@ -8,9 +8,11 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.core.network.ItemPriceAddonSyncBiMessage;
+import org.hiedacamellia.mystiasizakaya.core.util.MIItemStackUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -54,11 +56,24 @@ public class ItemPriceAddon {
         load();
     }
 
+    public static Integer getPrice(ItemStack stack) {
+        return getPrice(MIItemStackUtil.toString(stack));
+    }
     public static Integer getPrice(ResourceLocation resourceLocation) {
         return getPrice(resourceLocation.toString());
     }
     public static Integer getPrice(String itemId) {
-        return itemPriceMap.getOrDefault(itemId, 0);
+        return itemPriceMap.getOrDefault(itemId, null);
+    }
+
+    public static boolean hasPrice(ItemStack stack) {
+        return hasPrice(MIItemStackUtil.toString(stack));
+    }
+    public static boolean hasPrice(ResourceLocation resourceLocation) {
+        return hasPrice(resourceLocation.toString());
+    }
+    public static boolean hasPrice(String itemId) {
+        return itemPriceMap.containsKey(itemId);
     }
 
     public static void save() {
