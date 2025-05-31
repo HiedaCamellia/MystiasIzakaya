@@ -4,19 +4,18 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
+import org.hiedacamellia.immersiveui.client.gui.component.widget.editbox.NumberEditBox;
 import org.hiedacamellia.immersiveui.client.gui.component.widget.toast.ComponentToastWidget;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MICustomButton;
-import org.hiedacamellia.mystiasizakaya.client.gui.widget.MINumberEditBox;
 import org.hiedacamellia.mystiasizakaya.core.network.DonationTakeOutS2SMessage;
 import org.hiedacamellia.mystiasizakaya.core.util.MIBalanceUtil;
 
 public class DonationScreen extends Screen {
-    protected MINumberEditBox input;
+    protected NumberEditBox input;
     protected Button button_take_out;
     protected ComponentToastWidget toast;
 
@@ -91,7 +90,7 @@ public class DonationScreen extends Screen {
         this.topPos = centerY - this.imageHeight / 2;
 
 
-        input = new MINumberEditBox(this.leftPos + 26, this.topPos + 58, 124, 18, Component.translatable("gui.mystias_izakaya.donation_ui.input")) {
+        input = new NumberEditBox(this.leftPos + 26, this.topPos + 58, 124, 18, Component.translatable("gui.mystias_izakaya.donation_ui.input")) {
             @Override
             public void insertText(String text) {
                 super.insertText(text);

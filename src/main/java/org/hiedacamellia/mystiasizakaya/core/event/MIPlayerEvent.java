@@ -11,7 +11,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import org.hiedacamellia.immersiveui.client.util.holder.IntHolder;
+import org.hiedacamellia.immersiveui.util.holder.IntHolder;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.api.event.OrderEvent;
 import org.hiedacamellia.mystiasizakaya.api.kubejs.MIEventPoster;

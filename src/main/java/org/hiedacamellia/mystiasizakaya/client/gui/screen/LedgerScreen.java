@@ -21,11 +21,10 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
 import org.hiedacamellia.immersiveui.client.gui.component.widget.component.UnderLineComponentWidget;
+import org.hiedacamellia.immersiveui.client.gui.component.widget.solt.FakeItemSlot;
 import org.hiedacamellia.immersiveui.client.gui.component.widget.toast.ComponentToastWidget;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.LedgerItemWidget;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MICustomButton;
-import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIFakeItemSlot;
-import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIFakeSlot;
 import org.hiedacamellia.mystiasizakaya.common.menu.LedgerMenu;
 import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaMenu;
 import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
@@ -64,8 +63,8 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
     private List<AbstractWidget> renderables_ledger = new ArrayList<>();
 
     //菜单page
-    private List<MIFakeItemSlot> fakeCuisinesSlots = new ArrayList<>();
-    private List<MIFakeItemSlot> fakeBeveragesSlots = new ArrayList<>();
+    private List<FakeItemSlot> fakeCuisinesSlots = new ArrayList<>();
+    private List<FakeItemSlot> fakeBeveragesSlots = new ArrayList<>();
 
     private List<AbstractWidget> renderables_menu = new ArrayList<>();
 
@@ -119,7 +118,7 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
     public void tryAccept(ItemStack itemStack){
         boolean changed = false;
         if(page==Page.MENU){
-            for(MIFakeItemSlot fakeItemSlot : fakeCuisinesSlots){
+            for(FakeItemSlot fakeItemSlot : fakeCuisinesSlots){
                 if(fakeItemSlot.isHovered()){
                     if(itemStack.is(MITag.cuisinesKey)|| MICommonConfig.ENABLE_ALL_CUISINES.get()|| ItemPriceAddon.hasPrice(itemStack)) {
                         fakeItemSlot.setItemStack(itemStack);
@@ -127,7 +126,7 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
                     }
                 }
             }
-            for(MIFakeItemSlot fakeItemSlot : fakeBeveragesSlots){
+            for(FakeItemSlot fakeItemSlot : fakeBeveragesSlots){
                 if(fakeItemSlot.isHovered()){
                     if(itemStack.is(MITag.beveragesKey)|| MICommonConfig.ENABLE_ALL_BEVERAGES.get()|| ItemPriceAddon.hasPrice(itemStack)) {
                         fakeItemSlot.setItemStack(itemStack);
@@ -207,7 +206,7 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
     @Override
     protected void renderSlot(GuiGraphics guiGraphics, Slot slot) {
         if(page==Page.MENU || on_change){
-            MIFakeSlot.renderSlotBackground(guiGraphics,slot.x,slot.y);
+            IUIGuiUtils.renderSlotBackground(guiGraphics,slot.x,slot.y);
             super.renderSlot(guiGraphics, slot);
         }
     }
@@ -266,14 +265,14 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
 
 
         if(page==Page.MENU){
-            for(MIFakeItemSlot fakeItemSlot : fakeCuisinesSlots){
+            for(FakeItemSlot fakeItemSlot : fakeCuisinesSlots){
                 boolean b = fakeItemSlot.mouseClicked(mouseX, mouseY, button);
                 if(b){
                     changed = true;
                 }
                 v = v || b;
             }
-            for(MIFakeItemSlot fakeItemSlot : fakeBeveragesSlots){
+            for(FakeItemSlot fakeItemSlot : fakeBeveragesSlots){
                 boolean b = fakeItemSlot.mouseClicked(mouseX, mouseY, button);
                 if(b){
                     changed = true;
@@ -335,10 +334,10 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
         for (int i = 0; i < 8 ; i++) {
             ItemStack cuisine = i<cuisineList.size()?BuiltInRegistries.ITEM.get(ResourceLocation.parse((cuisineList.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance():ItemStack.EMPTY;
             ItemStack beverage = i<beverageList.size()?BuiltInRegistries.ITEM.get(ResourceLocation.parse((beverageList.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance():ItemStack.EMPTY;
-            MIFakeItemSlot cuisineSlot = new MIFakeItemSlot(this.leftPos + 79 , this.topPos + 10 + i * 18, Component.translatable("gui.mystias_izakaya.ledger_ui.cuisine",i+1));
+            FakeItemSlot cuisineSlot = new FakeItemSlot(this.leftPos + 79 , this.topPos + 10 + i * 18, Component.translatable("gui.mystias_izakaya.ledger_ui.cuisine",i+1));
             cuisineSlot.setItemStack(cuisine);
             fakeCuisinesSlots.add(cuisineSlot);
-            MIFakeItemSlot beverageSlot = new MIFakeItemSlot(this.leftPos + 79 + 18, this.topPos + 10 + i * 18, Component.translatable("gui.mystias_izakaya.ledger_ui.beverage",i+1));
+            FakeItemSlot beverageSlot = new FakeItemSlot(this.leftPos + 79 + 18, this.topPos + 10 + i * 18, Component.translatable("gui.mystias_izakaya.ledger_ui.beverage",i+1));
             beverageSlot.setItemStack(beverage);
             fakeBeveragesSlots.add(beverageSlot);
             renderables_menu.add(cuisineSlot);

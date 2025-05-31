@@ -3,7 +3,7 @@ package org.hiedacamellia.mystiasizakaya.api.event;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.ICancellableEvent;
-import org.hiedacamellia.immersiveui.client.util.holder.IValueHolder;
+import org.hiedacamellia.immersiveui.util.holder.IValueHolder;
 
 public class CurrencyChangeEvent extends Event implements ICancellableEvent {
     private final Player player;

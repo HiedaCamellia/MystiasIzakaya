@@ -10,9 +10,8 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
 import org.hiedacamellia.immersiveui.client.gui.component.widget.component.UnderLineComponentWidget;
+import org.hiedacamellia.immersiveui.client.gui.component.widget.price.SimplePriceWidget;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MICustomButton;
-import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIFakeSlot;
-import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIItemPriceWidget;
 import org.hiedacamellia.mystiasizakaya.common.menu.ItemPriceAddonMenu;
 import org.hiedacamellia.mystiasizakaya.core.config.json.ItemPriceAddon;
 import org.hiedacamellia.mystiasizakaya.core.util.MIItemStackUtil;
@@ -36,7 +35,7 @@ public class ItemPriceAddonScreen extends AbstractContainerScreen<ItemPriceAddon
     private MICustomButton left;
     private MICustomButton right;
 
-    private List<MIItemPriceWidget> list = new ArrayList<>();
+    private List<SimplePriceWidget> list = new ArrayList<>();
     private MICustomButton add;
 
     private List<Pair<String,Integer>> map = new ArrayList<>();
@@ -65,8 +64,8 @@ public class ItemPriceAddonScreen extends AbstractContainerScreen<ItemPriceAddon
     }
 
     public void tryAccept(ItemStack itemStack){
-        for (MIItemPriceWidget miItemPriceWidget : list) {
-            if (miItemPriceWidget.tryAccept(itemStack)) return;
+        for (SimplePriceWidget SimplePriceWidget : list) {
+            if (SimplePriceWidget.tryAccept(itemStack)) return;
         }
     }
 
@@ -90,7 +89,7 @@ public class ItemPriceAddonScreen extends AbstractContainerScreen<ItemPriceAddon
 
     @Override
     protected void renderSlot(GuiGraphics guiGraphics, Slot slot) {
-        MIFakeSlot.renderSlotBackground(guiGraphics,slot.x,slot.y);
+        IUIGuiUtils.renderSlotBackground(guiGraphics,slot.x,slot.y);
         super.renderSlot(guiGraphics, slot);
     }
 
@@ -104,15 +103,15 @@ public class ItemPriceAddonScreen extends AbstractContainerScreen<ItemPriceAddon
         this.topPos = centerY - this.imageHeight / 2;
 
         left = new MICustomButton.builder(Component.literal("<"), button -> {
+            setPageChanged();
             if(page>0) {
-                setPageChanged();
                 page = Math.max(0, page - sPage);
                 resetItemPriceWidget();
             }
         }).pos(leftPos + 10, topPos - 20).size(20, 16).build();
         right = new MICustomButton.builder(Component.literal(">"), button -> {
-            if(page + sPage <= ItemPriceAddon.getItemPriceMap().size()){
-                setPageChanged();
+            setPageChanged();
+            if(page + sPage <= map.size()){
                 page += sPage;
                 resetItemPriceWidget();
             }
@@ -159,9 +158,8 @@ public class ItemPriceAddonScreen extends AbstractContainerScreen<ItemPriceAddon
     public void setChanged(){
         setPageChanged();
         Map<String, Integer> hashMap = new HashMap<>();
-        map.forEach(stringIntegerPair -> {
-            hashMap.put(stringIntegerPair.getFirst(), stringIntegerPair.getSecond());
-        });
+        map.forEach(stringIntegerPair -> hashMap.put(stringIntegerPair.getFirst(), stringIntegerPair.getSecond()));
+        hashMap.remove(MIItemStackUtil.toString(ItemStack.EMPTY));
         ItemPriceAddon.setItemPriceMap(hashMap);
         ItemPriceAddon.save();
         ItemPriceAddon.send2Server();
@@ -183,8 +181,8 @@ public class ItemPriceAddonScreen extends AbstractContainerScreen<ItemPriceAddon
             String string = map.get(i).getFirst();
             int price = map.get(i).getSecond();
 
-            MIItemPriceWidget miItemPriceWidget = new MIItemPriceWidget(x, y, MIItemStackUtil.fromString(string), price);
-            list.add(miItemPriceWidget);
+            SimplePriceWidget SimplePriceWidget = new SimplePriceWidget(x, y, MIItemStackUtil.fromString(string), price);
+            list.add(SimplePriceWidget);
         }
         resetAddButton(list.size());
         list.forEach(this::addRenderableWidget);
@@ -203,9 +201,9 @@ public class ItemPriceAddonScreen extends AbstractContainerScreen<ItemPriceAddon
             return;
         }
         add = new MICustomButton.builder(Component.literal("+"), button -> {
-            MIItemPriceWidget miItemPriceWidget = new MIItemPriceWidget(button.getX(), button.getY());
-            list.add(miItemPriceWidget);
-            addRenderableWidget(miItemPriceWidget);
+            SimplePriceWidget SimplePriceWidget = new SimplePriceWidget(button.getX(), button.getY());
+            list.add(SimplePriceWidget);
+            addRenderableWidget(SimplePriceWidget);
             resetAddButton(list.size());
         }).pos(x, y).size(80, 20).build();
         addRenderableWidget(add);
