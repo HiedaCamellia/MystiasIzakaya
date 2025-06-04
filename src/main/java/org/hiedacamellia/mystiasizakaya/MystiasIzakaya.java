@@ -44,7 +44,6 @@ public class MystiasIzakaya {
 		modContainer.registerConfig(ModConfig.Type.CLIENT, MIClientConfig.SPEC);
 
 		MIJsonHelper.init();
-		ItemPriceAddon.load();
 
 		if(FMLLoader.getDist().isClient())
 			modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);

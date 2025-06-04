@@ -21,6 +21,7 @@ public class MIJsonHelper {
             path.resolve("mystiasizakaya").toFile().mkdirs();
         }
         loadJson("item_price_addon");
+        ItemPriceAddon.load();
     }
 
     private static void loadJson(String fileName) {

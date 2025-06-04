@@ -8,6 +8,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import org.hiedacamellia.mystiasizakaya.common.menu.ItemPriceAddonMenu;
+import org.hiedacamellia.mystiasizakaya.core.config.json.ItemPriceAddon;
 
 @EventBusSubscriber
 public class ItemPriceAddonCmd {
@@ -15,13 +16,24 @@ public class ItemPriceAddonCmd {
     public static void registerCommand(RegisterCommandsEvent event) {
         event.getDispatcher().register(Commands.literal("mystiasizakaya").then(Commands.literal("price_addon")
                 .then(Commands.literal("open").executes(
-                        context -> {
-                            ServerPlayer serverPlayer = context.getSource().getPlayer();
-                            if (serverPlayer != null) {
-                                serverPlayer.openMenu(new SimpleMenuProvider(ItemPriceAddonMenu::new,Component.empty()));
-                            }
-                            return 1;
-                        }
-                        ))));
+                                context -> {
+                                    ServerPlayer serverPlayer = context.getSource().getPlayer();
+                                    if (serverPlayer != null) {
+                                        serverPlayer.openMenu(new SimpleMenuProvider(ItemPriceAddonMenu::new, Component.empty()));
+                                    }
+                                    return 1;
+                                })
+                        .then(Commands.literal("reload").executes(
+                                context -> {
+                                    ServerPlayer serverPlayer = context.getSource().getPlayer();
+                                    if (serverPlayer != null) {
+                                        if (serverPlayer.hasPermissions(4)) {
+                                            ItemPriceAddon.reload();
+                                        }
+                                    }
+                                    return 1;
+                                }
+                        ))
+                )));
     }
 }

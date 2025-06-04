@@ -36,7 +36,7 @@ public class CookingUtils {
                         targetI.add(optional.value().assemble(miRecipeInput, level.registryAccess()));
                     }
                 }
-                return targetI;
+                break;
             }
             case FRYING_PAN: {
                 var optionals = recipes.getAllRecipesFor(
@@ -47,7 +47,7 @@ public class CookingUtils {
                         targetI.add(optional.value().assemble(miRecipeInput, level.registryAccess()));
                     }
                 }
-                return targetI;
+                break;
             }
             case GRILL: {
                 var optionals = recipes.getAllRecipesFor(
@@ -58,7 +58,7 @@ public class CookingUtils {
                         targetI.add(optional.value().assemble(miRecipeInput, level.registryAccess()));
                     }
                 }
-                return targetI;
+                break;
             }
             case CUTTING_BOARD: {
                 var optionals = recipes.getAllRecipesFor(
@@ -69,7 +69,7 @@ public class CookingUtils {
                         targetI.add(optional.value().assemble(miRecipeInput, level.registryAccess()));
                     }
                 }
-                return targetI;
+                break;
             }
             case STEAMER: {
                 var optionals = recipes.getAllRecipesFor(
@@ -80,7 +80,7 @@ public class CookingUtils {
                         targetI.add(optional.value().assemble(miRecipeInput, level.registryAccess()));
                     }
                 }
-                return targetI;
+                break;
             }
         }
         CookingCollectCuisineEvent cookingCollectCuisineEvent = new CookingCollectCuisineEvent(entity, level, ingredients, util, targetI);
