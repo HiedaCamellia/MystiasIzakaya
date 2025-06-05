@@ -8,7 +8,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.api.event.CookingCollectCuisineEvent;
 import org.hiedacamellia.mystiasizakaya.api.event.CookingTagEvent;
-import org.hiedacamellia.mystiasizakaya.api.kubejs.MIEventPoster;
+import org.hiedacamellia.mystiasizakaya.core.util.MIEventUtil;
 import org.hiedacamellia.mystiasizakaya.common.blockentity.CookingEntity;
 import org.hiedacamellia.mystiasizakaya.core.recipes.MIRecipeInput;
 import org.hiedacamellia.mystiasizakaya.core.util.MIItemStackUtil;
@@ -84,9 +84,7 @@ public class CookingUtils {
             }
         }
         CookingCollectCuisineEvent cookingCollectCuisineEvent = new CookingCollectCuisineEvent(entity, level, ingredients, util, targetI);
-        NeoForge.EVENT_BUS.post(cookingCollectCuisineEvent);
-        if(MystiasIzakaya.kubeJsLoaded)
-            MIEventPoster.INSTANCE.post(cookingCollectCuisineEvent);
+        MIEventUtil.post(cookingCollectCuisineEvent);
 
         return targetI;
     }
@@ -126,9 +124,7 @@ public class CookingUtils {
         List<String> ntags = new ArrayList<>(MIItemStackUtil.getNegativeTags(target));
 
         CookingTagEvent.Build build = new CookingTagEvent.Build(entity, level, target, kitchenware, ingredients, resultList, ntags);
-        NeoForge.EVENT_BUS.post(build);
-        if(MystiasIzakaya.kubeJsLoaded)
-            MIEventPoster.INSTANCE.post(build);
+        MIEventUtil.post(build);
 
         MIItemStackUtil.setTags(target,resultList,ntags);
         MIItemStackUtil.setIngredientOriginal(target,rawslist);
@@ -163,9 +159,7 @@ public class CookingUtils {
     public static ItemStack check(@Nullable CookingEntity entity, Level level,ItemStack cuisine){
 
         CookingTagEvent.Check.Pre pre = new CookingTagEvent.Check.Pre(entity, level, cuisine);
-        NeoForge.EVENT_BUS.post(pre);
-        if(MystiasIzakaya.kubeJsLoaded)
-            MIEventPoster.INSTANCE.post(pre);
+        MIEventUtil.post(pre);
 
         List<String> tags = MIItemStackUtil.getPositiveTags(cuisine);
         List<String> ntags = MIItemStackUtil.getNegativeTags(cuisine);
@@ -178,9 +172,7 @@ public class CookingUtils {
         }
 
         CookingTagEvent.Check.Post post = new CookingTagEvent.Check.Post(entity, level, cuisine);
-        NeoForge.EVENT_BUS.post(post);
-        if(MystiasIzakaya.kubeJsLoaded)
-            MIEventPoster.INSTANCE.post(post);
+        MIEventUtil.post(post);
 
         return cuisine;
     }

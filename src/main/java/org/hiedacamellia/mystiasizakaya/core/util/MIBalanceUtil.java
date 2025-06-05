@@ -2,11 +2,9 @@ package org.hiedacamellia.mystiasizakaya.core.util;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.neoforge.common.NeoForge;
 import org.hiedacamellia.immersiveui.util.holder.IntHolder;
-import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.api.event.CurrencyChangeEvent;
-import org.hiedacamellia.mystiasizakaya.api.kubejs.MIEventPoster;
+
 
 public class MIBalanceUtil {
 
@@ -41,16 +39,15 @@ public class MIBalanceUtil {
 
     public static boolean change(Player player, int change, String type){
         CurrencyChangeEvent event = new CurrencyChangeEvent(player, new IntHolder(change), type);
-        NeoForge.EVENT_BUS.post(event);
-        if(MystiasIzakaya.kubeJsLoaded)
-            MIEventPoster.INSTANCE.post(event);
+        MIEventUtil.post(event);
 
         if(event.isCanceled())return false;
         int result = MIPlayerUtil.getBalance(player) + event.getAmount();
         MIPlayerUtil.setBalance(player,result);
-
-
         MITurnoverUtil.addTurnover(player, type, change + 0.0);
+
+
+
         if(player instanceof ServerPlayer serverPlayer) {
             MIPlayerUtil.syncBalance(serverPlayer);
             MIPlayerUtil.syncTurnover(serverPlayer);

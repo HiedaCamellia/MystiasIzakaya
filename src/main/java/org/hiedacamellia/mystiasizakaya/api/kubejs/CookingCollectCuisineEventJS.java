@@ -7,6 +7,7 @@ import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;
 import java.util.List;
 
 public class CookingCollectCuisineEventJS extends CookingEventJS{
+
     public CookingCollectCuisineEventJS(CookingCollectCuisineEvent event) {
         super(event);
     }

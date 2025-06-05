@@ -1,33 +1,30 @@
 package org.hiedacamellia.mystiasizakaya.core.util;
 
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.fml.loading.FMLEnvironment;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
-import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class MIMessageUtil {
 
-    private static String prefix = "[§a夜雀食堂§r]";
-    private static Boolean debugConfig = MICommonConfig.DEBUG.get();
-    private static Logger logger = LoggerFactory.getLogger(MystiasIzakaya.class);
 
-    public static Logger getLogger(){
-        return logger;
-    }
+    private static MutableComponent prefixComponent = Component.literal("[")
+            .append(Component.translatable("item_group.mystias_izakaya.mystiass_izakaya").withStyle(ChatFormatting.GREEN))
+            .append("]");
 
     public static void sendDebug(String string) {
         sendDebug(Component.literal(string));
     }
+
     public static void sendDebug(Component component) {
         if (FMLEnvironment.dist.isClient()) {
             Minecraft mc = Minecraft.getInstance();
-            if (mc.player != null && debugConfig) {
-                mc.player.sendSystemMessage(Component.literal(prefix).append(component));
+            if (mc.player != null && MystiasIzakaya.isDebugMode()) {
+                mc.player.sendSystemMessage(prefixComponent.append(component));
             }
         }
     }
@@ -37,8 +34,8 @@ public class MIMessageUtil {
     public static void send(Component component) {
         if (FMLEnvironment.dist.isClient()) {
             Minecraft mc = Minecraft.getInstance();
-            if (mc.player != null && debugConfig) {
-                mc.player.sendSystemMessage(Component.literal(prefix).append(component));
+            if (mc.player != null) {
+                mc.player.sendSystemMessage(prefixComponent.append(component));
             }
         }
     }
@@ -47,16 +44,16 @@ public class MIMessageUtil {
         sendDebug(Component.literal(string), player);
     }
     public static void sendDebug(Component string, Player player) {
-        if(!player.isLocalPlayer() && debugConfig) {
-            player.sendSystemMessage(Component.literal(prefix).append(string));
+        if(!player.isLocalPlayer() && MystiasIzakaya.isDebugMode()) {
+            player.sendSystemMessage(prefixComponent.append(string));
         }
     }
     public static void send(String string, Player player) {
         send(Component.literal(string), player);
     }
     public static void send(Component component, Player player) {
-        if(!player.isLocalPlayer() && debugConfig) {
-            player.sendSystemMessage(Component.literal(prefix).append(component));
+        if(!player.isLocalPlayer()) {
+            player.sendSystemMessage(prefixComponent.append(component));
         }
     }
 }

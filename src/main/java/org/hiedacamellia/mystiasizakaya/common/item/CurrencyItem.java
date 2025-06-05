@@ -44,15 +44,14 @@ public class CurrencyItem extends Item {
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
-		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-
-		boolean currency = MIBalanceUtil.currency(entity, getWorth() * ar.getObject().getCount());
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+		ItemStack itemStack = player.getItemInHand(hand);
+		boolean currency = MIBalanceUtil.currency(player, getWorth() * itemStack.getCount());
 		if(currency) {
-			ar.getObject().shrink(ar.getObject().getCount());
-			ar.getObject().setCount(0);
+			itemStack.shrink(itemStack.getCount());
+			itemStack.setCount(0);
 		}
-		return ar;
+		return InteractionResultHolder.pass(itemStack);
 	}
 
     public int getWorth() {

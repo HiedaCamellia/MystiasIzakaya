@@ -6,6 +6,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -16,6 +17,9 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
 import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaOrder;
+import org.hiedacamellia.mystiasizakaya.core.config.MIClientConfig;
+import org.hiedacamellia.mystiasizakaya.core.util.MIBalanceUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.MIItemStackUtil;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 
 import java.util.ArrayList;
@@ -45,22 +49,34 @@ public class OrdersOverlay {
 
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public static void eventHandler(RenderGuiEvent.Pre event) {
+
         GuiGraphics guiGraphics = event.getGuiGraphics();
+        Player player = Minecraft.getInstance().player;
+        int w = guiGraphics.guiWidth();
         int h = guiGraphics.guiHeight();
-        Player entity = Minecraft.getInstance().player;
+
+        String text = Component.translatable("gui.mystias_izakaya.balance").getString() + new java.text.DecimalFormat("#######")
+                .format(MIBalanceUtil.getBalance(player)) + "\u5186";
+        int strlength = IUIGuiUtils.getFont().width(text);
+
+        if (MIClientConfig.SHOW_BALANCE.get())
+            guiGraphics.drawString(IUIGuiUtils.getFont(), text, w - 20 - strlength, h - 11, -1,
+                    false);
+
+
         RenderSystem.disableDepthTest();
         RenderSystem.enableBlend();
         ItemStack cuisines;
         ItemStack beverages;
         IzakayaOrder izakayaOrder;
-        if (entity != null) {
+        if (player != null) {
 
             if(flag_cuisine==null)
                 flag_cuisine = ItemStack.EMPTY;
             if(flag_beverage==null)
                 flag_beverage = ItemStack.EMPTY;
 
-            izakayaOrder = entity.getData(MIAttachment.IZAKAYA_ORDER);
+            izakayaOrder = player.getData(MIAttachment.IZAKAYA_ORDER);
             List<ItemStack> cuisinesorders_list = getStacks(izakayaOrder.cuisines());
             List<ItemStack> beveragesorders_list = getStacks(izakayaOrder.beverages());
             List<ItemStack> last_orders = getLast_orders();
@@ -208,7 +224,7 @@ public class OrdersOverlay {
             guiGraphics.renderItem(beverage,
                     x + 18, y + 2, 0, 0);
         }
-        guiGraphics.drawString(Minecraft.getInstance().font,
+        guiGraphics.drawString(IUIGuiUtils.getFont(),
                 new java.text.DecimalFormat("#######").format(i+1) + "\u53f7\u684c", x + 8, y + 22,
                 -16777216,
                 false);
@@ -221,7 +237,7 @@ public class OrdersOverlay {
             if (order.isEmpty())
                 stacks.add(ItemStack.EMPTY);
             else
-                stacks.add(new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(order))));
+                stacks.add(MIItemStackUtil.fromString(order));
         }
         if (stacks.size() < 8) {
             for (int i = stacks.size(); i < 8; i++) {

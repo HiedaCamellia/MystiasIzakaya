@@ -1,5 +1,5 @@
 
-package org.hiedacamellia.mystiasizakaya.common.item.utils;
+package org.hiedacamellia.mystiasizakaya.common.item;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;

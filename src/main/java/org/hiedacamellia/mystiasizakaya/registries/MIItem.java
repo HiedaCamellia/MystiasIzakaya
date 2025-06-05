@@ -10,10 +10,10 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.builder.BaseItemBuilder;
 import org.hiedacamellia.mystiasizakaya.common.item.CurrencyItem;
-import org.hiedacamellia.mystiasizakaya.common.item.utils.IconItem;
-import org.hiedacamellia.mystiasizakaya.common.item.utils.IronKnifeItem;
-import org.hiedacamellia.mystiasizakaya.common.item.utils.KitchenwareBlockItem;
-import org.hiedacamellia.mystiasizakaya.common.item.utils.LedgerItem;
+import org.hiedacamellia.mystiasizakaya.common.item.IconItem;
+import org.hiedacamellia.mystiasizakaya.common.item.IronKnifeItem;
+import org.hiedacamellia.mystiasizakaya.common.item.KitchenwareBlockItem;
+import org.hiedacamellia.mystiasizakaya.common.item.LedgerItem;
 
 import java.util.List;
 

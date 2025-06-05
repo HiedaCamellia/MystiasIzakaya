@@ -14,7 +14,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.hiedacamellia.immersiveui.util.holder.IntHolder;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.api.event.OrderEvent;
-import org.hiedacamellia.mystiasizakaya.api.kubejs.MIEventPoster;
+import org.hiedacamellia.mystiasizakaya.core.util.MIEventUtil;
 import org.hiedacamellia.mystiasizakaya.common.blockentity.TableEntity;
 import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaMenu;
 import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaOrder;
@@ -178,9 +178,7 @@ public class MIPlayerEvent {
                         int cost = MIItemStackUtil.getCost(cuisine)+ MIItemStackUtil.getCost(beverage);
                         IntHolder intHolder = new IntHolder(cost);
                         OrderEvent.Complete complete = new OrderEvent.Complete(serverPlayer, cuisine, beverage, i, intHolder);
-                        NeoForge.EVENT_BUS.post(complete);
-                        if(MystiasIzakaya.kubeJsLoaded)
-                            MIEventPoster.INSTANCE.post(complete);
+                        MIEventUtil.post(complete);
 
                         MIBalanceUtil.table(player, intHolder.get());
 

@@ -16,16 +16,6 @@ import org.hiedacamellia.mystiasizakaya.core.util.MIBalanceUtil;
 public class BalanceOverlay {
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public static void eventHandler(RenderGuiEvent.Pre event) {
-		int w = event.getGuiGraphics().guiWidth();
-		int h = event.getGuiGraphics().guiHeight();
-		Player player = Minecraft.getInstance().player;
-        String text = Component.translatable("gui.mystias_izakaya.balance").getString() + new java.text.DecimalFormat("#######")
-						.format(MIBalanceUtil.getBalance(player)) + "\u5186";
-		int strlength = Minecraft.getInstance().font.width(text);
-
-		if (MIClientConfig.SHOW_BALANCE.get())
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, text, w - 20 - strlength, h - 11, -1,
-					false);
 
 	}
 }

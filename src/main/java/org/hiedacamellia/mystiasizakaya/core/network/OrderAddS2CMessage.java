@@ -1,6 +1,5 @@
 package org.hiedacamellia.mystiasizakaya.core.network;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;

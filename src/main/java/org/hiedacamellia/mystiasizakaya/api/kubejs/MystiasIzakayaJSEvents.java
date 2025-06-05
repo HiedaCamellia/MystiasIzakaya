@@ -19,4 +19,6 @@ public interface MystiasIzakayaJSEvents {
     EventHandler COOKING_TAG_CHECK_POST = EVENT_GROUP.server("checkTagPost", ()->CookingTagEventJS.Check.Post.class);
 
     EventHandler CURRENCY_CHANGE = EVENT_GROUP.server("currencyChange", ()->CurrencyChangeEventJS.class);
+
+    EventHandler IZAKAYA_STATUS_CHANGE = EVENT_GROUP.server("izakayaStatusChange", ()->ChangeIzakayaStatusEventJS.class);
 }

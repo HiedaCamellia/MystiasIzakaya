@@ -1,4 +1,4 @@
-package org.hiedacamellia.mystiasizakaya.common.item.utils;
+package org.hiedacamellia.mystiasizakaya.common.item;
 
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.registries.BuiltInRegistries;

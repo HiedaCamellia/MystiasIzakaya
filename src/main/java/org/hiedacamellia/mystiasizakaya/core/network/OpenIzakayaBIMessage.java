@@ -11,7 +11,9 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
+import org.hiedacamellia.mystiasizakaya.api.event.IzakayaEvent;
 import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaMenu;
+import org.hiedacamellia.mystiasizakaya.core.util.MIEventUtil;
 import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.jetbrains.annotations.NotNull;
@@ -43,6 +45,9 @@ public record OpenIzakayaBIMessage(boolean open) implements CustomPacketPayload 
     public static void handleServer(final OpenIzakayaBIMessage data, final IPayloadContext context) {
         context.enqueueWork(() -> {
                     Player player = context.player();
+                    IzakayaEvent.ChangeIzakayaStatus event = new IzakayaEvent.ChangeIzakayaStatus(player, data.open());
+                    MIEventUtil.post(event);
+
                     if(data.open()) {
                         IzakayaMenu data1 = player.getData(MIAttachment.IZAKAYA_MENU);
                         List<BlockPos> blockPosList = MIPlayerUtil.getTables(player);

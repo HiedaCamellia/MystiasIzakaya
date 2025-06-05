@@ -7,11 +7,10 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.core.util.MIBalanceUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 
 
@@ -31,21 +30,14 @@ public record DonationTakeOutS2SMessage(int count) implements CustomPacketPayloa
             int j;
             int count = message.count();
             if (entity instanceof ServerPlayer player) {
-
-                boolean donation = MIBalanceUtil.donation(player, -count);
-                if (donation && count > 0 && MIBalanceUtil.getBalance(player) >= count) {
-                    j = count / 10;
-                    count = count - j * 10;
-                    while(j>0){
-                        if(j>64){
-                            j -= 64;
-                            ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(MIItem.EN_10.get(),64));
-                        }else{
-                            ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(MIItem.EN_10.get(),j));
-                            break;
-                        }
+                if(MIBalanceUtil.getBalance(player) >= count && count > 0) {
+                    boolean donation = MIBalanceUtil.donation(player, -count);
+                    if (donation) {
+                        j = count / 10;
+                        int i = count - j * 10;
+                        MIPlayerUtil.giveItemToPlayer(MIItem.EN_10, j, player);
+                        MIPlayerUtil.giveItemToPlayer(MIItem.EN_1, i, player);
                     }
-                    ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(MIItem.EN_1.get(),count));
                 }
 
             }

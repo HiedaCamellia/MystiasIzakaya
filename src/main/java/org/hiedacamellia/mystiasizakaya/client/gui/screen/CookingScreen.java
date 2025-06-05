@@ -22,7 +22,7 @@ import org.hiedacamellia.immersiveui.client.gui.component.widget.solt.FakeSlot;
 import org.hiedacamellia.immersiveui.client.gui.component.widget.toast.ComponentToastWidget;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.client.gui.widget.MIItemButton;
-import org.hiedacamellia.mystiasizakaya.common.item.utils.KitchenwareBlockItem;
+import org.hiedacamellia.mystiasizakaya.common.item.KitchenwareBlockItem;
 import org.hiedacamellia.mystiasizakaya.common.menu.CookingMenu;
 import org.hiedacamellia.mystiasizakaya.content.cooking.CookingUtils;
 import org.hiedacamellia.mystiasizakaya.content.cooking.KitchenwareType;
