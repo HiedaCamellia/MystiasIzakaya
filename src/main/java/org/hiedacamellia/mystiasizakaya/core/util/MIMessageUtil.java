@@ -4,7 +4,6 @@ package org.hiedacamellia.mystiasizakaya.core.util;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.fml.loading.FMLEnvironment;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
@@ -12,7 +11,7 @@ import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 public class MIMessageUtil {
 
 
-    private static MutableComponent prefixComponent = Component.literal("[")
+    private static Component prefixComponent = Component.literal("[")
             .append(Component.translatable("item_group.mystias_izakaya.mystiass_izakaya").withStyle(ChatFormatting.GREEN))
             .append("]");
 
@@ -24,7 +23,7 @@ public class MIMessageUtil {
         if (FMLEnvironment.dist.isClient()) {
             Minecraft mc = Minecraft.getInstance();
             if (mc.player != null && MystiasIzakaya.isDebugMode()) {
-                mc.player.sendSystemMessage(prefixComponent.append(component));
+                mc.player.sendSystemMessage(prefixComponent.copy().append(component));
             }
         }
     }
@@ -35,7 +34,7 @@ public class MIMessageUtil {
         if (FMLEnvironment.dist.isClient()) {
             Minecraft mc = Minecraft.getInstance();
             if (mc.player != null) {
-                mc.player.sendSystemMessage(prefixComponent.append(component));
+                mc.player.sendSystemMessage(prefixComponent.copy().append(component));
             }
         }
     }
@@ -45,7 +44,7 @@ public class MIMessageUtil {
     }
     public static void sendDebug(Component string, Player player) {
         if(!player.isLocalPlayer() && MystiasIzakaya.isDebugMode()) {
-            player.sendSystemMessage(prefixComponent.append(string));
+            player.sendSystemMessage(prefixComponent.copy().append(string));
         }
     }
     public static void send(String string, Player player) {
@@ -53,7 +52,7 @@ public class MIMessageUtil {
     }
     public static void send(Component component, Player player) {
         if(!player.isLocalPlayer()) {
-            player.sendSystemMessage(prefixComponent.append(component));
+            player.sendSystemMessage(prefixComponent.copy().append(component));
         }
     }
 }
