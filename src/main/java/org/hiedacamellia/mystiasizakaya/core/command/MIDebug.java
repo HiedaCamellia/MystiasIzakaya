@@ -46,8 +46,8 @@ public class MIDebug {
                                     orders_list.add("");
                                 }
                                 orders_list.set(id, order);
-                                player.setData(MIAttachment.IZAKAYA_ORDER, new IzakayaOrder(orders_list, izakayaOrder.beverages()));
-                                PacketDistributor.sendToPlayer(player,new IzakayaOrderSyncS2CMessage(orders_list, izakayaOrder.beverages()));
+                                MIPlayerUtil.setIzakayaOrder(player,new IzakayaOrder(orders_list, izakayaOrder.beverages()));
+                                MIPlayerUtil.syncIzakayaOrder(player);
                             }
                             return 0;
 						}))).then(Commands.literal("clean").executes(arguments -> {
@@ -61,8 +61,8 @@ public class MIDebug {
                                     orders_list.add("");
                                 }
                                 orders_list.set(id, "");
-                                player.setData(MIAttachment.IZAKAYA_ORDER, new IzakayaOrder(orders_list, izakayaOrder.beverages()));
-                                PacketDistributor.sendToPlayer(player, new IzakayaOrderSyncS2CMessage(orders_list, izakayaOrder.beverages()));
+                                MIPlayerUtil.setIzakayaOrder(player,new IzakayaOrder(orders_list, izakayaOrder.beverages()));
+                                MIPlayerUtil.syncIzakayaOrder(player);
                             }
                             return 0;
 						}))).then(Commands.literal("beverages").then(Commands.literal("replace").then(Commands.argument("beverages", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
@@ -78,8 +78,8 @@ public class MIDebug {
                                     ordersbeverages_list.add("");
                                 }
                                 ordersbeverages_list.set(id, order);
-                                player.setData(MIAttachment.IZAKAYA_ORDER, new IzakayaOrder(izakayaOrder.cuisines(), ordersbeverages_list));
-                                PacketDistributor.sendToPlayer(player, new IzakayaOrderSyncS2CMessage(izakayaOrder.cuisines(), ordersbeverages_list));
+                                MIPlayerUtil.setIzakayaOrder(player,new IzakayaOrder(izakayaOrder.cuisines(), ordersbeverages_list));
+                                MIPlayerUtil.syncIzakayaOrder(player);
                             }
                             return 0;
 						}))).then(Commands.literal("clean").executes(arguments -> {
@@ -93,8 +93,8 @@ public class MIDebug {
                                     ordersbeverages_list.add("");
                                 }
                                 ordersbeverages_list.set(id, "");
-                                player.setData(MIAttachment.IZAKAYA_ORDER, new IzakayaOrder(izakayaOrder.cuisines(), ordersbeverages_list));
-                                PacketDistributor.sendToPlayer(player, new IzakayaOrderSyncS2CMessage(izakayaOrder.cuisines(), ordersbeverages_list));
+                                MIPlayerUtil.setIzakayaOrder(player,new IzakayaOrder(izakayaOrder.cuisines(), ordersbeverages_list));
+                                MIPlayerUtil.syncIzakayaOrder(player);
                             }
                             return 0;
 						}))))
@@ -107,7 +107,7 @@ public class MIDebug {
                 }))).then(Commands.literal("menu").then(Commands.literal("dump").executes(arguments -> {
                     ServerPlayer player = arguments.getSource().getPlayer();
                     if (player != null) {
-                        IzakayaMenu izakayaMenu = player.getData(MIAttachment.IZAKAYA_MENU);
+                        IzakayaMenu izakayaMenu = MIPlayerUtil.getIzakayaMenu(player);
                         List<ItemStack> cuisineStacks = izakayaMenu.toCuisineStacks();
                         List<ItemStack> beverageStacks = izakayaMenu.toBeverageStacks();
                         Component component = Component.empty().append("Menu:[ ");
@@ -126,13 +126,13 @@ public class MIDebug {
                 })).then(Commands.literal("reset").executes(arguments -> {
                     ServerPlayer player = arguments.getSource().getPlayer();
                     if (player != null) {
-                        player.setData(MIAttachment.IZAKAYA_MENU, IzakayaMenu.init());
+                        MIPlayerUtil.setIzakayaMenu(player, IzakayaMenu.init());
                     }
                     return 0;
                 }))).then(Commands.literal("order").then(Commands.literal("dump").executes(arguments -> {
                     ServerPlayer player = arguments.getSource().getPlayer();
                     if (player != null) {
-                        IzakayaOrder izakayaOrder = player.getData(MIAttachment.IZAKAYA_ORDER);
+                        IzakayaOrder izakayaOrder = MIPlayerUtil.getIzakayaOrder(player);
                         List<ItemStack> cuisineStacks = izakayaOrder.toCuisineStacks();
                         List<ItemStack> beverageStacks = izakayaOrder.toBeverageStacks();
                         Component component = Component.empty().append("Order:[ ");
@@ -151,8 +151,7 @@ public class MIDebug {
                 })).then(Commands.literal("reset").executes(arguments -> {
                     ServerPlayer player = arguments.getSource().getPlayer();
                     if (player != null) {
-                        IzakayaOrder izakayaOrder = player.getData(MIAttachment.IZAKAYA_ORDER);
-                        player.setData(MIAttachment.IZAKAYA_ORDER, new IzakayaOrder(new ArrayList<>(), new ArrayList<>()));
+                        MIPlayerUtil.setIzakayaOrder(player,IzakayaOrder.init());
                     }
                     return 0;
                 }))).then(Commands.literal("table").then(Commands.literal("dump").executes(arguments -> {
@@ -174,8 +173,7 @@ public class MIDebug {
                         })).then(Commands.literal("reset").executes(arguments -> {
                             ServerPlayer player = arguments.getSource().getPlayer();
                             if (player != null) {
-                                IzakayaOrder izakayaOrder = player.getData(MIAttachment.IZAKAYA_ORDER);
-                                player.setData(MIAttachment.IZAKAYA_ORDER, new IzakayaOrder(izakayaOrder.cuisines(), izakayaOrder.beverages()));
+                                MIPlayerUtil.setTables(player,new ArrayList<>(8));
                             }
                             return 0;
                         })))

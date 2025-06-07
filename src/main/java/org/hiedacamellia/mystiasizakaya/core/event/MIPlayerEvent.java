@@ -1,11 +1,14 @@
 package org.hiedacamellia.mystiasizakaya.core.event;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.NeoForge;
@@ -14,16 +17,15 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.hiedacamellia.immersiveui.util.holder.IntHolder;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
 import org.hiedacamellia.mystiasizakaya.api.event.OrderEvent;
-import org.hiedacamellia.mystiasizakaya.core.util.MIEventUtil;
+import org.hiedacamellia.mystiasizakaya.common.block.TableBlock;
+import org.hiedacamellia.mystiasizakaya.core.util.*;
 import org.hiedacamellia.mystiasizakaya.common.blockentity.TableEntity;
 import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaMenu;
 import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaOrder;
 import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
 import org.hiedacamellia.mystiasizakaya.core.config.json.ItemPriceAddon;
-import org.hiedacamellia.mystiasizakaya.core.util.MIBalanceUtil;
-import org.hiedacamellia.mystiasizakaya.core.util.MIItemStackUtil;
-import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
+import org.hiedacamellia.mystiasizakaya.registries.MIBlock;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -115,36 +117,41 @@ public class MIPlayerEvent {
             if(player.getData(MIAttachment.MI_ON_OPEN)&& (serverPlayer.level().getGameTime()% MICommonConfig.ORDER_REFRESH_INTERVAL.get()==0)){
 
                 //MystiasIzakaya.LOGGER.debug("Try to add order");
+                RandomSource random = player.level().random;
 
                 IzakayaMenu izakayaMenu = MIPlayerUtil.getIzakayaMenu(player);
                 Set<ItemStack> beverages = new LinkedHashSet<>(izakayaMenu.toBeverageStacks());
                 Set<ItemStack> cuisines = new LinkedHashSet<>(izakayaMenu.toCuisineStacks());
+                beverages.remove(ItemStack.EMPTY);
+                cuisines.remove(ItemStack.EMPTY);
 
                 List<ItemStack> beverageslist = new ArrayList<>(beverages);
                 List<ItemStack> cuisineslist = new ArrayList<>(cuisines);
 //
 //                Debug.getLogger().debug(beveragesList.toString());
 //                Debug.getLogger().debug(cuisinesList.toString());
-
-                for(BlockPos pos : tables){
+                for (int i = 0; i < tables.size(); i++) {
+                    BlockPos pos = tables.get(i);
                     if(pos.equals(new BlockPos(-1,-1,-1))){
                         continue;
                     }
-                    if(Math.random()< MICommonConfig.ORDER_REFRESH_PROBABILITY.get()){
-                        if(beverageList.get(tables.indexOf(pos)).isEmpty()&&cuisineList.get(tables.indexOf(pos)).isEmpty()){
-                            ItemStack beverage = beverageslist.get((int) (Math.random() * beverages.size()));
-                            ItemStack cuisine = cuisineslist.get((int) (Math.random() * cuisines.size()));
-                            if(beverage.isEmpty()||cuisine.isEmpty()){
+                    if(random.nextFloat()< MICommonConfig.ORDER_REFRESH_PROBABILITY.get()) {
+                        if(beverageList.get(i).isEmpty()&&cuisineList.get(i).isEmpty()){
+                            ItemStack beverage = beverageslist.get(random.nextInt(beverageslist.size()));
+                            ItemStack cuisine = cuisineslist.get(random.nextInt(cuisineslist.size()));
+                            if (beverage.isEmpty() || cuisine.isEmpty()) {
                                 break;
                             }
-                            IzakayaOrder.addOrder(beverage, cuisine, tables.indexOf(pos), serverPlayer);
+                            IzakayaOrder.addOrder(beverage, cuisine, i, serverPlayer);
+
+                            break;
                         }
-                        break;
                     }
                 }
             }
             for(int i = 0; i < tables.size();i++){
-                if(tables.get(i).equals(new BlockPos(-1,-1,-1))){
+                BlockPos pos = tables.get(i);
+                if(pos.equals(new BlockPos(-1,-1,-1))){
                     continue;
                 }
 //                Debug.getLogger().debug(tables.get(i).toString());
@@ -157,18 +164,15 @@ public class MIPlayerEvent {
 //                Debug.getLogger().debug(cuisine.toString());
 //                Debug.getLogger().debug(beverage.toString());
 
-                if(beverage.isEmpty()||cuisine.isEmpty()){
-                    continue;
-                }
-                BlockEntity blockEntity =  level.getBlockEntity(tables.get(i));
-                if (blockEntity != null) {
-//                    Debug.getLogger().debug(blockEntity.toString());
-                }
-
-                if(blockEntity instanceof TableEntity tableEntity){
+                BlockEntity blockEntity =  level.getBlockEntity(pos);
+                BlockState blockState =  level.getBlockState(pos);
+                if(blockState.is(MIBlock.TABLE) && blockEntity instanceof TableEntity tableEntity){
                     List<ItemStack> itemStacks= tableEntity.getItems();
 //                    Debug.getLogger().debug(itemStacks.toString());
 
+                    if(beverage.isEmpty()||cuisine.isEmpty()){
+                        continue;
+                    }
                     if(ItemStack.isSameItem(itemStacks.get(0),cuisine)&&ItemStack.isSameItem(itemStacks.get(1),beverage)){
                         IzakayaOrder.removeOrder(i,serverPlayer);
                         tableEntity.clearContent();
@@ -183,6 +187,13 @@ public class MIPlayerEvent {
                         MIBalanceUtil.table(player, intHolder.get());
 
                     }
+                }else {
+                    MIMessageUtil.send(Component.translatable("message.mystias_izakaya.table.unbound", i + 1, pos.getX(), pos.getY(), pos.getZ()), serverPlayer);
+                    MystiasIzakaya.LOGGER.debug("TableEntity at {} is not a TableEntity, removed from player's table list.", pos);
+                    tables.set(i, new BlockPos(-1,-1,-1));
+                    MIPlayerUtil.setTables(player,tables);
+                    MIPlayerUtil.syncTables(player);
+                    IzakayaOrder.removeOrder(i,serverPlayer);
                 }
             }
         }
