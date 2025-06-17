@@ -28,6 +28,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.hiedacamellia.mystiasizakaya.common.blockentity.TableEntity;
+import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
 import org.hiedacamellia.mystiasizakaya.core.util.MIMessageUtil;
 import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
@@ -81,7 +82,7 @@ public class TableBlock extends Block implements EntityBlock {
 	@Override
 	public @NotNull InteractionResult useWithoutItem(@NotNull BlockState blockstate, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player entity, @NotNull BlockHitResult hit) {
 		super.useWithoutItem(blockstate, level, pos, entity, hit);
-		if (entity instanceof ServerPlayer player) {
+		if (entity instanceof ServerPlayer player && MICommonConfig.ENABLE_TABLE_MENU.get()) {
 			if(!ItemStack.isSameItem(player.getMainHandItem(),MIItem.LEDGER.get().getDefaultInstance())) {
 				player.openMenu(Objects.requireNonNull(getMenuProvider(blockstate, level, pos)), pos);
 			}

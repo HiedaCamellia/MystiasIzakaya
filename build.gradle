@@ -1,9 +1,8 @@
 plugins {
     id 'java-library'
-    id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '1.0.0'
+    id 'net.neoforged.moddev' version '2.0.78'
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -177,6 +176,7 @@ dependencies {
     compileOnlyApi("dev.latvian.mods:kubejs-neoforge:$kubejs_version")
     compileOnly("dev.latvian.mods:rhino:$rhino_version")
 
+    implementation "curse.maven:touhou-little-maid-355044:6613831"
 
     //localRuntime("dev.latvian.mods:kubejs-neoforge:$kubejs_version")
     //localRuntime("dev.latvian.mods:rhino:$rhino_version")

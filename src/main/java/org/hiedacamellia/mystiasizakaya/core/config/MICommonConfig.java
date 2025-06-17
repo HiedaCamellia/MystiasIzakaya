@@ -11,6 +11,11 @@ public class MICommonConfig
             .comment("设置为true以启用调试信息")
             .define("debug", true);
 
+    public static final ModConfigSpec.BooleanValue ENABLE_TABLE_MENU = BUILDER
+            .comment("Set to true to enable table menu")
+            .comment("设置为true以启用餐桌菜单")
+            .define("enable_table_menu", true);
+
     public static final ModConfigSpec.IntValue MAX_OVERTURN = BUILDER
             .comment("The maximum number of turnovers to store")
             .comment("要存储的最大流水次数")
