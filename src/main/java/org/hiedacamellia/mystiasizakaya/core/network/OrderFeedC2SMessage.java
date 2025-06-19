@@ -38,8 +38,10 @@ public record OrderFeedC2SMessage(byte id, byte n, ItemStack itemStack)implement
                         ServerLevel serverLevel = serverPlayer.serverLevel();
                         if(serverLevel.isLoaded(pos)){
                             if (serverLevel.getBlockEntity(pos) instanceof TableEntity tableEntity){
-                                if(data.n() < tableEntity.getItemHandler().getSlots())
+                                if(data.n() < tableEntity.getItemHandler().getSlots()) {
                                     tableEntity.getItemHandler().setStackInSlot(data.n(), data.itemStack());
+                                    serverPlayer.getMainHandItem().shrink(1);
+                                }
                             }
                         }
                     }
