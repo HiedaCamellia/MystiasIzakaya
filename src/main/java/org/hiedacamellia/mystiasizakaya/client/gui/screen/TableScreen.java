@@ -26,11 +26,16 @@ public class TableScreen extends AbstractContainerScreen<TableMenu> {
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
+    @Override
+    public void renderBackground(GuiGraphics guiGraphics, int p_295457_, int p_294596_, float p_296351_) {
+        this.renderTransparentBackground(guiGraphics);
+        guiGraphics.flush();
+        this.renderBg(guiGraphics, p_296351_, p_295457_, p_294596_);
+    }
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int gx, int gy) {
         RenderSystem.enableBlend();

@@ -3,12 +3,13 @@ package org.hiedacamellia.mystiasizakaya.common.block;
 
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -16,7 +17,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.SoundType;
@@ -34,15 +34,14 @@ import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
 import org.hiedacamellia.mystiasizakaya.registries.MIItem;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 public class TableBlock extends Block implements EntityBlock {
 
-	public TableBlock() {
-		super(Properties.of().mapColor(MapColor.METAL).sound(SoundType.METAL).strength(1f, 10f).requiresCorrectToolForDrops().noOcclusion());
+	public TableBlock(ResourceLocation loc) {
+		super(Properties.of().setId(ResourceKey.create(Registries.BLOCK, loc)).mapColor(MapColor.METAL).sound(SoundType.METAL).strength(1f, 10f).requiresCorrectToolForDrops().noOcclusion());
 	}
 
 	@Override
@@ -61,7 +60,7 @@ public class TableBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
+	public int getLightBlock(BlockState state) {
 		return 15;
 	}
 
@@ -91,7 +90,7 @@ public class TableBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+	public InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
 
 		if (player instanceof ServerPlayer serverPlayer) {
 			if(ItemStack.isSameItem(serverPlayer.getMainHandItem(),MIItem.LEDGER.get().getDefaultInstance())) {
@@ -116,10 +115,10 @@ public class TableBlock extends Block implements EntityBlock {
 				MIPlayerUtil.setTables(player, blockPosList);
 				MIPlayerUtil.syncTables(player);
 
-				return ItemInteractionResult.SUCCESS;
+				return InteractionResult.SUCCESS;
 			}
 		}
-		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+		return InteractionResult.PASS;
 	}
 
 	@Override

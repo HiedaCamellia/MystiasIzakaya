@@ -69,7 +69,7 @@ public class MIItemStackUtil {
         return fromResourceLocation(ResourceLocation.tryParse(string));
     }
     public static ItemStack fromResourceLocation(ResourceLocation resourceLocation){
-        return BuiltInRegistries.ITEM.get(resourceLocation).getDefaultInstance();
+        return BuiltInRegistries.ITEM.getValue(resourceLocation).getDefaultInstance();
     }
     public static String toString(ItemStack itemStack){
         return toResourceLocation(itemStack).toString();

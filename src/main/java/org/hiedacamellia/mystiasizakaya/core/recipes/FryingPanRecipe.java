@@ -8,6 +8,7 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import org.hiedacamellia.mystiasizakaya.registries.MIRecipeType;
@@ -22,11 +23,11 @@ public class FryingPanRecipe  extends MIRecipe {
 	}
 
 	@Override
-	public RecipeType<?> getType() {
+	public RecipeType<? extends Recipe<MIRecipeInput>> getType() {
 		return MIRecipeType.FRYING_PAN.get();
 	}
 	@Override
-	public RecipeSerializer<?> getSerializer() {
+	public RecipeSerializer<? extends Recipe<MIRecipeInput>> getSerializer() {
 		return MIRecipeType.FRYING_PAN_SERIALIZER.get();
 	}
 

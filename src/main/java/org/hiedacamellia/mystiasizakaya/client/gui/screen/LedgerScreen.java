@@ -31,6 +31,7 @@ import org.hiedacamellia.mystiasizakaya.core.config.MICommonConfig;
 import org.hiedacamellia.mystiasizakaya.core.config.json.ItemPriceAddon;
 import org.hiedacamellia.mystiasizakaya.core.network.OpenIzakayaBIMessage;
 import org.hiedacamellia.mystiasizakaya.core.util.MIBalanceUtil;
+import org.hiedacamellia.mystiasizakaya.core.util.MIItemStackUtil;
 import org.hiedacamellia.mystiasizakaya.core.util.MIPlayerUtil;
 import org.hiedacamellia.mystiasizakaya.registries.MIAttachment;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
@@ -157,8 +158,11 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
         onchange();
 
         super.renderTransparentBackground(guiGraphics);
+        guiGraphics.flush();
 
         this.renderPageBackground(guiGraphics);
+
+        this.menu.slot_active = (page==Page.MENU&& !on_change);
 
         super.render(guiGraphics, mouseX, mouseY, partialTick);
 
@@ -196,12 +200,6 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
 
     }
 
-    @Override
-    protected void renderSlotHighlight(GuiGraphics guiGraphics, Slot slot, int mouseX, int mouseY, float partialTick) {
-        if (page==Page.MENU&& !on_change&&slot.isHighlightable()) {
-            renderSlotHighlight(guiGraphics, slot.x, slot.y, 0, this.getSlotColor(slot.index));
-        }
-    }
 
     @Override
     protected void renderSlot(GuiGraphics guiGraphics, Slot slot) {
@@ -213,7 +211,7 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
 
     private void onchange(){
         if(on_change){
-            float realtimeDeltaTicks = Minecraft.getInstance().getTimer().getRealtimeDeltaTicks();
+            float realtimeDeltaTicks = Minecraft.getInstance().getDeltaTracker().getRealtimeDeltaTicks();
             progress+= (page == Page.LEDGER ? realtimeDeltaTicks : -realtimeDeltaTicks)*8;
             if(progress>180 && page == Page.LEDGER){
                 progress = 180;
@@ -336,8 +334,8 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
         renderables_menu= new ArrayList<>();
 
         for (int i = 0; i < 8 ; i++) {
-            ItemStack cuisine = i<cuisineList.size()?BuiltInRegistries.ITEM.get(ResourceLocation.parse((cuisineList.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance():ItemStack.EMPTY;
-            ItemStack beverage = i<beverageList.size()?BuiltInRegistries.ITEM.get(ResourceLocation.parse((beverageList.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance():ItemStack.EMPTY;
+            ItemStack cuisine = i<cuisineList.size()?MIItemStackUtil.fromString(cuisineList.get(i)):ItemStack.EMPTY;
+            ItemStack beverage = i<beverageList.size()? MIItemStackUtil.fromString(beverageList.get(i)) :ItemStack.EMPTY;
             FakeItemSlot cuisineSlot = new FakeItemSlot(this.leftPos + 79 , this.topPos + 10 + i * 18, Component.translatable("gui.mystias_izakaya.ledger_ui.cuisine",i+1));
             cuisineSlot.setItemStack(cuisine);
             fakeCuisinesSlots.add(cuisineSlot);

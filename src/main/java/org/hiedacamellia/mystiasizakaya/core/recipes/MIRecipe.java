@@ -3,8 +3,7 @@ package org.hiedacamellia.mystiasizakaya.core.recipes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import org.hiedacamellia.mystiasizakaya.registries.MITag;
 
@@ -21,12 +20,23 @@ public abstract class MIRecipe implements Recipe<MIRecipeInput> {
         this.recipeItems = recipeItems;
     }
 
+    @Override
+    public PlacementInfo placementInfo() {
+        return PlacementInfo.NOT_PLACEABLE;
+    }
+
+    @Override
+    public RecipeBookCategory recipeBookCategory() {
+        return RecipeBookCategories.CRAFTING_MISC;
+    }
+
     public List<ItemStack> getRestItem(MIRecipeInput recipeInput){
         List<ItemStack> restItems = new ArrayList<>(recipeInput.stack());
         try {
             for (ItemStack itemStack : recipeInput.stack()) {
                 for (Ingredient ingredient : recipeItems) {
-                    if (ingredient.isEmpty() || ingredient == Ingredient.EMPTY || ingredient.equals(Ingredient.of(MITag.ingredientsKey)))
+
+                    if (ingredient.isEmpty() || ingredient.getValues().get(0).is(MITag.ingredientsKey))
                         continue;
                     if (ingredient.test(itemStack)) {
                         restItems.remove(itemStack);
@@ -42,7 +52,7 @@ public abstract class MIRecipe implements Recipe<MIRecipeInput> {
     @Override
     public boolean matches(MIRecipeInput recipeInput, Level level) {
         for(Ingredient ingredient : recipeItems){
-            if(ingredient.isEmpty()||ingredient==Ingredient.EMPTY)
+            if(ingredient.isEmpty())
                 continue;
             boolean a=false;
             for(ItemStack itemStack :recipeInput.stack()){
@@ -62,16 +72,7 @@ public abstract class MIRecipe implements Recipe<MIRecipeInput> {
     public ItemStack assemble(MIRecipeInput recipeInput, HolderLookup.Provider provider) {
         return output.copy();
     }
-    @Override
-    public boolean canCraftInDimensions(int pWidth, int pHeight) {
-        return true;
-    }
 
-    @Override
-    public ItemStack getResultItem(HolderLookup.Provider provider) {
-        return output.copy();
-    }
-    @Override
     public NonNullList<Ingredient> getIngredients() {
         return NonNullList.copyOf(recipeItems);
     }

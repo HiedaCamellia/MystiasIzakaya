@@ -1,15 +1,18 @@
 package org.hiedacamellia.mystiasizakaya.integration.jei;
 
 import mezz.jei.api.IModPlugin;
+import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.item.crafting.RecipeMap;
 import org.hiedacamellia.mystiasizakaya.MystiasIzakaya;
+import org.hiedacamellia.mystiasizakaya.client.util.MIClientUtil;
 import org.hiedacamellia.mystiasizakaya.core.recipes.*;
 import org.hiedacamellia.mystiasizakaya.integration.jei.categories.*;
 import org.hiedacamellia.mystiasizakaya.registries.MIBlock;
@@ -20,15 +23,15 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-@mezz.jei.api.JeiPlugin
+@JeiPlugin
 public class MIJeiPlugin implements IModPlugin {
 	
 	static {
-		BoilingPotJeiCategory.RECIPE_TYPE = new mezz.jei.api.recipe.RecipeType<>(BoilingPotJeiCategory.UID, BoilingPotRecipe.class);
-		CuttingBoardJeiCategory.RECIPE_TYPE = new mezz.jei.api.recipe.RecipeType<>(CuttingBoardJeiCategory.UID, CuttingBoardRecipe.class);
-		FryingPanJeiCategory.RECIPE_TYPE = new mezz.jei.api.recipe.RecipeType<>(FryingPanJeiCategory.UID, FryingPanRecipe.class);
-		GrillJeiCategory.RECIPE_TYPE = new mezz.jei.api.recipe.RecipeType<>(GrillJeiCategory.UID, GrillRecipe.class);
-		SteamerJeiCategory.RECIPE_TYPE = new mezz.jei.api.recipe.RecipeType<>(SteamerJeiCategory.UID, SteamerRecipe.class);
+		BoilingPotJeiCategory.RECIPE_TYPE = new MIBaseJeiRecipeType<>(BoilingPotJeiCategory.UID, BoilingPotRecipe.class);
+		CuttingBoardJeiCategory.RECIPE_TYPE = new MIBaseJeiRecipeType<>(CuttingBoardJeiCategory.UID, CuttingBoardRecipe.class);
+		FryingPanJeiCategory.RECIPE_TYPE = new MIBaseJeiRecipeType<>(FryingPanJeiCategory.UID, FryingPanRecipe.class);
+		GrillJeiCategory.RECIPE_TYPE = new MIBaseJeiRecipeType<>(GrillJeiCategory.UID, GrillRecipe.class);
+		SteamerJeiCategory.RECIPE_TYPE = new MIBaseJeiRecipeType<>(SteamerJeiCategory.UID, SteamerRecipe.class);
 	}
 	
 	@Override
@@ -47,31 +50,28 @@ public class MIJeiPlugin implements IModPlugin {
 
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) {
-		RecipeManager recipeManager = Objects.requireNonNull(Minecraft.getInstance().level).getRecipeManager();
 
-		List<BoilingPotRecipe> boilingPotRecipes = recipeManager.getAllRecipesFor(MIRecipeType.BOILING_POT.get()).stream().map(RecipeHolder::value).collect(Collectors.toList());
+		RecipeMap recipeMap = MIClientUtil.getRecipeMap();
+		ClientLevel level = Minecraft.getInstance().level;
+
+		List<BoilingPotRecipe> boilingPotRecipes = recipeMap.getRecipesFor(MIRecipeType.BOILING_POT.get(),MIRecipeInput.EMPTY,level).map(RecipeHolder::value).collect(Collectors.toList());
 		registration.addRecipes(BoilingPotJeiCategory.RECIPE_TYPE, boilingPotRecipes);
-		List<CuttingBoardRecipe> cuttingBoardRecipes = recipeManager.getAllRecipesFor(MIRecipeType.CUTTING_BOARD.get()).stream().map(RecipeHolder::value).collect(Collectors.toList());
+		List<CuttingBoardRecipe> cuttingBoardRecipes = recipeMap.getRecipesFor(MIRecipeType.CUTTING_BOARD.get(),MIRecipeInput.EMPTY,level).map(RecipeHolder::value).collect(Collectors.toList());
 		registration.addRecipes(CuttingBoardJeiCategory.RECIPE_TYPE, cuttingBoardRecipes);
-		List<FryingPanRecipe> fryingPanRecipes = recipeManager.getAllRecipesFor(MIRecipeType.FRYING_PAN.get()).stream().map(RecipeHolder::value).collect(Collectors.toList());
+		List<FryingPanRecipe> fryingPanRecipes = recipeMap.getRecipesFor(MIRecipeType.FRYING_PAN.get(),MIRecipeInput.EMPTY,level).map(RecipeHolder::value).collect(Collectors.toList());
 		registration.addRecipes(FryingPanJeiCategory.RECIPE_TYPE, fryingPanRecipes);
-		List<GrillRecipe> grillRecipes = recipeManager.getAllRecipesFor(MIRecipeType.GRILL.get()).stream().map(RecipeHolder::value).collect(Collectors.toList());
+		List<GrillRecipe> grillRecipes = recipeMap.getRecipesFor(MIRecipeType.GRILL.get(),MIRecipeInput.EMPTY,level).map(RecipeHolder::value).collect(Collectors.toList());
 		registration.addRecipes(GrillJeiCategory.RECIPE_TYPE, grillRecipes);
-		List<SteamerRecipe> steamerRecipes = recipeManager.getAllRecipesFor(MIRecipeType.STEAMER.get()).stream().map(RecipeHolder::value).collect(Collectors.toList());
+		List<SteamerRecipe> steamerRecipes = recipeMap.getRecipesFor(MIRecipeType.STEAMER.get(),MIRecipeInput.EMPTY,level).map(RecipeHolder::value).collect(Collectors.toList());
 		registration.addRecipes(SteamerJeiCategory.RECIPE_TYPE, steamerRecipes);
 	}
 
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), BoilingPotJeiCategory.RECIPE_TYPE);
-		registration.addRecipeCatalyst(new ItemStack(MIItem.BOILING_POT.get()), BoilingPotJeiCategory.RECIPE_TYPE);
-		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), CuttingBoardJeiCategory.RECIPE_TYPE);
-		registration.addRecipeCatalyst(new ItemStack(MIItem.CUTTING_BOARD.get()), CuttingBoardJeiCategory.RECIPE_TYPE);
-		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), FryingPanJeiCategory.RECIPE_TYPE);
-		registration.addRecipeCatalyst(new ItemStack(MIItem.FRYING_PAN.get()), FryingPanJeiCategory.RECIPE_TYPE);
-		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), GrillJeiCategory.RECIPE_TYPE);
-		registration.addRecipeCatalyst(new ItemStack(MIItem.GRILL.get()), GrillJeiCategory.RECIPE_TYPE);
-		registration.addRecipeCatalyst(new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), SteamerJeiCategory.RECIPE_TYPE);
-		registration.addRecipeCatalyst(new ItemStack(MIItem.STEAMER.get()), SteamerJeiCategory.RECIPE_TYPE);
+		registration.addCraftingStation(BoilingPotJeiCategory.RECIPE_TYPE, new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), new ItemStack(MIItem.BOILING_POT.get()));
+		registration.addCraftingStation(CuttingBoardJeiCategory.RECIPE_TYPE, new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), new ItemStack(MIItem.CUTTING_BOARD.get()));
+		registration.addCraftingStation(FryingPanJeiCategory.RECIPE_TYPE, new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), new ItemStack(MIItem.FRYING_PAN.get()));
+		registration.addCraftingStation(GrillJeiCategory.RECIPE_TYPE, new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), new ItemStack(MIItem.GRILL.get()));
+		registration.addCraftingStation(SteamerJeiCategory.RECIPE_TYPE, new ItemStack(MIBlock.COOKING_RANGE.get().asItem()), new ItemStack(MIItem.STEAMER.get()));
 	}
 }

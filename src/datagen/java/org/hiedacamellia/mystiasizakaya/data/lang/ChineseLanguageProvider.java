@@ -169,7 +169,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.li_liang_tang", "力量汤");
         add("item.mystias_izakaya.lian_zi", "莲子");
         add("item.mystias_izakaya.liang_cai_diao_hua", "凉菜雕花");
-        add("item.mystias_izakaya.liao_li_tai", "料理台");
+        add("item.mystias_izakaya.cutting_board", "料理台");
         add("item.mystias_izakaya.lin_ren_zhui", "伶人醉");
         add("item.mystias_izakaya.liu_shui_su_mian", "流水素面");
         add("item.mystias_izakaya.lu_cha", "绿茶");
@@ -215,7 +215,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.ri_yue_xing", "日月星");
         add("item.mystias_izakaya.sai_xiong_zhang", "赛熊掌");
         add("item.mystias_izakaya.san_wen_yu", "三文鱼");
-        add("item.mystias_izakaya.shao_kao_jia", "烧烤架");
+        add("item.mystias_izakaya.grill", "烧烤架");
         add("item.mystias_izakaya.shen_zhi_mai", "神之麦");
         add("item.mystias_izakaya.shi_li_yin_xing", "诗礼银杏");
         add("item.mystias_izakaya.shi_si_ye", "十四夜");
@@ -258,7 +258,7 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.yin_er", "银耳");
         add("item.mystias_izakaya.ying_luo_xue", "樱落雪");
         add("item.mystias_izakaya.you_dou_fu", "油豆腐");
-        add("item.mystias_izakaya.you_guo", "油锅");
+        add("item.mystias_izakaya.frying_pan", "油锅");
         add("item.mystias_izakaya.yu_lu_cha", "玉露茶");
         add("item.mystias_izakaya.yue_guang_cao", "月光草");
         add("item.mystias_izakaya.yue_guang_tuan_zi", "月光团子");
@@ -269,11 +269,11 @@ public class ChineseLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.zha_zhu_rou_pai", "炸猪肉排");
         add("item.mystias_izakaya.zhang_yu", "章鱼");
         add("item.mystias_izakaya.zhen_hai_xian_wei_cheng_tang", "真·海鲜味噌汤");
-        add("item.mystias_izakaya.zheng_guo", "蒸锅");
+        add("item.mystias_izakaya.steamer", "蒸锅");
         add("item.mystias_izakaya.zhi_shi", "芝士");
         add("item.mystias_izakaya.zhi_zhu_rou_fan_tuan", "炙猪肉饭团");
         add("item.mystias_izakaya.zhu_dou_fu", "煮豆腐");
-        add("item.mystias_izakaya.zhu_guo", "煮锅");
+        add("item.mystias_izakaya.boiling_pot", "煮锅");
         add("item.mystias_izakaya.zhu_lu_die", "猪鹿蝶");
         add("item.mystias_izakaya.zhu_qu_ji", "竹取姬");
         add("item.mystias_izakaya.zhu_rou", "猪肉");

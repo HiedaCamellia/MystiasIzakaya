@@ -108,7 +108,8 @@ neoForge {
         }
 
         data {
-            data()
+
+            clientData()
 
             // example of overriding the workingDirectory set in configureEach above, uncomment if you want to use it
             // gameDirectory = project.file('run-data')
@@ -163,7 +164,7 @@ dependencies {
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     // We add the full version to localRuntime, not runtimeOnly, so that we do not publish a dependency on it
-    //localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
     compileOnly "me.shedaniel:RoughlyEnoughItems-api-neoforge:${rei_version}"
     compileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-neoforge:${rei_version}"
@@ -173,10 +174,10 @@ dependencies {
 
     implementation jarJar("org.hiedacamellia:immersiveui:${immersiveui_version}")
 
-    compileOnlyApi("dev.latvian.mods:kubejs-neoforge:$kubejs_version")
-    compileOnly("dev.latvian.mods:rhino:$rhino_version")
+//    compileOnlyApi("dev.latvian.mods:kubejs-neoforge:$kubejs_version")
+//    compileOnly("dev.latvian.mods:rhino:$rhino_version")
 
-    implementation "curse.maven:touhou-little-maid-355044:6613831"
+//    implementation "curse.maven:touhou-little-maid-355044:6613831"
 
     //localRuntime("dev.latvian.mods:kubejs-neoforge:$kubejs_version")
     //localRuntime("dev.latvian.mods:rhino:$rhino_version")

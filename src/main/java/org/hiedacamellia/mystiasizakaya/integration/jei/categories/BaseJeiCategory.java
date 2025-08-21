@@ -10,13 +10,14 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
+import org.hiedacamellia.mystiasizakaya.core.recipes.MIRecipe;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class BaseJeiCategory<T extends Recipe<?>> implements IRecipeCategory<T> {
+public abstract class BaseJeiCategory<T extends MIRecipe> implements IRecipeCategory<T> {
 
     private final Component title;
     private final IDrawable background;
@@ -60,11 +61,11 @@ public abstract class BaseJeiCategory<T extends Recipe<?>> implements IRecipeCat
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, T recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 6, 10).addIngredients(recipe.getIngredients().get(0)).setBackground(slotDraw, -1, -1);
-        builder.addSlot(RecipeIngredientRole.INPUT, 30, 10).addIngredients(recipe.getIngredients().get(1)).setBackground(slotDraw, -1, -1);
-        builder.addSlot(RecipeIngredientRole.INPUT, 54, 10).addIngredients(recipe.getIngredients().get(2)).setBackground(slotDraw, -1, -1);
-        builder.addSlot(RecipeIngredientRole.INPUT, 78, 10).addIngredients(recipe.getIngredients().get(3)).setBackground(slotDraw, -1, -1);
-        builder.addSlot(RecipeIngredientRole.INPUT, 102, 10).addIngredients(recipe.getIngredients().get(4)).setBackground(slotDraw, -1, -1);
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 154, 10).addItemStack(recipe.getResultItem(null)).setBackground(slotDraw, -1, -1);
+        builder.addSlot(RecipeIngredientRole.INPUT, 6, 10).addIngredients(VanillaTypes.ITEM_STACK,recipe.getIngredients().get(0).getValues().stream().map(Holder::value).map(ItemStack::new).toList()).setBackground(slotDraw, -1, -1);
+        builder.addSlot(RecipeIngredientRole.INPUT, 30, 10).addIngredients(VanillaTypes.ITEM_STACK,recipe.getIngredients().get(1).getValues().stream().map(Holder::value).map(ItemStack::new).toList()).setBackground(slotDraw, -1, -1);
+        builder.addSlot(RecipeIngredientRole.INPUT, 54, 10).addIngredients(VanillaTypes.ITEM_STACK,recipe.getIngredients().get(2).getValues().stream().map(Holder::value).map(ItemStack::new).toList()).setBackground(slotDraw, -1, -1);
+        builder.addSlot(RecipeIngredientRole.INPUT, 78, 10).addIngredients(VanillaTypes.ITEM_STACK,recipe.getIngredients().get(3).getValues().stream().map(Holder::value).map(ItemStack::new).toList()).setBackground(slotDraw, -1, -1);
+        builder.addSlot(RecipeIngredientRole.INPUT, 102, 10).addIngredients(VanillaTypes.ITEM_STACK,recipe.getIngredients().get(4).getValues().stream().map(Holder::value).map(ItemStack::new).toList()).setBackground(slotDraw, -1, -1);
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 154, 10).add(recipe.getResult()).setBackground(slotDraw, -1, -1);
     }
 }

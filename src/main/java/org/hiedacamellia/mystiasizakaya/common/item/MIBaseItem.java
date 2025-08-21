@@ -7,8 +7,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
 import org.hiedacamellia.mystiasizakaya.core.util.MIItemStackUtil;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,18 +16,18 @@ import java.util.List;
 
 public class MIBaseItem extends Item {
 
-    private final UseAnim useAnimation;
+    private final ItemUseAnimation useAnimation;
 
     private String tagprefix;
 
-    public MIBaseItem(Properties properties, UseAnim useAnimation, String tagprefix) {
+    public MIBaseItem(Properties properties, ItemUseAnimation useAnimation, String tagprefix) {
         super(properties);
         this.useAnimation = useAnimation;
         this.tagprefix = tagprefix;
     }
 
     @Override
-    public @NotNull UseAnim getUseAnimation(@NotNull ItemStack itemstack) {
+    public ItemUseAnimation getUseAnimation(@NotNull ItemStack itemstack) {
         return useAnimation;
     }
 

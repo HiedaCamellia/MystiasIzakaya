@@ -66,8 +66,6 @@ public class CookingScreen extends AbstractContainerScreen<CookingMenu> {
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        RenderSystem.setShaderColor(1,1,1,1);
-        this.renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
         renderProcess(guiGraphics, mouseX, mouseY,partialTicks);
@@ -177,6 +175,13 @@ public class CookingScreen extends AbstractContainerScreen<CookingMenu> {
         RenderSystem.disableBlend();
         RenderSystem.setShaderColor(1,1,1,1);
         pose.popPose();
+    }
+
+    @Override
+    public void renderBackground(GuiGraphics guiGraphics, int p_295457_, int p_294596_, float p_296351_) {
+        this.renderTransparentBackground(guiGraphics);
+        guiGraphics.flush();
+        this.renderBg(guiGraphics, p_296351_, p_295457_, p_294596_);
     }
 
     @Override

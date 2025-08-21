@@ -11,6 +11,7 @@ import org.hiedacamellia.mystiasizakaya.registries.MIMenu;
 public class LedgerMenu extends BaseMenu {
 	public final Level world;
 	public final Player entity;
+	public boolean slot_active;
 
 	public LedgerMenu(int containerId, Inventory inventory, RegistryFriendlyByteBuf buf) {
 		this(containerId, inventory);
@@ -24,9 +25,19 @@ public class LedgerMenu extends BaseMenu {
 
 		for (int si = 0; si < 3; ++si)
 			for (int sj = 0; sj < 9; ++sj)
-				this.addSlot(new Slot(inv, sj + (si + 1) * 9, 23 + si * 18, 2 + sj * 18));
+				this.addSlot(new Slot(inv, sj + (si + 1) * 9, 23 + si * 18, 2 + sj * 18) {
+					@Override
+					public boolean isActive() {
+						return slot_active;
+					}
+				});
 		for (int si = 0; si < 9; ++si)
-			this.addSlot(new Slot(inv, si, 5 , 2+ si * 18));
+			this.addSlot(new Slot(inv, si, 5, 2 + si * 18) {
+				@Override
+				public boolean isActive() {
+					return slot_active;
+				}
+			});
 
 
 	}

@@ -7,9 +7,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
 import org.hiedacamellia.mystiasizakaya.registries.MIRecipeType;
 
 import java.util.List;
@@ -22,12 +20,12 @@ public class BoilingPotRecipe extends MIRecipe {
 	}
 
 	@Override
-	public RecipeType<?> getType() {
+	public RecipeType<? extends Recipe<MIRecipeInput>> getType() {
 		return MIRecipeType.BOILING_POT.get();
 	}
 
 	@Override
-	public RecipeSerializer<?> getSerializer() {
+	public RecipeSerializer<? extends Recipe<MIRecipeInput>> getSerializer() {
 		return MIRecipeType.BOILING_POT_SERIALIZER.get();
 	}
 

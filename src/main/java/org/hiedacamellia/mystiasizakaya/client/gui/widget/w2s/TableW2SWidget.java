@@ -34,8 +34,8 @@ public class TableW2SWidget extends World2ScreenWidget {
         super(uuid);
         this.scale = 1;
         this.tableEntity = tableEntity;
-        this.c = BuiltInRegistries.ITEM.get(location1).getDefaultInstance();
-        this.b = BuiltInRegistries.ITEM.get(location2).getDefaultInstance();
+        this.c = BuiltInRegistries.ITEM.getValue(location1).getDefaultInstance();
+        this.b = BuiltInRegistries.ITEM.getValue(location2).getDefaultInstance();
         this.cc = false;
         this.cb = false;
         this.id = id;
@@ -110,7 +110,7 @@ public class TableW2SWidget extends World2ScreenWidget {
         guiGraphics.renderItem(c,-8,-8);
         pose.translate(0, 0, 200);
         if(cc)
-            guiGraphics.blit(TEXTURE,0,0,8,8,0,0,32,32,32,32);
+            IUIGuiUtils.blit(guiGraphics,TEXTURE,0,0,8,8,0,0,32,32,32,32);
 
         pose.popPose();
 
@@ -120,7 +120,7 @@ public class TableW2SWidget extends World2ScreenWidget {
         guiGraphics.renderItem(b,-8,-8);
         pose.translate(0, 0, 200);
         if(cb)
-            guiGraphics.blit(TEXTURE,0,0,8,8,0,0,32,32,32,32);
+            IUIGuiUtils.blit(guiGraphics,TEXTURE,0,0,8,8,0,0,32,32,32,32);
 
         pose.popPose();
         RenderSystem.disableBlend();

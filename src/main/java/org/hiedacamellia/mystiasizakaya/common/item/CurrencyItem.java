@@ -4,10 +4,12 @@ package org.hiedacamellia.mystiasizakaya.common.item;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
@@ -19,14 +21,14 @@ public class CurrencyItem extends Item {
 
 	private final int worth;
 
-	public CurrencyItem(int worth) {
-		super(new Properties().stacksTo(64).rarity(Rarity.COMMON));
+	public CurrencyItem(int worth,ResourceLocation loc) {
+		super(new Properties().setId(ResourceKey.create(Registries.ITEM, loc)).stacksTo(64).rarity(Rarity.COMMON));
 		this.worth = worth;
 	}
 
 	@Override
-	public UseAnim getUseAnimation(ItemStack itemstack) {
-		return UseAnim.BLOCK;
+	public ItemUseAnimation getUseAnimation(ItemStack itemstack) {
+		return ItemUseAnimation.BLOCK;
 	}
 
 	@Override
@@ -44,14 +46,14 @@ public class CurrencyItem extends Item {
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+	public InteractionResult use(Level level, Player player, InteractionHand hand) {
 		ItemStack itemStack = player.getItemInHand(hand);
 		boolean currency = MIBalanceUtil.currency(player, getWorth() * itemStack.getCount());
 		if(currency) {
 			itemStack.shrink(itemStack.getCount());
 			itemStack.setCount(0);
 		}
-		return InteractionResultHolder.pass(itemStack);
+		return InteractionResult.PASS;
 	}
 
     public int getWorth() {

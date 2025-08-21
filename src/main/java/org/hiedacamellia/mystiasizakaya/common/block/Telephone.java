@@ -4,7 +4,10 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -36,8 +39,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Telephone extends Block {
-    public Telephone() {
-        super(Properties.of().instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.METAL).strength(1f, 10f).noOcclusion());
+    public Telephone(ResourceLocation loc) {
+        super(Properties.of().setId(ResourceKey.create(Registries.BLOCK, loc)).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.METAL).strength(1f, 10f).noOcclusion());
     }
 
     @Override
@@ -56,7 +59,7 @@ public class Telephone extends Block {
     }
 
     @Override
-    public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
+    public int getLightBlock(BlockState state) {
         return 15;
     }
 

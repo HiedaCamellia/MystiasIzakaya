@@ -6,6 +6,9 @@ import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
 import me.shedaniel.rei.api.client.registry.screen.ScreenRegistry;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import me.shedaniel.rei.forge.REIPluginClient;
+import me.shedaniel.rei.plugin.client.displays.ClientsidedCraftingDisplay;
+import net.minecraft.world.item.crafting.display.RecipeDisplay;
+import net.minecraft.world.item.crafting.display.ShapedCraftingRecipeDisplay;
 import org.hiedacamellia.mystiasizakaya.core.recipes.*;
 import org.hiedacamellia.mystiasizakaya.integration.rei.categories.*;
 import org.hiedacamellia.mystiasizakaya.integration.rei.displays.*;
@@ -46,11 +49,21 @@ public class MIReiClientPlugin  implements REIClientPlugin {
 
     @Override
     public void registerDisplays(DisplayRegistry registry) {
-        registry.registerRecipeFiller(CuttingBoardRecipe.class, MIRecipeType.CUTTING_BOARD.get(), CuttingBoardDisplay::new);
-        registry.registerRecipeFiller(BoilingPotRecipe.class, MIRecipeType.BOILING_POT.get(), BoilingPotDisplay::new);
-        registry.registerRecipeFiller(FryingPanRecipe.class, MIRecipeType.FRYING_PAN.get(), FryingPanDisplay::new);
-        registry.registerRecipeFiller(SteamerRecipe.class, MIRecipeType.STEAMER.get(), SteamerDisplay::new);
-        registry.registerRecipeFiller(GrillRecipe.class, MIRecipeType.GRILL.get(), GrillDisplay::new);
+        registry.beginRecipeFiller(CuttingBoardDisplay.class)
+                .filterType(CuttingBoardDisplay.TYPE)
+                .fill(CuttingBoardDisplay::create);
+        registry.beginRecipeFiller(BoilingPotDisplay.class)
+                .filterType(BoilingPotDisplay.TYPE)
+                .fill(BoilingPotDisplay::create);
+        registry.beginRecipeFiller(FryingPanDisplay.class)
+                .filterType(FryingPanDisplay.TYPE)
+                .fill(FryingPanDisplay::create);
+        registry.beginRecipeFiller(SteamerDisplay.class)
+                .filterType(SteamerDisplay.TYPE)
+                .fill(SteamerDisplay::create);
+        registry.beginRecipeFiller(GrillDisplay.class)
+                .filterType(GrillDisplay.TYPE)
+                .fill(GrillDisplay::create);
     }
 
     @Override

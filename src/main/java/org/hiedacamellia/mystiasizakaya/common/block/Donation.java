@@ -4,18 +4,24 @@ package org.hiedacamellia.mystiasizakaya.common.block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
@@ -28,8 +34,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Donation extends Block {
-	public Donation() {
-		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.METAL).strength(1f, 10f));
+	public Donation(ResourceLocation loc) {
+		super(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, loc)).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.METAL).strength(1f, 10f));
 	}
 
 	@Override
@@ -48,7 +54,7 @@ public class Donation extends Block {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
+	public int getLightBlock(BlockState state) {
 		return 15;
 	}
 
@@ -70,4 +76,14 @@ public class Donation extends Block {
 		return InteractionResult.SUCCESS;
 	}
 
+	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext pContext) {
+		return defaultBlockState()
+				.setValue(HorizontalDirectionalBlock.FACING, pContext.getHorizontalDirection().getOpposite());
+	}
+
+	@Override
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
+		pBuilder.add(HorizontalDirectionalBlock.FACING);
+	}
 }

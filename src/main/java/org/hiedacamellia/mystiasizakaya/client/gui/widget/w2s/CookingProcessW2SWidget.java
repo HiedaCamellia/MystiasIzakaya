@@ -36,7 +36,7 @@ public class CookingProcessW2SWidget extends World2ScreenWidget {
         super(uuid);
         this.cookingEntity = cookingEntity;
         this.scale = 1;
-        this.result = BuiltInRegistries.ITEM.get(location).getDefaultInstance();
+        this.result = BuiltInRegistries.ITEM.getValue(location).getDefaultInstance();
     }
 
     @Override
@@ -99,7 +99,7 @@ public class CookingProcessW2SWidget extends World2ScreenWidget {
         guiGraphics.renderItem(result,-8,-8);
         pose.translate(0, 0, 200);
         if(cook==total&&total!=0){
-            guiGraphics.blit(TEXTURE,0,0,8,8,0,0,32,32,32,32);
+            IUIGuiUtils.blit(guiGraphics,TEXTURE,0,0,8,8,0,0,32,32,32,32);
         }
 
         pose.popPose();

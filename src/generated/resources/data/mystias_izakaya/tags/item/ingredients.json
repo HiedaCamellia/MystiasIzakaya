@@ -62,107 +62,7 @@
     "mystias_izakaya:zhu_zi",
     "mystias_izakaya:zun_yu",
     {
-      "id": "mystia_izakaya:bamboo",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:wagyo_beef",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:lunar_herb",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:cicada_slough",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:honey",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:chili",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:bingdi_lotus",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:plum",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:salmon",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:dew",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:cocoa_bean",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:sweet_potato",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:red_bean",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:ginko_nut",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:tomato",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:shrimp",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:pufferfish",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:beef",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:seaweed",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:udunmbara",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:crab",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:lemon",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:premium_tuna",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:pumpkin",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:venison",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:red_toon",
+      "id": "mystia_izakaya:cheese",
       "required": false
     },
     {
@@ -170,23 +70,19 @@
       "required": false
     },
     {
-      "id": "mystia_izakaya:cheese",
+      "id": "mystia_izakaya:iberico_pork",
       "required": false
     },
     {
-      "id": "mystia_izakaya:lamprey",
+      "id": "mystia_izakaya:radish",
       "required": false
     },
     {
-      "id": "mystia_izakaya:ice_cube",
+      "id": "mystia_izakaya:sweet_potato",
       "required": false
     },
     {
-      "id": "mystia_izakaya:black_salt",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:egg",
+      "id": "mystia_izakaya:bamboo",
       "required": false
     },
     {
@@ -194,51 +90,23 @@
       "required": false
     },
     {
-      "id": "mystia_izakaya:flour",
+      "id": "mystia_izakaya:venison",
       "required": false
     },
     {
-      "id": "mystia_izakaya:chestnut",
+      "id": "mystia_izakaya:pumpkin",
       "required": false
     },
     {
-      "id": "mystia_izakaya:sea_urchin",
+      "id": "mystia_izakaya:wagyo_beef",
       "required": false
     },
     {
-      "id": "mystia_izakaya:iberico_pork",
+      "id": "mystia_izakaya:cream",
       "required": false
     },
     {
-      "id": "mystia_izakaya:creeping_fig",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:octopus",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:grapes",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:peach",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:mushroom",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:flower",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:butter",
-      "required": false
-    },
-    {
-      "id": "mystia_izakaya:snow_fungus",
+      "id": "mystia_izakaya:song_zi",
       "required": false
     },
     {
@@ -246,11 +114,15 @@
       "required": false
     },
     {
-      "id": "mystia_izakaya:broceoli",
+      "id": "mystia_izakaya:mushroom",
       "required": false
     },
     {
-      "id": "mystia_izakaya:onion",
+      "id": "mystia_izakaya:shrimp",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:salmon",
       "required": false
     },
     {
@@ -262,19 +134,39 @@
       "required": false
     },
     {
-      "id": "mystia_izakaya:boar_meat",
+      "id": "mystia_izakaya:udunmbara",
       "required": false
     },
     {
-      "id": "mystia_izakaya:pork",
+      "id": "mystia_izakaya:lemon",
       "required": false
     },
     {
-      "id": "mystia_izakaya:radish",
+      "id": "mystia_izakaya:crab",
       "required": false
     },
     {
-      "id": "mystia_izakaya:tuna",
+      "id": "mystia_izakaya:beef",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:chili",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:dew",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:pufferfish",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:flour",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:chestnut",
       "required": false
     },
     {
@@ -282,19 +174,127 @@
       "required": false
     },
     {
+      "id": "mystia_izakaya:broceoli",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:honey",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:lunar_herb",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:egg",
+      "required": false
+    },
+    {
       "id": "mystia_izakaya:lotus_seed",
       "required": false
     },
     {
-      "id": "mystia_izakaya:song_zi",
+      "id": "mystia_izakaya:boar_meat",
       "required": false
     },
     {
-      "id": "mystia_izakaya:cream",
+      "id": "mystia_izakaya:ice_cube",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:sea_urchin",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:bingdi_lotus",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:lamprey",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:cicada_slough",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:snow_fungus",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:cocoa_bean",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:black_salt",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:pork",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:premium_tuna",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:tomato",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:flower",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:tuna",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:octopus",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:ginko_nut",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:creeping_fig",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:red_bean",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:onion",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:butter",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:plum",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:seaweed",
       "required": false
     },
     {
       "id": "mystia_izakaya:sticky_rice",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:grapes",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:red_toon",
+      "required": false
+    },
+    {
+      "id": "mystia_izakaya:peach",
       "required": false
     }
   ]

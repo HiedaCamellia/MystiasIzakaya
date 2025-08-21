@@ -3,6 +3,9 @@ package org.hiedacamellia.mystiasizakaya.common.block;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -51,8 +54,8 @@ public class Kitchenware extends BaseEntityBlock implements IKitchenware {
         this.type = type;
     }
 
-    public Kitchenware(KitchenwareType type) {
-        this(Properties.of().mapColor(MapColor.METAL).sound(SoundType.METAL).strength(1f, 10f)
+    public Kitchenware(KitchenwareType type, ResourceLocation loc) {
+        this(Properties.of().setId(ResourceKey.create(Registries.BLOCK, loc)).mapColor(MapColor.METAL).sound(SoundType.METAL).strength(1f, 10f)
                 .requiresCorrectToolForDrops().pushReaction(PushReaction.IGNORE).noOcclusion(),type);
     }
 

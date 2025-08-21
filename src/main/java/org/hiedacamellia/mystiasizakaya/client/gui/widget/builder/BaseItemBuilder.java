@@ -1,7 +1,10 @@
 package org.hiedacamellia.mystiasizakaya.client.gui.widget.builder;
 
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.ItemUseAnimation;
 import org.hiedacamellia.mystiasizakaya.common.item.MIBaseItem;
 import org.hiedacamellia.mystiasizakaya.registries.MIDatacomponet;
 
@@ -10,7 +13,7 @@ import java.util.List;
 
 public class BaseItemBuilder {
     private final Item.Properties properties;
-    private UseAnim useAnimation=UseAnim.EAT;
+    private ItemUseAnimation useAnimation=ItemUseAnimation.EAT;
     private List<String> tags = new ArrayList<>();
     private List<String> ntags = new ArrayList<>();
     private String tagprefix = "tag.mystias_izakaya.";
@@ -21,8 +24,8 @@ public class BaseItemBuilder {
         this.properties = properties;
     }
 
-    public Item build(){
-        return new MIBaseItem(properties
+    public Item build(ResourceLocation loc){
+        return new MIBaseItem(properties.setId(ResourceKey.create(Registries.ITEM, loc))
                 .component(MIDatacomponet.MI_POSITIVE_TAGS.get(), tags)
                 .component(MIDatacomponet.MI_NEGATIVE_TAGS.get(), ntags)
                 .component(MIDatacomponet.MI_COOKTIME.get(), cooktime)
@@ -69,13 +72,13 @@ public class BaseItemBuilder {
         return this;
     }
 
-    public BaseItemBuilder useAnimation(UseAnim useAnimation){
+    public BaseItemBuilder useAnimation(ItemUseAnimation useAnimation){
         this.useAnimation = useAnimation;
         return this;
     }
 
     public BaseItemBuilder drink(){
-        this.useAnimation = UseAnim.DRINK;
+        this.useAnimation = ItemUseAnimation.DRINK;
         return this;
     }
 

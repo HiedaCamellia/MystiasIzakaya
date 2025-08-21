@@ -6,6 +6,9 @@ import net.minecraft.world.item.crafting.RecipeInput;
 import java.util.List;
 
 public record MIRecipeInput(List<ItemStack> stack) implements RecipeInput {
+
+    public static final MIRecipeInput EMPTY = new MIRecipeInput(List.of());
+
     @Override
     public ItemStack getItem(int slot) {
         return this.stack().get(slot);

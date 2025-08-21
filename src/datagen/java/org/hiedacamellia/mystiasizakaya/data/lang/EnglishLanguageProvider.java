@@ -170,7 +170,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.li_liang_tang", "Power Soup");
         add("item.mystias_izakaya.lian_zi", "Lotus Seed");
         add("item.mystias_izakaya.liang_cai_diao_hua", "Carved Rose Salad");
-        add("item.mystias_izakaya.liao_li_tai", "Cutting Board");
+        add("item.mystias_izakaya.cutting_board", "Cutting Board");
         add("item.mystias_izakaya.lin_ren_zhui", "Drunken Bard");
         add("item.mystias_izakaya.liu_shui_su_mian", "Flowing Somen");
         add("item.mystias_izakaya.lu_cha", "Green Tea");
@@ -216,7 +216,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.ri_yue_xing", "Sangetsusei");
         add("item.mystias_izakaya.sai_xiong_zhang", "Imitation Bear Paw");
         add("item.mystias_izakaya.san_wen_yu", "Salmon");
-        add("item.mystias_izakaya.shao_kao_jia", "Grill");
+        add("item.mystias_izakaya.grill", "Grill");
         add("item.mystias_izakaya.shen_zhi_mai", "Divine Wheat");
         add("item.mystias_izakaya.shi_li_yin_xing", "Scholar's Ginkgo");
         add("item.mystias_izakaya.shi_si_ye", "Full Moon's Eve");
@@ -259,7 +259,7 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.yin_er", "Snow Fungus");
         add("item.mystias_izakaya.ying_luo_xue", "Falling Blossoms");
         add("item.mystias_izakaya.you_dou_fu", "Deep Fried Tofu");
-        add("item.mystias_izakaya.you_guo", "Frying Pan");
+        add("item.mystias_izakaya.frying_pan", "Frying Pan");
         add("item.mystias_izakaya.yu_lu_cha", "Jade Dew Tea");
         add("item.mystias_izakaya.yue_guang_cao", "Lunar Herb");
         add("item.mystias_izakaya.yue_guang_tuan_zi", "Lunar Dango");
@@ -270,11 +270,11 @@ public class EnglishLanguageProvider extends LanguageProvider {
         add("item.mystias_izakaya.zha_zhu_rou_pai", "Fried Pork Cutlet");
         add("item.mystias_izakaya.zhang_yu", "Octopus");
         add("item.mystias_izakaya.zhen_hai_xian_wei_cheng_tang", "Real・Seafood Miso Soup");
-        add("item.mystias_izakaya.zheng_guo", "Steamer");
+        add("item.mystias_izakaya.steamer", "Steamer");
         add("item.mystias_izakaya.zhi_shi", "Cheese");
         add("item.mystias_izakaya.zhi_zhu_rou_fan_tuan", "Pork Rice Ball");
         add("item.mystias_izakaya.zhu_dou_fu", "Boiled Tofu");
-        add("item.mystias_izakaya.zhu_guo", "Boiling Pot");
+        add("item.mystias_izakaya.boiling_pot", "Boiling Pot");
         add("item.mystias_izakaya.zhu_lu_die", "Ino-Shika-Chou");
         add("item.mystias_izakaya.zhu_qu_ji", "Kaguya-hime");
         add("item.mystias_izakaya.zhu_rou", "Pork");

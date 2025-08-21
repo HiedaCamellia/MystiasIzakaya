@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "mystias_izakaya:item/shao_kao_jia"
+    "layer0": "mystias_izakaya:item/grill"
   }
 }

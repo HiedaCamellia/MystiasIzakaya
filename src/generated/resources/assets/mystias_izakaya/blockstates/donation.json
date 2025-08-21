@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "mystias_izakaya:block/donation",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "mystias_izakaya:block/donation"
+    },
+    "facing=south": {
+      "model": "mystias_izakaya:block/donation",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mystias_izakaya:block/donation",
+      "y": 270
+    }
+  }
+}

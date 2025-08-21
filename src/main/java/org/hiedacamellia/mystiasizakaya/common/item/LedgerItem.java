@@ -1,8 +1,11 @@
 package org.hiedacamellia.mystiasizakaya.common.item;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -13,14 +16,13 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.hiedacamellia.mystiasizakaya.common.menu.LedgerMenu;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class LedgerItem extends Item {
-    public LedgerItem() {
-        super(new Properties().stacksTo(1).rarity(Rarity.RARE));
+    public LedgerItem(ResourceLocation loc) {
+        super(new Properties().setId(ResourceKey.create(Registries.ITEM, loc)).stacksTo(1).rarity(Rarity.RARE));
     }
 
     @Override
@@ -33,8 +35,8 @@ public class LedgerItem extends Item {
     }
 
     @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        InteractionResultHolder<ItemStack> ar = super.use(level, player, hand);
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
+        InteractionResult ar = super.use(level, player, hand);
         if(player.isShiftKeyDown()&&!level.isClientSide()) {
             player.openMenu(new MenuProvider() {
                 @Override

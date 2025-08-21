@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "mystias_izakaya:block/cooking_range",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "mystias_izakaya:block/cooking_range"
+    },
+    "facing=south": {
+      "model": "mystias_izakaya:block/cooking_range",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mystias_izakaya:block/cooking_range",
+      "y": 270
+    }
+  }
+}

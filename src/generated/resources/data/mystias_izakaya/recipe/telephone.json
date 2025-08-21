@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "minecraft:planks"
-    },
-    "S": {
-      "item": "minecraft:iron_ingot"
-    },
-    "X": {
-      "item": "minecraft:ender_pearl"
-    }
+    "#": "#minecraft:planks",
+    "S": "minecraft:iron_ingot",
+    "X": "minecraft:ender_pearl"
   },
   "pattern": [
     "SXS",

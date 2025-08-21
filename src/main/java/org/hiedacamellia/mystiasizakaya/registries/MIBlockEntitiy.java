@@ -19,14 +19,14 @@ import java.util.function.Supplier;
 public class MIBlockEntitiy {
 	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, MystiasIzakaya.MODID);
 
-	public static final Supplier<BlockEntityType<CookingRangeEntity>> COOKING_RANGE = REGISTRY.register("cooking_range", () -> BlockEntityType.Builder.of(CookingRangeEntity::new, MIBlock.COOKING_RANGE.get()).build(null));
-	public static final Supplier<BlockEntityType<TableEntity>> TABLE = REGISTRY.register("table", () -> BlockEntityType.Builder.of(TableEntity::new, MIBlock.TABLE.get()).build(null));
+	public static final Supplier<BlockEntityType<CookingRangeEntity>> COOKING_RANGE = REGISTRY.register("cooking_range", () -> new BlockEntityType<>(CookingRangeEntity::new, MIBlock.COOKING_RANGE.get()));
+	public static final Supplier<BlockEntityType<TableEntity>> TABLE = REGISTRY.register("table", () -> new BlockEntityType<>(TableEntity::new, MIBlock.TABLE.get()));
 
-	public static final Supplier<BlockEntityType<? extends KitchenwareEntity>> CUTTING_BOARD = REGISTRY.register("cutting_board", () -> BlockEntityType.Builder.of(KitchenwareEntity.CuttingBoard::new, MIBlock.CUTTING_BOARD.get()).build(null));
-	public static final Supplier<BlockEntityType<? extends KitchenwareEntity>> BOILING_POT = REGISTRY.register("boiling_pot", () -> BlockEntityType.Builder.of(KitchenwareEntity.BoilingPot::new, MIBlock.BOILING_POT.get()).build(null));
-	public static final Supplier<BlockEntityType<? extends KitchenwareEntity>> FRYING_PAN = REGISTRY.register("frying_pan", () -> BlockEntityType.Builder.of(KitchenwareEntity.FryingPan::new, MIBlock.FRYING_PAN.get()).build(null));
-	public static final Supplier<BlockEntityType<? extends KitchenwareEntity>> STEAMER = REGISTRY.register("steamer", () -> BlockEntityType.Builder.of(KitchenwareEntity.Steamer::new, MIBlock.STEAMER.get()).build(null));
-	public static final Supplier<BlockEntityType<? extends KitchenwareEntity>> GRILL = REGISTRY.register("grill", () -> BlockEntityType.Builder.of(KitchenwareEntity.Grill::new, MIBlock.GRILL.get()).build(null));
+	public static final Supplier<BlockEntityType<? extends KitchenwareEntity>> CUTTING_BOARD = REGISTRY.register("cutting_board", () -> new BlockEntityType<>(KitchenwareEntity.CuttingBoard::new, MIBlock.CUTTING_BOARD.get()));
+	public static final Supplier<BlockEntityType<? extends KitchenwareEntity>> BOILING_POT = REGISTRY.register("boiling_pot", () -> new BlockEntityType<>(KitchenwareEntity.BoilingPot::new, MIBlock.BOILING_POT.get()));
+	public static final Supplier<BlockEntityType<? extends KitchenwareEntity>> FRYING_PAN = REGISTRY.register("frying_pan", () -> new BlockEntityType<>(KitchenwareEntity.FryingPan::new, MIBlock.FRYING_PAN.get()));
+	public static final Supplier<BlockEntityType<? extends KitchenwareEntity>> STEAMER = REGISTRY.register("steamer", () -> new BlockEntityType<>(KitchenwareEntity.Steamer::new, MIBlock.STEAMER.get()));
+	public static final Supplier<BlockEntityType<? extends KitchenwareEntity>> GRILL = REGISTRY.register("grill", () -> new BlockEntityType<>(KitchenwareEntity.Grill::new, MIBlock.GRILL.get()));
 
 
 	@SubscribeEvent
