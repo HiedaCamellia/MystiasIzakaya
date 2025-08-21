@@ -309,9 +309,10 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
             }
         }).pos(this.leftPos+10,this.topPos+4).size(40,16).build();
 
-        toastWidget = new ComponentToastWidget(leftPos+imageWidth/2,topPos+imageHeight/2,imageWidth,20,40f,Component.empty());
+        toastWidget = new ComponentToastWidget(leftPos+imageWidth/2,topPos+imageHeight/2,imageWidth,20,2000,Component.empty());
 
         ledgerItemWidgets = new ArrayList<>();
+        renderables_ledger = new ArrayList<>();
         List<Pair<String, Double>> list = MIPlayerUtil.getTurnover(player);
         for(int i = 0; i < list.size(); i++){
             LedgerItemWidget ledgerItemWidget = new LedgerItemWidget(this.leftPos + 10, this.topPos + 20 + 14 * i, list.get(i).getFirst(), list.get(i).getSecond());
@@ -330,6 +331,9 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
         IzakayaMenu data = player.getData(MIAttachment.IZAKAYA_MENU);
         List<String> cuisineList = data.cuisines();
         List<String> beverageList = data.beverages();
+        fakeCuisinesSlots = new ArrayList<>();
+        fakeBeveragesSlots = new ArrayList<>();
+        renderables_menu= new ArrayList<>();
 
         for (int i = 0; i < 8 ; i++) {
             ItemStack cuisine = i<cuisineList.size()?BuiltInRegistries.ITEM.get(ResourceLocation.parse((cuisineList.get(i).toLowerCase(Locale.ENGLISH)))).getDefaultInstance():ItemStack.EMPTY;
@@ -378,19 +382,19 @@ public class LedgerScreen extends AbstractContainerScreen<LedgerMenu> {
             }
         }
         if(flag1 && flag2 && flag3){
-            toastWidget.reset(Component.translatable("network.mystiasizakaya.ledger.success").withStyle(ChatFormatting.GREEN));
+            toastWidget.waitOrUpdate(Component.translatable("network.mystiasizakaya.ledger.success").withStyle(ChatFormatting.GREEN));
             return true;
         }else {
             if(!flag1){
-                toastWidget.reset(Component.translatable("network.mystiasizakaya.ledger.failed.table").withStyle(ChatFormatting.GRAY));
+                toastWidget.waitOrUpdate(Component.translatable("network.mystiasizakaya.ledger.failed.table").withStyle(ChatFormatting.GRAY));
                 return false;
             }
             if(!flag2){
-                toastWidget.reset(Component.translatable("network.mystiasizakaya.ledger.failed.cuisines").withStyle(ChatFormatting.GRAY));
+                toastWidget.waitOrUpdate(Component.translatable("network.mystiasizakaya.ledger.failed.cuisines").withStyle(ChatFormatting.GRAY));
                 return false;
             }
             if(!flag3){
-                toastWidget.reset(Component.translatable("network.mystiasizakaya.ledger.failed.beverages").withStyle(ChatFormatting.GRAY));
+                toastWidget.waitOrUpdate(Component.translatable("network.mystiasizakaya.ledger.failed.beverages").withStyle(ChatFormatting.GRAY));
                 return false;
             }
         }

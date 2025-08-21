@@ -247,11 +247,11 @@ public class CookingScreen extends AbstractContainerScreen<CookingMenu> {
                             selected = ItemStack.EMPTY;
                             working = stack;
                         }else {
-                            toast.reset(Component.translatable("status.mystias_izakaya.outputblocked"));
+                            toast.waitOrUpdate(Component.translatable("status.mystias_izakaya.outputblocked"));
                         }
                     }else {
                         if(data.get(0)>0){
-                            toast.reset(Component.translatable("status.mystias_izakaya.working"));
+                            toast.waitOrUpdate(Component.translatable("status.mystias_izakaya.working"));
                         }
                         selected = stack;
                     }
@@ -281,7 +281,7 @@ public class CookingScreen extends AbstractContainerScreen<CookingMenu> {
         this.addRenderableWidget(new FakeSlot(start_x + 3 * 18, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.ingerdients")));
         this.addRenderableWidget(new FakeSlot(start_x + 4 * 18, start_y - 22, Component.translatable("gui.mystias_izakaya.cooking_ui.ingerdients")));
 
-        this.toast = new ComponentToastWidget(leftPos+151,topPos+36, 75, 20,20.0f, Component.empty());
+        this.toast = new ComponentToastWidget(leftPos+151,topPos+36, 75, 20,1000, Component.empty());
         this.addRenderableWidget(toast);
     }
 }

@@ -121,7 +121,7 @@ public class DonationScreen extends Screen {
         this.addRenderableWidget(button_take_out);
 
 
-        this.toast = new ComponentToastWidget(this.leftPos + imageWidth/2, this.topPos + 140, 75, 20,20.0f, Component.empty());
+        this.toast = new ComponentToastWidget(this.leftPos + imageWidth/2, this.topPos + 140, 75, 20,1000, Component.empty());
         this.addRenderableWidget(toast);
     }
 }

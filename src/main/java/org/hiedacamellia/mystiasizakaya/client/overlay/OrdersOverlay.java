@@ -16,6 +16,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import org.hiedacamellia.immersiveui.client.graphic.util.IUIGuiUtils;
+import org.hiedacamellia.immersiveui.client.graphic.util.IUIMinecraftUtils;
 import org.hiedacamellia.mystiasizakaya.content.izakaya.IzakayaOrder;
 import org.hiedacamellia.mystiasizakaya.core.config.MIClientConfig;
 import org.hiedacamellia.mystiasizakaya.core.util.MIBalanceUtil;
@@ -57,10 +58,10 @@ public class OrdersOverlay {
 
         String text = Component.translatable("gui.mystias_izakaya.balance").getString() + new java.text.DecimalFormat("#######")
                 .format(MIBalanceUtil.getBalance(player)) + "\u5186";
-        int strlength = IUIGuiUtils.getFont().width(text);
+        int strlength = IUIMinecraftUtils.getFont().width(text);
 
         if (MIClientConfig.SHOW_BALANCE.get())
-            guiGraphics.drawString(IUIGuiUtils.getFont(), text, w - 20 - strlength, h - 11, -1,
+            guiGraphics.drawString(IUIMinecraftUtils.getFont(), text, w - 20 - strlength, h - 11, -1,
                     false);
 
 
@@ -224,7 +225,7 @@ public class OrdersOverlay {
             guiGraphics.renderItem(beverage,
                     x + 18, y + 2, 0, 0);
         }
-        guiGraphics.drawString(IUIGuiUtils.getFont(),
+        guiGraphics.drawString(IUIMinecraftUtils.getFont(),
                 new java.text.DecimalFormat("#######").format(i+1) + "\u53f7\u684c", x + 8, y + 22,
                 -16777216,
                 false);

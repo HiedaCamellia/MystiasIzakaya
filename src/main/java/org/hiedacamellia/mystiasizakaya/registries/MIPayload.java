@@ -7,7 +7,7 @@ import net.neoforged.neoforge.network.handling.DirectionalPayloadHandler;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import org.hiedacamellia.mystiasizakaya.core.network.*;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber
 public class MIPayload {
     @SubscribeEvent
     public static void register(final RegisterPayloadHandlersEvent event) {
